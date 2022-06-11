@@ -18,17 +18,11 @@ export const builder: CommandBuilder<Options, Options> = (yargs) =>
         })
         .positional('testCommand', { type: 'string', demandOption: true });
 
-export const handler = async (): Promise<void> => {
+export const handler = (): void => {
     clear();
     console.log(
         chalk.red(
             figlet.textSync('oporto', {horizontalLayout: 'full'})
         )
     );
-    await new Promise(resolve => setTimeout(resolve, 5000))
-    console.log("Starting test...")
-    await new Promise(resolve => setTimeout(resolve, 5000))
-    console.log("Done")
-    clear();
-    process.exit(0);
 };
