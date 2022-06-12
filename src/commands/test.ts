@@ -1,7 +1,9 @@
 import type { CommandBuilder } from 'yargs';
 import clear from 'clear';
 import figlet from 'figlet';
-import chalk from "chalk";
+import chalk from 'chalk';
+import { sleep } from '../utils/utils';
+import { getRandomVerb } from '../service/verb';
 
 type Options = {
     testCommand: string;
@@ -18,11 +20,13 @@ export const builder: CommandBuilder<Options, Options> = (yargs) =>
         })
         .positional('testCommand', { type: 'string', demandOption: true });
 
-export const handler = (): void => {
+export const handler = async (): Promise<void> => {
     clear();
     console.log(
         chalk.red(
-            figlet.textSync('oporto', {horizontalLayout: 'full'})
+            figlet.textSync('oporto', { horizontalLayout: 'full' })
         )
     );
+    await sleep(1000);
+    console.log(getRandomVerb());
 };
