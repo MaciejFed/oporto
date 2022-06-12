@@ -1,3 +1,5 @@
+import { sleep } from '../src/utils/utils';
+
 describe('cli', () => {
     let originalArgv: string[];
 
@@ -17,6 +19,8 @@ describe('cli', () => {
         const consoleSpy = jest.spyOn(console, 'log');
 
         await runCommand('test', 'start');
+
+        await sleep(2000);
 
         expect(consoleSpy).toHaveBeenCalled();
     });
