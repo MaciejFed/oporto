@@ -1,4 +1,4 @@
-describe("cli", () => {
+describe('cli', () => {
     let originalArgv: string[];
 
     beforeEach(() => {
@@ -13,10 +13,10 @@ describe("cli", () => {
         process.argv = originalArgv;
     });
 
-    it("should run install command", async () => {
-        const consoleSpy = jest.spyOn(console, "log");
+    it('should run install command', async () => {
+        const consoleSpy = jest.spyOn(console, 'log');
 
-        await runCommand("test", "start");
+        await runCommand('test', 'start');
 
         expect(consoleSpy).toHaveBeenCalled();
     });
@@ -29,13 +29,13 @@ describe("cli", () => {
  */
 async function runCommand(...args: string[]) {
     process.argv = [
-        "node", // Not used but a value is required at this index in the array
-        "./../src/cli", // Not used but a value is required at this index in the array
+        'node', // Not used but a value is required at this index in the array
+        './../src/cli', // Not used but a value is required at this index in the array
         ...args,
     ];
 
     try {
-        return require("./../build/src/cli");
+        return require('./../build/src/cli');
     } catch (e) {
         console.log(e);
     }

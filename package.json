@@ -2,13 +2,14 @@
   "name": "oporto",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/cli.js",
+  "main": "./build/src/cli.js",
   "bin": {
     "oporto": "./build/src/cli.js"
   },
   "scripts": {
     "build": "rm -rf build/** && eslint --fix . && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
+    "execute": "npm run package && cp bin/oporto ~/bin/oporto",
     "test": "npm run build && jest test",
     "lint": "eslint ."
   },
