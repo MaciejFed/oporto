@@ -1,4 +1,4 @@
-type RegularVerb = string
+export type RegularVerb = string
 
 type Verbs = {
     regular: RegularVerb[]
@@ -10,6 +10,6 @@ export type Schema = {
 
 export const db: Schema = {
     'verbs': {
-        'regular': ['Falar']
+        'regular': ['Falar', 'Comer', 'Abrir']
     }
 }

@@ -2,8 +2,10 @@ import type { CommandBuilder } from 'yargs';
 import clear from 'clear';
 import figlet from 'figlet';
 import chalk from 'chalk';
-import { sleep } from '../utils/utils';
 import { getRandomVerb } from '../service/verb';
+import readline from 'readline';
+import { terminal } from 'terminal-kit';
+import { runVerbTask } from '../exercise/exercise';
 
 type Options = {
     testCommand: string;
@@ -27,6 +29,8 @@ export const handler = async (): Promise<void> => {
             figlet.textSync('oporto', { horizontalLayout: 'full' })
         )
     );
-    await sleep(1000);
-    console.log(getRandomVerb());
+    readline.emitKeypressEvents(process.stdin);
+    process.stdin.setRawMode(true);
+    await runVerbTask(getRandomVerb());
+    terminal('Bye!\n')
 };
