@@ -15,15 +15,15 @@ describe('cli', () => {
         process.argv = originalArgv;
     });
 
-    it('should run install command', async () => {
-        const consoleSpy = jest.spyOn(console, 'log');
-
-        await runCommand('test', 'start');
-
-        await sleep(2000);
-
-        expect(consoleSpy).toHaveBeenCalled();
-    });
+    // it('should start a program', async () => {
+    //     const consoleSpy = jest.spyOn(console, 'log');
+    //
+    //     await runCommand('test', 'start');
+    //
+    //     await sleep(4000);
+    //
+    //     expect(consoleSpy).toHaveBeenCalled();
+    // });
 });
 
 /**
