@@ -1,15 +1,15 @@
-export type RegularVerb = string
+export type RegularVerb = string;
 
 type Verbs = {
-    regular: RegularVerb[]
+  regular: RegularVerb[];
 };
 
 export type Schema = {
-    verbs: Verbs
+  verbs: Verbs;
 };
 
 export const db: Schema = {
-    'verbs': {
-        'regular': ['Falar', 'Comer', 'Abrir']
-    }
-}
+  verbs: {
+    regular: ['Falar', 'Comer', 'Abrir']
+  }
+};

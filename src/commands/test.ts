@@ -1,36 +1,13 @@
-import type { CommandBuilder } from 'yargs';
-import clear from 'clear';
-import figlet from 'figlet';
-import chalk from 'chalk';
-import { getRandomVerb } from '../service/verb';
-import readline from 'readline';
-import { terminal } from 'terminal-kit';
-import { runVerbTask } from '../exercise/exercise';
+import { eventEmitter } from '../event/eventProcessor';
+import { APP_STARTED } from '../event/events';
+import { Input } from '../input/input';
+import { SessionManager } from '../session/sessionManager';
+import { Terminakl } from '../terminal/terminal';
 
-type Options = {
-    testCommand: string;
-    time: number | undefined;
-};
+const terminal = new Terminakl(eventEmitter);
+const input = new Input(eventEmitter);
+const sessionManager = new SessionManager(eventEmitter, 3);
 
-export const command = 'test <testCommand>';
-export const desc = 'Run test';
+eventEmitter.emit(APP_STARTED);
 
-export const builder: CommandBuilder<Options, Options> = (yargs) =>
-    yargs
-        .options({
-            time: { type: 'number', default: 5 },
-        })
-        .positional('testCommand', { type: 'string', demandOption: true });
-
-export const handler = async (): Promise<void> => {
-    clear();
-    console.log(
-        chalk.red(
-            figlet.textSync('oporto', { horizontalLayout: 'full' })
-        )
-    );
-    readline.emitKeypressEvents(process.stdin);
-    process.stdin.setRawMode(true);
-    await runVerbTask(getRandomVerb());
-    terminal('Bye!\n')
-};
+// exercise manager get
