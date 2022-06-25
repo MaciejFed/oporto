@@ -1,33 +1,61 @@
-import { terminal } from 'terminal-kit';
-import { getCorrectConjugation, getRandomPerson, Person } from '../service/verb';
-import { sleep } from '../utils/utils';
+import EventEmitter from 'events';
+import { ANSWER_SUBMITED, APP_STARTED, EXERCISE_BODY_PRINTED, EXERCISE_DESCRIPTION_PRINTED, EXERCISE_DONE, KEY_PRESSED } from '../event/events';
+import { getRandomVerb, Person } from '../service/verb';
+import { getRandomPerson, getCorrectConjugation } from '../service/verb';
+import { AppEventListener } from '../event/eventListener';
+import { EventProcessor } from '../event/eventProcessor';
 
-export function runVerbTask(verb: string): Promise<boolean> {
-    const person: Person = getRandomPerson();
-    let animation = false;
-    let answer = ''
-    return new Promise<boolean>((resolve) => {
-        const animationInterval = setInterval(() => {
-            animation = !animation
-        }, 500)
-        const input = setInterval(() => {
-            terminal.moveTo(1, 8 , verb);
-            terminal.moveTo(1, 9 , '%s %s' , person, animation ? answer + '_' : answer + ' ' );
-        }, 50);
-        terminal.hideCursor();
 
-        process.stdin.on('keypress', (str, key) => {
-            if (str === '\r') {
-                process.stdin.removeAllListeners('keypress');
-                clearInterval(input);
-                clearInterval(animationInterval);
-                const result = answer === getCorrectConjugation(verb, person);
-                terminal.moveTo(1, 10 , '%s' , result ? 'Correct!\n' : 'Wrong!\n');
-                sleep(1000).then(_ => resolve(result));
+export class Exercise implements AppEventListener {
+    
+    eventProcessor: EventProcessor;
+    person?: Person;
+    verb: string;
+    answer: string;
+
+    constructor(eventProcessor: EventProcessor) {
+        this.eventProcessor = eventProcessor;
+        this.registerListeners();
+        this.verb = '';
+        this.answer = '';
+    }
+
+    registerListeners() {
+        this.registerAppStartedEventListener();
+        this.registerKeyPressedEventListener();
+        this.registerAnswerSubmittedEventListener();
+    }
+
+    registerAppStartedEventListener() {
+        this.eventProcessor.on(APP_STARTED, () => {
+            this.verb = getRandomVerb();
+            this.person = getRandomPerson();
+            this.eventProcessor.emit(EXERCISE_DESCRIPTION_PRINTED, `Infinitive: ${this.verb}`);
+            this.eventProcessor.emit(EXERCISE_BODY_PRINTED, {
+                exercise: `${this.person}: `,
+                cursor: {
+                    x: this.person.length,
+                    y: 0
+                }
+            });
+        });
+    }
+
+
+    registerKeyPressedEventListener() {
+        this.eventProcessor.on(KEY_PRESSED, (key) => {
+            if (key == 'backspace') {
+                this.answer = this.answer.substring(0, Math.max(0, this.answer.length - 1));
             } else {
-                answer += str;
+                this.answer += key;
             }
         });
+    }
 
-    })
+    registerAnswerSubmittedEventListener() {
+        this.eventProcessor.on(ANSWER_SUBMITED, () => {
+            const correctAnswer = getCorrectConjugation(this.verb, this.person || Person.Eu);
+            this.eventProcessor.emit(EXERCISE_DONE, correctAnswer.toLowerCase() === this.answer.toLowerCase());
+        });
+    }
 }

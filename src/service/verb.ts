@@ -42,7 +42,7 @@ export const getCorrectConjugation: (verb: RegularVerb, person: Person) => strin
                 return verb.substring(0, verb.length - 2) + 'em'
         }
     }
-    throw Error('Incorrect Regular Verb');
+    throw Error(`Incorrect Regular Verb: "${verb}"`);
 }
 
 
