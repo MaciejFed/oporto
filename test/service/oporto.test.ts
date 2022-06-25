@@ -7,11 +7,12 @@ import { Input } from '../../src/input/input';
 import { RegularVerb } from '../../src/repository/db';
 import { Terminakl } from '../../src/terminal/terminal';
 import { sleep } from '../../src/utils/utils';
+import { simulateTyping } from '../util';
 
 
-const myTerminal = new Terminakl(eventEmitter);
-const input = new Input(eventEmitter);
-const exercise = new Exercise(eventEmitter);
+let myTerminal;
+let input;
+let exercise;
 
 const output: string[] = [];
 
@@ -46,16 +47,16 @@ describe('Event Emitter', () => {
     beforeEach(() => {
         // @ts-ignore
         const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
-        
+        output.length = 0 ;
+        eventEmitter.eventHistory = [];
+        myTerminal = new Terminakl(eventEmitter);
+        input = new Input(eventEmitter);
+        exercise = new Exercise(eventEmitter);
     })
 
     it('Happy Path', () => {
-
         eventEmitter.emit('APP_STARTED');
-        process.stdin.emit('keypress', {}, { name: 'c' });
-        process.stdin.emit('keypress', {}, { name: 'o' });
-        process.stdin.emit('keypress', {}, { name: 'm' });
-        process.stdin.emit('keypress', {}, { name: 'o' });
+        simulateTyping('como')
         process.stdin.emit('keypress', {}, { name: 'return' });
         process.stdin.emit('keypress', {}, { name: 'q' });
         expect(eventEmitter.eventHistory.map(event => event.event)).toEqual([
@@ -69,10 +70,52 @@ describe('Event Emitter', () => {
             'ANSWER_SUBMITED',
             'EXERCISE_DONE',
             'APP_FINISHED'
-        ])
+        ]);
+        
         expect(output[0]).toEqual('Infinitive: Comer');
         expect(output[5]).toEqual('Eu: como');
         expect(output[6]).toEqual('Correct!');
+    });
+
+    it('Unhappy Path', () => {
+        eventEmitter.emit('APP_STARTED');
+        simulateTyping('wronganswer')
+        process.stdin.emit('keypress', {}, { name: 'return' });
+        process.stdin.emit('keypress', {}, { name: 'q' });
+
+        expect(output[0]).toEqual('Infinitive: Comer');
+        expect(output[12]).toEqual('Eu: wronganswer');
+        expect(output[13]).toEqual('Wrong!');
+    });
+
+    it('Happy Path With Backspace', () => {
+        eventEmitter.emit('APP_STARTED');
+        simulateTyping('comorr')
+        process.stdin.emit('keypress', {}, { name: 'backspace' });
+        process.stdin.emit('keypress', {}, { name: 'backspace' });
+        process.stdin.emit('keypress', {}, { name: 'return' });
+        process.stdin.emit('keypress', {}, { name: 'q' });
+        expect(eventEmitter.eventHistory.map(event => event.event)).toEqual([
+            'APP_STARTED', 
+            'EXERCISE_DESCRIPTION_PRINTED', 
+            'EXERCISE_BODY_PRINTED',
+            'KEY_PRESSSED',
+            'KEY_PRESSSED',
+            'KEY_PRESSSED',
+            'KEY_PRESSSED',
+            'KEY_PRESSSED',
+            'KEY_PRESSSED',
+            'KEY_PRESSSED',
+            'KEY_PRESSSED',
+            'ANSWER_SUBMITED',
+            'EXERCISE_DONE',
+            'APP_FINISHED'
+        ]);
+        
+        expect(output[0]).toEqual('Infinitive: Comer');
+        expect(output[7]).toEqual('Eu: comorr');
+        expect(output[9]).toEqual('Eu: como');
+        expect(output[10]).toEqual('Correct!');
     });
 });
 
