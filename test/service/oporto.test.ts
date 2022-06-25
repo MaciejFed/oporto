@@ -36,6 +36,8 @@ jest.mock('../../src/service/verb', () => {
     }
 })
 
+// @ts-ignore
+global.process.stdin.setRawMode = (mode: boolean) => undefined
 
 describe('Event Emitter', () => {
     
@@ -44,8 +46,7 @@ describe('Event Emitter', () => {
     beforeEach(() => {
         // @ts-ignore
         const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
-        // @ts-ignore
-        global.process.stdin.setRawMode = (mode: boolean) => undefined
+        
     })
 
     it('Happy Path', () => {
