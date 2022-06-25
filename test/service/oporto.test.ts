@@ -1,4 +1,6 @@
+import { stdin } from 'process';
 import { terminal } from 'terminal-kit';
+import { ReadStream } from 'tty';
 import { eventEmitter } from '../../src/event/eventProcessor';
 import { Exercise } from '../../src/exercise/exercise';
 import { Input } from '../../src/input/input';
@@ -33,7 +35,7 @@ jest.mock('../../src/service/verb', () => {
         getRandomPerson: () => 'Eu'
     }
 })
-  
+
 
 describe('Event Emitter', () => {
     
@@ -41,7 +43,9 @@ describe('Event Emitter', () => {
 
     beforeEach(() => {
         // @ts-ignore
-        const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {})
+        const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
+        // @ts-ignore
+        global.process.stdin.setRawMode = (mode: boolean) => undefined
     })
 
     it('Happy Path', () => {
