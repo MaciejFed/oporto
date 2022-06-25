@@ -9,6 +9,9 @@ export class Input {
     this.eventProcessor = eventProcessor;
     process.stdin.setRawMode(true);
     this.registerListener();
+    if (process.stdin.setRawMode) {
+      process.stdin.setRawMode(true);
+    }
     readline.emitKeypressEvents(process.stdin);
   }
 
