@@ -1,10 +1,6 @@
 import EventEmitter from 'events';
 import winston from 'winston';
-import { Exercise } from '../exercise/exercise';
-import { Input } from '../input/input';
-import { Terminakl } from '../terminal/terminal';
 import { APP_EVENT, APP_STARTED } from './events';
-import { sleep } from '../utils/utils';
 
 const logger = winston.createLogger({
   level: 'info',
@@ -62,9 +58,3 @@ export class EventProcessor {
 }
 
 export const eventEmitter = new EventProcessor(new EventEmitter());
-
-// const terminal = new Terminakl(eventEmitter);
-// const input = new Input(eventEmitter);
-// const exercise = new Exercise(eventEmitter);
-
-// eventEmitter.emit(APP_STARTED);

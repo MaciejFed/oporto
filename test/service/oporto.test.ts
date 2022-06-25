@@ -1,21 +1,15 @@
-import { stdin } from 'process';
-import { terminal } from 'terminal-kit';
-import { ReadStream } from 'tty';
 import { eventEmitter } from '../../src/event/eventProcessor';
-import { Exercise } from '../../src/exercise/exercise';
+import { SessionManager } from '../../src/session/sessionManager';
 import { Input } from '../../src/input/input';
-import { RegularVerb } from '../../src/repository/db';
 import { Terminakl } from '../../src/terminal/terminal';
-import { sleep } from '../../src/utils/utils';
 import { simulateTyping } from '../util';
 
 
 let myTerminal;
 let input;
-let exercise;
+let sessionManager;
 
 const output: string[] = [];
-
 
 jest.mock('terminal-kit', () => {
     return {
@@ -41,8 +35,6 @@ jest.mock('../../src/service/verb', () => {
 global.process.stdin.setRawMode = (mode: boolean) => undefined
 
 describe('Event Emitter', () => {
-    
-    let terminalMock: any;
 
     beforeEach(() => {
         // @ts-ignore
@@ -51,16 +43,16 @@ describe('Event Emitter', () => {
         eventEmitter.eventHistory = [];
         myTerminal = new Terminakl(eventEmitter);
         input = new Input(eventEmitter);
-        exercise = new Exercise(eventEmitter);
+        sessionManager = new SessionManager(eventEmitter, 1);
     })
 
     it('Happy Path', () => {
         eventEmitter.emit('APP_STARTED');
         simulateTyping('como')
         process.stdin.emit('keypress', {}, { name: 'return' });
-        process.stdin.emit('keypress', {}, { name: 'q' });
         expect(eventEmitter.eventHistory.map(event => event.event)).toEqual([
-            'APP_STARTED', 
+            'APP_STARTED',
+            'EXERCISE_STARTED', 
             'EXERCISE_DESCRIPTION_PRINTED', 
             'EXERCISE_BODY_PRINTED',
             'KEY_PRESSSED',
@@ -69,6 +61,7 @@ describe('Event Emitter', () => {
             'KEY_PRESSSED',
             'ANSWER_SUBMITED',
             'EXERCISE_DONE',
+            'EXERCISE_NEXT',
             'APP_FINISHED'
         ]);
         
@@ -81,7 +74,6 @@ describe('Event Emitter', () => {
         eventEmitter.emit('APP_STARTED');
         simulateTyping('wronganswer')
         process.stdin.emit('keypress', {}, { name: 'return' });
-        process.stdin.emit('keypress', {}, { name: 'q' });
 
         expect(output[0]).toEqual('Infinitive: Comer');
         expect(output[12]).toEqual('Eu: wronganswer');
@@ -94,9 +86,9 @@ describe('Event Emitter', () => {
         process.stdin.emit('keypress', {}, { name: 'backspace' });
         process.stdin.emit('keypress', {}, { name: 'backspace' });
         process.stdin.emit('keypress', {}, { name: 'return' });
-        process.stdin.emit('keypress', {}, { name: 'q' });
         expect(eventEmitter.eventHistory.map(event => event.event)).toEqual([
-            'APP_STARTED', 
+            'APP_STARTED',
+            'EXERCISE_STARTED',
             'EXERCISE_DESCRIPTION_PRINTED', 
             'EXERCISE_BODY_PRINTED',
             'KEY_PRESSSED',
@@ -109,6 +101,7 @@ describe('Event Emitter', () => {
             'KEY_PRESSSED',
             'ANSWER_SUBMITED',
             'EXERCISE_DONE',
+            'EXERCISE_NEXT',
             'APP_FINISHED'
         ]);
         

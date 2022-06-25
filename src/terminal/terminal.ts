@@ -10,7 +10,9 @@ import {
   EXERCISE_BODY_PRINTED,
   EXERCISE_BODY_PRINTED_BODY,
   KEY_PRESSED,
-  EXERCISE_DONE
+  EXERCISE_DONE,
+  EXERCISE_NEXT,
+  EXERCISE_STARTED
 } from './../event/events';
 
 export type Point = {
@@ -36,39 +38,37 @@ export class Terminakl {
 
   registerListeners() {
     this.eventProcessor.on(APP_STARTED, () => {
-      // eslint-disable-next-line no-console
-      console.log(
-        chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }))
-      );
+      this.preExerciseClear();
     });
-    this.eventProcessor.on(
-      EXERCISE_DESCRIPTION_PRINTED,
-      (description: string) => {
-        terminal.moveTo(1, 10, description);
-      }
-    );
-    this.eventProcessor.on(
-      EXERCISE_BODY_PRINTED,
-      (body: EXERCISE_BODY_PRINTED_BODY) => {
-        this.cursor = body.cursor;
-        this.exercise = body.exercise;
-        terminal.moveTo(1, 11, this.exercise);
-      }
-    );
+    this.eventProcessor.on(EXERCISE_DESCRIPTION_PRINTED, (description: string) => {
+      terminal.moveTo(1, 10, description);
+    });
+    this.eventProcessor.on(EXERCISE_BODY_PRINTED, (body: EXERCISE_BODY_PRINTED_BODY) => {
+      this.cursor = body.cursor;
+      this.exercise = body.exercise;
+      terminal.moveTo(1, 11, this.exercise);
+    });
     this.eventProcessor.on(KEY_PRESSED, (key) => {
       if (key === 'backspace') {
-        this.exercise = this.exercise.substring(
-          0,
-          Math.max(0, this.exercise.length - 1)
-        );
+        this.exercise = this.exercise.substring(0, Math.max(0, this.exercise.length - 1));
         clearLine(process.stdout, 0);
       } else {
         this.exercise = this.exercise + key;
       }
       terminal.moveTo(1, 11, this.exercise);
     });
+    this.eventProcessor.on(EXERCISE_STARTED, () => {
+      this.preExerciseClear();
+    });
     this.eventProcessor.on(EXERCISE_DONE, (correctAnswer) => {
       terminal.moveTo(1, 12, correctAnswer ? 'Correct!' : 'Wrong!');
+      this.eventProcessor.emit(EXERCISE_NEXT);
     });
+  }
+
+  preExerciseClear() {
+    // eslint-disable-next-line no-console
+    clear();
+    console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
   }
 }

@@ -17,10 +17,6 @@ export class Input {
   registerListener() {
     process.stdin.on('keypress', (str, key) => {
       switch (key.name) {
-        case 'q':
-          process.stdin.removeAllListeners();
-          this.eventProcessor.emit('APP_FINISHED');
-          break;
         case 'return':
           this.eventProcessor.emit(ANSWER_SUBMITED);
           break;
