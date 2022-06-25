@@ -11,7 +11,8 @@
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto",
     "test": "npm run build && jest test --detectOpenHandles --forceExit",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "jest": {
     "testMatch": [
@@ -42,6 +43,7 @@
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "^7.17.12",
+    "@spotify/eslint-config": "^13.0.1",
     "@types/clear": "^0.1.2",
     "@types/figlet": "^1.5.4",
     "@types/jest": "^28.1.1",
@@ -52,10 +54,11 @@
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "babel-jest": "^28.1.1",
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "jest-mock-process": "^1.5.1",
     "nodemon": "^2.0.16",
     "pkg": "^5.7.0",
+    "prettier": "^2.7.1",
     "ts-jest": "^28.0.4",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.3"
