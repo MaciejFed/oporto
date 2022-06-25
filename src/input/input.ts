@@ -7,7 +7,6 @@ export class Input {
 
   constructor(eventProcessor: EventProcessor) {
     this.eventProcessor = eventProcessor;
-    process.stdin.setRawMode(true);
     this.registerListener();
     if (process.stdin.setRawMode) {
       process.stdin.setRawMode(true);
