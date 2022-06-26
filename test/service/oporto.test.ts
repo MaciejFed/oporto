@@ -10,7 +10,8 @@ jest.mock('terminal-kit', () => {
       terminal: {
         moveTo: (x: number, y: number, data: string) => {
             output.push(data);
-        }
+        },
+        hideCursor: (hide: boolean) => {}
       }
     };
   });

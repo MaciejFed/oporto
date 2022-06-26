@@ -21,3 +21,5 @@ export function printInBetweenMenu() {
   terminal.moveTo(1, 15, 'e - example sentence');
   terminal.moveTo(1, 16, 's - say sample sentence');
 }
+
+// export function printExercise(exercise);
