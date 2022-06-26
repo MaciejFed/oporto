@@ -73,7 +73,7 @@ describe('Event Emitter', () => {
         process.stdin.removeAllListeners();
     });
 
-    it('Happy Path', () => {
+    it('Happy Path', async () => {
         const appModules = requireAllModules();
         const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
         const input = new appModules.Input(appModules.eventProcessor);
@@ -83,6 +83,9 @@ describe('Event Emitter', () => {
         simulateTyping('como')
         process.stdin.emit('keypress', {}, { name: 'return' });
         process.stdin.emit('keypress', {}, { name: 'spacebar' });
+
+        await sleep(500);
+
         expect(appModules.eventProcessor.eventHistory.map((event: { event: any; }) => event.event)).toEqual([
             'APP_STARTED',
             'EXERCISE_STARTED', 
@@ -98,7 +101,6 @@ describe('Event Emitter', () => {
             'EXERCISE_NEXT',
             'APP_FINISHED'
         ]);
-        
         expect(output[0]).toEqual('Infinitive: Comer');
         expect(output[5]).toEqual('Eu: como');
         expect(output[6]).toEqual('Correct!');
@@ -106,7 +108,7 @@ describe('Event Emitter', () => {
         expect(resultCount.redCount).toBe(0);
     });
 
-    it('Unhappy Path', () => {
+    it('Unhappy Path', async () => {
         console.log(process.stdin.listeners);
         const appModules = requireAllModules();
         const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
@@ -117,6 +119,8 @@ describe('Event Emitter', () => {
         simulateTyping('cowronganswer')
         process.stdin.emit('keypress', {}, { name: 'return' });
 
+        await sleep(500);
+
         expect(output[0]).toEqual('Infinitive: Comer');
         expect(output[14]).toEqual('Eu: cowronganswer');
         expect(output[15]).toEqual('Wrong!');
@@ -124,7 +128,7 @@ describe('Event Emitter', () => {
         expect(resultCount.redCount).toBe(2);
     });
 
-    it('HP With Backspace', () => {
+    it('HP With Backspace', async () => {
         console.log(process.stdin.listeners);
         const appModules = requireAllModules();
         const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
@@ -137,6 +141,7 @@ describe('Event Emitter', () => {
         process.stdin.emit('keypress', {}, { name: 'return' });
         process.stdin.emit('keypress', {}, { name: 'spacebar' });
 
+        await sleep(500);
 
         expect(appModules.eventProcessor.eventHistory.map((event: { event: any; }) => event.event)).toEqual([
             'APP_STARTED',

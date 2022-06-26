@@ -13,7 +13,7 @@ export function preExerciseClear() {
 }
 
 export function printSampleSentence() {
-  terminal.moveTo(1, 9, getSampleSentence());
+  terminal.moveTo(1, 8, `Example: "${getSampleSentence()}"`);
 }
 
 export function printInBetweenMenu() {
