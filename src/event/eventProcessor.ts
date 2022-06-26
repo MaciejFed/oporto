@@ -57,4 +57,4 @@ export class EventProcessor {
   }
 }
 
-export const eventEmitter = new EventProcessor(new EventEmitter());
+export const eventProcessor = new EventProcessor(new EventEmitter());

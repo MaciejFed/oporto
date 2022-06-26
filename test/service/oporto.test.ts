@@ -1,13 +1,6 @@
-import { eventEmitter } from '../../src/event/eventProcessor';
-import { SessionManager } from '../../src/session/sessionManager';
-import { Input } from '../../src/input/input';
-import { Terminakl } from '../../src/terminal/terminal';
+/* eslint-disable @typescript-eslint/no-var-requires */
+import { sleep } from '../../src/utils/utils';
 import { simulateTyping } from '../util';
-
-
-let myTerminal;
-let input;
-let sessionManager;
 
 const output: string[] = [];
 
@@ -31,8 +24,30 @@ jest.mock('../../src/service/verb', () => {
     }
 })
 
+type AppModules = {
+    SessionManager: any,
+    Input: any,
+    Terminakl: any,
+    eventProcessor: any
+}
+
 // @ts-ignore
 global.process.stdin.setRawMode = (mode: boolean) => undefined
+
+function requireAllModules(): AppModules {
+    const eventProcessor = require('../../src/event/eventProcessor').eventProcessor;
+    const SessionManager = require('../../src/session/sessionManager').SessionManager;
+    const Input = require('../../src/input/input').Input;
+    const Terminakl = require('../../src/terminal/terminal').Terminakl;
+
+    return {
+        SessionManager: SessionManager,
+        Input: Input,
+        Terminakl: Terminakl,
+        eventProcessor: eventProcessor
+    }
+}
+
 
 describe('Event Emitter', () => {
 
@@ -40,17 +55,25 @@ describe('Event Emitter', () => {
         // @ts-ignore
         const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
         output.length = 0 ;
-        eventEmitter.eventHistory = [];
-        myTerminal = new Terminakl(eventEmitter);
-        input = new Input(eventEmitter);
-        sessionManager = new SessionManager(eventEmitter, 1);
+        jest.resetModules();
     })
 
+    afterEach(() => {
+        jest.resetModules();
+        process.stdin.removeAllListeners();
+    });
+
     it('Happy Path', () => {
-        eventEmitter.emit('APP_STARTED');
+        const appModules = requireAllModules();
+        const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+        const input = new appModules.Input(appModules.eventProcessor);
+        const sessionManager = new appModules.SessionManager(appModules.eventProcessor, 1);
+        appModules.eventProcessor.emit('APP_STARTED');
+        console.log(process.stdin.listeners);
         simulateTyping('como')
         process.stdin.emit('keypress', {}, { name: 'return' });
-        expect(eventEmitter.eventHistory.map(event => event.event)).toEqual([
+        process.stdin.emit('keypress', {}, { name: 'spacebar' });
+        expect(appModules.eventProcessor.eventHistory.map((event: { event: any; }) => event.event)).toEqual([
             'APP_STARTED',
             'EXERCISE_STARTED', 
             'EXERCISE_DESCRIPTION_PRINTED', 
@@ -60,7 +83,8 @@ describe('Event Emitter', () => {
             'KEY_PRESSSED',
             'KEY_PRESSSED',
             'ANSWER_SUBMITED',
-            'EXERCISE_DONE',
+            'ANSWER_CHECKED',
+            'KEY_PRESSSED',
             'EXERCISE_NEXT',
             'APP_FINISHED'
         ]);
@@ -71,7 +95,12 @@ describe('Event Emitter', () => {
     });
 
     it('Unhappy Path', () => {
-        eventEmitter.emit('APP_STARTED');
+        console.log(process.stdin.listeners);
+        const appModules = requireAllModules();
+        const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+        const input = new appModules.Input(appModules.eventProcessor);
+        const sessionManager = new appModules.SessionManager(appModules.eventProcessor, 1);
+        appModules.eventProcessor.emit('APP_STARTED');
         simulateTyping('wronganswer')
         process.stdin.emit('keypress', {}, { name: 'return' });
 
@@ -80,13 +109,21 @@ describe('Event Emitter', () => {
         expect(output[13]).toEqual('Wrong!');
     });
 
-    it('Happy Path With Backspace', () => {
-        eventEmitter.emit('APP_STARTED');
+    it('a Happy Path With Backspace', () => {
+        console.log(process.stdin.listeners);
+        const appModules = requireAllModules();
+        const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+        const input = new appModules.Input(appModules.eventProcessor);
+        const sessionManager = new appModules.SessionManager(appModules.eventProcessor, 1);
+        appModules.eventProcessor.emit('APP_STARTED');
         simulateTyping('comorr')
         process.stdin.emit('keypress', {}, { name: 'backspace' });
         process.stdin.emit('keypress', {}, { name: 'backspace' });
         process.stdin.emit('keypress', {}, { name: 'return' });
-        expect(eventEmitter.eventHistory.map(event => event.event)).toEqual([
+        process.stdin.emit('keypress', {}, { name: 'spacebar' });
+
+
+        expect(appModules.eventProcessor.eventHistory.map((event: { event: any; }) => event.event)).toEqual([
             'APP_STARTED',
             'EXERCISE_STARTED',
             'EXERCISE_DESCRIPTION_PRINTED', 
@@ -100,7 +137,8 @@ describe('Event Emitter', () => {
             'KEY_PRESSSED',
             'KEY_PRESSSED',
             'ANSWER_SUBMITED',
-            'EXERCISE_DONE',
+            'ANSWER_CHECKED',
+            'KEY_PRESSSED',
             'EXERCISE_NEXT',
             'APP_FINISHED'
         ]);

@@ -1,10 +1,10 @@
 import {
   ANSWER_SUBMITED,
+  ANSWER_CHECKED,
   APP_FINISHED,
   APP_STARTED,
   EXERCISE_BODY_PRINTED,
   EXERCISE_DESCRIPTION_PRINTED,
-  EXERCISE_DONE,
   EXERCISE_NEXT,
   EXERCISE_STARTED,
   KEY_PRESSED
@@ -25,7 +25,9 @@ export class SessionManager implements AppEventListener {
   constructor(eventProcessor: EventProcessor, exerciseCount = 3) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = Array.from(Array(exerciseCount)).map(() => new VerbExercise());
+    this.exercises = Array.from(Array(exerciseCount)).map(
+      () => new VerbExercise()
+    );
     this.answer = '';
   }
 
@@ -63,7 +65,10 @@ export class SessionManager implements AppEventListener {
   registerKeyPressedEventListener() {
     this.eventProcessor.on(KEY_PRESSED, (key) => {
       if (key === 'backspace') {
-        this.answer = this.answer.substring(0, Math.max(0, this.answer.length - 1));
+        this.answer = this.answer.substring(
+          0,
+          Math.max(0, this.answer.length - 1)
+        );
       } else {
         this.answer += key;
       }
@@ -72,13 +77,16 @@ export class SessionManager implements AppEventListener {
 
   registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITED, () => {
-      const correctAnswer = this.currentExercise?.checkAnsweCorrect(this.answer);
-      this.eventProcessor.emit(EXERCISE_DONE, correctAnswer);
+      const correctAnswer = this.currentExercise?.checkAnsweCorrect(
+        this.answer
+      );
+      this.eventProcessor.emit(ANSWER_CHECKED, correctAnswer);
     });
   }
 
   registerNextExerciseEventListener() {
     this.eventProcessor.on(EXERCISE_NEXT, () => {
+      this.answer = '';
       if (this.exercises.length > 0) {
         this.eventProcessor.emit(EXERCISE_STARTED);
       } else {

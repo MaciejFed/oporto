@@ -1,4 +1,9 @@
-import { getRandomVerb, getRandomPerson, getCorrectConjugation, Person } from '../service/verb';
+import {
+  getRandomVerb,
+  getRandomPerson,
+  getCorrectConjugation,
+  Person
+} from '../service/verb';
 import { Exercise } from './exercise';
 
 export class VerbExercise implements Exercise {
