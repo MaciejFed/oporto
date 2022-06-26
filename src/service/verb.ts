@@ -13,10 +13,10 @@ export const getRandomVerb: () => string = () => {
   return getRandomElement(readAll().verbs.regular);
 };
 
-export const getCorrectConjugation: (verb: RegularVerb, person: Person) => string = (
-  verb,
-  person
-) => {
+export const getCorrectConjugation: (
+  verb: RegularVerb,
+  person: Person
+) => string = (verb, person) => {
   if (verb.endsWith('ar') || verb.endsWith('er')) {
     switch (person) {
       case 'Eu':

@@ -1,4 +1,4 @@
-import { eventEmitter, EventProcessor } from '../event/eventProcessor';
+import { EventProcessor } from '../event/eventProcessor';
 import { ANSWER_SUBMITED, KEY_PRESSED } from './../event/events';
 import readline from 'readline';
 
@@ -21,7 +21,7 @@ export class Input {
           this.eventProcessor.emit(ANSWER_SUBMITED);
           break;
         default:
-          eventEmitter.emit(KEY_PRESSED, key.name);
+          this.eventProcessor.emit(KEY_PRESSED, key.name);
           break;
       }
     });
