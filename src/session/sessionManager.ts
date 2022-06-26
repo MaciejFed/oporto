@@ -80,7 +80,10 @@ export class SessionManager implements AppEventListener {
       const correctAnswer = this.currentExercise?.checkAnsweCorrect(
         this.answer
       );
-      this.eventProcessor.emit(ANSWER_CHECKED, correctAnswer);
+      this.eventProcessor.emit(ANSWER_CHECKED, {
+        isCorrect: correctAnswer,
+        correctAnswer: this.currentExercise?.getCorrectAnswer().toLowerCase()
+      });
     });
   }
 

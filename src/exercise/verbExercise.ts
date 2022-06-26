@@ -19,8 +19,10 @@ export class VerbExercise implements Exercise {
 
   getExerciseDescription = () => `Infinitive: ${this.verb}`;
 
+  getCorrectAnswer = () => getCorrectConjugation(this.verb, this.person);
+
   checkAnsweCorrect(answer: string): boolean {
-    const correctConjugation = getCorrectConjugation(this.verb, this.person);
+    const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 }

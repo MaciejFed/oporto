@@ -3,6 +3,10 @@ import { sleep } from '../../src/utils/utils';
 import { simulateTyping } from '../util';
 
 const output: string[] = [];
+const resultCount = {
+    greenCount: 0,
+    redCount: 0
+}
 
 jest.mock('terminal-kit', () => {
     return {
@@ -11,7 +15,10 @@ jest.mock('terminal-kit', () => {
         moveTo: (x: number, y: number, data: string) => {
             output.push(data);
         },
-        hideCursor: (hide: boolean) => {}
+        hideCursor: (hide: boolean) => {},
+        green: () => { resultCount.greenCount++ },
+        red: () => { resultCount.redCount++ },
+        white: () => {}
       }
     };
   });
@@ -56,6 +63,8 @@ describe('Event Emitter', () => {
         // @ts-ignore
         const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
         output.length = 0 ;
+        resultCount.greenCount = 0;
+        resultCount.redCount = 0;
         jest.resetModules();
     })
 
@@ -93,6 +102,8 @@ describe('Event Emitter', () => {
         expect(output[0]).toEqual('Infinitive: Comer');
         expect(output[5]).toEqual('Eu: como');
         expect(output[6]).toEqual('Correct!');
+        expect(resultCount.greenCount).toBe('como'.length);
+        expect(resultCount.redCount).toBe(0);
     });
 
     it('Unhappy Path', () => {
@@ -101,16 +112,19 @@ describe('Event Emitter', () => {
         const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
         const input = new appModules.Input(appModules.eventProcessor);
         const sessionManager = new appModules.SessionManager(appModules.eventProcessor, 1);
+
         appModules.eventProcessor.emit('APP_STARTED');
-        simulateTyping('wronganswer')
+        simulateTyping('cowronganswer')
         process.stdin.emit('keypress', {}, { name: 'return' });
 
         expect(output[0]).toEqual('Infinitive: Comer');
-        expect(output[12]).toEqual('Eu: wronganswer');
-        expect(output[13]).toEqual('Wrong!');
+        expect(output[14]).toEqual('Eu: cowronganswer');
+        expect(output[15]).toEqual('Wrong!');
+        expect(resultCount.greenCount).toBe('co'.length);
+        expect(resultCount.redCount).toBe(2);
     });
 
-    it('a Happy Path With Backspace', () => {
+    it('HP With Backspace', () => {
         console.log(process.stdin.listeners);
         const appModules = requireAllModules();
         const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
@@ -148,6 +162,8 @@ describe('Event Emitter', () => {
         expect(output[7]).toEqual('Eu: comorr');
         expect(output[9]).toEqual('Eu: como');
         expect(output[10]).toEqual('Correct!');
+        expect(resultCount.greenCount).toBe('como'.length);
+        expect(resultCount.redCount).toBe(0);
     });
 });
 

@@ -12,7 +12,12 @@ import {
   EXERCISE_NEXT,
   EXERCISE_STARTED
 } from './../event/events';
-import { preExerciseClear, printInBetweenMenu } from './terminalUtils';
+import {
+  preExerciseClear,
+  printExerciseBody,
+  printExerciseBodyWithCorrection,
+  printInBetweenMenu
+} from './terminalUtils';
 
 export type Point = {
   x: number;
@@ -87,15 +92,21 @@ export class Terminakl {
   private registerOnExerciseStartedEventListener() {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
       this.exerciseInProgress = true;
+      this.answer = '';
       preExerciseClear();
     });
   }
 
   private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, (correctAnswer) => {
+    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer }) => {
       terminal.hideCursor();
       this.exerciseInProgress = false;
-      terminal.moveTo(1, 12, correctAnswer ? 'Correct!' : 'Wrong!');
+      terminal.moveTo(1, 12, isCorrect ? 'Correct!' : 'Wrong!');
+      printExerciseBodyWithCorrection(
+        this.exerciseBody,
+        this.answer,
+        correctAnswer
+      );
       printInBetweenMenu();
       // this.eventProcessor.emit(EXERCISE_NEXT);
     });
@@ -111,7 +122,7 @@ export class Terminakl {
     } else {
       this.answer = this.answer + key;
     }
-    terminal.moveTo(1, 11, this.exerciseBody + this.answer);
+    printExerciseBody(this.exerciseBody, this.answer);
   }
 
   private onKeyMenu(key: string) {
