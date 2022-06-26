@@ -12,7 +12,12 @@ import {
   EXERCISE_NEXT,
   EXERCISE_STARTED
 } from './../event/events';
-import { preExerciseClear, printInBetweenMenu } from './terminalUtils';
+import {
+  preExerciseClear,
+  printExerciseBody,
+  printExerciseBodyWithCorrection,
+  printInBetweenMenu
+} from './terminalUtils';
 
 export type Point = {
   x: number;
@@ -22,7 +27,8 @@ export type Point = {
 export class Terminakl {
   eventProcessor: EventProcessor;
   cursor: Point;
-  exercise = '';
+  exerciseBody: string;
+  answer: string;
   exerciseLoop: any;
   exerciseInProgress: boolean;
 
@@ -35,6 +41,8 @@ export class Terminakl {
     };
     clear();
     this.exerciseInProgress = false;
+    this.exerciseBody = '';
+    this.answer = '';
   }
 
   registerListeners() {
@@ -66,8 +74,8 @@ export class Terminakl {
       EXERCISE_BODY_PRINTED,
       (body: EXERCISE_BODY_PRINTED_BODY) => {
         this.cursor = body.cursor;
-        this.exercise = body.exercise;
-        terminal.moveTo(1, 11, this.exercise);
+        this.exerciseBody = body.exercise;
+        terminal.moveTo(1, 11, this.exerciseBody);
       }
     );
   }
@@ -84,14 +92,21 @@ export class Terminakl {
   private registerOnExerciseStartedEventListener() {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
       this.exerciseInProgress = true;
+      this.answer = '';
       preExerciseClear();
     });
   }
 
   private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, (correctAnswer) => {
+    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer }) => {
+      terminal.hideCursor();
       this.exerciseInProgress = false;
-      terminal.moveTo(1, 12, correctAnswer ? 'Correct!' : 'Wrong!');
+      terminal.moveTo(1, 12, isCorrect ? 'Correct!' : 'Wrong!');
+      printExerciseBodyWithCorrection(
+        this.exerciseBody,
+        this.answer,
+        correctAnswer
+      );
       printInBetweenMenu();
       // this.eventProcessor.emit(EXERCISE_NEXT);
     });
@@ -99,19 +114,20 @@ export class Terminakl {
 
   private onKeyExerciseInProgress(key: string) {
     if (key === 'backspace') {
-      this.exercise = this.exercise.substring(
+      this.answer = this.answer.substring(
         0,
-        Math.max(0, this.exercise.length - 1)
+        Math.max(0, this.answer.length - 1)
       );
       clearLine(process.stdout, 0);
     } else {
-      this.exercise = this.exercise + key;
+      this.answer = this.answer + key;
     }
-    terminal.moveTo(1, 11, this.exercise);
+    printExerciseBody(this.exerciseBody, this.answer);
   }
 
   private onKeyMenu(key: string) {
     if (key !== 'e' && key !== 's') {
+      terminal.hideCursor(false);
       this.eventProcessor.emit(EXERCISE_NEXT);
     }
   }
