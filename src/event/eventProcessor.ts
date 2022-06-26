@@ -1,14 +1,7 @@
 import EventEmitter from 'events';
 import winston from 'winston';
+import { logger } from '../logger/logger';
 import { APP_EVENT, APP_STARTED } from './events';
-
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  transports: [new winston.transports.File({ filename: 'out.log' })]
-});
-
-logger.info('NEW START!!!');
 
 type EmittedEvent = {
   event: APP_EVENT;

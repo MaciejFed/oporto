@@ -15,12 +15,14 @@ import { AppEventListener } from '../event/eventListener';
 import { EventProcessor } from '../event/eventProcessor';
 import { VerbExercise } from '../exercise/verbExercise';
 import { Exercise } from '../exercise/exercise';
+import { logger } from '../logger/logger';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
   exercises: Exercise[];
   currentExercise?: Exercise;
   answer: string;
+  exerciseInProgress: boolean;
 
   constructor(eventProcessor: EventProcessor, exerciseCount = 3) {
     this.eventProcessor = eventProcessor;
@@ -29,6 +31,7 @@ export class SessionManager implements AppEventListener {
       () => new VerbExercise()
     );
     this.answer = '';
+    this.exerciseInProgress = false;
   }
 
   registerListeners() {
@@ -59,6 +62,7 @@ export class SessionManager implements AppEventListener {
           y: 0
         }
       });
+      this.exerciseInProgress = true;
     });
   }
 
@@ -70,26 +74,35 @@ export class SessionManager implements AppEventListener {
           Math.max(0, this.answer.length - 1)
         );
       } else {
-        this.answer += key;
+        if (this.exerciseInProgress) {
+          this.answer += key;
+        }
       }
+      logger.info(`Answer: "${this.answer}"`);
     });
   }
 
   registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITED, () => {
-      const correctAnswer = this.currentExercise?.checkAnsweCorrect(
-        this.answer
+      this.exerciseInProgress = false;
+      const correctAnswer = this.currentExercise
+        ?.getCorrectAnswer()
+        .toLowerCase();
+      const isCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);
+      logger.info(
+        `Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `
       );
       this.eventProcessor.emit(ANSWER_CHECKED, {
-        isCorrect: correctAnswer,
-        correctAnswer: this.currentExercise?.getCorrectAnswer().toLowerCase()
+        isCorrect: isCorrect,
+        correctAnswer: correctAnswer
       });
+      this.resetAnswer();
     });
   }
 
   registerNextExerciseEventListener() {
     this.eventProcessor.on(EXERCISE_NEXT, () => {
-      this.answer = '';
+      this.resetAnswer();
       if (this.exercises.length > 0) {
         this.eventProcessor.emit(EXERCISE_STARTED);
       } else {
@@ -97,5 +110,10 @@ export class SessionManager implements AppEventListener {
         this.eventProcessor.emit(APP_FINISHED);
       }
     });
+  }
+
+  resetAnswer() {
+    logger.info('Reseting answer...');
+    this.answer = '';
   }
 }

@@ -1,7 +1,9 @@
+import { exec } from 'child_process';
 import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
 import { EventProcessor } from '../event/eventProcessor';
+import { getSampleSentence } from '../service/sentence';
 import {
   APP_STARTED,
   EXERCISE_DESCRIPTION_PRINTED,
@@ -16,7 +18,8 @@ import {
   preExerciseClear,
   printExerciseBody,
   printExerciseBodyWithCorrection,
-  printInBetweenMenu
+  printInBetweenMenu,
+  printSampleSentence
 } from './terminalUtils';
 
 export type Point = {
@@ -126,9 +129,22 @@ export class Terminakl {
   }
 
   private onKeyMenu(key: string) {
-    if (key !== 'e' && key !== 's') {
-      terminal.hideCursor(false);
-      this.eventProcessor.emit(EXERCISE_NEXT);
+    switch (key) {
+      case 'e':
+        printSampleSentence();
+        break;
+      case 's':
+        this.saySampleSentence();
+        break;
+      default:
+        terminal.hideCursor(false);
+        setTimeout(() => {
+          this.eventProcessor.emit(EXERCISE_NEXT);
+        }, 250);
     }
+  }
+
+  private saySampleSentence() {
+    exec(`say "${getSampleSentence()}"`);
   }
 }
