@@ -64,30 +64,22 @@ export class Terminakl {
   }
 
   private registerOnDescriptionPrintedEventListener() {
-    this.eventProcessor.on(
-      EXERCISE_DESCRIPTION_PRINTED,
-      (description: string) => {
-        terminal.moveTo(1, 10, description);
-      }
-    );
+    this.eventProcessor.on(EXERCISE_DESCRIPTION_PRINTED, (description: string) => {
+      terminal.moveTo(1, 10, description);
+    });
   }
 
   private registerOnBodyPrintedEventListener() {
-    this.eventProcessor.on(
-      EXERCISE_BODY_PRINTED,
-      (body: EXERCISE_BODY_PRINTED_BODY) => {
-        this.cursor = body.cursor;
-        this.exerciseBody = body.exercise;
-        terminal.moveTo(1, 11, this.exerciseBody);
-      }
-    );
+    this.eventProcessor.on(EXERCISE_BODY_PRINTED, (body: EXERCISE_BODY_PRINTED_BODY) => {
+      this.cursor = body.cursor;
+      this.exerciseBody = body.exercise;
+      terminal.moveTo(1, 11, this.exerciseBody);
+    });
   }
 
   private registerOnKeyPressedEventListener() {
     this.eventProcessor.on(KEY_PRESSED, (key) => {
-      const onKeyAction = this.exerciseInProgress
-        ? this.onKeyExerciseInProgress.bind(this)
-        : this.onKeyMenu.bind(this);
+      const onKeyAction = this.exerciseInProgress ? this.onKeyExerciseInProgress.bind(this) : this.onKeyMenu.bind(this);
       onKeyAction(key);
     });
   }
@@ -105,22 +97,16 @@ export class Terminakl {
       terminal.hideCursor();
       this.exerciseInProgress = false;
       terminal.moveTo(1, 12, isCorrect ? 'Correct!' : 'Wrong!');
-      printExerciseBodyWithCorrection(
-        this.exerciseBody,
-        this.answer,
-        correctAnswer
-      );
+      printExerciseBodyWithCorrection(this.exerciseBody, this.answer, correctAnswer);
       printInBetweenMenu();
+      this.sayCorrectAnswer(correctAnswer);
       // this.eventProcessor.emit(EXERCISE_NEXT);
     });
   }
 
   private onKeyExerciseInProgress(key: string) {
     if (key === 'backspace') {
-      this.answer = this.answer.substring(
-        0,
-        Math.max(0, this.answer.length - 1)
-      );
+      this.answer = this.answer.substring(0, Math.max(0, this.answer.length - 1));
       clearLine(process.stdout, 0);
     } else {
       this.answer = this.answer + key;
@@ -146,5 +132,9 @@ export class Terminakl {
 
   private saySampleSentence() {
     exec(`say "${getSampleSentence()}"`);
+  }
+
+  private sayCorrectAnswer(correctAnswer: string) {
+    exec(`say "${correctAnswer}"`);
   }
 }

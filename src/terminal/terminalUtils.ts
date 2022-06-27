@@ -7,9 +7,7 @@ import { getSampleSentence } from '../service/sentence';
 export function preExerciseClear() {
   // eslint-disable-next-line no-console
   clear();
-  console.log(
-    chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }))
-  );
+  console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
 }
 
 export function printSampleSentence() {
@@ -26,11 +24,7 @@ export function printExerciseBody(exerciseBody: string, answer: string) {
   terminal.moveTo(1, 11, exerciseBody + answer);
 }
 
-export function printExerciseBodyWithCorrection(
-  exerciseBody: string,
-  answer: string,
-  correctAnswer: string
-) {
+export function printExerciseBodyWithCorrection(exerciseBody: string, answer: string, correctAnswer: string) {
   terminal.moveTo(1, 11, exerciseBody);
   for (let i = 0; i < correctAnswer.length; i++) {
     if (answer[i] === correctAnswer[i]) {

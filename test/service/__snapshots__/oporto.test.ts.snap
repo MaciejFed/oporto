@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event Emitter HP With Backspace 1`] = `
+Array [
+  "Infinitive: Comer",
+  "Eu: ",
+  "Eu: c",
+  "Eu: co",
+  "Eu: com",
+  "Eu: como",
+  "Eu: comor",
+  "Eu: comorr",
+  "Eu: comor",
+  "Eu: como",
+  "Correct!",
+  "Eu: ",
+  "c",
+  "o",
+  "m",
+  "o",
+  "Press key to conitinue...",
+  "e - example sentence",
+  "s - say sample sentence",
+]
+`;
+
+exports[`Event Emitter HP With Backspace 2`] = `
+Array [
+  "APP_STARTED",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Event Emitter Happy Path 1`] = `
+Array [
+  "APP_STARTED",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Event Emitter Happy Path 2`] = `
+Array [
+  "Infinitive: Comer",
+  "Eu: ",
+  "Eu: c",
+  "Eu: co",
+  "Eu: com",
+  "Eu: como",
+  "Correct!",
+  "Eu: ",
+  "c",
+  "o",
+  "m",
+  "o",
+  "Press key to conitinue...",
+  "e - example sentence",
+  "s - say sample sentence",
+]
+`;
+
+exports[`Event Emitter Unhappy Path 1`] = `
+Array [
+  "APP_STARTED",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+]
+`;
+
+exports[`Event Emitter Unhappy Path 2`] = `
+Array [
+  "Infinitive: Comer",
+  "Eu: ",
+  "Eu: c",
+  "Eu: co",
+  "Eu: cow",
+  "Eu: cowr",
+  "Eu: cowro",
+  "Eu: cowron",
+  "Eu: cowrong",
+  "Eu: cowronga",
+  "Eu: cowrongan",
+  "Eu: cowrongans",
+  "Eu: cowrongansw",
+  "Eu: cowronganswe",
+  "Eu: cowronganswer",
+  "Wrong!",
+  "Eu: ",
+  "c",
+  "o",
+  "m",
+  "o",
+  "Press key to conitinue...",
+  "e - example sentence",
+  "s - say sample sentence",
+]
+`;
