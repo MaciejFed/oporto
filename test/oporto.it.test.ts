@@ -48,9 +48,9 @@ jest.mock('terminal-kit', () => {
 // @ts-ignore
 global.process.stdin.setRawMode = (mode: boolean) => undefined;
 
-describe('Event Emitter', () => {
-        // @ts-ignore
-        const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
+describe('IT', () => {
+  // @ts-ignore
+  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
   beforeEach(() => {
     jest.spyOn(console, 'log').mockImplementation(() => {});
   });
@@ -59,7 +59,7 @@ describe('Event Emitter', () => {
     process.stdin.removeAllListeners();
   });
 
-  it('Happy Path', async () => {
+  it('Full Integration Path', async () => {
     // Start the app
     eventProcessor.emit('APP_STARTED');
 
