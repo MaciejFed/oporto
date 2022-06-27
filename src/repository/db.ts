@@ -10,6 +10,6 @@ export type Schema = {
 
 export const db: Schema = {
   verbs: {
-    regular: ['Falar', 'Comer', 'Abrir']
+    regular: ['falar', 'comer', 'abrir']
   }
 };
