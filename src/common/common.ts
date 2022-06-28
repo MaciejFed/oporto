@@ -1,19 +1,19 @@
-export interface Comperable<T> {
-  equal(other: Comperable<T>): boolean;
+export interface Comperable {
+  equal(other: Comperable): boolean;
 }
 
-export function onlyUniqe<T>(arr: Comperable<T>[]) {
-  const uniqueElements: Comperable<T>[] = [];
+export function onlyDistinct(arr: Comperable[]): Comperable[] {
+  const distinctElements: Comperable[] = [];
   for (let i = 0; i < arr.length; i++) {
     let unique = true;
-    for (let j = 0; j < arr.length; j++) {
-      if (i !== j && arr[i].equal(arr[j])) {
+    for (let j = 0; j < distinctElements.length; j++) {
+      if (i !== j && arr[i].equal(distinctElements[j])) {
         unique = false;
       }
     }
     if (unique) {
-      uniqueElements.push(arr[i]);
+      distinctElements.push(arr[i]);
     }
   }
-  return uniqueElements;
+  return distinctElements;
 }

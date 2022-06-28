@@ -1,3 +1,4 @@
+import { Comperable, onlyDistinct } from '../common/common';
 import { RegularVerbExercise } from './verbExercise';
 
 export enum ExerciseType {
@@ -6,7 +7,7 @@ export enum ExerciseType {
   WORD_TRANSLATION = 'WordTranslation'
 }
 
-export interface Exercise {
+export interface Exercise extends Comperable {
   getExerciseType(): ExerciseType;
   getExerciseBody(): string;
   getExerciseDescription(): string;
@@ -15,6 +16,9 @@ export interface Exercise {
   checkAnsweCorrect(answer: string): boolean;
 }
 
-export function generateUniqeExercises(exerciseCount: number) {
-  Array.from(Array(exerciseCount)).map(() => new RegularVerbExercise());
+export function generateUniqeExercises<T>(exerciseCount: number): Exercise[] {
+  const exercises = Array.from(Array(100)).map(() => new RegularVerbExercise());
+  const distrinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);
+
+  return distrinctExercises.splice(0, exerciseCount);
 }

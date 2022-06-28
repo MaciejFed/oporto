@@ -2,7 +2,7 @@ import { Comperable } from '../common/common';
 import { getRandomVerb, getRandomPerson, getCorrectConjugation, Person } from '../service/verb';
 import { Exercise, ExerciseType } from './exercise';
 
-export class RegularVerbExercise implements Exercise, Comperable<RegularVerbExercise> {
+export class RegularVerbExercise implements Exercise, Comperable {
   verb: string;
   person: Person;
 

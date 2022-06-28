@@ -1,8 +1,8 @@
 /* eslint-disable jest/expect-expect */
-import { Comperable, onlyUniqe } from '../../src/common/common';
+import { Comperable, onlyDistinct } from '../../src/common/common';
 
 
-class MyClass implements Comperable<MyClass> {
+class MyClass implements Comperable {
     importantProperty: string;
     notImportantProperty: string
     constructor(importantProperty: string, notImportantProperty: string) {
@@ -17,25 +17,25 @@ class MyClass implements Comperable<MyClass> {
 
 describe('Common Functions Test', () => {
 
-    it('Unique Elements', async () => {
+    it('Distinct Elements', async () => {
        const notUniqeArray: MyClass[] = [new MyClass('1', '0'), new MyClass('1', '1'), new MyClass('2', '1'), new MyClass('3', '1')];
-       const uniqeArray = onlyUniqe(notUniqeArray);
+       const uniqeArray = onlyDistinct(notUniqeArray);
 
-       expect(uniqeArray.length).toEqual(2)
+       expect(uniqeArray.length).toEqual(3)
     });
 
-    it('Unique Elements - Empty', async () => {
+    it('Distinct Elements - Empty', async () => {
         const notUniqeArray: MyClass[] = [];
-        const uniqeArray = onlyUniqe(notUniqeArray);
+        const uniqeArray = onlyDistinct(notUniqeArray);
  
         expect(uniqeArray.length).toEqual(0)
      });
 
-     it('Unique Elements - No Uniqe', async () => {
+     it('Distinct Elements - Single', async () => {
         const notUniqeArray: MyClass[] = [new MyClass('1', '1'), new MyClass('1', '1')];
-        const uniqeArray = onlyUniqe(notUniqeArray);
+        const uniqeArray = onlyDistinct(notUniqeArray);
  
-        expect(uniqeArray.length).toEqual(0)
+        expect(uniqeArray.length).toEqual(1)
      });
 });
 
