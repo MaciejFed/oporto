@@ -15,7 +15,6 @@ export interface Exercise {
   checkAnsweCorrect(answer: string): boolean;
 }
 
-
 export function generateUniqeExercises(exerciseCount: number) {
-  Array.from(Array(exerciseCount)).map(() => new RegularVerbExercise())
+  Array.from(Array(exerciseCount)).map(() => new RegularVerbExercise());
 }
