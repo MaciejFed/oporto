@@ -13,7 +13,7 @@ import { getRandomVerb, Person } from '../service/verb';
 import { getRandomPerson, getCorrectConjugation } from '../service/verb';
 import { AppEventListener } from '../event/eventListener';
 import { EventProcessor } from '../event/eventProcessor';
-import { VerbExercise } from '../exercise/verbExercise';
+import { RegularVerbExercise } from '../exercise/verbExercise';
 import { Exercise } from '../exercise/exercise';
 import { logger } from '../logger/logger';
 
@@ -27,7 +27,7 @@ export class SessionManager implements AppEventListener {
   constructor(eventProcessor: EventProcessor, exerciseCount = 3) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = Array.from(Array(exerciseCount)).map(() => new VerbExercise());
+    this.exercises = Array.from(Array(exerciseCount)).map(() => new RegularVerbExercise());
     this.answer = '';
     this.exerciseInProgress = false;
   }
