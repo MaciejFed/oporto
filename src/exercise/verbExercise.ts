@@ -1,13 +1,21 @@
 import { Comperable } from '../common/common';
-import { getRandomVerb, getRandomPerson, getCorrectConjugation, Person } from '../service/verb';
+import { IrregularVerb, RegularVerb } from '../repository/db';
+import {
+  getRandomRegularVerb,
+  getRandomPerson,
+  getCorrectIrregularConjugation,
+  getCorrectRegularConjugation,
+  Person,
+  getRandomIrregularVerb
+} from '../service/verb';
 import { Exercise, ExerciseType } from './exercise';
 
 export class RegularVerbExercise implements Exercise, Comperable {
-  verb: string;
+  verb: RegularVerb;
   person: Person;
 
   constructor() {
-    this.verb = getRandomVerb();
+    this.verb = getRandomRegularVerb();
     this.person = getRandomPerson();
   }
 
@@ -19,7 +27,7 @@ export class RegularVerbExercise implements Exercise, Comperable {
 
   getExerciseDescription = () => `Infinitive: ${this.verb}`;
 
-  getCorrectAnswer = () => getCorrectConjugation(this.verb, this.person);
+  getCorrectAnswer = () => getCorrectRegularConjugation(this.verb, this.person);
 
   checkAnsweCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
@@ -27,4 +35,31 @@ export class RegularVerbExercise implements Exercise, Comperable {
   }
 
   equal = (exercise: RegularVerbExercise) => this.verb === exercise.verb && this.person === exercise.person;
+}
+
+export class IrregularVerbExercise implements Exercise, Comperable {
+  verb: IrregularVerb;
+  person: Person;
+
+  constructor() {
+    this.verb = getRandomIrregularVerb();
+    this.person = getRandomPerson();
+  }
+
+  getExercsiseExplanation = () => undefined;
+
+  getExerciseType = () => ExerciseType.IRREUGAL_VERB;
+
+  getExerciseBody = () => `${this.person}: `;
+
+  getExerciseDescription = () => `Infinitive: ${this.verb.Infinitive}`;
+
+  getCorrectAnswer = () => getCorrectIrregularConjugation(this.verb, this.person);
+
+  checkAnsweCorrect(answer: string): boolean {
+    const correctConjugation = this.getCorrectAnswer();
+    return correctConjugation.toLowerCase() === answer.toLowerCase();
+  }
+
+  equal = (exercise: IrregularVerbExercise) => this.verb === exercise.verb && this.person === exercise.person;
 }

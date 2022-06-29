@@ -3,7 +3,6 @@ import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
 import { EventProcessor } from '../event/eventProcessor';
-import { getSampleSentence } from '../service/sentence';
 import {
   APP_STARTED,
   EXERCISE_DESCRIPTION_PRINTED,
@@ -131,7 +130,7 @@ export class Terminakl {
   }
 
   private saySampleSentence() {
-    exec(`say "${getSampleSentence()}"`);
+    exec(`say "${this.answer}"`);
   }
 
   private sayCorrectAnswer(correctAnswer: string) {

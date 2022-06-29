@@ -73,9 +73,6 @@ export class SessionManager implements AppEventListener {
 
   registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITED, () => {
-      if (!this.exerciseInProgress) {
-        return;
-      }
       this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer().toLowerCase();
       const isCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);

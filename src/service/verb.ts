@@ -1,5 +1,7 @@
+/* eslint-disable default-case */
 import { readAll } from '../repository/repository';
-import { RegularVerb } from '../repository/db';
+import { IrregularVerb, RegularVerb } from '../repository/db';
+import { getRandomElement } from '../common/common';
 
 export enum Person {
   Eu = 'Eu',
@@ -9,11 +11,19 @@ export enum Person {
   ElesElasVosēs = 'Eles/Elas/Vosēs'
 }
 
-export const getRandomVerb: () => string = () => {
+export const getRandomRegularVerb: () => RegularVerb = () => {
   return getRandomElement(readAll().verbs.regular);
 };
 
-export const getCorrectConjugation: (verb: RegularVerb, person: Person) => string = (verb, person) => {
+export const getRandomIrregularVerb: () => IrregularVerb = () => {
+  return getRandomElement(readAll().verbs.irregular);
+};
+
+export const getCorrectIrregularConjugation: (verb: IrregularVerb, person: Person) => string = (verb, person) => {
+  return verb[person];
+};
+
+export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) => string = (verb, person) => {
   if (verb.endsWith('ar') || verb.endsWith('er')) {
     switch (person) {
       case 'Eu':
@@ -26,8 +36,6 @@ export const getCorrectConjugation: (verb: RegularVerb, person: Person) => strin
         return `${verb.substring(0, verb.length - 1)}mos`;
       case 'Eles/Elas/Vosēs':
         return `${verb.substring(0, verb.length - 1)}m`;
-      default:
-        throw Error();
     }
   }
   if (verb.endsWith('ir')) {
@@ -42,8 +50,6 @@ export const getCorrectConjugation: (verb: RegularVerb, person: Person) => strin
         return `${verb.substring(0, verb.length - 1)}mos`;
       case 'Eles/Elas/Vosēs':
         return `${verb.substring(0, verb.length - 2)}em`;
-      default:
-        throw Error();
     }
   }
   throw Error(`Incorrect Regular Verb: "${verb}"`);
@@ -52,7 +58,3 @@ export const getCorrectConjugation: (verb: RegularVerb, person: Person) => strin
 export const getRandomPerson: () => Person = () => {
   return getRandomElement(Object.values(Person));
 };
-
-function getRandomElement<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}

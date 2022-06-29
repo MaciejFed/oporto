@@ -1,5 +1,5 @@
 /* eslint-disable jest/expect-expect */
-import { getCorrectConjugation, Person } from '../../src/service/verb';
+import { getCorrectRegularConjugation, Person } from '../../src/service/verb';
 import { RegularVerb } from '../../src/repository/db';
 
 
@@ -27,10 +27,21 @@ describe('Verbs', () => {
         testConjugation('Abrir', Person.ElaEleVocé, 'Abre');
         testConjugation('Abrir', Person.Nós, 'Abrimos');
         testConjugation('Abrir', Person.ElesElasVosēs, 'Abrem');
+        testConjugation('Abrir', Person.ElesElasVosēs, 'Abrem');
     });
 
+    it('Incorrect Regular Verb', async () => {
+        const incorrectVerb = 'incorrectVerb';
+        const incorrectVerbConjugation = () => {
+            getCorrectRegularConjugation(incorrectVerb, Person.Eu);
+        };
+        expect(incorrectVerbConjugation).toThrowError(Error);
+        expect(incorrectVerbConjugation).toThrowError(`Incorrect Regular Verb: "${incorrectVerb}"`);
+    });
+
+
     function testConjugation(verb: RegularVerb, person: Person, expectedConjugation: string) {
-        expect(getCorrectConjugation(verb, person)).toBe(expectedConjugation)
+        expect(getCorrectRegularConjugation(verb, person)).toBe(expectedConjugation)
     }
 });
 

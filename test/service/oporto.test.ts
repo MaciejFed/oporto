@@ -37,12 +37,24 @@ jest.mock('terminal-kit', () => {
 
 jest.mock('../../src/service/verb', () => {
   const modeuleActual = jest.requireActual('../../src/service/verb');
+  const readAll = require('../../src/repository/repository').readAll;
   return {
     ...modeuleActual,
-    getRandomVerb: () => 'Comer',
-    getRandomPerson: () => 'Eu'
+    getRandomRegularVerb: () => 'Comer',
+    getRandomPerson: () => 'Eu',
+    getRandomIrregularVerb: () => readAll().verbs.irregular[0],
   };
 });
+
+jest.mock('../../src/exercise/exercise', () => {
+  const RegularVerbExercise = require('../../src/exercise/verbExercise').RegularVerbExercise;
+  const modeuleActual = jest.requireActual('../../src/exercise/exercise');
+  return {
+    ...modeuleActual,
+    generateUniqeExercises: () => [new RegularVerbExercise()]
+  };
+});
+
 
 type AppModules = {
   SessionManager: any;
