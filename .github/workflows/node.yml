@@ -27,5 +27,5 @@ jobs:
       - run: npm run package
       - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          test-command: "npm test"
+          test-script: npm test
           github-token: ${{ secrets.ACTION_TOKEN }}
