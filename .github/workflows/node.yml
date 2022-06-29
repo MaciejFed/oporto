@@ -9,10 +9,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [16.x]
-
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -21,17 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run package
-
-  coverage:
-    permissions:
-      checks: write
-      pull-requests: write
-      contents: read
-    runs-on: ubuntu-latest
-    steps:
-        - uses: actions/checkout@v1
-        - uses: ArtiomTr/jest-coverage-report-action@v2
-    with:
-      test-command: "npm test"
-    env:
-      GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          test-command: "npm test"
+          github-token: ${{ secrets.ACTION_TOKEN }}
