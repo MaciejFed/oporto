@@ -1,6 +1,8 @@
 .idea
+.DS_Store
 bin
 build
 node_modules
+coverage
 out.log
 package-lock.json

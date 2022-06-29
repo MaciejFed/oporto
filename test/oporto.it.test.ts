@@ -91,6 +91,8 @@ describe('IT', () => {
     const correctAnswer3Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
     simulateTyping(correctAnswer3Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'e' })
+    process.stdin.emit('keypress', {}, { name: 's' })
     process.stdin.emit('keypress', {}, { name: 'spacebar' });
     const greenCountAfter3Question = resultCount.greenCount;
     const expectedGreenCount3Question = correctAnswer3Question.length;
@@ -107,7 +109,7 @@ describe('IT', () => {
     expect(correctAnswersLogCount).toBe(2);
     expect(wrongAnswersLogCount).toBe(1);
     expect(mockExit).toHaveBeenCalledWith(0);
-    expect(sayCommands).toEqual([correctAnswer1Question, correctAnswer2Question, correctAnswer3Question].map((answer) => `say "${answer}"`));
+    expect(sayCommands).toEqual([correctAnswer1Question, correctAnswer2Question, sessionManager.currentExercise?.getCorrectAnswer(), correctAnswer3Question, ].map((answer) => `say "${answer}"`));
 
     console.log(output);
   });

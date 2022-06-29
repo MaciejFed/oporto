@@ -9,12 +9,9 @@ import {
   EXERCISE_STARTED,
   KEY_PRESSED
 } from '../event/events';
-import { getRandomVerb, Person } from '../service/verb';
-import { getRandomPerson, getCorrectConjugation } from '../service/verb';
 import { AppEventListener } from '../event/eventListener';
 import { EventProcessor } from '../event/eventProcessor';
-import { VerbExercise } from '../exercise/verbExercise';
-import { Exercise } from '../exercise/exercise';
+import { Exercise, generateUniqeExercises } from '../exercise/exercise';
 import { logger } from '../logger/logger';
 
 export class SessionManager implements AppEventListener {
@@ -27,7 +24,7 @@ export class SessionManager implements AppEventListener {
   constructor(eventProcessor: EventProcessor, exerciseCount = 3) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = Array.from(Array(exerciseCount)).map(() => new VerbExercise());
+    this.exercises = generateUniqeExercises(3);
     this.answer = '';
     this.exerciseInProgress = false;
   }
@@ -76,9 +73,6 @@ export class SessionManager implements AppEventListener {
 
   registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITED, () => {
-      if (!this.exerciseInProgress) {
-        return;
-      }
       this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer().toLowerCase();
       const isCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);

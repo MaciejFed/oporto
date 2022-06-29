@@ -7,10 +7,10 @@
     "oporto": "./build/src/cli.js"
   },
   "scripts": {
-    "test": "jest test --detectOpenHandles --forceExit",
+    "test": "jest test --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
-    "verify": "npm run lint && npm run format && npm run test",
+    "verify": "npm run lint && npm run format",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto"

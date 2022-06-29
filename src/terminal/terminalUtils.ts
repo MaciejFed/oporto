@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import clear from 'clear';
 import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
-import { getSampleSentence } from '../service/sentence';
 
 export function preExerciseClear() {
   // eslint-disable-next-line no-console
@@ -11,7 +10,7 @@ export function preExerciseClear() {
 }
 
 export function printSampleSentence() {
-  terminal.moveTo(1, 8, `Example: "${getSampleSentence()}"`);
+  terminal.moveTo(1, 8, 'Example: TODO');
 }
 
 export function printInBetweenMenu() {
