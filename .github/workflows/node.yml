@@ -33,3 +33,7 @@ jobs:
     steps:
         - uses: actions/checkout@v1
         - uses: ArtiomTr/jest-coverage-report-action@v2
+    with:
+      test-command: "npm test"
+    env:
+      GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
