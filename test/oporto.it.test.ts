@@ -51,6 +51,8 @@ global.process.stdin.setRawMode = (mode: boolean) => undefined;
 describe('IT', () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
+  // @ts-ignore
+  process.stdin.setRawMode = () => {}
   beforeEach(() => {
     jest.spyOn(console, 'log').mockImplementation(() => {});
   });

@@ -86,6 +86,8 @@ describe('Event Emitter', () => {
   beforeEach(() => {
     // @ts-ignore
     const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
+    // @ts-ignore
+    process.stdin.setRawMode = () => {}
     sayCommands.length = 0;
     output.length = 0;
     resultCount.greenCount = 0;

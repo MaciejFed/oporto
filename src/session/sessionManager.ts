@@ -21,10 +21,10 @@ export class SessionManager implements AppEventListener {
   answer: string;
   exerciseInProgress: boolean;
 
-  constructor(eventProcessor: EventProcessor, exerciseCount = 3) {
+  constructor(eventProcessor: EventProcessor, exerciseCount: number) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = generateUniqeExercises(3);
+    this.exercises = generateUniqeExercises(exerciseCount);
     this.answer = '';
     this.exerciseInProgress = false;
   }
