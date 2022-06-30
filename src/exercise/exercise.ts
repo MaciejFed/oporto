@@ -8,6 +8,8 @@ export enum ExerciseType {
 }
 
 export interface Exercise extends Comperable {
+  exercsiseType: ExerciseType;
+  correctAnswer: string;
   getExerciseType(): ExerciseType;
   getExerciseBody(): string;
   getExerciseDescription(): string;

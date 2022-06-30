@@ -1,6 +1,6 @@
 import { ExerciseType } from '../../src/exercise/exercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../../src/exercise/verbExercise';
-import { readAll } from '../../src/repository/repository';
+import { readAll } from '../../src/repository/exercisesRepository';
 import { Person } from '../../src/service/verb';
 
 

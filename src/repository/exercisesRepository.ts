@@ -1,4 +1,4 @@
-import { db, Schema } from './db';
+import { db, Schema } from './schema';
 
 const database: Schema = db;
 

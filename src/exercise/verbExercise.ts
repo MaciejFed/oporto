@@ -1,5 +1,5 @@
 import { Comperable } from '../common/common';
-import { IrregularVerb, RegularVerb } from '../repository/db';
+import { IrregularVerb, RegularVerb } from '../repository/schema';
 import {
   getRandomRegularVerb,
   getRandomPerson,
@@ -13,10 +13,14 @@ import { Exercise, ExerciseType } from './exercise';
 export class RegularVerbExercise implements Exercise, Comperable {
   verb: RegularVerb;
   person: Person;
+  exercsiseType: ExerciseType;
+  correctAnswer: string;
 
   constructor() {
     this.verb = getRandomRegularVerb();
     this.person = getRandomPerson();
+    this.exercsiseType = ExerciseType.REGULAR_VERB;
+    this.correctAnswer = this.getCorrectAnswer();
   }
 
   getExercsiseExplanation = () => undefined;
@@ -40,10 +44,14 @@ export class RegularVerbExercise implements Exercise, Comperable {
 export class IrregularVerbExercise implements Exercise, Comperable {
   verb: IrregularVerb;
   person: Person;
+  exercsiseType: ExerciseType;
+  correctAnswer: string;
 
   constructor() {
     this.verb = getRandomIrregularVerb();
     this.person = getRandomPerson();
+    this.exercsiseType = ExerciseType.IRREUGAL_VERB;
+    this.correctAnswer = this.getCorrectAnswer();
   }
 
   getExercsiseExplanation = () => undefined;
