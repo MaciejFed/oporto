@@ -9,7 +9,7 @@ module.exports = {
     testMatch: [
         '**/test/**/*.test.ts'
       ],
-      setupFiles: [
+      setupFilesAfterEnv: [
         './test/initTest.ts'
       ]
 };
