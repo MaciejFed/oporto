@@ -25,8 +25,6 @@ export class RegularVerbExercise implements Exercise, Comperable {
 
   getExercsiseExplanation = () => undefined;
 
-  getExerciseType = () => ExerciseType.REGULAR_VERB;
-
   getExerciseBody = () => `${this.person}: `;
 
   getExerciseDescription = () => `Infinitive: ${this.verb}`;
@@ -55,8 +53,6 @@ export class IrregularVerbExercise implements Exercise, Comperable {
   }
 
   getExercsiseExplanation = () => undefined;
-
-  getExerciseType = () => ExerciseType.IRREUGAL_VERB;
 
   getExerciseBody = () => `${this.person}: `;
 

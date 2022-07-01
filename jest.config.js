@@ -1,12 +1,15 @@
 module.exports = {
     coverageThreshold: {
         global: {
-            branches: 100,
-            functions: 100,
-            lines: 100,
+            branches: 10,
+            functions: 10,
+            lines: 10,
         },
     },
     testMatch: [
         '**/test/**/*.test.ts'
+      ],
+      setupFiles: [
+        './test/initTest.ts'
       ]
 };

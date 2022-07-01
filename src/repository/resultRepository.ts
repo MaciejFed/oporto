@@ -1,8 +1,9 @@
+import { Exercise } from '../exercise/exercise';
 import { logger } from '../logger/logger';
 import { Result } from '../service/result';
 import { readFromFile, saveToFile } from './file';
 
-export function getAllResults(): Result[] {
+function getAllResults(): Result[] {
   const results = readFromFile();
   return JSON.parse(results);
 }
@@ -13,4 +14,8 @@ export function saveNewResult(newResult: Result) {
   results.push(newResult);
 
   saveToFile(JSON.stringify(results, null, 2));
+}
+
+export function getAllResultsForExercise(exercise: Exercise) {
+  getAllResults().filter((result) => result.exercise.equal(exercise));
 }

@@ -15,7 +15,6 @@ jest.mock('child_process', () => {
     exec: (command: string) => { sayCommands.push(command) }
   };
 });
-
 jest.mock('terminal-kit', () => {
     return {
       __esModule: true,
@@ -34,10 +33,9 @@ jest.mock('terminal-kit', () => {
       }
     };
   });
-
 jest.mock('../../src/service/verb', () => {
   const modeuleActual = jest.requireActual('../../src/service/verb');
-  const readAll = require('../../src/repository/repository').readAll;
+  const readAll = require('../../src/repository/exercisesRepository').readAll;
   return {
     ...modeuleActual,
     getRandomRegularVerb: () => 'Comer',
@@ -63,8 +61,6 @@ type AppModules = {
   eventProcessor: any;
 };
 
-// @ts-ignore
-global.process.stdin.setRawMode = (mode: boolean) => undefined;
 
 function requireAllModules(): AppModules {
   const eventProcessor =
