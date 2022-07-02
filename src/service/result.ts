@@ -1,5 +1,4 @@
-import { Exercise } from '../exercise/exercise';
-import { RegularVerbExercise } from '../exercise/verbExercise';
+import { Exercise, ExerciseType } from '../exercise/exercise';
 
 export type Result = {
   exercise: Exercise;
@@ -16,7 +15,5 @@ export function convertToResult(exercise: Exercise, answer: string): Result {
     date: Date()
   };
 }
-
-console.log(JSON.stringify(convertToResult(new RegularVerbExercise(), 'como')));
 
 export function appendResultToDb() {}

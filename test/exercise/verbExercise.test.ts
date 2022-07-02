@@ -14,7 +14,7 @@ describe('Verb Exercise', () => {
         sameRegularVerbExercise.verb = 'comer';
         sameRegularVerbExercise.person = Person.Eu;
         
-        expect(regularVerbExercise.exercsiseType).toEqual(ExerciseType.REGULAR_VERB);
+        expect(regularVerbExercise.exercsiseType).toEqual('RegularVerb');
         expect(regularVerbExercise.getExerciseDescription()).toEqual('Infinitive: comer');
         expect(regularVerbExercise.getExerciseBody()).toEqual('Eu: ');
         expect(regularVerbExercise.getCorrectAnswer()).toEqual('como');
@@ -32,7 +32,7 @@ describe('Verb Exercise', () => {
         sameRegularVerbExercise.verb = irregularVerb;
         sameRegularVerbExercise.person = Person.Eu;
         
-        expect(regularVerbExercise.exercsiseType).toEqual(ExerciseType.IRREUGAL_VERB);
+        expect(regularVerbExercise.exercsiseType).toEqual('IrregularVerb');
         expect(regularVerbExercise.getExerciseDescription()).toEqual('Infinitive: ser');
         expect(regularVerbExercise.getExerciseBody()).toEqual('Eu: ');
         expect(regularVerbExercise.getCorrectAnswer()).toEqual('sou');

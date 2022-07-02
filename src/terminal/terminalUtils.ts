@@ -6,7 +6,7 @@ import { terminal } from 'terminal-kit';
 export function preExerciseClear() {
   // eslint-disable-next-line no-console
   clear();
-  // console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
+  console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
 }
 
 export function printSampleSentence() {

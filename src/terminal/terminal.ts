@@ -125,7 +125,7 @@ export class Terminakl {
         terminal.hideCursor(false);
         setTimeout(() => {
           this.eventProcessor.emit(EXERCISE_NEXT);
-        }, 250);
+        }, 50);
     }
   }
 

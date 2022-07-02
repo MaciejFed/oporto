@@ -48,7 +48,8 @@ jest.mock('../../src/exercise/exercise', () => {
   const RegularVerbExercise = require('../../src/exercise/verbExercise').RegularVerbExercise;
   const modeuleActual = jest.requireActual('../../src/exercise/exercise');
   return {
-    ...modeuleActual,
+    __esModule: true,
+    modeuleActual,
     generateUniqeExercises: () => [new RegularVerbExercise()]
   };
 });
@@ -82,13 +83,11 @@ describe('Event Emitter', () => {
   beforeEach(() => {
     // @ts-ignore
     const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
-    // @ts-ignore
-    process.stdin.setRawMode = () => {}
     sayCommands.length = 0;
     output.length = 0;
     resultCount.greenCount = 0;
     resultCount.redCount = 0;
-    jest.resetModules();
+
   });
 
   afterEach(() => {

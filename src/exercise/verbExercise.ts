@@ -11,15 +11,15 @@ import {
 import { Exercise, ExerciseType } from './exercise';
 
 export class RegularVerbExercise implements Exercise, Comperable {
+  exercsiseType: ExerciseType;
   verb: RegularVerb;
   person: Person;
-  exercsiseType: ExerciseType;
   correctAnswer: string;
 
   constructor() {
+    this.exercsiseType = 'RegularVerb';
     this.verb = getRandomRegularVerb();
     this.person = getRandomPerson();
-    this.exercsiseType = ExerciseType.REGULAR_VERB;
     this.correctAnswer = this.getCorrectAnswer();
   }
 
@@ -40,15 +40,15 @@ export class RegularVerbExercise implements Exercise, Comperable {
 }
 
 export class IrregularVerbExercise implements Exercise, Comperable {
+  exercsiseType: ExerciseType;
   verb: IrregularVerb;
   person: Person;
-  exercsiseType: ExerciseType;
   correctAnswer: string;
 
   constructor() {
+    this.exercsiseType = 'IrregularVerb';
     this.verb = getRandomIrregularVerb();
     this.person = getRandomPerson();
-    this.exercsiseType = ExerciseType.IRREUGAL_VERB;
     this.correctAnswer = this.getCorrectAnswer();
   }
 
@@ -65,5 +65,6 @@ export class IrregularVerbExercise implements Exercise, Comperable {
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
-  equal = (exercise: IrregularVerbExercise) => this.verb === exercise.verb && this.person === exercise.person;
+  equal = (exercise: IrregularVerbExercise) =>
+    this.verb.Infinitive === exercise.verb.Infinitive && this.person === exercise.person;
 }
