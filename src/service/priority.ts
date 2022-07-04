@@ -3,10 +3,13 @@ import { getAllResults, getAllResultsForExercise, getAllResultsForExerciseType }
 import fs from 'fs';
 import { Result } from './result';
 
+let neverDoneExercisesCount = 0;
+
 export const VALUE_EXERCISE_DONE_WRONG = 30;
 export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
+export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 50;
 
 export function valueDoneToday(doneTodayCount: number): number {
   switch (doneTodayCount) {
@@ -31,6 +34,7 @@ export type PriorityName =
   | 'EXERCISE_WRONG'
   | 'EXERCISE_CORRECT'
   | 'EXERCISE_DONE_TODAY'
+  | 'EXERCISE_RANDOMNESS'
   | 'NO_PRIORITY';
 
 export type Priority = {
@@ -39,18 +43,20 @@ export type Priority = {
   priorityValue: number;
 };
 
+const priorityCompilers: PriorityCompiler[] = [
+  exerciseNeverDone,
+  exerciseTypeNeverDone,
+  exerciseWrong,
+  exerciseCorrect,
+  exerciseDoneToday,
+  exerciseRandomnessPriority
+];
+
 type PriorityCompiler = (exercise: Exercise, results: Result[]) => Priority[];
 
 export function sortExercises(exercises: Exercise[]): Exercise[] {
   const exercisesWithProrities = exercises
     .map((ex) => {
-      const priorityCompilers: PriorityCompiler[] = [
-        exerciseNeverDone,
-        exerciseTypeNeverDone,
-        exerciseWrong,
-        exerciseCorrect,
-        exerciseDoneToday
-      ];
       const combinedProrites = priorityCompilers
         .flatMap((priorityCompiler) => priorityCompiler(ex, getAllResults()))
         .reduce(
@@ -86,8 +92,9 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
 }
 
 export function exerciseNeverDone(exercise: Exercise, results: Result[]): Priority[] {
+  const neverDoneExerciseValue = neverDoneExercisesCount++ === 0 ? VALUE_EXERCISE_NEVER_DONE : 0;
   return getAllResultsForExercise(results, exercise).length === 0
-    ? [{ exercise, priorityName: 'EXERCISE_NEVER_DONE', priorityValue: VALUE_EXERCISE_NEVER_DONE }]
+    ? [{ exercise, priorityName: 'EXERCISE_NEVER_DONE', priorityValue: neverDoneExerciseValue }]
     : noPriority(exercise);
 }
 
@@ -147,6 +154,16 @@ export function exerciseDoneToday(exercise: Exercise, results: Result[]): Priori
     ];
   }
   return noPriority(exercise);
+}
+
+export function exerciseRandomnessPriority(exercise: Exercise, results: Result[]): Priority[] {
+  return [
+    {
+      exercise,
+      priorityName: 'EXERCISE_RANDOMNESS',
+      priorityValue: Math.floor(Math.random() * VALUE_EXERCISE_RANDOMNESS_UP_LIMIT)
+    }
+  ];
 }
 
 export function noPriority(exercise: Exercise): Priority[] {

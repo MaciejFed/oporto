@@ -1,5 +1,6 @@
 .idea
 .DS_Store
+priorities.json
 bin
 build
 node_modules
