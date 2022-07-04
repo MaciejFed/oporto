@@ -74,26 +74,39 @@ export function exerciseTypeNeverDone(exercise: Exercise, results: Result[]): Pr
 }
 
 export function exerciseWrong(exercise: Exercise, results: Result[]): Priority[] {
-  return [getAllResultsForExercise(results, exercise)
-    .filter((result) => !result.isCorrect)
-    .reduce((previous) => {
-       previous.priorityValue += VALUE_EXERCISE_DONE_WRONG;
-       return previous;
-    }, { 
-      exercise: exercise, priorityName: 'EXERCISE_WRONG', priorityValue: 0 
-    })];
+  return [
+    getAllResultsForExercise(results, exercise)
+      .filter((result) => !result.isCorrect)
+      .reduce(
+        (previous) => {
+          previous.priorityValue += VALUE_EXERCISE_DONE_WRONG;
+          return previous;
+        },
+        {
+          exercise: exercise,
+          priorityName: 'EXERCISE_WRONG',
+          priorityValue: 0
+        }
+      )
+  ];
 }
 
 export function exerciseCorrect(exercise: Exercise, results: Result[]): Priority[] {
-  return results
-    .filter((result) => result.isCorrect)
-    .map(() =>
-      Object.assign({
-        exercise: exercise,
-        priorityName: 'EXERCISE_CORRECT',
-        priorityValue: VALUE_EXERCISE_DONE_CORRECT
-      })
-    );
+  return [
+    getAllResultsForExercise(results, exercise)
+      .filter((result) => result.isCorrect)
+      .reduce(
+        (previous) => {
+          previous.priorityValue += VALUE_EXERCISE_DONE_CORRECT;
+          return previous;
+        },
+        {
+          exercise: exercise,
+          priorityName: 'EXERCISE_CORRECT',
+          priorityValue: 0
+        }
+      )
+  ];
 }
 
 function exerciseDoneToday(exercise: Exercise, results: Result[]): Priority[] {
