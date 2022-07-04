@@ -9,7 +9,7 @@ export const VALUE_EXERCISE_DONE_WRONG = 30;
 export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
-export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 50;
+export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 25;
 
 export function valueDoneToday(doneTodayCount: number): number {
   switch (doneTodayCount) {
@@ -80,7 +80,8 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
           }
         );
       combinedProrites.priorities = combinedProrites.priorities.filter(
-        (priority) => priority.priorityName !== '' && priority.priorityName !== 'NO_PRIORITY'
+        (priority) =>
+          priority.priorityName !== '' && priority.priorityName !== 'NO_PRIORITY' && priority.priorityValue !== 0
       );
       return combinedProrites;
     })

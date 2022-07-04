@@ -1,8 +1,9 @@
 import { Comperable, getRandomElement, onlyDistinct } from '../common/common';
 import { IrregularVerbExercise, RegularVerbExercise } from './verbExercise';
 import { sortExercises } from '../service/priority';
+import { TranslationExercise } from './translationExercise';
 
-export type ExerciseType = 'RegularVerb' | 'IrregularVerb';
+export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'Translation';
 
 export interface Exercise extends Comperable {
   exercsiseType: ExerciseType;
@@ -16,14 +17,18 @@ export interface Exercise extends Comperable {
 
 type ExerciseGenerator = () => Exercise;
 
-const exerciseGenerators: ExerciseGenerator[] = [() => new RegularVerbExercise(), () => new IrregularVerbExercise()];
+const exerciseGenerators: ExerciseGenerator[] = [
+  () => new RegularVerbExercise(),
+  () => new IrregularVerbExercise(),
+  () => new TranslationExercise()
+];
 
 export function generateUniqeExercises<T>(exerciseCount: number): Exercise[] {
   const exercises = Array.from(Array(100)).map(() => getRandomElement(exerciseGenerators)());
   const distrinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);
   const sortedExercises = sortExercises(distrinctExercises);
 
-  return sortedExercises.splice(0, exerciseCount);
+  return sortedExercises.splice(0, exerciseCount).reverse();
 }
 
 // all exercises start with zero priority

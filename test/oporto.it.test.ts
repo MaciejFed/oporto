@@ -63,7 +63,7 @@ describe('IT', () => {
     const correctAnswer1Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
     simulateTyping(correctAnswer1Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
-    process.stdin.emit('keypress', {}, { name: 'spacebar' });
+    process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
     const greenCountAfter1Question = resultCount.greenCount;
     const expectedGreenCount1Question = correctAnswer1Question.length;
 
@@ -75,7 +75,7 @@ describe('IT', () => {
       correctAnswer2Question.substring(0, correctAnswer2Question.length - 1)
     );
     process.stdin.emit('keypress', {}, { name: 'return' });
-    process.stdin.emit('keypress', {}, { name: 'spacebar' });
+    process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
     const greenCountAfter2Question = resultCount.greenCount;
     const expectedGreenCount2Question = correctAnswer2Question.length - 1;
     const redCountAfter2Question = resultCount.redCount;
@@ -88,8 +88,8 @@ describe('IT', () => {
     simulateTyping(correctAnswer3Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'e' })
-    process.stdin.emit('keypress', {}, { name: 's' })
-    process.stdin.emit('keypress', {}, { name: 'spacebar' });
+    process.stdin.emit('keypress', {}, { name: 'r' })
+    process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
     const greenCountAfter3Question = resultCount.greenCount;
     const expectedGreenCount3Question = correctAnswer3Question.length;
     
@@ -105,7 +105,7 @@ describe('IT', () => {
     expect(correctAnswersLogCount).toBe(2);
     expect(wrongAnswersLogCount).toBe(1);
     expect(mockExit).toHaveBeenCalledWith(0);
-    expect(sayCommands).toEqual([correctAnswer1Question, correctAnswer2Question, sessionManager.currentExercise?.getCorrectAnswer(), correctAnswer3Question, ].map((answer) => `say "${answer}"`));
+    expect(sayCommands).toEqual([correctAnswer1Question, correctAnswer2Question, sessionManager.currentExercise?.getCorrectAnswer(), ].map((answer) => `say "${answer}"`));
 
     console.log(output);
   });

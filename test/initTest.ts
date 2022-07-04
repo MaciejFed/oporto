@@ -10,6 +10,18 @@ jest.mock('../src/repository/file', () => {
       readFromFile: () => `[
         {
           "exercise": {
+            "exercsiseType": "RegularVerb",
+            "verb": "abrir",
+            "person": "Nós",
+            "correctAnswer": "abrimos"
+          },
+          "answer": "abrimos",
+          "isCorrect": true,
+          "date": "2022-07-04T16:21:49.636Z"
+        },
+        {
+          "exercise": {
+            "exercsiseType": "IrregularVerb",
             "verb": {
               "Infinitive": "ser",
               "Eu": "sou",
@@ -19,12 +31,27 @@ jest.mock('../src/repository/file', () => {
               "Eles/Elas/Vocēs": "sāo"
             },
             "person": "Eles/Elas/Vocēs",
-            "exercsiseType": "IrregularVerb",
-            "correctAnswer": "sāo"
+            "correctAnswer": "sou"
           },
-          "answer": "cc",
+          "answer": "sao",
           "isCorrect": false,
-          "date": "Fri Jul 01 2022 18:20:57 GMT+0200 (Central European Summer Time)"
+          "date": "2022-07-04T16:21:54.681Z"
+        },
+        {
+          "exercise": {
+            "exercsiseType": "Translation",
+            "translation": {
+              "english": "girlfriend",
+              "portuguese": {
+                "word": "namorada",
+                "gender": "female"
+              }
+            },
+            "correctAnswer": "a namorada"
+          },
+          "answer": "aspaceanodsaa",
+          "isCorrect": false,
+          "date": "2022-07-04T16:22:08.861Z"
         }
       ]`,
       saveToFile: (data: string) => { }

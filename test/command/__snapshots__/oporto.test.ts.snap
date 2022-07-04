@@ -20,7 +20,7 @@ Array [
   "o",
   "Press key to conitinue...",
   "e - example sentence",
-  "s - say sample sentence",
+  "r - repeat the answer",
 ]
 `;
 
@@ -80,7 +80,7 @@ Array [
   "o",
   "Press key to conitinue...",
   "e - example sentence",
-  "s - say sample sentence",
+  "r - repeat the answer",
 ]
 `;
 
@@ -133,6 +133,6 @@ Array [
   "o",
   "Press key to conitinue...",
   "e - example sentence",
-  "s - say sample sentence",
+  "r - repeat the answer",
 ]
 `;

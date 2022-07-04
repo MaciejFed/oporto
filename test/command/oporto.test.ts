@@ -110,7 +110,7 @@ describe('Event Emitter', () => {
     console.log(process.stdin.listeners);
     simulateTyping('como');
     process.stdin.emit('keypress', {}, { name: 'return' });
-    process.stdin.emit('keypress', {}, { name: 'spacebar' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
 
     await sleep(500);
 
@@ -172,7 +172,7 @@ describe('Event Emitter', () => {
     process.stdin.emit('keypress', {}, { name: 'backspace' });
     process.stdin.emit('keypress', {}, { name: 'backspace' });
     process.stdin.emit('keypress', {}, { name: 'return' });
-    process.stdin.emit('keypress', {}, { name: 'spacebar' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
 
     await sleep(500);
     

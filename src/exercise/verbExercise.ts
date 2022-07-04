@@ -36,7 +36,8 @@ export class RegularVerbExercise implements Exercise, Comperable {
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
-  equal = (exercise: RegularVerbExercise) => this.verb === exercise.verb && this.person === exercise.person;
+  equal = (exercise: RegularVerbExercise) =>
+    exercise.exercsiseType === 'RegularVerb' && this.verb === exercise.verb && this.person === exercise.person;
 }
 
 export class IrregularVerbExercise implements Exercise, Comperable {
@@ -66,5 +67,7 @@ export class IrregularVerbExercise implements Exercise, Comperable {
   }
 
   equal = (exercise: IrregularVerbExercise) =>
-    this.verb.Infinitive === exercise.verb.Infinitive && this.person === exercise.person;
+    exercise.exercsiseType === 'IrregularVerb' &&
+    this.verb.Infinitive === exercise.verb.Infinitive &&
+    this.person === exercise.person;
 }

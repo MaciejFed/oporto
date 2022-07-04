@@ -68,9 +68,7 @@ export class SessionManager implements AppEventListener {
       if (key === 'backspace') {
         this.answer = this.answer.substring(0, Math.max(0, this.answer.length - 1));
       } else {
-        if (this.exerciseInProgress) {
-          this.answer += key;
-        }
+        this.answer += key;
       }
       logger.info(`Answer: "${this.answer}"`);
     });
@@ -78,6 +76,9 @@ export class SessionManager implements AppEventListener {
 
   registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITED, () => {
+      if (!this.exerciseInProgress) {
+        return;
+      }
       this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer().toLowerCase();
       const isCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);

@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run package
-      - uses: ArtiomTr/jest-coverage-report-action@v2
-        with:
-          test-script: npm test
-          github-token: ${{ secrets.ACTION_TOKEN }}
+      - run: npm run execute
+      # - uses: ArtiomTr/jest-coverage-report-action@v2
+      #   with:
+      #     test-script: npm test
+      #     github-token: ${{ secrets.ACTION_TOKEN }}
