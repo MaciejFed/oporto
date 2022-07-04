@@ -8,7 +8,7 @@ export enum Person {
   Tu = 'Tu',
   ElaEleVocé = 'Ela/Ele/Vocé',
   Nós = 'Nós',
-  ElesElasVosēs = 'Eles/Elas/Vosēs'
+  ElesElasVosēs = 'Eles/Elas/Vocēs'
 }
 
 export const getRandomRegularVerb: () => RegularVerb = () => {
@@ -34,7 +34,7 @@ export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) =
         return verb.substring(0, verb.length - 1);
       case 'Nós':
         return `${verb.substring(0, verb.length - 1)}mos`;
-      case 'Eles/Elas/Vosēs':
+      case 'Eles/Elas/Vocēs':
         return `${verb.substring(0, verb.length - 1)}m`;
     }
   }
@@ -48,7 +48,7 @@ export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) =
         return `${verb.substring(0, verb.length - 2)}e`;
       case 'Nós':
         return `${verb.substring(0, verb.length - 1)}mos`;
-      case 'Eles/Elas/Vosēs':
+      case 'Eles/Elas/Vocēs':
         return `${verb.substring(0, verb.length - 2)}em`;
     }
   }

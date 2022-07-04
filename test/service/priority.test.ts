@@ -109,7 +109,7 @@ describe('Priority', () => {
     });
 
     it('Exercise Done Today 1 Time', async () => {
-        const testExercise = generateExercise('IrregularVerb');
+        const testExercise = generateExercise('RegularVerb');
         const differentExerciseDoneToday = generateExercise('IrregularVerb');
         const results = [
             generateResultForExerciseDaysAgo(testExercise, true, 0),

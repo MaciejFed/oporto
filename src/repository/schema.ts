@@ -23,7 +23,7 @@ export const db: Schema = {
         Tu: 'és',
         'Ela/Ele/Vocé': 'é',
         Nós: 'somos',
-        'Eles/Elas/Vosēs': 'sāo'
+        'Eles/Elas/Vocēs': 'sāo'
       }
     ]
   }

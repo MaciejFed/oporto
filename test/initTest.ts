@@ -18,9 +18,9 @@ jest.mock('../src/repository/file', () => {
               "Tu": "és",
               "Ela/Ele/Vocé": "é",
               "Nós": "somos",
-              "Eles/Elas/Vosēs": "sāo"
+              "Eles/Elas/Vocēs": "sāo"
             },
-            "person": "Eles/Elas/Vosēs",
+            "person": "Eles/Elas/Vocēs",
             "exercsiseType": "IrregularVerb",
             "correctAnswer": "sāo"
           },
