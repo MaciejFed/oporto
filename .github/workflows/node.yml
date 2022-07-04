@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run execute
+      - run: npm run package
       # - uses: ArtiomTr/jest-coverage-report-action@v2
       #   with:
       #     test-script: npm test
