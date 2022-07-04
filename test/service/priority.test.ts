@@ -177,6 +177,7 @@ function generateResultForExerciseDaysAgo(exercise: Exercise, isCorrect: boolean
     dateDaysAgo.setDate(dateDaysAgo.getDate() - daysAgo);
     return {
         exercise,
+        answerInputType: 'keyboard',
         isCorrect,
         answer: 'N/A',
         date: dateDaysAgo

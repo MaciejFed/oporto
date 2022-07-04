@@ -94,10 +94,10 @@ export class Terminakl {
   }
 
   private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer }) => {
+    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer, answerInputType }) => {
       terminal.hideCursor();
       this.exerciseInProgress = false;
-      terminal.moveTo(1, 12, isCorrect ? 'Correct!' : 'Wrong!');
+      terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
       printExerciseBodyWithCorrection(this.exerciseBody, this.answer, correctAnswer);
       printInBetweenMenu();
       this.correctAnswer = correctAnswer;

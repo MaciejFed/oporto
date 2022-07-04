@@ -15,6 +15,7 @@ import { Exercise, generateUniqeExercises } from '../exercise/exercise';
 import { logger } from '../logger/logger';
 import { convertToResult, Result } from '../service/result';
 import { saveNewResult } from '../repository/resultRepository';
+import { AnswerInputType } from '../input/input';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -75,18 +76,19 @@ export class SessionManager implements AppEventListener {
   }
 
   registerAnswerSubmittedEventListener() {
-    this.eventProcessor.on(ANSWER_SUBMITED, () => {
+    this.eventProcessor.on(ANSWER_SUBMITED, (answerInputType: AnswerInputType) => {
       if (!this.exerciseInProgress) {
         return;
       }
       this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer().toLowerCase();
       const isCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);
-      saveNewResult(convertToResult(this.currentExercise, this.answer));
+      saveNewResult(convertToResult(this.currentExercise, this.answer, answerInputType));
       logger.info(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         isCorrect: isCorrect,
-        correctAnswer: correctAnswer
+        correctAnswer: correctAnswer,
+        answerInputType: answerInputType
       });
       this.resetAnswer();
     });

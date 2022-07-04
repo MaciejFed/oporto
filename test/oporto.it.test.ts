@@ -95,8 +95,8 @@ describe('IT', () => {
     
     await sleep(500);
 
-    const correctAnswersLogCount = output.filter((logLine) => logLine === 'Correct!').length;
-    const wrongAnswersLogCount = output.filter((logLine) => logLine === 'Wrong!').length;
+    const correctAnswersLogCount = output.filter((logLine) => logLine === 'Correct! [voice]').length;
+    const wrongAnswersLogCount = output.filter((logLine) => logLine === 'Wrong! [voice]').length;
 
     expect(greenCountAfter1Question).toBe(expectedGreenCount1Question);
     expect(greenCountAfter2Question).toBe(expectedGreenCount1Question + expectedGreenCount2Question);
