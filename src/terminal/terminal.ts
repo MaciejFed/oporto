@@ -31,6 +31,7 @@ export class Terminakl {
   cursor: Point;
   exerciseBody: string;
   answer: string;
+  correctAnswer: string;
   exerciseLoop: any;
   exerciseInProgress: boolean;
 
@@ -45,6 +46,7 @@ export class Terminakl {
     this.exerciseInProgress = false;
     this.exerciseBody = '';
     this.answer = '';
+    this.correctAnswer = '';
   }
 
   registerListeners() {
@@ -98,6 +100,7 @@ export class Terminakl {
       terminal.moveTo(1, 12, isCorrect ? 'Correct!' : 'Wrong!');
       printExerciseBodyWithCorrection(this.exerciseBody, this.answer, correctAnswer);
       printInBetweenMenu();
+      this.correctAnswer = correctAnswer;
       this.sayCorrectAnswer(correctAnswer);
       // this.eventProcessor.emit(EXERCISE_NEXT);
     });
@@ -118,7 +121,7 @@ export class Terminakl {
       case 'e':
         printSampleSentence();
         break;
-      case 's':
+      case 'r':
         this.saySampleSentence();
         break;
       default:
@@ -130,7 +133,7 @@ export class Terminakl {
   }
 
   private saySampleSentence() {
-    exec(`say "${this.answer}"`);
+    exec(`say "${this.correctAnswer}"`);
   }
 
   private sayCorrectAnswer(correctAnswer: string) {

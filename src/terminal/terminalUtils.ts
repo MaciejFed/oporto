@@ -16,7 +16,7 @@ export function printSampleSentence() {
 export function printInBetweenMenu() {
   terminal.moveTo(1, 14, 'Press key to conitinue...');
   terminal.moveTo(1, 15, 'e - example sentence');
-  terminal.moveTo(1, 16, 's - say sample sentence');
+  terminal.moveTo(1, 16, 'r - repeat the answer');
 }
 
 export function printExerciseBody(exerciseBody: string, answer: string) {
@@ -26,7 +26,7 @@ export function printExerciseBody(exerciseBody: string, answer: string) {
 export function printExerciseBodyWithCorrection(exerciseBody: string, answer: string, correctAnswer: string) {
   terminal.moveTo(1, 11, exerciseBody);
   for (let i = 0; i < correctAnswer.length; i++) {
-    if (answer[i] === correctAnswer[i]) {
+    if (answer[i] && answer[i].toLowerCase() === correctAnswer[i].toLowerCase()) {
       terminal.green();
     } else {
       terminal.red();

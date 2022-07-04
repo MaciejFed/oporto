@@ -20,8 +20,11 @@ export class Input {
         case 'return':
           this.eventProcessor.emit(ANSWER_SUBMITED);
           break;
+        case 'backspace':
+          this.eventProcessor.emit(KEY_PRESSED, 'backspace');
+          break;
         default:
-          this.eventProcessor.emit(KEY_PRESSED, key.name);
+          this.eventProcessor.emit(KEY_PRESSED, key.sequence);
           break;
       }
     });

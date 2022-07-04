@@ -1,9 +1,9 @@
 module.exports = {
     coverageThreshold: {
         global: {
-            branches: 95,
-            functions: 95,
-            lines: 95,
+            branches: 90,
+            functions: 90,
+            lines: 90,
         },
     },
     testMatch: [
@@ -15,4 +15,4 @@ module.exports = {
     collectCoverageFrom: [
       'src/**/{!(file|cli|test|eventListener),}.ts'
     ]
-};
+}
