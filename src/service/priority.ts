@@ -86,7 +86,7 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
     })
     .sort((a, b) => b.priorityValueTotal - a.priorityValueTotal);
 
-  fs.writeFileSync('prio.json', JSON.stringify(exercisesWithProrities, null, 2));
+  fs.writeFileSync('priorities.json', JSON.stringify(exercisesWithProrities, null, 2));
 
   return exercisesWithProrities.map((ewp) => ewp.exercise);
 }

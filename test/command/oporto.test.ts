@@ -9,6 +9,9 @@ const resultCount = {
 };
 const sayCommands: string[] = [];
 
+ // @ts-ignore
+ process.stdin.setRawMode = () => {};
+
 jest.mock('child_process', () => {
   return {
     __esModule: true,

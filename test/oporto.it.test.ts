@@ -17,6 +17,8 @@ const resultCount = {
   redCount: 0
 };
 
+ // @ts-ignore
+process.stdin.setRawMode = () => {};
 
 jest.mock('child_process', () => {
   return {
