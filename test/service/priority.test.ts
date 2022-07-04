@@ -1,6 +1,6 @@
 import { Exercise, ExerciseType } from '../../src/exercise/exercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../../src/exercise/verbExercise';
-import { exerciseNeverDone, exerciseTypeNeverDone, noPriority, Priority, PriorityName, VALUE_EXERCISE_NEVER_DONE, VALUE_EXERCISE_TYPE_NEVER_DONE } from '../../src/service/priority';
+import { exerciseNeverDone, exerciseWrong, exerciseTypeNeverDone, noPriority, Priority, PriorityName, VALUE_EXERCISE_DONE_WRONG, VALUE_EXERCISE_NEVER_DONE, VALUE_EXERCISE_TYPE_NEVER_DONE } from '../../src/service/priority';
 import { Result } from '../../src/service/result';
 
 
@@ -38,11 +38,35 @@ describe('Priority', () => {
 
     it('No Result For ExerciseType Exercise Priority - Unhappy Path', async () => {
         const testExercise = generateExercise('RegularVerb');
-        const result = generateResultForExercise(generateExercise('RegularVerb'), true);
+        const result = generateResultForExercise(testExercise, true);
         const actualPriority = exerciseTypeNeverDone(testExercise, [result]);
 
         expect(actualPriority.length).toEqual(1);
         expect(actualPriority).toStrictEqual(noPriority(testExercise));
+    });
+
+    it('Exercise Wrong 1 Time', async () => {
+        const testExercise = generateExercise('RegularVerb');
+        const result = generateResultForExercise(testExercise, false);
+        const expectedPriority = generatePriority(testExercise, 'EXERCISE_WRONG', VALUE_EXERCISE_DONE_WRONG);
+        const actualPriority = exerciseWrong(testExercise, [result]);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority).toStrictEqual(expectedPriority);
+    });
+
+    it('Exercise Wrong 3 Times', async () => {
+        const testExercise = generateExercise('RegularVerb');
+        const results = [
+            generateResultForExercise(testExercise, false), 
+            generateResultForExercise(testExercise, false),
+            generateResultForExercise(testExercise, true),
+            generateResultForExercise(testExercise, false)];
+        const expectedPriority = generatePriority(testExercise, 'EXERCISE_WRONG', VALUE_EXERCISE_DONE_WRONG * 3);
+        const actualPriority = exerciseWrong(testExercise, results);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority).toStrictEqual(expectedPriority);
     });
 
 });
