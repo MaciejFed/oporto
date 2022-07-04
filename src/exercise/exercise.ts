@@ -1,6 +1,6 @@
 import { Comperable, getRandomElement, onlyDistinct } from '../common/common';
 import { IrregularVerbExercise, RegularVerbExercise } from './verbExercise';
-import { sortExercises } from '../service/exercisePriority';
+import { sortExercises } from '../service/priority';
 
 export type ExerciseType = 'RegularVerb' | 'IrregularVerb';
 

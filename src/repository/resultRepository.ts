@@ -4,7 +4,7 @@ import { logger } from '../logger/logger';
 import { Result } from '../service/result';
 import { readFromFile, saveToFile } from './file';
 
-function getAllResults(): Result[] {
+export function getAllResults(): Result[] {
   const results = readFromFile();
   const resultsJson: Result[] = JSON.parse(results);
   let exercise: Exercise;
@@ -33,12 +33,12 @@ export function saveNewResult(newResult: Result) {
   saveToFile(JSON.stringify(results, null, 2));
 }
 
-export function getAllResultsForExerciseType(exerciseType: ExerciseType): Result[] {
-  return getAllResults().filter((result) => result.exercise.exercsiseType === exerciseType);
+export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {
+  return results.filter((result) => result.exercise.exercsiseType === exerciseType);
 }
 
-export function getAllResultsForExercise(exercise: Exercise): Result[] {
-  return getAllResults().filter((result) => {
+export function getAllResultsForExercise(results: Result[], exercise: Exercise): Result[] {
+  return results.filter((result) => {
     return result.exercise.equal(exercise);
   });
 }

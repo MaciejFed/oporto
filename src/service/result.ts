@@ -4,7 +4,7 @@ export type Result = {
   exercise: Exercise;
   answer: string;
   isCorrect: boolean;
-  date: string;
+  date: Date;
 };
 
 export function convertToResult(exercise: Exercise, answer: string): Result {
@@ -12,7 +12,7 @@ export function convertToResult(exercise: Exercise, answer: string): Result {
     exercise: exercise,
     answer: answer,
     isCorrect: exercise.checkAnsweCorrect(answer),
-    date: Date()
+    date: new Date()
   };
 }
 
