@@ -124,21 +124,17 @@ describe('Priority', () => {
         expect(actualPriority).toStrictEqual(expectedPriority);
     });
 
-    it('Exercise Done Today 4 Times', async () => {
+    it('Exercise Done Today N Times', async () => {
         const testExercise = generateExercise('IrregularVerb');
-        const results = [
-            generateResultForExerciseDaysAgo(testExercise, true, 0),
-            generateResultForExerciseDaysAgo(testExercise, true, 1),
-            generateResultForExerciseDaysAgo(testExercise, true, 0),
-            generateResultForExerciseDaysAgo(testExercise, true, 0),
-            generateResultForExerciseDaysAgo(testExercise, true, 0),
-            generateResultForExerciseDaysAgo(testExercise, true, 2)
-        ]
-        const expectedPriority = generatePriority(testExercise, 'EXERCISE_DONE_TODAY', valueDoneToday(4));
-        const actualPriority = exerciseDoneToday(testExercise, results);
+        const results: Result[] = [];
+        for (let i = 2; i < 8; i ++) {
+            results.push(generateResultForExerciseDaysAgo(testExercise, true, 0));
+            const expectedPriority = generatePriority(testExercise, 'EXERCISE_DONE_TODAY', valueDoneToday(i - 1));
+            const actualPriority = exerciseDoneToday(testExercise, results);
 
-        expect(actualPriority.length).toEqual(1);
-        expect(actualPriority).toStrictEqual(expectedPriority);
+            expect(actualPriority.length).toEqual(1);
+            expect(actualPriority).toStrictEqual(expectedPriority);
+        }
     });
 
 });
