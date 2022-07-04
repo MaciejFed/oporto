@@ -7,7 +7,23 @@ export const VALUE_EXERCISE_DONE_WRONG = 30;
 export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
-export const VALUE_EXERCISE_DONE_TODAY = -15;
+
+export function valueDoneToday(doneTodayCount: number): number {
+  switch (doneTodayCount) {
+    case 1:
+      return -10;
+    case 2:
+      return -30;
+    case 3:
+      return -90;
+    case 4:
+      return -200;
+    case 5:
+      return -350;
+    default:
+      return -1000;
+  }
+}
 
 export type PriorityName =
   | 'EXERCISE_NEVER_DONE'
@@ -109,16 +125,18 @@ export function exerciseCorrect(exercise: Exercise, results: Result[]): Priority
   ];
 }
 
-function exerciseDoneToday(exercise: Exercise, results: Result[]): Priority[] {
+export function exerciseDoneToday(exercise: Exercise, results: Result[]): Priority[] {
   const resultsToday = results.filter((result) => new Date(result.date).toDateString() === new Date().toDateString());
-
-  return resultsToday.map(() =>
-    Object.assign({
-      exercise: exercise,
-      priorityName: 'EXERCISE_DONE_TODAY',
-      priorityValue: VALUE_EXERCISE_DONE_TODAY
-    })
-  );
+  if (resultsToday.length > 0) {
+    return [
+      {
+        exercise: exercise,
+        priorityName: 'EXERCISE_DONE_TODAY',
+        priorityValue: valueDoneToday(resultsToday.length)
+      }
+    ];
+  }
+  return noPriority(exercise);
 }
 
 export function noPriority(exercise: Exercise): Priority[] {
