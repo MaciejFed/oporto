@@ -1,5 +1,5 @@
 import { Comperable } from '../common/common';
-import { IrregularVerb, RegularVerb } from '../repository/db';
+import { IrregularVerb, RegularVerb } from '../repository/schema';
 import {
   getRandomRegularVerb,
   getRandomPerson,
@@ -11,17 +11,19 @@ import {
 import { Exercise, ExerciseType } from './exercise';
 
 export class RegularVerbExercise implements Exercise, Comperable {
+  exercsiseType: ExerciseType;
   verb: RegularVerb;
   person: Person;
+  correctAnswer: string;
 
   constructor() {
+    this.exercsiseType = 'RegularVerb';
     this.verb = getRandomRegularVerb();
     this.person = getRandomPerson();
+    this.correctAnswer = this.getCorrectAnswer();
   }
 
   getExercsiseExplanation = () => undefined;
-
-  getExerciseType = () => ExerciseType.REGULAR_VERB;
 
   getExerciseBody = () => `${this.person}: `;
 
@@ -38,17 +40,19 @@ export class RegularVerbExercise implements Exercise, Comperable {
 }
 
 export class IrregularVerbExercise implements Exercise, Comperable {
+  exercsiseType: ExerciseType;
   verb: IrregularVerb;
   person: Person;
+  correctAnswer: string;
 
   constructor() {
+    this.exercsiseType = 'IrregularVerb';
     this.verb = getRandomIrregularVerb();
     this.person = getRandomPerson();
+    this.correctAnswer = this.getCorrectAnswer();
   }
 
   getExercsiseExplanation = () => undefined;
-
-  getExerciseType = () => ExerciseType.IRREUGAL_VERB;
 
   getExerciseBody = () => `${this.person}: `;
 
@@ -61,5 +65,6 @@ export class IrregularVerbExercise implements Exercise, Comperable {
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
-  equal = (exercise: IrregularVerbExercise) => this.verb === exercise.verb && this.person === exercise.person;
+  equal = (exercise: IrregularVerbExercise) =>
+    this.verb.Infinitive === exercise.verb.Infinitive && this.person === exercise.person;
 }

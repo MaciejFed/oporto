@@ -13,11 +13,14 @@ import { AppEventListener } from '../event/eventListener';
 import { EventProcessor } from '../event/eventProcessor';
 import { Exercise, generateUniqeExercises } from '../exercise/exercise';
 import { logger } from '../logger/logger';
+import { convertToResult, Result } from '../service/result';
+import { saveNewResult } from '../repository/resultRepository';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
   exercises: Exercise[];
-  currentExercise?: Exercise;
+  results: Result[];
+  currentExercise: Exercise;
   answer: string;
   exerciseInProgress: boolean;
 
@@ -25,6 +28,8 @@ export class SessionManager implements AppEventListener {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exercises = generateUniqeExercises(exerciseCount);
+    this.results = [];
+    this.currentExercise = this.exercises[0];
     this.answer = '';
     this.exerciseInProgress = false;
   }
@@ -45,7 +50,7 @@ export class SessionManager implements AppEventListener {
 
   registerExerciseStartedEventListener() {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
-      this.currentExercise = this.exercises.pop();
+      this.currentExercise = this.exercises.pop() || this.exercises[0];
       this.eventProcessor.emit(EXERCISE_DESCRIPTION_PRINTED, this.currentExercise?.getExerciseDescription());
       this.eventProcessor.emit(EXERCISE_BODY_PRINTED, {
         exercise: this.currentExercise?.getExerciseBody(),
@@ -76,6 +81,7 @@ export class SessionManager implements AppEventListener {
       this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer().toLowerCase();
       const isCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);
+      saveNewResult(convertToResult(this.currentExercise, this.answer));
       logger.info(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         isCorrect: isCorrect,

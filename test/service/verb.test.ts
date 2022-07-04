@@ -1,6 +1,6 @@
 /* eslint-disable jest/expect-expect */
 import { getCorrectRegularConjugation, Person } from '../../src/service/verb';
-import { RegularVerb } from '../../src/repository/db';
+import { RegularVerb } from '../../src/repository/schema';
 
 
 describe('Verbs', () => {

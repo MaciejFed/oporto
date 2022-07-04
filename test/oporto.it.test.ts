@@ -17,7 +17,8 @@ const resultCount = {
   redCount: 0
 };
 
-
+ // @ts-ignore
+process.stdin.setRawMode = () => {};
 
 jest.mock('child_process', () => {
   return {
@@ -45,17 +46,10 @@ jest.mock('terminal-kit', () => {
   };
 });
 
-// @ts-ignore
-global.process.stdin.setRawMode = (mode: boolean) => undefined;
 
 describe('IT', () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
-  // @ts-ignore
-  process.stdin.setRawMode = () => {}
-  beforeEach(() => {
-    jest.spyOn(console, 'log').mockImplementation(() => {});
-  });
 
   afterEach(() => {
     process.stdin.removeAllListeners();

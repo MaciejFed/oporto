@@ -1,12 +1,18 @@
 module.exports = {
     coverageThreshold: {
         global: {
-            branches: 100,
-            functions: 100,
-            lines: 100,
+            branches: 95,
+            functions: 95,
+            lines: 95,
         },
     },
     testMatch: [
-        '**/test/**/*.test.ts'
-      ]
+      '**/test/**/*.test.ts'
+    ],
+    setupFilesAfterEnv: [
+      './test/initTest.ts'
+    ],
+    collectCoverageFrom: [
+      'src/**/{!(file|cli|test|eventListener),}.ts'
+    ]
 };

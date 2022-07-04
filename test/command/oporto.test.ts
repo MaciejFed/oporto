@@ -9,13 +9,15 @@ const resultCount = {
 };
 const sayCommands: string[] = [];
 
+ // @ts-ignore
+ process.stdin.setRawMode = () => {};
+
 jest.mock('child_process', () => {
   return {
     __esModule: true,
     exec: (command: string) => { sayCommands.push(command) }
   };
 });
-
 jest.mock('terminal-kit', () => {
     return {
       __esModule: true,
@@ -34,10 +36,9 @@ jest.mock('terminal-kit', () => {
       }
     };
   });
-
 jest.mock('../../src/service/verb', () => {
   const modeuleActual = jest.requireActual('../../src/service/verb');
-  const readAll = require('../../src/repository/repository').readAll;
+  const readAll = require('../../src/repository/exercisesRepository').readAll;
   return {
     ...modeuleActual,
     getRandomRegularVerb: () => 'Comer',
@@ -50,7 +51,8 @@ jest.mock('../../src/exercise/exercise', () => {
   const RegularVerbExercise = require('../../src/exercise/verbExercise').RegularVerbExercise;
   const modeuleActual = jest.requireActual('../../src/exercise/exercise');
   return {
-    ...modeuleActual,
+    __esModule: true,
+    modeuleActual,
     generateUniqeExercises: () => [new RegularVerbExercise()]
   };
 });
@@ -63,8 +65,6 @@ type AppModules = {
   eventProcessor: any;
 };
 
-// @ts-ignore
-global.process.stdin.setRawMode = (mode: boolean) => undefined;
 
 function requireAllModules(): AppModules {
   const eventProcessor =
@@ -86,13 +86,11 @@ describe('Event Emitter', () => {
   beforeEach(() => {
     // @ts-ignore
     const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
-    // @ts-ignore
-    process.stdin.setRawMode = () => {}
     sayCommands.length = 0;
     output.length = 0;
     resultCount.greenCount = 0;
     resultCount.redCount = 0;
-    jest.resetModules();
+
   });
 
   afterEach(() => {
