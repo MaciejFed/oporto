@@ -55,18 +55,26 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
         .flatMap((priorityCompiler) => priorityCompiler(ex, getAllResults()))
         .reduce(
           (pevious, current) => {
-            pevious.priorityNames.push(current.priorityName);
+            pevious.priorities.push({
+              priorityName: current.priorityName,
+              priorityValue: current.priorityValue
+            });
             pevious.priorityValueTotal = pevious.priorityValueTotal + current.priorityValue;
             return pevious;
           },
           {
-            priorityNames: [''],
+            priorities: [
+              {
+                priorityName: '',
+                priorityValue: 0
+              }
+            ],
             priorityValueTotal: 0,
             exercise: ex
           }
         );
-      combinedProrites.priorityNames = combinedProrites.priorityNames.filter(
-        (name) => name !== '' && name !== 'NO_PRIORITY'
+      combinedProrites.priorities = combinedProrites.priorities.filter(
+        (priority) => priority.priorityName !== '' && priority.priorityName !== 'NO_PRIORITY'
       );
       return combinedProrites;
     })
@@ -126,7 +134,9 @@ export function exerciseCorrect(exercise: Exercise, results: Result[]): Priority
 }
 
 export function exerciseDoneToday(exercise: Exercise, results: Result[]): Priority[] {
-  const resultsToday = results.filter((result) => new Date(result.date).toDateString() === new Date().toDateString());
+  const resultsToday = getAllResultsForExercise(results, exercise).filter(
+    (result) => new Date(result.date).toDateString() === new Date().toDateString()
+  );
   if (resultsToday.length > 0) {
     return [
       {
