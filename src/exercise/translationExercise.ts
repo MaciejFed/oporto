@@ -14,9 +14,11 @@ export class TranslationExercise implements Exercise, Comperable {
     this.correctAnswer = this.getCorrectAnswer();
   }
 
-  getExerciseBody(): string {
+  getExerciseBodyPrefix(): string {
     return 'Portuguese: ';
   }
+
+  getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => `English: ${this.translation.english}`;
 

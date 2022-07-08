@@ -8,7 +8,8 @@ export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'Translation';
 export interface Exercise extends Comperable {
   exercsiseType: ExerciseType;
   correctAnswer: string;
-  getExerciseBody(): string;
+  getExerciseBodyPrefix(): string;
+  getExerciseBodySuffix(): string;
   getExerciseDescription(): string;
   getExercsiseExplanation(): string | undefined;
   getCorrectAnswer(): string;

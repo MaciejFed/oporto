@@ -12,7 +12,8 @@ import {
   KEY_PRESSED,
   ANSWER_CHECKED,
   EXERCISE_NEXT,
-  EXERCISE_STARTED
+  EXERCISE_STARTED,
+  APP_FINISHED
 } from './../event/events';
 import {
   preExerciseClear,
@@ -30,7 +31,8 @@ export type Point = {
 export class Terminakl {
   eventProcessor: EventProcessor;
   cursor: Point;
-  exerciseBody: string;
+  exerciseBodyPrefix: string;
+  exerciseBodySuffix: string;
   answer: string;
   correctAnswer: string;
   exerciseLoop: any;
@@ -45,7 +47,8 @@ export class Terminakl {
     };
     clear();
     this.exerciseInProgress = false;
-    this.exerciseBody = '';
+    this.exerciseBodyPrefix = '';
+    this.exerciseBodySuffix = '';
     this.answer = '';
     this.correctAnswer = '';
   }
@@ -57,6 +60,7 @@ export class Terminakl {
     this.registerOnKeyPressedEventListener();
     this.registerOnExerciseStartedEventListener();
     this.registerOnAnswerCheckedEventListener();
+    this.registerOnAppFinishedEventListener();
   }
 
   private registerOnAppStartedEventListerner() {
@@ -73,9 +77,12 @@ export class Terminakl {
 
   private registerOnBodyPrintedEventListener() {
     this.eventProcessor.on(EXERCISE_BODY_PRINTED, (body: EXERCISE_BODY_PRINTED_BODY) => {
+      logger.info(`exercise: ${JSON.stringify(body)}`);
       this.cursor = body.cursor;
-      this.exerciseBody = body.exercise;
-      terminal.moveTo(1, 11, this.exerciseBody);
+      this.exerciseBodyPrefix = body.exerciseBodyPrefix;
+      this.exerciseBodySuffix = body.exerciseBodySuffix;
+      terminal.moveTo(1, 11, `${this.exerciseBodyPrefix}  ${this.exerciseBodySuffix}`);
+      terminal.moveTo(1 + this.exerciseBodyPrefix.length, 11);
     });
   }
 
@@ -99,11 +106,17 @@ export class Terminakl {
       terminal.hideCursor();
       this.exerciseInProgress = false;
       terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
-      printExerciseBodyWithCorrection(this.exerciseBody, this.answer, correctAnswer);
+      printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       printInBetweenMenu();
       this.correctAnswer = correctAnswer;
       this.sayCorrectAnswer(correctAnswer);
       // this.eventProcessor.emit(EXERCISE_NEXT);
+    });
+  }
+
+  private registerOnAppFinishedEventListener() {
+    this.eventProcessor.on(APP_FINISHED, () => {
+      terminal.hideCursor(false);
     });
   }
 
@@ -118,7 +131,7 @@ export class Terminakl {
       }
       this.answer = this.answer + key;
     }
-    printExerciseBody(this.exerciseBody, this.answer);
+    printExerciseBody(this.exerciseBodyPrefix, this.answer, this.exerciseBodySuffix);
   }
 
   private onKeyMenu(key: string) {

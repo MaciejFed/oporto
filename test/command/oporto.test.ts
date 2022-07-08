@@ -23,7 +23,8 @@ jest.mock('terminal-kit', () => {
       __esModule: true,
       terminal: {
         moveTo: (x: number, y: number, data: string) => {
-          output.push(data);
+          if (data)
+            output.push(data);
         },
         hideCursor: (hide: boolean) => {},
         green: () => {

@@ -16,7 +16,7 @@ describe('Verb Exercise', () => {
         
         expect(regularVerbExercise.exercsiseType).toEqual('RegularVerb');
         expect(regularVerbExercise.getExerciseDescription()).toEqual('Infinitive: comer');
-        expect(regularVerbExercise.getExerciseBody()).toEqual('Eu: ');
+        expect(regularVerbExercise.getExerciseBodyPrefix()).toEqual('Eu: ');
         expect(regularVerbExercise.getCorrectAnswer()).toEqual('como');
         expect(regularVerbExercise.getExercsiseExplanation()).toBe(undefined);
         expect(regularVerbExercise.checkAnsweCorrect('como')).toBe(true);
@@ -34,7 +34,7 @@ describe('Verb Exercise', () => {
         
         expect(regularVerbExercise.exercsiseType).toEqual('IrregularVerb');
         expect(regularVerbExercise.getExerciseDescription()).toEqual('Infinitive: ser');
-        expect(regularVerbExercise.getExerciseBody()).toEqual('Eu: ');
+        expect(regularVerbExercise.getExerciseBodyPrefix()).toEqual('Eu: ');
         expect(regularVerbExercise.getCorrectAnswer()).toEqual('sou');
         expect(regularVerbExercise.getExercsiseExplanation()).toBe(undefined);
         expect(regularVerbExercise.checkAnsweCorrect('sou')).toBe(true);

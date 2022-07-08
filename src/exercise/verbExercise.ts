@@ -25,7 +25,9 @@ export class RegularVerbExercise implements Exercise, Comperable {
 
   getExercsiseExplanation = () => undefined;
 
-  getExerciseBody = () => `${this.person}: `;
+  getExerciseBodyPrefix = () => `${this.person}: `;
+
+  getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => `Infinitive: ${this.verb}`;
 
@@ -55,7 +57,9 @@ export class IrregularVerbExercise implements Exercise, Comperable {
 
   getExercsiseExplanation = () => undefined;
 
-  getExerciseBody = () => `${this.person}: `;
+  getExerciseBodyPrefix = () => `${this.person}: `;
+
+  getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => `Infinitive: ${this.verb.Infinitive}`;
 
