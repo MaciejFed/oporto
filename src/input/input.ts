@@ -1,5 +1,5 @@
 import { EventProcessor } from '../event/eventProcessor';
-import { ANSWER_SUBMITED, KEY_PRESSED } from './../event/events';
+import { ANSWER_SUBMITED, EXERCISE_NEXT, KEY_PRESSED } from './../event/events';
 import readline from 'readline';
 import { logger } from '../logger/logger';
 
@@ -23,6 +23,9 @@ export class Input {
     process.stdin.on('keypress', (str, key) => {
       switch (key.name) {
         case 'return':
+          if (this.inputTimes.length === 0) {
+            break;
+          }
           this.eventProcessor.emit(ANSWER_SUBMITED, this.getAnswerTime() < 10 ? 'voice' : 'keyboard');
           this.inputTimes.length = 0;
           break;
@@ -31,7 +34,8 @@ export class Input {
           break;
         default:
           if (this.inputTimes.length === 0 && key.sequence === ' ') {
-            logger.info('Empty space as a first input - skipping...');
+            logger.info('Empty space as a first input.');
+            this.eventProcessor.emit(KEY_PRESSED, '');
             break;
           }
           this.inputTimes.push(new Date());
