@@ -1,5 +1,5 @@
 import { EventProcessor } from '../event/eventProcessor';
-import { ANSWER_SUBMITED, EXERCISE_NEXT, KEY_PRESSED } from './../event/events';
+import { ANSWER_SUBMITED, APP_FINISHED, KEY_PRESSED } from './../event/events';
 import readline from 'readline';
 import { logger } from '../logger/logger';
 
@@ -22,6 +22,9 @@ export class Input {
   registerListener() {
     process.stdin.on('keypress', (str, key) => {
       switch (key.name) {
+        case 'escape':
+          this.eventProcessor.emit(APP_FINISHED);
+          break;
         case 'return':
           if (this.inputTimes.length === 0) {
             break;

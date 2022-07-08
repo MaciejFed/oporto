@@ -1,3 +1,4 @@
+import clear from 'clear';
 import EventEmitter from 'events';
 import winston from 'winston';
 import { logger } from '../logger/logger';
@@ -42,6 +43,7 @@ export class EventProcessor {
     switch (event) {
       case 'APP_FINISHED':
         this.eventEmitter.removeAllListeners();
+        clear();
         process.exit(0);
         break;
       default:
