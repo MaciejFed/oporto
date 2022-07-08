@@ -1,5 +1,6 @@
 import { Exercise, ExerciseType } from '../../src/exercise/exercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../../src/exercise/verbExercise';
+import { AnswerInputType } from '../../src/input/input';
 import { 
     exerciseNeverDone, 
     exerciseWrong, 
@@ -15,7 +16,9 @@ import {
     VALUE_EXERCISE_TYPE_NEVER_DONE, 
     VALUE_EXERCISE_DONE_CORRECT, 
     valueDoneToday, 
-    VALUE_EXERCISE_RANDOMNESS_UP_LIMIT
+    VALUE_EXERCISE_RANDOMNESS_UP_LIMIT,
+    exerciseNeverDoneByVoice,
+    VALUE_EXERCISE_NEVER_DONE_BY_VOICE
 } from '../../src/service/priority';
 import { Result } from '../../src/service/result';
 
@@ -33,7 +36,7 @@ describe('Priority', () => {
 
     it('No Result For Exact Exercise Priority - Unhappy Path', () => {
         const testExercise = generateExercise('RegularVerb');
-        const results = generateResultForExercise(testExercise, true, 1);
+        const results = generateResultForExercise(testExercise, true, 'keyboard', 1);
 
         const actualPriority = exerciseNeverDone(testExercise, results);
 
@@ -44,7 +47,7 @@ describe('Priority', () => {
     it('No Result For Exact Exercise Priority - Only One Has Prorityh Value', () => {
         const testExercise1 = generateExercise('RegularVerb');
         const testExercise2 = generateExercise('IrregularVerb');
-        const results = generateResultForExercise(testExercise1, true, 1);
+        const results = generateResultForExercise(testExercise1, true, 'keyboard', 1);
 
         const actualPriority = exerciseNeverDone(testExercise1, results);
         const actualPriorityNoValue = exerciseNeverDone(testExercise2, results);
@@ -57,7 +60,7 @@ describe('Priority', () => {
 
     it('No Result For ExerciseType Exercise Priority - Happy Path', () => {
         const testExercise = generateExercise('RegularVerb');
-        const results = generateResultForExercise(generateExercise('IrregularVerb'), true, 1);
+        const results = generateResultForExercise(generateExercise('IrregularVerb'), true, 'keyboard', 1);
         const expectedPriority = generatePriority(testExercise, 'EXERCISE_TYPE_NEVER_DONE', VALUE_EXERCISE_TYPE_NEVER_DONE);
         const actualPriority = exerciseTypeNeverDone(testExercise, results);
 
@@ -68,16 +71,33 @@ describe('Priority', () => {
 
     it('No Result For ExerciseType Exercise Priority - Unhappy Path', () => {
         const testExercise = generateExercise('RegularVerb');
-        const results = generateResultForExercise(testExercise, true, 1);
+        const results = generateResultForExercise(testExercise, true, 'keyboard', 1);
         const actualPriority = exerciseTypeNeverDone(testExercise, results);
 
         expect(actualPriority.length).toEqual(1);
         expect(actualPriority).toStrictEqual(noPriority(testExercise));
     });
 
+
+    it('Exercise Never Done By Voice', () => {
+        const exerciseDoneByKeyboard = generateExercise('RegularVerb');
+        const exerciseDoneByVoice = generateExercise('IrregularVerb');
+        const results = [
+            generateResultForExercise(exerciseDoneByKeyboard, true, 'keyboard', 1), 
+            generateResultForExercise(exerciseDoneByVoice, true, 'voice', 1
+            )].flatMap((result) => result);
+
+        const priorityForDoneByKeyboard = exerciseNeverDoneByVoice(exerciseDoneByKeyboard, results);
+        const priorityForDoneByVoice = exerciseNeverDoneByVoice(exerciseDoneByVoice, results);
+
+        expect(priorityForDoneByKeyboard.length).toEqual(1);
+        expect(priorityForDoneByKeyboard).toStrictEqual(generatePriority(exerciseDoneByKeyboard, 'EXERCISE_NEVER_DONE_BY_VOICE', VALUE_EXERCISE_NEVER_DONE_BY_VOICE));
+        expect(priorityForDoneByVoice).toStrictEqual(noPriority(exerciseDoneByVoice));
+    });
+
     it('Exercise Wrong 1 Time', () => {
         const testExercise = generateExercise('RegularVerb');
-        const results = generateResultForExercise(testExercise, false, 1);
+        const results = generateResultForExercise(testExercise, false, 'keyboard', 1);
         const expectedPriority = generatePriority(testExercise, 'EXERCISE_WRONG', VALUE_EXERCISE_DONE_WRONG);
         const actualPriority = exerciseWrong(testExercise, results);
 
@@ -88,9 +108,9 @@ describe('Priority', () => {
     it('Exercise Wrong 3 Times', () => {
         const testExercise = generateExercise('RegularVerb');
         const results = [
-            generateResultForExercise(testExercise, false, 2), 
-            generateResultForExercise(testExercise, true, 1),
-            generateResultForExercise(testExercise, false, 1)]
+            generateResultForExercise(testExercise, false, 'keyboard', 2), 
+            generateResultForExercise(testExercise, true, 'keyboard', 1),
+            generateResultForExercise(testExercise, false, 'keyboard', 1)]
             .flatMap((r) => r);
         const expectedPriority = generatePriority(testExercise, 'EXERCISE_WRONG', VALUE_EXERCISE_DONE_WRONG * 3);
         const actualPriority = exerciseWrong(testExercise, results);
@@ -102,7 +122,7 @@ describe('Priority', () => {
 
     it('Exercise Correct 1 Time', () => {
         const testExercise = generateExercise('IrregularVerb');
-        const results = generateResultForExercise(testExercise, true, 1);
+        const results = generateResultForExercise(testExercise, true, 'keyboard', 1);
         const expectedPriority = generatePriority(testExercise, 'EXERCISE_CORRECT', VALUE_EXERCISE_DONE_CORRECT);
         const actualPriority = exerciseCorrect(testExercise, results);
 
@@ -113,9 +133,9 @@ describe('Priority', () => {
     it('Exercise Correct 3 Times', () => {
         const testExercise = generateExercise('IrregularVerb');
         const results = [
-            generateResultForExercise(testExercise, true, 2), 
-            generateResultForExercise(testExercise, false, 1),
-            generateResultForExercise(testExercise, true, 1)]
+            generateResultForExercise(testExercise, true, 'keyboard', 2), 
+            generateResultForExercise(testExercise, false, 'keyboard', 1),
+            generateResultForExercise(testExercise, true, 'keyboard', 1)]
             .flatMap((r) => r);
         const expectedPriority = generatePriority(testExercise, 'EXERCISE_CORRECT', VALUE_EXERCISE_DONE_CORRECT * 3);
         const actualPriority = exerciseCorrect(testExercise, results);
@@ -155,7 +175,7 @@ describe('Priority', () => {
 
     it('Exercise Randomness', () => {
         const testExercise = generateExercise('IrregularVerb');
-        const results = generateResultForExercise(generateExercise('IrregularVerb'), true, 1);
+        const results = generateResultForExercise(generateExercise('IrregularVerb'), true, 'keyboard', 1);
         const actualPriority = exerciseRandomnessPriority(testExercise, results);
 
         expect(actualPriority.length).toEqual(1);
@@ -177,16 +197,18 @@ function generateResultForExerciseDaysAgo(exercise: Exercise, isCorrect: boolean
     dateDaysAgo.setDate(dateDaysAgo.getDate() - daysAgo);
     return {
         exercise,
+        answerInputType: 'keyboard',
         isCorrect,
         answer: 'N/A',
         date: dateDaysAgo
     };
 }
 
-function generateResultForExercise(exercise: Exercise, isCorrect: boolean, count: number): Result[] {
+function generateResultForExercise(exercise: Exercise, isCorrect: boolean, answerInputType: AnswerInputType, count: number): Result[] {
     return [...Array(count).keys()].map(() => Object.assign({
         exercise,
         isCorrect,
+        answerInputType,
         answer: 'N/A',
         date: new Date()
     }))

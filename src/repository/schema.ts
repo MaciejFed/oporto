@@ -36,7 +36,7 @@ export const db: Schema = {
         Tu: 'és',
         'Ela/Ele/Vocé': 'é',
         Nós: 'somos',
-        'Eles/Elas/Vocēs': 'sāo'
+        'Eles/Elas/Vocēs': 'são'
       }
     ]
   },

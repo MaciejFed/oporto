@@ -3,6 +3,7 @@ import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
 import { EventProcessor } from '../event/eventProcessor';
+import { logger } from '../logger/logger';
 import {
   APP_STARTED,
   EXERCISE_DESCRIPTION_PRINTED,
@@ -94,10 +95,10 @@ export class Terminakl {
   }
 
   private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer }) => {
+    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer, answerInputType }) => {
       terminal.hideCursor();
       this.exerciseInProgress = false;
-      terminal.moveTo(1, 12, isCorrect ? 'Correct!' : 'Wrong!');
+      terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
       printExerciseBodyWithCorrection(this.exerciseBody, this.answer, correctAnswer);
       printInBetweenMenu();
       this.correctAnswer = correctAnswer;
@@ -111,6 +112,10 @@ export class Terminakl {
       this.answer = this.answer.substring(0, Math.max(0, this.answer.length - 1));
       clearLine(process.stdout, 0);
     } else {
+      if (this.answer.length === 0 && key === ' ') {
+        logger.info('Empty space as a first input - skipping...');
+        return;
+      }
       this.answer = this.answer + key;
     }
     printExerciseBody(this.exerciseBody, this.answer);
