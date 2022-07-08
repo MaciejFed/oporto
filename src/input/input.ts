@@ -23,9 +23,6 @@ export class Input {
     process.stdin.on('keypress', (str, key) => {
       switch (key.name) {
         case 'return':
-          if (this.inputTimes.length === 0) {
-            break;
-          }
           this.eventProcessor.emit(ANSWER_SUBMITED, this.getAnswerTime() < 10 ? 'voice' : 'keyboard');
           this.inputTimes.length = 0;
           break;
@@ -33,6 +30,10 @@ export class Input {
           this.eventProcessor.emit(KEY_PRESSED, 'backspace');
           break;
         default:
+          if (this.inputTimes.length === 0 && key.sequence === ' ') {
+            logger.info('Empty space as a first input - skipping...');
+            break;
+          }
           this.inputTimes.push(new Date());
           this.eventProcessor.emit(KEY_PRESSED, key.sequence);
           break;

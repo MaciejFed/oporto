@@ -64,6 +64,7 @@ describe('IT', () => {
     simulateTyping(correctAnswer1Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
+    simulateTyping('n');
     const greenCountAfter1Question = resultCount.greenCount;
     const expectedGreenCount1Question = correctAnswer1Question.length;
 
@@ -75,7 +76,7 @@ describe('IT', () => {
       correctAnswer2Question.substring(0, correctAnswer2Question.length - 1)
     );
     process.stdin.emit('keypress', {}, { name: 'return' });
-    process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
+    simulateTyping('n');
     const greenCountAfter2Question = resultCount.greenCount;
     const expectedGreenCount2Question = correctAnswer2Question.length - 1;
     const redCountAfter2Question = resultCount.redCount;
@@ -89,7 +90,7 @@ describe('IT', () => {
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'e' })
     process.stdin.emit('keypress', {}, { name: 'r' })
-    process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
+    simulateTyping('n');
     const greenCountAfter3Question = resultCount.greenCount;
     const expectedGreenCount3Question = correctAnswer3Question.length;
     
