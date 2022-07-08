@@ -4,10 +4,12 @@ import fs from 'fs';
 import { Result } from './result';
 
 let neverDoneExercisesCount = 0;
+let neverDoneByVoiceExercisesCount = 0;
 
 export const VALUE_EXERCISE_DONE_WRONG = 30;
 export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
+export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
 export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 25;
 
@@ -30,6 +32,7 @@ export function valueDoneToday(doneTodayCount: number): number {
 
 export type PriorityName =
   | 'EXERCISE_NEVER_DONE'
+  | 'EXERCISE_NEVER_DONE_BY_VOICE'
   | 'EXERCISE_TYPE_NEVER_DONE'
   | 'EXERCISE_WRONG'
   | 'EXERCISE_CORRECT'
@@ -46,6 +49,7 @@ export type Priority = {
 const priorityCompilers: PriorityCompiler[] = [
   exerciseNeverDone,
   exerciseTypeNeverDone,
+  exerciseNeverDoneByVoice,
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
@@ -96,6 +100,14 @@ export function exerciseNeverDone(exercise: Exercise, results: Result[]): Priori
   const neverDoneExerciseValue = neverDoneExercisesCount++ === 0 ? VALUE_EXERCISE_NEVER_DONE : 0;
   return getAllResultsForExercise(results, exercise).length === 0
     ? [{ exercise, priorityName: 'EXERCISE_NEVER_DONE', priorityValue: neverDoneExerciseValue }]
+    : noPriority(exercise);
+}
+
+export function exerciseNeverDoneByVoice(exercise: Exercise, results: Result[]): Priority[] {
+  const neverDoneByVoiceExerciseValue = neverDoneByVoiceExercisesCount++ === 0 ? VALUE_EXERCISE_NEVER_DONE_BY_VOICE : 0;
+  return getAllResultsForExercise(results, exercise).filter((ex) => ex.isCorrect && ex.answerInputType === 'voice')
+    .length === 0
+    ? [{ exercise, priorityName: 'EXERCISE_NEVER_DONE_BY_VOICE', priorityValue: neverDoneByVoiceExerciseValue }]
     : noPriority(exercise);
 }
 

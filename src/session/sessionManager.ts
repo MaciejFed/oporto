@@ -86,9 +86,9 @@ export class SessionManager implements AppEventListener {
       saveNewResult(convertToResult(this.currentExercise, this.answer, answerInputType));
       logger.info(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
-        isCorrect: isCorrect,
-        correctAnswer: correctAnswer,
-        answerInputType: answerInputType
+        isCorrect,
+        correctAnswer,
+        answerInputType
       });
       this.resetAnswer();
     });
