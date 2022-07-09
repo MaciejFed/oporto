@@ -12,6 +12,8 @@ describe('Translation Exercise', () => {
         const sameTranslationExercise = new TranslationExercise();
         translationExercise.translation = readAll().translations[1];
         sameTranslationExercise.translation = readAll().translations[1];
+        translationExercise.translationType = 'toPortuguese';
+        sameTranslationExercise.translationType = 'toPortuguese';
 
         
         expect(translationExercise.exercsiseType).toEqual('Translation');

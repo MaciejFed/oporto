@@ -67,7 +67,7 @@ export const db: Schema = {
   fitIn: [
     {
       prefix: 'Eu',
-      answer: 'tomu',
+      answer: 'tomo',
       suffix: 'um chá.',
       explanation: '"de" - Inidca origem'
     },

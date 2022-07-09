@@ -67,7 +67,7 @@ describe('IT', () => {
     const greenCountAfter1Question = resultCount.greenCount;
     const expectedGreenCount1Question = correctAnswer1Question.length;
 
-    await sleep(500);
+    await sleep(50);
 
     // Get correct answer for the second questions and type it missing last character
     const correctAnswer2Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
@@ -81,7 +81,7 @@ describe('IT', () => {
     const redCountAfter2Question = resultCount.redCount;
     const expectedRedCount2Question = 1;
 
-    await sleep(500);
+    await sleep(50);
 
     // Get correct answer for the third question
     const correctAnswer3Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
@@ -93,7 +93,7 @@ describe('IT', () => {
     const greenCountAfter3Question = resultCount.greenCount;
     const expectedGreenCount3Question = correctAnswer3Question.length;
     
-    await sleep(500);
+    await sleep(50);
 
     const correctAnswersLogCount = output.filter((logLine) => logLine === 'Correct! [voice]').length;
     const wrongAnswersLogCount = output.filter((logLine) => logLine === 'Wrong! [voice]').length;
