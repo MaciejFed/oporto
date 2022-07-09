@@ -19,7 +19,6 @@ Array [
   "m",
   "o",
   "Press key to conitinue...",
-  "e - example sentence",
   "r - repeat the answer",
 ]
 `;
@@ -79,7 +78,6 @@ Array [
   "m",
   "o",
   "Press key to conitinue...",
-  "e - example sentence",
   "r - repeat the answer",
 ]
 `;
@@ -132,7 +130,6 @@ Array [
   "m",
   "o",
   "Press key to conitinue...",
-  "e - example sentence",
   "r - repeat the answer",
 ]
 `;

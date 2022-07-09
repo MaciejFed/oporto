@@ -11,7 +11,9 @@ export const EXERCISE_DESCRIPTION_PRINTED = 'EXERCISE_DESCRIPTION_PRINTED';
 export const EXERCISE_BODY_PRINTED = 'EXERCISE_BODY_PRINTED';
 
 export type EXERCISE_BODY_PRINTED_BODY = {
-  exercise: string;
+  exerciseBodyPrefix: string;
+  exerciseBodySuffix: string;
+  exerciseExplanation: string;
   cursor: Point;
 };
 

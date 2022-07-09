@@ -16,7 +16,7 @@ describe('Translation Exercise', () => {
         
         expect(translationExercise.exercsiseType).toEqual('Translation');
         expect(translationExercise.getExerciseDescription()).toEqual('English: tea');
-        expect(translationExercise.getExerciseBody()).toEqual('Portuguese: ');
+        expect(translationExercise.getExerciseBodyPrefix()).toEqual('Portuguese: ');
         expect(translationExercise.getCorrectAnswer()).toEqual('o chá');
         expect(translationExercise.getExercsiseExplanation()).toBe(undefined);
         expect(translationExercise.checkAnsweCorrect('o chá')).toBe(true);

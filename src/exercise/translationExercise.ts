@@ -14,9 +14,11 @@ export class TranslationExercise implements Exercise, Comperable {
     this.correctAnswer = this.getCorrectAnswer();
   }
 
-  getExerciseBody(): string {
+  getExerciseBodyPrefix(): string {
     return 'Portuguese: ';
   }
+
+  getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => `English: ${this.translation.english}`;
 
@@ -29,9 +31,6 @@ export class TranslationExercise implements Exercise, Comperable {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  equal = (other: TranslationExercise) => {
-    return (
-      other.exercsiseType === 'Translation' && this.translation.portuguese.word === other.translation.portuguese.word
-    );
-  };
+  equal = (other: TranslationExercise) =>
+    other.exercsiseType === 'Translation' && this.translation.portuguese.word === other.translation.portuguese.word;
 }

@@ -54,7 +54,9 @@ export class SessionManager implements AppEventListener {
       this.currentExercise = this.exercises.pop() || this.exercises[0];
       this.eventProcessor.emit(EXERCISE_DESCRIPTION_PRINTED, this.currentExercise?.getExerciseDescription());
       this.eventProcessor.emit(EXERCISE_BODY_PRINTED, {
-        exercise: this.currentExercise?.getExerciseBody(),
+        exerciseBodyPrefix: this.currentExercise?.getExerciseBodyPrefix(),
+        exerciseBodySuffix: this.currentExercise?.getExerciseBodySuffix(),
+        exerciseExplanation: this.currentExercise?.getExercsiseExplanation(),
         cursor: {
           x: 0,
           y: 0
