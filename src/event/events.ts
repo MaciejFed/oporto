@@ -13,6 +13,7 @@ export const EXERCISE_BODY_PRINTED = 'EXERCISE_BODY_PRINTED';
 export type EXERCISE_BODY_PRINTED_BODY = {
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
+  exerciseExplanation: string;
   cursor: Point;
 };
 

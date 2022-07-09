@@ -2,8 +2,9 @@ import { Comperable, getRandomElement, onlyDistinct } from '../common/common';
 import { IrregularVerbExercise, RegularVerbExercise } from './verbExercise';
 import { sortExercises } from '../service/priority';
 import { TranslationExercise } from './translationExercise';
+import { FitInGapExercise } from './fitInGapExercise';
 
-export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'Translation';
+export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'Translation' | 'FitInGap';
 
 export interface Exercise extends Comperable {
   exercsiseType: ExerciseType;
@@ -21,7 +22,8 @@ type ExerciseGenerator = () => Exercise;
 const exerciseGenerators: ExerciseGenerator[] = [
   () => new RegularVerbExercise(),
   () => new IrregularVerbExercise(),
-  () => new TranslationExercise()
+  () => new TranslationExercise(),
+  () => new FitInGapExercise()
 ];
 
 export function generateUniqeExercises<T>(exerciseCount: number): Exercise[] {

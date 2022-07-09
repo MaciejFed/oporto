@@ -9,14 +9,16 @@ export function preExerciseClear() {
   console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
 }
 
-export function printSampleSentence() {
-  terminal.moveTo(1, 8, 'Example: TODO');
+export function printExerciseExplanation(exerciseExmplanation: string) {
+  terminal.moveTo(1, 8, exerciseExmplanation);
 }
 
-export function printInBetweenMenu() {
+export function printInBetweenMenu(printExplanation: boolean) {
   terminal.moveTo(1, 14, 'Press key to conitinue...');
-  terminal.moveTo(1, 15, 'e - example sentence');
-  terminal.moveTo(1, 16, 'r - repeat the answer');
+  terminal.moveTo(1, 15, 'r - repeat the answer');
+  if (printExplanation) {
+    terminal.moveTo(1, 16, 'e - print explanation');
+  }
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {

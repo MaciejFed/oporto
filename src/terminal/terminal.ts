@@ -19,8 +19,8 @@ import {
   preExerciseClear,
   printExerciseBody,
   printExerciseBodyWithCorrection,
-  printInBetweenMenu,
-  printSampleSentence
+  printExerciseExplanation,
+  printInBetweenMenu
 } from './terminalUtils';
 
 export type Point = {
@@ -33,6 +33,7 @@ export class Terminakl {
   cursor: Point;
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
+  exerciseExplanation: string;
   answer: string;
   correctAnswer: string;
   exerciseLoop: any;
@@ -49,6 +50,7 @@ export class Terminakl {
     this.exerciseInProgress = false;
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';
+    this.exerciseExplanation = '';
     this.answer = '';
     this.correctAnswer = '';
   }
@@ -81,8 +83,8 @@ export class Terminakl {
       this.cursor = body.cursor;
       this.exerciseBodyPrefix = body.exerciseBodyPrefix;
       this.exerciseBodySuffix = body.exerciseBodySuffix;
-      terminal.moveTo(1, 11, `${this.exerciseBodyPrefix}  ${this.exerciseBodySuffix}`);
-      terminal.moveTo(1 + this.exerciseBodyPrefix.length, 11);
+      this.exerciseExplanation = body.exerciseExplanation;
+      printExerciseBody(this.exerciseBodyPrefix, this.answer, this.exerciseBodySuffix);
     });
   }
 
@@ -107,7 +109,7 @@ export class Terminakl {
       this.exerciseInProgress = false;
       terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      printInBetweenMenu();
+      printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
       this.correctAnswer = correctAnswer;
       this.sayCorrectAnswer(correctAnswer);
       // this.eventProcessor.emit(EXERCISE_NEXT);
@@ -137,7 +139,7 @@ export class Terminakl {
   private onKeyMenu(key: string) {
     switch (key) {
       case 'e':
-        printSampleSentence();
+        printExerciseExplanation(this.exerciseExplanation);
         break;
       case 'r':
         this.saySampleSentence();

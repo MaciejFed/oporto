@@ -24,6 +24,14 @@ export type Translation = {
 export type Schema = {
   verbs: Verbs;
   translations: Translation[];
+  fitIn: FitIn[];
+};
+
+export type FitIn = {
+  prefix: string;
+  answer: string;
+  suffix: string;
+  explanation?: string;
 };
 
 export const db: Schema = {
@@ -54,6 +62,62 @@ export const db: Schema = {
         word: 'chá',
         gender: 'male'
       }
+    }
+  ],
+  fitIn: [
+    {
+      prefix: 'Eu',
+      answer: 'tomu',
+      suffix: 'um chá.',
+      explanation: '"de" - Inidca origem'
+    },
+    {
+      prefix: 'Ela é',
+      answer: 'de',
+      suffix: 'Angola.',
+      explanation: '"de" - Inidca origem'
+    },
+    {
+      prefix: 'Ela é',
+      answer: 'de',
+      suffix: 'Paris.',
+      explanation: '"de" - Inidca origem'
+    },
+    {
+      prefix: 'Moro',
+      answer: 'em',
+      suffix: 'Cascais.',
+      explanation: '"em" - Inidca localização'
+    },
+    {
+      prefix: '',
+      answer: 'em',
+      suffix: 'que rua mora?',
+      explanation: '"em" - Inidca localização'
+    },
+    {
+      prefix: 'Moro',
+      answer: 'na',
+      suffix: 'Avenida do Mar.',
+      explanation: '"na" - em + a'
+    },
+    {
+      prefix: 'Eles estudam',
+      answer: 'na',
+      suffix: 'universidade.',
+      explanation: '"na" - em + a'
+    },
+    {
+      prefix: 'Moro',
+      answer: 'no',
+      suffix: 'número treze.',
+      explanation: '"no" - em + o'
+    },
+    {
+      prefix: 'O Paulo estuda',
+      answer: 'no',
+      suffix: 'Japão.',
+      explanation: '"no" - em + o'
     }
   ]
 };

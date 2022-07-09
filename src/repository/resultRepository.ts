@@ -1,4 +1,5 @@
 import { Exercise, ExerciseType } from '../exercise/exercise';
+import { FitInGapExercise } from '../exercise/fitInGapExercise';
 import { TranslationExercise } from '../exercise/translationExercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../exercise/verbExercise';
 import { logger } from '../logger/logger';
@@ -20,10 +21,14 @@ export function getAllResults(): Result[] {
       irregularVerbExercise.verb = (result.exercise as unknown as IrregularVerbExercise).verb;
       irregularVerbExercise.person = (result.exercise as unknown as IrregularVerbExercise).person;
       exercise = irregularVerbExercise;
-    } else {
+    } else if (result.exercise.exercsiseType === 'Translation') {
       const translationExercise: TranslationExercise = new TranslationExercise();
       translationExercise.translation = (result.exercise as unknown as TranslationExercise).translation;
       exercise = translationExercise;
+    } else {
+      const fitInGapExercise: FitInGapExercise = new FitInGapExercise();
+      fitInGapExercise.fitIn = (result.exercise as unknown as FitInGapExercise).fitIn;
+      exercise = fitInGapExercise;
     }
     result.exercise = exercise;
     return result;
