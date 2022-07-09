@@ -1,5 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Exercises IT Snapshot Fit In 1`] = `
+Array [
+  "APP_STARTED",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises IT Snapshot Fit In 2`] = `
+Array [
+  "Complete the sentece.",
+  "Ela é  Angola.",
+  "Ela é d Angola.",
+  "Ela é de Angola.",
+  "Correct! [voice]",
+  "Ela é ",
+  "d",
+  "e",
+  "Press key to conitinue...",
+  "r - repeat the answer",
+  "e - print explanation",
+  "Complete the sentece.",
+  "Eu  um chá.",
+  "Eu w um chá.",
+  "Eu wr um chá.",
+  "Eu wro um chá.",
+  "Eu wron um chá.",
+  "Eu wrong um chá.",
+  "Eu wronga um chá.",
+  "Eu wrongan um chá.",
+  "Eu wrongans um chá.",
+  "Eu wrongansw um chá.",
+  "Eu wronganswe um chá.",
+  "Eu wronganswer um chá.",
+  "Wrong! [voice]",
+  "Eu ",
+  "t",
+  "o",
+  "m",
+  "o",
+  "Press key to conitinue...",
+  "r - repeat the answer",
+  "e - print explanation",
+]
+`;
+
 exports[`Exercises IT Snapshot Translation 1`] = `
 Array [
   "APP_STARTED",

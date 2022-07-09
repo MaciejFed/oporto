@@ -95,13 +95,56 @@ describe('Exercises IT Snapshot', () => {
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
-    await sleep(500);
+    await sleep(50);
 
     simulateTyping('tea');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
-    await sleep(500);
+    await sleep(50);
+
+    const eventHistory = appModules.eventProcessor.eventHistory.map(
+      (event: { event: any }) => event.event
+    );
+    expect(eventHistory).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
+  });
+
+
+  it('Fit In', async () => {
+    jest.mock('../../src/exercise/exercise', () => {
+      const readAll = require('../../src/repository/exercisesRepository').readAll;
+      const FitInGapExercise = require('../../src/exercise/fitInGapExercise').FitInGapExercise;
+      const modelActual = jest.requireActual('../../src/exercise/exercise');
+      const fitInGapExerciseOne = new FitInGapExercise();
+      const fitInGapExerciseTwo = new FitInGapExercise();
+      fitInGapExerciseOne.fitIn = readAll().fitIn[0];
+      fitInGapExerciseTwo.fitIn = readAll().fitIn[1];
+      return {
+        __esModule: true,
+        modelActual,
+        generateUniqeExercises: () => [fitInGapExerciseOne, fitInGapExerciseTwo]
+      };
+    });
+    const appModules = requireAllModules();
+    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const input = new appModules.Input(appModules.eventProcessor);
+    const sessionManager = new appModules.SessionManager(
+      appModules.eventProcessor,
+      2
+    );
+    appModules.eventProcessor.emit('APP_STARTED');
+    simulateTyping('de');
+    process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
+
+    await sleep(50);
+
+    simulateTyping('wronganswer');
+    process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
+
+    await sleep(50);
 
     const eventHistory = appModules.eventProcessor.eventHistory.map(
       (event: { event: any }) => event.event

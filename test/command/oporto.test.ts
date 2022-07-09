@@ -113,7 +113,7 @@ describe('Event Emitter', () => {
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
-    await sleep(500);
+    await sleep(50);
 
     const eventHistory = appModules.eventProcessor.eventHistory.map(
       (event: { event: any }) => event.event
@@ -143,7 +143,7 @@ describe('Event Emitter', () => {
     simulateTyping('cowronganswer');
     process.stdin.emit('keypress', {}, { name: 'return' });
 
-    await sleep(500);
+    await sleep(50);
 
     const eventHistory = appModules.eventProcessor.eventHistory.map(
         (event: { event: any }) => event.event
@@ -175,7 +175,7 @@ describe('Event Emitter', () => {
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
-    await sleep(500);
+    await sleep(50);
     
     const eventHistory = appModules.eventProcessor.eventHistory.map(
         (event: { event: any }) => event.event
