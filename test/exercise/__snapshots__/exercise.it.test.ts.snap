@@ -133,3 +133,62 @@ Array [
   "r - repeat the answer",
 ]
 `;
+
+exports[`Exercises IT Snapshot Verb 1`] = `
+Array [
+  "APP_STARTED",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises IT Snapshot Verb 2`] = `
+Array [
+  "Infinitive: ser",
+  "Eu: ",
+  "Eu: s",
+  "Eu: so",
+  "Eu: sou",
+  "Correct! [voice]",
+  "Eu: ",
+  "s",
+  "o",
+  "u",
+  "Press key to conitinue...",
+  "r - repeat the answer",
+  "Infinitive: falar",
+  "Eu: ",
+  "Eu: f",
+  "Eu: fa",
+  "Eu: fal",
+  "Eu: falo",
+  "Correct! [voice]",
+  "Eu: ",
+  "f",
+  "a",
+  "l",
+  "o",
+  "Press key to conitinue...",
+  "r - repeat the answer",
+]
+`;

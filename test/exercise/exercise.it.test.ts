@@ -153,4 +153,49 @@ describe('Exercises IT Snapshot', () => {
     expect(output).toMatchSnapshot();
   });
 
+  it('Verb', async () => {
+    jest.mock('../../src/exercise/exercise', () => {
+      const readAll = require('../../src/repository/exercisesRepository').readAll;
+      const RegularVerbExercise = require('../../src/exercise/verbExercise').RegularVerbExercise;
+      const IrregularVerbExercise = require('../../src/exercise/verbExercise').IrregularVerbExercise;
+      const modelActual = jest.requireActual('../../src/exercise/exercise');
+      const regularVerbExercise = new RegularVerbExercise();
+      const irregularVerbExercise = new IrregularVerbExercise();
+      regularVerbExercise.verb = readAll().verbs.regular[0];
+      regularVerbExercise.person = 'Eu'
+      irregularVerbExercise.verb = readAll().verbs.irregular[0];
+      irregularVerbExercise.person = 'Eu'
+      return {
+        __esModule: true,
+        modelActual,
+        generateUniqeExercises: () => [regularVerbExercise, irregularVerbExercise]
+      };
+    });
+    const appModules = requireAllModules();
+    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const input = new appModules.Input(appModules.eventProcessor);
+    const sessionManager = new appModules.SessionManager(
+      appModules.eventProcessor,
+      2
+    );
+    appModules.eventProcessor.emit('APP_STARTED');
+    simulateTyping('sou');
+    process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
+
+    await sleep(50);
+
+    simulateTyping('falo');
+    process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
+
+    await sleep(50);
+
+    const eventHistory = appModules.eventProcessor.eventHistory.map(
+      (event: { event: any }) => event.event
+    );
+    expect(eventHistory).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
+  });
+
 });
