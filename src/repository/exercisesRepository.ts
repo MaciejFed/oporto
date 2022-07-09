@@ -42,9 +42,57 @@ export const db: Schema = {
         Infinitive: 'ser',
         Eu: 'sou',
         Tu: 'és',
-        'Ela/Ele/Vocé': 'é',
+        'Ela/Ele/Você': 'é',
         Nós: 'somos',
         'Eles/Elas/Vocēs': 'são'
+      },
+      {
+        Infinitive: 'estar',
+        Eu: 'estou',
+        Tu: 'estás',
+        'Ela/Ele/Você': 'está',
+        Nós: 'estamos',
+        'Eles/Elas/Vocēs': 'estão'
+      },
+      {
+        Infinitive: 'ir',
+        Eu: 'vou',
+        Tu: 'vais',
+        'Ela/Ele/Você': 'vai',
+        Nós: 'vamos',
+        'Eles/Elas/Vocēs': 'vão'
+      },
+      {
+        Infinitive: 'ter',
+        Eu: 'tenho',
+        Tu: 'tens   ',
+        'Ela/Ele/Você': 'tem',
+        Nós: 'temos',
+        'Eles/Elas/Vocēs': 'têm'
+      },
+      {
+        Infinitive: 'querer',
+        Eu: 'quero',
+        Tu: 'queres   ',
+        'Ela/Ele/Você': 'quer',
+        Nós: 'queremos',
+        'Eles/Elas/Vocēs': 'querem'
+      },
+      {
+        Infinitive: 'ver',
+        Eu: 'vejo',
+        Tu: 'vês   ',
+        'Ela/Ele/Você': 'vê',
+        Nós: 'vemos',
+        'Eles/Elas/Vocēs': 'vêem'
+      },
+      {
+        Infinitive: 'fazer',
+        Eu: 'faço',
+        Tu: 'fazes   ',
+        'Ela/Ele/Você': 'faz',
+        Nós: 'fazemos',
+        'Eles/Elas/Vocēs': 'fazem'
       }
     ]
   },

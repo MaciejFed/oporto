@@ -6,7 +6,7 @@ import { getRandomElement } from '../common/common';
 export enum Person {
   Eu = 'Eu',
   Tu = 'Tu',
-  ElaEleVocé = 'Ela/Ele/Vocé',
+  ElaEleVocê = 'Ela/Ele/Você',
   Nós = 'Nós',
   ElesElasVosēs = 'Eles/Elas/Vocēs'
 }
@@ -30,7 +30,7 @@ export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) =
         return `${verb.substring(0, verb.length - 2)}o`;
       case 'Tu':
         return `${verb.substring(0, verb.length - 2)}es`;
-      case 'Ela/Ele/Vocé':
+      case 'Ela/Ele/Você':
         return verb.substring(0, verb.length - 1);
       case 'Nós':
         return `${verb.substring(0, verb.length - 1)}mos`;
@@ -44,7 +44,7 @@ export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) =
         return `${verb.substring(0, verb.length - 2)}o`;
       case 'Tu':
         return `${verb.substring(0, verb.length - 2)}es`;
-      case 'Ela/Ele/Vocé':
+      case 'Ela/Ele/Você':
         return `${verb.substring(0, verb.length - 2)}e`;
       case 'Nós':
         return `${verb.substring(0, verb.length - 1)}mos`;
