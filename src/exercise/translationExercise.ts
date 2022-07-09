@@ -7,25 +7,31 @@ export class TranslationExercise implements Exercise, Comperable {
   exercsiseType: ExerciseType;
   correctAnswer: string;
   translation: Translation;
+  translationType: 'toEnglish' | 'toPortuguese';
 
   constructor() {
     this.exercsiseType = 'Translation';
     this.translation = getRandomTranslation();
     this.correctAnswer = this.getCorrectAnswer();
+    this.translationType = Math.random() < 0.25 ? 'toEnglish' : 'toPortuguese';
   }
 
   getExerciseBodyPrefix(): string {
-    return 'Portuguese: ';
+    return this.translationType === 'toEnglish' ? 'English: ' : 'Portuguese: ';
   }
 
   getExerciseBodySuffix = () => '';
 
-  getExerciseDescription = () => `English: ${this.translation.english}`;
+  getExerciseDescription = () => {
+    if (this.translationType === 'toPortuguese') {
+      return `English: ${this.translation.english}`;
+    }
+    return `Portuguese: ${this.getWordWithGender()}`;
+  };
 
   getExercsiseExplanation = () => undefined;
 
-  getCorrectAnswer = () =>
-    `${this.translation.portuguese.gender === 'male' ? 'o' : 'a'} ${this.translation.portuguese.word}`;
+  getCorrectAnswer = () => (this.translationType === 'toEnglish' ? this.translation.english : this.getWordWithGender());
 
   checkAnsweCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
@@ -33,4 +39,8 @@ export class TranslationExercise implements Exercise, Comperable {
 
   equal = (other: TranslationExercise) =>
     other.exercsiseType === 'Translation' && this.translation.portuguese.word === other.translation.portuguese.word;
+
+  getWordWithGender() {
+    return `${this.translation.portuguese.gender === 'male' ? 'o' : 'a'} ${this.translation.portuguese.word}`;
+  }
 }
