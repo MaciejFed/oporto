@@ -1,6 +1,6 @@
 import { Exercise, ExerciseType } from '../../src/exercise/exercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../../src/exercise/verbExercise';
-import { AnswerInputType } from '../../src/input/input';
+import { AnswerInputType } from '../../src/io/input';
 import { 
     exerciseNeverDone, 
     exerciseWrong, 

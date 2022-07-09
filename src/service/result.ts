@@ -1,5 +1,5 @@
 import { Exercise, ExerciseType } from '../exercise/exercise';
-import { AnswerInputType } from '../input/input';
+import { AnswerInputType } from '../io/input';
 
 export type Result = {
   exercise: Exercise;

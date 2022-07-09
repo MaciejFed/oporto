@@ -1,4 +1,4 @@
-import { Point } from '../terminal/terminal';
+import { Point } from '../io/terminal';
 
 export const APP_STARTED = 'APP_STARTED';
 export const APP_FINISHED = 'APP_FINISHED';

@@ -1,7 +1,7 @@
 import { EventProcessor } from '../event/eventProcessor';
-import { ANSWER_SUBMITED, APP_FINISHED, KEY_PRESSED } from './../event/events';
+import { ANSWER_SUBMITED, APP_FINISHED, KEY_PRESSED } from '../event/events';
 import readline from 'readline';
-import { logger } from '../logger/logger';
+import { logger } from '../common/logger';
 
 export type AnswerInputType = 'keyboard' | 'voice';
 

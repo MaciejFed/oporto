@@ -1,5 +1,5 @@
 import { Comperable } from '../common/common';
-import { Translation } from '../repository/schema';
+import { Translation } from '../repository/exercisesRepository';
 import { getRandomTranslation } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { sleep } from '../../src/utils/utils';
+import { sleep } from '../../src/common/common';
 import { simulateTyping } from '../util';
 
 const output: string[] = [];
@@ -72,8 +72,8 @@ function requireAllModules(): AppModules {
     require('../../src/event/eventProcessor').eventProcessor;
   const SessionManager =
     require('../../src/session/sessionManager').SessionManager;
-  const Input = require('../../src/input/input').Input;
-  const Terminakl = require('../../src/terminal/terminal').Terminakl;
+  const Input = require('../../src/io/input').Input;
+  const Terminakl = require('../../src/io/terminal').Terminakl;
 
   return {
     SessionManager: SessionManager,

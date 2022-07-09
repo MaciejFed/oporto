@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 import { readAll } from '../repository/exercisesRepository';
-import { IrregularVerb, RegularVerb } from '../repository/schema';
+import { IrregularVerb, RegularVerb } from '../repository/exercisesRepository';
 import { getRandomElement } from '../common/common';
 
 export enum Person {
