@@ -3,7 +3,7 @@ import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
 import { EventProcessor } from '../event/eventProcessor';
-import { logger } from '../logger/logger';
+import { logger } from '../common/logger';
 import {
   APP_STARTED,
   EXERCISE_DESCRIPTION_PRINTED,
@@ -14,7 +14,7 @@ import {
   EXERCISE_NEXT,
   EXERCISE_STARTED,
   APP_FINISHED
-} from './../event/events';
+} from '../event/events';
 import {
   preExerciseClear,
   printExerciseBody,

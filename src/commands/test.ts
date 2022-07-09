@@ -1,8 +1,8 @@
 import { eventProcessor } from '../event/eventProcessor';
 import { APP_STARTED } from '../event/events';
-import { Input } from '../input/input';
+import { Input } from '../io/input';
 import { SessionManager } from '../session/sessionManager';
-import { Terminakl } from '../terminal/terminal';
+import { Terminakl } from '../io/terminal';
 
 const terminal = new Terminakl(eventProcessor);
 const input = new Input(eventProcessor);

@@ -12,10 +12,10 @@ import {
 import { AppEventListener } from '../event/eventListener';
 import { EventProcessor } from '../event/eventProcessor';
 import { Exercise, generateUniqeExercises } from '../exercise/exercise';
-import { logger } from '../logger/logger';
+import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
 import { saveNewResult } from '../repository/resultRepository';
-import { AnswerInputType } from '../input/input';
+import { AnswerInputType } from '../io/input';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;

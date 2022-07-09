@@ -1,7 +1,7 @@
 import clear from 'clear';
 import EventEmitter from 'events';
 import winston from 'winston';
-import { logger } from '../logger/logger';
+import { logger } from '../common/logger';
 import { APP_EVENT, APP_STARTED } from './events';
 
 type EmittedEvent = {

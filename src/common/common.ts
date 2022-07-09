@@ -21,3 +21,7 @@ export function onlyDistinct(arr: Comperable[]): Comperable[] {
 export function getRandomElement<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
+export async function sleep(milliseconds: number) {
+  await new Promise((resolve) => setTimeout(resolve, milliseconds));
+}

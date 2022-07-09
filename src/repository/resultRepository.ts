@@ -2,9 +2,9 @@ import { Exercise, ExerciseType } from '../exercise/exercise';
 import { FitInGapExercise } from '../exercise/fitInGapExercise';
 import { TranslationExercise } from '../exercise/translationExercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../exercise/verbExercise';
-import { logger } from '../logger/logger';
+import { logger } from '../common/logger';
 import { Result } from '../service/result';
-import { readFromFile, saveToFile } from './file';
+import { readFromFile, saveToFile } from '../io/file';
 
 export function getAllResults(): Result[] {
   const results = readFromFile();

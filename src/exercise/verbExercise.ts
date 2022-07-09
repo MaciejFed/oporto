@@ -1,5 +1,5 @@
 import { Comperable } from '../common/common';
-import { IrregularVerb, RegularVerb } from '../repository/schema';
+import { IrregularVerb, RegularVerb } from '../repository/exercisesRepository';
 import {
   getRandomRegularVerb,
   getRandomPerson,

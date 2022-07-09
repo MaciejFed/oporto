@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { eventProcessor } from '../src/event/eventProcessor';
-import { Input } from '../src/input/input';
+import { Input } from '../src/io/input';
 import { SessionManager } from '../src/session/sessionManager';
-import { Terminakl } from '../src/terminal/terminal';
-import { sleep } from '../src/utils/utils';
+import { Terminakl } from '../src/io/terminal';
+import { sleep } from '../src/common/common';
 import { simulateTyping } from './util';
 
 const terminal = new Terminakl(eventProcessor);

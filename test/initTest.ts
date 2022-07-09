@@ -3,8 +3,8 @@ global.process.stdin.setRawMode = (mode: boolean) => undefined;
 
 jest.spyOn(console, 'log').mockImplementation(() => {});
 
-jest.mock('../src/repository/file', () => {
-    const fileModuleActual = jest.requireActual('../src/repository/file');
+jest.mock('../src/io/file', () => {
+    const fileModuleActual = jest.requireActual('../src/io/file');
     return {
       ...fileModuleActual,
       readFromFile: () => `[

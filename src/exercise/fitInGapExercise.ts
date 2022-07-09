@@ -1,5 +1,5 @@
 import { Comperable } from '../common/common';
-import { FitIn } from '../repository/schema';
+import { FitIn } from '../repository/exercisesRepository';
 import { getRandomFitInExercise } from '../service/fitin';
 import { Exercise, ExerciseType } from './exercise';
 
