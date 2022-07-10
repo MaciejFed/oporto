@@ -18,7 +18,9 @@ import {
     valueDoneToday, 
     VALUE_EXERCISE_RANDOMNESS_UP_LIMIT,
     exerciseNeverDoneByVoice,
-    VALUE_EXERCISE_NEVER_DONE_BY_VOICE
+    VALUE_EXERCISE_NEVER_DONE_BY_VOICE,
+    exerciseLevelPriority,
+    VALUE_EXERCISE_PER_ONE_LEVEL
 } from '../../src/service/priority';
 import { Result } from '../../src/service/result';
 
@@ -182,6 +184,19 @@ describe('Priority', () => {
         expect(actualPriority[0].priorityName).toEqual('EXERCISE_RANDOMNESS');
         expect(actualPriority[0].priorityValue).toBeLessThan(VALUE_EXERCISE_RANDOMNESS_UP_LIMIT);
     })
+
+    it('Exercise Level Priority', () => {
+        const exerciseLevel = 2;
+        const testExercise = generateExercise('IrregularVerb');
+        testExercise.exerciseLevel = exerciseLevel;
+        const expectedDiffictultyPriority = VALUE_EXERCISE_PER_ONE_LEVEL * exerciseLevel;
+        const actualPriority = exerciseLevelPriority(testExercise, []);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('EXERCISE_LEVEL');
+        expect(actualPriority[0].priorityValue).toEqual(expectedDiffictultyPriority);
+    })
+
 });
 
 

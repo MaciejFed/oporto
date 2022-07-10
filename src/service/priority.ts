@@ -11,7 +11,8 @@ export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
-export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 25;
+export const VALUE_EXERCISE_PER_ONE_LEVEL = 25;
+export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 50;
 
 export function valueDoneToday(doneTodayCount: number): number {
   switch (doneTodayCount) {
@@ -38,6 +39,7 @@ export type PriorityName =
   | 'EXERCISE_CORRECT'
   | 'EXERCISE_DONE_TODAY'
   | 'EXERCISE_RANDOMNESS'
+  | 'EXERCISE_LEVEL'
   | 'NO_PRIORITY';
 
 export type Priority = {
@@ -53,6 +55,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
+  exerciseLevelPriority,
   exerciseRandomnessPriority
 ];
 
@@ -175,6 +178,16 @@ export function exerciseRandomnessPriority(exercise: Exercise, results: Result[]
       exercise,
       priorityName: 'EXERCISE_RANDOMNESS',
       priorityValue: Math.floor(Math.random() * VALUE_EXERCISE_RANDOMNESS_UP_LIMIT)
+    }
+  ];
+}
+
+export function exerciseLevelPriority(exercise: Exercise, results: Result[]): Priority[] {
+  return [
+    {
+      exercise,
+      priorityName: 'EXERCISE_LEVEL',
+      priorityValue: exercise.exerciseLevel * VALUE_EXERCISE_PER_ONE_LEVEL
     }
   ];
 }
