@@ -105,7 +105,6 @@ describe('IT', () => {
     expect(correctAnswersLogCount).toBe(2);
     expect(wrongAnswersLogCount).toBe(1);
     expect(mockExit).toHaveBeenCalledWith(0);
-    expect(sayCommands).toEqual([correctAnswer1Question, correctAnswer2Question, sessionManager.currentExercise?.getCorrectAnswer(), ].map((answer) => `say "${answer}"`));
 
     console.log(output);
   });

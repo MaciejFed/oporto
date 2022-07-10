@@ -4,27 +4,38 @@ export type RegularVerb = string;
 
 export type IrregularVerb = { [key in Person]: string } & { Infinitive: string };
 
-type NounGender = 'male' | 'female';
-
-type PortugueseNoun = {
-  word: string;
-  gender: NounGender;
-};
-
 type Verbs = {
   regular: RegularVerb[];
   irregular: IrregularVerb[];
 };
 
-export type Translation = {
+type NounGender = 'masculine' | 'feminine';
+
+type SentenceType = 'question' | 'statement';
+
+type PortugueseNoun = {
+  word: string;
+  plurar?: string;
+  gender: NounGender;
+};
+
+export type Noun = {
   english: string;
   portuguese: PortugueseNoun;
   exerciseLevel: number;
 };
 
+export type Sentence = {
+  english: string;
+  portuguese: string;
+  exerciseLevel: number;
+  sentenceType: SentenceType;
+};
+
 export type Schema = {
   verbs: Verbs;
-  translations: Translation[];
+  nouns: Noun[];
+  sentences: Sentence[];
   fitIn: FitIn[];
 };
 
@@ -38,7 +49,7 @@ export type FitIn = {
 
 export const db: Schema = {
   verbs: {
-    regular: ['falar', 'comer', 'abrir'],
+    regular: ['falar', 'comer', 'abrir', 'estudar'],
     irregular: [
       {
         Infinitive: 'ser',
@@ -98,12 +109,13 @@ export const db: Schema = {
       }
     ]
   },
-  translations: [
+  nouns: [
     {
       english: 'girlfriend',
       portuguese: {
         word: 'namorada',
-        gender: 'female'
+        plurar: 'namoradas',
+        gender: 'feminine'
       },
       exerciseLevel: 1
     },
@@ -111,8 +123,124 @@ export const db: Schema = {
       english: 'tea',
       portuguese: {
         word: 'chá',
-        gender: 'male'
+        gender: 'masculine'
       },
+      exerciseLevel: 1
+    },
+    {
+      english: 'home',
+      portuguese: {
+        word: 'casa',
+        plurar: 'casas',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'book',
+      portuguese: {
+        word: 'livro',
+        plurar: 'livros',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'city',
+      portuguese: {
+        word: 'cidade',
+        plurar: 'cidades',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'time',
+      portuguese: {
+        word: 'tempo',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    }
+  ],
+  sentences: [
+    {
+      english: 'How are you?',
+      portuguese: 'Como estás?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Good idea',
+      portuguese: 'Boa ideia',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'All good',
+      portuguese: 'Tudo bem',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Until tomorrow/See you tomorrow',
+      portuguese: 'Até amanhã',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Do you want a coffee?',
+      portuguese: 'Tomas um café?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      // eslint-disable-next-line quotes
+      english: "I'm Marta",
+      portuguese: 'Sou a Marta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Nice to meet you',
+      portuguese: 'Muito gosto',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'And you?',
+      portuguese: 'E tu?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Sandra is a studend',
+      portuguese: 'A Sandra é estudante',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Andre and Paula are friends',
+      portuguese: 'O Andre e a Paula são amigos',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Paulo is a friend of Vasco',
+      portuguese: 'O Paulo é a amigo do Vasco',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Professor Vasco is very simpatic',
+      portuguese: 'O professor Vasco é muito simpático',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What a surprise',
+      portuguese: 'Que surpesa',
+      sentenceType: 'statement',
       exerciseLevel: 1
     }
   ],
@@ -121,35 +249,35 @@ export const db: Schema = {
       prefix: 'Eu',
       answer: 'tomo',
       suffix: 'um chá.',
-      explanation: '"de" - Inidca origem',
+      explanation: '"de" - Indica origem',
       exerciseLevel: 1
     },
     {
       prefix: 'Ela é',
       answer: 'de',
       suffix: 'Angola.',
-      explanation: '"de" - Inidca origem',
+      explanation: '"de" - Indica origem',
       exerciseLevel: 1
     },
     {
       prefix: 'Ela é',
       answer: 'de',
       suffix: 'Paris.',
-      explanation: '"de" - Inidca origem',
+      explanation: '"de" - Indica origem',
       exerciseLevel: 1
     },
     {
       prefix: 'Moro',
       answer: 'em',
       suffix: 'Cascais.',
-      explanation: '"em" - Inidca localização',
+      explanation: '"em" - Indica localização',
       exerciseLevel: 1
     },
     {
       prefix: '',
       answer: 'em',
       suffix: 'que rua mora?',
-      explanation: '"em" - Inidca localização',
+      explanation: '"em" - Indica localização',
       exerciseLevel: 1
     },
     {

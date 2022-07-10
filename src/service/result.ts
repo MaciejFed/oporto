@@ -1,4 +1,4 @@
-import { Exercise, ExerciseType } from '../exercise/exercise';
+import { Exercise } from '../exercise/exercise';
 import { AnswerInputType } from '../io/input';
 
 export type Result = {
@@ -18,5 +18,3 @@ export function convertToResult(exercise: Exercise, answer: string, answerInputT
     date: new Date()
   };
 }
-
-export function appendResultToDb() {}

@@ -22,13 +22,16 @@ export class FitInGapExercise implements Exercise, Comperable {
 
   getExerciseBodySuffix = () => ' '.concat(this.fitIn.suffix);
 
-  getExerciseDescription = () => 'Complete the sentece.';
+  getExerciseDescription = () => 'Complete the sentence.';
 
   getCorrectAnswer = () => this.fitIn.answer;
 
   checkAnsweCorrect(answer: string): boolean {
     return this.fitIn.answer.toLowerCase() === answer.toLowerCase();
   }
+
+  getRepeatAnswerPhrase = () =>
+    `${this.getExerciseBodyPrefix()} ${this.correctAnswer} ${this.getExerciseBodySuffix()}}`;
 
   equal = (exercise: FitInGapExercise) =>
     exercise.exercsiseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);

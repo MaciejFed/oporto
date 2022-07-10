@@ -1,10 +1,10 @@
 import { Comperable, getRandomElement, onlyDistinct } from '../common/common';
 import { IrregularVerbExercise, RegularVerbExercise } from './verbExercise';
 import { sortExercises } from '../service/priority';
-import { TranslationExercise } from './translationExercise';
+import { NounTranslationExercise, SentenceTranslationExercise } from './translationExercise';
 import { FitInGapExercise } from './fitInGapExercise';
 
-export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'Translation' | 'FitInGap';
+export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'NounTranslation' | 'SentenceTranslation' | 'FitInGap';
 
 export interface Exercise extends Comperable {
   exercsiseType: ExerciseType;
@@ -16,6 +16,7 @@ export interface Exercise extends Comperable {
   getExercsiseExplanation(): string | undefined;
   getCorrectAnswer(): string;
   checkAnsweCorrect(answer: string): boolean;
+  getRepeatAnswerPhrase(): string;
 }
 
 type ExerciseGenerator = () => Exercise;
@@ -23,7 +24,8 @@ type ExerciseGenerator = () => Exercise;
 const exerciseGenerators: ExerciseGenerator[] = [
   () => new RegularVerbExercise(),
   () => new IrregularVerbExercise(),
-  () => new TranslationExercise(),
+  () => new NounTranslationExercise(),
+  () => new SentenceTranslationExercise(),
   () => new FitInGapExercise()
 ];
 
