@@ -8,12 +8,14 @@ export class TranslationExercise implements Exercise, Comperable {
   correctAnswer: string;
   translation: Translation;
   translationType: 'toEnglish' | 'toPortuguese';
+  exerciseLevel: number;
 
   constructor() {
     this.exercsiseType = 'Translation';
     this.translation = getRandomTranslation();
     this.correctAnswer = this.getCorrectAnswer();
     this.translationType = Math.random() < 0.25 ? 'toEnglish' : 'toPortuguese';
+    this.exerciseLevel = this.translation.exerciseLevel;
   }
 
   getExerciseBodyPrefix(): string {

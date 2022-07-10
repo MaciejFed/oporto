@@ -9,6 +9,7 @@ export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'Translation' | 'Fi
 export interface Exercise extends Comperable {
   exercsiseType: ExerciseType;
   correctAnswer: string;
+  exerciseLevel: number;
   getExerciseBodyPrefix(): string;
   getExerciseBodySuffix(): string;
   getExerciseDescription(): string;

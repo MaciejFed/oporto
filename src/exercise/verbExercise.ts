@@ -15,12 +15,14 @@ export class RegularVerbExercise implements Exercise, Comperable {
   verb: RegularVerb;
   person: Person;
   correctAnswer: string;
+  exerciseLevel: number;
 
   constructor() {
     this.exercsiseType = 'RegularVerb';
     this.verb = getRandomRegularVerb();
     this.person = getRandomPerson();
     this.correctAnswer = this.getCorrectAnswer();
+    this.exerciseLevel = 1;
   }
 
   getExercsiseExplanation = () => undefined;
@@ -47,12 +49,14 @@ export class IrregularVerbExercise implements Exercise, Comperable {
   verb: IrregularVerb;
   person: Person;
   correctAnswer: string;
+  exerciseLevel: number;
 
   constructor() {
     this.exercsiseType = 'IrregularVerb';
     this.verb = getRandomIrregularVerb();
     this.person = getRandomPerson();
     this.correctAnswer = this.getCorrectAnswer();
+    this.exerciseLevel = 1;
   }
 
   getExercsiseExplanation = () => undefined;

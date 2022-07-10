@@ -19,6 +19,7 @@ type Verbs = {
 export type Translation = {
   english: string;
   portuguese: PortugueseNoun;
+  exerciseLevel: number;
 };
 
 export type Schema = {
@@ -32,6 +33,7 @@ export type FitIn = {
   answer: string;
   suffix: string;
   explanation?: string;
+  exerciseLevel: number;
 };
 
 export const db: Schema = {
@@ -102,14 +104,16 @@ export const db: Schema = {
       portuguese: {
         word: 'namorada',
         gender: 'female'
-      }
+      },
+      exerciseLevel: 1
     },
     {
       english: 'tea',
       portuguese: {
         word: 'chá',
         gender: 'male'
-      }
+      },
+      exerciseLevel: 1
     }
   ],
   fitIn: [
@@ -117,55 +121,64 @@ export const db: Schema = {
       prefix: 'Eu',
       answer: 'tomo',
       suffix: 'um chá.',
-      explanation: '"de" - Inidca origem'
+      explanation: '"de" - Inidca origem',
+      exerciseLevel: 1
     },
     {
       prefix: 'Ela é',
       answer: 'de',
       suffix: 'Angola.',
-      explanation: '"de" - Inidca origem'
+      explanation: '"de" - Inidca origem',
+      exerciseLevel: 1
     },
     {
       prefix: 'Ela é',
       answer: 'de',
       suffix: 'Paris.',
-      explanation: '"de" - Inidca origem'
+      explanation: '"de" - Inidca origem',
+      exerciseLevel: 1
     },
     {
       prefix: 'Moro',
       answer: 'em',
       suffix: 'Cascais.',
-      explanation: '"em" - Inidca localização'
+      explanation: '"em" - Inidca localização',
+      exerciseLevel: 1
     },
     {
       prefix: '',
       answer: 'em',
       suffix: 'que rua mora?',
-      explanation: '"em" - Inidca localização'
+      explanation: '"em" - Inidca localização',
+      exerciseLevel: 1
     },
     {
       prefix: 'Moro',
       answer: 'na',
       suffix: 'Avenida do Mar.',
-      explanation: '"na" - em + a'
+      explanation: '"na" - em + a',
+      exerciseLevel: 1
     },
     {
       prefix: 'Eles estudam',
       answer: 'na',
       suffix: 'universidade.',
-      explanation: '"na" - em + a'
+      explanation: '"na" - em + a',
+      exerciseLevel: 1
     },
     {
       prefix: 'Moro',
       answer: 'no',
       suffix: 'número treze.',
-      explanation: '"no" - em + o'
+      explanation: '"no" - em + o',
+      exerciseLevel: 1
     },
     {
       prefix: 'O Paulo estuda',
       answer: 'no',
       suffix: 'Japão.',
-      explanation: '"no" - em + o'
+      explanation: '"no" - em + o',
+      exerciseLevel: 1
     }
   ]
 };
