@@ -44,7 +44,7 @@ jest.mock('../src/io/file', () => {
               "english": "girlfriend",
               "portuguese": {
                 "word": "namorada",
-                "gender": "female"
+                "gender": "feminine"
               }
             },
             "correctAnswer": "a namorada"

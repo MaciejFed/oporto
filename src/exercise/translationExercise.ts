@@ -47,7 +47,7 @@ export class NounTranslationExercise implements Exercise, Comperable {
     this.translationType === other.translationType;
 
   getWordWithGender() {
-    return `${this.noun.portuguese.gender === 'male' ? 'o' : 'a'} ${this.noun.portuguese.word}`;
+    return `${this.noun.portuguese.gender === 'masculine' ? 'o' : 'a'} ${this.noun.portuguese.word}`;
   }
 }
 

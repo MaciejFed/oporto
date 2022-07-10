@@ -9,7 +9,7 @@ type Verbs = {
   irregular: IrregularVerb[];
 };
 
-type NounGender = 'male' | 'female';
+type NounGender = 'masculine' | 'feminine';
 
 type SentenceType = 'question' | 'statement';
 
@@ -115,7 +115,7 @@ export const db: Schema = {
       portuguese: {
         word: 'namorada',
         plurar: 'namoradas',
-        gender: 'female'
+        gender: 'feminine'
       },
       exerciseLevel: 1
     },
@@ -123,7 +123,42 @@ export const db: Schema = {
       english: 'tea',
       portuguese: {
         word: 'chá',
-        gender: 'male'
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'home',
+      portuguese: {
+        word: 'casa',
+        plurar: 'casas',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'book',
+      portuguese: {
+        word: 'livro',
+        plurar: 'livros',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'city',
+      portuguese: {
+        word: 'cidade',
+        plurar: 'cidades',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'time',
+      portuguese: {
+        word: 'tempo',
+        gender: 'masculine'
       },
       exerciseLevel: 1
     }
