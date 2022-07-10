@@ -16,6 +16,7 @@ export interface Exercise extends Comperable {
   getExercsiseExplanation(): string | undefined;
   getCorrectAnswer(): string;
   checkAnsweCorrect(answer: string): boolean;
+  getRepeatAnswerPhrase(): string;
 }
 
 type ExerciseGenerator = () => Exercise;

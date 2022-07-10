@@ -40,6 +40,8 @@ export class RegularVerbExercise implements Exercise, Comperable {
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
+  getRepeatAnswerPhrase = () => `${this.person} ${this.correctAnswer}`;
+
   equal = (exercise: RegularVerbExercise) =>
     exercise.exercsiseType === 'RegularVerb' && this.verb === exercise.verb && this.person === exercise.person;
 }
@@ -73,6 +75,8 @@ export class IrregularVerbExercise implements Exercise, Comperable {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
+
+  getRepeatAnswerPhrase = () => `${this.person} ${this.correctAnswer}`;
 
   equal = (exercise: IrregularVerbExercise) =>
     exercise.exercsiseType === 'IrregularVerb' &&

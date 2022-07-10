@@ -160,6 +160,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
+      // eslint-disable-next-line quotes
       english: "I'm Marta",
       portuguese: 'Sou a Marta',
       sentenceType: 'statement',

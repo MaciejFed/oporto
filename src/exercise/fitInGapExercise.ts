@@ -30,6 +30,9 @@ export class FitInGapExercise implements Exercise, Comperable {
     return this.fitIn.answer.toLowerCase() === answer.toLowerCase();
   }
 
+  getRepeatAnswerPhrase = () =>
+    `${this.getExerciseBodyPrefix()} ${this.correctAnswer} ${this.getExerciseBodySuffix()}}`;
+
   equal = (exercise: FitInGapExercise) =>
     exercise.exercsiseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);
 }

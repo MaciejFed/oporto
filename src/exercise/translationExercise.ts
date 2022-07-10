@@ -39,6 +39,8 @@ export class NounTranslationExercise implements Exercise, Comperable {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
+  getRepeatAnswerPhrase = () => (this.translationType === 'toEnglish' ? '' : this.correctAnswer);
+
   equal = (other: NounTranslationExercise) =>
     other.exercsiseType === 'NounTranslation' &&
     this.noun.portuguese.word === other.noun.portuguese.word &&
@@ -84,6 +86,8 @@ export class SentenceTranslationExercise implements Exercise, Comperable {
   checkAnsweCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
+
+  getRepeatAnswerPhrase = () => (this.translationType === 'toEnglish' ? '' : this.correctAnswer);
 
   equal = (other: SentenceTranslationExercise) =>
     other.exercsiseType === 'SentenceTranslation' &&

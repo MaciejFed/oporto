@@ -22,6 +22,7 @@ import {
   printExerciseExplanation,
   printInBetweenMenu
 } from './terminalUtils';
+import { Exercise } from '../exercise/exercise';
 
 export type Point = {
   x: number;
@@ -38,6 +39,7 @@ export class Terminakl {
   correctAnswer: string;
   exerciseLoop: any;
   exerciseInProgress: boolean;
+  exercise?: Exercise;
 
   constructor(eventProcessor: EventProcessor) {
     this.eventProcessor = eventProcessor;
@@ -104,14 +106,15 @@ export class Terminakl {
   }
 
   private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer, answerInputType }) => {
+    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer, answerInputType, exercise }) => {
+      this.exercise = exercise;
       terminal.hideCursor();
       this.exerciseInProgress = false;
       terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
       this.correctAnswer = correctAnswer;
-      this.sayCorrectAnswer(correctAnswer);
+      this.sayCorrectAnswerPhrase();
       // this.eventProcessor.emit(EXERCISE_NEXT);
     });
   }
@@ -142,7 +145,7 @@ export class Terminakl {
         printExerciseExplanation(this.exerciseExplanation);
         break;
       case 'r':
-        this.saySampleSentence();
+        this.sayCorrectAnswerPhrase();
         break;
       default:
         terminal.hideCursor(false);
@@ -152,11 +155,7 @@ export class Terminakl {
     }
   }
 
-  private saySampleSentence() {
-    exec(`say "${this.correctAnswer}"`);
-  }
-
-  private sayCorrectAnswer(correctAnswer: string) {
-    exec(`say "${correctAnswer}"`);
+  private sayCorrectAnswerPhrase() {
+    exec(`say "${this.exercise?.getRepeatAnswerPhrase()}"`);
   }
 }
