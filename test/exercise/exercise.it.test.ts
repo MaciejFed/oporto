@@ -64,7 +64,7 @@ describe('Exercises IT Snapshot', () => {
     process.stdin.removeAllListeners();
   });
 
-  it('Translation', async () => {
+  it('NounTranslation', async () => {
     jest.mock('../../src/exercise/exercise', () => {
       const readAll = require('../../src/repository/exercisesRepository').readAll;
       const NounTranslationExercise = require('../../src/exercise/translationExercise').NounTranslationExercise;
@@ -108,6 +108,49 @@ describe('Exercises IT Snapshot', () => {
     expect(output).toMatchSnapshot();
   });
 
+  it('SentenceTranslation', async () => {
+    jest.mock('../../src/exercise/exercise', () => {
+      const readAll = require('../../src/repository/exercisesRepository').readAll;
+      const SentenceTranslationExercise = require('../../src/exercise/translationExercise').SentenceTranslationExercise;
+      const modelActual = jest.requireActual('../../src/exercise/exercise');
+      const sentenceTranslationExerciseToPortuguese = new SentenceTranslationExercise();
+      sentenceTranslationExerciseToPortuguese.sentence = readAll().sentences[0];
+      sentenceTranslationExerciseToPortuguese.translationType = 'toPortuguese';
+      const sentenceTranslationExerciseToEnglish= new SentenceTranslationExercise();
+      sentenceTranslationExerciseToEnglish.sentence = readAll().sentences[0];
+      sentenceTranslationExerciseToEnglish.translationType = 'toEnglish';
+      return {
+        __esModule: true,
+        modelActual,
+        generateUniqeExercises: () => [sentenceTranslationExerciseToEnglish, sentenceTranslationExerciseToPortuguese]
+      };
+    });
+    const appModules = requireAllModules();
+    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const input = new appModules.Input(appModules.eventProcessor);
+    const sessionManager = new appModules.SessionManager(
+      appModules.eventProcessor,
+      2
+    );
+    appModules.eventProcessor.emit('APP_STARTED');
+    simulateTyping('Como estás?');
+    process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
+
+    await sleep(50);
+
+    simulateTyping('How are you?');
+    process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'n' });
+
+    await sleep(50);
+
+    const eventHistory = appModules.eventProcessor.eventHistory.map(
+      (event: { event: any }) => event.event
+    );
+    expect(eventHistory).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
+  });
 
   it('Fit In', async () => {
     jest.mock('../../src/exercise/exercise', () => {

@@ -11,6 +11,8 @@ type Verbs = {
 
 type NounGender = 'male' | 'female';
 
+type SentenceType = 'question' | 'statement';
+
 type PortugueseNoun = {
   word: string;
   plurar?: string;
@@ -23,9 +25,17 @@ export type Noun = {
   exerciseLevel: number;
 };
 
+export type Sentence = {
+  english: string;
+  portuguese: string;
+  exerciseLevel: number;
+  sentenceType: SentenceType;
+};
+
 export type Schema = {
   verbs: Verbs;
   nouns: Noun[];
+  sentences: Sentence[];
   fitIn: FitIn[];
 };
 
@@ -39,7 +49,7 @@ export type FitIn = {
 
 export const db: Schema = {
   verbs: {
-    regular: ['falar', 'comer', 'abrir'],
+    regular: ['falar', 'comer', 'abrir', 'estudar'],
     irregular: [
       {
         Infinitive: 'ser',
@@ -115,6 +125,86 @@ export const db: Schema = {
         word: 'chá',
         gender: 'male'
       },
+      exerciseLevel: 1
+    }
+  ],
+  sentences: [
+    {
+      english: 'How are you?',
+      portuguese: 'Como estás?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Good idea',
+      portuguese: 'Boa ideia',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'All good',
+      portuguese: 'Tudo bem',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Until tomorrow/See you tomorrow',
+      portuguese: 'Até amanhã',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Do you want a coffee?',
+      portuguese: 'Tomas um café?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm Marta",
+      portuguese: 'Sou a Marta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Nice to meet you',
+      portuguese: 'Muito gosto',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'And you?',
+      portuguese: 'E tu?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Sandra is a studend',
+      portuguese: 'A Sandra é estudante',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Andre and Paula are friends',
+      portuguese: 'O Andre e a Paula são amigos',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Paulo is a friend of Vasco',
+      portuguese: 'O Paulo é a amigo do Vasco',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Professor Vasco is very simpatic',
+      portuguese: 'O professor Vasco é muito simpático',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What a surprise',
+      portuguese: 'Que surpesa',
+      sentenceType: 'statement',
       exerciseLevel: 1
     }
   ],

@@ -7,7 +7,7 @@ import { Person } from '../../src/service/verb';
 
 describe('Translation Exercise', () => {
 
-    it('Translation', () => {
+    it('NounTranslation', () => {
         const nounTranslationExercise = new NounTranslationExercise();
         const sameNounTranslationExercise = new NounTranslationExercise();
         nounTranslationExercise.noun = readAll().nouns[1];
@@ -16,7 +16,7 @@ describe('Translation Exercise', () => {
         sameNounTranslationExercise.translationType = 'toPortuguese';
 
         
-        expect(nounTranslationExercise.exercsiseType).toEqual('Translation');
+        expect(nounTranslationExercise.exercsiseType).toEqual('NounTranslation');
         expect(nounTranslationExercise.getExerciseDescription()).toEqual('English: tea');
         expect(nounTranslationExercise.getExerciseBodyPrefix()).toEqual('Portuguese: ');
         expect(nounTranslationExercise.getCorrectAnswer()).toEqual('o chá');

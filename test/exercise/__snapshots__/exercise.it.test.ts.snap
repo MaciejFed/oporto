@@ -72,7 +72,7 @@ Array [
 ]
 `;
 
-exports[`Exercises IT Snapshot Translation 1`] = `
+exports[`Exercises IT Snapshot NounTranslation 1`] = `
 Array [
   "APP_STARTED",
   "EXERCISE_STARTED",
@@ -101,7 +101,7 @@ Array [
 ]
 `;
 
-exports[`Exercises IT Snapshot Translation 2`] = `
+exports[`Exercises IT Snapshot NounTranslation 2`] = `
 Array [
   "English: tea",
   "Portuguese: ",
@@ -129,6 +129,113 @@ Array [
   "t",
   "e",
   "a",
+  "Press key to conitinue...",
+  "r - repeat the answer",
+]
+`;
+
+exports[`Exercises IT Snapshot SentenceTranslation 1`] = `
+Array [
+  "APP_STARTED",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "EXERCISE_DESCRIPTION_PRINTED",
+  "EXERCISE_BODY_PRINTED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "KEY_PRESSSED",
+  "ANSWER_SUBMITED",
+  "ANSWER_CHECKED",
+  "KEY_PRESSSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises IT Snapshot SentenceTranslation 2`] = `
+Array [
+  "English: How are you?",
+  "Portuguese: ",
+  "Portuguese: C",
+  "Portuguese: Co",
+  "Portuguese: Com",
+  "Portuguese: Como",
+  "Portuguese: Como ",
+  "Portuguese: Como e",
+  "Portuguese: Como es",
+  "Portuguese: Como est",
+  "Portuguese: Como está",
+  "Portuguese: Como estás",
+  "Portuguese: Como estás?",
+  "Correct! [voice]",
+  "Portuguese: ",
+  "C",
+  "o",
+  "m",
+  "o",
+  " ",
+  "e",
+  "s",
+  "t",
+  "á",
+  "s",
+  "?",
+  "Press key to conitinue...",
+  "r - repeat the answer",
+  "Portuguese: Como estás?",
+  "English: ",
+  "English: H",
+  "English: Ho",
+  "English: How",
+  "English: How ",
+  "English: How a",
+  "English: How ar",
+  "English: How are",
+  "English: How are ",
+  "English: How are y",
+  "English: How are yo",
+  "English: How are you",
+  "English: How are you?",
+  "Correct! [voice]",
+  "English: ",
+  "H",
+  "o",
+  "w",
+  " ",
+  "a",
+  "r",
+  "e",
+  " ",
+  "y",
+  "o",
+  "u",
+  "?",
   "Press key to conitinue...",
   "r - repeat the answer",
 ]

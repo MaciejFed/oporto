@@ -83,7 +83,8 @@ export class SessionManager implements AppEventListener {
         return;
       }
       this.exerciseInProgress = false;
-      const correctAnswer = this.currentExercise?.getCorrectAnswer().toLowerCase();
+      const correctAnswer = this.currentExercise?.getCorrectAnswer();
+      this.answer = this.answer.trim();
       const isCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);
       saveNewResult(convertToResult(this.currentExercise, this.answer, answerInputType));
       logger.info(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);

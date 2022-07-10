@@ -124,7 +124,7 @@ describe('Event Emitter', () => {
     expect(output[6]).toEqual('Correct! [voice]');
     expect(resultCount.greenCount).toBe('como'.length);
     expect(resultCount.redCount).toBe(0);
-    expect(sayCommands[0]).toEqual('say "como"');
+    expect(sayCommands[0]).toEqual('say "Como"');
     expect(eventHistory).toMatchSnapshot();
     expect(output).toMatchSnapshot();
   });
@@ -154,7 +154,7 @@ describe('Event Emitter', () => {
     expect(output[15]).toEqual('Wrong! [voice]');
     expect(resultCount.greenCount).toBe('co'.length);
     expect(resultCount.redCount).toBe(2);
-    expect(sayCommands[0]).toEqual('say "como"');
+    expect(sayCommands[0]).toEqual('say "Como"');
     expect(eventHistory).toMatchSnapshot();
     expect(output).toMatchSnapshot();
   });
@@ -187,7 +187,7 @@ describe('Event Emitter', () => {
     expect(output[10]).toEqual('Correct! [voice]');
     expect(resultCount.greenCount).toBe('como'.length);
     expect(resultCount.redCount).toBe(0);
-    expect(sayCommands[0]).toEqual('say "como"');
+    expect(sayCommands[0]).toEqual('say "Como"');
     expect(output).toMatchSnapshot();
     expect(eventHistory).toMatchSnapshot();
   });
