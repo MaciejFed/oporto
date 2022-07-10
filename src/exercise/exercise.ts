@@ -30,7 +30,7 @@ const exerciseGenerators: ExerciseGenerator[] = [
 ];
 
 export function generateUniqeExercises<T>(exerciseCount: number): Exercise[] {
-  const exercises = Array.from(Array(100)).map(() => getRandomElement(exerciseGenerators)());
+  const exercises = Array.from(Array(10000)).map(() => getRandomElement(exerciseGenerators)());
   const distrinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);
   const sortedExercises = sortExercises(distrinctExercises);
 
