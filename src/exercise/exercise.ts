@@ -1,7 +1,7 @@
 import { Comperable, getRandomElement, onlyDistinct } from '../common/common';
 import { IrregularVerbExercise, RegularVerbExercise } from './verbExercise';
 import { sortExercises } from '../service/priority';
-import { TranslationExercise } from './translationExercise';
+import { NounTranslationExercise } from './translationExercise';
 import { FitInGapExercise } from './fitInGapExercise';
 
 export type ExerciseType = 'RegularVerb' | 'IrregularVerb' | 'Translation' | 'FitInGap';
@@ -23,7 +23,7 @@ type ExerciseGenerator = () => Exercise;
 const exerciseGenerators: ExerciseGenerator[] = [
   () => new RegularVerbExercise(),
   () => new IrregularVerbExercise(),
-  () => new TranslationExercise(),
+  () => new NounTranslationExercise(),
   () => new FitInGapExercise()
 ];
 

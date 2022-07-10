@@ -1,7 +1,7 @@
 import { getRandomElement } from '../common/common';
 import { readAll } from '../repository/exercisesRepository';
-import { Translation } from '../repository/exercisesRepository';
+import { Noun } from '../repository/exercisesRepository';
 
-export const getRandomTranslation: () => Translation = () => {
-  return getRandomElement(readAll().translations);
+export const getRandomNoun: () => Noun = () => {
+  return getRandomElement(readAll().nouns);
 };

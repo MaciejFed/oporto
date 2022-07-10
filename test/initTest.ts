@@ -40,7 +40,7 @@ jest.mock('../src/io/file', () => {
         {
           "exercise": {
             "exercsiseType": "Translation",
-            "translation": {
+            "noun": {
               "english": "girlfriend",
               "portuguese": {
                 "word": "namorada",

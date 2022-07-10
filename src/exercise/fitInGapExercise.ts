@@ -22,7 +22,7 @@ export class FitInGapExercise implements Exercise, Comperable {
 
   getExerciseBodySuffix = () => ' '.concat(this.fitIn.suffix);
 
-  getExerciseDescription = () => 'Complete the sentece.';
+  getExerciseDescription = () => 'Complete the sentence.';
 
   getCorrectAnswer = () => this.fitIn.answer;
 

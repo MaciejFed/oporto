@@ -4,19 +4,20 @@ export type RegularVerb = string;
 
 export type IrregularVerb = { [key in Person]: string } & { Infinitive: string };
 
-type NounGender = 'male' | 'female';
-
-type PortugueseNoun = {
-  word: string;
-  gender: NounGender;
-};
-
 type Verbs = {
   regular: RegularVerb[];
   irregular: IrregularVerb[];
 };
 
-export type Translation = {
+type NounGender = 'male' | 'female';
+
+type PortugueseNoun = {
+  word: string;
+  plurar?: string;
+  gender: NounGender;
+};
+
+export type Noun = {
   english: string;
   portuguese: PortugueseNoun;
   exerciseLevel: number;
@@ -24,7 +25,7 @@ export type Translation = {
 
 export type Schema = {
   verbs: Verbs;
-  translations: Translation[];
+  nouns: Noun[];
   fitIn: FitIn[];
 };
 
@@ -98,11 +99,12 @@ export const db: Schema = {
       }
     ]
   },
-  translations: [
+  nouns: [
     {
       english: 'girlfriend',
       portuguese: {
         word: 'namorada',
+        plurar: 'namoradas',
         gender: 'female'
       },
       exerciseLevel: 1
@@ -121,35 +123,35 @@ export const db: Schema = {
       prefix: 'Eu',
       answer: 'tomo',
       suffix: 'um chá.',
-      explanation: '"de" - Inidca origem',
+      explanation: '"de" - Indica origem',
       exerciseLevel: 1
     },
     {
       prefix: 'Ela é',
       answer: 'de',
       suffix: 'Angola.',
-      explanation: '"de" - Inidca origem',
+      explanation: '"de" - Indica origem',
       exerciseLevel: 1
     },
     {
       prefix: 'Ela é',
       answer: 'de',
       suffix: 'Paris.',
-      explanation: '"de" - Inidca origem',
+      explanation: '"de" - Indica origem',
       exerciseLevel: 1
     },
     {
       prefix: 'Moro',
       answer: 'em',
       suffix: 'Cascais.',
-      explanation: '"em" - Inidca localização',
+      explanation: '"em" - Indica localização',
       exerciseLevel: 1
     },
     {
       prefix: '',
       answer: 'em',
       suffix: 'que rua mora?',
-      explanation: '"em" - Inidca localização',
+      explanation: '"em" - Indica localização',
       exerciseLevel: 1
     },
     {

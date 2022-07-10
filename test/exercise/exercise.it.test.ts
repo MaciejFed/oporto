@@ -67,18 +67,18 @@ describe('Exercises IT Snapshot', () => {
   it('Translation', async () => {
     jest.mock('../../src/exercise/exercise', () => {
       const readAll = require('../../src/repository/exercisesRepository').readAll;
-      const TranslationExercise = require('../../src/exercise/translationExercise').TranslationExercise;
+      const NounTranslationExercise = require('../../src/exercise/translationExercise').NounTranslationExercise;
       const modelActual = jest.requireActual('../../src/exercise/exercise');
-      const translationExerciseToPortuguese = new TranslationExercise();
-      translationExerciseToPortuguese.translation = readAll().translations[1];
-      translationExerciseToPortuguese.translationType = 'toPortuguese';
-      const translationExerciseToEnglish= new TranslationExercise();
-      translationExerciseToEnglish.translation = readAll().translations[1];
-      translationExerciseToEnglish.translationType = 'toEnglish';
+      const nounTranslationExerciseToPortuguese = new NounTranslationExercise();
+      nounTranslationExerciseToPortuguese.noun = readAll().nouns[1];
+      nounTranslationExerciseToPortuguese.translationType = 'toPortuguese';
+      const nounTranslationExerciseToEnglish= new NounTranslationExercise();
+      nounTranslationExerciseToEnglish.noun = readAll().nouns[1];
+      nounTranslationExerciseToEnglish.translationType = 'toEnglish';
       return {
         __esModule: true,
         modelActual,
-        generateUniqeExercises: () => [translationExerciseToEnglish, translationExerciseToPortuguese]
+        generateUniqeExercises: () => [nounTranslationExerciseToEnglish, nounTranslationExerciseToPortuguese]
       };
     });
     const appModules = requireAllModules();
