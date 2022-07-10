@@ -2,6 +2,6 @@ import winston from 'winston';
 
 export const logger = winston.createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: winston.format.simple(),
   transports: [new winston.transports.File({ filename: 'out.log' })]
 });
