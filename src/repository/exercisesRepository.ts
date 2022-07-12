@@ -68,6 +68,30 @@ export const db: Schema = {
       {
         portuguese: 'estudar',
         english: 'to study'
+      },
+      {
+        portuguese: 'achar',
+        english: 'to think'
+      },
+      {
+        portuguese: 'andar',
+        english: 'to walk'
+      },
+      {
+        portuguese: 'beber',
+        english: 'to drink'
+      },
+      {
+        portuguese: 'entrar',
+        english: 'to enter'
+      },
+      {
+        portuguese: 'morar',
+        english: 'to live'
+      },
+      {
+        portuguese: 'olhar',
+        english: 'to look'
       }
     ],
     irregular: [
@@ -133,6 +157,42 @@ export const db: Schema = {
         'Ela/Ele/Você': 'faz',
         Nós: 'fazemos',
         'Eles/Elas/Vocēs': 'fazem'
+      },
+      {
+        english: 'to know',
+        Infinitive: 'saber',
+        Eu: 'sei',
+        Tu: 'sabes   ',
+        'Ela/Ele/Você': 'sabe',
+        Nós: 'soubéramos',
+        'Eles/Elas/Vocēs': 'souberam'
+      },
+      {
+        english: 'to read',
+        Infinitive: 'ler',
+        Eu: 'leio',
+        Tu: 'lês   ',
+        'Ela/Ele/Você': 'lê',
+        Nós: 'lemos',
+        'Eles/Elas/Vocēs': 'leem'
+      },
+      {
+        english: 'to say',
+        Infinitive: 'dizer',
+        Eu: 'digo',
+        Tu: 'dizes   ',
+        'Ela/Ele/Você': 'diz',
+        Nós: 'dizemos',
+        'Eles/Elas/Vocēs': 'dizem'
+      },
+      {
+        english: 'can',
+        Infinitive: 'poder',
+        Eu: 'posso',
+        Tu: 'podes   ',
+        'Ela/Ele/Você': 'pode',
+        Nós: 'podemos',
+        'Eles/Elas/Vocēs': 'podem'
       }
     ]
   },
@@ -1003,6 +1063,12 @@ export const db: Schema = {
     {
       english: 'What a surprise',
       portuguese: 'Que surpresa',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'My friends think I walk too fast',
+      portuguese: 'Os meus amigos acham que eu ando depressa demais',
       sentenceType: 'statement',
       exerciseLevel: 1
     }
