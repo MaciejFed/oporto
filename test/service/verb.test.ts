@@ -33,15 +33,15 @@ describe('Verbs', () => {
     it('Incorrect Regular Verb', async () => {
         const incorrectVerb = 'incorrectVerb';
         const incorrectVerbConjugation = () => {
-            getCorrectRegularConjugation(incorrectVerb, Person.Eu);
+            getCorrectRegularConjugation({ portuguese: incorrectVerb, english: '' }, Person.Eu);
         };
         expect(incorrectVerbConjugation).toThrowError(Error);
         expect(incorrectVerbConjugation).toThrowError(`Incorrect Regular Verb: "${incorrectVerb}"`);
     });
 
 
-    function testConjugation(verb: RegularVerb, person: Person, expectedConjugation: string) {
-        expect(getCorrectRegularConjugation(verb, person)).toBe(expectedConjugation)
+    function testConjugation(verb: string, person: Person, expectedConjugation: string) {
+        expect(getCorrectRegularConjugation({ portuguese: verb, english: '' }, person)).toBe(expectedConjugation)
     }
 });
 

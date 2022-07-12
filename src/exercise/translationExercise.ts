@@ -3,29 +3,43 @@ import { Noun, Sentence } from '../repository/exercisesRepository';
 import { getRandomNoun, getRandomSentence } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
 
-export class NounTranslationExercise implements Exercise, Comperable {
+const TRANLSATION_PROPABILTY = 0.2;
+
+type TranlationType = 'toEnglish' | 'toPortuguese';
+
+class TranslationExercise {
+  translationType: TranlationType;
+
+  constructor() {
+    this.translationType = Math.random() < TRANLSATION_PROPABILTY ? 'toEnglish' : 'toPortuguese';
+  }
+
+  isTranslationToPortuguese(): boolean {
+    return this.translationType === 'toPortuguese';
+  }
+}
+export class NounTranslationExercise extends TranslationExercise implements Exercise, Comperable {
   exercsiseType: ExerciseType;
   correctAnswer: string;
   noun: Noun;
-  translationType: 'toEnglish' | 'toPortuguese';
   exerciseLevel: number;
 
   constructor() {
+    super();
     this.exercsiseType = 'NounTranslation';
     this.noun = getRandomNoun();
     this.correctAnswer = this.getCorrectAnswer();
-    this.translationType = Math.random() < 0.25 ? 'toEnglish' : 'toPortuguese';
     this.exerciseLevel = this.noun.exerciseLevel;
   }
 
   getExerciseBodyPrefix(): string {
-    return this.translationType === 'toEnglish' ? 'English: ' : 'Portuguese: ';
+    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
 
   getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => {
-    if (this.translationType === 'toPortuguese') {
+    if (this.isTranslationToPortuguese()) {
       return `English: ${this.noun.english}`;
     }
     return `Portuguese: ${this.getWordWithGender()}`;
@@ -33,13 +47,13 @@ export class NounTranslationExercise implements Exercise, Comperable {
 
   getExercsiseExplanation = () => undefined;
 
-  getCorrectAnswer = () => (this.translationType === 'toEnglish' ? this.noun.english : this.getWordWithGender());
+  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.noun.english);
 
   checkAnsweCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.translationType === 'toEnglish' ? '' : this.correctAnswer);
+  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? '' : this.correctAnswer);
 
   equal = (other: NounTranslationExercise) =>
     other.exercsiseType === 'NounTranslation' &&
@@ -51,29 +65,28 @@ export class NounTranslationExercise implements Exercise, Comperable {
   }
 }
 
-export class SentenceTranslationExercise implements Exercise, Comperable {
+export class SentenceTranslationExercise extends TranslationExercise implements Exercise, Comperable {
   exercsiseType: ExerciseType;
   correctAnswer: string;
   sentence: Sentence;
-  translationType: 'toEnglish' | 'toPortuguese';
   exerciseLevel: number;
 
   constructor() {
+    super();
     this.exercsiseType = 'SentenceTranslation';
     this.sentence = getRandomSentence();
     this.correctAnswer = this.getCorrectAnswer();
-    this.translationType = Math.random() < 0.1 ? 'toEnglish' : 'toPortuguese';
     this.exerciseLevel = this.sentence.exerciseLevel;
   }
 
   getExerciseBodyPrefix(): string {
-    return this.translationType === 'toEnglish' ? 'English: ' : 'Portuguese: ';
+    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
 
   getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => {
-    if (this.translationType === 'toPortuguese') {
+    if (this.isTranslationToPortuguese()) {
       return `English: ${this.sentence.english}`;
     }
     return `Portuguese: ${this.sentence.portuguese}`;
@@ -81,13 +94,13 @@ export class SentenceTranslationExercise implements Exercise, Comperable {
 
   getExercsiseExplanation = () => undefined;
 
-  getCorrectAnswer = () => (this.translationType === 'toEnglish' ? this.sentence.english : this.sentence.portuguese);
+  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.sentence.portuguese : this.sentence.english);
 
   checkAnsweCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.translationType === 'toEnglish' ? '' : this.correctAnswer);
+  getRepeatAnswerPhrase = () => (this.getExerciseDescription() ? '' : this.correctAnswer);
 
   equal = (other: SentenceTranslationExercise) =>
     other.exercsiseType === 'SentenceTranslation' &&

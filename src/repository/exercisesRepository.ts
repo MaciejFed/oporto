@@ -1,8 +1,11 @@
 import { Person } from '../service/verb';
 
-export type RegularVerb = string;
+export type RegularVerb = {
+  english: string;
+  portuguese: string;
+};
 
-export type IrregularVerb = { [key in Person]: string } & { Infinitive: string };
+export type IrregularVerb = { english: string } & { [key in Person]: string } & { Infinitive: string };
 
 type Verbs = {
   regular: RegularVerb[];
@@ -49,9 +52,27 @@ export type FitIn = {
 
 export const db: Schema = {
   verbs: {
-    regular: ['falar', 'comer', 'abrir', 'estudar'],
+    regular: [
+      {
+        portuguese: 'falar',
+        english: 'to speak'
+      },
+      {
+        portuguese: 'comer',
+        english: 'to eat'
+      },
+      {
+        portuguese: 'abrir',
+        english: 'to open'
+      },
+      {
+        portuguese: 'estudar',
+        english: 'to study'
+      }
+    ],
     irregular: [
       {
+        english: 'to be - long',
         Infinitive: 'ser',
         Eu: 'sou',
         Tu: 'és',
@@ -60,6 +81,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'são'
       },
       {
+        english: 'to be - moment',
         Infinitive: 'estar',
         Eu: 'estou',
         Tu: 'estás',
@@ -68,6 +90,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'estão'
       },
       {
+        english: 'to go',
         Infinitive: 'ir',
         Eu: 'vou',
         Tu: 'vais',
@@ -76,6 +99,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'vão'
       },
       {
+        english: 'to have',
         Infinitive: 'ter',
         Eu: 'tenho',
         Tu: 'tens   ',
@@ -84,6 +108,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'têm'
       },
       {
+        english: 'to want',
         Infinitive: 'querer',
         Eu: 'quero',
         Tu: 'queres   ',
@@ -92,6 +117,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'querem'
       },
       {
+        english: 'to see',
         Infinitive: 'ver',
         Eu: 'vejo',
         Tu: 'vês   ',
@@ -100,6 +126,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'vêem'
       },
       {
+        english: 'to do/make',
         Infinitive: 'fazer',
         Eu: 'faço',
         Tu: 'fazes   ',

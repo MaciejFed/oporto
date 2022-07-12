@@ -31,7 +31,7 @@ export class RegularVerbExercise implements Exercise, Comperable {
 
   getExerciseBodySuffix = () => '';
 
-  getExerciseDescription = () => `Infinitive: ${this.verb}`;
+  getExerciseDescription = () => `Infinitive: ${this.verb.portuguese}`;
 
   getCorrectAnswer = () => getCorrectRegularConjugation(this.verb, this.person);
 
@@ -43,7 +43,9 @@ export class RegularVerbExercise implements Exercise, Comperable {
   getRepeatAnswerPhrase = () => `${this.person} ${this.correctAnswer}`;
 
   equal = (exercise: RegularVerbExercise) =>
-    exercise.exercsiseType === 'RegularVerb' && this.verb === exercise.verb && this.person === exercise.person;
+    exercise.exercsiseType === 'RegularVerb' &&
+    this.verb.portuguese === exercise.verb.portuguese &&
+    this.person === exercise.person;
 }
 
 export class IrregularVerbExercise implements Exercise, Comperable {
