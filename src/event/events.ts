@@ -1,5 +1,3 @@
-import { Point } from '../io/terminal';
-
 export const APP_STARTED = 'APP_STARTED';
 export const APP_FINISHED = 'APP_FINISHED';
 export const KEY_PRESSED = 'KEY_PRESSSED';
@@ -14,7 +12,6 @@ export type EXERCISE_BODY_PRINTED_BODY = {
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
   exerciseExplanation: string;
-  cursor: Point;
 };
 
 export type APP_EVENT =

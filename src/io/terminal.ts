@@ -20,21 +20,17 @@ import {
   preExerciseClear,
   printExerciseBody,
   printExerciseBodyWithCorrection,
+  printExerciseDescription,
   printExerciseExplanation,
+  printExerciseFeedback,
   printInBetweenMenu
 } from './terminalUtils';
 import { Exercise } from '../exercise/exercise';
 import { getStatisticForExercise } from '../service/result';
 import { sleep } from '../common/common';
 
-export type Point = {
-  x: number;
-  y: number;
-};
-
 export class Terminal {
   eventProcessor: EventProcessor;
-  cursor: Point;
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
   exerciseExplanation: string;
@@ -47,17 +43,13 @@ export class Terminal {
   constructor(eventProcessor: EventProcessor) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.cursor = {
-      x: 0,
-      y: 0
-    };
-    clear();
     this.exerciseInProgress = false;
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';
     this.exerciseExplanation = '';
     this.answer = '';
     this.correctAnswer = '';
+    clear();
   }
 
   registerListeners() {
@@ -78,14 +70,13 @@ export class Terminal {
 
   private registerOnDescriptionPrintedEventListener() {
     this.eventProcessor.on(EXERCISE_DESCRIPTION_PRINTED, (description: string) => {
-      terminal.moveTo(1, 10, description);
+      printExerciseDescription(description);
     });
   }
 
   private registerOnBodyPrintedEventListener() {
     this.eventProcessor.on(EXERCISE_BODY_PRINTED, (body: EXERCISE_BODY_PRINTED_BODY) => {
       logger.info(`exercise: ${JSON.stringify(body)}`);
-      this.cursor = body.cursor;
       this.exerciseBodyPrefix = body.exerciseBodyPrefix;
       this.exerciseBodySuffix = body.exerciseBodySuffix;
       this.exerciseExplanation = body.exerciseExplanation;
@@ -113,7 +104,7 @@ export class Terminal {
       this.exercise = exercise;
       terminal.hideCursor();
       this.exerciseInProgress = false;
-      terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+      printExerciseFeedback(isCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
       sleep(250).then(() => {

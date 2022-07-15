@@ -4,6 +4,7 @@ import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
 import { ExerciseStatistics } from '../service/result';
+import { AnswerInputType } from './input';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg } = ervy;
@@ -14,8 +15,16 @@ export function preExerciseClear() {
   console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
 }
 
+export function printExerciseDescription(exerciseDescription: string) {
+  terminal.moveTo(1, 10, exerciseDescription);
+}
+
 export function printExerciseExplanation(exerciseExmplanation: string) {
   terminal.moveTo(1, 8, exerciseExmplanation);
+}
+
+export function printExerciseFeedback(isCorrect: boolean, answerInputType: AnswerInputType) {
+  terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
 export function printInBetweenMenu(printExplanation: boolean) {
