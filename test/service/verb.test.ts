@@ -7,7 +7,7 @@ describe('Verbs', () => {
 
     it('-AR Verb Conjugation', async () => {
         testConjugation('Falar', Person.Eu, 'Falo');
-        testConjugation('Falar', Person.Tu, 'Fales');
+        testConjugation('Falar', Person.Tu, 'Falas');
         testConjugation('Falar', Person.ElaEleVocê, 'Fala');
         testConjugation('Falar', Person.Nós, 'Falamos');
         testConjugation('Falar', Person.ElesElasVosēs, 'Falam');

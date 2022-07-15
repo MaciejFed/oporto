@@ -66,10 +66,6 @@ export const db: Schema = {
         english: 'to open'
       },
       {
-        portuguese: 'estudar',
-        english: 'to study'
-      },
-      {
         portuguese: 'achar',
         english: 'to think'
       },
@@ -164,8 +160,8 @@ export const db: Schema = {
         Eu: 'sei',
         Tu: 'sabes   ',
         'Ela/Ele/Você': 'sabe',
-        Nós: 'soubéramos',
-        'Eles/Elas/Vocēs': 'souberam'
+        Nós: 'sabemos',
+        'Eles/Elas/Vocēs': 'sabem'
       },
       {
         english: 'to read',
@@ -673,14 +669,14 @@ export const db: Schema = {
       },
       exerciseLevel: 1
     },
-    {
-      english: 'panths',
-      portuguese: {
-        word: 'calças',
-        gender: 'feminine'
-      },
-      exerciseLevel: 1
-    },
+    // {
+    //   english: 'pants',
+    //   portuguese: {
+    //     word: 'calças',
+    //     gender: 'feminine'
+    //   },
+    //   exerciseLevel: 1
+    // },
     {
       english: 'mobile phone',
       portuguese: {
@@ -1069,6 +1065,258 @@ export const db: Schema = {
     {
       english: 'My friends think I walk too fast',
       portuguese: 'Os meus amigos acham que eu ando depressa demais',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Can you help me?',
+      portuguese: 'Podes ajudar-me?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Do you want a coffee?',
+      portuguese: 'Queres um café?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'How much it costs?',
+      portuguese: 'Quanto custa?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Where are you?',
+      portuguese: 'Onde estás?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I am a strawberry',
+      portuguese: 'Eu sou um morango',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm going for a walk",
+      portuguese: 'Vou dar uma volta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I have to focus now',
+      portuguese: 'Preciso de me concentrar agora',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What do you want to eat for dinner?',
+      portuguese: 'O que queres comer para o jantar?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What time is it?',
+      portuguese: 'Que horas são_',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I have to prepare a coffee to Leonor',
+      portuguese: 'Tenho de preparar um café para a Leonor',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I sleep until noon',
+      portuguese: 'Eu durmo até ao meio dia',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm going to take a shower",
+      portuguese: 'Vou tomar banho',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Do you want an ice cream?',
+      portuguese: 'Queres um gelado?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Is it cold outside?',
+      portuguese: 'Está frio lá fora?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'You are beatiful',
+      portuguese: 'És linda',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Today I ate a kilo of strawberries',
+      portuguese: 'Hoje comi um kilo de morango',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I like to sleep',
+      portuguese: 'Gosto de dormir',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Tomorrow is my birthday',
+      portuguese: 'Amanhã é o meu aniversário',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Paula is my portuguese professor',
+      portuguese: 'A Paula é a minha professora de português',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Can you speak slower?',
+      portuguese: 'Podes falar mais devagar?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: "I dont't know what to do",
+      portuguese: 'Não sei o que fazer',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm tired because I'm hungry",
+      portuguese: 'Estou cansado porque estou com fome',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I love to wash the dishes',
+      portuguese: 'Adoro lavar a loiça',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Are you confortable?',
+      portuguese: 'Estás confortável?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What does it mean liar?',
+      portuguese: 'O que significa mentiroso?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I read every day',
+      portuguese: 'Eu leio todos os dias',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "What's in the fridge?",
+      portuguese: 'O que está no frigorifico?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'This flat is a mess',
+      portuguese: 'Este apartamento está todo desarrumado',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm lazy",
+      portuguese: 'Eu sou preguisoço',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'How was your work?',
+      portuguese: 'Como foi o teu trabalho?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What are you going to do tomorrow?',
+      portuguese: 'Que vais fazer amanhã?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The book is on the table',
+      portuguese: 'O livro está na mesa',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'You backpack is in another room',
+      portuguese: 'A tua mochila está em outro quarto',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "There's dust under the sofa",
+      portuguese: 'Há pó debaixo do sofá',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The box is over the closet',
+      portuguese: 'A caixa está em cima do armário',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Your socks are in the drawer',
+      portuguese: 'As tuas meias estão na gaveta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Your bike is next to the red car',
+      portuguese: 'A tua bicicleta está ao lado do carro vermelho',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The picture on the wall is very beatiful',
+      portuguese: 'A fotografia na parede é muito bonita',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The main door is tall',
+      portuguese: 'A porta da entrada é alta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I want to open the window but is too cold outside',
+      portuguese: 'Eu quero abrir a janela mas está muito frio lá fora',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "You can't use this computer because is broken",
+      portuguese: 'Não podes usar este computador porque está estragado',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Next weekend we are going on holidays',
+      portuguese: 'No próximo fim de semana vamos de férias',
       sentenceType: 'statement',
       exerciseLevel: 1
     }

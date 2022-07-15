@@ -24,12 +24,12 @@ export const getCorrectIrregularConjugation: (verb: IrregularVerb, person: Perso
 };
 
 export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) => string = ({ portuguese }, person) => {
-  if (portuguese.endsWith('ar') || portuguese.endsWith('er')) {
+  if (portuguese.endsWith('ar')) {
     switch (person) {
       case 'Eu':
         return `${portuguese.substring(0, portuguese.length - 2)}o`;
       case 'Tu':
-        return `${portuguese.substring(0, portuguese.length - 2)}es`;
+        return `${portuguese.substring(0, portuguese.length - 1)}s`;
       case 'Ela/Ele/Você':
         return portuguese.substring(0, portuguese.length - 1);
       case 'Nós':
@@ -38,7 +38,7 @@ export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) =
         return `${portuguese.substring(0, portuguese.length - 1)}m`;
     }
   }
-  if (portuguese.endsWith('ir')) {
+  if (portuguese.endsWith('ir') || portuguese.endsWith('er')) {
     switch (person) {
       case 'Eu':
         return `${portuguese.substring(0, portuguese.length - 2)}o`;

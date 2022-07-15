@@ -53,7 +53,7 @@ export class NounTranslationExercise extends TranslationExercise implements Exer
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? '' : this.correctAnswer);
+  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.correctAnswer : this.getWordWithGender());
 
   equal = (other: NounTranslationExercise) =>
     other.exercsiseType === 'NounTranslation' &&
@@ -100,7 +100,7 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.getExerciseDescription() ? '' : this.correctAnswer);
+  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.correctAnswer : this.sentence.portuguese);
 
   equal = (other: SentenceTranslationExercise) =>
     other.exercsiseType === 'SentenceTranslation' &&
