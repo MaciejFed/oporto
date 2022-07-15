@@ -12,7 +12,7 @@ export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
 export const VALUE_EXERCISE_PER_ONE_LEVEL = 25;
-export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 50;
+export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
 
 export function valueDoneToday(doneTodayCount: number): number {
   switch (doneTodayCount) {

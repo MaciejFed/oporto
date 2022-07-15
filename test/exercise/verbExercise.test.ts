@@ -9,9 +9,9 @@ describe('Verb Exercise', () => {
     it('Regular Verb Exercise', () => {
         const regularVerbExercise = new RegularVerbExercise();
         const sameRegularVerbExercise = new RegularVerbExercise();
-        regularVerbExercise.verb = 'comer';
+        regularVerbExercise.verb = { portuguese: 'comer', english: '' };
         regularVerbExercise.person = Person.Eu;
-        sameRegularVerbExercise.verb = 'comer';
+        sameRegularVerbExercise.verb = { portuguese: 'comer', english: '' };
         sameRegularVerbExercise.person = Person.Eu;
         
         expect(regularVerbExercise.exercsiseType).toEqual('RegularVerb');

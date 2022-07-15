@@ -1,8 +1,11 @@
 import { Person } from '../service/verb';
 
-export type RegularVerb = string;
+export type RegularVerb = {
+  english: string;
+  portuguese: string;
+};
 
-export type IrregularVerb = { [key in Person]: string } & { Infinitive: string };
+export type IrregularVerb = { english: string } & { [key in Person]: string } & { Infinitive: string };
 
 type Verbs = {
   regular: RegularVerb[];
@@ -49,9 +52,47 @@ export type FitIn = {
 
 export const db: Schema = {
   verbs: {
-    regular: ['falar', 'comer', 'abrir', 'estudar'],
+    regular: [
+      {
+        portuguese: 'falar',
+        english: 'to speak'
+      },
+      {
+        portuguese: 'comer',
+        english: 'to eat'
+      },
+      {
+        portuguese: 'abrir',
+        english: 'to open'
+      },
+      {
+        portuguese: 'achar',
+        english: 'to think'
+      },
+      {
+        portuguese: 'andar',
+        english: 'to walk'
+      },
+      {
+        portuguese: 'beber',
+        english: 'to drink'
+      },
+      {
+        portuguese: 'entrar',
+        english: 'to enter'
+      },
+      {
+        portuguese: 'morar',
+        english: 'to live'
+      },
+      {
+        portuguese: 'olhar',
+        english: 'to look'
+      }
+    ],
     irregular: [
       {
+        english: 'to be - long',
         Infinitive: 'ser',
         Eu: 'sou',
         Tu: 'és',
@@ -60,6 +101,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'são'
       },
       {
+        english: 'to be - moment',
         Infinitive: 'estar',
         Eu: 'estou',
         Tu: 'estás',
@@ -68,6 +110,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'estão'
       },
       {
+        english: 'to go',
         Infinitive: 'ir',
         Eu: 'vou',
         Tu: 'vais',
@@ -76,6 +119,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'vão'
       },
       {
+        english: 'to have',
         Infinitive: 'ter',
         Eu: 'tenho',
         Tu: 'tens   ',
@@ -84,6 +128,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'têm'
       },
       {
+        english: 'to want',
         Infinitive: 'querer',
         Eu: 'quero',
         Tu: 'queres   ',
@@ -92,6 +137,7 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'querem'
       },
       {
+        english: 'to see',
         Infinitive: 'ver',
         Eu: 'vejo',
         Tu: 'vês   ',
@@ -100,12 +146,49 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'vêem'
       },
       {
+        english: 'to do/make',
         Infinitive: 'fazer',
         Eu: 'faço',
         Tu: 'fazes   ',
         'Ela/Ele/Você': 'faz',
         Nós: 'fazemos',
         'Eles/Elas/Vocēs': 'fazem'
+      },
+      {
+        english: 'to know',
+        Infinitive: 'saber',
+        Eu: 'sei',
+        Tu: 'sabes   ',
+        'Ela/Ele/Você': 'sabe',
+        Nós: 'sabemos',
+        'Eles/Elas/Vocēs': 'sabem'
+      },
+      {
+        english: 'to read',
+        Infinitive: 'ler',
+        Eu: 'leio',
+        Tu: 'lês   ',
+        'Ela/Ele/Você': 'lê',
+        Nós: 'lemos',
+        'Eles/Elas/Vocēs': 'leem'
+      },
+      {
+        english: 'to say',
+        Infinitive: 'dizer',
+        Eu: 'digo',
+        Tu: 'dizes   ',
+        'Ela/Ele/Você': 'diz',
+        Nós: 'dizemos',
+        'Eles/Elas/Vocēs': 'dizem'
+      },
+      {
+        english: 'can',
+        Infinitive: 'poder',
+        Eu: 'posso',
+        Tu: 'podes   ',
+        'Ela/Ele/Você': 'pode',
+        Nós: 'podemos',
+        'Eles/Elas/Vocēs': 'podem'
       }
     ]
   },
@@ -586,14 +669,14 @@ export const db: Schema = {
       },
       exerciseLevel: 1
     },
-    {
-      english: 'panths',
-      portuguese: {
-        word: 'calças',
-        gender: 'feminine'
-      },
-      exerciseLevel: 1
-    },
+    // {
+    //   english: 'pants',
+    //   portuguese: {
+    //     word: 'calças',
+    //     gender: 'feminine'
+    //   },
+    //   exerciseLevel: 1
+    // },
     {
       english: 'mobile phone',
       portuguese: {
@@ -976,6 +1059,264 @@ export const db: Schema = {
     {
       english: 'What a surprise',
       portuguese: 'Que surpresa',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'My friends think I walk too fast',
+      portuguese: 'Os meus amigos acham que eu ando depressa demais',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Can you help me?',
+      portuguese: 'Podes ajudar-me?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Do you want a coffee?',
+      portuguese: 'Queres um café?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'How much it costs?',
+      portuguese: 'Quanto custa?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Where are you?',
+      portuguese: 'Onde estás?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I am a strawberry',
+      portuguese: 'Eu sou um morango',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm going for a walk",
+      portuguese: 'Vou dar uma volta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I have to focus now',
+      portuguese: 'Preciso de me concentrar agora',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What do you want to eat for dinner?',
+      portuguese: 'O que queres comer para o jantar?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What time is it?',
+      portuguese: 'Que horas são_',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I have to prepare a coffee to Leonor',
+      portuguese: 'Tenho de preparar um café para a Leonor',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I sleep until noon',
+      portuguese: 'Eu durmo até ao meio dia',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm going to take a shower",
+      portuguese: 'Vou tomar banho',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Do you want an ice cream?',
+      portuguese: 'Queres um gelado?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Is it cold outside?',
+      portuguese: 'Está frio lá fora?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'You are beatiful',
+      portuguese: 'És linda',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Today I ate a kilo of strawberries',
+      portuguese: 'Hoje comi um kilo de morango',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I like to sleep',
+      portuguese: 'Gosto de dormir',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Tomorrow is my birthday',
+      portuguese: 'Amanhã é o meu aniversário',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Paula is my portuguese professor',
+      portuguese: 'A Paula é a minha professora de português',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Can you speak slower?',
+      portuguese: 'Podes falar mais devagar?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: "I dont't know what to do",
+      portuguese: 'Não sei o que fazer',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm tired because I'm hungry",
+      portuguese: 'Estou cansado porque estou com fome',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I love to wash the dishes',
+      portuguese: 'Adoro lavar a loiça',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Are you confortable?',
+      portuguese: 'Estás confortável?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What does it mean liar?',
+      portuguese: 'O que significa mentiroso?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I read every day',
+      portuguese: 'Eu leio todos os dias',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "What's in the fridge?",
+      portuguese: 'O que está no frigorifico?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'This flat is a mess',
+      portuguese: 'Este apartamento está todo desarrumado',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm lazy",
+      portuguese: 'Eu sou preguisoço',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'How was your work?',
+      portuguese: 'Como foi o teu trabalho?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What are you going to do tomorrow?',
+      portuguese: 'Que vais fazer amanhã?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The book is on the table',
+      portuguese: 'O livro está na mesa',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'You backpack is in another room',
+      portuguese: 'A tua mochila está em outro quarto',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "There's dust under the sofa",
+      portuguese: 'Há pó debaixo do sofá',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The box is over the closet',
+      portuguese: 'A caixa está em cima do armário',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Your socks are in the drawer',
+      portuguese: 'As tuas meias estão na gaveta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Your bike is next to the red car',
+      portuguese: 'A tua bicicleta está ao lado do carro vermelho',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The picture on the wall is very beatiful',
+      portuguese: 'A fotografia na parede é muito bonita',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'The main door is tall',
+      portuguese: 'A porta da entrada é alta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I want to open the window but is too cold outside',
+      portuguese: 'Eu quero abrir a janela mas está muito frio lá fora',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "You can't use this computer because is broken",
+      portuguese: 'Não podes usar este computador porque está estragado',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Next weekend we are going on holidays',
+      portuguese: 'No próximo fim de semana vamos de férias',
       sentenceType: 'statement',
       exerciseLevel: 1
     }
