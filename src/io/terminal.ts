@@ -50,6 +50,7 @@ export class Terminal {
     this.answer = '';
     this.correctAnswer = '';
     clear();
+    logger.info(`width: ${process.stdout.columns}`);
   }
 
   registerListeners() {
