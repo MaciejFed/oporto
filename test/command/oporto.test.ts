@@ -33,7 +33,8 @@ jest.mock('terminal-kit', () => {
         red: () => {
           resultCount.redCount++;
         },
-        white: () => {}
+        white: () => {},
+        bold: () => {},
       }
     };
   });
@@ -62,7 +63,7 @@ jest.mock('../../src/exercise/exercise', () => {
 type AppModules = {
   SessionManager: any;
   Input: any;
-  Terminakl: any;
+  Terminal: any;
   eventProcessor: any;
 };
 
@@ -73,12 +74,12 @@ function requireAllModules(): AppModules {
   const SessionManager =
     require('../../src/session/sessionManager').SessionManager;
   const Input = require('../../src/io/input').Input;
-  const Terminakl = require('../../src/io/terminal').Terminakl;
+  const Terminal = require('../../src/io/terminal').Terminal;
 
   return {
     SessionManager: SessionManager,
     Input: Input,
-    Terminakl: Terminakl,
+    Terminal: Terminal,
     eventProcessor: eventProcessor
   };
 }
@@ -101,7 +102,7 @@ describe('Event Emitter', () => {
 
   it('Happy Path', async () => {
     const appModules = requireAllModules();
-    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const myTerminal = new appModules.Terminal(appModules.eventProcessor);
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
@@ -132,7 +133,7 @@ describe('Event Emitter', () => {
   it('Unhappy Path', async () => {
     console.log(process.stdin.listeners);
     const appModules = requireAllModules();
-    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const myTerminal = new appModules.Terminal(appModules.eventProcessor);
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
@@ -162,7 +163,7 @@ describe('Event Emitter', () => {
   it('HP With Backspace', async () => {
     console.log(process.stdin.listeners);
     const appModules = requireAllModules();
-    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const myTerminal = new appModules.Terminal(appModules.eventProcessor);
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,

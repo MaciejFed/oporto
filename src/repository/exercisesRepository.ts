@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { Person } from '../service/verb';
 
 export type RegularVerb = {
@@ -934,7 +935,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'tooth brush',
+      english: 'toothpaste',
       portuguese: {
         word: 'pasta dos dentes',
         gender: 'feminine'
@@ -1160,7 +1161,7 @@ export const db: Schema = {
     },
     {
       english: 'Today I ate a kilo of strawberries',
-      portuguese: 'Hoje comi um kilo de morango',
+      portuguese: 'Hoje comi um kilo de morangos',
       sentenceType: 'statement',
       exerciseLevel: 1
     },

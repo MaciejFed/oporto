@@ -23,17 +23,17 @@ jest.mock('terminal-kit', () => {
         hideCursor: (hide: boolean) => {},
         green: () => {},
         red: () => {},
-        white: () => {}
+        white: () => {},
+        bold: () => {},
       }
     };
   });
 
 
-
 type AppModules = {
   SessionManager: any;
   Input: any;
-  Terminakl: any;
+  Terminal: any;
   eventProcessor: any;
 };
 
@@ -42,12 +42,12 @@ function requireAllModules(): AppModules {
   const eventProcessor = require('../../src/event/eventProcessor').eventProcessor;
   const SessionManager = require('../../src/session/sessionManager').SessionManager;
   const Input = require('../../src/io/input').Input;
-  const Terminakl = require('../../src/io/terminal').Terminakl;
+  const Terminal = require('../../src/io/terminal').Terminal;
 
   return {
     SessionManager: SessionManager,
     Input: Input,
-    Terminakl: Terminakl,
+    Terminal: Terminal,
     eventProcessor: eventProcessor
   };
 }
@@ -82,7 +82,7 @@ describe('Exercises IT Snapshot', () => {
       };
     });
     const appModules = requireAllModules();
-    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const myTerminal = new appModules.Terminal(appModules.eventProcessor);
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
@@ -126,7 +126,7 @@ describe('Exercises IT Snapshot', () => {
       };
     });
     const appModules = requireAllModules();
-    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const myTerminal = new appModules.Terminal(appModules.eventProcessor);
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
@@ -168,7 +168,7 @@ describe('Exercises IT Snapshot', () => {
       };
     });
     const appModules = requireAllModules();
-    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const myTerminal = new appModules.Terminal(appModules.eventProcessor);
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
@@ -213,7 +213,7 @@ describe('Exercises IT Snapshot', () => {
       };
     });
     const appModules = requireAllModules();
-    const myTerminal = new appModules.Terminakl(appModules.eventProcessor);
+    const myTerminal = new appModules.Terminal(appModules.eventProcessor);
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
