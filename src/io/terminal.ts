@@ -32,7 +32,7 @@ export type Point = {
   y: number;
 };
 
-export class Terminakl {
+export class Terminal {
   eventProcessor: EventProcessor;
   cursor: Point;
   exerciseBodyPrefix: string;
