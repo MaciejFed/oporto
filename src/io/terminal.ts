@@ -16,6 +16,7 @@ import {
   APP_FINISHED
 } from '../event/events';
 import {
+  animateExerciseSummary,
   preExerciseClear,
   printExerciseBody,
   printExerciseBodyWithCorrection,
@@ -23,6 +24,8 @@ import {
   printInBetweenMenu
 } from './terminalUtils';
 import { Exercise } from '../exercise/exercise';
+import { getStatisticForExercise } from '../service/result';
+import { sleep } from '../common/common';
 
 export type Point = {
   x: number;
@@ -113,6 +116,12 @@ export class Terminakl {
       terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
+      sleep(250).then(() => {
+        const exerciseStatistics = getStatisticForExercise(exercise);
+        if (exerciseStatistics) {
+          animateExerciseSummary(exerciseStatistics);
+        }
+      });
       this.correctAnswer = correctAnswer;
       this.sayCorrectAnswerPhrase();
       // this.eventProcessor.emit(EXERCISE_NEXT);

@@ -23,11 +23,11 @@ jest.mock('terminal-kit', () => {
         hideCursor: (hide: boolean) => {},
         green: () => {},
         red: () => {},
-        white: () => {}
+        white: () => {},
+        bold: () => {},
       }
     };
   });
-
 
 
 type AppModules = {

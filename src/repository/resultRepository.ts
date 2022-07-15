@@ -43,6 +43,7 @@ export function getAllResults(): Result[] {
       default:
         break;
     }
+    result.date = new Date(result.date);
     result.exercise = exercise;
     return result;
   });

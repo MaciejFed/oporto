@@ -29,6 +29,7 @@
     "chalk": "^4.1.2",
     "clear": "^0.1.0",
     "commander": "^9.3.0",
+    "ervy": "^1.0.7",
     "figlet": "^1.5.2",
     "path": "^0.12.7",
     "terminal-kit": "^2.4.0",

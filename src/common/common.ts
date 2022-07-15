@@ -1,3 +1,5 @@
+import { logger } from './logger';
+
 export interface Comperable {
   equal(other: Comperable): boolean;
 }
@@ -24,4 +26,8 @@ export function getRandomElement<T>(arr: T[]): T {
 
 export async function sleep(milliseconds: number) {
   await new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+export function formatDate(date: Date): string {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
 }

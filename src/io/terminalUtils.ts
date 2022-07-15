@@ -2,6 +2,11 @@ import chalk from 'chalk';
 import clear from 'clear';
 import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
+import { formatDate, sleep } from '../common/common';
+import { ExerciseStatistics } from '../service/result';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ervy = require('ervy');
+const { bullet, bg } = ervy;
 
 export function preExerciseClear() {
   // eslint-disable-next-line no-console
@@ -37,4 +42,34 @@ export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answ
     terminal.moveTo(1 + exerciseBodyPrefix.length + i, 11, correctAnswer[i]);
   }
   terminal.white();
+}
+
+export async function animateExerciseSummary({
+  correctAttempts,
+  failedAttempts,
+  lastTimeAttempted
+}: ExerciseStatistics) {
+  const yIndex = 18;
+  const animationTime = 2000;
+  const barWidth = 50;
+  terminal.bold();
+  terminal.moveTo(0, yIndex, 'Last Month Results:');
+  terminal.bold(false);
+  terminal.moveTo(0, yIndex + 2, `Last Time Attempted: ${formatDate(lastTimeAttempted)}`);
+  for (let index = 1; index <= correctAttempts + failedAttempts; index++) {
+    const goodValue = index <= correctAttempts ? index : correctAttempts;
+    const wrongValue = Math.max(0, index - goodValue);
+    const totalValue = correctAttempts + failedAttempts;
+    let bulletData = [
+      { key: `All - ${totalValue}`, value: totalValue, style: bg('blue'), barWidth: 1 },
+      { key: `Correct/Wrong ${goodValue}/${wrongValue}`, value: index, style: bg('red'), barWidth: 1 }
+    ];
+    terminal.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
+    bulletData = [
+      { key: `All - ${totalValue}`, value: totalValue, style: bg('blue'), barWidth: 1 },
+      { key: `Correct/Wrong ${goodValue}/${wrongValue}`, value: goodValue, style: bg('green'), barWidth: 1 }
+    ];
+    terminal.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
+    await sleep(animationTime / totalValue);
+  }
 }

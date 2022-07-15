@@ -41,7 +41,8 @@ jest.mock('terminal-kit', () => {
       red: () => {
         resultCount.redCount++;
       },
-      white: () => {}
+      white: () => {},
+      bold: () => {},
     }
   };
 });
