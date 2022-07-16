@@ -29,8 +29,8 @@ export function printExerciseBody(exerciseBodyPrefix: string, answer: string, ex
   terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, 11);
 }
 
-export function printExerciseFeedback(isCorrect: boolean, answerInputType: AnswerInputType) {
-  terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
+  terminal.moveTo(1, 12, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
 export function printExerciseRepeatBody(answer: string, correctAnswer: string) {

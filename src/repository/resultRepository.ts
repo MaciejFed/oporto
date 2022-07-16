@@ -61,6 +61,7 @@ export function getAllResults(): Result[] {
     }
     result.date = new Date(result.date);
     result.exercise = exercise;
+    result.exercise.correctAnswer = result.exercise.getCorrectAnswer();
     return result;
   });
 }

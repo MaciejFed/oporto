@@ -1,7 +1,23 @@
-#!/usr/bin/env node
+import { Command } from 'commander';
+import { displayStatistics } from './commands/stat';
+import { startTestSession } from './commands/test';
+import { logger } from './common/logger';
+const program = new Command();
 
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
+program.name('oporto').description('CLI to learn Portuguese').version('0.1.0');
 
-// eslint-disable-next-line no-unused-expressions
-yargs(hideBin(process.argv)).commandDir('commands').strict().alias({ h: 'help' }).argv;
+program
+  .command('test')
+  .description('Start test session')
+  .action((str, options) => {
+    startTestSession();
+  });
+
+program
+  .command('stat')
+  .description('Show statistics')
+  .action((str, options) => {
+    displayStatistics();
+  });
+
+program.parse();

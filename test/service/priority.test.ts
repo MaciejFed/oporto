@@ -207,22 +207,22 @@ function generateExercise(exercsiseType: ExerciseType): Exercise {
     return new IrregularVerbExercise();
 }
 
-function generateResultForExerciseDaysAgo(exercise: Exercise, isCorrect: boolean, daysAgo: number): Result {
+function generateResultForExerciseDaysAgo(exercise: Exercise, wasCorrect: boolean, daysAgo: number): Result {
     const dateDaysAgo = new Date();
     dateDaysAgo.setDate(dateDaysAgo.getDate() - daysAgo);
     return {
         exercise,
         answerInputType: 'keyboard',
-        isCorrect,
+        wasCorrect,
         answer: 'N/A',
         date: dateDaysAgo
     };
 }
 
-function generateResultForExercise(exercise: Exercise, isCorrect: boolean, answerInputType: AnswerInputType, count: number): Result[] {
+function generateResultForExercise(exercise: Exercise, wasCorrect: boolean, answerInputType: AnswerInputType, count: number): Result[] {
     return [...Array(count).keys()].map(() => Object.assign({
         exercise,
-        isCorrect,
+        wasCorrect,
         answerInputType,
         answer: 'N/A',
         date: new Date()

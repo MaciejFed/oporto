@@ -113,14 +113,14 @@ export class Terminal {
   }
 
   private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer, answerInputType, exercise }) => {
+    this.eventProcessor.on(ANSWER_CHECKED, ({ wasCorrect, correctAnswer, answerInputType, exercise }) => {
       this.exercise = exercise;
       this.exerciseInProgress = false;
       this.correctAnswer = correctAnswer;
-      printExerciseFeedback(isCorrect, answerInputType);
+      printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       this.sayCorrectAnswerPhrase();
-      if (isCorrect) {
+      if (wasCorrect) {
         this.endOfExerciseMenu();
       } else {
         this.exerciseRepetitionInProgress = true;

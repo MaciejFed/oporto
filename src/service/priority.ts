@@ -109,7 +109,7 @@ export function exerciseNeverDone(exercise: Exercise, results: Result[]): Priori
 
 export function exerciseNeverDoneByVoice(exercise: Exercise, results: Result[]): Priority[] {
   const neverDoneByVoiceExerciseValue = neverDoneByVoiceExercisesCount++ === 0 ? VALUE_EXERCISE_NEVER_DONE_BY_VOICE : 0;
-  return getAllResultsForExercise(results, exercise).filter((ex) => ex.isCorrect && ex.answerInputType === 'voice')
+  return getAllResultsForExercise(results, exercise).filter((ex) => ex.wasCorrect && ex.answerInputType === 'voice')
     .length === 0
     ? [{ exercise, priorityName: 'EXERCISE_NEVER_DONE_BY_VOICE', priorityValue: neverDoneByVoiceExerciseValue }]
     : noPriority(exercise);
@@ -124,7 +124,7 @@ export function exerciseTypeNeverDone(exercise: Exercise, results: Result[]): Pr
 export function exerciseWrong(exercise: Exercise, results: Result[]): Priority[] {
   return [
     getAllResultsForExercise(results, exercise)
-      .filter((result) => !result.isCorrect)
+      .filter((result) => !result.wasCorrect)
       .reduce(
         (previous) => {
           previous.priorityValue += VALUE_EXERCISE_DONE_WRONG;
@@ -142,7 +142,7 @@ export function exerciseWrong(exercise: Exercise, results: Result[]): Priority[]
 export function exerciseCorrect(exercise: Exercise, results: Result[]): Priority[] {
   return [
     getAllResultsForExercise(results, exercise)
-      .filter((result) => result.isCorrect)
+      .filter((result) => result.wasCorrect)
       .reduce(
         (previous) => {
           previous.priorityValue += VALUE_EXERCISE_DONE_CORRECT;

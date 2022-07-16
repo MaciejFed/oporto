@@ -123,7 +123,7 @@ export const db: Schema = {
         english: 'to have',
         Infinitive: 'ter',
         Eu: 'tenho',
-        Tu: 'tens   ',
+        Tu: 'tens',
         'Ela/Ele/Você': 'tem',
         Nós: 'temos',
         'Eles/Elas/Vocēs': 'têm'
