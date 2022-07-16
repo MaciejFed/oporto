@@ -62,10 +62,11 @@ const priorityCompilers: PriorityCompiler[] = [
 type PriorityCompiler = (exercise: Exercise, results: Result[]) => Priority[];
 
 export function sortExercises(exercises: Exercise[]): Exercise[] {
+  const allResults = getAllResults();
   const exercisesWithProrities = exercises
     .map((ex) => {
       const combinedProrites = priorityCompilers
-        .flatMap((priorityCompiler) => priorityCompiler(ex, getAllResults()))
+        .flatMap((priorityCompiler) => priorityCompiler(ex, allResults))
         .reduce(
           (pevious, current) => {
             pevious.priorities.push({

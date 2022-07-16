@@ -5,6 +5,7 @@ import { SessionManager } from '../src/session/sessionManager';
 import { Terminal } from '../src/io/terminal';
 import { sleep } from '../src/common/common';
 import { simulateTyping } from './util';
+import { getAllResults } from '../src/repository/resultRepository';
 
 const terminal = new Terminal(eventProcessor);
 const input = new Input(eventProcessor);
@@ -12,10 +13,6 @@ const sessionManager = new SessionManager(eventProcessor, 3);
 
 const sayCommands: string[] = [];
 const output: string[] = [];
-const resultCount = {
-  greenCount: 0,
-  redCount: 0
-};
 
  // @ts-ignore
 process.stdin.setRawMode = () => {};
@@ -35,12 +32,8 @@ jest.mock('terminal-kit', () => {
         output.push(data);
       },
       hideCursor: (hide: boolean) => {},
-      green: () => {
-        resultCount.greenCount++;
-      },
-      red: () => {
-        resultCount.redCount++;
-      },
+      green: () => {},
+      red: () => {},
       white: () => {},
       bold: () => {},
     }
@@ -51,6 +44,7 @@ jest.mock('terminal-kit', () => {
 describe('IT', () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
+
 
   afterEach(() => {
     process.stdin.removeAllListeners();
@@ -64,9 +58,9 @@ describe('IT', () => {
     const correctAnswer1Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
     simulateTyping(correctAnswer1Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
+    const firstResult = getAllResults()[0];
+    const firstExercise = sessionManager.currentExercise;
     process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
-    const greenCountAfter1Question = resultCount.greenCount;
-    const expectedGreenCount1Question = correctAnswer1Question.length;
 
     await sleep(50);
 
@@ -76,11 +70,16 @@ describe('IT', () => {
       correctAnswer2Question.substring(0, correctAnswer2Question.length - 1)
     );
     process.stdin.emit('keypress', {}, { name: 'return' });
+    const secondResult = getAllResults()[1];
+    const secondExercise = sessionManager.currentExercise;
     process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
-    const greenCountAfter2Question = resultCount.greenCount;
-    const expectedGreenCount2Question = correctAnswer2Question.length - 1;
-    const redCountAfter2Question = resultCount.redCount;
-    const expectedRedCount2Question = 1;
+
+    await sleep(50);
+
+    // correct wrong answer
+    simulateTyping(correctAnswer2Question);
+    process.stdin.emit('keypress', {}, { name: 'return' });
+    process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
 
     await sleep(50);
 
@@ -90,22 +89,25 @@ describe('IT', () => {
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'e' })
     process.stdin.emit('keypress', {}, { name: 'r' })
-    process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
-    const greenCountAfter3Question = resultCount.greenCount;
-    const expectedGreenCount3Question = correctAnswer3Question.length;
+    const thirdResult = getAllResults()[2];
+    const thirdExercise = sessionManager.currentExercise;
     
     await sleep(50);
 
     const correctAnswersLogCount = output.filter((logLine) => logLine === 'Correct! [voice]').length;
     const wrongAnswersLogCount = output.filter((logLine) => logLine === 'Wrong! [voice]').length;
 
-    expect(greenCountAfter1Question).toBe(expectedGreenCount1Question);
-    expect(greenCountAfter2Question).toBe(expectedGreenCount1Question + expectedGreenCount2Question);
-    expect(redCountAfter2Question).toBe(expectedRedCount2Question);
-    expect(greenCountAfter3Question).toBe(expectedGreenCount1Question + expectedGreenCount2Question + expectedGreenCount3Question);
+
     expect(correctAnswersLogCount).toBe(2);
     expect(wrongAnswersLogCount).toBe(1);
     expect(mockExit).toHaveBeenCalledWith(0);
+    expect(getAllResults().length).toBe(3);
+    expect(firstResult.isCorrect).toBe(true);
+    expect(firstResult.exercise.equal(firstExercise)).toBe(true);
+    expect(secondResult.isCorrect).toBe(false);
+    expect(secondResult.exercise.equal(secondExercise)).toBe(true);
+    expect(thirdResult.isCorrect).toBe(true);
+    expect(thirdResult.exercise.equal(thirdExercise)).toBe(true);
 
     console.log(output);
   });

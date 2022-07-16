@@ -6,6 +6,7 @@ import { IrregularVerbExercise, RegularVerbExercise } from '../exercise/verbExer
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { readFromFile, saveToFile } from '../io/file';
+import assert from 'assert';
 
 export function getAllResults(): Result[] {
   const results = readFromFile();
@@ -17,27 +18,42 @@ export function getAllResults(): Result[] {
         const regularVerbExercise: RegularVerbExercise = new RegularVerbExercise();
         regularVerbExercise.verb = (result.exercise as unknown as RegularVerbExercise).verb;
         regularVerbExercise.person = (result.exercise as unknown as RegularVerbExercise).person;
+        assert(regularVerbExercise.verb);
+        assert(regularVerbExercise.person);
         exercise = regularVerbExercise;
         break;
       case 'IrregularVerb':
         const irregularVerbExercise: IrregularVerbExercise = new IrregularVerbExercise();
         irregularVerbExercise.verb = (result.exercise as unknown as IrregularVerbExercise).verb;
         irregularVerbExercise.person = (result.exercise as unknown as IrregularVerbExercise).person;
+        assert(irregularVerbExercise.verb.Infinitive);
+        assert(irregularVerbExercise.verb.english);
         exercise = irregularVerbExercise;
         break;
       case 'NounTranslation':
         const nounTranslationExercise: NounTranslationExercise = new NounTranslationExercise();
         nounTranslationExercise.noun = (result.exercise as unknown as NounTranslationExercise).noun;
+        nounTranslationExercise.translationType = (
+          result.exercise as unknown as NounTranslationExercise
+        ).translationType;
+        assert(nounTranslationExercise.noun.portuguese);
+        assert(nounTranslationExercise.noun.english);
+        assert(nounTranslationExercise.noun.exerciseLevel);
         exercise = nounTranslationExercise;
         break;
       case 'SentenceTranslation':
         const sentenceTranslationExercise: SentenceTranslationExercise = new SentenceTranslationExercise();
         sentenceTranslationExercise.sentence = (result.exercise as unknown as SentenceTranslationExercise).sentence;
+        sentenceTranslationExercise.translationType = (
+          result.exercise as unknown as SentenceTranslationExercise
+        ).translationType;
+        assert(sentenceTranslationExercise.sentence);
         exercise = sentenceTranslationExercise;
         break;
       case 'FitInGap':
         const fitInGapExercise: FitInGapExercise = new FitInGapExercise();
         fitInGapExercise.fitIn = (result.exercise as unknown as FitInGapExercise).fitIn;
+        assert(fitInGapExercise.fitIn);
         exercise = fitInGapExercise;
         break;
       default:
