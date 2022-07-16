@@ -2,6 +2,7 @@ import { Exercise, ExerciseType } from '../exercise/exercise';
 import { getAllResults, getAllResultsForExercise, getAllResultsForExerciseType } from '../repository/resultRepository';
 import fs from 'fs';
 import { Result } from './result';
+import { DateTime } from 'luxon';
 
 let neverDoneExercisesCount = 0;
 let neverDoneByVoiceExercisesCount = 0;
@@ -38,6 +39,7 @@ export type PriorityName =
   | 'EXERCISE_WRONG'
   | 'EXERCISE_CORRECT'
   | 'EXERCISE_DONE_TODAY'
+  | 'EXERCISE_DONE_IN_LAST_HOUR'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_LEVEL'
   | 'NO_PRIORITY';
@@ -55,6 +57,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
+  exerciseDoneInLastHour,
   exerciseLevelPriority,
   exerciseRandomnessPriority
 ];
@@ -168,6 +171,28 @@ export function exerciseDoneToday(exercise: Exercise, results: Result[]): Priori
         priorityName: 'EXERCISE_DONE_TODAY',
         priorityValue: valueDoneToday(resultsToday.length)
       }
+    ];
+  }
+  return noPriority(exercise);
+}
+
+export function exerciseDoneInLastHour(exercise: Exercise, results: Result[]): Priority[] {
+  const resultsToday = getAllResultsForExercise(results, exercise).filter(
+    (result) => result.date.getTime() > new Date().getTime() - 1000 * 60 * 60
+  );
+  if (resultsToday.length > 0) {
+    return [
+      resultsToday.reduce(
+        (previous, current) => {
+          previous.priorityValue += (Math.round((current.date.getTime() - new Date().getTime()) / 60000) + 60) * -1;
+          return previous;
+        },
+        {
+          exercise: exercise,
+          priorityName: 'EXERCISE_DONE_IN_LAST_HOUR',
+          priorityValue: 0
+        }
+      )
     ];
   }
   return noPriority(exercise);

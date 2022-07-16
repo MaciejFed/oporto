@@ -20,7 +20,8 @@ import {
     exerciseNeverDoneByVoice,
     VALUE_EXERCISE_NEVER_DONE_BY_VOICE,
     exerciseLevelPriority,
-    VALUE_EXERCISE_PER_ONE_LEVEL
+    VALUE_EXERCISE_PER_ONE_LEVEL,
+    exerciseDoneInLastHour
 } from '../../src/service/priority';
 import { Result } from '../../src/service/result';
 
@@ -175,6 +176,19 @@ describe('Priority', () => {
         }
     });
 
+    it ('Exercise Done 25 and 45 Minutes Ago', () => {
+        const testExercise = generateExercise('IrregularVerb');
+        const results = [
+            generateResultForExerciseMinutesAgo(testExercise, 25),
+            generateResultForExerciseMinutesAgo(testExercise, 45)
+        ];
+        const actualPriority = exerciseDoneInLastHour(testExercise, results);
+
+        expect(actualPriority.length).toBe(1);
+        expect(actualPriority[0].priorityName).toEqual('EXERCISE_DONE_IN_LAST_HOUR');
+        expect(actualPriority[0].priorityValue).toEqual(-35 - 15);
+    })
+
     it('Exercise Randomness', () => {
         const testExercise = generateExercise('IrregularVerb');
         const results = generateResultForExercise(generateExercise('IrregularVerb'), true, 'keyboard', 1);
@@ -205,6 +219,18 @@ function generateExercise(exercsiseType: ExerciseType): Exercise {
         return new RegularVerbExercise();
     }
     return new IrregularVerbExercise();
+}
+
+function generateResultForExerciseMinutesAgo(exercise: Exercise, minutesAgo: number): Result {
+    const minutesAgoDate = new Date();
+    minutesAgoDate.setTime(minutesAgoDate.getTime() - minutesAgo * 60 * 1000);
+    return {
+        exercise,
+        answerInputType: 'keyboard',
+        wasCorrect: true,
+        answer: 'N/A',
+        date: minutesAgoDate
+    };
 }
 
 function generateResultForExerciseDaysAgo(exercise: Exercise, wasCorrect: boolean, daysAgo: number): Result {
