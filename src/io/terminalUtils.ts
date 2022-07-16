@@ -3,6 +3,7 @@ import clear from 'clear';
 import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
+import { logger } from '../common/logger';
 import { ExerciseStatistics } from '../service/result';
 import { AnswerInputType } from './input';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -15,29 +16,46 @@ export function preExerciseClear() {
   console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
 }
 
+export function printExerciseExplanation(exerciseExmplanation: string) {
+  terminal.moveTo(1, 8, exerciseExmplanation);
+}
+
 export function printExerciseDescription(exerciseDescription: string) {
   terminal.moveTo(1, 10, exerciseDescription);
 }
 
-export function printExerciseExplanation(exerciseExmplanation: string) {
-  terminal.moveTo(1, 8, exerciseExmplanation);
+export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
+  terminal.moveTo(1, 11, exerciseBodyPrefix + answer + exerciseBodySuffix);
+  terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, 11);
 }
 
 export function printExerciseFeedback(isCorrect: boolean, answerInputType: AnswerInputType) {
   terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
-export function printInBetweenMenu(printExplanation: boolean) {
-  terminal.moveTo(1, 14, 'Press key to conitinue...');
-  terminal.moveTo(1, 15, 'r - repeat the answer');
-  if (printExplanation) {
-    terminal.moveTo(1, 16, 'e - print explanation');
+export function printExerciseRepeatBody(answer: string, correctAnswer: string) {
+  const prefix = 'Repeat: ';
+  terminal.moveTo(1, 13, `${prefix}${answer}`);
+  for (let i = 0; i < answer.length; i++) {
+    if (
+      (answer[i] !== undefined && answer[i].toLowerCase()) ===
+      (correctAnswer[i] !== undefined && correctAnswer[i].toLowerCase())
+    ) {
+      terminal.green();
+    } else {
+      terminal.red();
+    }
+    terminal.moveTo(prefix.length + i + 1, 13, answer[i]);
   }
+  terminal.white();
 }
 
-export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
-  terminal.moveTo(1, 11, exerciseBodyPrefix + answer + exerciseBodySuffix);
-  terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, 11);
+export function printInBetweenMenu(printExplanation: boolean) {
+  terminal.moveTo(1, 15, 'Press key to continue...');
+  terminal.moveTo(1, 16, 'r - repeat the answer');
+  if (printExplanation) {
+    terminal.moveTo(1, 17, 'e - print explanation');
+  }
 }
 
 export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answer: string, correctAnswer: string) {
@@ -58,7 +76,7 @@ export async function animateExerciseSummary({
   failedAttempts,
   lastTimeAttempted
 }: ExerciseStatistics) {
-  const yIndex = 18;
+  const yIndex = 19;
   const animationTime = 2000;
   const barWidth = 50;
   terminal.bold();

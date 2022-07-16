@@ -23,6 +23,7 @@ import {
   printExerciseDescription,
   printExerciseExplanation,
   printExerciseFeedback,
+  printExerciseRepeatBody,
   printInBetweenMenu
 } from './terminalUtils';
 import { Exercise } from '../exercise/exercise';
@@ -35,19 +36,23 @@ export class Terminal {
   exerciseBodySuffix: string;
   exerciseExplanation: string;
   answer: string;
+  repetitionAnswer: string;
   correctAnswer: string;
   exerciseLoop: any;
   exerciseInProgress: boolean;
+  exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
 
   constructor(eventProcessor: EventProcessor) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exerciseInProgress = false;
+    this.exerciseRepetitionInProgress = true;
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';
     this.exerciseExplanation = '';
     this.answer = '';
+    this.repetitionAnswer = '';
     this.correctAnswer = '';
     clear();
   }
@@ -86,7 +91,14 @@ export class Terminal {
 
   private registerOnKeyPressedEventListener() {
     this.eventProcessor.on(KEY_PRESSED, (key) => {
-      const onKeyAction = this.exerciseInProgress ? this.onKeyExerciseInProgress.bind(this) : this.onKeyMenu.bind(this);
+      let onKeyAction;
+      if (this.exerciseInProgress) {
+        onKeyAction = this.onKeyExerciseInProgress.bind(this);
+      } else if (this.exerciseRepetitionInProgress) {
+        onKeyAction = this.onKeyExerciseRepetitionInProgress.bind(this);
+      } else {
+        onKeyAction = this.onKeyMenu.bind(this);
+      }
       onKeyAction(key);
     });
   }
@@ -95,6 +107,7 @@ export class Terminal {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
       this.exerciseInProgress = true;
       this.answer = '';
+      this.repetitionAnswer = '';
       preExerciseClear();
     });
   }
@@ -102,20 +115,17 @@ export class Terminal {
   private registerOnAnswerCheckedEventListener() {
     this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer, answerInputType, exercise }) => {
       this.exercise = exercise;
-      terminal.hideCursor();
       this.exerciseInProgress = false;
+      this.correctAnswer = correctAnswer;
       printExerciseFeedback(isCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
-      sleep(250).then(() => {
-        const exerciseStatistics = getStatisticForExercise(exercise);
-        if (exerciseStatistics) {
-          animateExerciseSummary(exerciseStatistics);
-        }
-      });
-      this.correctAnswer = correctAnswer;
       this.sayCorrectAnswerPhrase();
-      // this.eventProcessor.emit(EXERCISE_NEXT);
+      if (isCorrect) {
+        this.endOfExerciseMenu();
+      } else {
+        this.exerciseRepetitionInProgress = true;
+        printExerciseRepeatBody('', this.correctAnswer);
+      }
     });
   }
 
@@ -137,6 +147,38 @@ export class Terminal {
       this.answer = this.answer + key;
     }
     printExerciseBody(this.exerciseBodyPrefix, this.answer, this.exerciseBodySuffix);
+  }
+
+  private endOfExerciseMenu() {
+    this.exerciseRepetitionInProgress = false;
+    terminal.hideCursor();
+    printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
+    sleep(250).then(() => {
+      if (this.exercise) {
+        const exerciseStatistics = getStatisticForExercise(this.exercise);
+        if (exerciseStatistics) {
+          animateExerciseSummary(exerciseStatistics);
+        }
+      }
+    });
+  }
+
+  private onKeyExerciseRepetitionInProgress(key: string) {
+    logger.info(`getting new key ${key}`);
+    if (key === 'backspace') {
+      this.repetitionAnswer = this.repetitionAnswer.substring(0, Math.max(0, this.repetitionAnswer.length - 1));
+      clearLine(process.stdout, 0);
+    } else {
+      if (this.repetitionAnswer.length === 0 && key === ' ') {
+        logger.info('Empty space as a first input - skipping...');
+        return;
+      }
+      this.repetitionAnswer = this.repetitionAnswer + key;
+    }
+    printExerciseRepeatBody(this.repetitionAnswer, this.correctAnswer);
+    if (this.correctAnswer.toLowerCase() === this.repetitionAnswer.toLowerCase()) {
+      this.endOfExerciseMenu();
+    }
   }
 
   private onKeyMenu(key: string) {
