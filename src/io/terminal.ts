@@ -153,14 +153,12 @@ export class Terminal {
     this.exerciseRepetitionInProgress = false;
     terminal.hideCursor();
     printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
-    sleep(250).then(() => {
-      if (this.exercise) {
-        const exerciseStatistics = getStatisticForExercise(this.exercise);
-        if (exerciseStatistics) {
-          animateExerciseSummary(exerciseStatistics);
-        }
+    if (this.exercise) {
+      const exerciseStatistics = getStatisticForExercise(this.exercise);
+      if (exerciseStatistics) {
+        animateExerciseSummary(exerciseStatistics);
       }
-    });
+    }
   }
 
   private onKeyExerciseRepetitionInProgress(key: string) {

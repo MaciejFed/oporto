@@ -9,5 +9,6 @@ describe('Result Service', () => {
 
         expect(result.answer).toEqual(verbExercise.getCorrectAnswer());
         expect(result.exercise.correctAnswer).toEqual(verbExercise.getCorrectAnswer());
+        expect(result.exercise.equal(verbExercise)).toBe(true);
     })
 })

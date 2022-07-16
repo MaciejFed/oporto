@@ -21,7 +21,7 @@ export interface Exercise extends Comperable {
 
 type ExerciseGenerator = () => Exercise;
 
-const exerciseGenerators: ExerciseGenerator[] = [
+export const exerciseGenerators: ExerciseGenerator[] = [
   () => new RegularVerbExercise(),
   () => new IrregularVerbExercise(),
   () => new NounTranslationExercise(),

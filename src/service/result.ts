@@ -16,7 +16,6 @@ export type Result = {
   answerInputType: AnswerInputType;
   isCorrect: boolean;
   date: Date;
-  totalAttempts?: number;
 };
 
 export function convertToResult(
@@ -25,23 +24,22 @@ export function convertToResult(
   isCorrect: boolean,
   answerInputType: AnswerInputType
 ): Result {
-  const totalAttemtps = getAllResultsForExercise(getAllResults(), exercise).length;
   return {
     exercise: exercise,
     answer: answer,
     answerInputType,
     isCorrect: isCorrect,
-    date: new Date(),
-    totalAttempts: totalAttemtps
+    date: new Date()
   };
 }
 
 export function getStatisticForExercise(exercise: Exercise): ExerciseStatistics | undefined {
-  const allResults = getAllResultsForExercise(getAllResults(), exercise).sort(
+  const allResults = getAllResults();
+  const allResultsForExercise = getAllResultsForExercise(allResults, exercise).sort(
     (a, b) => b.date.getTime() - a.date.getTime()
   );
-  if (allResults.length === 0) {
-    logger.error(`no results for exercise ${JSON.stringify(exercise)}`);
+  if (allResultsForExercise.length === 0) {
+    logger.error(`no results for exercise: ${JSON.stringify(exercise)}, all results: ${JSON.stringify(allResults)}`);
     return undefined;
   }
   const correctAttempts = allResults.filter((r) => r.isCorrect).length;

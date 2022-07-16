@@ -157,14 +157,12 @@ describe('Exercises IT Snapshot', () => {
       const readAll = require('../../src/repository/exercisesRepository').readAll;
       const FitInGapExercise = require('../../src/exercise/fitInGapExercise').FitInGapExercise;
       const modelActual = jest.requireActual('../../src/exercise/exercise');
-      const fitInGapExerciseOne = new FitInGapExercise();
-      const fitInGapExerciseTwo = new FitInGapExercise();
-      fitInGapExerciseOne.fitIn = readAll().fitIn[0];
-      fitInGapExerciseTwo.fitIn = readAll().fitIn[1];
+      const fitInGapExercise = new FitInGapExercise();
+      fitInGapExercise.fitIn = readAll().fitIn[0];
       return {
         __esModule: true,
         modelActual,
-        generateUniqeExercises: () => [fitInGapExerciseOne, fitInGapExerciseTwo]
+        generateUniqeExercises: () => [fitInGapExercise]
       };
     });
     const appModules = requireAllModules();
@@ -172,16 +170,10 @@ describe('Exercises IT Snapshot', () => {
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
-      2
-    );
+      1
+    )
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('de');
-    process.stdin.emit('keypress', {}, { name: 'return' });
-    process.stdin.emit('keypress', {}, { name: 'n' });
-
-    await sleep(50);
-
-    simulateTyping('wronganswer');
+    simulateTyping('tomo');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
