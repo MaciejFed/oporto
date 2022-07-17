@@ -12,7 +12,8 @@ jest.mock('../src/io/terminalUtils', () => {
   const modelActual = jest.requireActual('../src/io/terminalUtils');
   return {
     ...modelActual,
-    animateExerciseSummary: (exerciseStatistics: ExerciseStatistics) => {}
+    animateExerciseSummary: (exerciseStatistics: ExerciseStatistics) => {},
+    displayWeeklyStatistics: (weeklyStatistics: WeekdayStatistics[]) => {}
   };
 });
 

@@ -1,6 +1,8 @@
 import clear from 'clear';
 import EventEmitter from 'events';
+import { terminal } from 'terminal-kit';
 import winston from 'winston';
+import { displayStatistics } from '../commands/stat';
 import { logger } from '../common/logger';
 import { APP_EVENT, APP_STARTED } from './events';
 
@@ -43,7 +45,9 @@ export class EventProcessor {
     switch (event) {
       case 'APP_FINISHED':
         this.eventEmitter.removeAllListeners();
+        terminal.hideCursor(false);
         clear();
+        displayStatistics();
         process.exit(0);
         break;
       default:

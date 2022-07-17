@@ -29,6 +29,7 @@ import {
 import { Exercise } from '../exercise/exercise';
 import { getStatisticForExercise } from '../service/result';
 import { sleep } from '../common/common';
+import { displayStatistics } from '../commands/stat';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -64,7 +65,6 @@ export class Terminal {
     this.registerOnKeyPressedEventListener();
     this.registerOnExerciseStartedEventListener();
     this.registerOnAnswerCheckedEventListener();
-    this.registerOnAppFinishedEventListener();
   }
 
   private registerOnAppStartedEventListerner() {
@@ -126,12 +126,6 @@ export class Terminal {
         this.exerciseRepetitionInProgress = true;
         printExerciseRepeatBody('', this.correctAnswer);
       }
-    });
-  }
-
-  private registerOnAppFinishedEventListener() {
-    this.eventProcessor.on(APP_FINISHED, () => {
-      terminal.hideCursor(false);
     });
   }
 

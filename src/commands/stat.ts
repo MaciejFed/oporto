@@ -1,5 +1,6 @@
-import { getWeeklyStatistics } from '../service/result';
+import { displayWeeklyStatistics } from '../io/terminalUtils';
+import { getWeekdayStatistics, getWeeklyStatistics } from '../service/result';
 
 export function displayStatistics() {
-  console.log(JSON.stringify(getWeeklyStatistics()));
+  displayWeeklyStatistics(getWeekdayStatistics());
 }
