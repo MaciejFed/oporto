@@ -43,7 +43,7 @@ jest.mock('../../src/service/verb', () => {
   const readAll = require('../../src/repository/exercisesRepository').readAll;
   return {
     ...modeuleActual,
-    getRandomRegularVerb: () => Object.assign({ portuguese: 'Comer', english: '' }),
+    getRandomRegularVerb: () => Object.assign({ infinitive: 'Comer', english: '' }),
     getRandomPerson: () => 'Eu',
     getRandomIrregularVerb: () => readAll().verbs.irregular[0],
   };

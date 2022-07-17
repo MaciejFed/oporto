@@ -1,6 +1,6 @@
 import { Comperable } from '../common/common';
-import { Noun, Sentence } from '../repository/exercisesRepository';
-import { getRandomNoun, getRandomSentence } from '../service/translation';
+import { IrregularVerb, Noun, RegularVerb, Sentence } from '../repository/exercisesRepository';
+import { getRandomNoun, getRandomSentence, getRandomVerb } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
 
 const TRANLSATION_PROPABILTY = 0.2;
@@ -63,6 +63,49 @@ export class NounTranslationExercise extends TranslationExercise implements Exer
   getWordWithGender() {
     return `${this.noun.portuguese.gender === 'masculine' ? 'o' : 'a'} ${this.noun.portuguese.word}`;
   }
+}
+
+export class VerbTranslationExercise extends TranslationExercise implements Exercise, Comperable {
+  exercsiseType: ExerciseType;
+  correctAnswer: string;
+  verb: RegularVerb | IrregularVerb;
+  exerciseLevel: number;
+
+  constructor() {
+    super();
+    this.exercsiseType = 'VerbTranslation';
+    this.verb = getRandomVerb();
+    this.correctAnswer = this.getCorrectAnswer();
+    this.exerciseLevel = this.verb.exerciseLevel;
+  }
+
+  getExerciseBodyPrefix(): string {
+    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
+  }
+
+  getExerciseBodySuffix = () => '';
+
+  getExerciseDescription = () => {
+    if (this.isTranslationToPortuguese()) {
+      return `English: ${this.verb.english}`;
+    }
+    return `Portuguese: ${this.verb.infinitive}`;
+  };
+
+  getExercsiseExplanation = () => undefined;
+
+  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.verb.infinitive : this.verb.english);
+
+  checkAnsweCorrect(answer: string): boolean {
+    return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
+  }
+
+  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.correctAnswer : this.verb.infinitive);
+
+  equal = (other: VerbTranslationExercise) =>
+    other.exercsiseType === 'VerbTranslation' &&
+    this.verb.infinitive === other.verb.infinitive &&
+    this.translationType === other.translationType;
 }
 
 export class SentenceTranslationExercise extends TranslationExercise implements Exercise, Comperable {

@@ -1,7 +1,11 @@
 /* eslint-disable no-case-declarations */
 import { Exercise, ExerciseType } from '../exercise/exercise';
 import { FitInGapExercise } from '../exercise/fitInGapExercise';
-import { NounTranslationExercise, SentenceTranslationExercise } from '../exercise/translationExercise';
+import {
+  NounTranslationExercise,
+  SentenceTranslationExercise,
+  VerbTranslationExercise
+} from '../exercise/translationExercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../exercise/verbExercise';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
@@ -26,7 +30,7 @@ export function getAllResults(): Result[] {
         const irregularVerbExercise: IrregularVerbExercise = new IrregularVerbExercise();
         irregularVerbExercise.verb = (result.exercise as unknown as IrregularVerbExercise).verb;
         irregularVerbExercise.person = (result.exercise as unknown as IrregularVerbExercise).person;
-        assert(irregularVerbExercise.verb.Infinitive);
+        assert(irregularVerbExercise.verb.infinitive);
         assert(irregularVerbExercise.verb.english);
         exercise = irregularVerbExercise;
         break;
@@ -40,6 +44,16 @@ export function getAllResults(): Result[] {
         assert(nounTranslationExercise.noun.english);
         assert(nounTranslationExercise.noun.exerciseLevel);
         exercise = nounTranslationExercise;
+        break;
+      case 'VerbTranslation':
+        const verbTranslationExercise: VerbTranslationExercise = new VerbTranslationExercise();
+        verbTranslationExercise.verb = (result.exercise as unknown as VerbTranslationExercise).verb;
+        verbTranslationExercise.translationType = (
+          result.exercise as unknown as NounTranslationExercise
+        ).translationType;
+        assert(verbTranslationExercise.verb);
+        assert(verbTranslationExercise.translationType);
+        exercise = verbTranslationExercise;
         break;
       case 'SentenceTranslation':
         const sentenceTranslationExercise: SentenceTranslationExercise = new SentenceTranslationExercise();
