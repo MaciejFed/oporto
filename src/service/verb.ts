@@ -23,36 +23,36 @@ export const getCorrectIrregularConjugation: (verb: IrregularVerb, person: Perso
   return verb[person];
 };
 
-export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) => string = ({ portuguese }, person) => {
-  if (portuguese.endsWith('ar')) {
+export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) => string = ({ infinitive }, person) => {
+  if (infinitive.endsWith('ar')) {
     switch (person) {
       case 'Eu':
-        return `${portuguese.substring(0, portuguese.length - 2)}o`;
+        return `${infinitive.substring(0, infinitive.length - 2)}o`;
       case 'Tu':
-        return `${portuguese.substring(0, portuguese.length - 1)}s`;
+        return `${infinitive.substring(0, infinitive.length - 1)}s`;
       case 'Ela/Ele/Você':
-        return portuguese.substring(0, portuguese.length - 1);
+        return infinitive.substring(0, infinitive.length - 1);
       case 'Nós':
-        return `${portuguese.substring(0, portuguese.length - 1)}mos`;
+        return `${infinitive.substring(0, infinitive.length - 1)}mos`;
       case 'Eles/Elas/Vocēs':
-        return `${portuguese.substring(0, portuguese.length - 1)}m`;
+        return `${infinitive.substring(0, infinitive.length - 1)}m`;
     }
   }
-  if (portuguese.endsWith('ir') || portuguese.endsWith('er')) {
+  if (infinitive.endsWith('ir') || infinitive.endsWith('er')) {
     switch (person) {
       case 'Eu':
-        return `${portuguese.substring(0, portuguese.length - 2)}o`;
+        return `${infinitive.substring(0, infinitive.length - 2)}o`;
       case 'Tu':
-        return `${portuguese.substring(0, portuguese.length - 2)}es`;
+        return `${infinitive.substring(0, infinitive.length - 2)}es`;
       case 'Ela/Ele/Você':
-        return `${portuguese.substring(0, portuguese.length - 2)}e`;
+        return `${infinitive.substring(0, infinitive.length - 2)}e`;
       case 'Nós':
-        return `${portuguese.substring(0, portuguese.length - 1)}mos`;
+        return `${infinitive.substring(0, infinitive.length - 1)}mos`;
       case 'Eles/Elas/Vocēs':
-        return `${portuguese.substring(0, portuguese.length - 2)}em`;
+        return `${infinitive.substring(0, infinitive.length - 2)}em`;
     }
   }
-  throw Error(`Incorrect Regular Verb: "${portuguese}"`);
+  throw Error(`Incorrect Regular Verb: "${infinitive}"`);
 };
 
 export const getRandomPerson: () => Person = () => {

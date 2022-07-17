@@ -13,7 +13,8 @@ describe('Result Repository', () => {
 
         expect(allResults.length).toBe(exerciseGenerators.length);
         exercies.forEach((exercise, index) => {
-            expect(getAllResultsForExercise(allResults, exercise).length).toBe(1)
+            const resultsForExercise = getAllResultsForExercise(allResults, exercise);
+            expect(resultsForExercise.length).toBe(1)
             expect(exercise.correctAnswer).toEqual(exercies[index].correctAnswer)
         })
     })

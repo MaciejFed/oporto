@@ -8,13 +8,13 @@ describe('Verb Exercise', () => {
     it('Regular Verb Exercise', () => {
         const regularVerbExercise = new RegularVerbExercise();
         const sameRegularVerbExercise = new RegularVerbExercise();
-        regularVerbExercise.verb = { portuguese: 'comer', english: '' };
+        regularVerbExercise.verb = { infinitive: 'comer', english: '', exerciseLevel: 1 };
         regularVerbExercise.person = Person.Eu;
-        sameRegularVerbExercise.verb = { portuguese: 'comer', english: '' };
+        sameRegularVerbExercise.verb = { infinitive: 'comer', english: '', exerciseLevel: 1 };
         sameRegularVerbExercise.person = Person.Eu;
         
         expect(regularVerbExercise.exercsiseType).toEqual('RegularVerb');
-        expect(regularVerbExercise.getExerciseDescription()).toEqual('Infinitive: comer');
+        expect(regularVerbExercise.getExerciseDescription()).toEqual('infinitive: comer');
         expect(regularVerbExercise.getExerciseBodyPrefix()).toEqual('Eu: ');
         expect(regularVerbExercise.getCorrectAnswer()).toEqual('como');
         expect(regularVerbExercise.getExercsiseExplanation()).toBe(undefined);
@@ -32,7 +32,7 @@ describe('Verb Exercise', () => {
         sameRegularVerbExercise.person = Person.Eu;
         
         expect(regularVerbExercise.exercsiseType).toEqual('IrregularVerb');
-        expect(regularVerbExercise.getExerciseDescription()).toEqual('Infinitive: ser');
+        expect(regularVerbExercise.getExerciseDescription()).toEqual('infinitive: ser');
         expect(regularVerbExercise.getExerciseBodyPrefix()).toEqual('Eu: ');
         expect(regularVerbExercise.getCorrectAnswer()).toEqual('sou');
         expect(regularVerbExercise.getExercsiseExplanation()).toBe(undefined);

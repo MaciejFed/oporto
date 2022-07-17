@@ -3,10 +3,14 @@ import { Person } from '../service/verb';
 
 export type RegularVerb = {
   english: string;
-  portuguese: string;
+  infinitive: string;
+  exerciseLevel: number;
 };
 
-export type IrregularVerb = { english: string } & { [key in Person]: string } & { Infinitive: string };
+export type IrregularVerb = { english: string } & { [key in Person]: string } & {
+  infinitive: string;
+  exerciseLevel: number;
+};
 
 type Verbs = {
   regular: RegularVerb[];
@@ -55,141 +59,161 @@ export const db: Schema = {
   verbs: {
     regular: [
       {
-        portuguese: 'falar',
-        english: 'to speak'
+        infinitive: 'falar',
+        english: 'to speak',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'comer',
-        english: 'to eat'
+        infinitive: 'comer',
+        english: 'to eat',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'abrir',
-        english: 'to open'
+        infinitive: 'abrir',
+        english: 'to open',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'achar',
-        english: 'to think'
+        infinitive: 'achar',
+        english: 'to think',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'andar',
-        english: 'to walk'
+        infinitive: 'andar',
+        english: 'to walk',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'beber',
-        english: 'to drink'
+        infinitive: 'beber',
+        english: 'to drink',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'entrar',
-        english: 'to enter'
+        infinitive: 'entrar',
+        english: 'to enter',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'morar',
-        english: 'to live'
+        infinitive: 'morar',
+        english: 'to live',
+        exerciseLevel: 1
       },
       {
-        portuguese: 'olhar',
-        english: 'to look'
+        infinitive: 'olhar',
+        english: 'to look',
+        exerciseLevel: 1
       }
     ],
     irregular: [
       {
         english: 'to be - long',
-        Infinitive: 'ser',
+        infinitive: 'ser',
         Eu: 'sou',
         Tu: 'és',
         'Ela/Ele/Você': 'é',
         Nós: 'somos',
-        'Eles/Elas/Vocēs': 'são'
+        'Eles/Elas/Vocēs': 'são',
+        exerciseLevel: 1
       },
       {
         english: 'to be - moment',
-        Infinitive: 'estar',
+        infinitive: 'estar',
         Eu: 'estou',
         Tu: 'estás',
         'Ela/Ele/Você': 'está',
         Nós: 'estamos',
-        'Eles/Elas/Vocēs': 'estão'
+        'Eles/Elas/Vocēs': 'estão',
+        exerciseLevel: 1
       },
       {
         english: 'to go',
-        Infinitive: 'ir',
+        infinitive: 'ir',
         Eu: 'vou',
         Tu: 'vais',
         'Ela/Ele/Você': 'vai',
         Nós: 'vamos',
-        'Eles/Elas/Vocēs': 'vão'
+        'Eles/Elas/Vocēs': 'vão',
+        exerciseLevel: 1
       },
       {
         english: 'to have',
-        Infinitive: 'ter',
+        infinitive: 'ter',
         Eu: 'tenho',
         Tu: 'tens',
         'Ela/Ele/Você': 'tem',
         Nós: 'temos',
-        'Eles/Elas/Vocēs': 'têm'
+        'Eles/Elas/Vocēs': 'têm',
+        exerciseLevel: 1
       },
       {
         english: 'to want',
-        Infinitive: 'querer',
+        infinitive: 'querer',
         Eu: 'quero',
         Tu: 'queres',
         'Ela/Ele/Você': 'quer',
         Nós: 'queremos',
-        'Eles/Elas/Vocēs': 'querem'
+        'Eles/Elas/Vocēs': 'querem',
+        exerciseLevel: 1
       },
       {
         english: 'to see',
-        Infinitive: 'ver',
+        infinitive: 'ver',
         Eu: 'vejo',
         Tu: 'vês',
         'Ela/Ele/Você': 'vê',
         Nós: 'vemos',
-        'Eles/Elas/Vocēs': 'vêem'
+        'Eles/Elas/Vocēs': 'vêem',
+        exerciseLevel: 1
       },
       {
         english: 'to do/make',
-        Infinitive: 'fazer',
+        infinitive: 'fazer',
         Eu: 'faço',
         Tu: 'fazes',
         'Ela/Ele/Você': 'faz',
         Nós: 'fazemos',
-        'Eles/Elas/Vocēs': 'fazem'
+        'Eles/Elas/Vocēs': 'fazem',
+        exerciseLevel: 1
       },
       {
         english: 'to know',
-        Infinitive: 'saber',
+        infinitive: 'saber',
         Eu: 'sei',
         Tu: 'sabes',
         'Ela/Ele/Você': 'sabe',
         Nós: 'sabemos',
-        'Eles/Elas/Vocēs': 'sabem'
+        'Eles/Elas/Vocēs': 'sabem',
+        exerciseLevel: 1
       },
       {
         english: 'to read',
-        Infinitive: 'ler',
+        infinitive: 'ler',
         Eu: 'leio',
         Tu: 'lês',
         'Ela/Ele/Você': 'lê',
         Nós: 'lemos',
-        'Eles/Elas/Vocēs': 'leem'
+        'Eles/Elas/Vocēs': 'leem',
+        exerciseLevel: 1
       },
       {
         english: 'to say',
-        Infinitive: 'dizer',
+        infinitive: 'dizer',
         Eu: 'digo',
         Tu: 'dizes',
         'Ela/Ele/Você': 'diz',
         Nós: 'dizemos',
-        'Eles/Elas/Vocēs': 'dizem'
+        'Eles/Elas/Vocēs': 'dizem',
+        exerciseLevel: 1
       },
       {
         english: 'can',
-        Infinitive: 'poder',
+        infinitive: 'poder',
         Eu: 'posso',
         Tu: 'podes',
         'Ela/Ele/Você': 'pode',
         Nós: 'podemos',
-        'Eles/Elas/Vocēs': 'podem'
+        'Eles/Elas/Vocēs': 'podem',
+        exerciseLevel: 1
       }
     ]
   },
