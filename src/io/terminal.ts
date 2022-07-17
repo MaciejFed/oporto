@@ -29,6 +29,7 @@ import {
 import { Exercise } from '../exercise/exercise';
 import { getStatisticForExercise } from '../service/result';
 import { sleep } from '../common/common';
+import { displayStatistics } from '../commands/stat';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -64,7 +65,6 @@ export class Terminal {
     this.registerOnKeyPressedEventListener();
     this.registerOnExerciseStartedEventListener();
     this.registerOnAnswerCheckedEventListener();
-    this.registerOnAppFinishedEventListener();
   }
 
   private registerOnAppStartedEventListerner() {
@@ -113,25 +113,19 @@ export class Terminal {
   }
 
   private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, ({ isCorrect, correctAnswer, answerInputType, exercise }) => {
+    this.eventProcessor.on(ANSWER_CHECKED, ({ wasCorrect, correctAnswer, answerInputType, exercise }) => {
       this.exercise = exercise;
       this.exerciseInProgress = false;
       this.correctAnswer = correctAnswer;
-      printExerciseFeedback(isCorrect, answerInputType);
+      printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       this.sayCorrectAnswerPhrase();
-      if (isCorrect) {
+      if (wasCorrect) {
         this.endOfExerciseMenu();
       } else {
         this.exerciseRepetitionInProgress = true;
         printExerciseRepeatBody('', this.correctAnswer);
       }
-    });
-  }
-
-  private registerOnAppFinishedEventListener() {
-    this.eventProcessor.on(APP_FINISHED, () => {
-      terminal.hideCursor(false);
     });
   }
 

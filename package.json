@@ -34,8 +34,7 @@
     "luxon": "^3.0.1",
     "path": "^0.12.7",
     "terminal-kit": "^2.4.0",
-    "winston": "^3.8.0",
-    "yargs": "^16.2.0"
+    "winston": "^3.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",

@@ -4,11 +4,11 @@ import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
 import { logger } from '../common/logger';
-import { ExerciseStatistics } from '../service/result';
+import { ExerciseStatistics, WeekdayStatistics, WeeklyStatistics } from '../service/result';
 import { AnswerInputType } from './input';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
-const { bullet, bg } = ervy;
+const { bullet, bg, fg, scatter } = ervy;
 
 export function preExerciseClear() {
   // eslint-disable-next-line no-console
@@ -29,8 +29,8 @@ export function printExerciseBody(exerciseBodyPrefix: string, answer: string, ex
   terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, 11);
 }
 
-export function printExerciseFeedback(isCorrect: boolean, answerInputType: AnswerInputType) {
-  terminal.moveTo(1, 12, `${isCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
+  terminal.moveTo(1, 12, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
 export function printExerciseRepeatBody(answer: string, correctAnswer: string) {
@@ -99,4 +99,76 @@ export async function animateExerciseSummary({
     terminal.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
     await sleep(animationTime / totalValue);
   }
+}
+
+export function displayWeeklyStatistics(weeklyStatistics: WeekdayStatistics[]) {
+  const maxYValue = Math.max(...weeklyStatistics.map((stat) => stat.correctAttempts + stat.failedAttempts));
+  const yGap = Math.ceil(maxYValue / 24);
+  const gapStyle = '-------';
+  const gapStyleLength = gapStyle.length - 3;
+  clear();
+  terminal.bold();
+  terminal.moveTo(0, 0, 'Weekly Statistics:\n\n');
+  const graphData = weeklyStatistics
+    .map((weeklyStatistic) => [
+      {
+        key: 'Distinct',
+        value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.distinctExercises / yGap)],
+        style: fg('yellow', `🟡 ${weeklyStatistic.distinctExercises}`)
+      },
+      {
+        key: 'Correct',
+        value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.correctAttempts / yGap)],
+        style: fg('green', `🟢 ${weeklyStatistic.correctAttempts}`)
+      },
+      {
+        key: 'Wrong',
+        value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.failedAttempts / yGap)],
+        style: fg('red', `🔴 ${weeklyStatistic.failedAttempts}`)
+      },
+      {
+        key: 'All',
+        value: [
+          weeklyStatistic.weekday * gapStyleLength,
+          Math.round((weeklyStatistic.correctAttempts + weeklyStatistic.failedAttempts) / yGap)
+        ],
+        style: fg('blue', `🔵 ${weeklyStatistic.correctAttempts + weeklyStatistic.failedAttempts}`)
+      }
+    ])
+    .flatMap((d) => d)
+    .filter((data) => data.value[1] !== 0);
+  graphData.unshift(
+    {
+      key: 'Distinct',
+      value: [graphData[graphData.length - 1].value[0], graphData[graphData.length - 1].value[1]],
+      style: fg('yellow', '🟡')
+    },
+    {
+      key: 'Correct',
+      value: [graphData[graphData.length - 3].value[0], graphData[graphData.length - 3].value[1]],
+      style: fg('green', '🟢')
+    },
+    {
+      key: 'Wrong',
+      value: [graphData[graphData.length - 2].value[0], graphData[graphData.length - 2].value[1]],
+      style: fg('red', '🔴')
+    },
+    {
+      key: 'All',
+      value: [graphData[graphData.length - 4].value[0], graphData[graphData.length - 4].value[1]],
+      style: fg('blue', '🔵')
+    }
+  );
+  console.log(
+    scatter(graphData, {
+      hAxis: ['+', gapStyle, '--->'],
+      hName: 'Day',
+      vName: 'Total',
+      legendGap: 18,
+      width: 7,
+      height: 24,
+      ratio: [1, yGap],
+      hGap: 1
+    })
+  );
 }

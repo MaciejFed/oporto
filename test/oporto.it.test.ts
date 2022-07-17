@@ -102,11 +102,11 @@ describe('IT', () => {
     expect(wrongAnswersLogCount).toBe(1);
     expect(mockExit).toHaveBeenCalledWith(0);
     expect(getAllResults().length).toBe(3);
-    expect(firstResult.isCorrect).toBe(true);
+    expect(firstResult.wasCorrect).toBe(true);
     expect(firstResult.exercise.equal(firstExercise)).toBe(true);
-    expect(secondResult.isCorrect).toBe(false);
+    expect(secondResult.wasCorrect).toBe(false);
     expect(secondResult.exercise.equal(secondExercise)).toBe(true);
-    expect(thirdResult.isCorrect).toBe(true);
+    expect(thirdResult.wasCorrect).toBe(true);
     expect(thirdResult.exercise.equal(thirdExercise)).toBe(true);
 
     console.log(output);

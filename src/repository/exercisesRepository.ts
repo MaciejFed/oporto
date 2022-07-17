@@ -123,7 +123,7 @@ export const db: Schema = {
         english: 'to have',
         Infinitive: 'ter',
         Eu: 'tenho',
-        Tu: 'tens   ',
+        Tu: 'tens',
         'Ela/Ele/Você': 'tem',
         Nós: 'temos',
         'Eles/Elas/Vocēs': 'têm'
@@ -132,7 +132,7 @@ export const db: Schema = {
         english: 'to want',
         Infinitive: 'querer',
         Eu: 'quero',
-        Tu: 'queres   ',
+        Tu: 'queres',
         'Ela/Ele/Você': 'quer',
         Nós: 'queremos',
         'Eles/Elas/Vocēs': 'querem'
@@ -141,7 +141,7 @@ export const db: Schema = {
         english: 'to see',
         Infinitive: 'ver',
         Eu: 'vejo',
-        Tu: 'vês   ',
+        Tu: 'vês',
         'Ela/Ele/Você': 'vê',
         Nós: 'vemos',
         'Eles/Elas/Vocēs': 'vêem'
@@ -150,7 +150,7 @@ export const db: Schema = {
         english: 'to do/make',
         Infinitive: 'fazer',
         Eu: 'faço',
-        Tu: 'fazes   ',
+        Tu: 'fazes',
         'Ela/Ele/Você': 'faz',
         Nós: 'fazemos',
         'Eles/Elas/Vocēs': 'fazem'
@@ -159,7 +159,7 @@ export const db: Schema = {
         english: 'to know',
         Infinitive: 'saber',
         Eu: 'sei',
-        Tu: 'sabes   ',
+        Tu: 'sabes',
         'Ela/Ele/Você': 'sabe',
         Nós: 'sabemos',
         'Eles/Elas/Vocēs': 'sabem'
@@ -168,7 +168,7 @@ export const db: Schema = {
         english: 'to read',
         Infinitive: 'ler',
         Eu: 'leio',
-        Tu: 'lês   ',
+        Tu: 'lês',
         'Ela/Ele/Você': 'lê',
         Nós: 'lemos',
         'Eles/Elas/Vocēs': 'leem'
@@ -177,7 +177,7 @@ export const db: Schema = {
         english: 'to say',
         Infinitive: 'dizer',
         Eu: 'digo',
-        Tu: 'dizes   ',
+        Tu: 'dizes',
         'Ela/Ele/Você': 'diz',
         Nós: 'dizemos',
         'Eles/Elas/Vocēs': 'dizem'
@@ -186,7 +186,7 @@ export const db: Schema = {
         english: 'can',
         Infinitive: 'poder',
         Eu: 'posso',
-        Tu: 'podes   ',
+        Tu: 'podes',
         'Ela/Ele/Você': 'pode',
         Nós: 'podemos',
         'Eles/Elas/Vocēs': 'podem'
@@ -641,7 +641,7 @@ export const db: Schema = {
     {
       english: 'ship',
       portuguese: {
-        word: 'navío',
+        word: 'navio',
         gender: 'masculine'
       },
       exerciseLevel: 1
@@ -1119,12 +1119,12 @@ export const db: Schema = {
     },
     {
       english: 'What time is it?',
-      portuguese: 'Que horas são_',
+      portuguese: 'Que horas são?',
       sentenceType: 'question',
       exerciseLevel: 1
     },
     {
-      english: 'I have to prepare a coffee to Leonor',
+      english: 'I have to prepare a coffee for Leonor',
       portuguese: 'Tenho de preparar um café para a Leonor',
       sentenceType: 'statement',
       exerciseLevel: 1
@@ -1154,7 +1154,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'You are beatiful',
+      english: 'You are beautiful',
       portuguese: 'És linda',
       sentenceType: 'statement',
       exerciseLevel: 1
@@ -1239,7 +1239,7 @@ export const db: Schema = {
     },
     {
       english: "I'm lazy",
-      portuguese: 'Eu sou preguisoço',
+      portuguese: 'Eu sou preguiçoso',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -1292,7 +1292,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'The picture on the wall is very beatiful',
+      english: 'The picture on the wall is very beautiful',
       portuguese: 'A fotografia na parede é muito bonita',
       sentenceType: 'statement',
       exerciseLevel: 1
