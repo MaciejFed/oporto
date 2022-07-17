@@ -641,7 +641,7 @@ export const db: Schema = {
     {
       english: 'ship',
       portuguese: {
-        word: 'navío',
+        word: 'navio',
         gender: 'masculine'
       },
       exerciseLevel: 1
@@ -1124,7 +1124,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'I have to prepare a coffee to Leonor',
+      english: 'I have to prepare a coffee for Leonor',
       portuguese: 'Tenho de preparar um café para a Leonor',
       sentenceType: 'statement',
       exerciseLevel: 1
@@ -1239,7 +1239,7 @@ export const db: Schema = {
     },
     {
       english: "I'm lazy",
-      portuguese: 'Eu sou preguisoço',
+      portuguese: 'Eu sou preguiçoso',
       sentenceType: 'statement',
       exerciseLevel: 1
     },

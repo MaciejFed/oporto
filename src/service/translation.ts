@@ -6,6 +6,10 @@ export const getRandomNoun: () => Noun = () => {
   return getRandomElement(readAll().nouns);
 };
 
+export const getRandom: () => Noun = () => {
+  return getRandomElement(readAll().nouns);
+};
+
 export const getRandomSentence: () => Sentence = () => {
   return getRandomElement(readAll().sentences);
 };

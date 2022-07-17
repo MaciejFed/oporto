@@ -114,17 +114,17 @@ export function displayWeeklyStatistics(weeklyStatistics: WeekdayStatistics[]) {
       {
         key: 'Distinct',
         value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.distinctExercises / yGap)],
-        style: fg('yellow', `🟡${weeklyStatistic.distinctExercises}`)
+        style: fg('yellow', `🟡 ${weeklyStatistic.distinctExercises}`)
       },
       {
         key: 'Correct',
         value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.correctAttempts / yGap)],
-        style: fg('green', `🟢${weeklyStatistic.correctAttempts}`)
+        style: fg('green', `🟢 ${weeklyStatistic.correctAttempts}`)
       },
       {
         key: 'Wrong',
         value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.failedAttempts / yGap)],
-        style: fg('red', `🔴${weeklyStatistic.failedAttempts}`)
+        style: fg('red', `🔴 ${weeklyStatistic.failedAttempts}`)
       },
       {
         key: 'All',
@@ -132,7 +132,7 @@ export function displayWeeklyStatistics(weeklyStatistics: WeekdayStatistics[]) {
           weeklyStatistic.weekday * gapStyleLength,
           Math.round((weeklyStatistic.correctAttempts + weeklyStatistic.failedAttempts) / yGap)
         ],
-        style: fg('blue', `🔵${weeklyStatistic.correctAttempts + weeklyStatistic.failedAttempts}`)
+        style: fg('blue', `🔵 ${weeklyStatistic.correctAttempts + weeklyStatistic.failedAttempts}`)
       }
     ])
     .flatMap((d) => d)
