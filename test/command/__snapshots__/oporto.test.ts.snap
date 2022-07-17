@@ -2,7 +2,7 @@
 
 exports[`Event Emitter HP With Backspace 1`] = `
 Array [
-  "infinitive: Comer",
+  "Infinitive: Comer",
   "Eu: ",
   "Eu: c",
   "Eu: co",
@@ -65,7 +65,7 @@ Array [
 
 exports[`Event Emitter Happy Path 2`] = `
 Array [
-  "infinitive: Comer",
+  "Infinitive: Comer",
   "Eu: ",
   "Eu: c",
   "Eu: co",
@@ -108,7 +108,7 @@ Array [
 
 exports[`Event Emitter Unhappy Path 2`] = `
 Array [
-  "infinitive: Comer",
+  "Infinitive: Comer",
   "Eu: ",
   "Eu: c",
   "Eu: co",

@@ -120,7 +120,7 @@ describe('Event Emitter', () => {
       (event: { event: any }) => event.event
     );
 
-    expect(output[0]).toEqual('infinitive: Comer');
+    expect(output[0]).toEqual('Infinitive: Comer');
     expect(output[5]).toEqual('Eu: como');
     expect(output[6]).toEqual('Correct! [voice]');
     expect(resultCount.greenCount).toBe('como'.length);
@@ -150,7 +150,7 @@ describe('Event Emitter', () => {
         (event: { event: any }) => event.event
       );
 
-    expect(output[0]).toEqual('infinitive: Comer');
+    expect(output[0]).toEqual('Infinitive: Comer');
     expect(output[14]).toEqual('Eu: cowronganswer');
     expect(output[15]).toEqual('Wrong! [voice]');
     expect(resultCount.greenCount).toBe('co'.length);
@@ -182,7 +182,7 @@ describe('Event Emitter', () => {
         (event: { event: any }) => event.event
       );
 
-    expect(output[0]).toEqual('infinitive: Comer');
+    expect(output[0]).toEqual('Infinitive: Comer');
     expect(output[7]).toEqual('Eu: comorr');
     expect(output[9]).toEqual('Eu: como');
     expect(output[10]).toEqual('Correct! [voice]');
