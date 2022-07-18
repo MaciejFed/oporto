@@ -5,7 +5,7 @@ import { SessionManager } from '../session/sessionManager';
 import { Terminal } from '../io/terminal';
 
 export function startTestSession() {
-  const EXERCISES_PER_SESSION = 10;
+  const EXERCISES_PER_SESSION = 5;
 
   const terminal = new Terminal(eventProcessor);
   const input = new Input(eventProcessor);
