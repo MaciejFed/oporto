@@ -1119,7 +1119,7 @@ export const db: Schema = {
     },
     {
       english: 'I am a strawberry',
-      portuguese: 'Eu sou um morango',
+      portuguese: 'Sou um morango',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -1155,7 +1155,7 @@ export const db: Schema = {
     },
     {
       english: 'I sleep until noon',
-      portuguese: 'Eu durmo até ao meio dia',
+      portuguese: 'Durmo até ao meio dia',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -1245,7 +1245,7 @@ export const db: Schema = {
     },
     {
       english: 'I read every day',
-      portuguese: 'Eu leio todos os dias',
+      portuguese: 'Leio todos os dias',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -1263,7 +1263,7 @@ export const db: Schema = {
     },
     {
       english: "I'm lazy",
-      portuguese: 'Eu sou preguiçoso',
+      portuguese: 'Sou preguiçoso',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -1328,8 +1328,8 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'I want to open the window but is too cold outside',
-      portuguese: 'Eu quero abrir a janela mas está muito frio lá fora',
+      english: "I want to open the window but it's too cold outside",
+      portuguese: 'Quero abrir a janela mas está muito frio lá fora',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -1343,6 +1343,12 @@ export const db: Schema = {
       english: 'Next weekend we are going on holidays',
       portuguese: 'No próximo fim de semana vamos de férias',
       sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Can you come here?',
+      portuguese: 'Podes chegar aqui?',
+      sentenceType: 'question',
       exerciseLevel: 1
     }
   ],

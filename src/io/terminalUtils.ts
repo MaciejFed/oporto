@@ -33,9 +33,30 @@ export function printExerciseFeedback(wasCorrect: boolean, answerInputType: Answ
   terminal.moveTo(1, 12, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
-export function printExerciseRepeatBody(answer: string, correctAnswer: string) {
-  const prefix = 'Repeat: ';
-  terminal.moveTo(1, 13, `${prefix}${answer}`);
+const repeatBodyPrefix = 'Repeat: ';
+
+export function printExerciseRepeatBody() {
+  terminal.moveTo(1, 13, repeatBodyPrefix);
+}
+
+export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: string, newKey: string) {
+  if (newKey === 'backspace') return;
+  const newIdex = answer.length - 1;
+  if (
+    answer[newIdex] !== undefined &&
+    answer[newIdex].toLowerCase() === (correctAnswer[newIdex] !== undefined && correctAnswer[newIdex].toLowerCase())
+  ) {
+    terminal.green();
+  } else {
+    terminal.red();
+  }
+  terminal.moveTo(1 + repeatBodyPrefix.length + answer.length - 1, 13, newKey);
+  terminal.white();
+}
+
+export function printExerciseRepeatAnswer(answer: string, correctAnswer: string) {
+  terminal.hideCursor();
+  terminal.moveTo(1, 13, `${repeatBodyPrefix}`);
   for (let i = 0; i < answer.length; i++) {
     if (
       (answer[i] !== undefined && answer[i].toLowerCase()) ===
@@ -45,9 +66,10 @@ export function printExerciseRepeatBody(answer: string, correctAnswer: string) {
     } else {
       terminal.red();
     }
-    terminal.moveTo(prefix.length + i + 1, 13, answer[i]);
+    terminal.moveTo(repeatBodyPrefix.length + i + 1, 13, answer[i]);
   }
   terminal.white();
+  terminal.hideCursor(false);
 }
 
 export function printInBetweenMenu(printExplanation: boolean) {

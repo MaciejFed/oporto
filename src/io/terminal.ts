@@ -23,6 +23,8 @@ import {
   printExerciseDescription,
   printExerciseExplanation,
   printExerciseFeedback,
+  printExerciseRepeatAnswer,
+  printExerciseRepeatAnswerKey,
   printExerciseRepeatBody,
   printInBetweenMenu
 } from './terminalUtils';
@@ -124,7 +126,7 @@ export class Terminal {
         this.endOfExerciseMenu();
       } else {
         this.exerciseRepetitionInProgress = true;
-        printExerciseRepeatBody('', this.correctAnswer);
+        printExerciseRepeatBody();
       }
     });
   }
@@ -160,6 +162,7 @@ export class Terminal {
     if (key === 'backspace') {
       this.repetitionAnswer = this.repetitionAnswer.substring(0, Math.max(0, this.repetitionAnswer.length - 1));
       clearLine(process.stdout, 0);
+      printExerciseRepeatAnswer(this.repetitionAnswer, this.correctAnswer);
     } else {
       if (this.repetitionAnswer.length === 0 && key === ' ') {
         logger.info('Empty space as a first input - skipping...');
@@ -167,7 +170,7 @@ export class Terminal {
       }
       this.repetitionAnswer = this.repetitionAnswer + key;
     }
-    printExerciseRepeatBody(this.repetitionAnswer, this.correctAnswer);
+    printExerciseRepeatAnswerKey(this.repetitionAnswer, this.correctAnswer, key);
     if (this.correctAnswer.toLowerCase() === this.repetitionAnswer.toLowerCase()) {
       this.endOfExerciseMenu();
     }
