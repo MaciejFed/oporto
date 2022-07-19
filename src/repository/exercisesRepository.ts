@@ -125,16 +125,16 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'estão',
         exerciseLevel: 1
       },
-      {
-        english: 'to go',
-        infinitive: 'ir',
-        Eu: 'vou',
-        Tu: 'vais',
-        'Ela/Ele/Você': 'vai',
-        Nós: 'vamos',
-        'Eles/Elas/Vocēs': 'vão',
-        exerciseLevel: 1
-      },
+      // {
+      //   english: 'to go',
+      //   infinitive: 'ir',
+      //   Eu: 'vou',
+      //   Tu: 'vais',
+      //   'Ela/Ele/Você': 'vai',
+      //   Nós: 'vamos',
+      //   'Eles/Elas/Vocēs': 'vão',
+      //   exerciseLevel: 1
+      // },
       {
         english: 'to have',
         infinitive: 'ter',
@@ -511,7 +511,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'flat',
+      english: 'apartment',
       portuguese: {
         word: 'apartamento',
         gender: 'masculine'
@@ -678,14 +678,14 @@ export const db: Schema = {
       },
       exerciseLevel: 1
     },
-    {
-      english: 'shoes',
-      portuguese: {
-        word: 'sapatos',
-        gender: 'masculine'
-      },
-      exerciseLevel: 1
-    },
+    // {
+    //   english: 'shoes',
+    //   portuguese: {
+    //     word: 'sapatos',
+    //     gender: 'masculine'
+    //   },
+    //   exerciseLevel: 1
+    // },
     {
       english: 'long sleeve',
       portuguese: {
@@ -791,21 +791,21 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'fry pan',
+      english: 'frying pan',
       portuguese: {
         word: 'frigideira',
         gender: 'feminine'
       },
       exerciseLevel: 1
     },
-    {
-      english: 'socks',
-      portuguese: {
-        word: 'meias',
-        gender: 'feminine'
-      },
-      exerciseLevel: 1
-    },
+    // {
+    //   english: 'socks',
+    //   portuguese: {
+    //     word: 'meias',
+    //     gender: 'feminine'
+    //   },
+    //   exerciseLevel: 1
+    // },
     {
       english: 'sink',
       portuguese: {
@@ -878,14 +878,14 @@ export const db: Schema = {
       },
       exerciseLevel: 1
     },
-    {
-      english: 'cutlery',
-      portuguese: {
-        word: 'talheres',
-        gender: 'masculine'
-      },
-      exerciseLevel: 1
-    },
+    // {
+    //   english: 'cutlery',
+    //   portuguese: {
+    //     word: 'talheres',
+    //     gender: 'masculine'
+    //   },
+    //   exerciseLevel: 1
+    // },
     {
       english: 'sofa',
       portuguese: {
@@ -927,7 +927,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'soap bar',
+      english: 'soap',
       portuguese: {
         word: 'sabonete',
         gender: 'masculine'
@@ -1298,7 +1298,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'The box is over the closet',
+      english: 'The box is on top of the closet',
       portuguese: 'A caixa está em cima do armário',
       sentenceType: 'statement',
       exerciseLevel: 1

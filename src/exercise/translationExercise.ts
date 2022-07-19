@@ -3,7 +3,7 @@ import { IrregularVerb, Noun, RegularVerb, Sentence } from '../repository/exerci
 import { getRandomNoun, getRandomSentence, getRandomVerb } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
 
-const TRANLSATION_PROPABILTY = 0.2;
+const TRANLSATION_PROPABILTY = 0.333;
 
 type TranlationType = 'toEnglish' | 'toPortuguese';
 

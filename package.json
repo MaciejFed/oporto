@@ -13,7 +13,7 @@
     "verify": "npm run lint && npm run format && npm run test",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
-    "execute": "npm run package && cp bin/oporto ~/bin/oporto"
+    "execute": "npm run package && cp bin/oporto ~/bin/oporto && cp ~/results.json ~/results/results-$(date '+%Y-%m-%d%H:%M:%S').json"
   },
   "repository": {
     "type": "git",
