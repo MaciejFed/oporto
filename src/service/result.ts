@@ -4,6 +4,22 @@ import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
 import { AnswerInputType } from '../io/input';
 import { getAllResults, getAllResultsForExercise } from '../repository/resultRepository';
+import { getProgress } from './progress';
+
+type KeyMarker = {
+  color: string;
+  marker: string;
+};
+
+interface StatisticPoint {
+  keyName: string;
+  keyMarker: KeyMarker;
+  value: number;
+}
+
+interface GenericStatistics {
+  points: StatisticPoint[];
+}
 
 interface Statistics {
   correctAttempts: number;
@@ -15,7 +31,7 @@ export interface WeeklyStatistics extends Statistics {
   weekNumber: number;
 }
 
-export interface WeekdayStatistics extends Statistics {
+export interface WeekdayStatistics extends GenericStatistics {
   weekday: number;
 }
 
@@ -98,15 +114,66 @@ export function getWeekdayStatistics(): WeekdayStatistics[] {
     .map((i) => i + 1)
     .map((weekday) => {
       const resultOnDay = allResults.filter((result) => DateTime.fromJSDate(result.date).weekday === weekday);
-      const correctAttempts = resultOnDay.filter((result) => result.wasCorrect).length;
-      const failedAttempts = resultOnDay.length - correctAttempts;
-      const distinctExercises = onlyDistinct(resultOnDay.map((result) => result.exercise)).length;
+      const allAttempts: StatisticPoint = {
+        keyName: 'All',
+        value: resultOnDay.length,
+        keyMarker: { color: 'blue', marker: '🔵' }
+      };
+      const distinctExercises: StatisticPoint = {
+        keyName: 'Distinct',
+        value: onlyDistinct(resultOnDay.map((result) => result.exercise)).length,
+        keyMarker: { color: 'yellow', marker: '🟡' }
+      };
+      const correctAttempts: StatisticPoint = {
+        keyName: 'Correct',
+        value: resultOnDay.filter((result) => result.wasCorrect).length,
+        keyMarker: { color: 'green', marker: '🟢' }
+      };
+      const failedAttempts: StatisticPoint = {
+        keyName: 'Wrong',
+        value: resultOnDay.length - correctAttempts.value,
+        keyMarker: { color: 'red', marker: '🔴' }
+      };
 
       return {
         weekday,
-        correctAttempts,
-        failedAttempts,
-        distinctExercises
+        points: [allAttempts, distinctExercises, correctAttempts, failedAttempts]
+      };
+    });
+}
+
+export function getWeekdayProgress(): WeekdayStatistics[] {
+  const currentWeekday = DateTime.fromJSDate(new Date()).weekday;
+  const allResults = getAllResults();
+
+  return [...Array(currentWeekday).keys()]
+    .map((i) => i + 1)
+    .map((weekday) => {
+      const resultOnDay = allResults.filter((result) => {
+        const daysSoFar = [...Array(weekday).keys()].map((i) => i + 1);
+        return daysSoFar.includes(DateTime.fromJSDate(result.date).weekday);
+      });
+      const progressOnDay = getProgress(resultOnDay);
+
+      const range019: StatisticPoint = {
+        keyName: '0-19',
+        value: progressOnDay.find((p) => p.ratioRange === '0-19')?.count || 0,
+        keyMarker: { color: 'red', marker: '🔴' }
+      };
+      const range2079: StatisticPoint = {
+        keyName: '20-79',
+        value: progressOnDay.find((p) => p.ratioRange === '20-79')?.count || 0,
+        keyMarker: { color: 'yellow', marker: '🟡' }
+      };
+      const range80100: StatisticPoint = {
+        keyName: '80-100',
+        value: progressOnDay.find((p) => p.ratioRange === '80-100')?.count || 0,
+        keyMarker: { color: 'green', marker: '🟢' }
+      };
+
+      return {
+        weekday,
+        points: [range019, range2079, range80100]
       };
     });
 }
