@@ -41,7 +41,7 @@ export function generateUniqeExercises<T>(exerciseCount: number): Exercise[] {
   const distinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);
   const sortedExercises = sortExercises(distinctExercises);
 
-  return sortedExercises.splice(0, exerciseCount).reverse();
+  return sortedExercises.splice(0, Math.min(exerciseCount, sortedExercises.length - 1)).reverse();
 }
 
 // all exercises start with zero priority

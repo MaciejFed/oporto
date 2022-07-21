@@ -20,7 +20,21 @@ export const getRandomIrregularVerb: () => IrregularVerb = () => {
 };
 
 export const getCorrectIrregularConjugation: (verb: IrregularVerb, person: Person) => string = (verb, person) => {
-  return verb[person];
+  const irregularVerb = readAll().verbs.irregular.filter((v) => v.infinitive === verb.infinitive)[0];
+  switch (person) {
+    case 'Eu':
+      return irregularVerb.Eu;
+    case 'Tu':
+      return irregularVerb.Tu;
+    case 'Ela/Ele/Você':
+      return irregularVerb['Ela/Ele/Você'];
+    case 'Nós':
+      return irregularVerb.Nós;
+    case 'Eles/Elas/Vocēs':
+      return irregularVerb['Eles/Elas/Vocēs'];
+    default:
+      return irregularVerb[person];
+  }
 };
 
 export const getCorrectRegularConjugation: (verb: RegularVerb, person: Person) => string = ({ infinitive }, person) => {

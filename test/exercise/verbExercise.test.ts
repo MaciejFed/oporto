@@ -1,3 +1,4 @@
+import { generateUniqeExercises } from '../../src/exercise/exercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../../src/exercise/verbExercise';
 import { readAll } from '../../src/repository/exercisesRepository';
 import { Person } from '../../src/service/verb';
@@ -40,5 +41,18 @@ describe('Verb Exercise', () => {
         expect(regularVerbExercise.equal(sameRegularVerbExercise)).toBe(true)
     });
 
+    // it('Irregular Verb Exercise Ser', () => {
+    //     const irregularVerbExercise = new IrregularVerbExercise();
+    //     const irregularVerb = readAll().verbs.irregular.find((verb) => verb.infinitive === 'ser') || readAll().verbs.irregular[0];
+    //     irregularVerbExercise.person = Person.ElaEleVocê;
+    //     irregularVerbExercise.verb = irregularVerb;
+
+    //     expect(irregularVerbExercise.exercsiseType).toEqual('IrregularVerb');
+    //     expect(irregularVerbExercise.getExerciseDescription()).toEqual('Infinitive: ser');
+    //     expect(irregularVerbExercise.getExerciseBodyPrefix()).toEqual('Ela/Ele/Você: ');
+    //     expect(irregularVerbExercise.getCorrectAnswer()).toEqual('é');
+    //     expect(irregularVerbExercise.getExercsiseExplanation()).toBe(undefined);
+    //     expect(irregularVerbExercise.checkAnsweCorrect('é')).toBe(true);
+    // });
 });
 

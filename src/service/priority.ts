@@ -6,13 +6,15 @@ import { Result } from './result';
 let neverDoneExercisesCount = 0;
 let neverDoneByVoiceExercisesCount = 0;
 
-export const VALUE_EXERCISE_DONE_WRONG = 50;
+export const VALUE_WRONG_TO_CORRECT_RATIO = 5;
+
 export const VALUE_EXERCISE_DONE_CORRECT = -10;
+export const VALUE_EXERCISE_DONE_WRONG = -1 * VALUE_WRONG_TO_CORRECT_RATIO * VALUE_EXERCISE_DONE_CORRECT;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
 export const VALUE_EXERCISE_PER_ONE_LEVEL = 25;
-export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 50;
+export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
 
 export function valueDoneToday(doneTodayCount: number): number {
   switch (doneTodayCount) {

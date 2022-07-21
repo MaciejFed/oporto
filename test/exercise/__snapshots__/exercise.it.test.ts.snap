@@ -35,6 +35,9 @@ Array [
   "Press key to continue...",
   "r - repeat the answer",
   "e - print explanation",
+  "Weekly Statistics:
+
+",
 ]
 `;
 
@@ -97,6 +100,9 @@ Array [
   "a",
   "Press key to continue...",
   "r - repeat the answer",
+  "Weekly Statistics:
+
+",
 ]
 `;
 
@@ -204,6 +210,9 @@ Array [
   "?",
   "Press key to continue...",
   "r - repeat the answer",
+  "Weekly Statistics:
+
+",
 ]
 `;
 
@@ -263,5 +272,8 @@ Array [
   "o",
   "Press key to continue...",
   "r - repeat the answer",
+  "Weekly Statistics:
+
+",
 ]
 `;

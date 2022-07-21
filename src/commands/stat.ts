@@ -1,6 +1,9 @@
-import { displayWeeklyStatistics } from '../io/terminalUtils';
-import { getWeekdayStatistics, getWeeklyStatistics } from '../service/result';
+import clear from 'clear';
+import { displayGenericWeeklyStatistics } from '../io/terminalUtils';
+import { getProgress } from '../service/progress';
+import { getWeekdayProgress, getWeekdayStatistics, getWeeklyStatistics } from '../service/result';
 
 export function displayStatistics() {
-  displayWeeklyStatistics(getWeekdayStatistics());
+  clear();
+  displayGenericWeeklyStatistics(getWeekdayStatistics());
 }

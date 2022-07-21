@@ -4,7 +4,7 @@ import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
 import { logger } from '../common/logger';
-import { ExerciseStatistics, WeekdayStatistics, WeeklyStatistics } from '../service/result';
+import { ExerciseStatistics, getWeekdayStatistics, WeekdayStatistics, WeeklyStatistics } from '../service/result';
 import { AnswerInputType } from './input';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
@@ -99,7 +99,7 @@ export async function animateExerciseSummary({
   lastTimeAttempted
 }: ExerciseStatistics) {
   const yIndex = 19;
-  const animationTime = 2000;
+  const animationTime = 1500;
   const barWidth = 50;
   terminal.bold();
   terminal.moveTo(0, yIndex, 'Last Month Results:');
@@ -123,63 +123,33 @@ export async function animateExerciseSummary({
   }
 }
 
-export function displayWeeklyStatistics(weeklyStatistics: WeekdayStatistics[]) {
-  const maxYValue = Math.max(...weeklyStatistics.map((stat) => stat.correctAttempts + stat.failedAttempts));
+export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatistics[]) {
+  const maxYValue = Math.max(...weeklyStatistics.flatMap((stat) => stat.points.map((point) => point.value)));
   const yGap = Math.ceil(maxYValue / 24);
   const gapStyle = '-------';
   const gapStyleLength = gapStyle.length - 3;
-  clear();
   terminal.bold();
   terminal.moveTo(0, 0, 'Weekly Statistics:\n\n');
   const graphData = weeklyStatistics
     .map((weeklyStatistic) => [
-      {
-        key: 'Distinct',
-        value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.distinctExercises / yGap)],
-        style: fg('yellow', `🟡 ${weeklyStatistic.distinctExercises}`)
-      },
-      {
-        key: 'Correct',
-        value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.correctAttempts / yGap)],
-        style: fg('green', `🟢 ${weeklyStatistic.correctAttempts}`)
-      },
-      {
-        key: 'Wrong',
-        value: [weeklyStatistic.weekday * gapStyleLength, Math.round(weeklyStatistic.failedAttempts / yGap)],
-        style: fg('red', `🔴 ${weeklyStatistic.failedAttempts}`)
-      },
-      {
-        key: 'All',
-        value: [
-          weeklyStatistic.weekday * gapStyleLength,
-          Math.round((weeklyStatistic.correctAttempts + weeklyStatistic.failedAttempts) / yGap)
-        ],
-        style: fg('blue', `🔵 ${weeklyStatistic.correctAttempts + weeklyStatistic.failedAttempts}`)
-      }
+      ...weeklyStatistic.points.map((point) =>
+        Object.assign({
+          key: point.keyName,
+          value: [weeklyStatistic.weekday * gapStyleLength, Math.round(point.value / yGap)],
+          style: fg(point.keyMarker.color, `${point.keyMarker.marker} ${point.value}`)
+        })
+      )
     ])
     .flatMap((d) => d)
     .filter((data) => data.value[1] !== 0);
   graphData.unshift(
-    {
-      key: 'Distinct',
-      value: [graphData[graphData.length - 1].value[0], graphData[graphData.length - 1].value[1]],
-      style: fg('yellow', '🟡')
-    },
-    {
-      key: 'Correct',
-      value: [graphData[graphData.length - 3].value[0], graphData[graphData.length - 3].value[1]],
-      style: fg('green', '🟢')
-    },
-    {
-      key: 'Wrong',
-      value: [graphData[graphData.length - 2].value[0], graphData[graphData.length - 2].value[1]],
-      style: fg('red', '🔴')
-    },
-    {
-      key: 'All',
-      value: [graphData[graphData.length - 4].value[0], graphData[graphData.length - 4].value[1]],
-      style: fg('blue', '🔵')
-    }
+    ...weeklyStatistics[0].points.map((point) =>
+      Object.assign({
+        key: point.keyName,
+        value: [weeklyStatistics[0].weekday * gapStyleLength, Math.round(point.value / yGap)],
+        style: fg(point.keyMarker.color, point.keyMarker.marker)
+      })
+    )
   );
   console.log(
     scatter(graphData, {

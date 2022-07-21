@@ -81,7 +81,7 @@ export function getAllResults(): Result[] {
 }
 
 export function saveNewResult(newResult: Result) {
-  logger.info(`Saving new result ${newResult}`);
+  logger.info(`Saving new result ${JSON.stringify(newResult)}`);
   const results = getAllResults();
   results.push(newResult);
 
