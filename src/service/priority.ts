@@ -2,6 +2,7 @@ import { Exercise } from '../exercise/exercise';
 import { getAllResults, getAllResultsForExercise, getAllResultsForExerciseType } from '../repository/resultRepository';
 import fs from 'fs';
 import { Result } from './result';
+import { NounTranslationExercise, TranslationExercise } from '../exercise/translationExercise';
 
 let neverDoneExercisesCount = 0;
 let neverDoneByVoiceExercisesCount = 0;
@@ -12,6 +13,7 @@ export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_DONE_WRONG = -1 * VALUE_WRONG_TO_CORRECT_RATIO * VALUE_EXERCISE_DONE_CORRECT;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
+export const EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH = 1000;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
 export const VALUE_EXERCISE_PER_ONE_LEVEL = 25;
 export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
@@ -41,6 +43,7 @@ export type PriorityName =
   | 'EXERCISE_CORRECT'
   | 'EXERCISE_DONE_TODAY'
   | 'EXERCISE_DONE_IN_LAST_HOUR'
+  | 'EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_LEVEL'
   | 'NO_PRIORITY';
@@ -55,6 +58,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseNeverDone,
   exerciseTypeNeverDone,
   exerciseNeverDoneByVoice,
+  exerciseTranslationNeverDoneToEnglish,
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
@@ -194,6 +198,26 @@ export function exerciseDoneInLastHour(exercise: Exercise, results: Result[]): P
           priorityValue: 0
         }
       )
+    ];
+  }
+  return noPriority(exercise);
+}
+
+export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, results: Result[]): Priority[] {
+  const toEnlishTranslations = results.filter((result) => {
+    if (result.exercise.exercsiseType === exercise.exercsiseType && exercise instanceof TranslationExercise) {
+      const tranlsationExercise = result.exercise as unknown as TranslationExercise;
+      return !tranlsationExercise.isTranslationToPortuguese();
+    }
+    return false;
+  });
+  if (toEnlishTranslations.length === 0) {
+    return [
+      {
+        exercise,
+        priorityName: 'EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH',
+        priorityValue: EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH
+      }
     ];
   }
   return noPriority(exercise);

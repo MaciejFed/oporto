@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import { onlyDistinct } from '../common/common';
+import { isBeforeWeekday, isOnWeekDay, onlyDistinct } from '../common/common';
 import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
 import { AnswerInputType } from '../io/input';
@@ -113,7 +113,7 @@ export function getWeekdayStatistics(): WeekdayStatistics[] {
   return [...Array(currentWeekday).keys()]
     .map((i) => i + 1)
     .map((weekday) => {
-      const resultOnDay = allResults.filter((result) => DateTime.fromJSDate(result.date).weekday === weekday);
+      const resultOnDay = allResults.filter((result) => isOnWeekDay(result.date, weekday));
       const allAttempts: StatisticPoint = {
         keyName: 'All',
         value: resultOnDay.length,
@@ -149,20 +149,17 @@ export function getWeekdayProgress(): WeekdayStatistics[] {
   return [...Array(currentWeekday).keys()]
     .map((i) => i + 1)
     .map((weekday) => {
-      const resultOnDay = allResults.filter((result) => {
-        const daysSoFar = [...Array(weekday).keys()].map((i) => i + 1);
-        return daysSoFar.includes(DateTime.fromJSDate(result.date).weekday);
-      });
+      const resultOnDay = allResults.filter((result) => isBeforeWeekday(result.date, weekday));
       const progressOnDay = getProgress(resultOnDay);
 
-      const range019: StatisticPoint = {
-        keyName: '0-19',
-        value: progressOnDay.find((p) => p.ratioRange === '0-19')?.count || 0,
+      const range039: StatisticPoint = {
+        keyName: '0-39',
+        value: progressOnDay.find((p) => p.ratioRange === '0-39')?.count || 0,
         keyMarker: { color: 'red', marker: '🔴' }
       };
-      const range2079: StatisticPoint = {
-        keyName: '20-79',
-        value: progressOnDay.find((p) => p.ratioRange === '20-79')?.count || 0,
+      const range4079: StatisticPoint = {
+        keyName: '40-79',
+        value: progressOnDay.find((p) => p.ratioRange === '40-79')?.count || 0,
         keyMarker: { color: 'yellow', marker: '🟡' }
       };
       const range80100: StatisticPoint = {
@@ -173,7 +170,7 @@ export function getWeekdayProgress(): WeekdayStatistics[] {
 
       return {
         weekday,
-        points: [range019, range2079, range80100]
+        points: [range039, range4079, range80100]
       };
     });
 }

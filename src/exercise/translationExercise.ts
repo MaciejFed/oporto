@@ -3,15 +3,15 @@ import { IrregularVerb, Noun, RegularVerb, Sentence } from '../repository/exerci
 import { getRandomNoun, getRandomSentence, getRandomVerb } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
 
-const TRANLSATION_PROPABILTY = 0.333;
+const TO_ENGLISH_TRANLSATION_PROPABILTY = 0.8;
 
 type TranlationType = 'toEnglish' | 'toPortuguese';
 
-class TranslationExercise {
+export class TranslationExercise {
   translationType: TranlationType;
 
   constructor() {
-    this.translationType = Math.random() < TRANLSATION_PROPABILTY ? 'toEnglish' : 'toPortuguese';
+    this.translationType = Math.random() < TO_ENGLISH_TRANLSATION_PROPABILTY ? 'toEnglish' : 'toPortuguese';
   }
 
   isTranslationToPortuguese(): boolean {

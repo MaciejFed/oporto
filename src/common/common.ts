@@ -35,3 +35,17 @@ export function formatDate(date: Date): string {
     date.getMonth() + 1
   }-${date.getDate()} ${date.getHours()}:${date.getMinutes()} [${dateTime.toRelative()}]`;
 }
+
+export function isBeforeWeekday(resultDate: Date, weekday: number) {
+  const now = DateTime.now();
+  const resultDateTime = DateTime.fromJSDate(resultDate);
+
+  return now.weekNumber >= resultDateTime.weekNumber && now.weekday === weekday;
+}
+
+export function isOnWeekDay(resultDate: Date, weekday: number) {
+  const now = DateTime.now();
+  const resultDateTime = DateTime.fromJSDate(resultDate);
+
+  return now.weekNumber === resultDateTime.weekNumber && now.weekday === weekday;
+}
