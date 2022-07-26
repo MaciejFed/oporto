@@ -3,8 +3,8 @@ import { getAllResultsForExercise } from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
 import { Result } from './result';
 
-export type RatioRange = 'Never Done' | '0-19' | '20-79' | '80-100';
-const ratioRanges: RatioRange[] = ['Never Done', '0-19', '20-79', '80-100'];
+export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
+const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
 
 type ExerciseProgress = {
   exercise: Exercise;
@@ -54,6 +54,6 @@ export function getProgress(results: Result[]): Progress[] {
 function mapToRatioRange(ratio: number, neverDone: boolean): RatioRange {
   if (neverDone) return 'Never Done';
   if (!isFinite(ratio) || ratio >= 80) return '80-100';
-  if (ratio >= 20 && ratio < 80) return '20-79';
-  return '0-19';
+  if (ratio >= 40 && ratio < 80) return '40-79';
+  return '0-39';
 }

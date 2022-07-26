@@ -759,7 +759,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'feet',
+      english: 'foot',
       portuguese: {
         word: 'pé',
         gender: 'masculine'
@@ -1027,15 +1027,9 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'Until tomorrow/See you tomorrow',
+      english: 'Until tomorrow',
       portuguese: 'Até amanhã',
       sentenceType: 'statement',
-      exerciseLevel: 1
-    },
-    {
-      english: 'Do you want a coffee?',
-      portuguese: 'Tomas um café?',
-      sentenceType: 'question',
       exerciseLevel: 1
     },
     {
@@ -1232,7 +1226,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'Are you confortable?',
+      english: 'Are you comfortable?',
       portuguese: 'Estás confortável?',
       sentenceType: 'question',
       exerciseLevel: 1
@@ -1251,7 +1245,7 @@ export const db: Schema = {
     },
     {
       english: "What's in the fridge?",
-      portuguese: 'O que está no frigorifico?',
+      portuguese: 'O que está no frigorífico?',
       sentenceType: 'question',
       exerciseLevel: 1
     },

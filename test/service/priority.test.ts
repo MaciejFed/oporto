@@ -1,4 +1,5 @@
 import { Exercise, ExerciseType } from '../../src/exercise/exercise';
+import { NounTranslationExercise } from '../../src/exercise/translationExercise';
 import { IrregularVerbExercise, RegularVerbExercise } from '../../src/exercise/verbExercise';
 import { AnswerInputType } from '../../src/io/input';
 import { 
@@ -21,7 +22,9 @@ import {
     VALUE_EXERCISE_NEVER_DONE_BY_VOICE,
     exerciseLevelPriority,
     VALUE_EXERCISE_PER_ONE_LEVEL,
-    exerciseDoneInLastHour
+    exerciseDoneInLastHour,
+    exerciseTranslationNeverDoneToEnglish,
+    EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH
 } from '../../src/service/priority';
 import { Result } from '../../src/service/result';
 
@@ -209,6 +212,30 @@ describe('Priority', () => {
         expect(actualPriority.length).toEqual(1);
         expect(actualPriority[0].priorityName).toEqual('EXERCISE_LEVEL');
         expect(actualPriority[0].priorityValue).toEqual(expectedDiffictultyPriority);
+    })
+
+
+    it('Exercise Tranlation Never Done To English', () => {
+        const toPortugueseTranslationExercise = new NounTranslationExercise();
+        toPortugueseTranslationExercise.translationType = 'toPortuguese';
+        const results = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 3);
+        const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, results);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH');
+        expect(actualPriority[0].priorityValue).toEqual(EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH);
+    })
+
+
+    it('Exercise Tranlation Done To English', () => {
+        const toPortugueseTranslationExercise = new NounTranslationExercise();
+        toPortugueseTranslationExercise.translationType = 'toEnglish';
+        const results = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
+        const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, results);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');
+        expect(actualPriority[0].priorityValue).toEqual(0);
     })
 
 });
