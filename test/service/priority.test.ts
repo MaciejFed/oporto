@@ -24,7 +24,9 @@ import {
     VALUE_EXERCISE_PER_ONE_LEVEL,
     exerciseDoneInLastHour,
     exerciseTranslationNeverDoneToEnglish,
-    EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH
+    VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH,
+    VALUE_EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW,
+    exerciseDoneCorrectly2TimesInRow
 } from '../../src/service/priority';
 import { Result } from '../../src/service/result';
 
@@ -189,7 +191,7 @@ describe('Priority', () => {
 
         expect(actualPriority.length).toBe(1);
         expect(actualPriority[0].priorityName).toEqual('EXERCISE_DONE_IN_LAST_HOUR');
-        expect(actualPriority[0].priorityValue).toEqual(-35 - 15);
+        expect(actualPriority[0].priorityValue).toEqual(-105 -45);
     })
 
     it('Exercise Randomness', () => {
@@ -223,9 +225,40 @@ describe('Priority', () => {
 
         expect(actualPriority.length).toEqual(1);
         expect(actualPriority[0].priorityName).toEqual('EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH');
-        expect(actualPriority[0].priorityValue).toEqual(EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH);
+        expect(actualPriority[0].priorityValue).toEqual(VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH);
     })
 
+    it('Exercise Tranlation Never Done To English Correctly', () => {
+        const toPortugueseTranslationExercise = new NounTranslationExercise();
+        toPortugueseTranslationExercise.translationType = 'toEnglish';
+        const results = generateResultForExercise(toPortugueseTranslationExercise, false, 'keyboard', 3);
+        const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, results);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH');
+        expect(actualPriority[0].priorityValue).toEqual(VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH);
+    })
+
+    it('Exercise Tranlation Done To English Correctly', () => {
+        const toPortugueseTranslationExercise = new NounTranslationExercise();
+        toPortugueseTranslationExercise.translationType = 'toEnglish';
+        const results = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
+        const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, results);
+        
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');
+        expect(actualPriority[0].priorityValue).toEqual(0);
+    })
+
+    it('Exercise Non Translation', () => {
+        const testExercise = new IrregularVerbExercise();
+        const results = generateResultForExercise(testExercise, true, 'keyboard', 3);
+        const actualPriority = exerciseTranslationNeverDoneToEnglish(testExercise, results);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');
+        expect(actualPriority[0].priorityValue).toEqual(0);
+    })
 
     it('Exercise Tranlation Done To English', () => {
         const toPortugueseTranslationExercise = new NounTranslationExercise();
@@ -238,6 +271,26 @@ describe('Priority', () => {
         expect(actualPriority[0].priorityValue).toEqual(0);
     })
 
+    it('Exercise Done Correctly Today 2 Times In A Row', () => {
+        const testExercise = new IrregularVerbExercise();
+        const firsttTimeError = generateResultForExercise(testExercise, false, 'keyboard', 1);
+        const thenCorrect = generateResultForExercise(testExercise, true, 'keyboard', 2);
+        const actualPriority = exerciseDoneCorrectly2TimesInRow(testExercise, [firsttTimeError, thenCorrect].flatMap((r) => r));
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW');
+        expect(actualPriority[0].priorityValue).toEqual(VALUE_EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW);
+    })
+
+    it('Exercise Done Correctly Today 1 Time In A Row', () => {
+        const testExercise = new IrregularVerbExercise();
+        const results = generateResultForExercise(testExercise, true, 'keyboard', 1);
+        const actualPriority = exerciseDoneCorrectly2TimesInRow(testExercise, results);
+
+        expect(actualPriority.length).toEqual(1);
+        expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');
+        expect(actualPriority[0].priorityValue).toEqual(0);
+    })
 });
 
 

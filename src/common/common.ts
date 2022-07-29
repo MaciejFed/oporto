@@ -38,14 +38,17 @@ export function formatDate(date: Date): string {
 
 export function isBeforeWeekday(resultDate: Date, weekday: number) {
   const now = DateTime.now();
-  const resultDateTime = DateTime.fromJSDate(resultDate);
+  const dayInYearNow = (now.weekNumber - 1) * 7 + weekday;
 
-  return now.weekNumber >= resultDateTime.weekNumber && now.weekday === weekday;
+  const resultDateTime = DateTime.fromJSDate(resultDate);
+  const resultDayInYear = (resultDateTime.weekNumber - 1) * 7 + resultDateTime.weekday;
+
+  return resultDayInYear <= dayInYearNow;
 }
 
 export function isOnWeekDay(resultDate: Date, weekday: number) {
   const now = DateTime.now();
   const resultDateTime = DateTime.fromJSDate(resultDate);
 
-  return now.weekNumber === resultDateTime.weekNumber && now.weekday === weekday;
+  return now.weekNumber === resultDateTime.weekNumber && resultDateTime.weekday === weekday;
 }

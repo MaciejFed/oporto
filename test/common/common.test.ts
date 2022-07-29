@@ -1,5 +1,5 @@
 /* eslint-disable jest/expect-expect */
-import { Comperable, onlyDistinct } from '../../src/common/common';
+import { Comperable, isBeforeWeekday, onlyDistinct } from '../../src/common/common';
 
 
 class MyClass implements Comperable {

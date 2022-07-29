@@ -4,6 +4,7 @@ import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
 import { logger } from '../common/logger';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../service/priority';
 import { ExerciseStatistics, getWeekdayStatistics, WeekdayStatistics, WeeklyStatistics } from '../service/result';
 import { AnswerInputType } from './input';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -109,21 +110,30 @@ export async function animateExerciseSummary({
     const goodValue = index <= correctAttempts ? index : correctAttempts;
     const wrongValue = Math.max(0, index - goodValue);
     const totalValue = correctAttempts + failedAttempts;
+    const missingAnswers = goodValue - wrongValue * VALUE_WRONG_TO_CORRECT_RATIO;
+
+    const allLabel = `All - ${totalValue}`;
+    const correctWrongLabel = `Correct/Wrong ${goodValue}/${wrongValue}(${missingAnswers})`;
     let bulletData = [
-      { key: `All - ${totalValue}`, value: totalValue, style: bg('blue'), barWidth: 1 },
-      { key: `Correct/Wrong ${goodValue}/${wrongValue}`, value: index, style: bg('red'), barWidth: 1 }
+      { key: allLabel, value: totalValue, style: bg('blue'), barWidth: 1 },
+      { key: correctWrongLabel, value: index, style: bg('red'), barWidth: 1 }
     ];
     terminal.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
     bulletData = [
-      { key: `All - ${totalValue}`, value: totalValue, style: bg('blue'), barWidth: 1 },
-      { key: `Correct/Wrong ${goodValue}/${wrongValue}`, value: goodValue, style: bg('green'), barWidth: 1 }
+      { key: allLabel, value: totalValue, style: bg('blue'), barWidth: 1 },
+      {
+        key: correctWrongLabel,
+        value: goodValue,
+        style: bg('green'),
+        barWidth: 1
+      }
     ];
     terminal.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
     await sleep(animationTime / totalValue);
   }
 }
 
-export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatistics[]) {
+export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatistics[], margin: number) {
   const maxYValue = Math.max(...weeklyStatistics.flatMap((stat) => stat.points.map((point) => point.value)));
   const yGap = Math.ceil(maxYValue / 24);
   const gapStyle = '-------';
@@ -151,6 +161,7 @@ export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatisti
       })
     )
   );
+  terminal.moveTo(0, margin);
   console.log(
     scatter(graphData, {
       hAxis: ['+', gapStyle, '--->'],
