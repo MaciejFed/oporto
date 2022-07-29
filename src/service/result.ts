@@ -4,6 +4,7 @@ import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
 import { AnswerInputType } from '../io/input';
 import { getAllResults, getAllResultsForExercise } from '../repository/resultRepository';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
 import { getProgress } from './progress';
 
 type KeyMarker = {
@@ -152,6 +153,16 @@ export function getWeekdayProgress(): WeekdayStatistics[] {
       const resultOnDay = allResults.filter((result) => isBeforeWeekday(result.date, weekday));
       const progressOnDay = getProgress(resultOnDay);
 
+      const all: StatisticPoint = {
+        keyName: 'All',
+        value: progressOnDay.find((p) => p.ratioRange === 'All')?.count || 0,
+        keyMarker: { color: 'blue', marker: '🔵' }
+      };
+      const neverDone: StatisticPoint = {
+        keyName: 'NeverDone',
+        value: progressOnDay.find((p) => p.ratioRange === 'Never Done')?.count || 0,
+        keyMarker: { color: 'white', marker: '⚪️' }
+      };
       const range039: StatisticPoint = {
         keyName: '0-39',
         value: progressOnDay.find((p) => p.ratioRange === '0-39')?.count || 0,
@@ -170,7 +181,18 @@ export function getWeekdayProgress(): WeekdayStatistics[] {
 
       return {
         weekday,
-        points: [range039, range4079, range80100]
+        points: [all, neverDone, range039, range4079, range80100]
       };
     });
+}
+
+export function getOverallProgres(): string {
+  const results = getAllResults();
+  const correctAnswers = results.filter((r) => r.wasCorrect).length;
+  const wrongAsnwers = results.length - correctAnswers;
+
+  const ratio = ((correctAnswers / ((results.length - correctAnswers) * VALUE_WRONG_TO_CORRECT_RATIO)) * 100).toFixed(
+    2
+  );
+  return `${ratio} (${correctAnswers - wrongAsnwers * VALUE_WRONG_TO_CORRECT_RATIO})`;
 }

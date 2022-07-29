@@ -1,11 +1,21 @@
 import clear from 'clear';
-import { sleep } from '../common/common';
+import { logger } from '../common/logger';
 import { generateUniqeExercises } from '../exercise/exercise';
 import { displayGenericWeeklyStatistics } from '../io/terminalUtils';
-import { getProgress } from '../service/progress';
-import { getWeekdayProgress, getWeekdayStatistics, getWeeklyStatistics } from '../service/result';
+import { getAllResults } from '../repository/resultRepository';
+import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
 
 export function displayStatistics() {
   clear();
-  displayGenericWeeklyStatistics(getWeekdayStatistics());
+  displayGenericWeeklyStatistics(getWeekdayStatistics(), 0);
+  displayGenericWeeklyStatistics(getWeekdayProgress(), 30);
+  console.log(`Overall Progress: ${getOverallProgres()}`);
+  logger.info(`Overall Progress: ${getOverallProgres()}`);
+
+  const allResults = getAllResults();
+  const allExercises = generateUniqeExercises(20000);
+  const notDoneExercises = allExercises.filter(
+    (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
+  );
+  console.log(`Never Done: ${notDoneExercises.length}`);
 }

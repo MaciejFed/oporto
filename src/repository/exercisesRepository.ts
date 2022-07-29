@@ -567,7 +567,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'bath tube',
+      english: 'bathtube',
       portuguese: {
         word: 'banheira',
         gender: 'feminine'
@@ -866,7 +866,7 @@ export const db: Schema = {
       english: 'mug',
       portuguese: {
         word: 'caneca',
-        gender: 'masculine'
+        gender: 'feminine'
       },
       exerciseLevel: 1
     },
@@ -1208,7 +1208,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: "I dont't know what to do",
+      english: "I don't know what to do",
       portuguese: 'Não sei o que fazer',
       sentenceType: 'statement',
       exerciseLevel: 1
@@ -1220,7 +1220,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'I love to wash the dishes',
+      english: 'I love washing the dishes',
       portuguese: 'Adoro lavar a loiça',
       sentenceType: 'statement',
       exerciseLevel: 1
@@ -1244,7 +1244,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: "What's in the fridge?",
+      english: 'What is it in the fridge?',
       portuguese: 'O que está no frigorífico?',
       sentenceType: 'question',
       exerciseLevel: 1
@@ -1269,7 +1269,7 @@ export const db: Schema = {
     },
     {
       english: 'What are you going to do tomorrow?',
-      portuguese: 'Que vais fazer amanhã?',
+      portuguese: 'O que vais fazer amanhã?',
       sentenceType: 'question',
       exerciseLevel: 1
     },
@@ -1280,7 +1280,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'You backpack is in another room',
+      english: 'Your backpack is in another room',
       portuguese: 'A tua mochila está em outro quarto',
       sentenceType: 'statement',
       exerciseLevel: 1
@@ -1328,7 +1328,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: "You can't use this computer because is broken",
+      english: "You can't use this computer because it's broken",
       portuguese: 'Não podes usar este computador porque está estragado',
       sentenceType: 'statement',
       exerciseLevel: 1

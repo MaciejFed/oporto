@@ -7,13 +7,14 @@ import { NounTranslationExercise, TranslationExercise } from '../exercise/transl
 let neverDoneExercisesCount = 0;
 let neverDoneByVoiceExercisesCount = 0;
 
-export const VALUE_WRONG_TO_CORRECT_RATIO = 5;
+export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
 export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_DONE_WRONG = -1 * VALUE_WRONG_TO_CORRECT_RATIO * VALUE_EXERCISE_DONE_CORRECT;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
-export const EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH = 1000;
+export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH = -1000;
+export const VALUE_EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW = -1000;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
 export const VALUE_EXERCISE_PER_ONE_LEVEL = 25;
 export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
@@ -43,6 +44,7 @@ export type PriorityName =
   | 'EXERCISE_CORRECT'
   | 'EXERCISE_DONE_TODAY'
   | 'EXERCISE_DONE_IN_LAST_HOUR'
+  | 'EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW'
   | 'EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_LEVEL'
@@ -63,6 +65,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseCorrect,
   exerciseDoneToday,
   exerciseDoneInLastHour,
+  exerciseDoneCorrectly2TimesInRow,
   exerciseLevelPriority,
   exerciseRandomnessPriority
 ];
@@ -189,7 +192,7 @@ export function exerciseDoneInLastHour(exercise: Exercise, results: Result[]): P
     return [
       resultsToday.reduce(
         (previous, current) => {
-          previous.priorityValue += (Math.round((current.date.getTime() - new Date().getTime()) / 60000) + 60) * -1;
+          previous.priorityValue += (Math.round((current.date.getTime() - new Date().getTime()) / 60000) + 60) * -3;
           return previous;
         },
         {
@@ -204,19 +207,41 @@ export function exerciseDoneInLastHour(exercise: Exercise, results: Result[]): P
 }
 
 export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, results: Result[]): Priority[] {
-  const toEnlishTranslations = results.filter((result) => {
-    if (result.exercise.exercsiseType === exercise.exercsiseType && exercise instanceof TranslationExercise) {
+  if (!(exercise instanceof TranslationExercise)) {
+    return noPriority(exercise);
+  }
+  const toEnlishTranslationsCorrect = results.filter((result) => {
+    if (result.exercise.exercsiseType === exercise.exercsiseType) {
       const tranlsationExercise = result.exercise as unknown as TranslationExercise;
-      return !tranlsationExercise.isTranslationToPortuguese();
+      return !tranlsationExercise.isTranslationToPortuguese() && result.wasCorrect;
     }
     return false;
   });
-  if (toEnlishTranslations.length === 0) {
+  if (toEnlishTranslationsCorrect.length === 0) {
     return [
       {
         exercise,
         priorityName: 'EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH',
-        priorityValue: EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH
+        priorityValue: VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH
+      }
+    ];
+  }
+  return noPriority(exercise);
+}
+
+export function exerciseDoneCorrectly2TimesInRow(exercise: Exercise, results: Result[]): Priority[] {
+  const resultsToday = getAllResultsForExercise(results, exercise)
+    .filter((result) => new Date(result.date).toDateString() === new Date().toDateString())
+    .sort((a, b) => a.date.getTime() - b.date.getTime());
+  if (resultsToday.length < 2) {
+    return noPriority(exercise);
+  }
+  if (resultsToday[resultsToday.length - 1].wasCorrect && resultsToday[resultsToday.length - 2].wasCorrect) {
+    return [
+      {
+        exercise,
+        priorityName: 'EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW',
+        priorityValue: VALUE_EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW
       }
     ];
   }
