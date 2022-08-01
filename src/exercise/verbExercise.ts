@@ -1,11 +1,6 @@
 import { Comperable } from '../common/common';
 import { Verb } from '../repository/exercisesRepository';
-import {
-  getCorrectVerbConjugation,
-  getRandomPerson,
-  getRandomVerb,
-  Person
-} from '../service/verb';
+import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb, Person } from '../service/verb';
 import { Exercise, ExerciseType } from './exercise';
 
 export class VerbExercise implements Exercise, Comperable {

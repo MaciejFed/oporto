@@ -6,7 +6,6 @@ export type Verb = { english: string } & { [key in Person]: string } & {
   exerciseLevel: number;
 };
 
-
 type NounGender = 'masculine' | 'feminine';
 
 type SentenceType = 'question' | 'statement';
@@ -47,207 +46,207 @@ export type FitIn = {
 
 export const db: Schema = {
   verbs: [
-      {
-        english: 'to be - long',
-        infinitive: 'ser',
-        Eu: 'sou',
-        Tu: 'és',
-        'Ela/Ele/Você': 'é',
-        Nós: 'somos',
-        'Eles/Elas/Vocēs': 'são',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to be - moment',
-        infinitive: 'estar',
-        Eu: 'estou',
-        Tu: 'estás',
-        'Ela/Ele/Você': 'está',
-        Nós: 'estamos',
-        'Eles/Elas/Vocēs': 'estão',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to go',
-        infinitive: 'ir',
-        Eu: 'vou',
-        Tu: 'vais',
-        'Ela/Ele/Você': 'vai',
-        Nós: 'vamos',
-        'Eles/Elas/Vocēs': 'vão',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to have',
-        infinitive: 'ter',
-        Eu: 'tenho',
-        Tu: 'tens',
-        'Ela/Ele/Você': 'tem',
-        Nós: 'temos',
-        'Eles/Elas/Vocēs': 'têm',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to want',
-        infinitive: 'querer',
-        Eu: 'quero',
-        Tu: 'queres',
-        'Ela/Ele/Você': 'quer',
-        Nós: 'queremos',
-        'Eles/Elas/Vocēs': 'querem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to see',
-        infinitive: 'ver',
-        Eu: 'vejo',
-        Tu: 'vês',
-        'Ela/Ele/Você': 'vê',
-        Nós: 'vemos',
-        'Eles/Elas/Vocēs': 'vêem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to do/make',
-        infinitive: 'fazer',
-        Eu: 'faço',
-        Tu: 'fazes',
-        'Ela/Ele/Você': 'faz',
-        Nós: 'fazemos',
-        'Eles/Elas/Vocēs': 'fazem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to know',
-        infinitive: 'saber',
-        Eu: 'sei',
-        Tu: 'sabes',
-        'Ela/Ele/Você': 'sabe',
-        Nós: 'sabemos',
-        'Eles/Elas/Vocēs': 'sabem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to read',
-        infinitive: 'ler',
-        Eu: 'leio',
-        Tu: 'lês',
-        'Ela/Ele/Você': 'lê',
-        Nós: 'lemos',
-        'Eles/Elas/Vocēs': 'leem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to say',
-        infinitive: 'dizer',
-        Eu: 'digo',
-        Tu: 'dizes',
-        'Ela/Ele/Você': 'diz',
-        Nós: 'dizemos',
-        'Eles/Elas/Vocēs': 'dizem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'can',
-        infinitive: 'poder',
-        Eu: 'posso',
-        Tu: 'podes',
-        'Ela/Ele/Você': 'pode',
-        Nós: 'podemos',
-        'Eles/Elas/Vocēs': 'podem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to speak',
-        infinitive: 'falar',
-        Eu: 'falo',
-        Tu: 'falas',
-        'Ela/Ele/Você': 'fala',
-        Nós: 'falamos',
-        'Eles/Elas/Vocēs': 'falam',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to eat',
-        infinitive: 'comer',
-        Eu: 'como',
-        Tu: 'comes',
-        'Ela/Ele/Você': 'come',
-        Nós: 'comemos',
-        'Eles/Elas/Vocēs': 'comem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to open',
-        infinitive: 'abrir',
-        Eu: 'abro',
-        Tu: 'abres',
-        'Ela/Ele/Você': 'abre',
-        Nós: 'abrimos',
-        'Eles/Elas/Vocēs': 'abrem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to think',
-        infinitive: 'achar',
-        Eu: 'acho',
-        Tu: 'achas',
-        'Ela/Ele/Você': 'acha',
-        Nós: 'achamos',
-        'Eles/Elas/Vocēs': 'acham',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to walk',
-        infinitive: 'andar',
-        Eu: 'ando',
-        Tu: 'andas',
-        'Ela/Ele/Você': 'anda',
-        Nós: 'andamos',
-        'Eles/Elas/Vocēs': 'andam',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to drink',
-        infinitive: 'beber',
-        Eu: 'bebo',
-        Tu: 'bebes',
-        'Ela/Ele/Você': 'bebe',
-        Nós: 'bebemos',
-        'Eles/Elas/Vocēs': 'bebem',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to enterentrar',
-        infinitive: 'entrar',
-        Eu: 'entro',
-        Tu: 'entras',
-        'Ela/Ele/Você': 'entra',
-        Nós: 'entramos',
-        'Eles/Elas/Vocēs': 'entram',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to live',
-        infinitive: 'morar',
-        Eu: 'moro',
-        Tu: 'moras',
-        'Ela/Ele/Você': 'mora',
-        Nós: 'moramos',
-        'Eles/Elas/Vocēs': 'moram',
-        exerciseLevel: 1
-      },
-      {
-        english: 'to look',
-        infinitive: 'olhar',
-        Eu: 'olho',
-        Tu: 'olhas',
-        'Ela/Ele/Você': 'olha',
-        Nós: 'olhamos',
-        'Eles/Elas/Vocēs': 'olham',
-        exerciseLevel: 1
-      },
-    ],
+    {
+      english: 'to be - long',
+      infinitive: 'ser',
+      Eu: 'sou',
+      Tu: 'és',
+      'Ela/Ele/Você': 'é',
+      Nós: 'somos',
+      'Eles/Elas/Vocēs': 'são',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to be - moment',
+      infinitive: 'estar',
+      Eu: 'estou',
+      Tu: 'estás',
+      'Ela/Ele/Você': 'está',
+      Nós: 'estamos',
+      'Eles/Elas/Vocēs': 'estão',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to go',
+      infinitive: 'ir',
+      Eu: 'vou',
+      Tu: 'vais',
+      'Ela/Ele/Você': 'vai',
+      Nós: 'vamos',
+      'Eles/Elas/Vocēs': 'vão',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to have',
+      infinitive: 'ter',
+      Eu: 'tenho',
+      Tu: 'tens',
+      'Ela/Ele/Você': 'tem',
+      Nós: 'temos',
+      'Eles/Elas/Vocēs': 'têm',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to want',
+      infinitive: 'querer',
+      Eu: 'quero',
+      Tu: 'queres',
+      'Ela/Ele/Você': 'quer',
+      Nós: 'queremos',
+      'Eles/Elas/Vocēs': 'querem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to see',
+      infinitive: 'ver',
+      Eu: 'vejo',
+      Tu: 'vês',
+      'Ela/Ele/Você': 'vê',
+      Nós: 'vemos',
+      'Eles/Elas/Vocēs': 'vêem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to do/make',
+      infinitive: 'fazer',
+      Eu: 'faço',
+      Tu: 'fazes',
+      'Ela/Ele/Você': 'faz',
+      Nós: 'fazemos',
+      'Eles/Elas/Vocēs': 'fazem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to know',
+      infinitive: 'saber',
+      Eu: 'sei',
+      Tu: 'sabes',
+      'Ela/Ele/Você': 'sabe',
+      Nós: 'sabemos',
+      'Eles/Elas/Vocēs': 'sabem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to read',
+      infinitive: 'ler',
+      Eu: 'leio',
+      Tu: 'lês',
+      'Ela/Ele/Você': 'lê',
+      Nós: 'lemos',
+      'Eles/Elas/Vocēs': 'leem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to say',
+      infinitive: 'dizer',
+      Eu: 'digo',
+      Tu: 'dizes',
+      'Ela/Ele/Você': 'diz',
+      Nós: 'dizemos',
+      'Eles/Elas/Vocēs': 'dizem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'can',
+      infinitive: 'poder',
+      Eu: 'posso',
+      Tu: 'podes',
+      'Ela/Ele/Você': 'pode',
+      Nós: 'podemos',
+      'Eles/Elas/Vocēs': 'podem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to speak',
+      infinitive: 'falar',
+      Eu: 'falo',
+      Tu: 'falas',
+      'Ela/Ele/Você': 'fala',
+      Nós: 'falamos',
+      'Eles/Elas/Vocēs': 'falam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to eat',
+      infinitive: 'comer',
+      Eu: 'como',
+      Tu: 'comes',
+      'Ela/Ele/Você': 'come',
+      Nós: 'comemos',
+      'Eles/Elas/Vocēs': 'comem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to open',
+      infinitive: 'abrir',
+      Eu: 'abro',
+      Tu: 'abres',
+      'Ela/Ele/Você': 'abre',
+      Nós: 'abrimos',
+      'Eles/Elas/Vocēs': 'abrem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to think',
+      infinitive: 'achar',
+      Eu: 'acho',
+      Tu: 'achas',
+      'Ela/Ele/Você': 'acha',
+      Nós: 'achamos',
+      'Eles/Elas/Vocēs': 'acham',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to walk',
+      infinitive: 'andar',
+      Eu: 'ando',
+      Tu: 'andas',
+      'Ela/Ele/Você': 'anda',
+      Nós: 'andamos',
+      'Eles/Elas/Vocēs': 'andam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to drink',
+      infinitive: 'beber',
+      Eu: 'bebo',
+      Tu: 'bebes',
+      'Ela/Ele/Você': 'bebe',
+      Nós: 'bebemos',
+      'Eles/Elas/Vocēs': 'bebem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to enterentrar',
+      infinitive: 'entrar',
+      Eu: 'entro',
+      Tu: 'entras',
+      'Ela/Ele/Você': 'entra',
+      Nós: 'entramos',
+      'Eles/Elas/Vocēs': 'entram',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to live',
+      infinitive: 'morar',
+      Eu: 'moro',
+      Tu: 'moras',
+      'Ela/Ele/Você': 'mora',
+      Nós: 'moramos',
+      'Eles/Elas/Vocēs': 'moram',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to look',
+      infinitive: 'olhar',
+      Eu: 'olho',
+      Tu: 'olhas',
+      'Ela/Ele/Você': 'olha',
+      Nós: 'olhamos',
+      'Eles/Elas/Vocēs': 'olham',
+      exerciseLevel: 1
+    }
+  ],
   nouns: [
     {
       english: 'girlfriend',

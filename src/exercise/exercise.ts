@@ -4,12 +4,7 @@ import { sortExercises } from '../service/priority';
 import { NounTranslationExercise, SentenceTranslationExercise, VerbTranslationExercise } from './translationExercise';
 import { FitInGapExercise } from './fitInGapExercise';
 
-export type ExerciseType =
-  | 'VerbExercise'
-  | 'NounTranslation'
-  | 'VerbTranslation'
-  | 'SentenceTranslation'
-  | 'FitInGap';
+export type ExerciseType = 'VerbExercise' | 'NounTranslation' | 'VerbTranslation' | 'SentenceTranslation' | 'FitInGap';
 
 export interface Exercise extends Comperable {
   exercsiseType: ExerciseType;
