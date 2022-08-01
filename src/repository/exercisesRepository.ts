@@ -1,21 +1,11 @@
 /* eslint-disable quotes */
 import { Person } from '../service/verb';
 
-export type RegularVerb = {
-  english: string;
+export type Verb = { english: string } & { [key in Person]: string } & {
   infinitive: string;
   exerciseLevel: number;
 };
 
-export type IrregularVerb = { english: string } & { [key in Person]: string } & {
-  infinitive: string;
-  exerciseLevel: number;
-};
-
-type Verbs = {
-  regular: RegularVerb[];
-  irregular: IrregularVerb[];
-};
 
 type NounGender = 'masculine' | 'feminine';
 
@@ -41,7 +31,7 @@ export type Sentence = {
 };
 
 export type Schema = {
-  verbs: Verbs;
+  verbs: Verb[];
   nouns: Noun[];
   sentences: Sentence[];
   fitIn: FitIn[];
@@ -56,55 +46,7 @@ export type FitIn = {
 };
 
 export const db: Schema = {
-  verbs: {
-    regular: [
-      {
-        infinitive: 'falar',
-        english: 'to speak',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'comer',
-        english: 'to eat',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'abrir',
-        english: 'to open',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'achar',
-        english: 'to think',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'andar',
-        english: 'to walk',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'beber',
-        english: 'to drink',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'entrar',
-        english: 'to enter',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'morar',
-        english: 'to live',
-        exerciseLevel: 1
-      },
-      {
-        infinitive: 'olhar',
-        english: 'to look',
-        exerciseLevel: 1
-      }
-    ],
-    irregular: [
+  verbs: [
       {
         english: 'to be - long',
         infinitive: 'ser',
@@ -125,16 +67,16 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'estão',
         exerciseLevel: 1
       },
-      // {
-      //   english: 'to go',
-      //   infinitive: 'ir',
-      //   Eu: 'vou',
-      //   Tu: 'vais',
-      //   'Ela/Ele/Você': 'vai',
-      //   Nós: 'vamos',
-      //   'Eles/Elas/Vocēs': 'vão',
-      //   exerciseLevel: 1
-      // },
+      {
+        english: 'to go',
+        infinitive: 'ir',
+        Eu: 'vou',
+        Tu: 'vais',
+        'Ela/Ele/Você': 'vai',
+        Nós: 'vamos',
+        'Eles/Elas/Vocēs': 'vão',
+        exerciseLevel: 1
+      },
       {
         english: 'to have',
         infinitive: 'ter',
@@ -214,9 +156,98 @@ export const db: Schema = {
         Nós: 'podemos',
         'Eles/Elas/Vocēs': 'podem',
         exerciseLevel: 1
-      }
-    ]
-  },
+      },
+      {
+        english: 'to speak',
+        infinitive: 'falar',
+        Eu: 'falo',
+        Tu: 'falas',
+        'Ela/Ele/Você': 'fala',
+        Nós: 'falamos',
+        'Eles/Elas/Vocēs': 'falam',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to eat',
+        infinitive: 'comer',
+        Eu: 'como',
+        Tu: 'comes',
+        'Ela/Ele/Você': 'come',
+        Nós: 'comemos',
+        'Eles/Elas/Vocēs': 'comem',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to open',
+        infinitive: 'abrir',
+        Eu: 'abro',
+        Tu: 'abres',
+        'Ela/Ele/Você': 'abre',
+        Nós: 'abrimos',
+        'Eles/Elas/Vocēs': 'abrem',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to think',
+        infinitive: 'achar',
+        Eu: 'acho',
+        Tu: 'achas',
+        'Ela/Ele/Você': 'acha',
+        Nós: 'achamos',
+        'Eles/Elas/Vocēs': 'acham',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to walk',
+        infinitive: 'andar',
+        Eu: 'ando',
+        Tu: 'andas',
+        'Ela/Ele/Você': 'anda',
+        Nós: 'andamos',
+        'Eles/Elas/Vocēs': 'andam',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to drink',
+        infinitive: 'beber',
+        Eu: 'bebo',
+        Tu: 'bebes',
+        'Ela/Ele/Você': 'bebe',
+        Nós: 'bebemos',
+        'Eles/Elas/Vocēs': 'bebem',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to enterentrar',
+        infinitive: 'entrar',
+        Eu: 'entro',
+        Tu: 'entras',
+        'Ela/Ele/Você': 'entra',
+        Nós: 'entramos',
+        'Eles/Elas/Vocēs': 'entram',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to live',
+        infinitive: 'morar',
+        Eu: 'moro',
+        Tu: 'moras',
+        'Ela/Ele/Você': 'mora',
+        Nós: 'moramos',
+        'Eles/Elas/Vocēs': 'moram',
+        exerciseLevel: 1
+      },
+      {
+        english: 'to look',
+        infinitive: 'olhar',
+        Eu: 'olho',
+        Tu: 'olhas',
+        'Ela/Ele/Você': 'olha',
+        Nós: 'olhamos',
+        'Eles/Elas/Vocēs': 'olham',
+        exerciseLevel: 1
+      },
+    ],
   nouns: [
     {
       english: 'girlfriend',

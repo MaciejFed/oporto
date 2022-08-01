@@ -6,7 +6,7 @@ import {
   SentenceTranslationExercise,
   VerbTranslationExercise
 } from '../exercise/translationExercise';
-import { IrregularVerbExercise, RegularVerbExercise } from '../exercise/verbExercise';
+import { VerbExercise } from '../exercise/verbExercise';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { readFromFile, saveToFile } from '../io/file';
@@ -18,21 +18,13 @@ export function getAllResults(): Result[] {
   let exercise: Exercise;
   return resultsJson.map((result) => {
     switch (result.exercise.exercsiseType) {
-      case 'RegularVerb':
-        const regularVerbExercise: RegularVerbExercise = new RegularVerbExercise();
-        regularVerbExercise.verb = (result.exercise as unknown as RegularVerbExercise).verb;
-        regularVerbExercise.person = (result.exercise as unknown as RegularVerbExercise).person;
-        assert(regularVerbExercise.verb);
-        assert(regularVerbExercise.person);
-        exercise = regularVerbExercise;
-        break;
-      case 'IrregularVerb':
-        const irregularVerbExercise: IrregularVerbExercise = new IrregularVerbExercise();
-        irregularVerbExercise.verb = (result.exercise as unknown as IrregularVerbExercise).verb;
-        irregularVerbExercise.person = (result.exercise as unknown as IrregularVerbExercise).person;
-        assert(irregularVerbExercise.verb.infinitive);
-        assert(irregularVerbExercise.verb.english);
-        exercise = irregularVerbExercise;
+      case 'VerbExercise':
+        const verbExercise: VerbExercise = new VerbExercise();
+        verbExercise.verb = (result.exercise as unknown as VerbExercise).verb;
+        verbExercise.person = (result.exercise as unknown as VerbExercise).person;
+        assert(verbExercise.verb);
+        assert(verbExercise.person);
+        exercise = verbExercise;
         break;
       case 'NounTranslation':
         const nounTranslationExercise: NounTranslationExercise = new NounTranslationExercise();

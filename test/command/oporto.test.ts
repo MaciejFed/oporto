@@ -43,19 +43,18 @@ jest.mock('../../src/service/verb', () => {
   const readAll = require('../../src/repository/exercisesRepository').readAll;
   return {
     ...modeuleActual,
-    getRandomRegularVerb: () => Object.assign({ infinitive: 'Comer', english: '' }),
     getRandomPerson: () => 'Eu',
-    getRandomIrregularVerb: () => readAll().verbs.irregular[0],
+    getRandomVerb: () => readAll().verbs[0],
   };
 });
 
 jest.mock('../../src/exercise/exercise', () => {
-  const RegularVerbExercise = require('../../src/exercise/verbExercise').RegularVerbExercise;
+  const VerbExercise = require('../../src/exercise/verbExercise').VerbExercise;
   const modeuleActual = jest.requireActual('../../src/exercise/exercise');
   return {
     __esModule: true,
     modeuleActual,
-    generateUniqeExercises: () => [new RegularVerbExercise()]
+    generateUniqeExercises: () => [new VerbExercise()]
   };
 });
 
@@ -110,7 +109,7 @@ describe('Event Emitter', () => {
     );
     appModules.eventProcessor.emit('APP_STARTED');
     console.log(process.stdin.listeners);
-    simulateTyping('como');
+    simulateTyping('sou');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
@@ -120,12 +119,12 @@ describe('Event Emitter', () => {
       (event: { event: any }) => event.event
     );
 
-    expect(output[0]).toEqual('Infinitive: Comer');
-    expect(output[5]).toEqual('Eu: como');
-    expect(output[6]).toEqual('Correct! [voice]');
-    expect(resultCount.greenCount).toBe('como'.length);
+    expect(output[0]).toEqual('Infinitive: ser');
+    expect(output[4]).toEqual('Eu: sou');
+    expect(output[5]).toEqual('Correct! [voice]');
+    expect(resultCount.greenCount).toBe('sou'.length);
     expect(resultCount.redCount).toBe(0);
-    expect(sayCommands[0]).toEqual('say "Eu Como"');
+    expect(sayCommands[0]).toEqual('say "Eu sou"');
     expect(eventHistory).toMatchSnapshot();
     expect(output).toMatchSnapshot();
   });
@@ -141,7 +140,7 @@ describe('Event Emitter', () => {
     );
 
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('cowronganswer');
+    simulateTyping('sowronganswer');
     process.stdin.emit('keypress', {}, { name: 'return' });
 
     await sleep(50);
@@ -150,12 +149,12 @@ describe('Event Emitter', () => {
         (event: { event: any }) => event.event
       );
 
-    expect(output[0]).toEqual('Infinitive: Comer');
-    expect(output[14]).toEqual('Eu: cowronganswer');
+    expect(output[0]).toEqual('Infinitive: ser');
+    expect(output[14]).toEqual('Eu: sowronganswer');
     expect(output[15]).toEqual('Wrong! [voice]');
-    expect(resultCount.greenCount).toBe('co'.length);
-    expect(resultCount.redCount).toBe(2);
-    expect(sayCommands[0]).toEqual('say "Eu Como"');
+    expect(resultCount.greenCount).toBe('so'.length);
+    expect(resultCount.redCount).toBe('sou'.length - 'so'.length);
+    expect(sayCommands[0]).toEqual('say "Eu sou"');
     expect(eventHistory).toMatchSnapshot();
     expect(output).toMatchSnapshot();
   });
@@ -170,7 +169,7 @@ describe('Event Emitter', () => {
       1
     );
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('comorr');
+    simulateTyping('sourr');
     process.stdin.emit('keypress', {}, { name: 'backspace' });
     process.stdin.emit('keypress', {}, { name: 'backspace' });
     process.stdin.emit('keypress', {}, { name: 'return' });
@@ -182,13 +181,13 @@ describe('Event Emitter', () => {
         (event: { event: any }) => event.event
       );
 
-    expect(output[0]).toEqual('Infinitive: Comer');
-    expect(output[7]).toEqual('Eu: comorr');
-    expect(output[9]).toEqual('Eu: como');
-    expect(output[10]).toEqual('Correct! [voice]');
-    expect(resultCount.greenCount).toBe('como'.length);
+    expect(output[0]).toEqual('Infinitive: ser');
+    expect(output[6]).toEqual('Eu: sourr');
+    expect(output[8]).toEqual('Eu: sou');
+    expect(output[9]).toEqual('Correct! [voice]');
+    expect(resultCount.greenCount).toBe('sou'.length);
     expect(resultCount.redCount).toBe(0);
-    expect(sayCommands[0]).toEqual('say "Eu Como"');
+    expect(sayCommands[0]).toEqual('say "Eu sou"');
     expect(output).toMatchSnapshot();
     expect(eventHistory).toMatchSnapshot();
   });
