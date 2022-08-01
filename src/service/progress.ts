@@ -1,4 +1,5 @@
 import { Exercise, generateUniqeExercises } from '../exercise/exercise';
+import { readAll } from '../repository/exercisesRepository';
 import { getAllResultsForExercise } from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
 import { Result } from './result';
@@ -56,4 +57,23 @@ function mapToRatioRange(ratio: number, neverDone: boolean): RatioRange {
   if (!isFinite(ratio) || ratio >= 80) return '80-100';
   if (ratio >= 40 && ratio < 80) return '40-79';
   return '0-39';
+}
+
+function getAllUniqueWords(): string[] {
+  const nouns = readAll().nouns.map((noun) => noun.portuguese.word);
+  const verbs = readAll().verbs.map((verb) => verb.infinitive);
+  const sentenceWords = readAll().sentences.flatMap((sentence) => sentence.portuguese.split(' '));
+  const fitInWords = readAll().fitIn.flatMap((fit) => fit.prefix.split(' ').concat(fit.prefix.split(' ')));
+
+  const verbDecliatons = [
+    readAll().verbs.flatMap((verb) => [verb.Eu, verb.Tu, verb['Ela/Ele/Você'], verb.Nós, verb['Eles/Elas/Vocēs']])
+  ].flatMap((v) => v);
+  const allWords = [nouns, verbs, sentenceWords, fitInWords]
+    .flatMap((w) => w)
+    .map((word) => word.replace('?', '').toLowerCase())
+    .filter((verb) => !verbDecliatons.includes(verb))
+    .filter((word) => word)
+    .sort();
+
+  return [...new Set(allWords)];
 }

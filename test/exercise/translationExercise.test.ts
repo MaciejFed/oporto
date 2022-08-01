@@ -1,8 +1,5 @@
-import { ExerciseType } from '../../src/exercise/exercise';
 import { NounTranslationExercise } from '../../src/exercise/translationExercise';
-import { IrregularVerbExercise, RegularVerbExercise } from '../../src/exercise/verbExercise';
 import { readAll } from '../../src/repository/exercisesRepository';
-import { Person } from '../../src/service/verb';
 
 
 describe('Translation Exercise', () => {

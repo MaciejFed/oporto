@@ -189,19 +189,18 @@ describe('Exercises IT Snapshot', () => {
   it('Verb', async () => {
     jest.mock('../../src/exercise/exercise', () => {
       const readAll = require('../../src/repository/exercisesRepository').readAll;
-      const RegularVerbExercise = require('../../src/exercise/verbExercise').RegularVerbExercise;
-      const IrregularVerbExercise = require('../../src/exercise/verbExercise').IrregularVerbExercise;
+      const VerbExercise = require('../../src/exercise/verbExercise').VerbExercise;
       const modelActual = jest.requireActual('../../src/exercise/exercise');
-      const regularVerbExercise = new RegularVerbExercise();
-      const irregularVerbExercise = new IrregularVerbExercise();
-      regularVerbExercise.verb = readAll().verbs.regular[0];
-      regularVerbExercise.person = 'Eu'
-      irregularVerbExercise.verb = readAll().verbs.irregular[0];
-      irregularVerbExercise.person = 'Eu'
+      const verbExercise = new VerbExercise();
+      verbExercise.verb = readAll().verbs[0];
+      verbExercise.person = 'Eu';
+      const verbExercise2 = new VerbExercise();
+      verbExercise2.verb = readAll().verbs[1];
+      verbExercise2.person = 'Eu';
       return {
         __esModule: true,
         modelActual,
-        generateUniqeExercises: () => [regularVerbExercise, irregularVerbExercise]
+        generateUniqeExercises: () => [verbExercise, verbExercise2]
       };
     });
     const appModules = requireAllModules();
@@ -212,13 +211,13 @@ describe('Exercises IT Snapshot', () => {
       2
     );
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('sou');
+    simulateTyping('estou');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
     await sleep(50);
 
-    simulateTyping('falo');
+    simulateTyping('sou');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 

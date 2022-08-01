@@ -1,9 +1,9 @@
-import { IrregularVerbExercise } from '../../src/exercise/verbExercise';
+import { VerbExercise } from '../../src/exercise/verbExercise';
 import { convertToResult } from '../../src/service/result';
 
 describe('Result Service', () => {
     it('Converts Exercise To Result', () => {
-        const verbExercise = new IrregularVerbExercise();
+        const verbExercise = new VerbExercise();
 
         const result = convertToResult(verbExercise, verbExercise.getCorrectAnswer(), true, 'keyboard');
 

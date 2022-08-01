@@ -1,5 +1,5 @@
 import { Comperable } from '../common/common';
-import { IrregularVerb, Noun, RegularVerb, Sentence } from '../repository/exercisesRepository';
+import { Noun, Verb, Sentence } from '../repository/exercisesRepository';
 import { getRandomNoun, getRandomSentence, getRandomVerb } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
 
@@ -68,7 +68,7 @@ export class NounTranslationExercise extends TranslationExercise implements Exer
 export class VerbTranslationExercise extends TranslationExercise implements Exercise, Comperable {
   exercsiseType: ExerciseType;
   correctAnswer: string;
-  verb: RegularVerb | IrregularVerb;
+  verb: Verb;
   exerciseLevel: number;
 
   constructor() {
