@@ -3,6 +3,7 @@ import { getAllResults, getAllResultsForExercise, getAllResultsForExerciseType }
 import fs from 'fs';
 import { Result } from './result';
 import { NounTranslationExercise, TranslationExercise } from '../exercise/translationExercise';
+import { logger } from '../common/logger';
 
 let neverDoneExercisesCount = 0;
 let neverDoneByVoiceExercisesCount = 0;
@@ -13,7 +14,8 @@ export const VALUE_EXERCISE_DONE_CORRECT = -10;
 export const VALUE_EXERCISE_DONE_WRONG = -1 * VALUE_WRONG_TO_CORRECT_RATIO * VALUE_EXERCISE_DONE_CORRECT;
 export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
-export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH = -1000;
+export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH = -250;
+export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING = -500;
 export const VALUE_EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW = -1000;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
 export const VALUE_EXERCISE_PER_ONE_LEVEL = 25;
@@ -22,14 +24,12 @@ export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
 export function valueDoneToday(doneTodayCount: number): number {
   switch (doneTodayCount) {
     case 1:
-      return -10;
-    case 2:
       return -30;
-    case 3:
+    case 2:
       return -90;
-    case 4:
+    case 3:
       return -200;
-    case 5:
+    case 4:
       return -350;
     default:
       return -1000;
@@ -46,6 +46,7 @@ export type PriorityName =
   | 'EXERCISE_DONE_IN_LAST_HOUR'
   | 'EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW'
   | 'EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH'
+  | 'EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_LEVEL'
   | 'NO_PRIORITY';
@@ -61,6 +62,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseTypeNeverDone,
   exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
+  exerciseTranslationNeverDoneFromHearing,
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
@@ -223,6 +225,35 @@ export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, result
         exercise,
         priorityName: 'EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH',
         priorityValue: VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH
+      }
+    ];
+  }
+  return noPriority(exercise);
+}
+
+export function exerciseTranslationNeverDoneFromHearing(exercise: Exercise, results: Result[]): Priority[] {
+  if (!(exercise instanceof TranslationExercise) || exercise.isTranslationToPortugueseFromHearing()) {
+    return noPriority(exercise);
+  }
+  const fromHearingTranslationsCorrect = results.filter((result) => {
+    if (
+      result.exercise.exercsiseType === exercise.exercsiseType &&
+      (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
+    ) {
+      const tranlsationExercise = result.exercise as unknown as TranslationExercise;
+      return tranlsationExercise.isTranslationToPortugueseFromHearing() && result.wasCorrect;
+    }
+    return false;
+  });
+  if (fromHearingTranslationsCorrect.length >= 1) {
+    logger.info(`from hearing: ${JSON.stringify(fromHearingTranslationsCorrect)}`);
+  }
+  if (fromHearingTranslationsCorrect.length === 0) {
+    return [
+      {
+        exercise,
+        priorityName: 'EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING',
+        priorityValue: VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING
       }
     ];
   }
