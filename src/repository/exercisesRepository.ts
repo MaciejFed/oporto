@@ -1739,12 +1739,6 @@ export const db: Schema = {
     {
       english: 'Pair work',
       portuguese: 'Trabalho de pares',
-      sentenceType: 'question',
-      exerciseLevel: 1
-    },
-    {
-      english: 'Pair work',
-      portuguese: 'Trabalho de pares',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
