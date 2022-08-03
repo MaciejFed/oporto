@@ -15,7 +15,7 @@ describe('Verb Exercise', () => {
         sameVerbExerciseExercise.person = Person.Eu;
         
         expect(verbExercise.exercsiseType).toEqual('VerbExercise');
-        expect(verbExercise.getExerciseDescription()).toEqual('Infinitive: ser');
+        expect(verbExercise.getExerciseDescription()).toEqual('Infinitive: to be - long');
         expect(verbExercise.getExerciseBodyPrefix()).toEqual('Eu: ');
         expect(verbExercise.getCorrectAnswer()).toEqual('sou');
         expect(verbExercise.getExercsiseExplanation()).toBe(undefined);

@@ -277,27 +277,17 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'to work',
-      infinitive: 'cumprimentar',
-      Eu: 'cumprimento',
-      Tu: 'cumprimentas',
-      'Ela/Ele/Você': 'cumprimenta',
-      Nós: 'cumprimentamos',
-      'Eles/Elas/Vocēs': 'cumprimentam',
-      exerciseLevel: 1
-    },
-    {
       english: 'to introduce yourself',
       infinitive: 'apresentar-se',
-      Eu: 'apresentas-te',
-      Tu: 'cumprimentas',
+      Eu: 'apresento-me',
+      Tu: 'apresentas-te',
       'Ela/Ele/Você': 'apresenta-se',
       Nós: 'apresentamo-nos',
       'Eles/Elas/Vocēs': 'apresentam-se',
       exerciseLevel: 1
     },
     {
-      english: 'to meet',
+      english: 'to find',
       infinitive: 'encontrar',
       Eu: 'encontro',
       Tu: 'encontras',
@@ -1129,7 +1119,7 @@ export const db: Schema = {
     {
       english: 'girl',
       portuguese: {
-        word: 'menina',
+        word: 'rapariga',
         gender: 'feminine'
       },
       exerciseLevel: 1
@@ -1756,7 +1746,7 @@ export const db: Schema = {
     },
     {
       english: "What's your name?",
-      portuguese: 'Como chamas-te?',
+      portuguese: 'Como te chamas?',
       sentenceType: 'question',
       exerciseLevel: 1
     },
@@ -1797,7 +1787,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: "I'm from Lisboa",
+      english: "I'm from Lisbon",
       portuguese: 'Eu sou de Lisboa',
       sentenceType: 'statement',
       exerciseLevel: 1

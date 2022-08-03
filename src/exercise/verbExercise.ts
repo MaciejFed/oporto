@@ -24,7 +24,7 @@ export class VerbExercise implements Exercise, Comperable {
 
   getExerciseBodySuffix = () => '';
 
-  getExerciseDescription = () => `Infinitive: ${this.verb.infinitive}`;
+  getExerciseDescription = () => `Infinitive: ${this.verb.english}`;
 
   getCorrectAnswer = () => getCorrectVerbConjugation(this.verb, this.person);
 
