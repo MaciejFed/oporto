@@ -44,10 +44,10 @@ export function getProgress(results: Result[]): Progress[] {
       count: exerciseProgress.filter((e) => e.ratioRange === ratioRange).length
     })
   );
-  progress.unshift({
-    ratioRange: 'All',
-    count: allExercises.length
-  });
+  // progress.unshift({
+  //   ratioRange: 'All',
+  //   count: allExercises.length
+  // });
 
   return progress;
 }

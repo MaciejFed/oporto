@@ -119,7 +119,7 @@ describe('Event Emitter', () => {
       (event: { event: any }) => event.event
     );
 
-    expect(output[0]).toEqual('Infinitive: ser');
+    expect(output[0]).toEqual('Infinitive: to be - long');
     expect(output[4]).toEqual('Eu: sou');
     expect(output[5]).toEqual('Correct! [voice]');
     expect(resultCount.greenCount).toBe('sou'.length);
@@ -149,7 +149,7 @@ describe('Event Emitter', () => {
         (event: { event: any }) => event.event
       );
 
-    expect(output[0]).toEqual('Infinitive: ser');
+    expect(output[0]).toEqual('Infinitive: to be - long');
     expect(output[14]).toEqual('Eu: sowronganswer');
     expect(output[15]).toEqual('Wrong! [voice]');
     expect(resultCount.greenCount).toBe('so'.length);
@@ -181,7 +181,7 @@ describe('Event Emitter', () => {
         (event: { event: any }) => event.event
       );
 
-    expect(output[0]).toEqual('Infinitive: ser');
+    expect(output[0]).toEqual('Infinitive: to be - long');
     expect(output[6]).toEqual('Eu: sourr');
     expect(output[8]).toEqual('Eu: sou');
     expect(output[9]).toEqual('Correct! [voice]');
