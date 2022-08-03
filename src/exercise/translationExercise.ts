@@ -81,6 +81,7 @@ export class NounTranslationExercise extends TranslationExercise implements Exer
     this.translationType === other.translationType;
 
   getWordWithGender() {
+    if (this.noun.portuguese.gender === 'none') return this.noun.portuguese.word;
     return `${this.noun.portuguese.gender === 'masculine' ? 'o' : 'a'} ${this.noun.portuguese.word}`;
   }
 }

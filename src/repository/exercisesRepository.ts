@@ -6,7 +6,7 @@ export type Verb = { english: string } & { [key in Person]: string } & {
   exerciseLevel: number;
 };
 
-type NounGender = 'masculine' | 'feminine';
+type NounGender = 'masculine' | 'feminine' | 'none';
 
 type SentenceType = 'question' | 'statement';
 
@@ -244,6 +244,96 @@ export const db: Schema = {
       'Ela/Ele/Você': 'olha',
       Nós: 'olhamos',
       'Eles/Elas/Vocēs': 'olham',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to be called',
+      infinitive: 'chamar-se',
+      Eu: 'chamo-me',
+      Tu: 'chamas-te',
+      'Ela/Ele/Você': 'chama-se',
+      Nós: 'chamamo-nos',
+      'Eles/Elas/Vocēs': 'chamam-se',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to work',
+      infinitive: 'trabalhar',
+      Eu: 'trabalho',
+      Tu: 'trabalhas',
+      'Ela/Ele/Você': 'trabalha',
+      Nós: 'trabalhamos',
+      'Eles/Elas/Vocēs': 'trabalham',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to greet',
+      infinitive: 'cumprimentar',
+      Eu: 'cumprimento',
+      Tu: 'cumprimentas',
+      'Ela/Ele/Você': 'cumprimenta',
+      Nós: 'cumprimentamos',
+      'Eles/Elas/Vocēs': 'cumprimentam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to work',
+      infinitive: 'cumprimentar',
+      Eu: 'cumprimento',
+      Tu: 'cumprimentas',
+      'Ela/Ele/Você': 'cumprimenta',
+      Nós: 'cumprimentamos',
+      'Eles/Elas/Vocēs': 'cumprimentam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to introduce yourself',
+      infinitive: 'apresentar-se',
+      Eu: 'apresentas-te',
+      Tu: 'cumprimentas',
+      'Ela/Ele/Você': 'apresenta-se',
+      Nós: 'apresentamo-nos',
+      'Eles/Elas/Vocēs': 'apresentam-se',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to meet',
+      infinitive: 'encontrar',
+      Eu: 'encontro',
+      Tu: 'encontras',
+      'Ela/Ele/Você': 'encontra',
+      Nós: 'encontramos',
+      'Eles/Elas/Vocēs': 'encontram',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to hear',
+      infinitive: 'ouvir',
+      Eu: 'ouço',
+      Tu: 'ouves',
+      'Ela/Ele/Você': 'ouve',
+      Nós: 'ouvimos',
+      'Eles/Elas/Vocēs': 'ouvem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to ask',
+      infinitive: 'perguntar',
+      Eu: 'pergunto',
+      Tu: 'perguntas',
+      'Ela/Ele/Você': 'pergunta',
+      Nós: 'perguntamos',
+      'Eles/Elas/Vocēs': 'perguntam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to play',
+      infinitive: 'jogar',
+      Eu: 'jogo',
+      Tu: 'jogas',
+      'Ela/Ele/Você': 'joga',
+      Nós: 'jogamos',
+      'Eles/Elas/Vocēs': 'jogam',
       exerciseLevel: 1
     }
   ],
@@ -1035,6 +1125,278 @@ export const db: Schema = {
         gender: 'feminine'
       },
       exerciseLevel: 1
+    },
+    {
+      english: 'girl',
+      portuguese: {
+        word: 'menina',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'friend',
+      portuguese: {
+        word: 'amigo',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '0',
+      portuguese: {
+        word: 'zero',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '1',
+      portuguese: {
+        word: 'um',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '2',
+      portuguese: {
+        word: 'dois',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '3',
+      portuguese: {
+        word: 'três',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '4',
+      portuguese: {
+        word: 'quatro',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '5',
+      portuguese: {
+        word: 'cinco',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '6',
+      portuguese: {
+        word: 'seis',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '7',
+      portuguese: {
+        word: 'sete',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '8',
+      portuguese: {
+        word: 'oito',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '9',
+      portuguese: {
+        word: 'nove',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '10',
+      portuguese: {
+        word: 'dez',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '11',
+      portuguese: {
+        word: 'onze',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '12',
+      portuguese: {
+        word: 'doze',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '13',
+      portuguese: {
+        word: 'treze',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '14',
+      portuguese: {
+        word: 'catorze',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '15',
+      portuguese: {
+        word: 'quinze',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '16',
+      portuguese: {
+        word: 'dezasseis',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '17',
+      portuguese: {
+        word: 'dezassete',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '18',
+      portuguese: {
+        word: 'dezoito',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '19',
+      portuguese: {
+        word: 'dezanove',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '20',
+      portuguese: {
+        word: 'vinte',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '21',
+      portuguese: {
+        word: 'vinte e um',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '22',
+      portuguese: {
+        word: 'vinte e dois',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '23',
+      portuguese: {
+        word: 'vinte e três',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '30',
+      portuguese: {
+        word: 'trinta',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '40',
+      portuguese: {
+        word: 'quarenta',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '50',
+      portuguese: {
+        word: 'cinquenta',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '60',
+      portuguese: {
+        word: 'sessenta',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '70',
+      portuguese: {
+        word: 'setenta',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '80',
+      portuguese: {
+        word: 'oitenta',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '90',
+      portuguese: {
+        word: 'noventa',
+        gender: 'none'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: '100',
+      portuguese: {
+        word: 'cem',
+        gender: 'none'
+      },
+      exerciseLevel: 1
     }
   ],
   sentences: [
@@ -1063,7 +1425,6 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      // eslint-disable-next-line quotes
       english: "I'm Marta",
       portuguese: 'Sou a Marta',
       sentenceType: 'statement',
@@ -1372,6 +1733,90 @@ export const db: Schema = {
     {
       english: 'Can you come here?',
       portuguese: 'Podes chegar aqui?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Pair work',
+      portuguese: 'Trabalho de pares',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Pair work',
+      portuguese: 'Trabalho de pares',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Greet a colleague',
+      portuguese: 'Cumprimentar um colega',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Introduce yourself to a professor',
+      portuguese: 'Apresentar-se a um professor',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "What's your name?",
+      portuguese: 'Como chamas-te?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'With your colleague, have dialogues for the following situations',
+      portuguese: 'Com o seu colega, faça diálogos para as seguintes situações',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Sara has a coffee with Paulo and Marta',
+      portuguese: 'A Sara toma um café com o Paulo e a Marta',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Sara is at the cafe',
+      portuguese: 'A Sara está no café',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'This is Sara',
+      portuguese: 'Esta é a Sara',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Do you study here at the university?',
+      portuguese: 'Estudas aqui na universidade?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I have a very good Portuguese teacher',
+      portuguese: 'Tenho um professor de português muito bom',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I'm from Lisboa",
+      portuguese: 'Eu sou de Lisboa',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'What street do you live on?',
+      portuguese: 'Em que rua moras?',
+      sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Where do you live?',
+      portuguese: 'Onde moras?',
       sentenceType: 'question',
       exerciseLevel: 1
     }
