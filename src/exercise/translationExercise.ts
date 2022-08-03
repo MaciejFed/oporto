@@ -5,17 +5,32 @@ import { Exercise, ExerciseType } from './exercise';
 
 const TO_ENGLISH_TRANLSATION_PROPABILTY = 0.8;
 
-type TranlationType = 'toEnglish' | 'toPortuguese';
+type TranlationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
 
 export class TranslationExercise {
   translationType: TranlationType;
 
   constructor() {
-    this.translationType = Math.random() < TO_ENGLISH_TRANLSATION_PROPABILTY ? 'toEnglish' : 'toPortuguese';
+    const propability = Math.random();
+    if (propability < 0.33) {
+      this.translationType = 'toEnglish';
+    } else if (propability > 0.33 && propability < 0.66) {
+      this.translationType = 'toPortuguese';
+    } else {
+      this.translationType = 'toPortugueseFromHearing';
+    }
+  }
+
+  isTranslationSubjectEqual(tranlsationExercise: Exercise) {
+    return false;
   }
 
   isTranslationToPortuguese(): boolean {
-    return this.translationType === 'toPortuguese';
+    return this.translationType === 'toPortuguese' || this.translationType === 'toPortugueseFromHearing';
+  }
+
+  isTranslationToPortugueseFromHearing(): boolean {
+    return this.translationType === 'toPortugueseFromHearing';
   }
 }
 export class NounTranslationExercise extends TranslationExercise implements Exercise, Comperable {
@@ -32,6 +47,10 @@ export class NounTranslationExercise extends TranslationExercise implements Exer
     this.exerciseLevel = this.noun.exerciseLevel;
   }
 
+  isTranslationSubjectEqual(tranlsationExercise: NounTranslationExercise) {
+    return this.noun.portuguese === tranlsationExercise.noun.portuguese;
+  }
+
   getExerciseBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
@@ -39,13 +58,14 @@ export class NounTranslationExercise extends TranslationExercise implements Exer
   getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => {
+    if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.noun.english}`;
     }
     return `Portuguese: ${this.getWordWithGender()}`;
   };
 
-  getExercsiseExplanation = () => undefined;
+  getExercsiseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.noun.english);
 
@@ -79,6 +99,10 @@ export class VerbTranslationExercise extends TranslationExercise implements Exer
     this.exerciseLevel = this.verb.exerciseLevel;
   }
 
+  isTranslationSubjectEqual(tranlsationExercise: VerbTranslationExercise) {
+    return this.verb.infinitive === tranlsationExercise.verb.infinitive;
+  }
+
   getExerciseBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
@@ -86,13 +110,14 @@ export class VerbTranslationExercise extends TranslationExercise implements Exer
   getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => {
+    if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.verb.english}`;
     }
     return `Portuguese: ${this.verb.infinitive}`;
   };
 
-  getExercsiseExplanation = () => undefined;
+  getExercsiseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.verb.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.verb.infinitive : this.verb.english);
 
@@ -122,6 +147,10 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
     this.exerciseLevel = this.sentence.exerciseLevel;
   }
 
+  isTranslationSubjectEqual(tranlsationExercise: SentenceTranslationExercise) {
+    return this.sentence.portuguese === tranlsationExercise.sentence.portuguese;
+  }
+
   getExerciseBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
@@ -129,13 +158,14 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
   getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => {
+    if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.sentence.english}`;
     }
     return `Portuguese: ${this.sentence.portuguese}`;
   };
 
-  getExercsiseExplanation = () => undefined;
+  getExercsiseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.sentence.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.sentence.portuguese : this.sentence.english);
 

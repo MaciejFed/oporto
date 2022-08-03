@@ -16,6 +16,8 @@ import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
 import { saveNewResult } from '../repository/resultRepository';
 import { AnswerInputType } from '../io/input';
+import { TranslationExercise } from '../exercise/translationExercise';
+import { exec } from 'child_process';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -24,6 +26,7 @@ export class SessionManager implements AppEventListener {
   currentExercise: Exercise;
   answer: string;
   exerciseInProgress: boolean;
+  hearingLoop?: NodeJS.Timer;
 
   constructor(eventProcessor: EventProcessor, exerciseCount: number) {
     this.eventProcessor = eventProcessor;
@@ -59,6 +62,7 @@ export class SessionManager implements AppEventListener {
         exerciseExplanation: this.currentExercise?.getExercsiseExplanation()
       });
       this.exerciseInProgress = true;
+      this.handleExerciseFromHearing(this.currentExercise);
     });
   }
 
@@ -109,5 +113,19 @@ export class SessionManager implements AppEventListener {
   resetAnswer() {
     logger.info('Reseting answer...');
     this.answer = '';
+    if (this.hearingLoop) {
+      clearInterval(this.hearingLoop);
+    }
+  }
+
+  handleExerciseFromHearing(exercise: Exercise) {
+    if (exercise instanceof TranslationExercise && exercise.isTranslationToPortugueseFromHearing()) {
+      const translationExercise = exercise as Exercise;
+      const correctAnswer = translationExercise.getCorrectAnswer();
+      exec(`say ${correctAnswer}`);
+      this.hearingLoop = setInterval(() => {
+        exec(`say ${correctAnswer}`);
+      }, 5000);
+    }
   }
 }
