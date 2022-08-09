@@ -1405,14 +1405,6 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'thing',
-      portuguese: {
-        word: 'coisa',
-        gender: 'feminine'
-      },
-      exerciseLevel: 1
-    },
-    {
       english: 'weather',
       portuguese: {
         word: 'tempo',
@@ -1461,34 +1453,10 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'caso',
-      portuguese: {
-        word: 'point',
-        gender: 'masculine'
-      },
-      exerciseLevel: 1
-    },
-    {
       english: 'work',
       portuguese: {
         word: 'trabalho',
         gender: 'masculine'
-      },
-      exerciseLevel: 1
-    },
-    {
-      english: 'people',
-      portuguese: {
-        word: 'folks',
-        gender: 'feminine'
-      },
-      exerciseLevel: 1
-    },
-    {
-      english: 'people',
-      portuguese: {
-        word: 'gente',
-        gender: 'feminine'
       },
       exerciseLevel: 1
     },
@@ -1505,14 +1473,6 @@ export const db: Schema = {
       portuguese: {
         word: 'grupo',
         gender: 'masculine'
-      },
-      exerciseLevel: 1
-    },
-    {
-      english: 'work',
-      portuguese: {
-        word: 'obra',
-        gender: 'feminine'
       },
       exerciseLevel: 1
     },
@@ -2020,7 +1980,7 @@ export const db: Schema = {
     },
     {
       english: "There's plenty of nice people in the world.",
-      portuguese: 'Há muitas pessoas legais no mundo',
+      portuguese: 'Há muitas pessoas boas no mundo',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -2032,25 +1992,25 @@ export const db: Schema = {
     },
     {
       english: 'My new painting is a work of art',
-      portuguese: 'Minha nova pintura é uma obra de arte',
+      portuguese: 'A minha nova pintura é uma obra de arte',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
     {
       english: 'My son is almost six years old.',
-      portuguese: 'Meu filho tem quase seis anos',
+      portuguese: 'O meu filho tem quase seis anos',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
     {
-      english: 'I know the city and the surrounding region very well',
-      portuguese: 'Conheço a cidade e a região adjacente muito bem',
+      english: 'I know the city and the surroundings very well',
+      portuguese: 'Conheço a cidade e os arredores muito bem',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
     {
       english: "I always write 'sincerely' at the end of letters",
-      portuguese: "Eu sempre escrevo 'atenciosamente' no fim das cartas",
+      portuguese: "Escrevo sempre 'atenciosamente' no fim das cartas",
       sentenceType: 'statement',
       exerciseLevel: 1
     }
