@@ -1387,6 +1387,174 @@ export const db: Schema = {
         gender: 'none'
       },
       exerciseLevel: 1
+    },
+    {
+      english: 'turn',
+      portuguese: {
+        word: 'vez',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'thing',
+      portuguese: {
+        word: 'coisa',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'weather',
+      portuguese: {
+        word: 'tempo',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'person',
+      portuguese: {
+        word: 'pessoa',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'form',
+      portuguese: {
+        word: 'forma',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'part',
+      portuguese: {
+        word: 'parte',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'state',
+      portuguese: {
+        word: 'estado',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'government',
+      portuguese: {
+        word: 'governo',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'work',
+      portuguese: {
+        word: 'trabalho',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'side',
+      portuguese: {
+        word: 'lado',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'group',
+      portuguese: {
+        word: 'grupo',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'earth',
+      portuguese: {
+        word: 'terra',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'name',
+      portuguese: {
+        word: 'nome',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'son',
+      portuguese: {
+        word: 'filho',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'problem',
+      portuguese: {
+        word: 'problema',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'company',
+      portuguese: {
+        word: 'empresa',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'right',
+      portuguese: {
+        word: 'direito',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'system',
+      portuguese: {
+        word: 'sistema',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'region',
+      portuguese: {
+        word: 'região',
+        gender: 'feminine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'point',
+      portuguese: {
+        word: 'ponto',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
+    },
+    {
+      english: 'end',
+      portuguese: {
+        word: 'fim',
+        gender: 'masculine'
+      },
+      exerciseLevel: 1
     }
   ],
   sentences: [
@@ -1796,6 +1964,54 @@ export const db: Schema = {
       english: 'Where do you live?',
       portuguese: 'Onde moras?',
       sentenceType: 'question',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I finished the work before the deadline',
+      portuguese: 'Eu concluí o trabalho antes do prazo',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "These folks can't win all the time",
+      portuguese: 'Esta gente não pode vencer sempre',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "There's plenty of nice people in the world.",
+      portuguese: 'Há muitas pessoas boas no mundo',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'Both sides of the record are in perfect condition',
+      portuguese: 'Ambos os lados do disco estão em perfeitas condições',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'My new painting is a work of art',
+      portuguese: 'A minha nova pintura é uma obra de arte',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'My son is almost six years old.',
+      portuguese: 'O meu filho tem quase seis anos',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: 'I know the city and the surroundings very well',
+      portuguese: 'Conheço a cidade e os arredores muito bem',
+      sentenceType: 'statement',
+      exerciseLevel: 1
+    },
+    {
+      english: "I always write 'sincerely' at the end of letters",
+      portuguese: "Escrevo sempre 'atenciosamente' no fim das cartas",
+      sentenceType: 'statement',
       exerciseLevel: 1
     }
   ],
