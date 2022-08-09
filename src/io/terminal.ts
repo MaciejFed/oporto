@@ -17,6 +17,7 @@ import {
 } from '../event/events';
 import {
   animateExerciseSummary,
+  displayGenericWeeklyStatistics,
   preExerciseClear,
   printExerciseBody,
   printExerciseBodyWithCorrection,
@@ -29,9 +30,10 @@ import {
   printInBetweenMenu
 } from './terminalUtils';
 import { Exercise } from '../exercise/exercise';
-import { getStatisticForExercise } from '../service/result';
+import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { sleep } from '../common/common';
 import { displayStatistics } from '../commands/stat';
+import { getAllResults } from '../repository/resultRepository';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -150,10 +152,12 @@ export class Terminal {
     terminal.hideCursor();
     printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
     if (this.exercise) {
-      const exerciseStatistics = getStatisticForExercise(this.exercise);
+      const allResults = getAllResults();
+      const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {
         animateExerciseSummary(exerciseStatistics);
       }
+      displayGenericWeeklyStatistics(getExerciseProgress(allResults, this.exercise), 30);
     }
   }
 

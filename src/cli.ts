@@ -17,7 +17,7 @@ program
   .command('stat')
   .description('Show statistics')
   .action((str, options) => {
-    displayStatistics();
+    displayStatistics(true);
   });
 
 program.parse();

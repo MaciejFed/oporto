@@ -2,7 +2,9 @@ import { DateTime } from 'luxon';
 import { isBeforeWeekday, isOnWeekDay, onlyDistinct } from '../common/common';
 import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
+import { VerbExercise } from '../exercise/verbExercise';
 import { AnswerInputType } from '../io/input';
+import { displayGenericWeeklyStatistics } from '../io/terminalUtils';
 import { getAllResults, getAllResultsForExercise } from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
 import { getProgress } from './progress';
@@ -66,8 +68,7 @@ export function convertToResult(
   };
 }
 
-export function getStatisticForExercise(exercise: Exercise): ExerciseStatistics | undefined {
-  const allResults = getAllResults();
+export function getStatisticForExercise(allResults: Result[], exercise: Exercise): ExerciseStatistics | undefined {
   const allResultsForExercise = getAllResultsForExercise(allResults, exercise).sort(
     (a, b) => b.date.getTime() - a.date.getTime()
   );
@@ -182,6 +183,55 @@ export function getWeekdayProgress(): WeekdayStatistics[] {
       return {
         weekday,
         points: [all, neverDone, range039, range4079, range80100]
+      };
+    });
+}
+
+export function getExerciseProgress(allResults: Result[], exercise: Exercise): WeekdayStatistics[] {
+  const resultForExercise = getAllResultsForExercise(allResults, exercise);
+  if (resultForExercise.length < 3) return [];
+  type timeLineType = 'daily' | 'weekly';
+  if (
+    DateTime.fromJSDate(resultForExercise[resultForExercise.length - 1].date).ordinal -
+      DateTime.fromJSDate(resultForExercise[0].date).ordinal <=
+    7
+  ) {
+    return getExerciseProgressDaily(resultForExercise, 1);
+  }
+
+  return getExerciseProgressDaily(resultForExercise, 7);
+}
+
+function getExerciseProgressDaily(resultForExercise: Result[], devider: number): WeekdayStatistics[] {
+  const startingDay = Math.ceil(DateTime.fromJSDate(resultForExercise[0].date).ordinal / devider);
+  const daysApart =
+    Math.ceil(DateTime.fromJSDate(resultForExercise[resultForExercise.length - 1].date).ordinal / devider) -
+    startingDay;
+  return [...Array(daysApart).keys()]
+    .map((day) => day + 1)
+    .map((day) => {
+      const resultOnDay = resultForExercise.filter(
+        (result) => Math.ceil(DateTime.fromJSDate(result.date).ordinal / devider) - startingDay <= day
+      );
+      const all: StatisticPoint = {
+        keyName: 'All',
+        value: resultOnDay.length,
+        keyMarker: { color: 'blue', marker: '🔵' }
+      };
+      const good: StatisticPoint = {
+        keyName: 'Correct',
+        value: resultOnDay.filter((result) => result.wasCorrect).length,
+        keyMarker: { color: 'green', marker: '🟢' }
+      };
+      const bad: StatisticPoint = {
+        keyName: 'Wrong',
+        value: resultOnDay.filter((result) => !result.wasCorrect).length,
+        keyMarker: { color: 'red', marker: '🔴' }
+      };
+
+      return {
+        weekday: day,
+        points: [all, good, bad]
       };
     });
 }

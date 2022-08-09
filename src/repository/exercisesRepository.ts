@@ -217,7 +217,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'to enterentrar',
+      english: 'to enter',
       infinitive: 'entrar',
       Eu: 'entro',
       Tu: 'entras',
@@ -1770,7 +1770,7 @@ export const db: Schema = {
     },
     {
       english: 'This is Sara',
-      portuguese: 'Esta é a Sara',
+      portuguese: 'Está é a Sara',
       sentenceType: 'statement',
       exerciseLevel: 1
     },
@@ -1778,12 +1778,6 @@ export const db: Schema = {
       english: 'Do you study here at the university?',
       portuguese: 'Estudas aqui na universidade?',
       sentenceType: 'question',
-      exerciseLevel: 1
-    },
-    {
-      english: 'I have a very good Portuguese teacher',
-      portuguese: 'Tenho um professor de português muito bom',
-      sentenceType: 'statement',
       exerciseLevel: 1
     },
     {
