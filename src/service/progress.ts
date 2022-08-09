@@ -21,7 +21,6 @@ export type Progress = {
 };
 
 export function getProgress(results: Result[]): Progress[] {
-  const allExercises = generateUniqeExercises(10000);
   const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(10000)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);

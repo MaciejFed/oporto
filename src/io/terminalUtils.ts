@@ -134,6 +134,7 @@ export async function animateExerciseSummary({
 }
 
 export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatistics[], margin: number) {
+  if (weeklyStatistics.length === 0) return;
   const maxYValue = Math.max(...weeklyStatistics.flatMap((stat) => stat.points.map((point) => point.value)));
   const yGap = Math.ceil(maxYValue / 24);
   const gapStyle = '-------';

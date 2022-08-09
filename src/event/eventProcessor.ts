@@ -47,7 +47,7 @@ export class EventProcessor {
         this.eventEmitter.removeAllListeners();
         terminal.hideCursor(false);
         clear();
-        displayStatistics();
+        displayStatistics(false);
         process.exit(0);
         break;
       default:

@@ -3,8 +3,6 @@ import { Noun, Verb, Sentence } from '../repository/exercisesRepository';
 import { getRandomNoun, getRandomSentence, getRandomVerb } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
 
-const TO_ENGLISH_TRANLSATION_PROPABILTY = 0.8;
-
 type TranlationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
 
 export class TranslationExercise {
@@ -48,7 +46,7 @@ export class NounTranslationExercise extends TranslationExercise implements Exer
   }
 
   isTranslationSubjectEqual(tranlsationExercise: NounTranslationExercise) {
-    return this.noun.portuguese === tranlsationExercise.noun.portuguese;
+    return this.noun.portuguese.word === tranlsationExercise.noun.portuguese.word;
   }
 
   getExerciseBodyPrefix(): string {
