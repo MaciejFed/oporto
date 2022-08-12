@@ -3,6 +3,7 @@ import { logger } from '../common/logger';
 import { generateUniqeExercises } from '../exercise/exercise';
 import { displayGenericWeeklyStatistics } from '../io/terminalUtils';
 import { getAllResults } from '../repository/resultRepository';
+import { getAllUniqueWords } from '../service/progress';
 import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
 
 export function displayStatistics(displayProgress: boolean) {
@@ -14,10 +15,11 @@ export function displayStatistics(displayProgress: boolean) {
     logger.info(`Overall Progress: ${getOverallProgres()}`);
 
     const allResults = getAllResults();
-    const allExercises = generateUniqeExercises(20000);
+    const allExercises = generateUniqeExercises(20000, false);
     const notDoneExercises = allExercises.filter(
       (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
     );
+    console.log(`All unique words: ${getAllUniqueWords().length}`);
     console.log(`Never Done: ${notDoneExercises.length}`);
   }
 }

@@ -10,7 +10,14 @@ program
   .command('test')
   .description('Start test session')
   .action((str, options) => {
-    startTestSession();
+    startTestSession(true);
+  });
+
+program
+  .command('random')
+  .description('Start test session with random questions')
+  .action((str, options) => {
+    startTestSession(false);
   });
 
 program
