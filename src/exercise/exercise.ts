@@ -29,12 +29,12 @@ export const exerciseGenerators: ExerciseGenerator[] = [
   () => new FitInGapExercise()
 ];
 
-export function generateUniqeExercises<T>(exerciseCount: number): Exercise[] {
+export function generateUniqeExercises(exerciseCount: number, sort: boolean): Exercise[] {
   const exercises = Array.from(Array(10000)).map(() => getRandomElement(exerciseGenerators)());
   const distinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);
-  const sortedExercises = sortExercises(distinctExercises);
+  const exercisesFinal = sort ? sortExercises(distinctExercises) : distinctExercises;
 
-  return sortedExercises.splice(0, Math.min(exerciseCount, sortedExercises.length - 1)).reverse();
+  return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
 
 // all exercises start with zero priority

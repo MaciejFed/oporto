@@ -1973,12 +1973,6 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: "These folks can't win all the time",
-      portuguese: 'Esta gente não pode vencer sempre',
-      sentenceType: 'statement',
-      exerciseLevel: 1
-    },
-    {
       english: "There's plenty of nice people in the world.",
       portuguese: 'Há muitas pessoas boas no mundo',
       sentenceType: 'statement',

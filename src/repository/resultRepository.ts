@@ -11,6 +11,7 @@ import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { readFromFile, saveToFile } from '../io/file';
 import assert from 'assert';
+import { DateTime } from 'luxon';
 
 export function getAllResults(): Result[] {
   const results = readFromFile();
@@ -70,6 +71,26 @@ export function getAllResults(): Result[] {
     result.exercise.correctAnswer = result.exercise.getCorrectAnswer();
     return result;
   });
+}
+
+export type DateResults = {
+  date: DateTime;
+  results: Result[];
+};
+
+export function getAllResultsByDate(): DateResults[] {
+  let resultDate = DateTime.fromJSDate(getAllResults()[0].date);
+  const resultsByDate: DateResults[] = [];
+  while (resultDate.ordinal < DateTime.now().ordinal) {
+    // eslint-disable-next-line no-loop-func
+    const results = getAllResults().filter((result) => DateTime.fromJSDate(result.date).ordinal <= resultDate.ordinal);
+    resultsByDate.push({
+      date: resultDate,
+      results
+    });
+    resultDate = resultDate.plus({ days: 1 });
+  }
+  return resultsByDate;
 }
 
 export function saveNewResult(newResult: Result) {

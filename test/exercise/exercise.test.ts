@@ -5,7 +5,7 @@ import { generateUniqeExercises } from '../../src/exercise/exercise';
 describe('Exercise Provider', () => {
 
     it('Generate Distinct Exercises', async () => {
-        const maybeUniqueExercises = generateUniqeExercises(10);
+        const maybeUniqueExercises = generateUniqeExercises(10, true);
         const uniqueExercises = onlyDistinct(maybeUniqueExercises);
 
         expect(uniqueExercises.length).toEqual(10);

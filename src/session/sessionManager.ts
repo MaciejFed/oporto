@@ -28,10 +28,10 @@ export class SessionManager implements AppEventListener {
   exerciseInProgress: boolean;
   hearingLoop?: NodeJS.Timer;
 
-  constructor(eventProcessor: EventProcessor, exerciseCount: number) {
+  constructor(eventProcessor: EventProcessor, exerciseCount: number, sortExercises: boolean) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = generateUniqeExercises(exerciseCount);
+    this.exercises = generateUniqeExercises(exerciseCount, sortExercises);
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';
