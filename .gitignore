@@ -6,4 +6,5 @@ build
 node_modules
 coverage
 out.log
+progress/data.json
 package-lock.json
