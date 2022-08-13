@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import { Exercise, generateUniqeExercises } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translationExercise';
+import { saveUniqueWords } from '../io/file';
 import { readAll } from '../repository/exercisesRepository';
 import { getAllResults, getAllResultsByDate, getAllResultsForExercise } from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
@@ -22,7 +23,7 @@ export type Progress = {
   count: number;
 };
 
-export function getProgress(results: Result[]): Progress[] {
+function getExercisesProgress(results: Result[]) {
   const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(10000, false)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
@@ -38,6 +39,12 @@ export function getProgress(results: Result[]): Progress[] {
       };
     })
     .sort((a, b) => a.correctAnswers - b.correctAnswers);
+    
+    return exerciseProgress;
+}
+
+export function getProgress(results: Result[]): Progress[] {
+  const exerciseProgress = getExercisesProgress(results)
 
   const progress = ratioRanges.map((ratioRange) =>
     Object.assign({
@@ -97,5 +104,39 @@ function getAllUniqueWordsByDay(results: Result[]) {
     .filter((word) => word)
     .flatMap((word) => word.split(' '));
 
-  return [...new Set(allWords.filter((word) => allWords.filter((w) => w === word).length > 2))];
+  return [...new Set(allWords)];
 }
+
+type ProgressOnDay = {
+  day: string,
+  wordCount: number,
+  newWords: string[],
+  lostWords: string[]
+}
+
+export function progressByDate(): ProgressOnDay[] {
+  const uniqueByDay = getAllResultsByDate().map((dateResult) => {
+    const exerciseProgress = getExercisesProgress(dateResult.results);
+    return {
+      ...dateResult,
+      results: dateResult.results.filter((result) => exerciseProgress.find((ep) => ep.exercise.equal(result.exercise))?.ratioRange === '80-100')
+    }
+  }).map((dateResult) => {
+    return {
+      day: dateResult.date,
+      words: getAllUniqueWordsByDay(dateResult.results)
+    }
+  })
+  return uniqueByDay.map(((unique, index) => {
+    const previous = index > 0 ? uniqueByDay[index - 1].words : [];
+    const newWords = unique.words.filter((word) => !previous.includes(word));
+    const lostWords = previous.filter((word) => !unique.words.includes(word));
+    return {
+      day: unique.day.toJSDate().toLocaleDateString(),
+      wordCount: unique.words.length,
+      newWords,
+      lostWords
+    }
+  }))
+};
+
