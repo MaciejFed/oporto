@@ -2,6 +2,7 @@ import { Comperable } from '../common/common';
 import { Noun, Verb, Sentence } from '../repository/exercisesRepository';
 import { getRandomNoun, getRandomSentence, getRandomVerb } from '../service/translation';
 import { Exercise, ExerciseType } from './exercise';
+import { VerbExercise } from './verbExercise';
 
 type TranlationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
 
@@ -19,7 +20,7 @@ export class TranslationExercise {
     }
   }
 
-  isTranslationSubjectEqual(tranlsationExercise: Exercise) {
+  isTranslationSubjectEqual(tranlsationSubject: Exercise) {
     return false;
   }
 
@@ -98,8 +99,10 @@ export class VerbTranslationExercise extends TranslationExercise implements Exer
     this.exerciseLevel = this.verb.exerciseLevel;
   }
 
-  isTranslationSubjectEqual(tranlsationExercise: VerbTranslationExercise) {
-    return this.verb.infinitive === tranlsationExercise.verb.infinitive;
+  isTranslationSubjectEqual(exercise: Exercise) {
+    if (exercise instanceof VerbTranslationExercise || exercise instanceof VerbExercise)
+      return this.verb.infinitive === exercise.verb.infinitive;
+    return false;
   }
 
   getExerciseBodyPrefix(): string {
