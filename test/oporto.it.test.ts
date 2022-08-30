@@ -9,7 +9,7 @@ import { getAllResults } from '../src/repository/resultRepository';
 
 const terminal = new Terminal(eventProcessor);
 const input = new Input(eventProcessor);
-const sessionManager = new SessionManager(eventProcessor, 3, true);
+const sessionManager = new SessionManager(eventProcessor, 3, true, () => true);
 
 const sayCommands: string[] = [];
 const output: string[] = [];

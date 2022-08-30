@@ -24,7 +24,7 @@ export type Progress = {
 };
 
 function getExercisesProgress(results: Result[]) {
-  const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(10000, false)
+  const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(10000, false, () => true)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
       const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
@@ -39,12 +39,12 @@ function getExercisesProgress(results: Result[]) {
       };
     })
     .sort((a, b) => a.correctAnswers - b.correctAnswers);
-    
-    return exerciseProgress;
+
+  return exerciseProgress;
 }
 
 export function getProgress(results: Result[]): Progress[] {
-  const exerciseProgress = getExercisesProgress(results)
+  const exerciseProgress = getExercisesProgress(results);
 
   const progress = ratioRanges.map((ratioRange) =>
     Object.assign({
@@ -108,26 +108,30 @@ function getAllUniqueWordsByDay(results: Result[]) {
 }
 
 type ProgressOnDay = {
-  day: string,
-  wordCount: number,
-  newWords: string[],
-  lostWords: string[]
-}
+  day: string;
+  wordCount: number;
+  newWords: string[];
+  lostWords: string[];
+};
 
 export function progressByDate(): ProgressOnDay[] {
-  const uniqueByDay = getAllResultsByDate().map((dateResult) => {
-    const exerciseProgress = getExercisesProgress(dateResult.results);
-    return {
-      ...dateResult,
-      results: dateResult.results.filter((result) => exerciseProgress.find((ep) => ep.exercise.equal(result.exercise))?.ratioRange === '80-100')
-    }
-  }).map((dateResult) => {
-    return {
-      day: dateResult.date,
-      words: getAllUniqueWordsByDay(dateResult.results)
-    }
-  })
-  return uniqueByDay.map(((unique, index) => {
+  const uniqueByDay = getAllResultsByDate()
+    .map((dateResult) => {
+      const exerciseProgress = getExercisesProgress(dateResult.results);
+      return {
+        ...dateResult,
+        results: dateResult.results.filter(
+          (result) => exerciseProgress.find((ep) => ep.exercise.equal(result.exercise))?.ratioRange === '80-100'
+        )
+      };
+    })
+    .map((dateResult) => {
+      return {
+        day: dateResult.date,
+        words: getAllUniqueWordsByDay(dateResult.results)
+      };
+    });
+  return uniqueByDay.map((unique, index) => {
     const previous = index > 0 ? uniqueByDay[index - 1].words : [];
     const newWords = unique.words.filter((word) => !previous.includes(word));
     const lostWords = previous.filter((word) => !unique.words.includes(word));
@@ -136,7 +140,6 @@ export function progressByDate(): ProgressOnDay[] {
       wordCount: unique.words.length,
       newWords,
       lostWords
-    }
-  }))
-};
-
+    };
+  });
+}

@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+import { startSpeakSession } from './commands/speaking';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
 import { logger } from './common/logger';
@@ -11,6 +12,13 @@ program
   .description('Start test session')
   .action((str, options) => {
     startTestSession(true);
+  });
+
+program
+  .command('speak')
+  .description('Start speak session')
+  .action((str, options) => {
+    startSpeakSession();
   });
 
 program

@@ -325,6 +325,426 @@ export const db: Schema = {
       Nós: 'jogamos',
       'Eles/Elas/Vocēs': 'jogam',
       exerciseLevel: 1
+    },
+    {
+      english: 'to write',
+      infinitive: 'escrever',
+      Eu: 'escrevo',
+      Tu: 'escreves',
+      'Ela/Ele/Você': 'escreve',
+      Nós: 'escrevemos',
+      'Eles/Elas/Vocēs': 'escrevem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to understand',
+      infinitive: 'compreender',
+      Eu: 'compreendo',
+      Tu: 'compreendes',
+      'Ela/Ele/Você': 'compreende',
+      Nós: 'compreendemos',
+      'Eles/Elas/Vocēs': 'compreendem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to know',
+      infinitive: 'conhecer',
+      Eu: 'conheço',
+      Tu: 'conheces',
+      'Ela/Ele/Você': 'conhece',
+      Nós: 'conhecemos',
+      'Eles/Elas/Vocēs': 'conhecem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to solve',
+      infinitive: 'resolver',
+      Eu: 'resolvo',
+      Tu: 'resolves',
+      'Ela/Ele/Você': 'resolve',
+      Nós: 'resolvemos',
+      'Eles/Elas/Vocēs': 'resolvem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to go down',
+      infinitive: 'descer',
+      Eu: 'desço',
+      Tu: 'desces',
+      'Ela/Ele/Você': 'desce',
+      Nós: 'descemos',
+      'Eles/Elas/Vocēs': 'descem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to warm up',
+      infinitive: 'aquecer',
+      Eu: 'aqueço',
+      Tu: 'aqueces',
+      'Ela/Ele/Você': 'aquece',
+      Nós: 'aquecemos',
+      'Eles/Elas/Vocēs': 'aquecem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to live',
+      infinitive: 'viver',
+      Eu: 'vivo',
+      Tu: 'vives',
+      'Ela/Ele/Você': 'vive',
+      Nós: 'vivemos',
+      'Eles/Elas/Vocēs': 'vivem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to run',
+      infinitive: 'correr',
+      Eu: 'corro',
+      Tu: 'corres',
+      'Ela/Ele/Você': 'corre',
+      Nós: 'corremos',
+      'Eles/Elas/Vocēs': 'correm',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to learn',
+      infinitive: 'aprender',
+      Eu: 'aprendo',
+      Tu: 'aprendes',
+      'Ela/Ele/Você': 'aprende',
+      Nós: 'aprendemos',
+      'Eles/Elas/Vocēs': 'aprendem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to forget',
+      infinitive: 'esquecer',
+      Eu: 'esqueço',
+      Tu: 'esqueces',
+      'Ela/Ele/Você': 'esquece',
+      Nós: 'esquecemos',
+      'Eles/Elas/Vocēs': 'esquecem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to use',
+      infinitive: 'usar',
+      Eu: 'uso',
+      Tu: 'usas',
+      'Ela/Ele/Você': 'usa',
+      Nós: 'usamos',
+      'Eles/Elas/Vocēs': 'usam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to have lunch',
+      infinitive: 'almoçar',
+      Eu: 'almoço',
+      Tu: 'almoças',
+      'Ela/Ele/Você': 'almoça',
+      Nós: 'almoçamos',
+      'Eles/Elas/Vocēs': 'almoçam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to phone',
+      infinitive: 'telefonar',
+      Eu: 'telefono',
+      Tu: 'telefonas',
+      'Ela/Ele/Você': 'telefona',
+      Nós: 'telefonamos',
+      'Eles/Elas/Vocēs': 'telefonam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to phone',
+      infinitive: 'telefonar',
+      Eu: 'telefono',
+      Tu: 'telefonas',
+      'Ela/Ele/Você': 'telefona',
+      Nós: 'telefonamos',
+      'Eles/Elas/Vocēs': 'telefonam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to pay',
+      infinitive: 'pagar',
+      Eu: 'pago',
+      Tu: 'pagas',
+      'Ela/Ele/Você': 'paga',
+      Nós: 'pagamos',
+      'Eles/Elas/Vocēs': 'pagam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to take',
+      infinitive: 'tomar',
+      Eu: 'tomo',
+      Tu: 'tomas',
+      'Ela/Ele/Você': 'toma',
+      Nós: 'tomamos',
+      'Eles/Elas/Vocēs': 'tomam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to stay',
+      infinitive: 'ficar',
+      Eu: 'fico',
+      Tu: 'ficas',
+      'Ela/Ele/Você': 'fica',
+      Nós: 'ficamos',
+      'Eles/Elas/Vocēs': 'ficam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to get up',
+      infinitive: 'levantar-se',
+      Eu: 'levanto-me',
+      Tu: 'levantas-te',
+      'Ela/Ele/Você': 'levanta-se',
+      Nós: 'levantamo-nos',
+      'Eles/Elas/Vocēs': 'levantam-se',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to buy',
+      infinitive: 'comprar',
+      Eu: 'compro',
+      Tu: 'compras',
+      'Ela/Ele/Você': 'compra',
+      Nós: 'compramos',
+      'Eles/Elas/Vocēs': 'compram',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to teach',
+      infinitive: 'ensinar',
+      Eu: 'ensino',
+      Tu: 'ensinas',
+      'Ela/Ele/Você': 'ensina',
+      Nós: 'ensinamos',
+      'Eles/Elas/Vocēs': 'ensinam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to close',
+      infinitive: 'fechar',
+      Eu: 'fecho',
+      Tu: 'fechas',
+      'Ela/Ele/Você': 'fecha',
+      Nós: 'fechamos',
+      'Eles/Elas/Vocēs': 'fecham',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to like',
+      infinitive: 'gostar',
+      Eu: 'gosto',
+      Tu: 'gostas',
+      'Ela/Ele/Você': 'gosta',
+      Nós: 'gostamos',
+      'Eles/Elas/Vocēs': 'gostam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to start',
+      infinitive: 'começar',
+      Eu: 'começo',
+      Tu: 'começas',
+      'Ela/Ele/Você': 'começa',
+      Nós: 'começamos',
+      'Eles/Elas/Vocēs': 'começam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to wash',
+      infinitive: 'lavar',
+      Eu: 'lavo',
+      Tu: 'lavas',
+      'Ela/Ele/Você': 'lava',
+      Nós: 'lavamos',
+      'Eles/Elas/Vocēs': 'lavam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to end',
+      infinitive: 'acabar',
+      Eu: 'acabo',
+      Tu: 'acabas',
+      'Ela/Ele/Você': 'acaba',
+      Nós: 'acabamos',
+      'Eles/Elas/Vocēs': 'acabam',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to catch',
+      infinitive: 'apanhar',
+      Eu: 'apanho',
+      Tu: 'apanhas',
+      'Ela/Ele/Você': 'apanha',
+      Nós: 'apanhamos',
+      'Eles/Elas/Vocēs': 'apanham',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to wear',
+      infinitive: 'vestir',
+      Eu: 'visto',
+      Tu: 'vestes',
+      'Ela/Ele/Você': 'veste',
+      Nós: 'vestimos',
+      'Eles/Elas/Vocēs': 'vestem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to divide',
+      infinitive: 'dividir',
+      Eu: 'divido',
+      Tu: 'divides',
+      'Ela/Ele/Você': 'divide',
+      Nós: 'dividimos',
+      'Eles/Elas/Vocēs': 'dividem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to take off',
+      infinitive: 'despir',
+      Eu: 'dispo',
+      Tu: 'despes',
+      'Ela/Ele/Você': 'despe',
+      Nós: 'despimos',
+      'Eles/Elas/Vocēs': 'despem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to correct',
+      infinitive: 'despir',
+      Eu: 'corrijo',
+      Tu: 'corriges',
+      'Ela/Ele/Você': 'corrige',
+      Nós: 'corrigimos',
+      'Eles/Elas/Vocēs': 'corrigem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to decide',
+      infinitive: 'decidir',
+      Eu: 'decido',
+      Tu: 'decides',
+      'Ela/Ele/Você': 'decide',
+      Nós: 'decidimos',
+      'Eles/Elas/Vocēs': 'decidem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to get',
+      infinitive: 'conseguir',
+      Eu: 'consigo',
+      Tu: 'consegues',
+      'Ela/Ele/Você': 'consegue',
+      Nós: 'conseguimos',
+      'Eles/Elas/Vocēs': 'conseguem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to serve',
+      infinitive: 'sirvo',
+      Eu: 'consigo',
+      Tu: 'serves',
+      'Ela/Ele/Você': 'serve',
+      Nós: 'servimos',
+      'Eles/Elas/Vocēs': 'servem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to feel',
+      infinitive: 'sentir',
+      Eu: 'sinto',
+      Tu: 'sentes',
+      'Ela/Ele/Você': 'sente',
+      Nós: 'sentimos',
+      'Eles/Elas/Vocēs': 'sentem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to translate',
+      infinitive: 'traduzir',
+      Eu: 'traduzo',
+      Tu: 'traduzes',
+      'Ela/Ele/Você': 'traduz',
+      Nós: 'traduzimos',
+      'Eles/Elas/Vocēs': 'traduzem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to translate',
+      infinitive: 'traduzir',
+      Eu: 'traduzo',
+      Tu: 'traduzes',
+      'Ela/Ele/Você': 'traduz',
+      Nós: 'traduzimos',
+      'Eles/Elas/Vocēs': 'traduzem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to leave',
+      infinitive: 'partir',
+      Eu: 'parto',
+      Tu: 'partes',
+      'Ela/Ele/Você': 'parte',
+      Nós: 'partimos',
+      'Eles/Elas/Vocēs': 'partem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to prefer',
+      infinitive: 'preferir',
+      Eu: 'prefiro',
+      Tu: 'preferes',
+      'Ela/Ele/Você': 'prefere',
+      Nós: 'preferimos',
+      'Eles/Elas/Vocēs': 'preferem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to drive',
+      infinitive: 'dirigir',
+      Eu: 'dirijo',
+      Tu: 'diriges',
+      'Ela/Ele/Você': 'dirige',
+      Nós: 'dirigimos',
+      'Eles/Elas/Vocēs': 'dirigem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to discuss',
+      infinitive: 'discutir',
+      Eu: 'discuto',
+      Tu: 'discutes',
+      'Ela/Ele/Você': 'discute',
+      Nós: 'discutimos',
+      'Eles/Elas/Vocēs': 'discutem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to conduct',
+      infinitive: 'conduzir',
+      Eu: 'conduzo',
+      Tu: 'conduzes',
+      'Ela/Ele/Você': 'conduz',
+      Nós: 'conduzimos',
+      'Eles/Elas/Vocēs': 'conduzem',
+      exerciseLevel: 1
+    },
+    {
+      english: 'to allow',
+      infinitive: 'permitir',
+      Eu: 'permito',
+      Tu: 'permites',
+      'Ela/Ele/Você': 'permite',
+      Nós: 'permitimos',
+      'Eles/Elas/Vocēs': 'permitem',
+      exerciseLevel: 1
     }
   ],
   nouns: [
@@ -1973,7 +2393,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: "There's plenty of nice people in the world.",
+      english: "There's plenty of nice people in the world",
       portuguese: 'Há muitas pessoas boas no mundo',
       sentenceType: 'statement',
       exerciseLevel: 1
@@ -1991,7 +2411,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'My son is almost six years old.',
+      english: 'My son is almost six years old',
       portuguese: 'O meu filho tem quase seis anos',
       sentenceType: 'statement',
       exerciseLevel: 1

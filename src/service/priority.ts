@@ -4,6 +4,7 @@ import fs from 'fs';
 import { Result } from './result';
 import { NounTranslationExercise, TranslationExercise } from '../exercise/translationExercise';
 import { logger } from '../common/logger';
+import { VerbExercise } from '../exercise/verbExercise';
 
 let neverDoneExercisesCount = 0;
 let neverDoneByVoiceExercisesCount = 0;
@@ -16,6 +17,8 @@ export const VALUE_EXERCISE_NEVER_DONE = 25;
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;
 export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH = -250;
 export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING = -500;
+export const VALUE_EXERCISE_VERB_NEVER_TRANSLATED = -150;
+export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_BY_VOICE = -250;
 export const VALUE_EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW = -1000;
 export const VALUE_EXERCISE_TYPE_NEVER_DONE = 100;
 export const VALUE_EXERCISE_PER_ONE_LEVEL = 25;
@@ -47,6 +50,8 @@ export type PriorityName =
   | 'EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW'
   | 'EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH'
   | 'EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING'
+  | 'EXERCISE_TRANSLATION_NEVER_DONE_BY_VOICE'
+  | 'EXERCISE_VERB_NEVER_TRANSLATED'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_LEVEL'
   | 'NO_PRIORITY';
@@ -63,12 +68,13 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
+  exerciseTranslationNeverDoneByVoice,
+  verbExerciseNeverTranslated,
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
   exerciseDoneInLastHour,
   exerciseDoneCorrectly2TimesInRow,
-  exerciseLevelPriority,
   exerciseRandomnessPriority
 ];
 
@@ -126,6 +132,64 @@ export function exerciseNeverDoneByVoice(exercise: Exercise, results: Result[]):
     .length === 0
     ? [{ exercise, priorityName: 'EXERCISE_NEVER_DONE_BY_VOICE', priorityValue: neverDoneByVoiceExerciseValue }]
     : noPriority(exercise);
+}
+
+export function exerciseTranslationNeverDoneByVoice(exercise: Exercise, results: Result[]): Priority[] {
+  if (!(exercise instanceof TranslationExercise) || !exercise.isTranslationToPortuguese()) {
+    return noPriority(exercise);
+  }
+  const fromHearingDoneByVoice = results.filter((result) => {
+    if (
+      result.exercise.exercsiseType === exercise.exercsiseType &&
+      (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
+    ) {
+      const tranlsationExercise = result.exercise as unknown as TranslationExercise;
+      return (
+        tranlsationExercise.isTranslationToPortugueseFromHearing() &&
+        result.wasCorrect &&
+        result.answerInputType === 'voice'
+      );
+    }
+    return false;
+  });
+  if (fromHearingDoneByVoice.length >= 1) {
+    logger.info(`from hearing: ${JSON.stringify(fromHearingDoneByVoice)}`);
+  }
+  if (fromHearingDoneByVoice.length === 0) {
+    return [
+      {
+        exercise,
+        priorityName: 'EXERCISE_TRANSLATION_NEVER_DONE_BY_VOICE',
+        priorityValue: VALUE_EXERCISE_TRANSLATION_NEVER_DONE_BY_VOICE
+      }
+    ];
+  }
+  return noPriority(exercise);
+}
+
+export function verbExerciseNeverTranslated(exercise: Exercise, results: Result[]): Priority[] {
+  if (!(exercise instanceof VerbExercise)) {
+    return noPriority(exercise);
+  }
+  const tranlsatedProperly = results.filter((result) => {
+    if (
+      result.exercise.exercsiseType === 'VerbTranslation' &&
+      (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
+    ) {
+      return result.wasCorrect;
+    }
+    return false;
+  });
+  if (tranlsatedProperly.length < 3) {
+    return [
+      {
+        exercise,
+        priorityName: 'EXERCISE_VERB_NEVER_TRANSLATED',
+        priorityValue: VALUE_EXERCISE_VERB_NEVER_TRANSLATED
+      }
+    ];
+  }
+  return noPriority(exercise);
 }
 
 export function exerciseTypeNeverDone(exercise: Exercise, results: Result[]): Priority[] {

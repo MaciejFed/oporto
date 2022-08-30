@@ -9,7 +9,7 @@ export function startTestSession(sortExercises: boolean) {
 
   const terminal = new Terminal(eventProcessor);
   const input = new Input(eventProcessor);
-  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, sortExercises);
+  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, sortExercises, () => true);
 
   eventProcessor.emit(APP_STARTED);
 }

@@ -18,6 +18,7 @@ import { saveNewResult } from '../repository/resultRepository';
 import { AnswerInputType } from '../io/input';
 import { TranslationExercise } from '../exercise/translationExercise';
 import { exec } from 'child_process';
+import { boolean } from 'yargs';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -28,10 +29,15 @@ export class SessionManager implements AppEventListener {
   exerciseInProgress: boolean;
   hearingLoop?: NodeJS.Timer;
 
-  constructor(eventProcessor: EventProcessor, exerciseCount: number, sortExercises: boolean) {
+  constructor(
+    eventProcessor: EventProcessor,
+    exerciseCount: number,
+    sortExercises: boolean,
+    exerciseFilter: (ex: Exercise) => boolean
+  ) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = generateUniqeExercises(exerciseCount, sortExercises);
+    this.exercises = generateUniqeExercises(exerciseCount, sortExercises, exerciseFilter);
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';

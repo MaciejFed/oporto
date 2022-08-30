@@ -81,7 +81,7 @@ export type DateResults = {
 export function getAllResultsByDate(): DateResults[] {
   let resultDate = DateTime.fromJSDate(getAllResults()[0].date);
   const resultsByDate: DateResults[] = [];
-  while (resultDate.ordinal < DateTime.now().ordinal) {
+  while (resultDate.ordinal <= DateTime.now().ordinal) {
     // eslint-disable-next-line no-loop-func
     const results = getAllResults().filter((result) => DateTime.fromJSDate(result.date).ordinal <= resultDate.ordinal);
     resultsByDate.push({

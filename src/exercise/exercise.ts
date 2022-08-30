@@ -3,8 +3,10 @@ import { VerbExercise } from './verbExercise';
 import { sortExercises } from '../service/priority';
 import { NounTranslationExercise, SentenceTranslationExercise, VerbTranslationExercise } from './translationExercise';
 import { FitInGapExercise } from './fitInGapExercise';
-
+import { boolean } from 'yargs';
 export type ExerciseType = 'VerbExercise' | 'NounTranslation' | 'VerbTranslation' | 'SentenceTranslation' | 'FitInGap';
+
+export const translationTypes: ExerciseType[] = ['NounTranslation', 'VerbTranslation', 'SentenceTranslation'];
 
 export interface Exercise extends Comperable {
   exercsiseType: ExerciseType;
@@ -29,8 +31,14 @@ export const exerciseGenerators: ExerciseGenerator[] = [
   () => new FitInGapExercise()
 ];
 
-export function generateUniqeExercises(exerciseCount: number, sort: boolean): Exercise[] {
-  const exercises = Array.from(Array(10000)).map(() => getRandomElement(exerciseGenerators)());
+export function generateUniqeExercises(
+  exerciseCount: number,
+  sort: boolean,
+  filter: (ex: Exercise) => boolean
+): Exercise[] {
+  const exercises = Array.from(Array(10000))
+    .map(() => getRandomElement(exerciseGenerators)())
+    .filter((exercise) => filter(exercise));
   const distinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);
   const exercisesFinal = sort ? sortExercises(distinctExercises) : distinctExercises;
 

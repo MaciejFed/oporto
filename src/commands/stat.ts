@@ -15,7 +15,7 @@ export function displayStatistics(displayProgress: boolean) {
     logger.info(`Overall Progress: ${getOverallProgres()}`);
 
     const allResults = getAllResults();
-    const allExercises = generateUniqeExercises(20000, false);
+    const allExercises = generateUniqeExercises(20000, false, () => true);
     const notDoneExercises = allExercises.filter(
       (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
     );
