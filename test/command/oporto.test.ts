@@ -109,7 +109,7 @@ describe('Event Emitter', () => {
     );
     appModules.eventProcessor.emit('APP_STARTED');
     console.log(process.stdin.listeners);
-    simulateTyping('sou');
+    await simulateTyping('sou');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
@@ -121,7 +121,7 @@ describe('Event Emitter', () => {
 
     expect(output[0]).toEqual('Infinitive: to be - long');
     expect(output[4]).toEqual('Eu: sou');
-    expect(output[5]).toEqual('Correct! [voice]');
+    expect(output[5]).toEqual('Correct! [keyboard]');
     expect(resultCount.greenCount).toBe('sou'.length);
     expect(resultCount.redCount).toBe(0);
     expect(sayCommands[0]).toEqual('say "Eu sou"');
@@ -140,7 +140,7 @@ describe('Event Emitter', () => {
     );
 
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('sowronganswer');
+    await simulateTyping('sowronganswer');
     process.stdin.emit('keypress', {}, { name: 'return' });
 
     await sleep(50);
@@ -151,7 +151,7 @@ describe('Event Emitter', () => {
 
     expect(output[0]).toEqual('Infinitive: to be - long');
     expect(output[14]).toEqual('Eu: sowronganswer');
-    expect(output[15]).toEqual('Wrong! [voice]');
+    expect(output[15]).toEqual('Wrong! [keyboard]');
     expect(resultCount.greenCount).toBe('so'.length);
     expect(resultCount.redCount).toBe('sou'.length - 'so'.length);
     expect(sayCommands[0]).toEqual('say "Eu sou"');
@@ -169,14 +169,14 @@ describe('Event Emitter', () => {
       1
     );
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('sourr');
+    await simulateTyping('sourr');
     process.stdin.emit('keypress', {}, { name: 'backspace' });
     process.stdin.emit('keypress', {}, { name: 'backspace' });
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
     await sleep(50);
-    
+
     const eventHistory = appModules.eventProcessor.eventHistory.map(
         (event: { event: any }) => event.event
       );
@@ -184,7 +184,7 @@ describe('Event Emitter', () => {
     expect(output[0]).toEqual('Infinitive: to be - long');
     expect(output[6]).toEqual('Eu: sourr');
     expect(output[8]).toEqual('Eu: sou');
-    expect(output[9]).toEqual('Correct! [voice]');
+    expect(output[9]).toEqual('Correct! [keyboard]');
     expect(resultCount.greenCount).toBe('sou'.length);
     expect(resultCount.redCount).toBe(0);
     expect(sayCommands[0]).toEqual('say "Eu sou"');

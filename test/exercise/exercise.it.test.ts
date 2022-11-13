@@ -89,13 +89,13 @@ describe('Exercises IT Snapshot', () => {
       2
     );
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('o chá');
+    await simulateTyping('o chá');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
     await sleep(50);
 
-    simulateTyping('tea');
+    await simulateTyping('tea');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
@@ -133,13 +133,13 @@ describe('Exercises IT Snapshot', () => {
       2
     );
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('Como estás?');
+    await simulateTyping('Como estás?');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
     await sleep(50);
 
-    simulateTyping('How are you?');
+    await simulateTyping('How are you?');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
@@ -173,7 +173,7 @@ describe('Exercises IT Snapshot', () => {
       1
     )
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('tomo');
+    await simulateTyping('tomo');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
@@ -211,13 +211,13 @@ describe('Exercises IT Snapshot', () => {
       2
     );
     appModules.eventProcessor.emit('APP_STARTED');
-    simulateTyping('estou');
+    await simulateTyping('estou');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
     await sleep(50);
 
-    simulateTyping('sou');
+    await simulateTyping('sou');
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'n' });
 
