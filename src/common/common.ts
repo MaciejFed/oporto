@@ -1,12 +1,11 @@
 import { DateTime } from 'luxon';
-import { logger } from './logger';
 
-export interface Comperable {
-  equal(other: Comperable): boolean;
+export interface Comparable {
+  equal(other: Comparable): boolean;
 }
 
-export function onlyDistinct(arr: Comperable[]): Comperable[] {
-  const distinctElements: Comperable[] = [];
+export function onlyDistinct(arr: Comparable[]): Comparable[] {
+  const distinctElements: Comparable[] = [];
   for (let i = 0; i < arr.length; i++) {
     let unique = true;
     for (let j = 0; j < distinctElements.length; j++) {

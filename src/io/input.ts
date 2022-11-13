@@ -1,5 +1,5 @@
 import { EventProcessor } from '../event/eventProcessor';
-import { ANSWER_SUBMITED, APP_FINISHED, KEY_PRESSED } from '../event/events';
+import { ANSWER_SUBMITTED, APP_FINISHED, KEY_PRESSED } from '../event/events';
 import readline from 'readline';
 import { logger } from '../common/logger';
 
@@ -29,7 +29,7 @@ export class Input {
           if (this.inputTimes.length === 0) {
             break;
           }
-          this.eventProcessor.emit(ANSWER_SUBMITED, this.getAnswerTime() < 10 ? 'voice' : 'keyboard');
+          this.eventProcessor.emit(ANSWER_SUBMITTED, this.getAnswerTime() < 10 ? 'voice' : 'keyboard');
           this.inputTimes.length = 0;
           break;
         case 'backspace':

@@ -12,14 +12,14 @@ describe('Translation Exercise', () => {
         nounTranslationExercise.translationType = 'toPortuguese';
         sameNounTranslationExercise.translationType = 'toPortuguese';
 
-        
-        expect(nounTranslationExercise.exercsiseType).toEqual('NounTranslation');
+
+        expect(nounTranslationExercise.exerciseType).toEqual('NounTranslation');
         expect(nounTranslationExercise.getExerciseDescription()).toEqual('English: tea');
         expect(nounTranslationExercise.getExerciseBodyPrefix()).toEqual('Portuguese: ');
         expect(nounTranslationExercise.getCorrectAnswer()).toEqual('o chá');
-        expect(nounTranslationExercise.getExercsiseExplanation()).toBe(undefined);
-        expect(nounTranslationExercise.checkAnsweCorrect('o chá')).toBe(true);
-        expect(nounTranslationExercise.checkAnsweCorrect('a chá')).toBe(false);
+        expect(nounTranslationExercise.getExerciseExplanation()).toBe(undefined);
+        expect(nounTranslationExercise.checkAnswerCorrect('o chá')).toBe(true);
+        expect(nounTranslationExercise.checkAnswerCorrect('a chá')).toBe(false);
         expect(nounTranslationExercise.equal(sameNounTranslationExercise)).toBe(true);
     });
 });

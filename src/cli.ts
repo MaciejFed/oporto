@@ -2,7 +2,6 @@ import { Command } from 'commander';
 import { startSpeakSession } from './commands/speaking';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
-import { logger } from './common/logger';
 const program = new Command();
 
 program.name('oporto').description('CLI to learn Portuguese').version('0.1.0');

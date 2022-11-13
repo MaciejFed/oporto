@@ -1,22 +1,22 @@
-import { Comperable } from '../common/common';
+import { Comparable } from '../common/common';
 import { FitIn } from '../repository/exercisesRepository';
 import { getRandomFitInExercise } from '../service/fitin';
 import { Exercise, ExerciseType } from './exercise';
 
-export class FitInGapExercise implements Exercise, Comperable {
-  exercsiseType: ExerciseType;
+export class FitInGapExercise implements Exercise, Comparable {
+  exerciseType: ExerciseType;
   correctAnswer: string;
   fitIn: FitIn;
   exerciseLevel: number;
 
   constructor() {
-    this.exercsiseType = 'FitInGap';
+    this.exerciseType = 'FitInGap';
     this.fitIn = getRandomFitInExercise();
     this.correctAnswer = this.getCorrectAnswer();
     this.exerciseLevel = this.fitIn.exerciseLevel;
   }
 
-  getExercsiseExplanation = () => this.fitIn.explanation;
+  getExerciseExplanation = () => this.fitIn.explanation;
 
   getExerciseBodyPrefix = () => `${this.fitIn.prefix.length === 0 ? this.fitIn.prefix : this.fitIn.prefix.concat(' ')}`;
 
@@ -26,7 +26,7 @@ export class FitInGapExercise implements Exercise, Comperable {
 
   getCorrectAnswer = () => this.fitIn.answer;
 
-  checkAnsweCorrect(answer: string): boolean {
+  checkAnswerCorrect(answer: string): boolean {
     return this.fitIn.answer.toLowerCase() === answer.toLowerCase();
   }
 
@@ -34,5 +34,5 @@ export class FitInGapExercise implements Exercise, Comperable {
     `${this.getExerciseBodyPrefix()} ${this.correctAnswer} ${this.getExerciseBodySuffix()}}`;
 
   equal = (exercise: FitInGapExercise) =>
-    exercise.exercsiseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);
+    exercise.exerciseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);
 }

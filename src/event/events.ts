@@ -1,7 +1,7 @@
 export const APP_STARTED = 'APP_STARTED';
 export const APP_FINISHED = 'APP_FINISHED';
-export const KEY_PRESSED = 'KEY_PRESSSED';
-export const ANSWER_SUBMITED = 'ANSWER_SUBMITED';
+export const KEY_PRESSED = 'KEY_PRESSED';
+export const ANSWER_SUBMITTED = 'ANSWER_SUBMITTED';
 export const ANSWER_CHECKED = 'ANSWER_CHECKED';
 export const EXERCISE_STARTED = 'EXERCISE_STARTED';
 export const EXERCISE_NEXT = 'EXERCISE_NEXT';
@@ -17,7 +17,7 @@ export type EXERCISE_BODY_PRINTED_BODY = {
 export type APP_EVENT =
   | typeof APP_STARTED
   | typeof KEY_PRESSED
-  | typeof ANSWER_SUBMITED
+  | typeof ANSWER_SUBMITTED
   | typeof ANSWER_CHECKED
   | typeof EXERCISE_STARTED
   | typeof EXERCISE_NEXT

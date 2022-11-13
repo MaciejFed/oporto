@@ -1,24 +1,24 @@
-import { Comperable } from '../common/common';
+import { Comparable } from '../common/common';
 import { Verb } from '../repository/exercisesRepository';
 import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb, Person } from '../service/verb';
 import { Exercise, ExerciseType } from './exercise';
 
-export class VerbExercise implements Exercise, Comperable {
-  exercsiseType: ExerciseType;
+export class VerbExercise implements Exercise, Comparable {
+  exerciseType: ExerciseType;
   verb: Verb;
   person: Person;
   correctAnswer: string;
   exerciseLevel: number;
 
   constructor() {
-    this.exercsiseType = 'VerbExercise';
+    this.exerciseType = 'VerbExercise';
     this.verb = getRandomVerb();
     this.person = getRandomPerson();
     this.correctAnswer = this.getCorrectAnswer();
     this.exerciseLevel = 1;
   }
 
-  getExercsiseExplanation = () => undefined;
+  getExerciseExplanation = () => undefined;
 
   getExerciseBodyPrefix = () => `${this.person}: `;
 
@@ -28,7 +28,7 @@ export class VerbExercise implements Exercise, Comperable {
 
   getCorrectAnswer = () => getCorrectVerbConjugation(this.verb, this.person);
 
-  checkAnsweCorrect(answer: string): boolean {
+  checkAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
@@ -36,7 +36,7 @@ export class VerbExercise implements Exercise, Comperable {
   getRepeatAnswerPhrase = () => `${this.person} ${this.correctAnswer}`;
 
   equal = (exercise: VerbExercise) =>
-    exercise.exercsiseType === 'VerbExercise' &&
+    exercise.exerciseType === 'VerbExercise' &&
     this.verb.infinitive === exercise.verb.infinitive &&
     this.person === exercise.person;
 }
