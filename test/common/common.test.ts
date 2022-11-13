@@ -1,8 +1,8 @@
 /* eslint-disable jest/expect-expect */
-import { Comperable, isBeforeWeekday, onlyDistinct } from '../../src/common/common';
+import { Comparable, isBeforeWeekday, onlyDistinct } from '../../src/common/common';
 
 
-class MyClass implements Comperable {
+class MyClass implements Comparable {
     importantProperty: string;
     notImportantProperty: string
     constructor(importantProperty: string, notImportantProperty: string) {
@@ -27,14 +27,14 @@ describe('Common Functions Test', () => {
     it('Distinct Elements - Empty', async () => {
         const notUniqeArray: MyClass[] = [];
         const uniqeArray = onlyDistinct(notUniqeArray);
- 
+
         expect(uniqeArray.length).toEqual(0)
      });
 
      it('Distinct Elements - Single', async () => {
         const notUniqeArray: MyClass[] = [new MyClass('1', '1'), new MyClass('1', '1')];
         const uniqeArray = onlyDistinct(notUniqeArray);
- 
+
         expect(uniqeArray.length).toEqual(1)
      });
 });

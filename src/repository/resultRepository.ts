@@ -18,7 +18,7 @@ export function getAllResults(): Result[] {
   const resultsJson: Result[] = JSON.parse(results);
   let exercise: Exercise;
   return resultsJson.map((result) => {
-    switch (result.exercise.exercsiseType) {
+    switch (result.exercise.exerciseType) {
       case 'VerbExercise':
         const verbExercise: VerbExercise = new VerbExercise();
         verbExercise.verb = (result.exercise as unknown as VerbExercise).verb;
@@ -102,7 +102,7 @@ export function saveNewResult(newResult: Result) {
 }
 
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {
-  return results.filter((result) => result.exercise.exercsiseType === exerciseType);
+  return results.filter((result) => result.exercise.exerciseType === exerciseType);
 }
 
 export function getAllResultsForExercise(results: Result[], exercise: Exercise): Result[] {

@@ -1,23 +1,22 @@
-import { Comperable, getRandomElement, onlyDistinct } from '../common/common';
+import { Comparable, getRandomElement, onlyDistinct } from '../common/common';
 import { VerbExercise } from './verbExercise';
 import { sortExercises } from '../service/priority';
 import { NounTranslationExercise, SentenceTranslationExercise, VerbTranslationExercise } from './translationExercise';
 import { FitInGapExercise } from './fitInGapExercise';
-import { boolean } from 'yargs';
 export type ExerciseType = 'VerbExercise' | 'NounTranslation' | 'VerbTranslation' | 'SentenceTranslation' | 'FitInGap';
 
 export const translationTypes: ExerciseType[] = ['NounTranslation', 'VerbTranslation', 'SentenceTranslation'];
 
-export interface Exercise extends Comperable {
-  exercsiseType: ExerciseType;
+export interface Exercise extends Comparable {
+  exerciseType: ExerciseType;
   correctAnswer: string;
   exerciseLevel: number;
   getExerciseBodyPrefix(): string;
   getExerciseBodySuffix(): string;
   getExerciseDescription(): string;
-  getExercsiseExplanation(): string | undefined;
+  getExerciseExplanation(): string | undefined;
   getCorrectAnswer(): string;
-  checkAnsweCorrect(answer: string): boolean;
+  checkAnswerCorrect(answer: string): boolean;
   getRepeatAnswerPhrase(): string;
 }
 

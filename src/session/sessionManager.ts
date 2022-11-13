@@ -1,5 +1,5 @@
 import {
-  ANSWER_SUBMITED,
+  ANSWER_SUBMITTED,
   ANSWER_CHECKED,
   APP_FINISHED,
   APP_STARTED,
@@ -18,7 +18,6 @@ import { saveNewResult } from '../repository/resultRepository';
 import { AnswerInputType } from '../io/input';
 import { TranslationExercise } from '../exercise/translationExercise';
 import { exec } from 'child_process';
-import { boolean } from 'yargs';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -65,7 +64,7 @@ export class SessionManager implements AppEventListener {
       this.eventProcessor.emit(EXERCISE_BODY_PRINTED, {
         exerciseBodyPrefix: this.currentExercise?.getExerciseBodyPrefix(),
         exerciseBodySuffix: this.currentExercise?.getExerciseBodySuffix(),
-        exerciseExplanation: this.currentExercise?.getExercsiseExplanation()
+        exerciseExplanation: this.currentExercise?.getExerciseExplanation()
       });
       this.exerciseInProgress = true;
       this.handleExerciseFromHearing(this.currentExercise);
@@ -84,14 +83,14 @@ export class SessionManager implements AppEventListener {
   }
 
   registerAnswerSubmittedEventListener() {
-    this.eventProcessor.on(ANSWER_SUBMITED, (answerInputType: AnswerInputType) => {
+    this.eventProcessor.on(ANSWER_SUBMITTED, (answerInputType: AnswerInputType) => {
       if (!this.exerciseInProgress) {
         return;
       }
       this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       this.answer = this.answer.trim();
-      const wasCorrect = this.currentExercise?.checkAnsweCorrect(this.answer);
+      const wasCorrect = this.currentExercise?.checkAnswerCorrect(this.answer);
       saveNewResult(convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
       logger.info(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {

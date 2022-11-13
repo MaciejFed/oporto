@@ -3,7 +3,6 @@ import clear from 'clear';
 import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
-import { logger } from '../common/logger';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../service/priority';
 import { ExerciseStatistics, getWeekdayStatistics, WeekdayStatistics, WeeklyStatistics } from '../service/result';
 import { AnswerInputType } from './input';

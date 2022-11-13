@@ -12,7 +12,7 @@ type SentenceType = 'question' | 'statement';
 
 type PortugueseNoun = {
   word: string;
-  plurar?: string;
+  plural?: string;
   gender: NounGender;
 };
 
@@ -227,7 +227,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'to live',
+      english: 'to reside',
       infinitive: 'morar',
       Eu: 'moro',
       Tu: 'moras',
@@ -347,7 +347,7 @@ export const db: Schema = {
       exerciseLevel: 1
     },
     {
-      english: 'to know',
+      english: 'to be familiar',
       infinitive: 'conhecer',
       Eu: 'conheço',
       Tu: 'conheces',
@@ -752,7 +752,7 @@ export const db: Schema = {
       english: 'girlfriend',
       portuguese: {
         word: 'namorada',
-        plurar: 'namoradas',
+        plural: 'namoradas',
         gender: 'feminine'
       },
       exerciseLevel: 1
@@ -769,7 +769,7 @@ export const db: Schema = {
       english: 'home',
       portuguese: {
         word: 'casa',
-        plurar: 'casas',
+        plural: 'casas',
         gender: 'feminine'
       },
       exerciseLevel: 1
@@ -778,7 +778,7 @@ export const db: Schema = {
       english: 'book',
       portuguese: {
         word: 'livro',
-        plurar: 'livros',
+        plural: 'livros',
         gender: 'masculine'
       },
       exerciseLevel: 1
@@ -787,7 +787,7 @@ export const db: Schema = {
       english: 'city',
       portuguese: {
         word: 'cidade',
-        plurar: 'cidades',
+        plural: 'cidades',
         gender: 'feminine'
       },
       exerciseLevel: 1

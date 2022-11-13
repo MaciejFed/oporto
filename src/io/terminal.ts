@@ -12,8 +12,7 @@ import {
   KEY_PRESSED,
   ANSWER_CHECKED,
   EXERCISE_NEXT,
-  EXERCISE_STARTED,
-  APP_FINISHED
+  EXERCISE_STARTED
 } from '../event/events';
 import {
   animateExerciseSummary,
@@ -31,8 +30,6 @@ import {
 } from './terminalUtils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
-import { sleep } from '../common/common';
-import { displayStatistics } from '../commands/stat';
 import { getAllResults } from '../repository/resultRepository';
 
 export class Terminal {
@@ -43,7 +40,6 @@ export class Terminal {
   answer: string;
   repetitionAnswer: string;
   correctAnswer: string;
-  exerciseLoop: any;
   exerciseInProgress: boolean;
   exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;

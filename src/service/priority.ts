@@ -140,7 +140,7 @@ export function exerciseTranslationNeverDoneByVoice(exercise: Exercise, results:
   }
   const fromHearingDoneByVoice = results.filter((result) => {
     if (
-      result.exercise.exercsiseType === exercise.exercsiseType &&
+      result.exercise.exerciseType === exercise.exerciseType &&
       (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
     ) {
       const tranlsationExercise = result.exercise as unknown as TranslationExercise;
@@ -173,7 +173,7 @@ export function verbExerciseNeverTranslated(exercise: Exercise, results: Result[
   }
   const tranlsatedProperly = results.filter((result) => {
     if (
-      result.exercise.exercsiseType === 'VerbTranslation' &&
+      result.exercise.exerciseType === 'VerbTranslation' &&
       (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
     ) {
       return result.wasCorrect;
@@ -193,7 +193,7 @@ export function verbExerciseNeverTranslated(exercise: Exercise, results: Result[
 }
 
 export function exerciseTypeNeverDone(exercise: Exercise, results: Result[]): Priority[] {
-  return getAllResultsForExerciseType(results, exercise.exercsiseType).length === 0
+  return getAllResultsForExerciseType(results, exercise.exerciseType).length === 0
     ? [{ exercise, priorityName: 'EXERCISE_TYPE_NEVER_DONE', priorityValue: VALUE_EXERCISE_TYPE_NEVER_DONE }]
     : noPriority(exercise);
 }
@@ -277,7 +277,7 @@ export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, result
     return noPriority(exercise);
   }
   const toEnlishTranslationsCorrect = results.filter((result) => {
-    if (result.exercise.exercsiseType === exercise.exercsiseType) {
+    if (result.exercise.exerciseType === exercise.exerciseType) {
       const tranlsationExercise = result.exercise as unknown as TranslationExercise;
       return !tranlsationExercise.isTranslationToPortuguese() && result.wasCorrect;
     }
@@ -301,7 +301,7 @@ export function exerciseTranslationNeverDoneFromHearing(exercise: Exercise, resu
   }
   const fromHearingTranslationsCorrect = results.filter((result) => {
     if (
-      result.exercise.exercsiseType === exercise.exercsiseType &&
+      result.exercise.exerciseType === exercise.exerciseType &&
       (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
     ) {
       const tranlsationExercise = result.exercise as unknown as TranslationExercise;

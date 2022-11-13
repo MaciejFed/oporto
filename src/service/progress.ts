@@ -1,9 +1,7 @@
-import { DateTime } from 'luxon';
 import { Exercise, generateUniqeExercises } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translationExercise';
-import { saveUniqueWords } from '../io/file';
 import { readAll } from '../repository/exercisesRepository';
-import { getAllResults, getAllResultsByDate, getAllResultsForExercise } from '../repository/resultRepository';
+import { getAllResultsByDate, getAllResultsForExercise } from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
 import { Result } from './result';
 
@@ -94,7 +92,7 @@ function getAllUniqueWordsByDay(results: Result[]) {
 
   const allWords = results
     .filter((result) => {
-      if (['VerbExercise', 'FitInGap'].includes(result.exercise.exercsiseType)) return false;
+      if (['VerbExercise', 'FitInGap'].includes(result.exercise.exerciseType)) return false;
       return (result.exercise as unknown as TranslationExercise).isTranslationToPortuguese();
     })
     .filter((result) => result.wasCorrect)

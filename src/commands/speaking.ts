@@ -12,7 +12,7 @@ function hearingFilter() {
   const allResults = getAllResults();
   const filter: (ex: Exercise) => boolean = (ex) => {
     return (
-      translationTypes.includes(ex.exercsiseType) &&
+      translationTypes.includes(ex.exerciseType) &&
       (ex as unknown as TranslationExercise).isTranslationToPortugueseFromHearing() &&
       exerciseTranslationNeverDoneByVoice(ex, allResults)[0].priorityName === 'EXERCISE_TRANSLATION_NEVER_DONE_BY_VOICE'
     );
