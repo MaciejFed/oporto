@@ -1,3 +1,8 @@
-export function simulateTyping(word: string) {
-    word.split('').forEach((char) => process.stdin.emit('keypress', {}, { name: char, sequence: char }));
+import { sleep } from '../src/common/common';
+
+export async function simulateTyping(word: string) {
+    for (const char of word.split('')) {
+        await sleep(50);
+        process.stdin.emit('keypress', {}, { name: char, sequence: char });
+    }
 }

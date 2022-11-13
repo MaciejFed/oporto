@@ -56,7 +56,7 @@ describe('IT', () => {
 
     // Get correct answer for first questions and type it
     const correctAnswer1Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
-    simulateTyping(correctAnswer1Question);
+    await simulateTyping(correctAnswer1Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
     const firstResult = getAllResults()[0];
     const firstExercise = sessionManager.currentExercise;
@@ -66,7 +66,7 @@ describe('IT', () => {
 
     // Get correct answer for the second questions and type it missing last character
     const correctAnswer2Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
-    simulateTyping(
+    await simulateTyping(
       correctAnswer2Question.substring(0, correctAnswer2Question.length - 1)
     );
     process.stdin.emit('keypress', {}, { name: 'return' });
@@ -77,7 +77,7 @@ describe('IT', () => {
     await sleep(50);
 
     // correct wrong answer
-    simulateTyping(correctAnswer2Question);
+    await simulateTyping(correctAnswer2Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'spacebar', sequence: ' ' });
 
@@ -85,17 +85,17 @@ describe('IT', () => {
 
     // Get correct answer for the third question
     const correctAnswer3Question = sessionManager.currentExercise?.getCorrectAnswer() || '';
-    simulateTyping(correctAnswer3Question);
+    await simulateTyping(correctAnswer3Question);
     process.stdin.emit('keypress', {}, { name: 'return' });
     process.stdin.emit('keypress', {}, { name: 'e' })
     process.stdin.emit('keypress', {}, { name: 'r' })
     const thirdResult = getAllResults()[2];
     const thirdExercise = sessionManager.currentExercise;
-    
+
     await sleep(50);
 
-    const correctAnswersLogCount = output.filter((logLine) => logLine === 'Correct! [voice]').length;
-    const wrongAnswersLogCount = output.filter((logLine) => logLine === 'Wrong! [voice]').length;
+    const correctAnswersLogCount = output.filter((logLine) => logLine && logLine.includes('Correct!')).length;
+    const wrongAnswersLogCount = output.filter((logLine) => logLine && logLine.includes('Wrong!')).length;
 
 
     expect(correctAnswersLogCount).toBe(2);
