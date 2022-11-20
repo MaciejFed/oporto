@@ -59,6 +59,16 @@ export const db: Schema = {
       english: 'to be thankful',
       infinitive: 'dziękować',
       Ja: 'dziękuję'
+    },
+    {
+      english: 'to like',
+      infinitive: 'lubić',
+      Ja: 'lubię'
+    },
+    {
+      english: 'to be named',
+      infinitive: 'nazywać się',
+      Ja: 'nazywam się'
     }
   ],
   nouns: [

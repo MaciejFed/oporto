@@ -11,7 +11,7 @@
     "verify": "npm run lint && npm run format",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
-    "execute": "npm run package && cp bin/pol ~/bin/pol && cp ~/results_pol.json ~/results/results-$(date '+%Y-%m-%d%H:%M:%S').json"
+    "execute": "npm run package && cp bin/pol ~/bin/pol"
   },
   "repository": {
     "type": "git",
