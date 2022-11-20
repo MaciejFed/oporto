@@ -10,7 +10,6 @@ import { saveUniqueWords } from '../io/file';
 export function displayStatistics(displayProgress: boolean) {
   clear();
   displayGenericWeeklyStatistics(getWeekdayStatistics(), 0);
-  saveUniqueWords(JSON.stringify(progressByDate(), null, 4));
   if (displayProgress) {
     displayGenericWeeklyStatistics(getWeekdayProgress(), 30);
     console.log(`Overall Progress: ${getOverallProgres()}`);
