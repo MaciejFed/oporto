@@ -7,13 +7,11 @@ export class FitInGapExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
   correctAnswer: string;
   fitIn: FitIn;
-  exerciseLevel: number;
 
   constructor() {
     this.exerciseType = 'FitInGap';
     this.fitIn = getRandomFitInExercise();
     this.correctAnswer = this.getCorrectAnswer();
-    this.exerciseLevel = this.fitIn.exerciseLevel;
   }
 
   getExerciseExplanation = () => this.fitIn.explanation;

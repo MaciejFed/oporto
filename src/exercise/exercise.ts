@@ -1,16 +1,29 @@
 import { Comparable, getRandomElement, onlyDistinct } from '../common/common';
 import { VerbExercise } from './verbExercise';
 import { sortExercises } from '../service/priority';
-import { NounTranslationExercise, SentenceTranslationExercise, VerbTranslationExercise } from './translationExercise';
 import { FitInGapExercise } from './fitInGapExercise';
-export type ExerciseType = 'VerbExercise' | 'NounTranslation' | 'VerbTranslation' | 'SentenceTranslation' | 'FitInGap';
+import { NounTranslationExercise } from './translation/nounTranslationExercise';
+import { AdjectiveTranslationExercise } from './translation/adjectiveTranslationExercise';
+import { SentenceTranslationExercise } from './translation/sentenceTranslationExercise';
+import { VerbTranslationExercise } from './translation/verbTranslationExercise';
+export type ExerciseType =
+  | 'VerbExercise'
+  | 'NounTranslation'
+  | 'AdjectiveTranslation'
+  | 'VerbTranslation'
+  | 'SentenceTranslation'
+  | 'FitInGap';
 
-export const translationTypes: ExerciseType[] = ['NounTranslation', 'VerbTranslation', 'SentenceTranslation'];
+export const translationTypes: ExerciseType[] = [
+  'NounTranslation',
+  'VerbTranslation',
+  'AdjectiveTranslation',
+  'SentenceTranslation'
+];
 
 export interface Exercise extends Comparable {
   exerciseType: ExerciseType;
   correctAnswer: string;
-  exerciseLevel: number;
   getExerciseBodyPrefix(): string;
   getExerciseBodySuffix(): string;
   getExerciseDescription(): string;
@@ -25,6 +38,7 @@ type ExerciseGenerator = () => Exercise;
 export const exerciseGenerators: ExerciseGenerator[] = [
   () => new VerbExercise(),
   () => new NounTranslationExercise(),
+  () => new AdjectiveTranslationExercise(),
   () => new VerbTranslationExercise(),
   () => new SentenceTranslationExercise(),
   () => new FitInGapExercise()
@@ -35,7 +49,7 @@ export function generateUniqeExercises(
   sort: boolean,
   filter: (ex: Exercise) => boolean
 ): Exercise[] {
-  const exercises = Array.from(Array(10000))
+  const exercises = Array.from(Array(100000))
     .map(() => getRandomElement(exerciseGenerators)())
     .filter((exercise) => filter(exercise));
   const distinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);

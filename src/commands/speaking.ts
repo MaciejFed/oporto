@@ -3,10 +3,10 @@ import { APP_STARTED } from '../event/events';
 import { Input } from '../io/input';
 import { SessionManager } from '../session/sessionManager';
 import { Terminal } from '../io/terminal';
-import { getAllResults, getAllResultsForExercise } from '../repository/resultRepository';
+import { getAllResults } from '../repository/resultRepository';
 import { Exercise, translationTypes } from '../exercise/exercise';
 import { exerciseTranslationNeverDoneByVoice } from '../service/priority';
-import { TranslationExercise } from '../exercise/translationExercise';
+import { TranslationExercise } from '../exercise/translation/translationExercise';
 
 function hearingFilter() {
   const allResults = getAllResults();

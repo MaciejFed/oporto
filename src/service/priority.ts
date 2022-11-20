@@ -1,10 +1,16 @@
 import { Exercise } from '../exercise/exercise';
-import { getAllResults, getAllResultsForExercise, getAllResultsForExerciseType } from '../repository/resultRepository';
+import {
+  getAllResults,
+  getAllResultsForExercise,
+  getAllResultsForExerciseSubject,
+  getAllResultsForExerciseType
+} from '../repository/resultRepository';
 import fs from 'fs';
 import { Result } from './result';
-import { NounTranslationExercise, TranslationExercise } from '../exercise/translationExercise';
+import { TranslationExercise } from '../exercise/translation/translationExercise';
 import { logger } from '../common/logger';
 import { VerbExercise } from '../exercise/verbExercise';
+import { VerbTranslationExercise } from '../exercise/translation/verbTranslationExercise';
 
 let neverDoneExercisesCount = 0;
 let neverDoneByVoiceExercisesCount = 0;
@@ -68,7 +74,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
-  exerciseTranslationNeverDoneByVoice,
+  // exerciseTranslationNeverDoneByVoice,
   verbExerciseNeverTranslated,
   exerciseWrong,
   exerciseCorrect,
@@ -143,9 +149,9 @@ export function exerciseTranslationNeverDoneByVoice(exercise: Exercise, results:
       result.exercise.exerciseType === exercise.exerciseType &&
       (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
     ) {
-      const tranlsationExercise = result.exercise as unknown as TranslationExercise;
+      const translationExercise = result.exercise as unknown as TranslationExercise;
       return (
-        tranlsationExercise.isTranslationToPortugueseFromHearing() &&
+        translationExercise.isTranslationToPortugueseFromHearing() &&
         result.wasCorrect &&
         result.answerInputType === 'voice'
       );
@@ -235,7 +241,7 @@ export function exerciseCorrect(exercise: Exercise, results: Result[]): Priority
 }
 
 export function exerciseDoneToday(exercise: Exercise, results: Result[]): Priority[] {
-  const resultsToday = getAllResultsForExercise(results, exercise).filter(
+  const resultsToday = getAllResultsForExerciseSubject(results, exercise).filter(
     (result) => new Date(result.date).toDateString() === new Date().toDateString()
   );
   if (resultsToday.length > 0) {
@@ -251,7 +257,7 @@ export function exerciseDoneToday(exercise: Exercise, results: Result[]): Priori
 }
 
 export function exerciseDoneInLastHour(exercise: Exercise, results: Result[]): Priority[] {
-  const resultsToday = getAllResultsForExercise(results, exercise).filter(
+  const resultsToday = getAllResultsForExerciseSubject(results, exercise).filter(
     (result) => result.date.getTime() > new Date().getTime() - 1000 * 60 * 60
   );
   if (resultsToday.length > 0) {
@@ -283,7 +289,10 @@ export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, result
     }
     return false;
   });
-  if (toEnlishTranslationsCorrect.length === 0) {
+  if (
+    toEnlishTranslationsCorrect.length === 0 &&
+    exerciseTranslationNeverDoneFromHearing(exercise, results)[0].priorityName !== 'NO_PRIORITY'
+  ) {
     return [
       {
         exercise,
@@ -325,7 +334,7 @@ export function exerciseTranslationNeverDoneFromHearing(exercise: Exercise, resu
 }
 
 export function exerciseDoneCorrectly2TimesInRow(exercise: Exercise, results: Result[]): Priority[] {
-  const resultsToday = getAllResultsForExercise(results, exercise)
+  const resultsToday = getAllResultsForExerciseSubject(results, exercise)
     .filter((result) => new Date(result.date).toDateString() === new Date().toDateString())
     .sort((a, b) => a.date.getTime() - b.date.getTime());
   if (resultsToday.length < 2) {
@@ -349,16 +358,6 @@ export function exerciseRandomnessPriority(exercise: Exercise, results: Result[]
       exercise,
       priorityName: 'EXERCISE_RANDOMNESS',
       priorityValue: Math.floor(Math.random() * VALUE_EXERCISE_RANDOMNESS_UP_LIMIT)
-    }
-  ];
-}
-
-export function exerciseLevelPriority(exercise: Exercise, results: Result[]): Priority[] {
-  return [
-    {
-      exercise,
-      priorityName: 'EXERCISE_LEVEL',
-      priorityValue: exercise.exerciseLevel * VALUE_EXERCISE_PER_ONE_LEVEL
     }
   ];
 }

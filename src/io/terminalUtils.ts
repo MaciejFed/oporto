@@ -4,7 +4,7 @@ import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../service/priority';
-import { ExerciseStatistics, getWeekdayStatistics, WeekdayStatistics, WeeklyStatistics } from '../service/result';
+import { ExerciseStatistics, WeekdayStatistics } from '../service/result';
 import { AnswerInputType } from './input';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
@@ -41,10 +41,10 @@ export function printExerciseRepeatBody() {
 
 export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: string, newKey: string) {
   if (newKey === 'backspace') return;
-  const newIdex = answer.length - 1;
+  const newIndex = answer.length - 1;
   if (
-    answer[newIdex] !== undefined &&
-    answer[newIdex].toLowerCase() === (correctAnswer[newIdex] !== undefined && correctAnswer[newIdex].toLowerCase())
+    answer[newIndex] !== undefined &&
+    answer[newIndex].toLowerCase() === (correctAnswer[newIndex] !== undefined && correctAnswer[newIndex].toLowerCase())
   ) {
     terminal.green();
   } else {

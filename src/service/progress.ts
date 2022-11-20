@@ -1,7 +1,7 @@
-import { Exercise, generateUniqeExercises } from '../exercise/exercise';
-import { TranslationExercise } from '../exercise/translationExercise';
+import { Exercise, generateUniqeExercises, translationTypes } from '../exercise/exercise';
+import { TranslationExercise } from '../exercise/translation/translationExercise';
 import { readAll } from '../repository/exercisesRepository';
-import { getAllResultsByDate, getAllResultsForExercise } from '../repository/resultRepository';
+import { getAllResultsBeforeDateOneWeek, getAllResultsByDate, getAllResultsForExercise} from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
 import { Result } from './result';
 
@@ -22,7 +22,8 @@ export type Progress = {
 };
 
 function getExercisesProgress(results: Result[]) {
-  const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(10000, false, () => true)
+  const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(50000, false, () => true)
+      .filter((exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese())
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
       const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
@@ -68,41 +69,27 @@ function mapToRatioRange(ratio: number, neverDone: boolean): RatioRange {
 export function getAllUniqueWords(): string[] {
   const nouns = readAll().nouns.map((noun) => noun.portuguese.word);
   const verbs = readAll().verbs.map((verb) => verb.infinitive);
-  const sentenceWords = readAll().sentences.flatMap((sentence) => sentence.portuguese.split(' '));
-  const fitInWords = readAll().fitIn.flatMap((fit) => fit.prefix.split(' ').concat(fit.prefix.split(' ')));
+  const adjectives = readAll().adjectives.map((adjective) => adjective.masculine.singular);
 
-  const verbDecliatons = [
-    readAll().verbs.flatMap((verb) => [verb.Eu, verb.Tu, verb['Ela/Ele/Você'], verb.Nós, verb['Eles/Elas/Vocēs']])
-  ].flatMap((v) => v);
-
-  const allWords = [nouns, verbs, sentenceWords, fitInWords]
+  const allWords = [nouns, verbs, adjectives]
     .flatMap((w) => w)
-    .map((word) => word.replace('?', '').toLowerCase())
-    .filter((verb) => !verbDecliatons.includes(verb))
     .filter((word) => word)
     .sort();
 
   return [...new Set(allWords)];
 }
 
-function getAllUniqueWordsByDay(results: Result[]) {
-  const verbDecliatons = [
+function getAllVariations(): string[] {
+  const verbVariations = [
     readAll().verbs.flatMap((verb) => [verb.Eu, verb.Tu, verb['Ela/Ele/Você'], verb.Nós, verb['Eles/Elas/Vocēs']])
   ].flatMap((v) => v);
+  const adjectivesVariations = readAll().adjectives.flatMap((adjective) => [
+    adjective.masculine.plural,
+    adjective.feminine.singular,
+    adjective.feminine.plural
+  ]);
 
-  const allWords = results
-    .filter((result) => {
-      if (['VerbExercise', 'FitInGap'].includes(result.exercise.exerciseType)) return false;
-      return (result.exercise as unknown as TranslationExercise).isTranslationToPortuguese();
-    })
-    .filter((result) => result.wasCorrect)
-    .flatMap((result) => result.answer)
-    .map((word) => word.replace('?', '').toLowerCase())
-    .filter((verb) => !verbDecliatons.includes(verb))
-    .filter((word) => word)
-    .flatMap((word) => word.split(' '));
-
-  return [...new Set(allWords)];
+  return verbVariations.concat(adjectivesVariations);
 }
 
 type ProgressOnDay = {
@@ -118,15 +105,34 @@ export function progressByDate(): ProgressOnDay[] {
       const exerciseProgress = getExercisesProgress(dateResult.results);
       return {
         ...dateResult,
-        results: dateResult.results.filter(
-          (result) => exerciseProgress.find((ep) => ep.exercise.equal(result.exercise))?.ratioRange === '80-100'
-        )
+        words: [
+          ...new Set(
+            dateResult.results
+              .filter(
+                (result) => exerciseProgress.find((ep) => ep.exercise.equal(result.exercise))?.ratioRange === '80-100'
+              )
+              .map((result) => result.exercise)
+              .filter((exercise) => exercise instanceof TranslationExercise)
+              .filter((translationExercise) => (translationExercise as TranslationExercise).isTranslationToPortuguese())
+              .filter(
+                (translationExercise) =>
+                  !getAllVariations().includes((translationExercise as TranslationExercise).correctAnswer)
+              )
+              .filter(
+                (translationExercise) =>
+                  (translationExercise as TranslationExercise).exerciseType !== 'SentenceTranslation'
+              )
+              .map((exercise) => exercise.correctAnswer)
+          )
+        ],
+        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date),
       };
     })
-    .map((dateResult) => {
+    .map((dateResult, index, array) => {
       return {
         day: dateResult.date,
-        words: getAllUniqueWordsByDay(dateResult.results)
+        words: dateResult.words,
+        exercisesDone: Math.floor(dateResult.exercisesDone.length / 10)
       };
     });
   return uniqueByDay.map((unique, index) => {
@@ -134,8 +140,9 @@ export function progressByDate(): ProgressOnDay[] {
     const newWords = unique.words.filter((word) => !previous.includes(word));
     const lostWords = previous.filter((word) => !unique.words.includes(word));
     return {
-      day: unique.day.toJSDate().toLocaleDateString(),
+      day: unique.day.toJSDate().toDateString(),
       wordCount: unique.words.length,
+      exercisesDone: unique.exercisesDone,
       newWords,
       lostWords
     };
