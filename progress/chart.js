@@ -5,11 +5,13 @@ fetch('data.json', { cache: 'no-cache' }).then(response => response.json()).then
   const footer = (tooltipItems) => {
     const newWordsNumbered = tooltipItems[0].raw.newWords.map((newWord, index) => `${index + 1}. ${newWord}`);
     const lostWordsNumbered = tooltipItems[0].raw.lostWords.map((lostWord, index) => `${index + 1}. ${lostWord}`);
-    const newWords = newWordsNumbered.length > 0 ? ['New Words: '].concat(newWordsNumbered) : [];
-    const lostWords = lostWordsNumbered.length > 0 ? ['Lost Words: '].concat(lostWordsNumbered) : [];
+    const newWordsDiff = newWordsNumbered.length - lostWordsNumbered.length;
+    const signPostfix = newWordsDiff >= 0 ? `+ ${newWordsDiff}` :  `- ${newWordsDiff}`;
+    const newWords = newWordsNumbered.length > 0 ? [`Difference ${signPostfix}`, '', `New Words: +${newWordsNumbered.length}`].concat(newWordsNumbered) : [];
+    const lostWords = lostWordsNumbered.length > 0 ? [`Lost Words: +${lostWordsNumbered.length}`].concat(lostWordsNumbered) : [];
     return newWords.concat(lostWords);
   };
-  
+
   const myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -23,14 +25,28 @@ fetch('data.json', { cache: 'no-cache' }).then(response => response.json()).then
           pointStyle: 'circle',
           pointRadius: 7,
           pointHoverRadius: 5,
+          parsing: {
+            xAxisKey: 'day',
+            yAxisKey: 'wordCount'
+          },
+        },
+        {
+          label: 'Exercises Done',
+          data: data,
+          borderWidth: 1,
+          borderColor: 'red',
+          backgroundColor: 'red',
+          pointStyle: 'circle',
+          pointRadius: 7,
+          pointHoverRadius: 5,
+          parsing: {
+            xAxisKey: 'day',
+            yAxisKey: 'exercisesDone'
+          }
         }
       ]
     },
     options: {
-      parsing: {
-        xAxisKey: 'day',
-        yAxisKey: 'wordCount'
-    },
       responsive: false,
       plugins: {
         legend: {
