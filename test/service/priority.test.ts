@@ -1,27 +1,25 @@
 import { Exercise, ExerciseType } from '../../src/exercise/exercise';
 import { FitInGapExercise } from '../../src/exercise/fitInGapExercise';
-import { NounTranslationExercise } from '../../src/exercise/translationExercise';
 import { VerbExercise } from '../../src/exercise/verbExercise';
 import { AnswerInputType } from '../../src/io/input';
-import { 
-    exerciseNeverDone, 
-    exerciseWrong, 
-    exerciseDoneToday, 
-    exerciseCorrect, 
+import {
+    exerciseNeverDone,
+    exerciseWrong,
+    exerciseDoneToday,
+    exerciseCorrect,
     exerciseTypeNeverDone,
     exerciseRandomnessPriority,
-    noPriority, 
-    Priority, 
-    PriorityName, 
-    VALUE_EXERCISE_DONE_WRONG, 
-    VALUE_EXERCISE_NEVER_DONE, 
-    VALUE_EXERCISE_TYPE_NEVER_DONE, 
-    VALUE_EXERCISE_DONE_CORRECT, 
-    valueDoneToday, 
+    noPriority,
+    Priority,
+    PriorityName,
+    VALUE_EXERCISE_DONE_WRONG,
+    VALUE_EXERCISE_NEVER_DONE,
+    VALUE_EXERCISE_TYPE_NEVER_DONE,
+    VALUE_EXERCISE_DONE_CORRECT,
+    valueDoneToday,
     VALUE_EXERCISE_RANDOMNESS_UP_LIMIT,
     exerciseNeverDoneByVoice,
     VALUE_EXERCISE_NEVER_DONE_BY_VOICE,
-    exerciseLevelPriority,
     VALUE_EXERCISE_PER_ONE_LEVEL,
     exerciseDoneInLastHour,
     exerciseTranslationNeverDoneToEnglish,
@@ -32,6 +30,7 @@ import {
     VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING
 } from '../../src/service/priority';
 import { Result } from '../../src/service/result';
+import { NounTranslationExercise } from '../../src/exercise/translation/nounTranslationExercise';
 
 
 describe('Priority', () => {
@@ -94,7 +93,7 @@ describe('Priority', () => {
         const exerciseDoneByKeyboard = generateExercise('VerbExercise');
         const exerciseDoneByVoice = generateExercise('VerbExercise');
         const results = [
-            generateResultForExercise(exerciseDoneByKeyboard, true, 'keyboard', 1), 
+            generateResultForExercise(exerciseDoneByKeyboard, true, 'keyboard', 1),
             generateResultForExercise(exerciseDoneByVoice, true, 'voice', 1
             )].flatMap((result) => result);
 
@@ -119,7 +118,7 @@ describe('Priority', () => {
     it('Exercise Wrong 3 Times', () => {
         const testExercise = generateExercise('VerbExercise');
         const results = [
-            generateResultForExercise(testExercise, false, 'keyboard', 2), 
+            generateResultForExercise(testExercise, false, 'keyboard', 2),
             generateResultForExercise(testExercise, true, 'keyboard', 1),
             generateResultForExercise(testExercise, false, 'keyboard', 1)]
             .flatMap((r) => r);
@@ -144,7 +143,7 @@ describe('Priority', () => {
     it('Exercise Correct 3 Times', () => {
         const testExercise = generateExercise('VerbExercise');
         const results = [
-            generateResultForExercise(testExercise, true, 'keyboard', 2), 
+            generateResultForExercise(testExercise, true, 'keyboard', 2),
             generateResultForExercise(testExercise, false, 'keyboard', 1),
             generateResultForExercise(testExercise, true, 'keyboard', 1)]
             .flatMap((r) => r);
@@ -207,18 +206,6 @@ describe('Priority', () => {
         expect(actualPriority[0].priorityValue).toBeLessThan(VALUE_EXERCISE_RANDOMNESS_UP_LIMIT);
     })
 
-    it('Exercise Level Priority', () => {
-        const exerciseLevel = 2;
-        const testExercise = generateExercise('VerbExercise');
-        testExercise.exerciseLevel = exerciseLevel;
-        const expectedDiffictultyPriority = VALUE_EXERCISE_PER_ONE_LEVEL * exerciseLevel;
-        const actualPriority = exerciseLevelPriority(testExercise, []);
-
-        expect(actualPriority.length).toEqual(1);
-        expect(actualPriority[0].priorityName).toEqual('EXERCISE_LEVEL');
-        expect(actualPriority[0].priorityValue).toEqual(expectedDiffictultyPriority);
-    })
-
     it('Exercise Tranlation Never Done From Hearing', () => {
         const toPortugueseTranslationExercise = new NounTranslationExercise();
         toPortugueseTranslationExercise.translationType = 'toPortuguese';
@@ -272,7 +259,7 @@ describe('Priority', () => {
         toPortugueseTranslationExercise.translationType = 'toEnglish';
         const results = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
         const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, results);
-        
+
         expect(actualPriority.length).toEqual(1);
         expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');
         expect(actualPriority[0].priorityValue).toEqual(0);

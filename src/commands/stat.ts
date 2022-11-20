@@ -3,12 +3,14 @@ import { logger } from '../common/logger';
 import { generateUniqeExercises } from '../exercise/exercise';
 import { displayGenericWeeklyStatistics } from '../io/terminalUtils';
 import { getAllResults } from '../repository/resultRepository';
-import { getAllUniqueWords } from '../service/progress';
+import { getAllUniqueWords, progressByDate } from '../service/progress';
 import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
+import { saveUniqueWords } from '../io/file';
 
 export function displayStatistics(displayProgress: boolean) {
   clear();
   displayGenericWeeklyStatistics(getWeekdayStatistics(), 0);
+  saveUniqueWords(JSON.stringify(progressByDate(), null, 4));
   if (displayProgress) {
     displayGenericWeeklyStatistics(getWeekdayProgress(), 30);
     console.log(`Overall Progress: ${getOverallProgres()}`);

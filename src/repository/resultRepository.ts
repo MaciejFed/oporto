@@ -1,17 +1,17 @@
 /* eslint-disable no-case-declarations */
 import { Exercise, ExerciseType } from '../exercise/exercise';
 import { FitInGapExercise } from '../exercise/fitInGapExercise';
-import {
-  NounTranslationExercise,
-  SentenceTranslationExercise,
-  VerbTranslationExercise
-} from '../exercise/translationExercise';
 import { VerbExercise } from '../exercise/verbExercise';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { readFromFile, saveToFile } from '../io/file';
 import assert from 'assert';
 import { DateTime } from 'luxon';
+import { NounTranslationExercise } from '../exercise/translation/nounTranslationExercise';
+import { AdjectiveTranslationExercise } from '../exercise/translation/adjectiveTranslationExercise';
+import { VerbTranslationExercise } from '../exercise/translation/verbTranslationExercise';
+import { SentenceTranslationExercise } from '../exercise/translation/sentenceTranslationExercise';
+import { TranslationExercise } from '../exercise/translation/translationExercise';
 
 export function getAllResults(): Result[] {
   const results = readFromFile();
@@ -35,8 +35,18 @@ export function getAllResults(): Result[] {
         ).translationType;
         assert(nounTranslationExercise.noun.portuguese);
         assert(nounTranslationExercise.noun.english);
-        assert(nounTranslationExercise.noun.exerciseLevel);
         exercise = nounTranslationExercise;
+        break;
+      case 'AdjectiveTranslation':
+        const adjectiveTranslationExercise: AdjectiveTranslationExercise = new AdjectiveTranslationExercise();
+        adjectiveTranslationExercise.adjective = (result.exercise as unknown as AdjectiveTranslationExercise).adjective;
+        adjectiveTranslationExercise.translationType = (
+          result.exercise as unknown as AdjectiveTranslationExercise
+        ).translationType;
+        assert(adjectiveTranslationExercise.adjective.masculine);
+        assert(adjectiveTranslationExercise.adjective.feminine);
+        assert(adjectiveTranslationExercise.adjective.english);
+        exercise = adjectiveTranslationExercise;
         break;
       case 'VerbTranslation':
         const verbTranslationExercise: VerbTranslationExercise = new VerbTranslationExercise();
@@ -78,17 +88,26 @@ export type DateResults = {
   results: Result[];
 };
 
+export function getAllResultsBeforeDateOneWeek(date: DateTime) {
+  return getAllResults().filter((result) => {
+    const upDateLimit = date.ordinal;
+    const downDateLimit = date.plus({ week: -1 }).ordinal;
+
+    return DateTime.fromJSDate(result.date).ordinal >= downDateLimit && DateTime.fromJSDate(result.date).ordinal <= upDateLimit;
+  });
+}
+
 export function getAllResultsByDate(): DateResults[] {
   let resultDate = DateTime.fromJSDate(getAllResults()[0].date);
   const resultsByDate: DateResults[] = [];
-  while (resultDate.ordinal <= DateTime.now().ordinal) {
+  while (resultDate.plus({ week: -1 }).ordinal <= DateTime.now().ordinal) {
     // eslint-disable-next-line no-loop-func
     const results = getAllResults().filter((result) => DateTime.fromJSDate(result.date).ordinal <= resultDate.ordinal);
     resultsByDate.push({
       date: resultDate,
       results
     });
-    resultDate = resultDate.plus({ days: 1 });
+    resultDate = resultDate.plus({ week: 1 });
   }
   return resultsByDate;
 }
@@ -107,6 +126,18 @@ export function getAllResultsForExerciseType(results: Result[], exerciseType: Ex
 
 export function getAllResultsForExercise(results: Result[], exercise: Exercise): Result[] {
   return results.filter((result) => {
+    return result.exercise.equal(exercise);
+  });
+}
+
+export function getAllResultsForExerciseSubject(results: Result[], exercise: Exercise): Result[] {
+  return results.filter((result) => {
+    if (exercise instanceof TranslationExercise) {
+      return (exercise as TranslationExercise).isTranslationSubjectEqual(result.exercise);
+    }
+    if (exercise instanceof VerbExercise && result.exercise instanceof VerbExercise) {
+      return exercise.verb.infinitive === result.exercise.verb.infinitive;
+    }
     return result.exercise.equal(exercise);
   });
 }

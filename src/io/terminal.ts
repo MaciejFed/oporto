@@ -59,7 +59,7 @@ export class Terminal {
   }
 
   registerListeners() {
-    this.registerOnAppStartedEventListerner();
+    this.registerOnAppStartedEventListener();
     this.registerOnDescriptionPrintedEventListener();
     this.registerOnBodyPrintedEventListener();
     this.registerOnKeyPressedEventListener();
@@ -67,7 +67,7 @@ export class Terminal {
     this.registerOnAnswerCheckedEventListener();
   }
 
-  private registerOnAppStartedEventListerner() {
+  private registerOnAppStartedEventListener() {
     this.eventProcessor.on(APP_STARTED, () => {
       preExerciseClear();
     });

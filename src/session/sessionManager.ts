@@ -16,7 +16,7 @@ import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
 import { saveNewResult } from '../repository/resultRepository';
 import { AnswerInputType } from '../io/input';
-import { TranslationExercise } from '../exercise/translationExercise';
+import { TranslationExercise } from '../exercise/translation/translationExercise';
 import { exec } from 'child_process';
 
 export class SessionManager implements AppEventListener {
@@ -116,7 +116,7 @@ export class SessionManager implements AppEventListener {
   }
 
   resetAnswer() {
-    logger.info('Reseting answer...');
+    logger.info('Resting answer...');
     this.answer = '';
     if (this.hearingLoop) {
       clearInterval(this.hearingLoop);

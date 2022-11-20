@@ -8,14 +8,12 @@ export class VerbExercise implements Exercise, Comparable {
   verb: Verb;
   person: Person;
   correctAnswer: string;
-  exerciseLevel: number;
 
   constructor() {
     this.exerciseType = 'VerbExercise';
     this.verb = getRandomVerb();
     this.person = getRandomPerson();
     this.correctAnswer = this.getCorrectAnswer();
-    this.exerciseLevel = 1;
   }
 
   getExerciseExplanation = () => undefined;
