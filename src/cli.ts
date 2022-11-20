@@ -4,7 +4,7 @@ import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
 const program = new Command();
 
-program.name('oporto').description('CLI to learn Portuguese').version('0.1.0');
+program.name('pol').description('CLI to learn Polish').version('0.1.0');
 
 program
   .command('test')

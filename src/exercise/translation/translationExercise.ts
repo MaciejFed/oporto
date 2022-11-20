@@ -1,7 +1,7 @@
 import { Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 
-type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
+type TranslationType = 'toEnglish' | 'toPolish' | 'toPolishFromHearing';
 
 export abstract class TranslationExercise implements Exercise {
   translationType: TranslationType;
@@ -11,20 +11,20 @@ export abstract class TranslationExercise implements Exercise {
     if (probability < 0.33) {
       this.translationType = 'toEnglish';
     } else if (probability > 0.33 && probability < 0.66) {
-      this.translationType = 'toPortuguese';
+      this.translationType = 'toPolish';
     } else {
-      this.translationType = 'toPortugueseFromHearing';
+      this.translationType = 'toPolishFromHearing';
     }
   }
 
   public abstract isTranslationSubjectEqual(translationSubject: Exercise): boolean;
 
-  isTranslationToPortuguese(): boolean {
-    return this.translationType === 'toPortuguese';
+  isTranslationToPolish(): boolean {
+    return this.translationType === 'toPolish' || this.translationType === 'toPolishFromHearing';
   }
 
-  isTranslationToPortugueseFromHearing(): boolean {
-    return this.translationType === 'toPortugueseFromHearing';
+  isTranslationToPolishFromHearing(): boolean {
+    return this.translationType === 'toPolishFromHearing';
   }
 
   abstract correctAnswer: string;

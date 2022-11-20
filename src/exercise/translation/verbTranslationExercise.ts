@@ -24,28 +24,28 @@ export class VerbTranslationExercise extends TranslationExercise implements Comp
   }
 
   getExerciseBodyPrefix(): string {
-    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
+    return this.isTranslationToPolish() ? 'Polish: ' : 'English: ';
   }
 
   getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => {
-    if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
-    if (this.isTranslationToPortuguese()) {
+    if (this.isTranslationToPolishFromHearing()) return 'Listen...';
+    if (this.isTranslationToPolish()) {
       return `English: ${this.verb.english}`;
     }
-    return `Portuguese: ${this.verb.infinitive}`;
+    return `Polish: ${this.verb.infinitive}`;
   };
 
-  getExerciseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.verb.english : undefined);
+  getExerciseExplanation = () => (this.isTranslationToPolishFromHearing() ? this.verb.english : undefined);
 
-  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.verb.infinitive : this.verb.english);
+  getCorrectAnswer = () => (this.isTranslationToPolish() ? this.verb.infinitive : this.verb.english);
 
   checkAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.correctAnswer : this.verb.infinitive);
+  getRepeatAnswerPhrase = () => (this.isTranslationToPolish() ? this.correctAnswer : this.verb.infinitive);
 
   equal = (other: VerbTranslationExercise) =>
     other.exerciseType === 'VerbTranslation' &&

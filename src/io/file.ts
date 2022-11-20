@@ -3,7 +3,7 @@ import os from 'os';
 import path from 'path';
 import { logger } from '../common/logger';
 
-const resultDbFilePath = path.join(os.homedir(), 'results.json');
+const resultDbFilePath = path.join(os.homedir(), 'results_pol.json');
 const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');
 
 export function readFromFile(): string {

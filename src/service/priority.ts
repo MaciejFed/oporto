@@ -141,7 +141,7 @@ export function exerciseNeverDoneByVoice(exercise: Exercise, results: Result[]):
 }
 
 export function exerciseTranslationNeverDoneByVoice(exercise: Exercise, results: Result[]): Priority[] {
-  if (!(exercise instanceof TranslationExercise) || !exercise.isTranslationToPortuguese()) {
+  if (!(exercise instanceof TranslationExercise) || !exercise.isTranslationToPolish()) {
     return noPriority(exercise);
   }
   const fromHearingDoneByVoice = results.filter((result) => {
@@ -151,7 +151,7 @@ export function exerciseTranslationNeverDoneByVoice(exercise: Exercise, results:
     ) {
       const translationExercise = result.exercise as unknown as TranslationExercise;
       return (
-        translationExercise.isTranslationToPortugueseFromHearing() &&
+        translationExercise.isTranslationToPolishFromHearing() &&
         result.wasCorrect &&
         result.answerInputType === 'voice'
       );
@@ -285,7 +285,7 @@ export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, result
   const toEnlishTranslationsCorrect = results.filter((result) => {
     if (result.exercise.exerciseType === exercise.exerciseType) {
       const tranlsationExercise = result.exercise as unknown as TranslationExercise;
-      return !tranlsationExercise.isTranslationToPortuguese() && result.wasCorrect;
+      return !tranlsationExercise.isTranslationToPolish() && result.wasCorrect;
     }
     return false;
   });
@@ -305,7 +305,7 @@ export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, result
 }
 
 export function exerciseTranslationNeverDoneFromHearing(exercise: Exercise, results: Result[]): Priority[] {
-  if (!(exercise instanceof TranslationExercise) || exercise.isTranslationToPortugueseFromHearing()) {
+  if (!(exercise instanceof TranslationExercise) || exercise.isTranslationToPolishFromHearing()) {
     return noPriority(exercise);
   }
   const fromHearingTranslationsCorrect = results.filter((result) => {
@@ -314,7 +314,7 @@ export function exerciseTranslationNeverDoneFromHearing(exercise: Exercise, resu
       (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
     ) {
       const tranlsationExercise = result.exercise as unknown as TranslationExercise;
-      return tranlsationExercise.isTranslationToPortugueseFromHearing() && result.wasCorrect;
+      return tranlsationExercise.isTranslationToPolishFromHearing() && result.wasCorrect;
     }
     return false;
   });

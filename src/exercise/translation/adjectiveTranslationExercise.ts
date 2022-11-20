@@ -16,7 +16,7 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     this.exerciseType = 'AdjectiveTranslation';
     this.adjective = getRandomAdjective();
     this.gender = Math.random() > 0.5 ? 'masculine' : 'feminine';
-    this.number = Math.random() > 0.5 ? 'singular' : 'plural';
+    this.number = 'singular';
     this.correctAnswer = this.getCorrectAnswer();
   }
 
@@ -26,30 +26,30 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
   }
 
   getExerciseBodyPrefix(): string {
-    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
+    return this.isTranslationToPolish() ? 'Polish: ' : 'English: ';
   }
 
   getExerciseBodySuffix = () => ` [${this.gender}, ${this.number}]`;
 
   getExerciseDescription = () => {
-    if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
-    if (this.isTranslationToPortuguese()) {
+    if (this.isTranslationToPolishFromHearing()) return 'Listen...';
+    if (this.isTranslationToPolish()) {
       return `English: ${this.adjective.english}`;
     }
-    return `Portuguese: ${this.adjective.masculine.singular}`;
+    return `Polish: ${this.adjective.masculine.singular}`;
   };
 
-  getExerciseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.adjective.english : undefined);
+  getExerciseExplanation = () => (this.isTranslationToPolishFromHearing() ? this.adjective.english : undefined);
 
   getCorrectAnswer = () =>
-    this.isTranslationToPortuguese() ? this.adjective[this.gender][this.number] : this.adjective.english;
+    this.isTranslationToPolish() ? this.adjective[this.gender][this.number] : this.adjective.english;
 
   checkAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
   getRepeatAnswerPhrase = () =>
-    this.isTranslationToPortuguese() ? this.correctAnswer : this.adjective[this.gender][this.number];
+    this.isTranslationToPolish() ? this.correctAnswer : this.adjective[this.gender][this.number];
 
   equal = (other: AdjectiveTranslationExercise) =>
     other.exerciseType === 'AdjectiveTranslation' &&

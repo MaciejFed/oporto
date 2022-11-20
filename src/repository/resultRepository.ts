@@ -33,7 +33,7 @@ export function getAllResults(): Result[] {
         nounTranslationExercise.translationType = (
           result.exercise as unknown as NounTranslationExercise
         ).translationType;
-        assert(nounTranslationExercise.noun.portuguese);
+        assert(nounTranslationExercise.noun.polish);
         assert(nounTranslationExercise.noun.english);
         exercise = nounTranslationExercise;
         break;
@@ -93,7 +93,10 @@ export function getAllResultsBeforeDateOneWeek(date: DateTime) {
     const upDateLimit = date.ordinal;
     const downDateLimit = date.plus({ week: -1 }).ordinal;
 
-    return DateTime.fromJSDate(result.date).ordinal >= downDateLimit && DateTime.fromJSDate(result.date).ordinal <= upDateLimit;
+    return (
+      DateTime.fromJSDate(result.date).ordinal >= downDateLimit &&
+      DateTime.fromJSDate(result.date).ordinal <= upDateLimit
+    );
   });
 }
 

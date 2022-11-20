@@ -124,7 +124,7 @@ export class SessionManager implements AppEventListener {
   }
 
   handleExerciseFromHearing(exercise: Exercise) {
-    if (exercise instanceof TranslationExercise && exercise.isTranslationToPortugueseFromHearing()) {
+    if (exercise instanceof TranslationExercise && exercise.isTranslationToPolishFromHearing()) {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
       exec(`say ${correctAnswer}`);

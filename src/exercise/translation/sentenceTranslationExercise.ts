@@ -19,35 +19,35 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
 
   isTranslationSubjectEqual(translationExercise: TranslationExercise): boolean {
     if (!(translationExercise instanceof SentenceTranslationExercise)) return false;
-    return this.sentence.portuguese === translationExercise.sentence.portuguese;
+    return this.sentence.polish === translationExercise.sentence.polish;
   }
 
   getExerciseBodyPrefix(): string {
-    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
+    return this.isTranslationToPolish() ? 'Polish: ' : 'English: ';
   }
 
   getExerciseBodySuffix = () => '';
 
   getExerciseDescription = () => {
-    if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
-    if (this.isTranslationToPortuguese()) {
+    if (this.isTranslationToPolishFromHearing()) return 'Listen...';
+    if (this.isTranslationToPolish()) {
       return `English: ${this.sentence.english}`;
     }
-    return `Portuguese: ${this.sentence.portuguese}`;
+    return `Polish: ${this.sentence.polish}`;
   };
 
-  getExerciseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.sentence.english : undefined);
+  getExerciseExplanation = () => (this.isTranslationToPolishFromHearing() ? this.sentence.english : undefined);
 
-  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.sentence.portuguese : this.sentence.english);
+  getCorrectAnswer = () => (this.isTranslationToPolish() ? this.sentence.polish : this.sentence.english);
 
   checkAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase().replace('?', '') === answer.toLowerCase().replace('?', '');
   }
 
-  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.correctAnswer : this.sentence.portuguese);
+  getRepeatAnswerPhrase = () => (this.isTranslationToPolish() ? this.correctAnswer : this.sentence.polish);
 
   equal = (other: SentenceTranslationExercise) =>
     other.exerciseType === 'SentenceTranslation' &&
-    this.sentence.portuguese === other.sentence.portuguese &&
+    this.sentence.polish === other.sentence.polish &&
     this.translationType === other.translationType;
 }

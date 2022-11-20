@@ -40,8 +40,7 @@ export const exerciseGenerators: ExerciseGenerator[] = [
   () => new NounTranslationExercise(),
   () => new AdjectiveTranslationExercise(),
   () => new VerbTranslationExercise(),
-  () => new SentenceTranslationExercise(),
-  () => new FitInGapExercise()
+  () => new SentenceTranslationExercise()
 ];
 
 export function generateUniqeExercises(
