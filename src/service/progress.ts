@@ -1,7 +1,11 @@
 import { Exercise, generateUniqeExercises, translationTypes } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translationExercise';
 import { readAll } from '../repository/exercisesRepository';
-import { getAllResultsBeforeDateOneWeek, getAllResultsByDate, getAllResultsForExercise} from '../repository/resultRepository';
+import {
+  getAllResultsBeforeDateOneWeek,
+  getAllResultsByDate,
+  getAllResultsForExercise
+} from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
 import { Result } from './result';
 
@@ -23,7 +27,7 @@ export type Progress = {
 
 function getExercisesProgress(results: Result[]) {
   const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(50000, false, () => true)
-      .filter((exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese())
+    .filter((exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese())
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
       const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
@@ -116,16 +120,16 @@ export function progressByDate(): ProgressOnDay[] {
               .filter((translationExercise) => (translationExercise as TranslationExercise).isTranslationToPortuguese())
               .filter(
                 (translationExercise) =>
-                  !getAllVariations().includes((translationExercise as TranslationExercise).correctAnswer)
+                  !getAllVariations().includes((translationExercise as TranslationExercise).getCorrectAnswer())
               )
               .filter(
                 (translationExercise) =>
                   (translationExercise as TranslationExercise).exerciseType !== 'SentenceTranslation'
               )
-              .map((exercise) => exercise.correctAnswer)
+              .map((exercise) => exercise.getCorrectAnswer())
           )
         ],
-        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date),
+        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date)
       };
     })
     .map((dateResult, index, array) => {

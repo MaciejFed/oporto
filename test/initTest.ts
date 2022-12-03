@@ -2,6 +2,8 @@
 import { ExerciseStatistics } from '../src/service/result';
 
 
+console.log('Initializing Tests...')
+
 global.process.stdin.setRawMode = (mode: boolean) => undefined;
 
 jest.spyOn(console, 'log').mockImplementation(() => {});
@@ -22,7 +24,7 @@ jest.mock('../src/io/file', () => {
     return {
       ...fileModuleActual,
       readFromFile: () => global.resultsFile,
-      saveToFile: (data: string) => { 
+      saveToFile: (data: string) => {
         global.resultsFile = data;
       }
     };

@@ -2143,14 +2143,14 @@ export const db: Schema = {
       portuguese: {
         word: 'maça',
         plural: 'maças',
-        gender: 'feminine',
+        gender: 'feminine'
       }
     },
     {
       english: 'peace',
       portuguese: {
         word: 'paz',
-        gender: 'feminine',
+        gender: 'feminine'
       }
     },
     {
@@ -2158,23 +2158,23 @@ export const db: Schema = {
       portuguese: {
         word: 'plano',
         plural: 'planos',
-        gender: 'masculine',
+        gender: 'masculine'
       }
     },
     {
       english: 'honey',
       portuguese: {
         word: 'mel',
-        gender: 'masculine',
+        gender: 'masculine'
       }
     },
     {
       english: 'ginger',
       portuguese: {
         word: 'gengibre',
-        gender: 'masculine',
+        gender: 'masculine'
       }
-    },
+    }
   ],
   adjectives: [
     {
@@ -2783,17 +2783,17 @@ export const db: Schema = {
       sentenceType: 'statement'
     },
     {
-      english: "Would you fancy a drink?",
-      portuguese: "Deseja um café?",
+      english: 'Would you fancy a drink?',
+      portuguese: 'Deseja um café?',
       sentenceType: 'statement'
     },
     {
-      english: "Stop bothering me",
-      portuguese: "Está quieto!",
+      english: 'Stop bothering me',
+      portuguese: 'Está quieto!',
       sentenceType: 'statement'
     },
     {
-      english: "Leave me alone",
+      english: 'Leave me alone',
       portuguese: 'Deixa-me em paz',
       sentenceType: 'statement'
     }

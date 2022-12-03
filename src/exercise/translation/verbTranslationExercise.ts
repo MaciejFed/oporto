@@ -3,18 +3,24 @@ import { Comparable } from '../../common/common';
 import { Verb } from '../../repository/exercisesRepository';
 import { getRandomVerb } from '../../service/translation';
 import { VerbExercise } from '../verbExercise';
-import { TranslationExercise } from './translationExercise';
+import { TranslationExercise, TranslationType } from './translationExercise';
 
 export class VerbTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
-  correctAnswer: string;
   verb: Verb;
 
   constructor() {
     super();
     this.exerciseType = 'VerbTranslation';
     this.verb = getRandomVerb();
-    this.correctAnswer = this.getCorrectAnswer();
+  }
+
+  static new(verb: Verb, translationType: TranslationType): VerbTranslationExercise {
+    const verbTranslationExercise = new VerbTranslationExercise();
+    verbTranslationExercise.verb = verb;
+    verbTranslationExercise.translationType = translationType;
+
+    return verbTranslationExercise;
   }
 
   isTranslationSubjectEqual(exercise: Exercise) {
@@ -45,7 +51,7 @@ export class VerbTranslationExercise extends TranslationExercise implements Comp
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.correctAnswer : this.verb.infinitive);
+  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.verb.infinitive);
 
   equal = (other: VerbTranslationExercise) =>
     other.exerciseType === 'VerbTranslation' &&

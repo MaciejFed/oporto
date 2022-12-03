@@ -2,18 +2,24 @@ import { Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 import { Noun } from '../../repository/exercisesRepository';
 import { getRandomNoun } from '../../service/translation';
-import { TranslationExercise } from './translationExercise';
+import { TranslationExercise, TranslationType } from './translationExercise';
 
 export class NounTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
-  correctAnswer: string;
   noun: Noun;
 
   constructor() {
     super();
     this.exerciseType = 'NounTranslation';
     this.noun = getRandomNoun();
-    this.correctAnswer = this.getCorrectAnswer();
+  }
+
+  static new(noun: Noun, translationType: TranslationType): NounTranslationExercise {
+    const nounExercise = new NounTranslationExercise();
+    nounExercise.noun = noun;
+    nounExercise.translationType = translationType;
+
+    return nounExercise;
   }
 
   isTranslationSubjectEqual(translationExercise: TranslationExercise): boolean {
@@ -43,7 +49,7 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.correctAnswer : this.getWordWithGender());
+  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.getWordWithGender());
 
   equal = (other: NounTranslationExercise) =>
     other.exerciseType === 'NounTranslation' &&

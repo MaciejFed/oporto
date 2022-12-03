@@ -5,13 +5,11 @@ import { Exercise, ExerciseType } from './exercise';
 
 export class FitInGapExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
-  correctAnswer: string;
   fitIn: FitIn;
 
   constructor() {
     this.exerciseType = 'FitInGap';
     this.fitIn = getRandomFitInExercise();
-    this.correctAnswer = this.getCorrectAnswer();
   }
 
   getExerciseExplanation = () => this.fitIn.explanation;
@@ -29,7 +27,7 @@ export class FitInGapExercise implements Exercise, Comparable {
   }
 
   getRepeatAnswerPhrase = () =>
-    `${this.getExerciseBodyPrefix()} ${this.correctAnswer} ${this.getExerciseBodySuffix()}}`;
+    `${this.getExerciseBodyPrefix()} ${this.getCorrectAnswer()} ${this.getExerciseBodySuffix()}}`;
 
   equal = (exercise: FitInGapExercise) =>
     exercise.exerciseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);

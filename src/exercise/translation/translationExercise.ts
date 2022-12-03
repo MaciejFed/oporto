@@ -1,7 +1,7 @@
 import { Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 
-type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
+export type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
 
 export abstract class TranslationExercise implements Exercise {
   translationType: TranslationType;
@@ -20,14 +20,13 @@ export abstract class TranslationExercise implements Exercise {
   public abstract isTranslationSubjectEqual(translationSubject: Exercise): boolean;
 
   isTranslationToPortuguese(): boolean {
-    return this.translationType === 'toPortuguese';
+    return this.translationType === 'toPortuguese' || this.translationType === 'toPortugueseFromHearing';
   }
 
   isTranslationToPortugueseFromHearing(): boolean {
     return this.translationType === 'toPortugueseFromHearing';
   }
 
-  abstract correctAnswer: string;
   abstract exerciseType: ExerciseType;
   abstract checkAnswerCorrect(answer: string): boolean;
   abstract equal(other: Comparable): boolean;

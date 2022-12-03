@@ -7,13 +7,19 @@ export class VerbExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
   verb: Verb;
   person: Person;
-  correctAnswer: string;
 
   constructor() {
     this.exerciseType = 'VerbExercise';
     this.verb = getRandomVerb();
     this.person = getRandomPerson();
-    this.correctAnswer = this.getCorrectAnswer();
+  }
+
+  static new(verb: Verb, person: Person): VerbExercise {
+    const verbExercise = new VerbExercise();
+    verbExercise.verb = verb;
+    verbExercise.person = person;
+
+    return verbExercise;
   }
 
   getExerciseExplanation = () => undefined;
@@ -31,7 +37,7 @@ export class VerbExercise implements Exercise, Comparable {
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => `${this.person} ${this.correctAnswer}`;
+  getRepeatAnswerPhrase = () => `${this.person} ${this.getCorrectAnswer()}`;
 
   equal = (exercise: VerbExercise) =>
     exercise.exerciseType === 'VerbExercise' &&

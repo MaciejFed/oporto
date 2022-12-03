@@ -78,7 +78,6 @@ export function getAllResults(): Result[] {
     }
     result.date = new Date(result.date);
     result.exercise = exercise;
-    result.exercise.correctAnswer = result.exercise.getCorrectAnswer();
     return result;
   });
 }
@@ -93,7 +92,10 @@ export function getAllResultsBeforeDateOneWeek(date: DateTime) {
     const upDateLimit = date.ordinal;
     const downDateLimit = date.plus({ week: -1 }).ordinal;
 
-    return DateTime.fromJSDate(result.date).ordinal >= downDateLimit && DateTime.fromJSDate(result.date).ordinal <= upDateLimit;
+    return (
+      DateTime.fromJSDate(result.date).ordinal >= downDateLimit &&
+      DateTime.fromJSDate(result.date).ordinal <= upDateLimit
+    );
   });
 }
 

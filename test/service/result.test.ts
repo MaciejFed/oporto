@@ -8,7 +8,7 @@ describe('Result Service', () => {
         const result = convertToResult(verbExercise, verbExercise.getCorrectAnswer(), true, 'keyboard');
 
         expect(result.answer).toEqual(verbExercise.getCorrectAnswer());
-        expect(result.exercise.correctAnswer).toEqual(verbExercise.getCorrectAnswer());
+        expect(result.exercise.getCorrectAnswer()).toEqual(verbExercise.getCorrectAnswer());
         expect(result.exercise.equal(verbExercise)).toBe(true);
     })
 })

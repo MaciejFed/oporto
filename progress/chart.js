@@ -8,7 +8,7 @@ fetch('data.json', { cache: 'no-cache' }).then(response => response.json()).then
     const newWordsDiff = newWordsNumbered.length - lostWordsNumbered.length;
     const signPostfix = newWordsDiff >= 0 ? `+ ${newWordsDiff}` :  `- ${newWordsDiff}`;
     const newWords = newWordsNumbered.length > 0 ? [`Difference ${signPostfix}`, '', `New Words: +${newWordsNumbered.length}`].concat(newWordsNumbered) : [];
-    const lostWords = lostWordsNumbered.length > 0 ? [`Lost Words: +${lostWordsNumbered.length}`].concat(lostWordsNumbered) : [];
+    const lostWords = lostWordsNumbered.length > 0 ? [`Lost Words: -${lostWordsNumbered.length}`].concat(lostWordsNumbered) : [];
     return newWords.concat(lostWords);
   };
 
@@ -34,8 +34,8 @@ fetch('data.json', { cache: 'no-cache' }).then(response => response.json()).then
           label: 'Exercises Done',
           data: data,
           borderWidth: 1,
-          borderColor: 'red',
-          backgroundColor: 'red',
+          borderColor: 'blue',
+          backgroundColor: 'blue',
           pointStyle: 'circle',
           pointRadius: 7,
           pointHoverRadius: 5,

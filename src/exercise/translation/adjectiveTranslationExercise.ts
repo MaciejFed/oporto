@@ -1,12 +1,11 @@
 import { ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
-import { Adjective } from '../../repository/exercisesRepository';
+import { Adjective, Verb } from '../../repository/exercisesRepository';
 import { getRandomAdjective } from '../../service/translation';
-import { TranslationExercise } from './translationExercise';
+import { TranslationExercise, TranslationType } from './translationExercise';
 
 export class AdjectiveTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
-  correctAnswer: string;
   adjective: Adjective;
   gender: 'masculine' | 'feminine';
   number: 'singular' | 'plural';
@@ -17,7 +16,19 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     this.adjective = getRandomAdjective();
     this.gender = Math.random() > 0.5 ? 'masculine' : 'feminine';
     this.number = Math.random() > 0.5 ? 'singular' : 'plural';
-    this.correctAnswer = this.getCorrectAnswer();
+  }
+
+  static new(
+    adjective: Adjective,
+    translationType: TranslationType,
+    gender: 'masculine' | 'feminine',
+    number: 'singular' | 'plural'
+  ): AdjectiveTranslationExercise {
+    const adjectiveTranslationExercise = new AdjectiveTranslationExercise();
+    adjectiveTranslationExercise.adjective = adjective;
+    adjectiveTranslationExercise.translationType = translationType;
+
+    return adjectiveTranslationExercise;
   }
 
   isTranslationSubjectEqual(translationExercise: TranslationExercise): boolean {
@@ -49,7 +60,7 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
   }
 
   getRepeatAnswerPhrase = () =>
-    this.isTranslationToPortuguese() ? this.correctAnswer : this.adjective[this.gender][this.number];
+    this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.adjective[this.gender][this.number];
 
   equal = (other: AdjectiveTranslationExercise) =>
     other.exerciseType === 'AdjectiveTranslation' &&
