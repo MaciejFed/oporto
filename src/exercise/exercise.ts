@@ -1,5 +1,5 @@
 import { Comparable, getRandomElement, onlyDistinct } from '../common/common';
-import { sortExercises } from '../service/priority';
+import { sortExercises } from '../priority/priority';
 import { generateAllPossibleExercises } from './generator';
 export type ExerciseType =
   | 'VerbExercise'

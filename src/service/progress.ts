@@ -6,7 +6,7 @@ import {
   getAllResultsByDate,
   getAllResultsForExercise
 } from '../repository/resultRepository';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { Result } from './result';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';

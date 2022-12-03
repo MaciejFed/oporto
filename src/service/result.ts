@@ -6,7 +6,7 @@ import { VerbExercise } from '../exercise/verbExercise';
 import { AnswerInputType } from '../io/input';
 import { displayGenericWeeklyStatistics } from '../io/terminalUtils';
 import { getAllResults, getAllResultsForExercise } from '../repository/resultRepository';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from './priority';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { getProgress } from './progress';
 
 type KeyMarker = {

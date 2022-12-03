@@ -7,12 +7,13 @@ module.exports = {
         },
     },
     testMatch: [
-      '**/test/**/*.test.ts'
+        '**/src/**/*.spec.ts',
+        '**/test/**/*.test.ts'
     ],
     setupFilesAfterEnv: [
-      './test/initTest.ts'
+        './test/initTest.ts'
     ],
     collectCoverageFrom: [
-      'src/**/{!(file|cli|test|stat|eventListener),}.ts'
+        'src/**/{!(file|cli|test|stat|eventListener),}.ts'
     ]
 }
