@@ -68,7 +68,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'é',
         Nós: 'somos',
         'Eles/Elas/Vocēs': 'são'
-      }
+      },
+      pastPerfect: {
+        Eu: 'fui',
+        Tu: 'foste',
+        'Ela/Ele/Você': 'foi',
+        Nós: 'fomos',
+        'Eles/Elas/Vocēs': 'foram'
+      },
     },
     {
       english: 'to be - moment',
@@ -79,7 +86,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'está',
         Nós: 'estamos',
         'Eles/Elas/Vocēs': 'estão'
-      }
+      },
+      pastPerfect: {
+        Eu: 'estive',
+        Tu: 'estiveste',
+        'Ela/Ele/Você': 'esteve',
+        Nós: 'estivemos',
+        'Eles/Elas/Vocēs': 'estiveram'
+      },
     },
     {
       english: 'to go',
@@ -90,7 +104,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'vai',
         Nós: 'vamos',
         'Eles/Elas/Vocēs': 'vão'
-      }
+      },
+      pastPerfect: {
+        Eu: 'fui',
+        Tu: 'foste',
+        'Ela/Ele/Você': 'foi',
+        Nós: 'fomos',
+        'Eles/Elas/Vocēs': 'foram'
+      },
     },
     {
       english: 'to have',
@@ -101,7 +122,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'tem',
         Nós: 'temos',
         'Eles/Elas/Vocēs': 'têm'
-      }
+      },
+      pastPerfect: {
+        Eu: 'tive',
+        Tu: 'tiveste',
+        'Ela/Ele/Você': 'teve',
+        Nós: 'tivemos',
+        'Eles/Elas/Vocēs': 'tiveram'
+      },
     },
     {
       english: 'to want',
@@ -112,7 +140,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'quer',
         Nós: 'queremos',
         'Eles/Elas/Vocēs': 'querem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'quis',
+        Tu: 'quiseste',
+        'Ela/Ele/Você': 'quis',
+        Nós: 'quisemos',
+        'Eles/Elas/Vocēs': 'quiseram'
+      },
     },
     {
       english: 'to see',
@@ -123,7 +158,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'vê',
         Nós: 'vemos',
         'Eles/Elas/Vocēs': 'vêem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'vi',
+        Tu: 'viste',
+        'Ela/Ele/Você': 'viu',
+        Nós: 'vimos',
+        'Eles/Elas/Vocēs': 'viram'
+      },
     },
     {
       english: 'to do/make',
@@ -134,7 +176,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'faz',
         Nós: 'fazemos',
         'Eles/Elas/Vocēs': 'fazem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'fiz',
+        Tu: 'fizeste',
+        'Ela/Ele/Você': 'fez',
+        Nós: 'fizemos',
+        'Eles/Elas/Vocēs': 'fizeram'
+      },
     },
     {
       english: 'to know',
@@ -145,7 +194,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'sabe',
         Nós: 'sabemos',
         'Eles/Elas/Vocēs': 'sabem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'soube',
+        Tu: 'soubeste',
+        'Ela/Ele/Você': 'soube',
+        Nós: 'soubemos',
+        'Eles/Elas/Vocēs': 'souberam'
+      },
     },
     {
       english: 'to read',
@@ -156,7 +212,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'lê',
         Nós: 'lemos',
         'Eles/Elas/Vocēs': 'leem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'li',
+        Tu: 'leste',
+        'Ela/Ele/Você': 'leu',
+        Nós: 'lemos',
+        'Eles/Elas/Vocēs': 'leram'
+      },
     },
     {
       english: 'to say',
@@ -167,7 +230,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'diz',
         Nós: 'dizemos',
         'Eles/Elas/Vocēs': 'dizem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'disse',
+        Tu: 'disseste',
+        'Ela/Ele/Você': 'disse',
+        Nós: 'dissemos',
+        'Eles/Elas/Vocēs': 'disseram'
+      },
     },
     {
       english: 'can',
@@ -178,7 +248,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'pode',
         Nós: 'podemos',
         'Eles/Elas/Vocēs': 'podem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'pude',
+        Tu: 'pudeste',
+        'Ela/Ele/Você': 'pôde',
+        Nós: 'pudemos',
+        'Eles/Elas/Vocēs': 'puderam'
+      },
     },
     {
       english: 'to speak',
@@ -207,7 +284,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'come',
         Nós: 'comemos',
         'Eles/Elas/Vocēs': 'comem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'comi',
+        Tu: 'comeste',
+        'Ela/Ele/Você': 'comeu',
+        Nós: 'comemos',
+        'Eles/Elas/Vocēs': 'comeram'
+      },
     },
     {
       english: 'to open',
@@ -218,7 +302,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'abre',
         Nós: 'abrimos',
         'Eles/Elas/Vocēs': 'abrem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'abri',
+        Tu: 'abriste',
+        'Ela/Ele/Você': 'abriu',
+        Nós: 'abrimos',
+        'Eles/Elas/Vocēs': 'abriram'
+      },
     },
     {
       english: 'to think',
@@ -229,7 +320,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'acha',
         Nós: 'achamos',
         'Eles/Elas/Vocēs': 'acham'
-      }
+      },
+      pastPerfect: {
+        Eu: 'achei',
+        Tu: 'achaste',
+        'Ela/Ele/Você': 'achou',
+        Nós: 'achámos',
+        'Eles/Elas/Vocēs': 'acharam'
+      },
     },
     {
       english: 'to walk',
@@ -240,7 +338,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'anda',
         Nós: 'andamos',
         'Eles/Elas/Vocēs': 'andam'
-      }
+      },
+      pastPerfect: {
+        Eu: 'andei',
+        Tu: 'andaste',
+        'Ela/Ele/Você': 'andaste',
+        Nós: 'andámos',
+        'Eles/Elas/Vocēs': 'andaram'
+      },
     },
     {
       english: 'to drink',
@@ -251,7 +356,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'bebe',
         Nós: 'bebemos',
         'Eles/Elas/Vocēs': 'bebem'
-      }
+      },
+      pastPerfect: {
+        Eu: 'bebi',
+        Tu: 'bebeste',
+        'Ela/Ele/Você': 'bebeu',
+        Nós: 'bebemos',
+        'Eles/Elas/Vocēs': 'beberam'
+      },
     },
     {
       english: 'to enter',
@@ -262,7 +374,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'entra',
         Nós: 'entramos',
         'Eles/Elas/Vocēs': 'entram'
-      }
+      },
+      pastPerfect: {
+        Eu: 'entrei',
+        Tu: 'entraste',
+        'Ela/Ele/Você': 'entrou',
+        Nós: 'entrámos',
+        'Eles/Elas/Vocēs': 'entraram'
+      },
     },
     {
       english: 'to reside',
@@ -273,7 +392,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'mora',
         Nós: 'moramos',
         'Eles/Elas/Vocēs': 'moram'
-      }
+      },
+      pastPerfect: {
+        Eu: 'morei',
+        Tu: 'moraste',
+        'Ela/Ele/Você': 'morou',
+        Nós: 'morámos',
+        'Eles/Elas/Vocēs': 'moraram'
+      },
     },
     {
       english: 'to look',
@@ -284,6 +410,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'olha',
         Nós: 'olhamos',
         'Eles/Elas/Vocēs': 'olham'
+      },
+      pastPerfect: {
+        Eu: 'olhei',
+        Tu: 'olhaste',
+        'Ela/Ele/Você': 'olhou',
+        Nós: 'olhámos',
+        'Eles/Elas/Vocēs': 'olharam'
       }
     },
     {
@@ -295,7 +428,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'chama-se',
         Nós: 'chamamo-nos',
         'Eles/Elas/Vocēs': 'chamam-se'
-      }
+      },
+      pastPerfect: {
+        Eu: 'chamei-me',
+        Tu: 'chamaste-te',
+        'Ela/Ele/Você': 'chamou-se',
+        Nós: 'chamámo-nos',
+        'Eles/Elas/Vocēs': 'chamaram-se'
+      },
     },
     {
       english: 'to work',
@@ -306,7 +446,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'trabalha',
         Nós: 'trabalhamos',
         'Eles/Elas/Vocēs': 'trabalham'
-      }
+      },
+      pastPerfect: {
+        Eu: 'trabalhei',
+        Tu: 'trabalhaste',
+        'Ela/Ele/Você': 'trabalhou',
+        Nós: 'trabalhámos',
+        'Eles/Elas/Vocēs': 'trabalharam'
+      },
     },
     {
       english: 'to greet',
@@ -317,7 +464,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'cumprimenta',
         Nós: 'cumprimentamos',
         'Eles/Elas/Vocēs': 'cumprimentam'
-      }
+      },
+      pastPerfect: {
+        Eu: 'cumprimentei',
+        Tu: 'cumprimentaste',
+        'Ela/Ele/Você': 'cumprimentou',
+        Nós: 'cumprimentámos',
+        'Eles/Elas/Vocēs': 'cumprimentaram'
+      },
     },
     {
       english: 'to introduce yourself',
@@ -328,7 +482,14 @@ export const db: Schema = {
         'Ela/Ele/Você': 'apresenta-se',
         Nós: 'apresentamo-nos',
         'Eles/Elas/Vocēs': 'apresentam-se'
-      }
+      },
+      pastPerfect: {
+        Eu: 'apresentei-me',
+        Tu: 'apresentaste-te',
+        'Ela/Ele/Você': 'apresentou-se',
+        Nós: 'apresentámo-nos',
+        'Eles/Elas/Vocēs': 'apresentaram-se'
+      },
     },
     {
       english: 'to find',
