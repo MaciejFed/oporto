@@ -103,7 +103,13 @@ export function getAllUniqueWords(): string[] {
 
 function getAllVariations(): string[] {
   const verbVariations = [
-    readAll().verbs.flatMap((verb) => [verb.Eu, verb.Tu, verb['Ela/Ele/Você'], verb.Nós, verb['Eles/Elas/Vocēs']])
+    readAll().verbs.flatMap((verb) => [
+      verb.presentSimple.Eu,
+      verb.presentSimple.Tu,
+      verb.presentSimple['Ela/Ele/Você'],
+      verb.presentSimple.Nós,
+      verb.presentSimple['Eles/Elas/Vocēs']
+    ])
   ].flatMap((v) => v);
   const adjectivesVariations = readAll().adjectives.flatMap((adjective) => [
     adjective.masculine.plural,

@@ -1,8 +1,11 @@
 /* eslint-disable quotes */
 import { Person } from '../service/verb';
 
-export type Verb = { english: string } & { [key in Person]: string } & {
+export type Verb = {
+  english: string;
   infinitive: string;
+  presentSimple: { [key in Person]: string };
+  pastPerfect?: { [key in Person]: string };
 };
 
 type NounGender = 'masculine' | 'feminine' | 'none';
@@ -59,659 +62,779 @@ export const db: Schema = {
     {
       english: 'to be - long',
       infinitive: 'ser',
-      Eu: 'sou',
-      Tu: 'és',
-      'Ela/Ele/Você': 'é',
-      Nós: 'somos',
-      'Eles/Elas/Vocēs': 'são'
+      presentSimple: {
+        Eu: 'sou',
+        Tu: 'és',
+        'Ela/Ele/Você': 'é',
+        Nós: 'somos',
+        'Eles/Elas/Vocēs': 'são'
+      }
     },
     {
       english: 'to be - moment',
       infinitive: 'estar',
-      Eu: 'estou',
-      Tu: 'estás',
-      'Ela/Ele/Você': 'está',
-      Nós: 'estamos',
-      'Eles/Elas/Vocēs': 'estão'
+      presentSimple: {
+        Eu: 'estou',
+        Tu: 'estás',
+        'Ela/Ele/Você': 'está',
+        Nós: 'estamos',
+        'Eles/Elas/Vocēs': 'estão'
+      }
     },
     {
       english: 'to go',
       infinitive: 'ir',
-      Eu: 'vou',
-      Tu: 'vais',
-      'Ela/Ele/Você': 'vai',
-      Nós: 'vamos',
-      'Eles/Elas/Vocēs': 'vão'
+      presentSimple: {
+        Eu: 'vou',
+        Tu: 'vais',
+        'Ela/Ele/Você': 'vai',
+        Nós: 'vamos',
+        'Eles/Elas/Vocēs': 'vão'
+      }
     },
     {
       english: 'to have',
       infinitive: 'ter',
-      Eu: 'tenho',
-      Tu: 'tens',
-      'Ela/Ele/Você': 'tem',
-      Nós: 'temos',
-      'Eles/Elas/Vocēs': 'têm'
+      presentSimple: {
+        Eu: 'tenho',
+        Tu: 'tens',
+        'Ela/Ele/Você': 'tem',
+        Nós: 'temos',
+        'Eles/Elas/Vocēs': 'têm'
+      }
     },
     {
       english: 'to want',
       infinitive: 'querer',
-      Eu: 'quero',
-      Tu: 'queres',
-      'Ela/Ele/Você': 'quer',
-      Nós: 'queremos',
-      'Eles/Elas/Vocēs': 'querem'
+      presentSimple: {
+        Eu: 'quero',
+        Tu: 'queres',
+        'Ela/Ele/Você': 'quer',
+        Nós: 'queremos',
+        'Eles/Elas/Vocēs': 'querem'
+      }
     },
     {
       english: 'to see',
       infinitive: 'ver',
-      Eu: 'vejo',
-      Tu: 'vês',
-      'Ela/Ele/Você': 'vê',
-      Nós: 'vemos',
-      'Eles/Elas/Vocēs': 'vêem'
+      presentSimple: {
+        Eu: 'vejo',
+        Tu: 'vês',
+        'Ela/Ele/Você': 'vê',
+        Nós: 'vemos',
+        'Eles/Elas/Vocēs': 'vêem'
+      }
     },
     {
       english: 'to do/make',
       infinitive: 'fazer',
-      Eu: 'faço',
-      Tu: 'fazes',
-      'Ela/Ele/Você': 'faz',
-      Nós: 'fazemos',
-      'Eles/Elas/Vocēs': 'fazem'
+      presentSimple: {
+        Eu: 'faço',
+        Tu: 'fazes',
+        'Ela/Ele/Você': 'faz',
+        Nós: 'fazemos',
+        'Eles/Elas/Vocēs': 'fazem'
+      }
     },
     {
       english: 'to know',
       infinitive: 'saber',
-      Eu: 'sei',
-      Tu: 'sabes',
-      'Ela/Ele/Você': 'sabe',
-      Nós: 'sabemos',
-      'Eles/Elas/Vocēs': 'sabem'
+      presentSimple: {
+        Eu: 'sei',
+        Tu: 'sabes',
+        'Ela/Ele/Você': 'sabe',
+        Nós: 'sabemos',
+        'Eles/Elas/Vocēs': 'sabem'
+      }
     },
     {
       english: 'to read',
       infinitive: 'ler',
-      Eu: 'leio',
-      Tu: 'lês',
-      'Ela/Ele/Você': 'lê',
-      Nós: 'lemos',
-      'Eles/Elas/Vocēs': 'leem'
+      presentSimple: {
+        Eu: 'leio',
+        Tu: 'lês',
+        'Ela/Ele/Você': 'lê',
+        Nós: 'lemos',
+        'Eles/Elas/Vocēs': 'leem'
+      }
     },
     {
       english: 'to say',
       infinitive: 'dizer',
-      Eu: 'digo',
-      Tu: 'dizes',
-      'Ela/Ele/Você': 'diz',
-      Nós: 'dizemos',
-      'Eles/Elas/Vocēs': 'dizem'
+      presentSimple: {
+        Eu: 'digo',
+        Tu: 'dizes',
+        'Ela/Ele/Você': 'diz',
+        Nós: 'dizemos',
+        'Eles/Elas/Vocēs': 'dizem'
+      }
     },
     {
       english: 'can',
       infinitive: 'poder',
-      Eu: 'posso',
-      Tu: 'podes',
-      'Ela/Ele/Você': 'pode',
-      Nós: 'podemos',
-      'Eles/Elas/Vocēs': 'podem'
+      presentSimple: {
+        Eu: 'posso',
+        Tu: 'podes',
+        'Ela/Ele/Você': 'pode',
+        Nós: 'podemos',
+        'Eles/Elas/Vocēs': 'podem'
+      }
     },
     {
       english: 'to speak',
       infinitive: 'falar',
-      Eu: 'falo',
-      Tu: 'falas',
-      'Ela/Ele/Você': 'fala',
-      Nós: 'falamos',
-      'Eles/Elas/Vocēs': 'falam'
+      presentSimple: {
+        Eu: 'falo',
+        Tu: 'falas',
+        'Ela/Ele/Você': 'fala',
+        Nós: 'falamos',
+        'Eles/Elas/Vocēs': 'falam'
+      },
+      pastPerfect: {
+        Eu: 'falei',
+        Tu: 'falaste',
+        'Ela/Ele/Você': 'falou',
+        Nós: 'falámos',
+        'Eles/Elas/Vocēs': 'falaram'
+      }
     },
     {
       english: 'to eat',
       infinitive: 'comer',
-      Eu: 'como',
-      Tu: 'comes',
-      'Ela/Ele/Você': 'come',
-      Nós: 'comemos',
-      'Eles/Elas/Vocēs': 'comem'
+      presentSimple: {
+        Eu: 'como',
+        Tu: 'comes',
+        'Ela/Ele/Você': 'come',
+        Nós: 'comemos',
+        'Eles/Elas/Vocēs': 'comem'
+      }
     },
     {
       english: 'to open',
       infinitive: 'abrir',
-      Eu: 'abro',
-      Tu: 'abres',
-      'Ela/Ele/Você': 'abre',
-      Nós: 'abrimos',
-      'Eles/Elas/Vocēs': 'abrem'
+      presentSimple: {
+        Eu: 'abro',
+        Tu: 'abres',
+        'Ela/Ele/Você': 'abre',
+        Nós: 'abrimos',
+        'Eles/Elas/Vocēs': 'abrem'
+      }
     },
     {
       english: 'to think',
       infinitive: 'achar',
-      Eu: 'acho',
-      Tu: 'achas',
-      'Ela/Ele/Você': 'acha',
-      Nós: 'achamos',
-      'Eles/Elas/Vocēs': 'acham'
+      presentSimple: {
+        Eu: 'acho',
+        Tu: 'achas',
+        'Ela/Ele/Você': 'acha',
+        Nós: 'achamos',
+        'Eles/Elas/Vocēs': 'acham'
+      }
     },
     {
       english: 'to walk',
       infinitive: 'andar',
-      Eu: 'ando',
-      Tu: 'andas',
-      'Ela/Ele/Você': 'anda',
-      Nós: 'andamos',
-      'Eles/Elas/Vocēs': 'andam'
+      presentSimple: {
+        Eu: 'ando',
+        Tu: 'andas',
+        'Ela/Ele/Você': 'anda',
+        Nós: 'andamos',
+        'Eles/Elas/Vocēs': 'andam'
+      }
     },
     {
       english: 'to drink',
       infinitive: 'beber',
-      Eu: 'bebo',
-      Tu: 'bebes',
-      'Ela/Ele/Você': 'bebe',
-      Nós: 'bebemos',
-      'Eles/Elas/Vocēs': 'bebem'
+      presentSimple: {
+        Eu: 'bebo',
+        Tu: 'bebes',
+        'Ela/Ele/Você': 'bebe',
+        Nós: 'bebemos',
+        'Eles/Elas/Vocēs': 'bebem'
+      }
     },
     {
       english: 'to enter',
       infinitive: 'entrar',
-      Eu: 'entro',
-      Tu: 'entras',
-      'Ela/Ele/Você': 'entra',
-      Nós: 'entramos',
-      'Eles/Elas/Vocēs': 'entram'
+      presentSimple: {
+        Eu: 'entro',
+        Tu: 'entras',
+        'Ela/Ele/Você': 'entra',
+        Nós: 'entramos',
+        'Eles/Elas/Vocēs': 'entram'
+      }
     },
     {
       english: 'to reside',
       infinitive: 'morar',
-      Eu: 'moro',
-      Tu: 'moras',
-      'Ela/Ele/Você': 'mora',
-      Nós: 'moramos',
-      'Eles/Elas/Vocēs': 'moram'
+      presentSimple: {
+        Eu: 'moro',
+        Tu: 'moras',
+        'Ela/Ele/Você': 'mora',
+        Nós: 'moramos',
+        'Eles/Elas/Vocēs': 'moram'
+      }
     },
     {
       english: 'to look',
       infinitive: 'olhar',
-      Eu: 'olho',
-      Tu: 'olhas',
-      'Ela/Ele/Você': 'olha',
-      Nós: 'olhamos',
-      'Eles/Elas/Vocēs': 'olham'
+      presentSimple: {
+        Eu: 'olho',
+        Tu: 'olhas',
+        'Ela/Ele/Você': 'olha',
+        Nós: 'olhamos',
+        'Eles/Elas/Vocēs': 'olham'
+      }
     },
     {
       english: 'to be called',
       infinitive: 'chamar-se',
-      Eu: 'chamo-me',
-      Tu: 'chamas-te',
-      'Ela/Ele/Você': 'chama-se',
-      Nós: 'chamamo-nos',
-      'Eles/Elas/Vocēs': 'chamam-se'
+      presentSimple: {
+        Eu: 'chamo-me',
+        Tu: 'chamas-te',
+        'Ela/Ele/Você': 'chama-se',
+        Nós: 'chamamo-nos',
+        'Eles/Elas/Vocēs': 'chamam-se'
+      }
     },
     {
       english: 'to work',
       infinitive: 'trabalhar',
-      Eu: 'trabalho',
-      Tu: 'trabalhas',
-      'Ela/Ele/Você': 'trabalha',
-      Nós: 'trabalhamos',
-      'Eles/Elas/Vocēs': 'trabalham'
+      presentSimple: {
+        Eu: 'trabalho',
+        Tu: 'trabalhas',
+        'Ela/Ele/Você': 'trabalha',
+        Nós: 'trabalhamos',
+        'Eles/Elas/Vocēs': 'trabalham'
+      }
     },
     {
       english: 'to greet',
       infinitive: 'cumprimentar',
-      Eu: 'cumprimento',
-      Tu: 'cumprimentas',
-      'Ela/Ele/Você': 'cumprimenta',
-      Nós: 'cumprimentamos',
-      'Eles/Elas/Vocēs': 'cumprimentam'
+      presentSimple: {
+        Eu: 'cumprimento',
+        Tu: 'cumprimentas',
+        'Ela/Ele/Você': 'cumprimenta',
+        Nós: 'cumprimentamos',
+        'Eles/Elas/Vocēs': 'cumprimentam'
+      }
     },
     {
       english: 'to introduce yourself',
       infinitive: 'apresentar-se',
-      Eu: 'apresento-me',
-      Tu: 'apresentas-te',
-      'Ela/Ele/Você': 'apresenta-se',
-      Nós: 'apresentamo-nos',
-      'Eles/Elas/Vocēs': 'apresentam-se'
+      presentSimple: {
+        Eu: 'apresento-me',
+        Tu: 'apresentas-te',
+        'Ela/Ele/Você': 'apresenta-se',
+        Nós: 'apresentamo-nos',
+        'Eles/Elas/Vocēs': 'apresentam-se'
+      }
     },
     {
       english: 'to find',
       infinitive: 'encontrar',
-      Eu: 'encontro',
-      Tu: 'encontras',
-      'Ela/Ele/Você': 'encontra',
-      Nós: 'encontramos',
-      'Eles/Elas/Vocēs': 'encontram'
+      presentSimple: {
+        Eu: 'encontro',
+        Tu: 'encontras',
+        'Ela/Ele/Você': 'encontra',
+        Nós: 'encontramos',
+        'Eles/Elas/Vocēs': 'encontram'
+      }
     },
     {
       english: 'to hear',
       infinitive: 'ouvir',
-      Eu: 'ouço',
-      Tu: 'ouves',
-      'Ela/Ele/Você': 'ouve',
-      Nós: 'ouvimos',
-      'Eles/Elas/Vocēs': 'ouvem'
+      presentSimple: {
+        Eu: 'ouço',
+        Tu: 'ouves',
+        'Ela/Ele/Você': 'ouve',
+        Nós: 'ouvimos',
+        'Eles/Elas/Vocēs': 'ouvem'
+      }
     },
     {
       english: 'to ask',
       infinitive: 'perguntar',
-      Eu: 'pergunto',
-      Tu: 'perguntas',
-      'Ela/Ele/Você': 'pergunta',
-      Nós: 'perguntamos',
-      'Eles/Elas/Vocēs': 'perguntam'
+      presentSimple: {
+        Eu: 'pergunto',
+        Tu: 'perguntas',
+        'Ela/Ele/Você': 'pergunta',
+        Nós: 'perguntamos',
+        'Eles/Elas/Vocēs': 'perguntam'
+      }
     },
     {
       english: 'to play',
       infinitive: 'jogar',
-      Eu: 'jogo',
-      Tu: 'jogas',
-      'Ela/Ele/Você': 'joga',
-      Nós: 'jogamos',
-      'Eles/Elas/Vocēs': 'jogam'
+      presentSimple: {
+        Eu: 'jogo',
+        Tu: 'jogas',
+        'Ela/Ele/Você': 'joga',
+        Nós: 'jogamos',
+        'Eles/Elas/Vocēs': 'jogam'
+      }
     },
     {
       english: 'to write',
       infinitive: 'escrever',
-      Eu: 'escrevo',
-      Tu: 'escreves',
-      'Ela/Ele/Você': 'escreve',
-      Nós: 'escrevemos',
-      'Eles/Elas/Vocēs': 'escrevem'
+      presentSimple: {
+        Eu: 'escrevo',
+        Tu: 'escreves',
+        'Ela/Ele/Você': 'escreve',
+        Nós: 'escrevemos',
+        'Eles/Elas/Vocēs': 'escrevem'
+      }
     },
     {
       english: 'to understand',
       infinitive: 'compreender',
-      Eu: 'compreendo',
-      Tu: 'compreendes',
-      'Ela/Ele/Você': 'compreende',
-      Nós: 'compreendemos',
-      'Eles/Elas/Vocēs': 'compreendem'
+      presentSimple: {
+        Eu: 'compreendo',
+        Tu: 'compreendes',
+        'Ela/Ele/Você': 'compreende',
+        Nós: 'compreendemos',
+        'Eles/Elas/Vocēs': 'compreendem'
+      }
     },
     {
       english: 'to be familiar',
       infinitive: 'conhecer',
-      Eu: 'conheço',
-      Tu: 'conheces',
-      'Ela/Ele/Você': 'conhece',
-      Nós: 'conhecemos',
-      'Eles/Elas/Vocēs': 'conhecem'
+      presentSimple: {
+        Eu: 'conheço',
+        Tu: 'conheces',
+        'Ela/Ele/Você': 'conhece',
+        Nós: 'conhecemos',
+        'Eles/Elas/Vocēs': 'conhecem'
+      }
     },
     {
       english: 'to solve',
       infinitive: 'resolver',
-      Eu: 'resolvo',
-      Tu: 'resolves',
-      'Ela/Ele/Você': 'resolve',
-      Nós: 'resolvemos',
-      'Eles/Elas/Vocēs': 'resolvem'
+      presentSimple: {
+        Eu: 'resolvo',
+        Tu: 'resolves',
+        'Ela/Ele/Você': 'resolve',
+        Nós: 'resolvemos',
+        'Eles/Elas/Vocēs': 'resolvem'
+      }
     },
     {
       english: 'to go down',
       infinitive: 'descer',
-      Eu: 'desço',
-      Tu: 'desces',
-      'Ela/Ele/Você': 'desce',
-      Nós: 'descemos',
-      'Eles/Elas/Vocēs': 'descem'
+      presentSimple: {
+        Eu: 'desço',
+        Tu: 'desces',
+        'Ela/Ele/Você': 'desce',
+        Nós: 'descemos',
+        'Eles/Elas/Vocēs': 'descem'
+      }
     },
     {
       english: 'to warm up',
       infinitive: 'aquecer',
-      Eu: 'aqueço',
-      Tu: 'aqueces',
-      'Ela/Ele/Você': 'aquece',
-      Nós: 'aquecemos',
-      'Eles/Elas/Vocēs': 'aquecem'
+      presentSimple: {
+        Eu: 'aqueço',
+        Tu: 'aqueces',
+        'Ela/Ele/Você': 'aquece',
+        Nós: 'aquecemos',
+        'Eles/Elas/Vocēs': 'aquecem'
+      }
     },
     {
       english: 'to live',
       infinitive: 'viver',
-      Eu: 'vivo',
-      Tu: 'vives',
-      'Ela/Ele/Você': 'vive',
-      Nós: 'vivemos',
-      'Eles/Elas/Vocēs': 'vivem'
+      presentSimple: {
+        Eu: 'vivo',
+        Tu: 'vives',
+        'Ela/Ele/Você': 'vive',
+        Nós: 'vivemos',
+        'Eles/Elas/Vocēs': 'vivem'
+      }
     },
     {
       english: 'to run',
       infinitive: 'correr',
-      Eu: 'corro',
-      Tu: 'corres',
-      'Ela/Ele/Você': 'corre',
-      Nós: 'corremos',
-      'Eles/Elas/Vocēs': 'correm'
+      presentSimple: {
+        Eu: 'corro',
+        Tu: 'corres',
+        'Ela/Ele/Você': 'corre',
+        Nós: 'corremos',
+        'Eles/Elas/Vocēs': 'correm'
+      }
     },
     {
       english: 'to learn',
       infinitive: 'aprender',
-      Eu: 'aprendo',
-      Tu: 'aprendes',
-      'Ela/Ele/Você': 'aprende',
-      Nós: 'aprendemos',
-      'Eles/Elas/Vocēs': 'aprendem'
+      presentSimple: {
+        Eu: 'aprendo',
+        Tu: 'aprendes',
+        'Ela/Ele/Você': 'aprende',
+        Nós: 'aprendemos',
+        'Eles/Elas/Vocēs': 'aprendem'
+      }
     },
     {
       english: 'to forget',
       infinitive: 'esquecer',
-      Eu: 'esqueço',
-      Tu: 'esqueces',
-      'Ela/Ele/Você': 'esquece',
-      Nós: 'esquecemos',
-      'Eles/Elas/Vocēs': 'esquecem'
+      presentSimple: {
+        Eu: 'esqueço',
+        Tu: 'esqueces',
+        'Ela/Ele/Você': 'esquece',
+        Nós: 'esquecemos',
+        'Eles/Elas/Vocēs': 'esquecem'
+      }
     },
     {
       english: 'to use',
       infinitive: 'usar',
-      Eu: 'uso',
-      Tu: 'usas',
-      'Ela/Ele/Você': 'usa',
-      Nós: 'usamos',
-      'Eles/Elas/Vocēs': 'usam'
+      presentSimple: {
+        Eu: 'uso',
+        Tu: 'usas',
+        'Ela/Ele/Você': 'usa',
+        Nós: 'usamos',
+        'Eles/Elas/Vocēs': 'usam'
+      }
     },
     {
       english: 'to have lunch',
       infinitive: 'almoçar',
-      Eu: 'almoço',
-      Tu: 'almoças',
-      'Ela/Ele/Você': 'almoça',
-      Nós: 'almoçamos',
-      'Eles/Elas/Vocēs': 'almoçam'
+      presentSimple: {
+        Eu: 'almoço',
+        Tu: 'almoças',
+        'Ela/Ele/Você': 'almoça',
+        Nós: 'almoçamos',
+        'Eles/Elas/Vocēs': 'almoçam'
+      }
     },
     {
       english: 'to phone',
       infinitive: 'telefonar',
-      Eu: 'telefono',
-      Tu: 'telefonas',
-      'Ela/Ele/Você': 'telefona',
-      Nós: 'telefonamos',
-      'Eles/Elas/Vocēs': 'telefonam'
-    },
-    {
-      english: 'to phone',
-      infinitive: 'telefonar',
-      Eu: 'telefono',
-      Tu: 'telefonas',
-      'Ela/Ele/Você': 'telefona',
-      Nós: 'telefonamos',
-      'Eles/Elas/Vocēs': 'telefonam'
+      presentSimple: {
+        Eu: 'telefono',
+        Tu: 'telefonas',
+        'Ela/Ele/Você': 'telefona',
+        Nós: 'telefonamos',
+        'Eles/Elas/Vocēs': 'telefonam'
+      }
     },
     {
       english: 'to pay',
       infinitive: 'pagar',
-      Eu: 'pago',
-      Tu: 'pagas',
-      'Ela/Ele/Você': 'paga',
-      Nós: 'pagamos',
-      'Eles/Elas/Vocēs': 'pagam'
+      presentSimple: {
+        Eu: 'pago',
+        Tu: 'pagas',
+        'Ela/Ele/Você': 'paga',
+        Nós: 'pagamos',
+        'Eles/Elas/Vocēs': 'pagam'
+      }
     },
     {
       english: 'to take',
       infinitive: 'tomar',
-      Eu: 'tomo',
-      Tu: 'tomas',
-      'Ela/Ele/Você': 'toma',
-      Nós: 'tomamos',
-      'Eles/Elas/Vocēs': 'tomam'
+      presentSimple: {
+        Eu: 'tomo',
+        Tu: 'tomas',
+        'Ela/Ele/Você': 'toma',
+        Nós: 'tomamos',
+        'Eles/Elas/Vocēs': 'tomam'
+      }
     },
     {
       english: 'to stay',
       infinitive: 'ficar',
-      Eu: 'fico',
-      Tu: 'ficas',
-      'Ela/Ele/Você': 'fica',
-      Nós: 'ficamos',
-      'Eles/Elas/Vocēs': 'ficam'
+      presentSimple: {
+        Eu: 'fico',
+        Tu: 'ficas',
+        'Ela/Ele/Você': 'fica',
+        Nós: 'ficamos',
+        'Eles/Elas/Vocēs': 'ficam'
+      }
     },
     {
       english: 'to get up',
       infinitive: 'levantar-se',
-      Eu: 'levanto-me',
-      Tu: 'levantas-te',
-      'Ela/Ele/Você': 'levanta-se',
-      Nós: 'levantamo-nos',
-      'Eles/Elas/Vocēs': 'levantam-se'
+      presentSimple: {
+        Eu: 'levanto-me',
+        Tu: 'levantas-te',
+        'Ela/Ele/Você': 'levanta-se',
+        Nós: 'levantamo-nos',
+        'Eles/Elas/Vocēs': 'levantam-se'
+      }
     },
     {
       english: 'to buy',
       infinitive: 'comprar',
-      Eu: 'compro',
-      Tu: 'compras',
-      'Ela/Ele/Você': 'compra',
-      Nós: 'compramos',
-      'Eles/Elas/Vocēs': 'compram'
+      presentSimple: {
+        Eu: 'compro',
+        Tu: 'compras',
+        'Ela/Ele/Você': 'compra',
+        Nós: 'compramos',
+        'Eles/Elas/Vocēs': 'compram'
+      }
     },
     {
       english: 'to teach',
       infinitive: 'ensinar',
-      Eu: 'ensino',
-      Tu: 'ensinas',
-      'Ela/Ele/Você': 'ensina',
-      Nós: 'ensinamos',
-      'Eles/Elas/Vocēs': 'ensinam'
+      presentSimple: {
+        Eu: 'ensino',
+        Tu: 'ensinas',
+        'Ela/Ele/Você': 'ensina',
+        Nós: 'ensinamos',
+        'Eles/Elas/Vocēs': 'ensinam'
+      }
     },
     {
       english: 'to close',
       infinitive: 'fechar',
-      Eu: 'fecho',
-      Tu: 'fechas',
-      'Ela/Ele/Você': 'fecha',
-      Nós: 'fechamos',
-      'Eles/Elas/Vocēs': 'fecham'
+      presentSimple: {
+        Eu: 'fecho',
+        Tu: 'fechas',
+        'Ela/Ele/Você': 'fecha',
+        Nós: 'fechamos',
+        'Eles/Elas/Vocēs': 'fecham'
+      }
     },
     {
       english: 'to like',
       infinitive: 'gostar',
-      Eu: 'gosto',
-      Tu: 'gostas',
-      'Ela/Ele/Você': 'gosta',
-      Nós: 'gostamos',
-      'Eles/Elas/Vocēs': 'gostam'
+      presentSimple: {
+        Eu: 'gosto',
+        Tu: 'gostas',
+        'Ela/Ele/Você': 'gosta',
+        Nós: 'gostamos',
+        'Eles/Elas/Vocēs': 'gostam'
+      }
     },
     {
       english: 'to start',
       infinitive: 'começar',
-      Eu: 'começo',
-      Tu: 'começas',
-      'Ela/Ele/Você': 'começa',
-      Nós: 'começamos',
-      'Eles/Elas/Vocēs': 'começam'
+      presentSimple: {
+        Eu: 'começo',
+        Tu: 'começas',
+        'Ela/Ele/Você': 'começa',
+        Nós: 'começamos',
+        'Eles/Elas/Vocēs': 'começam'
+      }
     },
     {
       english: 'to wash',
       infinitive: 'lavar',
-      Eu: 'lavo',
-      Tu: 'lavas',
-      'Ela/Ele/Você': 'lava',
-      Nós: 'lavamos',
-      'Eles/Elas/Vocēs': 'lavam'
+      presentSimple: {
+        Eu: 'lavo',
+        Tu: 'lavas',
+        'Ela/Ele/Você': 'lava',
+        Nós: 'lavamos',
+        'Eles/Elas/Vocēs': 'lavam'
+      }
     },
     {
       english: 'to end',
       infinitive: 'acabar',
-      Eu: 'acabo',
-      Tu: 'acabas',
-      'Ela/Ele/Você': 'acaba',
-      Nós: 'acabamos',
-      'Eles/Elas/Vocēs': 'acabam'
+      presentSimple: {
+        Eu: 'acabo',
+        Tu: 'acabas',
+        'Ela/Ele/Você': 'acaba',
+        Nós: 'acabamos',
+        'Eles/Elas/Vocēs': 'acabam'
+      }
     },
     {
       english: 'to catch',
       infinitive: 'apanhar',
-      Eu: 'apanho',
-      Tu: 'apanhas',
-      'Ela/Ele/Você': 'apanha',
-      Nós: 'apanhamos',
-      'Eles/Elas/Vocēs': 'apanham'
+      presentSimple: {
+        Eu: 'apanho',
+        Tu: 'apanhas',
+        'Ela/Ele/Você': 'apanha',
+        Nós: 'apanhamos',
+        'Eles/Elas/Vocēs': 'apanham'
+      }
     },
     {
       english: 'to wear',
       infinitive: 'vestir',
-      Eu: 'visto',
-      Tu: 'vestes',
-      'Ela/Ele/Você': 'veste',
-      Nós: 'vestimos',
-      'Eles/Elas/Vocēs': 'vestem'
+      presentSimple: {
+        Eu: 'visto',
+        Tu: 'vestes',
+        'Ela/Ele/Você': 'veste',
+        Nós: 'vestimos',
+        'Eles/Elas/Vocēs': 'vestem'
+      }
     },
     {
       english: 'to divide',
       infinitive: 'dividir',
-      Eu: 'divido',
-      Tu: 'divides',
-      'Ela/Ele/Você': 'divide',
-      Nós: 'dividimos',
-      'Eles/Elas/Vocēs': 'dividem'
+      presentSimple: {
+        Eu: 'divido',
+        Tu: 'divides',
+        'Ela/Ele/Você': 'divide',
+        Nós: 'dividimos',
+        'Eles/Elas/Vocēs': 'dividem'
+      }
     },
     {
       english: 'to take off',
       infinitive: 'despir',
-      Eu: 'dispo',
-      Tu: 'despes',
-      'Ela/Ele/Você': 'despe',
-      Nós: 'despimos',
-      'Eles/Elas/Vocēs': 'despem'
+      presentSimple: {
+        Eu: 'dispo',
+        Tu: 'despes',
+        'Ela/Ele/Você': 'despe',
+        Nós: 'despimos',
+        'Eles/Elas/Vocēs': 'despem'
+      }
     },
     {
       english: 'to correct',
       infinitive: 'despir',
-      Eu: 'corrijo',
-      Tu: 'corriges',
-      'Ela/Ele/Você': 'corrige',
-      Nós: 'corrigimos',
-      'Eles/Elas/Vocēs': 'corrigem'
+      presentSimple: {
+        Eu: 'corrijo',
+        Tu: 'corriges',
+        'Ela/Ele/Você': 'corrige',
+        Nós: 'corrigimos',
+        'Eles/Elas/Vocēs': 'corrigem'
+      }
     },
     {
       english: 'to decide',
       infinitive: 'decidir',
-      Eu: 'decido',
-      Tu: 'decides',
-      'Ela/Ele/Você': 'decide',
-      Nós: 'decidimos',
-      'Eles/Elas/Vocēs': 'decidem'
+      presentSimple: {
+        Eu: 'decido',
+        Tu: 'decides',
+        'Ela/Ele/Você': 'decide',
+        Nós: 'decidimos',
+        'Eles/Elas/Vocēs': 'decidem'
+      }
     },
     {
       english: 'to get',
       infinitive: 'conseguir',
-      Eu: 'consigo',
-      Tu: 'consegues',
-      'Ela/Ele/Você': 'consegue',
-      Nós: 'conseguimos',
-      'Eles/Elas/Vocēs': 'conseguem'
+      presentSimple: {
+        Eu: 'consigo',
+        Tu: 'consegues',
+        'Ela/Ele/Você': 'consegue',
+        Nós: 'conseguimos',
+        'Eles/Elas/Vocēs': 'conseguem'
+      }
     },
     {
       english: 'to serve',
-      infinitive: 'sirvo',
-      Eu: 'consigo',
-      Tu: 'serves',
-      'Ela/Ele/Você': 'serve',
-      Nós: 'servimos',
-      'Eles/Elas/Vocēs': 'servem'
+      infinitive: 'sirver',
+      presentSimple: {
+        Eu: 'sirvo',
+        Tu: 'serves',
+        'Ela/Ele/Você': 'serve',
+        Nós: 'servimos',
+        'Eles/Elas/Vocēs': 'servem'
+      }
     },
     {
       english: 'to feel',
       infinitive: 'sentir',
-      Eu: 'sinto',
-      Tu: 'sentes',
-      'Ela/Ele/Você': 'sente',
-      Nós: 'sentimos',
-      'Eles/Elas/Vocēs': 'sentem'
+      presentSimple: {
+        Eu: 'sinto',
+        Tu: 'sentes',
+        'Ela/Ele/Você': 'sente',
+        Nós: 'sentimos',
+        'Eles/Elas/Vocēs': 'sentem'
+      }
     },
     {
       english: 'to translate',
       infinitive: 'traduzir',
-      Eu: 'traduzo',
-      Tu: 'traduzes',
-      'Ela/Ele/Você': 'traduz',
-      Nós: 'traduzimos',
-      'Eles/Elas/Vocēs': 'traduzem'
-    },
-    {
-      english: 'to translate',
-      infinitive: 'traduzir',
-      Eu: 'traduzo',
-      Tu: 'traduzes',
-      'Ela/Ele/Você': 'traduz',
-      Nós: 'traduzimos',
-      'Eles/Elas/Vocēs': 'traduzem'
+      presentSimple: {
+        Eu: 'traduzo',
+        Tu: 'traduzes',
+        'Ela/Ele/Você': 'traduz',
+        Nós: 'traduzimos',
+        'Eles/Elas/Vocēs': 'traduzem'
+      }
     },
     {
       english: 'to leave',
       infinitive: 'partir',
-      Eu: 'parto',
-      Tu: 'partes',
-      'Ela/Ele/Você': 'parte',
-      Nós: 'partimos',
-      'Eles/Elas/Vocēs': 'partem'
+      presentSimple: {
+        Eu: 'parto',
+        Tu: 'partes',
+        'Ela/Ele/Você': 'parte',
+        Nós: 'partimos',
+        'Eles/Elas/Vocēs': 'partem'
+      }
     },
     {
       english: 'to prefer',
       infinitive: 'preferir',
-      Eu: 'prefiro',
-      Tu: 'preferes',
-      'Ela/Ele/Você': 'prefere',
-      Nós: 'preferimos',
-      'Eles/Elas/Vocēs': 'preferem'
-    },
-    {
-      english: 'to drive',
-      infinitive: 'dirigir',
-      Eu: 'dirijo',
-      Tu: 'diriges',
-      'Ela/Ele/Você': 'dirige',
-      Nós: 'dirigimos',
-      'Eles/Elas/Vocēs': 'dirigem'
+      presentSimple: {
+        Eu: 'prefiro',
+        Tu: 'preferes',
+        'Ela/Ele/Você': 'prefere',
+        Nós: 'preferimos',
+        'Eles/Elas/Vocēs': 'preferem'
+      }
     },
     {
       english: 'to discuss',
       infinitive: 'discutir',
-      Eu: 'discuto',
-      Tu: 'discutes',
-      'Ela/Ele/Você': 'discute',
-      Nós: 'discutimos',
-      'Eles/Elas/Vocēs': 'discutem'
+      presentSimple: {
+        Eu: 'discuto',
+        Tu: 'discutes',
+        'Ela/Ele/Você': 'discute',
+        Nós: 'discutimos',
+        'Eles/Elas/Vocēs': 'discutem'
+      }
     },
     {
       english: 'to conduct',
       infinitive: 'conduzir',
-      Eu: 'conduzo',
-      Tu: 'conduzes',
-      'Ela/Ele/Você': 'conduz',
-      Nós: 'conduzimos',
-      'Eles/Elas/Vocēs': 'conduzem'
+      presentSimple: {
+        Eu: 'conduzo',
+        Tu: 'conduzes',
+        'Ela/Ele/Você': 'conduz',
+        Nós: 'conduzimos',
+        'Eles/Elas/Vocēs': 'conduzem'
+      }
     },
     {
       english: 'to allow',
       infinitive: 'permitir',
-      Eu: 'permito',
-      Tu: 'permites',
-      'Ela/Ele/Você': 'permite',
-      Nós: 'permitimos',
-      'Eles/Elas/Vocēs': 'permitem'
+      presentSimple: {
+        Eu: 'permito',
+        Tu: 'permites',
+        'Ela/Ele/Você': 'permite',
+        Nós: 'permitimos',
+        'Eles/Elas/Vocēs': 'permitem'
+      }
     },
     {
       english: 'to allow',
       infinitive: 'permitir',
-      Eu: 'permito',
-      Tu: 'permites',
-      'Ela/Ele/Você': 'permite',
-      Nós: 'permitimos',
-      'Eles/Elas/Vocēs': 'permitem'
+      presentSimple: {
+        Eu: 'permito',
+        Tu: 'permites',
+        'Ela/Ele/Você': 'permite',
+        Nós: 'permitimos',
+        'Eles/Elas/Vocēs': 'permitem'
+      }
     },
     {
       english: 'to organise',
       infinitive: 'organizar',
-      Eu: 'organizo',
-      Tu: 'organizas',
-      'Ela/Ele/Você': 'organiza',
-      Nós: 'organizamos',
-      'Eles/Elas/Vocēs': 'organizam'
+      presentSimple: {
+        Eu: 'organizo',
+        Tu: 'organizas',
+        'Ela/Ele/Você': 'organiza',
+        Nós: 'organizamos',
+        'Eles/Elas/Vocēs': 'organizam'
+      }
     },
     {
       english: 'to clean',
       infinitive: 'limpar',
-      Eu: 'limpo',
-      Tu: 'limpas',
-      'Ela/Ele/Você': 'limpa',
-      Nós: 'limpamos',
-      'Eles/Elas/Vocēs': 'limpam'
+      presentSimple: {
+        Eu: 'limpo',
+        Tu: 'limpas',
+        'Ela/Ele/Você': 'limpa',
+        Nós: 'limpamos',
+        'Eles/Elas/Vocēs': 'limpam'
+      }
     }
   ],
   nouns: [

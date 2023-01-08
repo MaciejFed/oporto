@@ -1,5 +1,6 @@
 import { readAll, Verb } from '../repository/exercisesRepository';
 import { getRandomElement } from '../common/common';
+import { VerbTime } from '../exercise/verbExercise';
 
 export enum Person {
   Eu = 'Eu',
@@ -13,22 +14,10 @@ export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
 };
 
-export const getCorrectVerbConjugation: (verb: Verb, person: Person) => string = (verb, person) => {
+export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: VerbTime): string => {
   const VerbExercise = readAll().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
-  switch (person) {
-    case 'Eu':
-      return VerbExercise.Eu;
-    case 'Tu':
-      return VerbExercise.Tu;
-    case 'Ela/Ele/Você':
-      return VerbExercise['Ela/Ele/Você'];
-    case 'Nós':
-      return VerbExercise.Nós;
-    case 'Eles/Elas/Vocēs':
-      return VerbExercise['Eles/Elas/Vocēs'];
-    default:
-      return VerbExercise[person];
-  }
+  // @ts-ignore
+  return VerbExercise[verbTime][person];
 };
 
 export const getRandomPerson: () => Person = () => {
