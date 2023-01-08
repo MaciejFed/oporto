@@ -1,4 +1,44 @@
 import { DateTime } from 'luxon';
+import { Zone } from 'luxon/src/zone';
+import { DurationLike } from 'luxon/src/duration';
+
+export class DateTimeExtended {
+  private date: DateTime;
+
+  private constructor(date: Date) {
+    this.date = DateTime.fromJSDate(date);
+  }
+
+  public plus(duration: DurationLike) {
+    this.date = this.date.plus(duration);
+    return this;
+  }
+
+  public toJSDate(): Date {
+    return this.date.toJSDate();
+  }
+
+  get ordinal(): number {
+    return this.date.year * 365 + this.date.ordinal;
+  }
+
+  get weekday(): number {
+    return this.date.weekday;
+  }
+
+  get weekNumber(): number {
+    this.date.toJSDate();
+    return this.date.weekNumber;
+  }
+
+  static fromJSDate(date: Date, options?: { zone?: string | Zone }): DateTimeExtended {
+    return new DateTimeExtended(date);
+  }
+
+  static now(): DateTimeExtended {
+    return new DateTimeExtended(new Date());
+  }
+}
 
 export interface Comparable {
   equal(other: Comparable): boolean;

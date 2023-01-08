@@ -1,4 +1,4 @@
-import { Exercise, generateUniqeExercises, translationTypes } from '../exercise/exercise';
+import { Exercise, generateUniqueExercises, translationTypes } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translationExercise';
 import { readAll } from '../repository/exercisesRepository';
 import {
@@ -8,6 +8,7 @@ import {
 } from '../repository/resultRepository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { Result } from './result';
+import { boolean } from 'yargs';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -25,9 +26,23 @@ export type Progress = {
   count: number;
 };
 
-function getExercisesProgress(results: Result[]) {
-  const exerciseProgress: ExerciseProgress[] = generateUniqeExercises(50000, false, () => true)
-    .filter((exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese())
+export function getSingleExerciseProgress(results: Result[], exercise: Exercise) {
+  const exerciseResults = getAllResultsForExercise(results, exercise);
+  const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
+  const incorrectAnswers = exerciseResults.length - correctAnswers;
+  const ratio = (correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
+  return {
+    exercise,
+    correctAnswers,
+    incorrectAnswers,
+    ratio,
+    ratioRange: mapToRatioRange(ratio, exerciseResults.length === 0)
+  };
+}
+
+export function getExercisesProgress(results: Result[], filter: (e: Exercise) => boolean) {
+  const exerciseProgress: ExerciseProgress[] = generateUniqueExercises(50000, false, () => true)
+    .filter(filter)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
       const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
@@ -47,7 +62,10 @@ function getExercisesProgress(results: Result[]) {
 }
 
 export function getProgress(results: Result[]): Progress[] {
-  const exerciseProgress = getExercisesProgress(results);
+  const exerciseProgress = getExercisesProgress(
+    results,
+    (exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese()
+  );
 
   const progress = ratioRanges.map((ratioRange) =>
     Object.assign({
@@ -106,7 +124,10 @@ type ProgressOnDay = {
 export function progressByDate(): ProgressOnDay[] {
   const uniqueByDay = getAllResultsByDate()
     .map((dateResult) => {
-      const exerciseProgress = getExercisesProgress(dateResult.results);
+      const exerciseProgress = getExercisesProgress(
+        dateResult.results,
+        (exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese()
+      );
       return {
         ...dateResult,
         words: [

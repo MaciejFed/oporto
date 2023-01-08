@@ -1,6 +1,6 @@
 import clear from 'clear';
 import { logger } from '../common/logger';
-import { generateUniqeExercises } from '../exercise/exercise';
+import { generateUniqueExercises } from '../exercise/exercise';
 import { displayGenericWeeklyStatistics } from '../io/terminalUtils';
 import { getAllResults } from '../repository/resultRepository';
 import { getAllUniqueWords, progressByDate } from '../service/progress';
@@ -16,7 +16,7 @@ export function displayStatistics(displayProgress: boolean) {
     logger.info(`Overall Progress: ${getOverallProgres()}`);
 
     const allResults = getAllResults();
-    const allExercises = generateUniqeExercises(20000, false, () => true);
+    const allExercises = generateUniqueExercises(20000, false, () => true);
     const notDoneExercises = allExercises.filter(
       (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
     );

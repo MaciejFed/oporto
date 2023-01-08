@@ -1,5 +1,4 @@
-import { DateTime } from 'luxon';
-import { isBeforeWeekday, isOnWeekDay, onlyDistinct } from '../common/common';
+import { DateTimeExtended, isBeforeWeekday, isOnWeekDay, onlyDistinct } from '../common/common';
 import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
 import { VerbExercise } from '../exercise/verbExercise';
@@ -89,12 +88,14 @@ export function getStatisticForExercise(allResults: Result[], exercise: Exercise
 export function getWeeklyStatistics(): WeeklyStatistics[] {
   const weeksBack = 10;
   const allResults = getAllResults();
-  const currentWekkNumber = DateTime.fromJSDate(new Date()).weekNumber;
+  const currentWekkNumber = DateTimeExtended.fromJSDate(new Date()).weekNumber;
 
   return [...Array(weeksBack).keys()]
     .map((i) => i + 1 + currentWekkNumber - weeksBack)
     .map((weekNumber) => {
-      const resultInWeek = allResults.filter((result) => DateTime.fromJSDate(result.date).weekNumber === weekNumber);
+      const resultInWeek = allResults.filter(
+        (result) => DateTimeExtended.fromJSDate(result.date).weekNumber === weekNumber
+      );
       const correctAttempts = resultInWeek.filter((result) => result.wasCorrect).length;
       const failedAttempts = resultInWeek.length - correctAttempts;
       const distinctExercises = onlyDistinct(resultInWeek.map((result) => result.exercise)).length;
@@ -109,7 +110,7 @@ export function getWeeklyStatistics(): WeeklyStatistics[] {
 }
 
 export function getWeekdayStatistics(): WeekdayStatistics[] {
-  const currentWeekday = DateTime.fromJSDate(new Date()).weekday;
+  const currentWeekday = DateTimeExtended.fromJSDate(new Date()).weekday;
   const allResults = getAllResults();
 
   return [...Array(currentWeekday).keys()]
@@ -145,7 +146,7 @@ export function getWeekdayStatistics(): WeekdayStatistics[] {
 }
 
 export function getWeekdayProgress(): WeekdayStatistics[] {
-  const currentWeekday = DateTime.fromJSDate(new Date()).weekday;
+  const currentWeekday = DateTimeExtended.fromJSDate(new Date()).weekday;
   const allResults = getAllResults();
 
   return [...Array(currentWeekday).keys()]
@@ -192,8 +193,8 @@ export function getExerciseProgress(allResults: Result[], exercise: Exercise): W
   if (resultForExercise.length < 3) return [];
   type timeLineType = 'daily' | 'weekly';
   if (
-    DateTime.fromJSDate(resultForExercise[resultForExercise.length - 1].date).ordinal -
-      DateTime.fromJSDate(resultForExercise[0].date).ordinal <=
+    DateTimeExtended.fromJSDate(resultForExercise[resultForExercise.length - 1].date).ordinal -
+      DateTimeExtended.fromJSDate(resultForExercise[0].date).ordinal <=
     7
   ) {
     return getExerciseProgressDaily(resultForExercise, 1);
@@ -203,15 +204,15 @@ export function getExerciseProgress(allResults: Result[], exercise: Exercise): W
 }
 
 function getExerciseProgressDaily(resultForExercise: Result[], devider: number): WeekdayStatistics[] {
-  const startingDay = Math.ceil(DateTime.fromJSDate(resultForExercise[0].date).ordinal / devider);
+  const startingDay = Math.ceil(DateTimeExtended.fromJSDate(resultForExercise[0].date).ordinal / devider);
   const daysApart =
-    Math.ceil(DateTime.fromJSDate(resultForExercise[resultForExercise.length - 1].date).ordinal / devider) -
+    Math.ceil(DateTimeExtended.fromJSDate(resultForExercise[resultForExercise.length - 1].date).ordinal / devider) -
     startingDay;
   return [...Array(daysApart).keys()]
     .map((day) => day + 1)
     .map((day) => {
       const resultOnDay = resultForExercise.filter(
-        (result) => Math.ceil(DateTime.fromJSDate(result.date).ordinal / devider) - startingDay <= day
+        (result) => Math.ceil(DateTimeExtended.fromJSDate(result.date).ordinal / devider) - startingDay <= day
       );
       const all: StatisticPoint = {
         keyName: 'All',

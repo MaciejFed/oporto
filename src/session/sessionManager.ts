@@ -11,13 +11,13 @@ import {
 } from '../event/events';
 import { AppEventListener } from '../event/eventListener';
 import { EventProcessor } from '../event/eventProcessor';
-import { Exercise, generateUniqeExercises } from '../exercise/exercise';
 import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
 import { saveNewResult } from '../repository/resultRepository';
 import { AnswerInputType } from '../io/input';
 import { TranslationExercise } from '../exercise/translation/translationExercise';
 import { exec } from 'child_process';
+import { Exercise, generateUniqueExercises } from '../exercise/exercise';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -36,7 +36,7 @@ export class SessionManager implements AppEventListener {
   ) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = generateUniqeExercises(exerciseCount, sortExercises, exerciseFilter);
+    this.exercises = generateUniqueExercises(exerciseCount, sortExercises, exerciseFilter);
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';

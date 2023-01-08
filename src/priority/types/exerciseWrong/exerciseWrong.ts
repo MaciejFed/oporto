@@ -1,8 +1,11 @@
 import { Exercise } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { getAllResultsForExercise } from '../../../repository/resultRepository';
-import { Priority, VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority';
-import { VALUE_EXERCISE_CORRECT } from '../exerciseCorrect/exerciseCorrect';
+import { Priority } from '../../priority';
+
+export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
+
+export const VALUE_EXERCISE_CORRECT = -10;
 
 export const VALUE_EXERCISE_WRONG = -1 * VALUE_WRONG_TO_CORRECT_RATIO * VALUE_EXERCISE_CORRECT;
 

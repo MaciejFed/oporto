@@ -78,7 +78,7 @@ describe('Exercises IT Snapshot', () => {
       return {
         __esModule: true,
         modelActual,
-        generateUniqeExercises: () => [nounTranslationExerciseToEnglish, nounTranslationExerciseToPortuguese]
+        generateUniqueExercises: () => [nounTranslationExerciseToEnglish, nounTranslationExerciseToPortuguese]
       };
     });
     const appModules = requireAllModules();
@@ -122,7 +122,7 @@ describe('Exercises IT Snapshot', () => {
       return {
         __esModule: true,
         modelActual,
-        generateUniqeExercises: () => [sentenceTranslationExerciseToEnglish, sentenceTranslationExerciseToPortuguese]
+        generateUniqueExercises: () => [sentenceTranslationExerciseToEnglish, sentenceTranslationExerciseToPortuguese]
       };
     });
     const appModules = requireAllModules();
@@ -162,7 +162,7 @@ describe('Exercises IT Snapshot', () => {
       return {
         __esModule: true,
         modelActual,
-        generateUniqeExercises: () => [fitInGapExercise]
+        generateUniqueExercises: () => [fitInGapExercise]
       };
     });
     const appModules = requireAllModules();
@@ -200,7 +200,7 @@ describe('Exercises IT Snapshot', () => {
       return {
         __esModule: true,
         modelActual,
-        generateUniqeExercises: () => [verbExercise, verbExercise2]
+        generateUniqueExercises: () => [verbExercise, verbExercise2]
       };
     });
     const appModules = requireAllModules();

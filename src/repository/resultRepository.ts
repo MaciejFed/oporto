@@ -6,12 +6,12 @@ import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { readFromFile, saveToFile } from '../io/file';
 import assert from 'assert';
-import { DateTime } from 'luxon';
 import { NounTranslationExercise } from '../exercise/translation/nounTranslationExercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjectiveTranslationExercise';
 import { VerbTranslationExercise } from '../exercise/translation/verbTranslationExercise';
 import { SentenceTranslationExercise } from '../exercise/translation/sentenceTranslationExercise';
 import { TranslationExercise } from '../exercise/translation/translationExercise';
+import { DateTimeExtended } from '../common/common';
 
 export function getAllResults(): Result[] {
   const results = readFromFile();
@@ -83,28 +83,30 @@ export function getAllResults(): Result[] {
 }
 
 export type DateResults = {
-  date: DateTime;
+  date: DateTimeExtended;
   results: Result[];
 };
 
-export function getAllResultsBeforeDateOneWeek(date: DateTime) {
+export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
   return getAllResults().filter((result) => {
     const upDateLimit = date.ordinal;
     const downDateLimit = date.plus({ week: -1 }).ordinal;
 
     return (
-      DateTime.fromJSDate(result.date).ordinal >= downDateLimit &&
-      DateTime.fromJSDate(result.date).ordinal <= upDateLimit
+      DateTimeExtended.fromJSDate(result.date).ordinal >= downDateLimit &&
+      DateTimeExtended.fromJSDate(result.date).ordinal <= upDateLimit
     );
   });
 }
 
 export function getAllResultsByDate(): DateResults[] {
-  let resultDate = DateTime.fromJSDate(getAllResults()[0].date);
+  let resultDate = DateTimeExtended.fromJSDate(getAllResults()[0].date);
   const resultsByDate: DateResults[] = [];
-  while (resultDate.plus({ week: -1 }).ordinal <= DateTime.now().ordinal) {
-    // eslint-disable-next-line no-loop-func
-    const results = getAllResults().filter((result) => DateTime.fromJSDate(result.date).ordinal <= resultDate.ordinal);
+  while (resultDate.plus({ week: -1 }).ordinal <= DateTimeExtended.now().ordinal) {
+    const results = getAllResults().filter(
+      // eslint-disable-next-line no-loop-func
+      (result) => DateTimeExtended.fromJSDate(result.date).ordinal <= resultDate.ordinal
+    );
     resultsByDate.push({
       date: resultDate,
       results

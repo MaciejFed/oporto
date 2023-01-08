@@ -1,11 +1,11 @@
 import { onlyDistinct } from '../../src/common/common';
-import { generateUniqeExercises } from '../../src/exercise/exercise';
+import { generateUniqueExercises } from '../../src/exercise/exercise';
 
 
 describe('Exercise Provider', () => {
 
     it('Generate Distinct Exercises', async () => {
-        const maybeUniqueExercises = generateUniqeExercises(10, true, () => true);
+        const maybeUniqueExercises = generateUniqueExercises(10, true, () => true);
         const uniqueExercises = onlyDistinct(maybeUniqueExercises);
 
         expect(uniqueExercises.length).toEqual(10);

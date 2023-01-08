@@ -1,5 +1,6 @@
 import { Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
+import { RatioRange } from '../../service/progress';
 
 export type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
 
@@ -19,12 +20,25 @@ export abstract class TranslationExercise implements Exercise {
 
   public abstract isTranslationSubjectEqual(translationSubject: Exercise): boolean;
 
-  isTranslationToPortuguese(): boolean {
+  public isTranslationToPortuguese(): boolean {
     return this.translationType === 'toPortuguese' || this.translationType === 'toPortugueseFromHearing';
   }
 
-  isTranslationToPortugueseFromHearing(): boolean {
+  public isTranslationToPortugueseFromHearing(): boolean {
     return this.translationType === 'toPortugueseFromHearing';
+  }
+
+  public getMaxWantedProgress(): RatioRange | '100+' {
+    if (this.translationType === 'toEnglish') {
+      return '80-100';
+    }
+    return '100+';
+  }
+
+  getMinimumAnswers(): number {
+    if (this.translationType === 'toEnglish') return 2;
+    else if (this.translationType === 'toPortugueseFromHearing') return 3;
+    return 5;
   }
 
   abstract exerciseType: ExerciseType;
