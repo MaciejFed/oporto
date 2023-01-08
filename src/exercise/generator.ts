@@ -12,9 +12,19 @@ import { FitInGapExercise } from './fitInGapExercise';
 type ExerciseGenerator = () => Exercise[];
 
 const VerbExerciseGenerator: ExerciseGenerator = () => {
-  return readAll().verbs.flatMap((verb) =>
-    Object.keys(Person).flatMap((person) => VerbExercise.new(verb, Person[person as keyof typeof Person]))
+  const presentSimpleVerbs = readAll().verbs.flatMap((verb) =>
+    Object.keys(Person).flatMap((person) =>
+      VerbExercise.new(verb, Person[person as keyof typeof Person], 'presentSimple')
+    )
   );
+  const pastPerfectVerbs = readAll()
+    .verbs.filter((verb) => verb.pastPerfect)
+    .flatMap((verb) =>
+      Object.keys(Person).flatMap((person) =>
+        VerbExercise.new(verb, Person[person as keyof typeof Person], 'pastPerfect')
+      )
+    );
+  return pastPerfectVerbs.concat(presentSimpleVerbs);
 };
 
 const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toPortuguese', 'toEnglish'];

@@ -120,7 +120,7 @@ describe('Event Emitter', () => {
     );
 
     expect(output[0]).toEqual('Infinitive: to be - long');
-    expect(output[4]).toEqual('Eu: sou');
+    expect(output[4]).toEqual('[Present Simple] Eu: sou');
     expect(output[5]).toEqual('Correct! [keyboard]');
     expect(resultCount.greenCount).toBe('sou'.length);
     expect(resultCount.redCount).toBe(0);
@@ -150,7 +150,7 @@ describe('Event Emitter', () => {
       );
 
     expect(output[0]).toEqual('Infinitive: to be - long');
-    expect(output[14]).toEqual('Eu: sowronganswer');
+    expect(output[14]).toEqual('[Present Simple] Eu: sowronganswer');
     expect(output[15]).toEqual('Wrong! [keyboard]');
     expect(resultCount.greenCount).toBe('so'.length);
     expect(resultCount.redCount).toBe('sou'.length - 'so'.length);
@@ -182,8 +182,8 @@ describe('Event Emitter', () => {
       );
 
     expect(output[0]).toEqual('Infinitive: to be - long');
-    expect(output[6]).toEqual('Eu: sourr');
-    expect(output[8]).toEqual('Eu: sou');
+    expect(output[6]).toEqual('[Present Simple] Eu: sourr');
+    expect(output[8]).toEqual('[Present Simple] Eu: sou');
     expect(output[9]).toEqual('Correct! [keyboard]');
     expect(resultCount.greenCount).toBe('sou'.length);
     expect(resultCount.redCount).toBe(0);
