@@ -7,7 +7,7 @@
     "oporto": "./build/src/cli.js"
   },
   "scripts": {
-    "test": "jest test --detectOpenHandles --forceExit --coverage",
+    "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
     "verify": "npm run lint && npm run format && npm run test",

@@ -3,7 +3,7 @@ import clear from 'clear';
 import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from '../service/priority';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { ExerciseStatistics, WeekdayStatistics } from '../service/result';
 import { AnswerInputType } from './input';
 // eslint-disable-next-line @typescript-eslint/no-var-requires

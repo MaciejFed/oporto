@@ -62,6 +62,10 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
   getRepeatAnswerPhrase = () =>
     this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.adjective[this.gender][this.number];
 
+  getMinimumAnswers(): number {
+    return 2;
+  }
+
   equal = (other: AdjectiveTranslationExercise) =>
     other.exerciseType === 'AdjectiveTranslation' &&
     this.adjective.masculine.singular === other.adjective.masculine.singular &&

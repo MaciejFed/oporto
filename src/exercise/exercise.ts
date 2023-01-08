@@ -1,6 +1,7 @@
-import { Comparable, getRandomElement, onlyDistinct } from '../common/common';
-import { sortExercises } from '../service/priority';
+import { Comparable, onlyDistinct } from '../common/common';
+import { sortExercises } from '../priority/priority';
 import { generateAllPossibleExercises } from './generator';
+import { RatioRange } from '../service/progress';
 export type ExerciseType =
   | 'VerbExercise'
   | 'NounTranslation'
@@ -25,9 +26,11 @@ export interface Exercise extends Comparable {
   getCorrectAnswer(): string;
   checkAnswerCorrect(answer: string): boolean;
   getRepeatAnswerPhrase(): string;
+  getMaxWantedProgress(): RatioRange | '100+';
+  getMinimumAnswers(): number;
 }
 
-export function generateUniqeExercises(
+export function generateUniqueExercises(
   exerciseCount: number,
   sort: boolean,
   filter: (ex: Exercise) => boolean

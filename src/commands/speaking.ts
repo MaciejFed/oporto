@@ -5,8 +5,8 @@ import { SessionManager } from '../session/sessionManager';
 import { Terminal } from '../io/terminal';
 import { getAllResults } from '../repository/resultRepository';
 import { Exercise, translationTypes } from '../exercise/exercise';
-import { exerciseTranslationNeverDoneByVoice } from '../service/priority';
 import { TranslationExercise } from '../exercise/translation/translationExercise';
+import { exerciseTranslationNeverDoneByVoice } from '../priority/types/exerciseTranslationNeverDoneByVoice/exerciseTranslationNeverDoneByVoice';
 
 function hearingFilter() {
   const allResults = getAllResults();

@@ -54,7 +54,7 @@ jest.mock('../../src/exercise/exercise', () => {
   return {
     __esModule: true,
     modeuleActual,
-    generateUniqeExercises: () => [new VerbExercise()]
+    generateUniqueExercises: () => [new VerbExercise()]
   };
 });
 

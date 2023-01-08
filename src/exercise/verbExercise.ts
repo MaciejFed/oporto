@@ -2,6 +2,7 @@ import { Comparable } from '../common/common';
 import { Verb } from '../repository/exercisesRepository';
 import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb, Person } from '../service/verb';
 import { Exercise, ExerciseType } from './exercise';
+import { RatioRange } from '../service/progress';
 
 export class VerbExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
@@ -35,6 +36,14 @@ export class VerbExercise implements Exercise, Comparable {
   checkAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
+  }
+
+  getMaxWantedProgress(): RatioRange | '100+' {
+    return '80-100';
+  }
+
+  getMinimumAnswers(): number {
+    return 2;
   }
 
   getRepeatAnswerPhrase = () => `${this.person} ${this.getCorrectAnswer()}`;
