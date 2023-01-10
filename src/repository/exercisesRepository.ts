@@ -2867,7 +2867,18 @@ export const db: Schema = {
       english: 'December',
       portuguese: 'Dezembro'
     },
-
+    {
+      english: 'around',
+      portuguese: 'à volta de'
+    },
+    {
+      english: 'near',
+      portuguese: 'perto'
+    },
+    {
+      english: 'far',
+      portuguese: 'longe'
+    },
   ],
   adjectives: [
     {
