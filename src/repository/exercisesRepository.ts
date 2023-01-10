@@ -42,9 +42,15 @@ export type Sentence = {
   sentenceType: SentenceType;
 };
 
+export type Other = {
+  english: string;
+  portuguese: string;
+}
+
 export type Schema = {
   verbs: Verb[];
   nouns: Noun[];
+  others: Other[];
   adjectives: Adjective[];
   sentences: Sentence[];
   fitIn: FitIn[];
@@ -75,7 +81,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'foi',
         Nós: 'fomos',
         'Eles/Elas/Vocēs': 'foram'
-      },
+      }
     },
     {
       english: 'to be - moment',
@@ -93,7 +99,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'esteve',
         Nós: 'estivemos',
         'Eles/Elas/Vocēs': 'estiveram'
-      },
+      }
     },
     {
       english: 'to go',
@@ -111,7 +117,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'foi',
         Nós: 'fomos',
         'Eles/Elas/Vocēs': 'foram'
-      },
+      }
     },
     {
       english: 'to have',
@@ -129,7 +135,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'teve',
         Nós: 'tivemos',
         'Eles/Elas/Vocēs': 'tiveram'
-      },
+      }
     },
     {
       english: 'to want',
@@ -147,7 +153,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'quis',
         Nós: 'quisemos',
         'Eles/Elas/Vocēs': 'quiseram'
-      },
+      }
     },
     {
       english: 'to see',
@@ -165,7 +171,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'viu',
         Nós: 'vimos',
         'Eles/Elas/Vocēs': 'viram'
-      },
+      }
     },
     {
       english: 'to do/make',
@@ -183,7 +189,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'fez',
         Nós: 'fizemos',
         'Eles/Elas/Vocēs': 'fizeram'
-      },
+      }
     },
     {
       english: 'to know',
@@ -201,7 +207,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'soube',
         Nós: 'soubemos',
         'Eles/Elas/Vocēs': 'souberam'
-      },
+      }
     },
     {
       english: 'to read',
@@ -219,7 +225,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'leu',
         Nós: 'lemos',
         'Eles/Elas/Vocēs': 'leram'
-      },
+      }
     },
     {
       english: 'to say',
@@ -237,7 +243,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'disse',
         Nós: 'dissemos',
         'Eles/Elas/Vocēs': 'disseram'
-      },
+      }
     },
     {
       english: 'can',
@@ -255,7 +261,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'pôde',
         Nós: 'pudemos',
         'Eles/Elas/Vocēs': 'puderam'
-      },
+      }
     },
     {
       english: 'to speak',
@@ -291,7 +297,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'comeu',
         Nós: 'comemos',
         'Eles/Elas/Vocēs': 'comeram'
-      },
+      }
     },
     {
       english: 'to open',
@@ -309,7 +315,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'abriu',
         Nós: 'abrimos',
         'Eles/Elas/Vocēs': 'abriram'
-      },
+      }
     },
     {
       english: 'to think',
@@ -327,7 +333,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'achou',
         Nós: 'achámos',
         'Eles/Elas/Vocēs': 'acharam'
-      },
+      }
     },
     {
       english: 'to walk',
@@ -345,7 +351,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'andaste',
         Nós: 'andámos',
         'Eles/Elas/Vocēs': 'andaram'
-      },
+      }
     },
     {
       english: 'to drink',
@@ -363,7 +369,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'bebeu',
         Nós: 'bebemos',
         'Eles/Elas/Vocēs': 'beberam'
-      },
+      }
     },
     {
       english: 'to enter',
@@ -381,7 +387,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'entrou',
         Nós: 'entrámos',
         'Eles/Elas/Vocēs': 'entraram'
-      },
+      }
     },
     {
       english: 'to reside',
@@ -399,7 +405,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'morou',
         Nós: 'morámos',
         'Eles/Elas/Vocēs': 'moraram'
-      },
+      }
     },
     {
       english: 'to look',
@@ -435,7 +441,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'chamou-se',
         Nós: 'chamámo-nos',
         'Eles/Elas/Vocēs': 'chamaram-se'
-      },
+      }
     },
     {
       english: 'to work',
@@ -453,7 +459,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'trabalhou',
         Nós: 'trabalhámos',
         'Eles/Elas/Vocēs': 'trabalharam'
-      },
+      }
     },
     {
       english: 'to greet',
@@ -471,7 +477,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'cumprimentou',
         Nós: 'cumprimentámos',
         'Eles/Elas/Vocēs': 'cumprimentaram'
-      },
+      }
     },
     {
       english: 'to introduce yourself',
@@ -489,7 +495,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'apresentou-se',
         Nós: 'apresentámo-nos',
         'Eles/Elas/Vocēs': 'apresentaram-se'
-      },
+      }
     },
     {
       english: 'to find',
@@ -995,6 +1001,150 @@ export const db: Schema = {
         'Ela/Ele/Você': 'limpa',
         Nós: 'limpamos',
         'Eles/Elas/Vocēs': 'limpam'
+      }
+    },
+    {
+      english: 'to put',
+      infinitive: 'pôr',
+      presentSimple: {
+        Eu: 'ponho',
+        Tu: 'pões',
+        'Ela/Ele/Você': 'põe',
+        Nós: 'pomos',
+        'Eles/Elas/Vocēs': 'põem'
+      },
+      pastPerfect: {
+        Eu: 'pus',
+        Tu: 'puseste',
+        'Ela/Ele/Você': 'pôs',
+        Nós: 'pusemos',
+        'Eles/Elas/Vocēs': 'puseram'
+      }
+    },
+    {
+      english: 'to take care',
+      infinitive: 'cuidar',
+      presentSimple: {
+        Eu: 'cuido',
+        Tu: 'cuidas',
+        'Ela/Ele/Você': 'cuida',
+        Nós: 'cuidamos',
+        'Eles/Elas/Vocēs': 'cuidam'
+      },
+      pastPerfect: {
+        Eu: 'cuidei',
+        Tu: 'cuidaste',
+        'Ela/Ele/Você': 'cuidou',
+        Nós: 'cuidastes',
+        'Eles/Elas/Vocēs': 'cuidaram'
+      }
+    },
+    {
+      english: 'to send',
+      infinitive: 'mandar',
+      presentSimple: {
+        Eu: 'mando',
+        Tu: 'mandas',
+        'Ela/Ele/Você': 'manda',
+        Nós: 'mandamos',
+        'Eles/Elas/Vocēs': 'mandam'
+      },
+      pastPerfect: {
+        Eu: 'mandei',
+        Tu: 'mandaste',
+        'Ela/Ele/Você': 'mandou',
+        Nós: 'mandámos',
+        'Eles/Elas/Vocēs': 'mandaram'
+      }
+    },
+    {
+      english: 'to fill',
+      infinitive: 'encher',
+      presentSimple: {
+        Eu: 'encho',
+        Tu: 'enches',
+        'Ela/Ele/Você': 'enche',
+        Nós: 'enchemos',
+        'Eles/Elas/Vocēs': 'enchem'
+      },
+      pastPerfect: {
+        Eu: 'enchi',
+        Tu: 'encheste',
+        'Ela/Ele/Você': 'encheu',
+        Nós: 'enchestes',
+        'Eles/Elas/Vocēs': 'encheram'
+      }
+    },
+    {
+      english: 'to hold',
+      infinitive: 'pegar',
+      presentSimple: {
+        Eu: 'pego',
+        Tu: 'pegas',
+        'Ela/Ele/Você': 'pega',
+        Nós: 'pegamos',
+        'Eles/Elas/Vocēs': 'pegam'
+      },
+      pastPerfect: {
+        Eu: 'peguei',
+        Tu: 'pegaste',
+        'Ela/Ele/Você': 'pegou',
+        Nós: 'pegámos',
+        'Eles/Elas/Vocēs': 'pegaram'
+      }
+    },
+    {
+      english: 'to play instrument',
+      infinitive: 'tocar',
+      presentSimple: {
+        Eu: 'toco',
+        Tu: 'tocas',
+        'Ela/Ele/Você': 'toca',
+        Nós: 'tocamos',
+        'Eles/Elas/Vocēs': 'tocam'
+      },
+      pastPerfect: {
+        Eu: 'toquei',
+        Tu: 'tocaste',
+        'Ela/Ele/Você': 'tocou',
+        Nós: 'tocámos',
+        'Eles/Elas/Vocēs': 'tocaram'
+      }
+    },
+    {
+      english: 'to help',
+      infinitive: 'ajudar',
+      presentSimple: {
+        Eu: 'ajudo',
+        Tu: 'ajudas',
+        'Ela/Ele/Você': 'ajuda',
+        Nós: 'ajudamos',
+        'Eles/Elas/Vocēs': 'ajudam'
+      },
+      pastPerfect: {
+        Eu: 'ajudei',
+        Tu: 'ajudaste',
+        'Ela/Ele/Você': 'ajudou',
+        Nós: 'ajudámos',
+        'Eles/Elas/Vocēs': 'ajudaram'
+      }
+    },
+    {
+      english: 'to walk',
+      infinitive: 'passear',
+      presentSimple: {
+        Eu: 'passeio',
+        Tu: 'passeias',
+        'Ela/Ele/Você': 'passeia',
+        Nós: 'passeamos',
+        'Eles/Elas/Vocēs': 'passeiam'
+      },
+      pastPerfect: {
+        Eu: 'passeei',
+        Tu: 'passeaste',
+        'Ela/Ele/Você': 'passeou',
+        Nós: 'passeámos',
+        'Eles/Elas/Vocēs': 'passearam'
       }
     }
   ],
@@ -2459,6 +2609,265 @@ export const db: Schema = {
         gender: 'masculine'
       }
     }
+  ],
+  others: [
+    {
+      english: 'under',
+      portuguese: 'debaixo'
+    },
+    {
+      english: 'behind',
+      portuguese: 'atrás'
+    },
+    {
+      english: 'next to',
+      portuguese: 'ao lado de'
+    },
+    {
+      english: 'on top of',
+      portuguese: 'em cima de'
+    },
+    {
+      english: 'in',
+      portuguese: 'no'
+    },
+    {
+      english: 'between',
+      portuguese: 'entre'
+    },
+    {
+      english: 'before',
+      portuguese: 'antes'
+    },
+    {
+      english: 'after',
+      portuguese: 'depois'
+    },
+    {
+      english: 'today',
+      portuguese: 'hoje'
+    },
+    {
+      english: 'yesterday',
+      portuguese: 'ontem'
+    },
+    {
+      english: 'tomorrow',
+      portuguese: 'amanha'
+    },
+    {
+      english: 'since',
+      portuguese: 'desde'
+    },
+    {
+      english: 'when',
+      portuguese: 'quando'
+    },
+    {
+      english: 'where',
+      portuguese: 'onde'
+    },
+    {
+      english: 'who',
+      portuguese: 'quem'
+    },
+    {
+      english: 'nobody',
+      portuguese: 'ninguém'
+    },
+    {
+      english: 'everybody',
+      portuguese: 'toda a gente'
+    },
+    {
+      english: 'another',
+      portuguese: 'outro'
+    },
+    {
+      english: 'next',
+      portuguese: 'próximo'
+    },
+    {
+      english: 'previous',
+      portuguese: 'anterior'
+    },
+    {
+      english: 'last',
+      portuguese: 'último'
+    },
+    {
+      english: 'first',
+      portuguese: 'primeiro'
+    },
+    {
+      english: 'middle',
+      portuguese: 'meio'
+    },
+    {
+      english: 'Monday',
+      portuguese: 'segunda-feira'
+    },
+    {
+      english: 'Tuesday',
+      portuguese: 'terça-feira'
+    },
+    {
+      english: 'Wednesday',
+      portuguese: 'quarta-feira'
+    },
+    {
+      english: 'Thursday',
+      portuguese: 'quinta-feira'
+    },
+    {
+      english: 'Friday',
+      portuguese: 'sexta-feira'
+    },
+    {
+      english: 'Saturday',
+      portuguese: 'sábado'
+    },
+    {
+      english: 'Sunday',
+      portuguese: 'domingo'
+    },
+    {
+      english: 'only',
+      portuguese: 'único'
+    },
+    {
+      english: 'every',
+      portuguese: 'todos'
+    },
+    {
+      english: 'none of',
+      portuguese: 'nenhum'
+    },
+    {
+      english: 'never',
+      portuguese: 'nunca'
+    },
+    {
+      english: 'always',
+      portuguese: 'sempre'
+    },
+    {
+      english: 'sometimes',
+      portuguese: 'algumas vezes'
+    },
+    {
+      english: 'often',
+      portuguese: 'muitas vezes'
+    },
+    {
+      english: 'frequently',
+      portuguese: 'frequentemente'
+    },
+    {
+      english: 'half',
+      portuguese: 'meio'
+    },
+    {
+      english: 'quarter',
+      portuguese: 'quarto'
+    },
+    {
+      english: 'whole',
+      portuguese: 'inteiro'
+    },
+    {
+      english: 'part of',
+      portuguese: 'parte de'
+    },
+    {
+      english: 'me',
+      portuguese: 'eu'
+    },
+    {
+      english: 'you',
+      portuguese: 'tu'
+    },
+    {
+      english: 'she',
+      portuguese: 'ela'
+    },
+    {
+      english: 'he',
+      portuguese: 'ele'
+    },
+    {
+      english: 'they',
+      portuguese: 'eles'
+    },
+    {
+      english: 'we',
+      portuguese: 'nos'
+    },
+    {
+      english: 'mine - feminine',
+      portuguese: 'minha'
+    },
+    {
+      english: 'mine - masculine',
+      portuguese: 'meu'
+    },
+    {
+      english: 'yours - feminine',
+      portuguese: 'tuas'
+    },
+    {
+      english: 'yours - masculine',
+      portuguese: 'teus'
+    },
+    {
+      english: 'January',
+      portuguese: 'Janeiro'
+    },
+    {
+      english: 'February',
+      portuguese: 'Fevereiro'
+    },
+    {
+      english: 'March',
+      portuguese: 'Março'
+    },
+    {
+      english: 'April',
+      portuguese: 'Abril'
+    },
+    {
+      english: 'May',
+      portuguese: 'Maio'
+    },
+    {
+      english: 'June',
+      portuguese: 'Junho'
+    },
+    {
+      english: 'July',
+      portuguese: 'Julho'
+    },
+    {
+      english: 'August',
+      portuguese: 'Agosto'
+    },
+    {
+      english: 'September',
+      portuguese: 'Setembro'
+    },
+    {
+      english: 'October',
+      portuguese: 'Outubro'
+    },
+    {
+      english: 'November',
+      portuguese: 'Novembro'
+    },
+    {
+      english: 'December',
+      portuguese: 'Dezembro'
+    },
+
   ],
   adjectives: [
     {
