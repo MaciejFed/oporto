@@ -8,6 +8,7 @@ import { VerbTranslationExercise } from './translation/verbTranslationExercise';
 import { AdjectiveTranslationExercise } from './translation/adjectiveTranslationExercise';
 import { SentenceTranslationExercise } from './translation/sentenceTranslationExercise';
 import { FitInGapExercise } from './fitInGapExercise';
+import { OtherTranslationExercise } from './translation/otherTranslationExercise';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -47,6 +48,12 @@ const SentenceTranslationGenerator: ExerciseGenerator = () => {
   );
 };
 
+const OtherTranslationGenerator: ExerciseGenerator = () => {
+  return readAll().others.flatMap((other) =>
+    translationTypes.map((translationType) => OtherTranslationExercise.new(other, translationType))
+  );
+};
+
 const AdjectiveTranslationGenerator: ExerciseGenerator = () => {
   return readAll().adjectives.flatMap((noun) =>
     translationTypes.flatMap((translationType) => [
@@ -73,6 +80,7 @@ export function generateAllPossibleExercises(): Exercise[] {
     NounTranslationGenerator,
     VerbTranslationGenerator,
     SentenceTranslationGenerator,
+    OtherTranslationGenerator,
     AdjectiveTranslationGenerator,
     FitInGapGenerator
   ].flatMap((generator) => generator());

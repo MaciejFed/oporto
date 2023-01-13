@@ -12,6 +12,7 @@ import { VerbTranslationExercise } from '../exercise/translation/verbTranslation
 import { SentenceTranslationExercise } from '../exercise/translation/sentenceTranslationExercise';
 import { TranslationExercise } from '../exercise/translation/translationExercise';
 import { DateTimeExtended } from '../common/common';
+import { OtherTranslationExercise } from '../exercise/translation/otherTranslationExercise';
 
 export function getAllResults(): Result[] {
   const results = readFromFile();
@@ -23,6 +24,7 @@ export function getAllResults(): Result[] {
         const verbExercise: VerbExercise = new VerbExercise();
         verbExercise.verb = (result.exercise as unknown as VerbExercise).verb;
         verbExercise.person = (result.exercise as unknown as VerbExercise).person;
+        verbExercise.verbTime = (result.exercise as unknown as VerbExercise).verbTime;
         assert(verbExercise.verb);
         assert(verbExercise.person);
         exercise = verbExercise;
@@ -66,6 +68,15 @@ export function getAllResults(): Result[] {
         ).translationType;
         assert(sentenceTranslationExercise.sentence);
         exercise = sentenceTranslationExercise;
+        break;
+      case 'OtherTranslation':
+        const otherTranslationExercise: OtherTranslationExercise = new OtherTranslationExercise();
+        otherTranslationExercise.other = (result.exercise as unknown as OtherTranslationExercise).other;
+        otherTranslationExercise.translationType = (
+          result.exercise as unknown as OtherTranslationExercise
+        ).translationType;
+        assert(otherTranslationExercise.other);
+        exercise = otherTranslationExercise;
         break;
       case 'FitInGap':
         const fitInGapExercise: FitInGapExercise = new FitInGapExercise();

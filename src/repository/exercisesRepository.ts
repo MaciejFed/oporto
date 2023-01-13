@@ -45,7 +45,7 @@ export type Sentence = {
 export type Other = {
   english: string;
   portuguese: string;
-}
+};
 
 export type Schema = {
   verbs: Verb[];
@@ -2879,6 +2879,14 @@ export const db: Schema = {
       english: 'far',
       portuguese: 'longe'
     },
+    {
+      english: 'and',
+      portuguese: 'e'
+    },
+    {
+      english: 'or',
+      portuguese: 'ou'
+    }
   ],
   adjectives: [
     {
