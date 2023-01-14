@@ -1,5 +1,5 @@
-import { readAll } from '../../src/repository/exercisesRepository';
-import { VerbExercise } from '../../src/exercise/verbExercise';
+import { readAll } from '../../src/repository/exercises-repository';
+import { VerbExercise } from '../../src/exercise/verb-exercise';
 import { Person } from '../../src/service/verb';
 
 

@@ -2,7 +2,7 @@ import { exec } from 'child_process';
 import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
-import { EventProcessor } from '../event/eventProcessor';
+import { EventProcessor } from '../event/event-processor';
 import { logger } from '../common/logger';
 import {
   APP_STARTED,
@@ -27,10 +27,10 @@ import {
   printExerciseRepeatAnswerKey,
   printExerciseRepeatBody,
   printInBetweenMenu
-} from './terminalUtils';
+} from './terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
-import { getAllResults } from '../repository/resultRepository';
+import { getAllResults } from '../repository/result-repository';
 
 export class Terminal {
   eventProcessor: EventProcessor;

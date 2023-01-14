@@ -1,4 +1,4 @@
-import { getAllResults, getAllResultsForExercise, saveNewResult } from '../../src/repository/resultRepository';
+import { getAllResults, getAllResultsForExercise, saveNewResult } from '../../src/repository/result-repository';
 import { convertToResult } from '../../src/service/result';
 import { generateAllPossibleExercises } from '../../src/exercise/generator';
 

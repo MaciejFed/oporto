@@ -1,6 +1,6 @@
 import { getRandomElement } from '../common/common';
-import { Adjective, Other, readAll, Verb } from '../repository/exercisesRepository';
-import { Noun, Sentence } from '../repository/exercisesRepository';
+import { Adjective, Other, readAll, Verb } from '../repository/exercises-repository';
+import { Noun, Sentence } from '../repository/exercises-repository';
 
 export const getRandomNoun: () => Noun = () => {
   return getRandomElement(readAll().nouns);

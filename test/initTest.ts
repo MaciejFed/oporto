@@ -10,8 +10,8 @@ jest.spyOn(console, 'log').mockImplementation(() => {});
 
 global.resultsFile = '[]';
 
-jest.mock('../src/io/terminalUtils', () => {
-  const modelActual = jest.requireActual('../src/io/terminalUtils');
+jest.mock('../src/io/terminal-utils', () => {
+  const modelActual = jest.requireActual('../src/io/terminal-utils');
   return {
     ...modelActual,
     animateExerciseSummary: (exerciseStatistics: ExerciseStatistics) => {},

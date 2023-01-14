@@ -1,6 +1,6 @@
-import { readAll, Verb } from '../repository/exercisesRepository';
+import { readAll, Verb } from '../repository/exercises-repository';
 import { getRandomElement } from '../common/common';
-import { VerbTime } from '../exercise/verbExercise';
+import { VerbTime } from '../exercise/verb-exercise';
 
 export enum Person {
   Eu = 'Eu',

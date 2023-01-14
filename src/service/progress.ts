@@ -1,14 +1,15 @@
-import { Exercise, generateUniqueExercises, translationTypes } from '../exercise/exercise';
-import { TranslationExercise } from '../exercise/translation/translationExercise';
-import { readAll } from '../repository/exercisesRepository';
+import { Exercise } from '../exercise/exercise';
+import { TranslationExercise } from '../exercise/translation/translation-exercise';
+import { readAll } from '../repository/exercises-repository';
 import {
   getAllResultsBeforeDateOneWeek,
   getAllResultsByDate,
   getAllResultsForExercise
-} from '../repository/resultRepository';
+} from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { Result } from './result';
 import { boolean } from 'yargs';
+import { generateExercisesForSession } from '../exercise/generator';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -41,7 +42,7 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
 }
 
 export function getExercisesProgress(results: Result[], filter: (e: Exercise) => boolean) {
-  const exerciseProgress: ExerciseProgress[] = generateUniqueExercises(50000, false, () => true)
+  const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(50000, false, () => true)
     .filter(filter)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);

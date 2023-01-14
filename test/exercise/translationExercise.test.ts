@@ -1,5 +1,5 @@
-import { readAll } from '../../src/repository/exercisesRepository';
-import { NounTranslationExercise } from '../../src/exercise/translation/nounTranslationExercise';
+import { readAll } from '../../src/repository/exercises-repository';
+import { NounTranslationExercise } from '../../src/exercise/translation/noun-translation-exercise';
 
 
 describe('Translation Exercise', () => {

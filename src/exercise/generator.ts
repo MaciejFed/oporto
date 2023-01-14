@@ -1,14 +1,15 @@
 import { Exercise } from './exercise';
-import { readAll } from '../repository/exercisesRepository';
+import { readAll } from '../repository/exercises-repository';
 import { Person } from '../service/verb';
-import { VerbExercise } from './verbExercise';
-import { NounTranslationExercise } from './translation/nounTranslationExercise';
-import { TranslationType } from './translation/translationExercise';
-import { VerbTranslationExercise } from './translation/verbTranslationExercise';
-import { AdjectiveTranslationExercise } from './translation/adjectiveTranslationExercise';
-import { SentenceTranslationExercise } from './translation/sentenceTranslationExercise';
-import { FitInGapExercise } from './fitInGapExercise';
-import { OtherTranslationExercise } from './translation/otherTranslationExercise';
+import { VerbExercise } from './verb-exercise';
+import { NounTranslationExercise } from './translation/noun-translation-exercise';
+import { TranslationType } from './translation/translation-exercise';
+import { VerbTranslationExercise } from './translation/verb-translation-exercise';
+import { AdjectiveTranslationExercise } from './translation/adjective-translation-exercise';
+import { SentenceTranslationExercise } from './translation/sentence-translation-exercise';
+import { FitInGapExercise } from './fit-in-gap-exercise';
+import { OtherTranslationExercise } from './translation/other-translation-exercise';
+import { sortExercises } from '../priority/priority';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -84,4 +85,15 @@ export function generateAllPossibleExercises(): Exercise[] {
     AdjectiveTranslationGenerator,
     FitInGapGenerator
   ].flatMap((generator) => generator());
+}
+
+export function generateExercisesForSession(
+  exerciseCount: number,
+  sort: boolean,
+  filter: (ex: Exercise) => boolean
+): Exercise[] {
+  const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
+  const exercisesFinal = sort ? sortExercises(exercises) : exercises;
+
+  return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
