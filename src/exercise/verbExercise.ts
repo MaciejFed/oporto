@@ -61,5 +61,6 @@ export class VerbExercise implements Exercise, Comparable {
   equal = (exercise: VerbExercise) =>
     exercise.exerciseType === 'VerbExercise' &&
     this.verb.infinitive === exercise.verb.infinitive &&
+    this.verbTime === exercise.verbTime &&
     this.person === exercise.person;
 }

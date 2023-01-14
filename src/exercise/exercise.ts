@@ -5,6 +5,7 @@ import { RatioRange } from '../service/progress';
 export type ExerciseType =
   | 'VerbExercise'
   | 'NounTranslation'
+  | 'OtherTranslation'
   | 'AdjectiveTranslation'
   | 'VerbTranslation'
   | 'SentenceTranslation'
@@ -13,6 +14,7 @@ export type ExerciseType =
 export const translationTypes: ExerciseType[] = [
   'NounTranslation',
   'VerbTranslation',
+  'OtherTranslation',
   'AdjectiveTranslation',
   'SentenceTranslation'
 ];
