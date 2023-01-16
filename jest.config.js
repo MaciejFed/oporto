@@ -11,9 +11,9 @@ module.exports = {
         '**/test/**/*.test.ts'
     ],
     setupFilesAfterEnv: [
-        './test/initTest.ts'
+        './test/init-test.ts'
     ],
     collectCoverageFrom: [
-        'src/**/{!(file|cli|test|stat|eventListener),}.ts'
+        'src/**/{!(file|cli|test|stat|event-listener),}.ts'
     ]
 }

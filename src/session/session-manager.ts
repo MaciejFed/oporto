@@ -52,13 +52,13 @@ export class SessionManager implements AppEventListener {
     this.registerNextExerciseEventListener();
   }
 
-  registerAppStartedEventListener() {
+  private registerAppStartedEventListener() {
     this.eventProcessor.on(APP_STARTED, () => {
       this.eventProcessor.emit(EXERCISE_STARTED);
     });
   }
 
-  registerExerciseStartedEventListener() {
+  private registerExerciseStartedEventListener() {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
       this.currentExercise = this.exercises.pop() || this.exercises[0];
       this.eventProcessor.emit(EXERCISE_DESCRIPTION_PRINTED, this.currentExercise?.getExerciseDescription());
@@ -72,7 +72,7 @@ export class SessionManager implements AppEventListener {
     });
   }
 
-  registerKeyPressedEventListener() {
+  private registerKeyPressedEventListener() {
     this.eventProcessor.on(KEY_PRESSED, (key) => {
       if (key === 'backspace') {
         this.answer = this.answer.substring(0, Math.max(0, this.answer.length - 1));
@@ -83,7 +83,7 @@ export class SessionManager implements AppEventListener {
     });
   }
 
-  registerAnswerSubmittedEventListener() {
+  private registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITTED, (answerInputType: AnswerInputType) => {
       if (!this.exerciseInProgress) {
         return;
@@ -104,7 +104,7 @@ export class SessionManager implements AppEventListener {
     });
   }
 
-  registerNextExerciseEventListener() {
+  private registerNextExerciseEventListener() {
     this.eventProcessor.on(EXERCISE_NEXT, () => {
       this.resetAnswer();
       if (this.exercises.length > 0) {
@@ -116,7 +116,7 @@ export class SessionManager implements AppEventListener {
     });
   }
 
-  resetAnswer() {
+  private resetAnswer() {
     logger.info('Resting answer...');
     this.answer = '';
     if (this.hearingLoop) {
