@@ -1,6 +1,4 @@
-import { Comparable, onlyDistinct } from '../common/common';
-import { sortExercises } from '../priority/priority';
-import { generateAllPossibleExercises } from './generator';
+import { Comparable } from '../common/common';
 import { RatioRange } from '../service/progress';
 export type ExerciseType =
   | 'VerbExercise'
@@ -30,16 +28,4 @@ export interface Exercise extends Comparable {
   getRepeatAnswerPhrase(): string;
   getMaxWantedProgress(): RatioRange | '100+';
   getMinimumAnswers(): number;
-}
-
-export function generateUniqueExercises(
-  exerciseCount: number,
-  sort: boolean,
-  filter: (ex: Exercise) => boolean
-): Exercise[] {
-  const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
-  const distinctExercises = onlyDistinct(exercises).map((e) => e as Exercise);
-  const exercisesFinal = sort ? sortExercises(distinctExercises) : distinctExercises;
-
-  return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }

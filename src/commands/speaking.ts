@@ -1,12 +1,12 @@
-import { eventProcessor } from '../event/eventProcessor';
+import { eventProcessor } from '../event/event-processor';
 import { APP_STARTED } from '../event/events';
 import { Input } from '../io/input';
-import { SessionManager } from '../session/sessionManager';
+import { SessionManager } from '../session/session-manager';
 import { Terminal } from '../io/terminal';
-import { getAllResults } from '../repository/resultRepository';
+import { getAllResults } from '../repository/result-repository';
 import { Exercise, translationTypes } from '../exercise/exercise';
-import { TranslationExercise } from '../exercise/translation/translationExercise';
-import { exerciseTranslationNeverDoneByVoice } from '../priority/types/exerciseTranslationNeverDoneByVoice/exerciseTranslationNeverDoneByVoice';
+import { TranslationExercise } from '../exercise/translation/translation-exercise';
+import { exerciseTranslationNeverDoneByVoice } from '../priority/types/exercise-translation-never-done-by-voice/exercise-translation-never-done-by-voice';
 
 function hearingFilter() {
   const allResults = getAllResults();

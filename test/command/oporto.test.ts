@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { sleep } from '../../src/common/common';
 import { simulateTyping } from '../util';
+import { generateExercisesForSession } from '../../src/exercise/generator';
 
 const output: string[] = [];
 const resultCount = {
@@ -40,7 +41,7 @@ jest.mock('terminal-kit', () => {
   });
 jest.mock('../../src/service/verb', () => {
   const modeuleActual = jest.requireActual('../../src/service/verb');
-  const readAll = require('../../src/repository/exercisesRepository').readAll;
+  const readAll = require('../../src/repository/exercises-repository').readAll;
   return {
     ...modeuleActual,
     getRandomPerson: () => 'Eu',
@@ -48,13 +49,13 @@ jest.mock('../../src/service/verb', () => {
   };
 });
 
-jest.mock('../../src/exercise/exercise', () => {
-  const VerbExercise = require('../../src/exercise/verbExercise').VerbExercise;
-  const modeuleActual = jest.requireActual('../../src/exercise/exercise');
+jest.mock('../../src/exercise/generator', () => {
+  const VerbExercise = require('../../src/exercise/verb-exercise').VerbExercise;
+  const moduleActual = jest.requireActual('../../src/exercise/generator');
   return {
     __esModule: true,
-    modeuleActual,
-    generateUniqueExercises: () => [new VerbExercise()]
+    moduleActual,
+    generateExercisesForSession: () => [new VerbExercise()]
   };
 });
 
@@ -69,9 +70,9 @@ type AppModules = {
 
 function requireAllModules(): AppModules {
   const eventProcessor =
-    require('../../src/event/eventProcessor').eventProcessor;
+    require('../../src/event/event-processor').eventProcessor;
   const SessionManager =
-    require('../../src/session/sessionManager').SessionManager;
+    require('../../src/session/session-manager').SessionManager;
   const Input = require('../../src/io/input').Input;
   const Terminal = require('../../src/io/terminal').Terminal;
 

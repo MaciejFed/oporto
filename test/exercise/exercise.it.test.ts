@@ -39,8 +39,8 @@ type AppModules = {
 
 
 function requireAllModules(): AppModules {
-  const eventProcessor = require('../../src/event/eventProcessor').eventProcessor;
-  const SessionManager = require('../../src/session/sessionManager').SessionManager;
+  const eventProcessor = require('../../src/event/event-processor').eventProcessor;
+  const SessionManager = require('../../src/session/session-manager').SessionManager;
   const Input = require('../../src/io/input').Input;
   const Terminal = require('../../src/io/terminal').Terminal;
 
@@ -65,10 +65,10 @@ describe('Exercises IT Snapshot', () => {
   });
 
   it('NounTranslation', async () => {
-    jest.mock('../../src/exercise/exercise', () => {
-      const readAll = require('../../src/repository/exercisesRepository').readAll;
-      const NounTranslationExercise = require('../../src/exercise/translation/nounTranslationExercise').NounTranslationExercise;
-      const modelActual = jest.requireActual('../../src/exercise/exercise');
+    jest.mock('../../src/exercise/generator', () => {
+      const readAll = require('../../src/repository/exercises-repository').readAll;
+      const NounTranslationExercise = require('../../src/exercise/translation/noun-translation-exercise').NounTranslationExercise;
+      const modelActual = jest.requireActual('../../src/exercise/generator');
       const nounTranslationExerciseToPortuguese = new NounTranslationExercise();
       nounTranslationExerciseToPortuguese.noun = readAll().nouns[1];
       nounTranslationExerciseToPortuguese.translationType = 'toPortuguese';
@@ -78,7 +78,7 @@ describe('Exercises IT Snapshot', () => {
       return {
         __esModule: true,
         modelActual,
-        generateUniqueExercises: () => [nounTranslationExerciseToEnglish, nounTranslationExerciseToPortuguese]
+        generateExercisesForSession: () => [nounTranslationExerciseToEnglish, nounTranslationExerciseToPortuguese]
       };
     });
     const appModules = requireAllModules();
@@ -86,7 +86,9 @@ describe('Exercises IT Snapshot', () => {
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
-      2
+      2,
+        false,
+        () => true,
     );
     appModules.eventProcessor.emit('APP_STARTED');
     await simulateTyping('o chá');
@@ -109,10 +111,10 @@ describe('Exercises IT Snapshot', () => {
   });
 
   it('SentenceTranslation', async () => {
-    jest.mock('../../src/exercise/exercise', () => {
-      const readAll = require('../../src/repository/exercisesRepository').readAll;
-      const SentenceTranslationExercise = require('../../src/exercise/translation/sentenceTranslationExercise').SentenceTranslationExercise;
-      const modelActual = jest.requireActual('../../src/exercise/exercise');
+    jest.mock('../../src/exercise/generator', () => {
+      const readAll = require('../../src/repository/exercises-repository').readAll;
+      const SentenceTranslationExercise = require('../../src/exercise/translation/sentence-translation-exercise').SentenceTranslationExercise;
+      const modelActual = jest.requireActual('../../src/exercise/generator');
       const sentenceTranslationExerciseToPortuguese = new SentenceTranslationExercise();
       sentenceTranslationExerciseToPortuguese.sentence = readAll().sentences[0];
       sentenceTranslationExerciseToPortuguese.translationType = 'toPortuguese';
@@ -122,7 +124,7 @@ describe('Exercises IT Snapshot', () => {
       return {
         __esModule: true,
         modelActual,
-        generateUniqueExercises: () => [sentenceTranslationExerciseToEnglish, sentenceTranslationExerciseToPortuguese]
+        generateExercisesForSession: () => [sentenceTranslationExerciseToEnglish, sentenceTranslationExerciseToPortuguese]
       };
     });
     const appModules = requireAllModules();
@@ -130,7 +132,9 @@ describe('Exercises IT Snapshot', () => {
     const input = new appModules.Input(appModules.eventProcessor);
     const sessionManager = new appModules.SessionManager(
       appModules.eventProcessor,
-      2
+      2,
+        false,
+        () => true,
     );
     appModules.eventProcessor.emit('APP_STARTED');
     await simulateTyping('Como estás?');
@@ -153,16 +157,16 @@ describe('Exercises IT Snapshot', () => {
   });
 
   it('Fit In', async () => {
-    jest.mock('../../src/exercise/exercise', () => {
-      const readAll = require('../../src/repository/exercisesRepository').readAll;
-      const FitInGapExercise = require('../../src/exercise/fitInGapExercise').FitInGapExercise;
-      const modelActual = jest.requireActual('../../src/exercise/exercise');
+    jest.mock('../../src/exercise/generator', () => {
+      const readAll = require('../../src/repository/exercises-repository').readAll;
+      const FitInGapExercise = require('../../src/exercise/fit-in-gap-exercise').FitInGapExercise;
+      const modelActual = jest.requireActual('../../src/exercise/generator');
       const fitInGapExercise = new FitInGapExercise();
       fitInGapExercise.fitIn = readAll().fitIn[0];
       return {
         __esModule: true,
         modelActual,
-        generateUniqueExercises: () => [fitInGapExercise]
+        generateExercisesForSession: () => [fitInGapExercise]
       };
     });
     const appModules = requireAllModules();
@@ -187,10 +191,10 @@ describe('Exercises IT Snapshot', () => {
   });
 
   it('Verb', async () => {
-    jest.mock('../../src/exercise/exercise', () => {
-      const readAll = require('../../src/repository/exercisesRepository').readAll;
-      const VerbExercise = require('../../src/exercise/verbExercise').VerbExercise;
-      const modelActual = jest.requireActual('../../src/exercise/exercise');
+    jest.mock('../../src/exercise/generator', () => {
+      const readAll = require('../../src/repository/exercises-repository').readAll;
+      const VerbExercise = require('../../src/exercise/verb-exercise').VerbExercise;
+      const modelActual = jest.requireActual('../../src/exercise/generator');
       const verbExercise = new VerbExercise();
       verbExercise.verb = readAll().verbs[0];
       verbExercise.person = 'Eu';
@@ -200,7 +204,7 @@ describe('Exercises IT Snapshot', () => {
       return {
         __esModule: true,
         modelActual,
-        generateUniqueExercises: () => [verbExercise, verbExercise2]
+        generateExercisesForSession: () => [verbExercise, verbExercise2]
       };
     });
     const appModules = requireAllModules();

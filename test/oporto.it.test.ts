@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { eventProcessor } from '../src/event/eventProcessor';
+import { eventProcessor } from '../src/event/event-processor';
 import { Input } from '../src/io/input';
-import { SessionManager } from '../src/session/sessionManager';
+import { SessionManager } from '../src/session/session-manager';
 import { Terminal } from '../src/io/terminal';
 import { sleep } from '../src/common/common';
 import { simulateTyping } from './util';
-import { getAllResults } from '../src/repository/resultRepository';
+import { getAllResults } from '../src/repository/result-repository';
 
 const terminal = new Terminal(eventProcessor);
 const input = new Input(eventProcessor);

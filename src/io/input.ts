@@ -1,4 +1,4 @@
-import { EventProcessor } from '../event/eventProcessor';
+import { EventProcessor } from '../event/event-processor';
 import { ANSWER_SUBMITTED, APP_FINISHED, KEY_PRESSED } from '../event/events';
 import readline from 'readline';
 import { logger } from '../common/logger';

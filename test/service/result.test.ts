@@ -1,4 +1,4 @@
-import { VerbExercise } from '../../src/exercise/verbExercise';
+import { VerbExercise } from '../../src/exercise/verb-exercise';
 import { convertToResult } from '../../src/service/result';
 
 describe('Result Service', () => {
