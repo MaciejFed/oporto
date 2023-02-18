@@ -14,17 +14,20 @@ class Output implements AppEventListener {
 
   public moveTo(x: number, y: number, text: string | undefined) {
     if (text) {
-      terminal.moveTo(x, y, text);
-      for (let i = 0; i < text.length; i++) {
-        if (text[i] === '\n') {
-          // eslint-disable-next-line no-param-reassign
-          y++;
-          // eslint-disable-next-line no-param-reassign
-          text = text?.slice(i + 1);
-          // eslint-disable-next-line no-param-reassign
-          i = 0;
-        }
-        this.outputTable[y][x + i] = text[i];
+      if (text.includes('\n')) {
+        terminal.moveTo(x, y, text);
+      } else {
+        for (let i = 0; i < text.length; i++) {
+          if (text[i] === '\n') {
+            // eslint-disable-next-line no-param-reassign
+            y++;
+            // eslint-disable-next-line no-param-reassign
+            text = text?.slice(i + 1);
+            // eslint-disable-next-line no-param-reassign
+            i = 0;
+          }
+          this.outputTable[y][x + i] = text[i];
+      }
       }
     }
   }
