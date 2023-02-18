@@ -22,7 +22,7 @@ export interface Exercise extends Comparable {
   getExerciseBodyPrefix(): string;
   getExerciseBodySuffix(): string;
   getExerciseDescription(): string;
-  getExerciseExplanation(): string | undefined;
+  getExerciseTranslation(): string | undefined;
   getCorrectAnswer(): string;
   checkAnswerCorrect(answer: string): boolean;
   getRepeatAnswerPhrase(): string;

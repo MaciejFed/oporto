@@ -42,7 +42,7 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
     return `Portuguese: ${this.sentence.portuguese}`;
   };
 
-  getExerciseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.sentence.english : undefined);
+  getExerciseTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.sentence.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.sentence.portuguese : this.sentence.english);
 

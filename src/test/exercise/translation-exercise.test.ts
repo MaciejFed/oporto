@@ -14,7 +14,7 @@ describe('Translation Exercise', () => {
     expect(nounTranslationExercise.getExerciseDescription()).toEqual('English: tea');
     expect(nounTranslationExercise.getExerciseBodyPrefix()).toEqual('Portuguese: ');
     expect(nounTranslationExercise.getCorrectAnswer()).toEqual('o chá');
-    expect(nounTranslationExercise.getExerciseExplanation()).toBe(undefined);
+    expect(nounTranslationExercise.getExerciseTranslation()).toBe(undefined);
     expect(nounTranslationExercise.checkAnswerCorrect('o chá')).toBe(true);
     expect(nounTranslationExercise.checkAnswerCorrect('a chá')).toBe(false);
     expect(nounTranslationExercise.equal(sameNounTranslationExercise)).toBe(true);

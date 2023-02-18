@@ -18,10 +18,11 @@ import {
   animateExerciseSummary,
   displayGenericWeeklyStatistics,
   preExerciseClear,
+  printAllAnswers,
   printExerciseBody,
   printExerciseBodyWithCorrection,
   printExerciseDescription,
-  printExerciseExplanation,
+  printExerciseTranslation,
   printExerciseFeedback,
   printExerciseRepeatAnswer,
   printExerciseRepeatAnswerKey,
@@ -30,14 +31,14 @@ import {
 } from './terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
-import { getAllResults } from '../repository/result-repository';
+import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { sleep } from '../common/common';
 
 export class Terminal {
   eventProcessor: EventProcessor;
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
-  exerciseExplanation: string | undefined;
+  exerciseTranslation: string | undefined;
   answer: string;
   repetitionAnswer: string;
   correctAnswer: string;
@@ -84,7 +85,7 @@ export class Terminal {
       logger.info(`exercise: ${JSON.stringify(body)}`);
       this.exerciseBodyPrefix = body.exerciseBodyPrefix;
       this.exerciseBodySuffix = body.exerciseBodySuffix;
-      this.exerciseExplanation = body.exerciseExplanation;
+      this.exerciseTranslation = body.exerciseTranslation;
       printExerciseBody(this.exerciseBodyPrefix, this.answer, this.exerciseBodySuffix);
     });
   }
@@ -108,6 +109,7 @@ export class Terminal {
       this.exerciseInProgress = true;
       this.answer = '';
       this.repetitionAnswer = '';
+      clear();
       preExerciseClear();
     });
   }
@@ -146,9 +148,10 @@ export class Terminal {
   private endOfExerciseMenu() {
     this.exerciseRepetitionInProgress = false;
     terminal.hideCursor();
-    printInBetweenMenu(this.exerciseExplanation !== undefined && this.exerciseExplanation.length > 0);
+    printInBetweenMenu(this.exerciseTranslation !== undefined && this.exerciseTranslation.length > 0);
     if (this.exercise) {
       const allResults = getAllResults();
+      printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
       const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {
         animateExerciseSummary(exerciseStatistics);
@@ -178,8 +181,8 @@ export class Terminal {
 
   private async onKeyMenu(key: string) {
     switch (key) {
-      case 'e':
-        printExerciseExplanation(this.exerciseExplanation);
+      case 't':
+        printExerciseTranslation(this.exerciseTranslation);
         break;
       case 'r':
         this.sayCorrectAnswerPhrase();

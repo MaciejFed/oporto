@@ -33,7 +33,7 @@ export class VerbExercise implements Exercise, Comparable {
     return verbExercise;
   }
 
-  getExerciseExplanation = () => undefined;
+  getExerciseTranslation = () => undefined;
 
   getExerciseBodyPrefix = () => `[${vertTimePrintVersion(this.verbTime)}] ${this.person}: `;
 

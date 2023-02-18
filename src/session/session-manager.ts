@@ -65,7 +65,7 @@ export class SessionManager implements AppEventListener {
       this.eventProcessor.emit(EXERCISE_BODY_PRINTED, {
         exerciseBodyPrefix: this.currentExercise?.getExerciseBodyPrefix(),
         exerciseBodySuffix: this.currentExercise?.getExerciseBodySuffix(),
-        exerciseExplanation: this.currentExercise?.getExerciseExplanation()
+        exerciseTranslation: this.currentExercise?.getExerciseTranslation()
       });
       this.exerciseInProgress = true;
       this.handleExerciseFromHearing(this.currentExercise);

@@ -9,10 +9,12 @@ Array [
   "EXERCISE_DESCRIPTION_PRINTED Portuguese: o chá",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED t",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED t",
   "KEY_PRESSED e",
   "KEY_PRESSED a",
   "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "EXERCISE_STARTED",
@@ -22,10 +24,14 @@ Array [
   "KEY_PRESSED o",
   "KEY_PRESSED",
   "KEY_PRESSED c",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED o",
+  "KEY_PRESSED",
+  "KEY_PRESSED c",
   "KEY_PRESSED h",
   "KEY_PRESSED á",
   "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "APP_FINISHED",
@@ -41,15 +47,15 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
-                                                                      
-                                                                      
- Portuguese: o chá                                                    
+ Portuguese: o chá                      Answers History:              
  English: tea                                                         
- Correct! [voice]                                                     
+ Wrong! [voice]                         1. t                          
                                                                       
-                                                                      
+ Repeat: tea                                                          
  Press key to continue...                                             
  r - repeat the answer                                                
+                                                                      
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -104,15 +110,15 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
-                                                                      
-                                                                      
- English: teao chá                                                    
+ English: teao chá                      Answers History:              
  Portuguese: o chá                                                    
- Correct! [voice]                                                     
+ Wrong! [voice]                         1. o c                        
                                                                       
-                                                                      
+ Repeat: o chá                                                        
  Press key to continue...                                             
  r - repeat the answer                                                
+                                                                      
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -173,10 +179,18 @@ Array [
   "KEY_PRESSED",
   "KEY_PRESSED i",
   "KEY_PRESSED d",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED G",
+  "KEY_PRESSED o",
+  "KEY_PRESSED o",
+  "KEY_PRESSED d",
+  "KEY_PRESSED",
+  "KEY_PRESSED i",
+  "KEY_PRESSED d",
   "KEY_PRESSED e",
   "KEY_PRESSED a",
   "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "EXERCISE_STARTED",
@@ -190,10 +204,18 @@ Array [
   "KEY_PRESSED i",
   "KEY_PRESSED d",
   "KEY_PRESSED e",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED B",
+  "KEY_PRESSED o",
+  "KEY_PRESSED a",
+  "KEY_PRESSED",
+  "KEY_PRESSED i",
+  "KEY_PRESSED d",
+  "KEY_PRESSED e",
   "KEY_PRESSED i",
   "KEY_PRESSED a",
   "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "APP_FINISHED",
@@ -209,15 +231,15 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
-                                                                      
-                                                                      
- English: teao chá                                                    
+ English: teao chá                      Answers History:              
  Portuguese: o chá                                                    
- Correct! [voice]                                                     
+ Wrong! [voice]                         1. o c                        
                                                                       
-                                                                      
+ Repeat: o chá                                                        
  Press key to continue...                                             
  r - repeat the answer                                                
+                                                                      
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -272,15 +294,15 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
-                                                                      
-                                                                      
- English: teao chá                                                    
+ English: teao chá                      Answers History:              
  Portuguese: o chá                                                    
- Correct! [voice]                                                     
+ Wrong! [voice]                         1. o c                        
                                                                       
-                                                                      
+ Repeat: o chá                                                        
  Press key to continue...                                             
  r - repeat the answer                                                
+                                                                      
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -337,10 +359,14 @@ Array [
   "KEY_PRESSED v",
   "KEY_PRESSED i",
   "KEY_PRESSED s",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED v",
+  "KEY_PRESSED i",
+  "KEY_PRESSED s",
   "KEY_PRESSED t",
   "KEY_PRESSED e",
   "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "EXERCISE_STARTED",
@@ -348,10 +374,12 @@ Array [
   "EXERCISE_DESCRIPTION_PRINTED Infinitive: to see",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED v",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED v",
   "KEY_PRESSED ê",
   "KEY_PRESSED s",
   "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "APP_FINISHED",
@@ -367,15 +395,15 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
-                                                                      
-                                                                      
- English: teao chá                                                    
+ English: teao chá                      Answers History:              
  Portuguese: o chá                                                    
- Correct! [voice]                                                     
+ Wrong! [voice]                         1. o c                        
                                                                       
-                                                                      
+ Repeat: o chá                                                        
  Press key to continue...                                             
  r - repeat the answer                                                
+                                                                      
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -430,15 +458,15 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
-                                                                      
-                                                                      
- English: teao chá                                                    
+ English: teao chá                      Answers History:              
  Portuguese: o chá                                                    
- Correct! [voice]                                                     
+ Wrong! [voice]                         1. o c                        
                                                                       
-                                                                      
+ Repeat: o chá                                                        
  Press key to continue...                                             
  r - repeat the answer                                                
+                                                                      
+                                                                      
                                                                       
                                                                       
                                                                       

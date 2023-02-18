@@ -3,7 +3,7 @@ import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
-import { ExerciseStatistics, WeekdayStatistics } from '../service/result';
+import { ExerciseStatistics, Result, WeekdayStatistics } from '../service/result';
 import { AnswerInputType } from './input';
 import eventProcessor from '../event/event-processor';
 import Output from './output';
@@ -11,33 +11,39 @@ import Output from './output';
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
 
+const AppLogo = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
+
+const EXERCISE_TOP_MARGIN = 6;
+const EXERCISE_BODY_MARGIN = EXERCISE_TOP_MARGIN + 3;
+const EXERCISE_REPEAT_BODY_MARGIN = EXERCISE_BODY_MARGIN + 3;
+const EXERCISE_MENU_MARGIN = EXERCISE_REPEAT_BODY_MARGIN + 1;
+
 export function preExerciseClear() {
   eventProcessor.emit('TERMINAL_CLEARED', 'preExerciseClear');
-  const appLogo = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
-  Output.moveTo(0, 0, appLogo);
+  Output.moveTo(0, 0, AppLogo);
 }
 
-export function printExerciseExplanation(exerciseExplanation: string | undefined) {
-  Output.moveTo(1, 8, exerciseExplanation);
+export function printExerciseTranslation(exerciseTranslation: string | undefined) {
+  Output.moveTo(1, EXERCISE_TOP_MARGIN, exerciseTranslation);
 }
 
 export function printExerciseDescription(exerciseDescription: string) {
-  Output.moveTo(1, 10, exerciseDescription);
+  Output.moveTo(1, EXERCISE_TOP_MARGIN + 2, exerciseDescription);
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
-  Output.moveTo(1, 11, exerciseBodyPrefix + answer + exerciseBodySuffix);
-  terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, 11);
+  Output.moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix + answer + exerciseBodySuffix);
+  terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
 }
 
 export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
-  Output.moveTo(1, 12, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+  Output.moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
 const repeatBodyPrefix = 'Repeat: ';
 
 export function printExerciseRepeatBody() {
-  Output.moveTo(1, 13, repeatBodyPrefix);
+  Output.moveTo(1, EXERCISE_REPEAT_BODY_MARGIN, repeatBodyPrefix);
 }
 
 export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: string, newKey: string) {
@@ -51,13 +57,13 @@ export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: stri
   } else {
     terminal.red();
   }
-  Output.moveTo(1 + repeatBodyPrefix.length + answer.length - 1, 13, newKey);
+  Output.moveTo(1 + repeatBodyPrefix.length + answer.length - 1, EXERCISE_REPEAT_BODY_MARGIN, newKey);
   terminal.white();
 }
 
 export function printExerciseRepeatAnswer(answer: string, correctAnswer: string) {
   terminal.hideCursor();
-  Output.moveTo(1, 13, `${repeatBodyPrefix}`);
+  Output.moveTo(1, EXERCISE_REPEAT_BODY_MARGIN, `${repeatBodyPrefix}`);
   for (let i = 0; i < answer.length; i++) {
     if (
       (answer[i] !== undefined && answer[i].toLowerCase()) ===
@@ -67,31 +73,66 @@ export function printExerciseRepeatAnswer(answer: string, correctAnswer: string)
     } else {
       terminal.red();
     }
-    Output.moveTo(repeatBodyPrefix.length + i + 1, 13, answer[i]);
+    Output.moveTo(repeatBodyPrefix.length + i + 1, EXERCISE_REPEAT_BODY_MARGIN, answer[i]);
   }
   terminal.white();
   terminal.hideCursor(false);
 }
 
-export function printInBetweenMenu(printExplanation: boolean) {
-  Output.moveTo(1, 15, 'Press key to continue...');
-  Output.moveTo(1, 16, 'r - repeat the answer');
-  if (printExplanation) {
-    Output.moveTo(1, 17, 'e - print explanation');
+export function printInBetweenMenu(printTranslation: boolean) {
+  Output.moveTo(1, EXERCISE_MENU_MARGIN, 'Press key to continue...');
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 1, 'r - repeat the answer');
+  if (printTranslation) {
+    Output.moveTo(1, EXERCISE_MENU_MARGIN + 2, 't - print translation');
   }
 }
 
-export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answer: string, correctAnswer: string) {
-  Output.moveTo(1, 11, exerciseBodyPrefix);
-  for (let i = 0; i < correctAnswer.length; i++) {
-    if (answer[i] && answer[i].toLowerCase() === correctAnswer[i].toLowerCase()) {
+type FeedbackType = 'CorrectAnswer' | 'ActualAnswer';
+
+function printWithFeedback(
+  x: number,
+  y: number,
+  answer: string,
+  correctAnswer: string,
+  answerType: FeedbackType,
+  prefix?: string
+) {
+  const exerciseBodyPrefix = prefix ? prefix : '';
+  const feedbackWord = answerType === 'CorrectAnswer' ? correctAnswer : answer;
+  Output.moveTo(x, y, exerciseBodyPrefix);
+  for (let i = 0; i < feedbackWord.length; i++) {
+    if (answer[i] && answer[i].toLowerCase() === correctAnswer[i] && correctAnswer[i].toLowerCase()) {
       terminal.green();
     } else {
       terminal.red();
     }
-    Output.moveTo(1 + exerciseBodyPrefix.length + i, 11, correctAnswer[i]);
+    Output.moveTo(x + exerciseBodyPrefix.length + i, y, feedbackWord[i]);
   }
   terminal.white();
+}
+
+export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answer: string, correctAnswer: string) {
+  printWithFeedback(1, EXERCISE_BODY_MARGIN, answer, correctAnswer, 'CorrectAnswer', exerciseBodyPrefix);
+}
+
+export function printAllAnswers(results: Result[]) {
+  const HISTORY_X_MARGIN = 40;
+  const HISTORY_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
+  const HISTORY_ANSWERS_LIMIT = 5;
+  terminal.bold();
+  Output.moveTo(HISTORY_X_MARGIN, HISTORY_Y_MARGIN, 'Answers History:');
+  terminal.bold(false);
+  results.reverse().forEach(({ answer, exercise }, index) => {
+    if (index < HISTORY_ANSWERS_LIMIT)
+      printWithFeedback(
+        HISTORY_X_MARGIN,
+        HISTORY_Y_MARGIN + 2 + index,
+        answer,
+        exercise.getCorrectAnswer(),
+        'ActualAnswer',
+        `${index + 1}. `
+      );
+  });
 }
 
 export async function animateExerciseSummary({

@@ -48,6 +48,6 @@ export abstract class TranslationExercise implements Exercise {
   abstract getExerciseBodyPrefix(): string;
   abstract getExerciseBodySuffix(): string;
   abstract getExerciseDescription(): string;
-  abstract getExerciseExplanation(): string | undefined;
+  abstract getExerciseTranslation(): string | undefined;
   abstract getRepeatAnswerPhrase(): string;
 }

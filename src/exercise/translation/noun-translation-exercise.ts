@@ -41,7 +41,7 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     return `Portuguese: ${this.getWordWithGender()}`;
   };
 
-  getExerciseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
+  getExerciseTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.noun.english);
 

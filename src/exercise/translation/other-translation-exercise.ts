@@ -41,7 +41,7 @@ export class OtherTranslationExercise extends TranslationExercise implements Com
     return `Portuguese: ${this.other.portuguese}`;
   };
 
-  getExerciseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.other.english : undefined);
+  getExerciseTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.other.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.other.portuguese : this.other.english);
 

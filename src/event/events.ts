@@ -12,7 +12,7 @@ export const TERMINAL_CLEARED = 'TERMINAL_CLEARED';
 export type EXERCISE_BODY_PRINTED_BODY = {
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
-  exerciseExplanation: string;
+  exerciseTranslation: string;
 };
 
 export type APP_EVENT =

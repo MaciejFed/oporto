@@ -141,10 +141,22 @@ export function getAllResultsForExerciseType(results: Result[], exerciseType: Ex
   return results.filter((result) => result.exercise.exerciseType === exerciseType);
 }
 
-export function getAllResultsForExercise(results: Result[], exercise: Exercise): Result[] {
-  return results.filter((result) => {
-    return result.exercise.equal(exercise);
-  });
+export function getAllResultsForExercise(
+  results: Result[],
+  exercise: Exercise,
+  resultFilter: (result: Result) => boolean = (_) => true
+): Result[] {
+  return results
+    .filter((result) => {
+      return result.exercise.equal(exercise);
+    })
+    .filter(resultFilter);
+}
+
+export function getAllAnswersForExercise(exercise: Exercise): string[] {
+  const allResults = getAllResultsForExercise(getAllResults(), exercise);
+
+  return allResults.map((result) => result.answer);
 }
 
 export function getAllResultsForExerciseSubject(results: Result[], exercise: Exercise): Result[] {

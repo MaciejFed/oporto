@@ -13,7 +13,7 @@ export class FitInGapExercise implements Exercise, Comparable {
     this.fitIn = getRandomFitInExercise();
   }
 
-  getExerciseExplanation = () => this.fitIn.explanation;
+  getExerciseTranslation = () => this.fitIn.explanation;
 
   getExerciseBodyPrefix = () => `${this.fitIn.prefix.length === 0 ? this.fitIn.prefix : this.fitIn.prefix.concat(' ')}`;
 

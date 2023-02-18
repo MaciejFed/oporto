@@ -16,6 +16,7 @@ const runExerciseSnapshotTest = (exercises: any[]) => {
   eventProcessor.emit('APP_STARTED');
 
   const outputs = answers.map((answer) => {
+    simulateTyping(answer.substring(0, answer.length - 2), true);
     simulateTyping(answer, true);
     const output = Output.getOutput();
 

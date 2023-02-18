@@ -52,7 +52,7 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     return `Portuguese: ${this.adjective.masculine.singular}`;
   };
 
-  getExerciseExplanation = () => (this.isTranslationToPortugueseFromHearing() ? this.adjective.english : undefined);
+  getExerciseTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.adjective.english : undefined);
 
   getCorrectAnswer = () =>
     this.isTranslationToPortuguese() ? this.adjective[this.gender][this.number] : this.adjective.english;
