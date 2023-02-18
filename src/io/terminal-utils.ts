@@ -5,17 +5,16 @@ import { formatDate, sleep } from '../common/common';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { ExerciseStatistics, WeekdayStatistics } from '../service/result';
 import { AnswerInputType } from './input';
-import Output from './output';
 import eventProcessor from '../event/event-processor';
+import Output from './output';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
 
 export function preExerciseClear() {
-  // eslint-disable-next-line no-console
   eventProcessor.emit('TERMINAL_CLEARED', 'preExerciseClear');
-  const x = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
-  Output.moveTo(0, 0, x);
+  const appLogo = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
+  Output.moveTo(0, 0, appLogo);
 }
 
 export function printExerciseExplanation(exerciseExplanation: string | undefined) {

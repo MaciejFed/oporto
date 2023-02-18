@@ -16,6 +16,9 @@ class Output implements AppEventListener {
     if (text) {
       if (text.includes('\n')) {
         terminal.moveTo(x, y, text);
+        text.split('\n').forEach((_v, index) => {
+          this.outputTable[y + index][x] = 'IMAGE';
+        });
       } else {
         for (let i = 0; i < text.length; i++) {
           if (text[i] === '\n') {
@@ -27,7 +30,7 @@ class Output implements AppEventListener {
             i = 0;
           }
           this.outputTable[y][x + i] = text[i];
-      }
+        }
       }
     }
   }
