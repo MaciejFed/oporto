@@ -103,7 +103,6 @@ export async function animateExerciseSummary({
   const animationTime = 1500;
   const barWidth = 50;
   terminal.bold();
-  Output.moveTo(0, yIndex, 'Last Month Results:');
   terminal.bold(false);
   Output.moveTo(0, yIndex + 2, `Last Time Attempted: ${formatDate(lastTimeAttempted)}`);
   for (let index = 1; index <= correctAttempts + failedAttempts; index++) {
@@ -140,7 +139,6 @@ export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatisti
   const gapStyle = '-------';
   const gapStyleLength = gapStyle.length - 3;
   terminal.bold();
-  Output.moveTo(0, 0, 'Weekly Statistics:\n\n');
   const graphData = weeklyStatistics
     .map((weeklyStatistic) => [
       ...weeklyStatistic.points.map((point) =>

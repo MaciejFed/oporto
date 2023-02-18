@@ -15,7 +15,6 @@ class Output implements AppEventListener {
   public moveTo(x: number, y: number, text: string | undefined) {
     if (text) {
       if (text.includes('\n')) {
-        terminal.moveTo(x, y, text);
         text.split('\n').forEach((_v, index) => {
           this.outputTable[y + index][x] = 'IMAGE';
         });
@@ -32,6 +31,7 @@ class Output implements AppEventListener {
           this.outputTable[y][x + i] = text[i];
         }
       }
+      terminal.moveTo(x, y, text);
     }
   }
 
