@@ -1,9 +1,9 @@
-import clear from 'clear';
 import EventEmitter from 'events';
 import { terminal } from 'terminal-kit';
 import { displayStatistics } from '../commands/stat';
 import { logger } from '../common/logger';
 import { APP_EVENT } from './events';
+import Output from '../io/output';
 
 type EmittedEvent = {
   event: APP_EVENT;
@@ -14,16 +14,16 @@ export class EventProcessor {
   eventEmitter: EventEmitter;
   eventHistory: EmittedEvent[];
 
-  constructor(eventEmitter: EventEmitter) {
-    this.eventEmitter = eventEmitter;
+  constructor() {
+    this.eventEmitter = new EventEmitter();
     this.eventHistory = [];
   }
 
-  on(eventName: string, callback: (...args: any[]) => void) {
+  public on(eventName: APP_EVENT, callback: (...args: any[]) => void) {
     this.eventEmitter.on(eventName, callback);
   }
 
-  emit(event: APP_EVENT, args?: any) {
+  public emit(event: APP_EVENT, args?: any) {
     this.eventHistory.push({
       event: event,
       args: args
@@ -45,7 +45,6 @@ export class EventProcessor {
       case 'APP_FINISHED':
         this.eventEmitter.removeAllListeners();
         terminal.hideCursor(false);
-        clear();
         displayStatistics(false);
         process.exit(0);
         break;
@@ -55,4 +54,4 @@ export class EventProcessor {
   }
 }
 
-export const eventProcessor = new EventProcessor(new EventEmitter());
+export default new EventProcessor();

@@ -2,9 +2,9 @@
   "name": "oporto",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/src/cli.js",
+  "main": "./build/cli.js",
   "bin": {
-    "oporto": "./build/src/cli.js"
+    "oporto": "./build/cli.js"
   },
   "scripts": {
     "test": "jest --detectOpenHandles --forceExit --coverage",

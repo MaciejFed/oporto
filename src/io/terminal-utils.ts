@@ -1,42 +1,44 @@
 import chalk from 'chalk';
-import clear from 'clear';
 import figlet from 'figlet';
 import { terminal } from 'terminal-kit';
 import { formatDate, sleep } from '../common/common';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { ExerciseStatistics, WeekdayStatistics } from '../service/result';
 import { AnswerInputType } from './input';
+import Output from './output';
+import eventProcessor from '../event/event-processor';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
 
 export function preExerciseClear() {
   // eslint-disable-next-line no-console
-  clear();
-  console.log(chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' })));
+  eventProcessor.emit('TERMINAL_CLEARED', 'preExerciseClear');
+  const x = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
+  Output.moveTo(0, 0, x);
 }
 
-export function printExerciseExplanation(exerciseExmplanation: string) {
-  terminal.moveTo(1, 8, exerciseExmplanation);
+export function printExerciseExplanation(exerciseExplanation: string | undefined) {
+  Output.moveTo(1, 8, exerciseExplanation);
 }
 
 export function printExerciseDescription(exerciseDescription: string) {
-  terminal.moveTo(1, 10, exerciseDescription);
+  Output.moveTo(1, 10, exerciseDescription);
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
-  terminal.moveTo(1, 11, exerciseBodyPrefix + answer + exerciseBodySuffix);
+  Output.moveTo(1, 11, exerciseBodyPrefix + answer + exerciseBodySuffix);
   terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, 11);
 }
 
 export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
-  terminal.moveTo(1, 12, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+  Output.moveTo(1, 12, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
 const repeatBodyPrefix = 'Repeat: ';
 
 export function printExerciseRepeatBody() {
-  terminal.moveTo(1, 13, repeatBodyPrefix);
+  Output.moveTo(1, 13, repeatBodyPrefix);
 }
 
 export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: string, newKey: string) {
@@ -50,13 +52,13 @@ export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: stri
   } else {
     terminal.red();
   }
-  terminal.moveTo(1 + repeatBodyPrefix.length + answer.length - 1, 13, newKey);
+  Output.moveTo(1 + repeatBodyPrefix.length + answer.length - 1, 13, newKey);
   terminal.white();
 }
 
 export function printExerciseRepeatAnswer(answer: string, correctAnswer: string) {
   terminal.hideCursor();
-  terminal.moveTo(1, 13, `${repeatBodyPrefix}`);
+  Output.moveTo(1, 13, `${repeatBodyPrefix}`);
   for (let i = 0; i < answer.length; i++) {
     if (
       (answer[i] !== undefined && answer[i].toLowerCase()) ===
@@ -66,29 +68,29 @@ export function printExerciseRepeatAnswer(answer: string, correctAnswer: string)
     } else {
       terminal.red();
     }
-    terminal.moveTo(repeatBodyPrefix.length + i + 1, 13, answer[i]);
+    Output.moveTo(repeatBodyPrefix.length + i + 1, 13, answer[i]);
   }
   terminal.white();
   terminal.hideCursor(false);
 }
 
 export function printInBetweenMenu(printExplanation: boolean) {
-  terminal.moveTo(1, 15, 'Press key to continue...');
-  terminal.moveTo(1, 16, 'r - repeat the answer');
+  Output.moveTo(1, 15, 'Press key to continue...');
+  Output.moveTo(1, 16, 'r - repeat the answer');
   if (printExplanation) {
-    terminal.moveTo(1, 17, 'e - print explanation');
+    Output.moveTo(1, 17, 'e - print explanation');
   }
 }
 
 export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answer: string, correctAnswer: string) {
-  terminal.moveTo(1, 11, exerciseBodyPrefix);
+  Output.moveTo(1, 11, exerciseBodyPrefix);
   for (let i = 0; i < correctAnswer.length; i++) {
     if (answer[i] && answer[i].toLowerCase() === correctAnswer[i].toLowerCase()) {
       terminal.green();
     } else {
       terminal.red();
     }
-    terminal.moveTo(1 + exerciseBodyPrefix.length + i, 11, correctAnswer[i]);
+    Output.moveTo(1 + exerciseBodyPrefix.length + i, 11, correctAnswer[i]);
   }
   terminal.white();
 }
@@ -102,9 +104,9 @@ export async function animateExerciseSummary({
   const animationTime = 1500;
   const barWidth = 50;
   terminal.bold();
-  terminal.moveTo(0, yIndex, 'Last Month Results:');
+  Output.moveTo(0, yIndex, 'Last Month Results:');
   terminal.bold(false);
-  terminal.moveTo(0, yIndex + 2, `Last Time Attempted: ${formatDate(lastTimeAttempted)}`);
+  Output.moveTo(0, yIndex + 2, `Last Time Attempted: ${formatDate(lastTimeAttempted)}`);
   for (let index = 1; index <= correctAttempts + failedAttempts; index++) {
     const goodValue = index <= correctAttempts ? index : correctAttempts;
     const wrongValue = Math.max(0, index - goodValue);
@@ -117,7 +119,7 @@ export async function animateExerciseSummary({
       { key: allLabel, value: totalValue, style: bg('blue'), barWidth: 1 },
       { key: correctWrongLabel, value: index, style: bg('red'), barWidth: 1 }
     ];
-    terminal.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
+    Output.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
     bulletData = [
       { key: allLabel, value: totalValue, style: bg('blue'), barWidth: 1 },
       {
@@ -127,7 +129,7 @@ export async function animateExerciseSummary({
         barWidth: 1
       }
     ];
-    terminal.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
+    Output.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
     await sleep(animationTime / totalValue);
   }
 }
@@ -139,7 +141,7 @@ export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatisti
   const gapStyle = '-------';
   const gapStyleLength = gapStyle.length - 3;
   terminal.bold();
-  terminal.moveTo(0, 0, 'Weekly Statistics:\n\n');
+  Output.moveTo(0, 0, 'Weekly Statistics:\n\n');
   const graphData = weeklyStatistics
     .map((weeklyStatistic) => [
       ...weeklyStatistic.points.map((point) =>

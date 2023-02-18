@@ -31,12 +31,13 @@ import {
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllResults } from '../repository/result-repository';
+import { sleep } from '../common/common';
 
 export class Terminal {
   eventProcessor: EventProcessor;
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
-  exerciseExplanation: string;
+  exerciseExplanation: string | undefined;
   answer: string;
   repetitionAnswer: string;
   correctAnswer: string;
@@ -51,14 +52,13 @@ export class Terminal {
     this.exerciseRepetitionInProgress = true;
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';
-    this.exerciseExplanation = '';
     this.answer = '';
     this.repetitionAnswer = '';
     this.correctAnswer = '';
     clear();
   }
 
-  registerListeners() {
+  private registerListeners() {
     this.registerOnAppStartedEventListener();
     this.registerOnDescriptionPrintedEventListener();
     this.registerOnBodyPrintedEventListener();
@@ -176,7 +176,7 @@ export class Terminal {
     }
   }
 
-  private onKeyMenu(key: string) {
+  private async onKeyMenu(key: string) {
     switch (key) {
       case 'e':
         printExerciseExplanation(this.exerciseExplanation);
@@ -186,9 +186,7 @@ export class Terminal {
         break;
       default:
         terminal.hideCursor(false);
-        setTimeout(() => {
-          this.eventProcessor.emit(EXERCISE_NEXT);
-        }, 50);
+        this.eventProcessor.emit(EXERCISE_NEXT);
     }
   }
 
@@ -196,3 +194,5 @@ export class Terminal {
     exec(`say "${this.exercise?.getRepeatAnswerPhrase()}"`);
   }
 }
+
+export default Terminal;

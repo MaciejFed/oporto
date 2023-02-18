@@ -1,6 +1,6 @@
 import { Comparable } from '../common/common';
-import { Verb } from '../repository/exercises-repository';
-import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb, Person } from '../service/verb';
+import { Person, Verb } from '../repository/exercises-repository';
+import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb } from '../service/verb';
 import { Exercise, ExerciseType } from './exercise';
 import { RatioRange } from '../service/progress';
 

@@ -27,6 +27,8 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     const adjectiveTranslationExercise = new AdjectiveTranslationExercise();
     adjectiveTranslationExercise.adjective = adjective;
     adjectiveTranslationExercise.translationType = translationType;
+    adjectiveTranslationExercise.gender = gender;
+    adjectiveTranslationExercise.number = number;
 
     return adjectiveTranslationExercise;
   }
@@ -68,6 +70,11 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
 
   equal = (other: AdjectiveTranslationExercise) =>
     other.exerciseType === 'AdjectiveTranslation' &&
+    this.gender === other.gender &&
+    this.number === other.number &&
     this.adjective.masculine.singular === other.adjective.masculine.singular &&
+    this.adjective.masculine.singular === other.adjective.masculine.singular &&
+    this.adjective.feminine.plural === other.adjective.feminine.plural &&
+    this.adjective.masculine.plural === other.adjective.masculine.plural &&
     this.translationType === other.translationType;
 }

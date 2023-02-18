@@ -1,4 +1,4 @@
-import { eventProcessor } from '../event/event-processor';
+import { EventProcessor } from '../event/event-processor';
 import { APP_STARTED } from '../event/events';
 import { Input } from '../io/input';
 import { SessionManager } from '../session/session-manager';
@@ -24,6 +24,7 @@ function hearingFilter() {
 export function startSpeakSession() {
   const EXERCISES_PER_SESSION = 5;
 
+  const eventProcessor = new EventProcessor();
   const terminal = new Terminal(eventProcessor);
   const input = new Input(eventProcessor);
   const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, false, hearingFilter());

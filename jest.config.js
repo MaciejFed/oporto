@@ -8,12 +8,14 @@ module.exports = {
     },
     testMatch: [
         '**/src/**/*.spec.ts',
-        '**/test/**/*.test.ts'
+        '**/src/test/**/*.test.ts'
     ],
     setupFilesAfterEnv: [
-        './test/init-test.ts'
-    ],
+        './src/test/init-test.ts'
+        ],
+
     collectCoverageFrom: [
-        'src/**/{!(file|cli|test|stat|event-listener),}.ts'
-    ]
+        'src/**/{!(file|cli|test|stat|event-listener|init-test|base-mocks),}.ts'
+    ],
+    testTimeout: 600000,
 }

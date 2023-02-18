@@ -1,10 +1,10 @@
-import clear from 'clear';
 import { logger } from '../common/logger';
 import { displayGenericWeeklyStatistics } from '../io/terminal-utils';
 import { getAllResults } from '../repository/result-repository';
 import { getAllUniqueWords } from '../service/progress';
 import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
 import { generateExercisesForSession } from '../exercise/generator';
+import clear from 'clear';
 
 export function displayStatistics(displayProgress: boolean) {
   clear();

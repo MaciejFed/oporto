@@ -55,3 +55,5 @@ export class Input {
     return answerTime;
   }
 }
+
+export default Input;

@@ -135,3 +135,5 @@ export class SessionManager implements AppEventListener {
     }
   }
 }
+
+export default SessionManager;

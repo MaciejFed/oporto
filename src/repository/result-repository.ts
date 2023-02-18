@@ -42,6 +42,8 @@ export function getAllResults(): Result[] {
       case 'AdjectiveTranslation':
         const adjectiveTranslationExercise: AdjectiveTranslationExercise = new AdjectiveTranslationExercise();
         adjectiveTranslationExercise.adjective = (result.exercise as unknown as AdjectiveTranslationExercise).adjective;
+        adjectiveTranslationExercise.gender = (result.exercise as unknown as AdjectiveTranslationExercise).gender;
+        adjectiveTranslationExercise.number = (result.exercise as unknown as AdjectiveTranslationExercise).number;
         adjectiveTranslationExercise.translationType = (
           result.exercise as unknown as AdjectiveTranslationExercise
         ).translationType;

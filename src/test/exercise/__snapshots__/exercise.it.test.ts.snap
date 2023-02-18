@@ -1,0 +1,489 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Exercises Integration Snapshots NounTranslation 1`] = `
+Array [
+  "APP_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Portuguese: o chá",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED t",
+  "KEY_PRESSED e",
+  "KEY_PRESSED a",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED English: tea",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED o",
+  "KEY_PRESSED",
+  "KEY_PRESSED c",
+  "KEY_PRESSED h",
+  "KEY_PRESSED á",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises Integration Snapshots NounTranslation 2`] = `
+"[31m          ____                   _           [39m               
+[31m   ___   |  _ \\\\    ___    _ __  | |_    ___  [39m               
+[31m  / _ \\\\  | |_) |  / _ \\\\  | '__| | __|  / _ \\\\ [39m               
+[31m | (_) | |  __/  | (_) | | |    | |_  | (_) |[39m               
+[31m  \\\\___/  |_|      \\\\___/  |_|     \\\\__|  \\\\___/ [39m               
+[31m                                             [39m               
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+ Portuguese: o chá                                                    
+ English: tea                                                         
+ Correct! [voice]                                                     
+                                                                      
+                                                                      
+ Press key to continue...                                             
+ r - repeat the answer                                                
+                                                                      
+                                                                      
+Last Month Results:                                                   
+                                                                      
+Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
+                                                                      
+              All - 1 [44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m
+                                                                      
+ Correct/Wrong 1/0(1) [42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;
+
+exports[`Exercises Integration Snapshots NounTranslation 3`] = `
+"[31m          ____                   _           [39m               
+[31m   ___   |  _ \\\\    ___    _ __  | |_    ___  [39m               
+[31m  / _ \\\\  | |_) |  / _ \\\\  | '__| | __|  / _ \\\\ [39m               
+[31m | (_) | |  __/  | (_) | | |    | |_  | (_) |[39m               
+[31m  \\\\___/  |_|      \\\\___/  |_|     \\\\__|  \\\\___/ [39m               
+[31m                                             [39m               
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+ English: teao chá                                                    
+ Portuguese: o chá                                                    
+ Correct! [voice]                                                     
+                                                                      
+                                                                      
+ Press key to continue...                                             
+ r - repeat the answer                                                
+                                                                      
+                                                                      
+Last Month Results:                                                   
+                                                                      
+Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
+                                                                      
+              All - 1 [44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m
+                                                                      
+ Correct/Wrong 1/0(1) [42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;
+
+exports[`Exercises Integration Snapshots SentenceTranslation 1`] = `
+Array [
+  "APP_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Portuguese: Boa ideia",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED G",
+  "KEY_PRESSED o",
+  "KEY_PRESSED o",
+  "KEY_PRESSED d",
+  "KEY_PRESSED",
+  "KEY_PRESSED i",
+  "KEY_PRESSED d",
+  "KEY_PRESSED e",
+  "KEY_PRESSED a",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED English: Good idea",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED B",
+  "KEY_PRESSED o",
+  "KEY_PRESSED a",
+  "KEY_PRESSED",
+  "KEY_PRESSED i",
+  "KEY_PRESSED d",
+  "KEY_PRESSED e",
+  "KEY_PRESSED i",
+  "KEY_PRESSED a",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises Integration Snapshots SentenceTranslation 2`] = `
+"Weekly Statistics:_                   _           [39m               
+
+[31m   ___   |  _ \\\\    ___    _ __  | |_    ___  [39m               
+[31m  / _ \\\\  | |_) |  / _ \\\\  | '__| | __|  / _ \\\\ [39m               
+[31m | (_) | |  __/  | (_) | | |    | |_  | (_) |[39m               
+[31m  \\\\___/  |_|      \\\\___/  |_|     \\\\__|  \\\\___/ [39m               
+[31m                                             [39m               
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+ English: teao chá                                                    
+ Portuguese: o chá                                                    
+ Correct! [voice]                                                     
+                                                                      
+                                                                      
+ Press key to continue...                                             
+ r - repeat the answer                                                
+                                                                      
+                                                                      
+Last Month Results:                                                   
+                                                                      
+Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
+                                                                      
+              All - 1 [44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m
+                                                                      
+ Correct/Wrong 1/0(1) [42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;
+
+exports[`Exercises Integration Snapshots SentenceTranslation 3`] = `
+"Weekly Statistics:_                   _           [39m               
+
+[31m   ___   |  _ \\\\    ___    _ __  | |_    ___  [39m               
+[31m  / _ \\\\  | |_) |  / _ \\\\  | '__| | __|  / _ \\\\ [39m               
+[31m | (_) | |  __/  | (_) | | |    | |_  | (_) |[39m               
+[31m  \\\\___/  |_|      \\\\___/  |_|     \\\\__|  \\\\___/ [39m               
+[31m                                             [39m               
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+ English: teao chá                                                    
+ Portuguese: o chá                                                    
+ Correct! [voice]                                                     
+                                                                      
+                                                                      
+ Press key to continue...                                             
+ r - repeat the answer                                                
+                                                                      
+                                                                      
+Last Month Results:                                                   
+                                                                      
+Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
+                                                                      
+              All - 1 [44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m
+                                                                      
+ Correct/Wrong 1/0(1) [42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;
+
+exports[`Exercises Integration Snapshots VerbExercise 1`] = `
+Array [
+  "APP_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to see",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED v",
+  "KEY_PRESSED i",
+  "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED e",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to see",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED v",
+  "KEY_PRESSED ê",
+  "KEY_PRESSED s",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises Integration Snapshots VerbExercise 2`] = `
+"Weekly Statistics:_                   _           [39m               
+
+[31m   ___   |  _ \\\\    ___    _ __  | |_    ___  [39m               
+[31m  / _ \\\\  | |_) |  / _ \\\\  | '__| | __|  / _ \\\\ [39m               
+[31m | (_) | |  __/  | (_) | | |    | |_  | (_) |[39m               
+[31m  \\\\___/  |_|      \\\\___/  |_|     \\\\__|  \\\\___/ [39m               
+[31m                                             [39m               
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+ English: teao chá                                                    
+ Portuguese: o chá                                                    
+ Correct! [voice]                                                     
+                                                                      
+                                                                      
+ Press key to continue...                                             
+ r - repeat the answer                                                
+                                                                      
+                                                                      
+Last Month Results:                                                   
+                                                                      
+Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
+                                                                      
+              All - 1 [44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m
+                                                                      
+ Correct/Wrong 1/0(1) [42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;
+
+exports[`Exercises Integration Snapshots VerbExercise 3`] = `
+"Weekly Statistics:_                   _           [39m               
+
+[31m   ___   |  _ \\\\    ___    _ __  | |_    ___  [39m               
+[31m  / _ \\\\  | |_) |  / _ \\\\  | '__| | __|  / _ \\\\ [39m               
+[31m | (_) | |  __/  | (_) | | |    | |_  | (_) |[39m               
+[31m  \\\\___/  |_|      \\\\___/  |_|     \\\\__|  \\\\___/ [39m               
+[31m                                             [39m               
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+ English: teao chá                                                    
+ Portuguese: o chá                                                    
+ Correct! [voice]                                                     
+                                                                      
+                                                                      
+ Press key to continue...                                             
+ r - repeat the answer                                                
+                                                                      
+                                                                      
+Last Month Results:                                                   
+                                                                      
+Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
+                                                                      
+              All - 1 [44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m[44m [0m
+                                                                      
+ Correct/Wrong 1/0(1) [42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m[42m [0m
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;

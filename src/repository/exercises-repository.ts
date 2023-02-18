@@ -1,5 +1,12 @@
 /* eslint-disable quotes */
-import { Person } from '../service/verb';
+
+export enum Person {
+  Eu = 'Eu',
+  Tu = 'Tu',
+  ElaEleVocê = 'Ela/Ele/Você',
+  Nós = 'Nós',
+  ElesElasVosēs = 'Eles/Elas/Vocēs'
+}
 
 export type Verb = {
   english: string;
@@ -851,7 +858,7 @@ export const db: Schema = {
     },
     {
       english: 'to correct',
-      infinitive: 'despir',
+      infinitive: 'corrigir',
       presentSimple: {
         Eu: 'corrijo',
         Tu: 'corriges',
@@ -957,17 +964,6 @@ export const db: Schema = {
         'Ela/Ele/Você': 'conduz',
         Nós: 'conduzimos',
         'Eles/Elas/Vocēs': 'conduzem'
-      }
-    },
-    {
-      english: 'to allow',
-      infinitive: 'permitir',
-      presentSimple: {
-        Eu: 'permito',
-        Tu: 'permites',
-        'Ela/Ele/Você': 'permite',
-        Nós: 'permitimos',
-        'Eles/Elas/Vocēs': 'permitem'
       }
     },
     {
@@ -1165,14 +1161,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'home',
-      portuguese: {
-        word: 'casa',
-        plural: 'casas',
-        gender: 'feminine'
-      }
-    },
-    {
       english: 'book',
       portuguese: {
         word: 'livro',
@@ -1199,13 +1187,6 @@ export const db: Schema = {
       english: 'street',
       portuguese: {
         word: 'rua',
-        gender: 'feminine'
-      }
-    },
-    {
-      english: 'city',
-      portuguese: {
-        word: 'cidade',
         gender: 'feminine'
       }
     },
@@ -1629,13 +1610,6 @@ export const db: Schema = {
       portuguese: {
         word: 'pé',
         gender: 'masculine'
-      }
-    },
-    {
-      english: 'head',
-      portuguese: {
-        word: 'cabeça',
-        gender: 'feminine'
       }
     },
     {
@@ -2093,13 +2067,6 @@ export const db: Schema = {
       portuguese: {
         word: 'coisa',
         gender: 'feminine'
-      }
-    },
-    {
-      english: 'weather',
-      portuguese: {
-        word: 'tempo',
-        gender: 'masculine'
       }
     },
     {
@@ -2698,10 +2665,6 @@ export const db: Schema = {
     {
       english: 'first',
       portuguese: 'primeiro'
-    },
-    {
-      english: 'middle',
-      portuguese: 'meio'
     },
     {
       english: 'Monday',

@@ -1,14 +1,6 @@
-import { readAll, Verb } from '../repository/exercises-repository';
+import { Person, readAll, Verb } from '../repository/exercises-repository';
 import { getRandomElement } from '../common/common';
 import { VerbTime } from '../exercise/verb-exercise';
-
-export enum Person {
-  Eu = 'Eu',
-  Tu = 'Tu',
-  ElaEleVocê = 'Ela/Ele/Você',
-  Nós = 'Nós',
-  ElesElasVosēs = 'Eles/Elas/Vocēs'
-}
 
 export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
