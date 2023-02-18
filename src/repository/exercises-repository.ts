@@ -2832,7 +2832,7 @@ export const db: Schema = {
     },
     {
       english: 'around',
-      portuguese: 'à volta de'
+      portuguese: 'á volta de'
     },
     {
       english: 'near',
