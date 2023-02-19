@@ -5,6 +5,8 @@ import { VerbTranslationExercise } from '../exercise/translation/verb-translatio
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
+import { getAllWordsConjugations } from './conjugation';
+import { Comparable, onlyDistinct } from '../common/common';
 
 describe('Example Finder', () => {
   it('Can Find Example For VerbExercise And VerbTranslationExercise', () => {
@@ -132,5 +134,56 @@ describe('Example Finder', () => {
     const exampleSentenceForOtherTranslationExercise = findSentenceExamplesForExercise(otherTranslationExercise);
 
     expect(exampleSentenceForOtherTranslationExercise).toBeUndefined();
+  });
+
+  it('Finds Example For All Verb', () => {
+    const allVerbs = readAll().verbs;
+
+    const verbsWithoutExamples = allVerbs.filter((verb) => {
+      const verbExercise = VerbExercise.new(verb, Person.Eu, 'pastPerfect');
+
+      return findSentenceExamplesForExercise(verbExercise) === undefined;
+    });
+    const verbsWithExamples = allVerbs.filter((verb) => {
+      const verbExercise = VerbExercise.new(verb, Person.Eu, 'pastPerfect');
+
+      return findSentenceExamplesForExercise(verbExercise) !== undefined;
+    });
+
+    verbsWithoutExamples.forEach((verb) => {
+      console.log(`No Example For [${verb.infinitive}]`);
+    });
+
+    expect(verbsWithExamples.length + verbsWithoutExamples.length).toEqual(allVerbs.length);
+    expect(verbsWithoutExamples.length).toBeLessThan(32);
+  });
+
+  it('Finds Orphan Words In Examples', () => {
+    const allConjugations = getAllWordsConjugations();
+
+    class Word implements Comparable {
+      word: string;
+      constructor(word: string) {
+        this.word = word;
+      }
+
+      equal(other: Word): boolean {
+        return this.word === other.word;
+      }
+    }
+
+    const allWordsInExamples = onlyDistinct(
+      readAll()
+        .sentences.flatMap((sentence) => sentence.portuguese.split(' '))
+        .map((word) => new Word(word.toLowerCase()))
+    )
+      .map((word) => (word as Word).word)
+      .sort();
+
+    const orphanWords = allWordsInExamples.filter((word) => !allConjugations.includes(word));
+    const nonOrphanWords = allWordsInExamples.filter((word) => allConjugations.includes(word));
+
+    expect(orphanWords.length + nonOrphanWords.length).toEqual(allWordsInExamples.length);
+    expect(orphanWords.length).toBeLessThan(434);
   });
 });

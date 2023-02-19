@@ -11,7 +11,7 @@ const getConjugationsForVerb = (verb: Verb) => {
   // eslint-disable-next-line new-cap
   return VerbExerciseGenerator()
     .filter((verbExercise) => (verbExercise as VerbExercise).verb.infinitive === verb.infinitive)
-    .map((verbExercise) => verbExercise.getCorrectAnswer())
+    .map((verbExercise) => verbExercise.getCorrectAnswer().toLowerCase())
     .concat(verb.infinitive)
     .sort((a, b) => a.localeCompare(b));
 };
