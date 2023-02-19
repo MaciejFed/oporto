@@ -5,6 +5,7 @@ import { getRandomElement } from '../common/common';
 import { Exercise } from '../exercise/exercise';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
+import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 
 const getConjugationsForVerb = (verb: Verb) => {
   // eslint-disable-next-line new-cap
@@ -17,7 +18,9 @@ const getConjugationsForVerb = (verb: Verb) => {
 
 export const findSentenceExamplesForExercise = (exercise: Exercise) => {
   let conjugations: string[] = [];
-  if (exercise.exerciseType === 'VerbExercise' || exercise.exerciseType === 'VerbTranslation') {
+  if (exercise.exerciseType === 'OtherTranslation') {
+    conjugations = [(exercise as OtherTranslationExercise).other.portuguese];
+  } else if (exercise.exerciseType === 'VerbExercise' || exercise.exerciseType === 'VerbTranslation') {
     const verb = (exercise as VerbExercise).verb;
     conjugations = getConjugationsForVerb(verb);
   } else if (exercise.exerciseType === 'NounTranslation') {

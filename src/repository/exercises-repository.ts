@@ -46,7 +46,7 @@ export type Noun = {
 export type Sentence = {
   english: string;
   portuguese: string;
-  sentenceType: SentenceType;
+  sentenceType?: SentenceType;
 };
 
 export type Other = {
@@ -3409,7 +3409,7 @@ export const db: Schema = {
     },
     {
       english: "I'm from Lisbon",
-      portuguese: 'Eu sou de Lisboa',
+      portuguese: 'Sou de Lisboa',
       sentenceType: 'statement'
     },
     {
@@ -3471,31 +3471,815 @@ export const db: Schema = {
       english: 'Leave me alone',
       portuguese: 'Deixa-me em paz',
       sentenceType: 'statement'
+    },
+    {
+      portuguese: 'Sou de Portugal',
+      english: 'I am from Portugal'
+    },
+    {
+      portuguese: 'Estou feliz hoje',
+      english: 'I am happy today'
+    },
+    {
+      portuguese: 'Tenho um carro',
+      english: 'I have a car'
+    },
+    {
+      portuguese: 'Temos que sair agora',
+      english: 'We have to leave now'
+    },
+    {
+      portuguese: 'O que fazes?',
+      english: 'What are you doing?'
+    },
+    {
+      portuguese: 'Fazemos tudo juntos',
+      english: 'We do everything together'
+    },
+    {
+      portuguese: 'O que dizes?',
+      english: 'What are you saying?'
+    },
+    {
+      portuguese: 'Digo sempre a verdade',
+      english: 'I always tell the truth'
+    },
+    {
+      portuguese: 'Vamos para a praia',
+      english: "Let's go to the beach."
+    },
+    {
+      portuguese: 'Fui ao supermercado',
+      english: 'I went to the supermarket'
+    },
+    {
+      portuguese: 'Podemos resolver isso',
+      english: 'We can solve this'
+    },
+    {
+      portuguese: 'Preciso de obter um visto',
+      english: 'I need to get a visa'
+    },
+    {
+      portuguese: 'Vou pegar o meu casaco',
+      english: 'I am going to get my coat'
+    },
+    {
+      portuguese: 'Vou fazer o jantar',
+      english: 'I am going to make dinner'
+    },
+    {
+      portuguese: 'Ele faz sapatos',
+      english: 'He makes shoes'
+    },
+    {
+      portuguese: 'Vejo-te amanhã',
+      english: 'I will see you tomorrow'
+    },
+    {
+      portuguese: 'Vamos ver um filme',
+      english: "Let's watch a movie."
+    },
+    {
+      portuguese: 'Não sei a resposta',
+      english: "I don't know the answer."
+    },
+    {
+      portuguese: 'Conheço a cidade muito bem',
+      english: 'I know the city very well'
+    },
+    {
+      portuguese: 'Vem cá, por favor',
+      english: 'Come here, please'
+    },
+    {
+      portuguese: 'Ele vem de longe',
+      english: 'He comes from far away'
+    },
+    {
+      portuguese: 'Estou a pensar em ti',
+      english: "I'm thinking about you."
+    },
+    {
+      portuguese: 'Penso que ela não sabe',
+      english: "I think she doesn't know."
+    },
+    {
+      portuguese: 'Olha para mim',
+      english: 'Look at me'
+    },
+    {
+      portuguese: 'Estou a ver a televisão',
+      english: 'I am watching TV'
+    },
+    {
+      portuguese: 'Quero ir ao cinema',
+      english: 'I want to go to the cinema'
+    },
+    {
+      portuguese: 'Ela deseja o melhor para ele',
+      english: 'She wishes the best for him'
+    },
+    {
+      portuguese: 'Vou usar o computador',
+      english: 'I am going to use the computer'
+    },
+    {
+      portuguese: 'Usamos o mesmo shampoo',
+      english: 'We use the same shampoo'
+    },
+    {
+      portuguese: 'Onde posso encontrar um bom restaurante?',
+      english: 'Where can I find a good restaurant?'
+    },
+    {
+      portuguese: 'Encontrei a minha carteira perdida',
+      english: 'I found my lost wallet'
+    },
+    {
+      portuguese: 'Vou dar-te um presente',
+      english: 'I am going to give you a present'
+    },
+    {
+      portuguese: 'Ele dá aulas de matemática',
+      english: 'He teaches math classes'
+    },
+    {
+      portuguese: 'Conta-me uma história',
+      english: 'Tell me a story'
+    },
+    {
+      portuguese: 'Ele diz a verdade',
+      english: 'He tells the truth'
+    },
+    {
+      portuguese: 'Preciso de trabalhar mais',
+      english: 'I need to work more'
+    },
+    {
+      portuguese: 'Ele trabalha numa fábrica',
+      english: 'He works in a factory'
+    },
+    {
+      portuguese: 'Pareces feliz hoje',
+      english: 'You seem happy today'
+    },
+    {
+      portuguese: 'Parece que ele está doente',
+      english: 'It seems that he is sick'
+    },
+    {
+      portuguese: 'Ela sente a dor',
+      english: 'She feels the pain'
+    },
+    {
+      portuguese: 'Vou tentar fazer o meu melhor',
+      english: 'I will try to do my best'
+    },
+    {
+      portuguese: 'Prova este bolo',
+      english: 'Try this cake'
+    },
+    {
+      portuguese: 'Não quero sair de casa hoje',
+      english: "I don't want to go out of the house today."
+    },
+    {
+      portuguese: 'Deixe-me em paz!',
+      english: 'Leave me alone!'
+    },
+    {
+      portuguese: 'Vou chamar o meu amigo',
+      english: 'I am going to call my friend'
+    },
+    {
+      portuguese: 'Ele ligou para o trabalho',
+      english: 'He called work'
+    },
+    {
+      portuguese: 'Posso perguntar-te uma coisa?',
+      english: 'Can I ask you something?'
+    },
+    {
+      portuguese: 'Ele pediu um favor',
+      english: 'He asked for a favor'
+    },
+    {
+      portuguese: 'Preciso de ajuda',
+      english: 'I need help'
+    },
+    {
+      portuguese: 'Necessitamos de mais tempo',
+      english: 'We need more time'
+    },
+    {
+      portuguese: 'Ela sente a pressão',
+      english: 'She feels the pressure'
+    },
+    {
+      portuguese: 'Vou tornar-me um chef',
+      english: 'I will become a chef'
+    },
+    {
+      portuguese: 'Ela tornou-se famosa',
+      english: 'She became famous'
+    },
+    {
+      portuguese: 'Deixa-me em paz!',
+      english: 'Leave me alone!'
+    },
+    {
+      portuguese: 'Vou sair agora',
+      english: "I'm going to leave now."
+    },
+    {
+      portuguese: 'Vou pôr a mesa',
+      english: 'I am going to set the table'
+    },
+    {
+      portuguese: 'Ele colocou o livro na prateleira',
+      english: 'He put the book on the shelf'
+    },
+    {
+      portuguese: 'O que é que isso significa?',
+      english: 'What does that mean?'
+    },
+    {
+      portuguese: 'Ela quer dizer o que pensa',
+      english: 'She wants to say what she thinks'
+    },
+    {
+      portuguese: 'Vou manter o meu telefone ligado',
+      english: 'I will keep my phone on'
+    },
+    {
+      portuguese: 'Ele mantém a sua casa limpa',
+      english: 'He keeps his house clean'
+    },
+    {
+      portuguese: 'Não o deixe entrar',
+      english: "Don't let him in."
+    },
+    {
+      portuguese: 'Vamos começar o jogo',
+      english: "Let's start the game."
+    },
+    {
+      portuguese: 'Ele começou a trabalhar cedo',
+      english: 'He started working early'
+    },
+    {
+      portuguese: 'Parece que está frio lá fora',
+      english: 'It seems to be cold outside'
+    },
+    {
+      portuguese: 'Ela parece feliz',
+      english: 'She seems happy'
+    },
+    {
+      portuguese: 'Podes ajudar-me com isto?',
+      english: 'Can you help me with this?'
+    },
+    {
+      portuguese: 'Ele ajuda os seus amigos',
+      english: 'He helps his friends'
+    },
+    {
+      portuguese: 'Gosto de falar contigo',
+      english: 'I like talking to you'
+    },
+    {
+      portuguese: 'Ele fala muitas línguas',
+      english: 'He speaks many languages'
+    },
+    {
+      portuguese: 'Vou virar à direita',
+      english: "I'm going to turn right."
+    },
+    {
+      portuguese: 'Ele transformou-se numa pessoa melhor',
+      english: 'He became a better person'
+    },
+    {
+      portuguese: 'Vamos iniciar a reunião',
+      english: "Let's start the meeting."
+    },
+    {
+      portuguese: 'Ele começou a correr',
+      english: 'He started running'
+    },
+    {
+      portuguese: 'Podes mostrar-me o caminho?',
+      english: 'Can you show me the way?'
+    },
+    {
+      portuguese: 'Ele mostrou o seu talento na música',
+      english: 'He showed his talent in music'
+    },
+    {
+      portuguese: 'Posso ouvir música?',
+      english: 'Can I listen to music?'
+    },
+    {
+      portuguese: 'Ele ouviu um barulho estranho',
+      english: 'He heard a strange noise'
+    },
+    {
+      portuguese: 'Gosto de jogar futebol',
+      english: 'I like playing soccer'
+    },
+    {
+      portuguese: 'Ele toca guitarra',
+      english: 'He plays guitar'
+    },
+    {
+      english: "I'm going to run in the park.",
+      portuguese: 'Vou correr no parque'
+    },
+    {
+      english: 'He ran a marathon',
+      portuguese: 'Ele correu uma maratona'
+    },
+    {
+      english: "I'm going to move the table.",
+      portuguese: 'Vou mover a mesa'
+    },
+    {
+      english: 'He moves gracefully',
+      portuguese: 'Ele move-se com graça'
+    },
+    {
+      english: 'I like chocolate',
+      portuguese: 'Gosto de chocolate'
+    },
+    {
+      english: 'She likes to dance',
+      portuguese: 'Ela gosta de dançar'
+    },
+    {
+      english: 'I want to live in Lisbon',
+      portuguese: 'Quero viver em Lisboa'
+    },
+    {
+      english: 'He lives with his parents',
+      portuguese: 'Ele vive com os pais'
+    },
+    {
+      english: 'I believe that anything is possible',
+      portuguese: 'Acredito que tudo é possível'
+    },
+    {
+      english: 'He believes in God',
+      portuguese: 'Ele acredita em Deus'
+    },
+    {
+      english: 'Por favor, segure a porta',
+      portuguese: 'Por favor, segure a porta'
+    },
+    {
+      english: 'Vou realizar o meu sonho',
+      portuguese: 'Vou realizar o meu sonho'
+    },
+    {
+      english: 'Vou trazer o jantar',
+      portuguese: 'Vou trazer o jantar'
+    },
+    {
+      english: 'Ele levou a mala para o aeroporto',
+      portuguese: 'Ele levou a mala para o aeroporto'
+    },
+    {
+      english: 'O que aconteceu aqui?',
+      portuguese: 'O que aconteceu aqui?'
+    },
+    {
+      english: 'Isso não costuma ocorrer',
+      portuguese: 'Isso não costuma ocorrer'
+    },
+    {
+      english: 'Posso fornecer informações',
+      portuguese: 'Posso fornecer informações'
+    },
+    {
+      english: 'A empresa proverá o equipamento',
+      portuguese: 'A empresa proverá o equipamento'
+    },
+    {
+      english: 'Gosto de falar com amigos',
+      portuguese: 'Gosto de falar com amigos'
+    },
+    {
+      english: 'Precisamos conversar sobre isso',
+      portuguese: 'Precisamos conversar sobre isso'
+    },
+    {
+      english: 'I will meet her at the café',
+      portuguese: 'Vou encontrar-me com ela no café'
+    },
+    {
+      english: 'We met at the party',
+      portuguese: 'Encontramo-nos na festa'
+    },
+    {
+      english: 'The package includes breakfast',
+      portuguese: 'O pacote inclui o café da manhã'
+    },
+    {
+      english: 'It does not include tax',
+      portuguese: 'Não inclui o imposto'
+    },
+    {
+      english: "Let's keep walking.",
+      portuguese: 'Vamos continuar a caminhada'
+    },
+    {
+      english: 'He wants to keep studying',
+      portuguese: 'Ele quer continuar estudando'
+    },
+    {
+      english: 'We need to set the rules',
+      portuguese: 'Precisamos definir as regras'
+    },
+    {
+      english: 'I will establish the schedule',
+      portuguese: 'Vou estabelecer o cronograma'
+    },
+    {
+      english: 'I want to learn to play guitar',
+      portuguese: 'Quero aprender a tocar violão'
+    },
+    {
+      english: 'He learns quickly',
+      portuguese: 'Ele aprende rápido'
+    },
+    {
+      english: 'I am going to change jobs',
+      portuguese: 'Vou mudar de emprego'
+    },
+    {
+      english: 'He changed the plans',
+      portuguese: 'Ele alterou os planos'
+    },
+    {
+      english: 'I will follow the instructions',
+      portuguese: 'Vou seguir as instruções'
+    },
+    {
+      english: 'He follows a healthy diet',
+      portuguese: 'Ele segue uma dieta saudável'
+    },
+    {
+      english: 'I am going to quit smoking',
+      portuguese: 'Vou parar de fumar'
+    },
+    {
+      english: 'He was arrested by the police',
+      portuguese: 'Ele foi detido pela polícia'
+    },
+    {
+      english: 'I will start a company',
+      portuguese: 'Vou criar uma empresa'
+    },
+    {
+      english: 'He easily creates music',
+      portuguese: 'Ele cria música com facilidade'
+    },
+    {
+      english: 'I want to develop my skills',
+      portuguese: 'Quero desenvolver as minhas habilidades'
+    },
+    {
+      english: 'The company is developing a new product',
+      portuguese: 'A empresa está desenvolvendo um novo produto'
+    },
+    {
+      english: 'Can you explain again?',
+      portuguese: 'Pode explicar novamente?'
+    },
+    {
+      english: 'He explained the theory clearly',
+      portuguese: 'Ele explicou a teoria com clareza'
+    },
+    {
+      english: 'The package includes dinner',
+      portuguese: 'O pacote inclui o jantar'
+    },
+    {
+      english: 'The price includes the service charge',
+      portuguese: 'O preço inclui a taxa de serviço'
+    },
+    {
+      english: 'We will build a house',
+      portuguese: 'Vamos construir uma casa'
+    },
+    {
+      english: 'He built an impressive building',
+      portuguese: 'Ele construiu um prédio impressionante'
+    },
+    {
+      english: 'Can I offer help?',
+      portuguese: 'Posso oferecer ajuda?'
+    },
+    {
+      english: 'The company offers benefits to employees',
+      portuguese: 'A empresa oferece benefícios aos funcionários'
+    },
+    {
+      portuguese: 'Não me consigo lembrar do nome dele',
+      english: "I can't remember his name."
+    },
+    {
+      portuguese: 'Ele lembra-se sempre de datas importantes',
+      english: 'He always remembers important dates'
+    },
+    {
+      portuguese: 'Vou comprar um presente',
+      english: "I'm going to buy a present."
+    },
+    {
+      portuguese: 'Ele comprou um carro novo',
+      english: 'He bought a new car'
+    },
+    {
+      portuguese: 'Vou esperar aqui',
+      english: "I'm going to wait here."
+    },
+    {
+      portuguese: 'Ele esperou pacientemente pela resposta',
+      english: 'He waited patiently for the answer'
+    },
+    {
+      portuguese: 'Posso servir o jantar?',
+      english: 'Can I serve dinner?'
+    },
+    {
+      portuguese: 'Ele serve o exército há anos',
+      english: 'He has been serving in the army for years'
+    },
+    {
+      portuguese: 'Não esperava essa reação',
+      english: "I didn't expect that reaction."
+    },
+    {
+      portuguese: 'Espero antecipar o projeto',
+      english: 'I hope to expedite the project'
+    },
+    {
+      portuguese: 'Vou escolher um vestido',
+      english: "I'm going to choose a dress."
+    },
+    {
+      portuguese: 'Ele pegou o livro da estante',
+      english: 'He took the book from the shelf'
+    },
+    {
+      portuguese: 'Vamos chegar tarde',
+      english: "We're going to arrive late."
+    },
+    {
+      portuguese: 'Ele chegou ao aeroporto cedo',
+      english: 'He arrived at the airport early'
+    },
+    {
+      portuguese: 'Vamos assegurar que isso não aconteça',
+      english: "Let's make sure that doesn't happen."
+    },
+    {
+      portuguese: 'Ele garantiu que estaria presente',
+      english: 'He guaranteed he would be present'
+    },
+    {
+      portuguese: 'Vou carregar as malas',
+      english: "I'm going to carry the suitcases."
+    },
+    {
+      portuguese: 'O camião transportou a carga',
+      english: 'The truck transported the cargo'
+    },
+    {
+      portuguese: 'Cuidado para não quebrar o copo',
+      english: 'Be careful not to break the glass'
+    },
+    {
+      portuguese: 'Ele rompeu o contrato com a empresa',
+      english: 'He broke the contract with the company'
+    },
+    {
+      portuguese: 'Cuidado para não cair',
+      english: 'Be careful not to fall'
+    },
+    {
+      portuguese: 'Ele caiu fora do projeto',
+      english: 'He dropped out of the project'
+    },
+    {
+      portuguese: 'Quero alcançar meus objetivos',
+      english: 'I want to achieve my goals'
+    },
+    {
+      portuguese: 'Ele alcançou a fama em pouco tempo',
+      english: 'He achieved fame in a short time'
+    },
+    {
+      portuguese: 'O assassino matou a vítima',
+      english: 'The killer killed the victim'
+    },
+    {
+      portuguese: 'Ele matou um mosquito',
+      english: 'He killed a mosquito'
+    },
+    {
+      portuguese: 'Vamos permanecer aqui',
+      english: "Let's stay here."
+    },
+    {
+      portuguese: 'Ele permaneceu calmo durante a reunião',
+      english: 'He remained calm during the meeting'
+    },
+    {
+      portuguese: 'Quero poupar dinheiro',
+      english: 'I want to save money'
+    },
+    {
+      portuguese: 'Ele salvou a vida do cachorro',
+      english: "He saved the dog's life."
+    },
+    {
+      portuguese: 'Vou gastar o dinheiro no shopping',
+      english: "I'm going to spend the money at the mall."
+    },
+    {
+      portuguese: 'Ele passou o dia a estudar',
+      english: 'He spent the day studying'
+    },
+    {
+      portuguese: 'Vou enviar um e-mail',
+      english: "I'm going to send an email."
+    },
+    {
+      portuguese: 'Ele enviou a carta pelo correio',
+      english: 'He sent the letter by mail'
+    },
+    {
+      portuguese: 'Vamos determinar a causa do problema',
+      english: "Let's determine the cause of the problem."
+    },
+    {
+      portuguese: 'Ele determinou as regras do jogo',
+      english: 'He determined the rules of the game'
+    },
+    {
+      portuguese: 'Vou levantar-me da cama agora',
+      english: "I'm going to get out of bed now."
+    },
+    {
+      portuguese: 'A empresa decidiu aumentar os salários',
+      english: 'The company decided to increase salaries'
+    },
+    {
+      portuguese: 'Vou oferecer uma sugestão',
+      english: "I'm going to offer a suggestion."
+    },
+    {
+      portuguese: 'Ele propôs uma solução para o problema',
+      english: 'He proposed a solution to the problem'
+    },
+    {
+      portuguese: 'Vou passar no supermercado',
+      english: "I'm going to stop by the supermarket."
+    },
+    {
+      portuguese: 'Ele passou no teste com facilidade',
+      english: 'He passed the test with ease'
+    },
+    {
+      portuguese: 'Vou vender a minha bicicleta usada',
+      english: "I'm going to sell my used bike."
+    },
+    {
+      portuguese: 'Ele vende produtos pela internet',
+      english: 'He sells products online'
+    },
+    {
+      portuguese: 'Não quero sofrer mais',
+      english: "I don't want to suffer anymore."
+    },
+    {
+      portuguese: 'Ele sofre de insônia há anos',
+      english: 'He has been suffering from insomnia for years'
+    },
+    {
+      portuguese: 'Vou realizar o plano',
+      english: "I'm going to carry out the plan."
+    },
+    {
+      portuguese: 'Ele executou o projeto com perfeição',
+      english: 'He executed the project perfectly'
+    },
+    {
+      portuguese: 'Vou servir o jantar agora',
+      english: "I'm going to serve dinner now."
+    },
+    {
+      portuguese: 'O garçom serviu a bebida rapidamente',
+      english: 'The waiter served the drink quickly'
+    },
+    {
+      portuguese: 'Vou mandar a bola para ti',
+      english: "I'm going to pass the ball to you."
+    },
+    {
+      portuguese: 'Ele mandou a garrafa ao lixo',
+      english: 'He threw the bottle in the trash'
+    },
+    {
+      portuguese: 'Vou candidatar-me para a vaga',
+      english: "I'm going to apply for the position."
+    },
+    {
+      portuguese: 'Ele aplicou o conhecimento na prática',
+      english: 'He applied his knowledge in practice'
+    },
+    {
+      portuguese: 'Quero mencionar um ponto importante',
+      english: 'I want to mention an important point'
+    },
+    {
+      portuguese: 'Ele mencionou o nome do autor no texto',
+      english: "He mentioned the author's name in the text."
+    },
+    {
+      portuguese: 'Vou sugerir uma ideia',
+      english: "I'm going to suggest an idea."
+    },
+    {
+      portuguese: 'Ele sugeriu um novo caminho a seguir',
+      english: 'He suggested a new path to follow'
+    },
+    {
+      portuguese: 'Concordo com sua opinião',
+      english: 'I agree with your opinion'
+    },
+    {
+      portuguese: 'Eles concordaram com as regras',
+      english: 'They agreed with the rules'
+    },
+    {
+      portuguese: 'Vou negar as acusações',
+      english: "I'm going to deny the accusations."
+    },
+    {
+      portuguese: 'Ele negou o pedido do cliente',
+      english: "He denied the customer's request."
+    },
+    {
+      portuguese: 'Vou refletir sobre o assunto',
+      english: "I'm going to reflect on the subject."
+    },
+    {
+      portuguese: 'Ele refletiu sobre sua vida',
+      english: 'He reflected on his life'
+    },
+    {
+      portuguese: 'Vou assinar o contrato',
+      english: "I'm going to sign the contract."
+    },
+    {
+      portuguese: 'Ele assinou o livro de visitas',
+      english: 'He signed the guestbook'
+    },
+    {
+      portuguese: 'Quero ver o filme',
+      english: 'I want to watch the movie'
+    },
+    {
+      portuguese: 'Ele viu o acidente acontecer',
+      english: 'He saw the accident happen'
     }
   ],
   fitIn: [
     {
       prefix: 'Eu',
       answer: 'tomo',
-      suffix: 'um chá.',
+      suffix: 'um chá',
       explanation: '"de" - Indica origem'
     },
     {
       prefix: 'Ela é',
       answer: 'de',
-      suffix: 'Angola.',
+      suffix: 'Angola',
       explanation: '"de" - Indica origem'
     },
     {
       prefix: 'Ela é',
       answer: 'de',
-      suffix: 'Paris.',
+      suffix: 'Paris',
       explanation: '"de" - Indica origem'
     },
     {
       prefix: 'Moro',
       answer: 'em',
-      suffix: 'Cascais.',
+      suffix: 'Cascais',
       explanation: '"em" - Indica localização'
     },
     {
@@ -3507,25 +4291,25 @@ export const db: Schema = {
     {
       prefix: 'Moro',
       answer: 'na',
-      suffix: 'Avenida do Mar.',
+      suffix: 'Avenida do Mar',
       explanation: '"na" - em + a'
     },
     {
       prefix: 'Eles estudam',
       answer: 'na',
-      suffix: 'universidade.',
+      suffix: 'universidade',
       explanation: '"na" - em + a'
     },
     {
       prefix: 'Moro',
       answer: 'no',
-      suffix: 'número treze.',
+      suffix: 'número treze',
       explanation: '"no" - em + o'
     },
     {
       prefix: 'O Paulo estuda',
       answer: 'no',
-      suffix: 'Japão.',
+      suffix: 'Japão',
       explanation: '"no" - em + o'
     }
   ]
