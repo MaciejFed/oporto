@@ -1,41 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Exercises Integration Snapshots NounTranslation 1`] = `
-Array [
-  "APP_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED Portuguese: o chá",
-  "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED t",
-  "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
-  "KEY_PRESSED t",
-  "KEY_PRESSED e",
-  "KEY_PRESSED a",
-  "ANSWER_SUBMITTED voice",
-  "KEY_PRESSED",
-  "EXERCISE_NEXT",
-  "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED English: tea",
-  "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED o",
-  "KEY_PRESSED",
-  "KEY_PRESSED c",
-  "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
-  "KEY_PRESSED o",
-  "KEY_PRESSED",
-  "KEY_PRESSED c",
-  "KEY_PRESSED h",
-  "KEY_PRESSED á",
-  "ANSWER_SUBMITTED voice",
-  "KEY_PRESSED",
-  "EXERCISE_NEXT",
-  "APP_FINISHED",
-]
+"IMAGE                                                                     
+IMAGE                                                                     
+IMAGE                                                                     
+IMAGE                                                                     
+IMAGE                                                                     
+IMAGE                                                                     
+                                                                      
+                                                                      
+ Portuguese: a cidade                   Answers History:              
+ English: city                                                        
+ Wrong! [voice]                         1. ci                         
+                                                                      
+ Repeat: city                                                         
+ Press key to continue...                                             
+ r - repeat the answer                                                
+                                                                      
+                                                                      
+ Example: \\"Conheço a cidade e os arredores muito bem\\"                 
+                                                                      
+                                                                      
+                                                                      
+Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
+                                                                      
+IMAGE                                                                     
+IMAGE                                                                     
+IMAGE                                                                     
+IMAGE                                                                     
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
 `;
 
 exports[`Exercises Integration Snapshots NounTranslation 2`] = `
@@ -47,16 +72,16 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- Portuguese: o chá                      Answers History:              
- English: tea                                                         
- Wrong! [voice]                         1. t                          
+ English: city cidade                   Answers History:              
+ Portuguese: a cidade                                                 
+ Wrong! [voice]                         1. a cida                     
                                                                       
- Repeat: tea                                                          
+ Repeat: a cidade                                                     
  Press key to continue...                                             
  r - repeat the answer                                                
                                                                       
                                                                       
-                                                                      
+ Example: \\"Conheço a cidade e os arredores muito bem\\"                 
                                                                       
                                                                       
                                                                       
@@ -102,6 +127,52 @@ IMAGE
 `;
 
 exports[`Exercises Integration Snapshots NounTranslation 3`] = `
+Array [
+  "APP_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Portuguese: a cidade",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED c",
+  "KEY_PRESSED i",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED c",
+  "KEY_PRESSED i",
+  "KEY_PRESSED t",
+  "KEY_PRESSED y",
+  "ANSWER_SUBMITTED voice",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED English: city",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED a",
+  "KEY_PRESSED",
+  "KEY_PRESSED c",
+  "KEY_PRESSED i",
+  "KEY_PRESSED d",
+  "KEY_PRESSED a",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED a",
+  "KEY_PRESSED",
+  "KEY_PRESSED c",
+  "KEY_PRESSED i",
+  "KEY_PRESSED d",
+  "KEY_PRESSED a",
+  "KEY_PRESSED d",
+  "KEY_PRESSED e",
+  "ANSWER_SUBMITTED voice",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises Integration Snapshots SentenceTranslation 1`] = `
 "IMAGE                                                                     
 IMAGE                                                                     
 IMAGE                                                                     
@@ -110,11 +181,11 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- English: teao chá                      Answers History:              
- Portuguese: o chá                                                    
- Wrong! [voice]                         1. o c                        
+ Portuguese: Como estás?                Answers History:              
+ English: How are you?                                                
+ Wrong! [voice]                         1. How are yo                 
                                                                       
- Repeat: o chá                                                        
+ Repeat: How are you?                                                 
  Press key to continue...                                             
  r - repeat the answer                                                
                                                                       
@@ -164,64 +235,6 @@ IMAGE
                                                                       "
 `;
 
-exports[`Exercises Integration Snapshots SentenceTranslation 1`] = `
-Array [
-  "APP_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED Portuguese: Boa ideia",
-  "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED G",
-  "KEY_PRESSED o",
-  "KEY_PRESSED o",
-  "KEY_PRESSED d",
-  "KEY_PRESSED",
-  "KEY_PRESSED i",
-  "KEY_PRESSED d",
-  "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
-  "KEY_PRESSED G",
-  "KEY_PRESSED o",
-  "KEY_PRESSED o",
-  "KEY_PRESSED d",
-  "KEY_PRESSED",
-  "KEY_PRESSED i",
-  "KEY_PRESSED d",
-  "KEY_PRESSED e",
-  "KEY_PRESSED a",
-  "ANSWER_SUBMITTED voice",
-  "KEY_PRESSED",
-  "EXERCISE_NEXT",
-  "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED English: Good idea",
-  "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED B",
-  "KEY_PRESSED o",
-  "KEY_PRESSED a",
-  "KEY_PRESSED",
-  "KEY_PRESSED i",
-  "KEY_PRESSED d",
-  "KEY_PRESSED e",
-  "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
-  "KEY_PRESSED B",
-  "KEY_PRESSED o",
-  "KEY_PRESSED a",
-  "KEY_PRESSED",
-  "KEY_PRESSED i",
-  "KEY_PRESSED d",
-  "KEY_PRESSED e",
-  "KEY_PRESSED i",
-  "KEY_PRESSED a",
-  "ANSWER_SUBMITTED voice",
-  "KEY_PRESSED",
-  "EXERCISE_NEXT",
-  "APP_FINISHED",
-]
-`;
-
 exports[`Exercises Integration Snapshots SentenceTranslation 2`] = `
 "IMAGE                                                                     
 IMAGE                                                                     
@@ -231,11 +244,11 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- English: teao chá                      Answers History:              
- Portuguese: o chá                                                    
- Wrong! [voice]                         1. o c                        
+ English: How are you?s?                Answers History:              
+ Portuguese: Como estás?                                              
+ Wrong! [voice]                         1. Como estáo                 
                                                                       
- Repeat: o chá                                                        
+ Repeat: Como estás??                                                 
  Press key to continue...                                             
  r - repeat the answer                                                
                                                                       
@@ -286,6 +299,74 @@ IMAGE
 `;
 
 exports[`Exercises Integration Snapshots SentenceTranslation 3`] = `
+Array [
+  "APP_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Portuguese: Como estás?",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED H",
+  "KEY_PRESSED o",
+  "KEY_PRESSED w",
+  "KEY_PRESSED",
+  "KEY_PRESSED a",
+  "KEY_PRESSED r",
+  "KEY_PRESSED e",
+  "KEY_PRESSED",
+  "KEY_PRESSED y",
+  "KEY_PRESSED o",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED H",
+  "KEY_PRESSED o",
+  "KEY_PRESSED w",
+  "KEY_PRESSED",
+  "KEY_PRESSED a",
+  "KEY_PRESSED r",
+  "KEY_PRESSED e",
+  "KEY_PRESSED",
+  "KEY_PRESSED y",
+  "KEY_PRESSED o",
+  "KEY_PRESSED u",
+  "KEY_PRESSED ?",
+  "ANSWER_SUBMITTED voice",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED English: How are you?",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED C",
+  "KEY_PRESSED o",
+  "KEY_PRESSED m",
+  "KEY_PRESSED o",
+  "KEY_PRESSED",
+  "KEY_PRESSED e",
+  "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED á",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED C",
+  "KEY_PRESSED o",
+  "KEY_PRESSED m",
+  "KEY_PRESSED o",
+  "KEY_PRESSED",
+  "KEY_PRESSED e",
+  "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED á",
+  "KEY_PRESSED s",
+  "KEY_PRESSED ?",
+  "ANSWER_SUBMITTED voice",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
+`;
+
+exports[`Exercises Integration Snapshots VerbExercise 1`] = `
 "IMAGE                                                                     
 IMAGE                                                                     
 IMAGE                                                                     
@@ -294,16 +375,16 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- English: teao chá                      Answers History:              
- Portuguese: o chá                                                    
- Wrong! [voice]                         1. o c                        
+ Infinitive: to be - long               Answers History:              
+ [Past Perfect] Tu: foste                                             
+ Wrong! [voice]                         1. fos                        
                                                                       
- Repeat: o chá                                                        
+ Repeat: foste                                                        
  Press key to continue...                                             
  r - repeat the answer                                                
                                                                       
                                                                       
-                                                                      
+ Example: \\"Sou a Marta\\"                                               
                                                                       
                                                                       
                                                                       
@@ -348,44 +429,6 @@ IMAGE
                                                                       "
 `;
 
-exports[`Exercises Integration Snapshots VerbExercise 1`] = `
-Array [
-  "APP_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to see",
-  "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED v",
-  "KEY_PRESSED i",
-  "KEY_PRESSED s",
-  "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
-  "KEY_PRESSED v",
-  "KEY_PRESSED i",
-  "KEY_PRESSED s",
-  "KEY_PRESSED t",
-  "KEY_PRESSED e",
-  "ANSWER_SUBMITTED voice",
-  "KEY_PRESSED",
-  "EXERCISE_NEXT",
-  "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to see",
-  "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED v",
-  "ANSWER_SUBMITTED voice",
-  "ANSWER_CHECKED [object Object]",
-  "KEY_PRESSED v",
-  "KEY_PRESSED ê",
-  "KEY_PRESSED s",
-  "ANSWER_SUBMITTED voice",
-  "KEY_PRESSED",
-  "EXERCISE_NEXT",
-  "APP_FINISHED",
-]
-`;
-
 exports[`Exercises Integration Snapshots VerbExercise 2`] = `
 "IMAGE                                                                     
 IMAGE                                                                     
@@ -395,16 +438,16 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- English: teao chá                      Answers History:              
- Portuguese: o chá                                                    
- Wrong! [voice]                         1. o c                        
+ Infinitive: to be - long               Answers History:              
+ [Present Simple] Tu: ése                                             
+ Correct! [voice]                       1. éss                        
                                                                       
- Repeat: o chá                                                        
+ Repeat: foste                                                        
  Press key to continue...                                             
  r - repeat the answer                                                
                                                                       
                                                                       
-                                                                      
+ Example: \\"Sou a Marta\\"                                               
                                                                       
                                                                       
                                                                       
@@ -450,64 +493,36 @@ IMAGE
 `;
 
 exports[`Exercises Integration Snapshots VerbExercise 3`] = `
-"IMAGE                                                                     
-IMAGE                                                                     
-IMAGE                                                                     
-IMAGE                                                                     
-IMAGE                                                                     
-IMAGE                                                                     
-                                                                      
-                                                                      
- English: teao chá                      Answers History:              
- Portuguese: o chá                                                    
- Wrong! [voice]                         1. o c                        
-                                                                      
- Repeat: o chá                                                        
- Press key to continue...                                             
- r - repeat the answer                                                
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-Last Time Attempted: 2022-7-19 12:36 [in 0 seconds]                   
-                                                                      
-IMAGE                                                                     
-IMAGE                                                                     
-IMAGE                                                                     
-IMAGE                                                                     
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      "
+Array [
+  "APP_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to be - long",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED f",
+  "KEY_PRESSED o",
+  "KEY_PRESSED s",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED f",
+  "KEY_PRESSED o",
+  "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED e",
+  "ANSWER_SUBMITTED voice",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "EXERCISE_STARTED",
+  "TERMINAL_CLEARED preExerciseClear",
+  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to be - long",
+  "EXERCISE_BODY_PRINTED [object Object]",
+  "KEY_PRESSED é",
+  "KEY_PRESSED s",
+  "ANSWER_SUBMITTED voice",
+  "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED",
+  "EXERCISE_NEXT",
+  "APP_FINISHED",
+]
 `;

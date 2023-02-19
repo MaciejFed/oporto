@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { simulateContinueButton, simulateTyping } from '../util';
-import Output from '../../io/output';
 import { withBaseMocks } from '../base-mocks';
 
 const runExerciseSnapshotTest = (exercises: any[]) => {
-  const { mockGenerateExercisesForSession, eventProcessor, SessionManager } = withBaseMocks(true);
+  const { mockGenerateExercisesForSession, eventProcessor, SessionManager, Output } = withBaseMocks(true);
 
   const answers = exercises.map((exercise) => exercise.getCorrectAnswer()).reverse();
 
@@ -20,8 +19,6 @@ const runExerciseSnapshotTest = (exercises: any[]) => {
     simulateTyping(answer, true);
     const output = Output.getOutput();
 
-    console.log(eventProcessor.eventHistory);
-
     simulateContinueButton();
 
     return output;
@@ -30,11 +27,11 @@ const runExerciseSnapshotTest = (exercises: any[]) => {
   const eventHistory = eventProcessor.eventHistory.map((event: { event: any; args: any }) =>
     `${event.event} ${event.args ? [event.args] : ''}`.trimEnd()
   );
-  expect(eventHistory).toMatchSnapshot();
   expect(eventHistory.includes('APP_FINISHED')).toBe(true);
   outputs.forEach((output) => {
     expect(output).toMatchSnapshot();
   });
+  expect(eventHistory).toMatchSnapshot();
 };
 
 describe('Exercises Integration Snapshots', () => {
@@ -49,8 +46,8 @@ describe('Exercises Integration Snapshots', () => {
   it('NounTranslation', () => {
     const NounTranslationExercise =
       require('../../exercise/translation/noun-translation-exercise').NounTranslationExercise;
-    const nounTranslationExerciseToPortuguese = NounTranslationExercise.new(readAll().nouns[1], 'toPortuguese');
-    const nounTranslationExerciseToEnglish = NounTranslationExercise.new(readAll().nouns[1], 'toEnglish');
+    const nounTranslationExerciseToPortuguese = NounTranslationExercise.new(readAll().nouns[0], 'toPortuguese');
+    const nounTranslationExerciseToEnglish = NounTranslationExercise.new(readAll().nouns[0], 'toEnglish');
 
     runExerciseSnapshotTest([nounTranslationExerciseToPortuguese, nounTranslationExerciseToEnglish]);
   });
@@ -59,18 +56,18 @@ describe('Exercises Integration Snapshots', () => {
     const SentenceTranslationExercise =
       require('../../exercise/translation/sentence-translation-exercise').SentenceTranslationExercise;
     const sentenceTranslationExerciseToPortuguese = SentenceTranslationExercise.new(
-      readAll().sentences[1],
+      readAll().sentences[0],
       'toPortuguese'
     );
-    const sentenceTranslationExerciseToEnglish = SentenceTranslationExercise.new(readAll().sentences[1], 'toEnglish');
+    const sentenceTranslationExerciseToEnglish = SentenceTranslationExercise.new(readAll().sentences[0], 'toEnglish');
 
     runExerciseSnapshotTest([sentenceTranslationExerciseToPortuguese, sentenceTranslationExerciseToEnglish]);
   });
 
   it('VerbExercise', () => {
     const VerbExercise = require('../../exercise/verb-exercise').VerbExercise;
-    const verbExercisePresent = VerbExercise.new(readAll().verbs[5], 'Tu', 'presentSimple');
-    const verbExercisePast = VerbExercise.new(readAll().verbs[5], 'Tu', 'pastPerfect');
+    const verbExercisePresent = VerbExercise.new(readAll().verbs[0], 'Tu', 'presentSimple');
+    const verbExercisePast = VerbExercise.new(readAll().verbs[0], 'Tu', 'pastPerfect');
 
     runExerciseSnapshotTest([verbExercisePresent, verbExercisePast]);
   });

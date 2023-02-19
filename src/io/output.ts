@@ -39,7 +39,7 @@ class Output implements AppEventListener {
     return this.outputTable.map((row) => row.join('')).join('\n');
   }
 
-  private clearTerminal(): void {
+  public clearTerminal(): void {
     clear();
     this.resetTable();
   }

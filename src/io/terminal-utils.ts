@@ -87,6 +87,14 @@ export function printInBetweenMenu(printTranslation: boolean) {
   }
 }
 
+export function printExampleSentence(exampleSentence = '') {
+  const examplePrefix = 'Example: ';
+  terminal.bold();
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
+  terminal.bold(false);
+  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 4, `"${exampleSentence}"`);
+}
+
 type FeedbackType = 'CorrectAnswer' | 'ActualAnswer';
 
 function printWithFeedback(

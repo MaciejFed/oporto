@@ -1146,10 +1146,10 @@ export const db: Schema = {
   ],
   nouns: [
     {
-      english: 'girlfriend',
+      english: 'city',
       portuguese: {
-        word: 'namorada',
-        plural: 'namoradas',
+        word: 'cidade',
+        plural: 'cidades',
         gender: 'feminine'
       }
     },
@@ -1169,10 +1169,10 @@ export const db: Schema = {
       }
     },
     {
-      english: 'city',
+      english: 'girlfriend',
       portuguese: {
-        word: 'cidade',
-        plural: 'cidades',
+        word: 'namorada',
+        plural: 'namoradas',
         gender: 'feminine'
       }
     },
@@ -2832,7 +2832,7 @@ export const db: Schema = {
     },
     {
       english: 'around',
-      portuguese: 'à volta de'
+      portuguese: 'á volta de'
     },
     {
       english: 'near',

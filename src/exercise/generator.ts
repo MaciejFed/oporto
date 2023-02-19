@@ -1,5 +1,5 @@
 import { Exercise } from './exercise';
-import { Person, readAll } from '../repository/exercises-repository';
+import { Person, readAll, Verb } from '../repository/exercises-repository';
 import { VerbExercise } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
 import { TranslationType } from './translation/translation-exercise';
@@ -12,7 +12,7 @@ import { sortExercises } from '../priority/priority';
 
 type ExerciseGenerator = () => Exercise[];
 
-const VerbExerciseGenerator: ExerciseGenerator = () => {
+export const VerbExerciseGenerator: ExerciseGenerator = () => {
   const presentSimpleVerbs = readAll().verbs.flatMap((verb) =>
     Object.keys(Person).flatMap((person) =>
       VerbExercise.new(verb, Person[person as keyof typeof Person], 'presentSimple')
