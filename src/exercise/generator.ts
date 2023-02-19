@@ -43,9 +43,10 @@ const VerbTranslationGenerator: ExerciseGenerator = () => {
 };
 
 const SentenceTranslationGenerator: ExerciseGenerator = () => {
-  return readAll().sentences.flatMap((sentence) =>
-    translationTypes.map((translationType) => SentenceTranslationExercise.new(sentence, translationType))
-  );
+  return readAll().sentences.flatMap((sentence) => [
+    SentenceTranslationExercise.new(sentence, 'toPortugueseFromHearing'),
+    SentenceTranslationExercise.new(sentence, 'toPortuguese')
+  ]);
 };
 
 const OtherTranslationGenerator: ExerciseGenerator = () => {

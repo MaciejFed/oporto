@@ -1,9 +1,10 @@
-import { Adjective, Noun, Person, readAll, Verb } from '../repository/exercises-repository';
+import { Adjective, Noun, Other, Person, readAll, Verb } from '../repository/exercises-repository';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { findSentenceExamplesForExercise } from './example-finder';
 import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
+import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 
 describe('Example Finder', () => {
   it('Can Find Example For VerbExercise And VerbTranslationExercise', () => {
@@ -109,5 +110,27 @@ describe('Example Finder', () => {
     const sentenceForAdjectiveTranslationExercise = findSentenceExamplesForExercise(adjectiveTranslationExercise);
 
     expect(sentenceForAdjectiveTranslationExercise).toBeUndefined();
+  });
+
+  it('Can Find Example For OtherTranslationExercise', () => {
+    const other: Other = readAll().others[0];
+
+    const otherTranslationExercise = OtherTranslationExercise.new(other, 'toPortuguese');
+
+    const exampleSentenceForOtherTranslationExercise = findSentenceExamplesForExercise(otherTranslationExercise);
+
+    expect(exampleSentenceForOtherTranslationExercise).toBeDefined();
+  });
+
+  it('Returns Undefined For Unknown Other', () => {
+    const other: Other = {
+      portuguese: 'shouldNotFind'
+    } as Other;
+
+    const otherTranslationExercise = OtherTranslationExercise.new(other, 'toPortuguese');
+
+    const exampleSentenceForOtherTranslationExercise = findSentenceExamplesForExercise(otherTranslationExercise);
+
+    expect(exampleSentenceForOtherTranslationExercise).toBeUndefined();
   });
 });
