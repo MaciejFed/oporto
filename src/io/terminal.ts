@@ -27,12 +27,14 @@ import {
   printExerciseRepeatAnswer,
   printExerciseRepeatAnswerKey,
   printExerciseRepeatBody,
-  printInBetweenMenu
+  printInBetweenMenu,
+  printExampleSentence
 } from './terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { sleep } from '../common/common';
+import { findSentenceExamplesForExercise } from '../service/example-finder';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -45,6 +47,7 @@ export class Terminal {
   exerciseInProgress: boolean;
   exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
+  exampleSentence?: string;
 
   constructor(eventProcessor: EventProcessor) {
     this.eventProcessor = eventProcessor;
@@ -109,6 +112,7 @@ export class Terminal {
       this.exerciseInProgress = true;
       this.answer = '';
       this.repetitionAnswer = '';
+      this.exampleSentence = undefined;
       clear();
       preExerciseClear();
     });
@@ -121,6 +125,10 @@ export class Terminal {
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
+      this.exampleSentence = findSentenceExamplesForExercise(exercise);
+      if (this.exampleSentence) {
+        printExampleSentence(this.exampleSentence);
+      }
       this.sayCorrectAnswerPhrase();
       if (wasCorrect) {
         this.endOfExerciseMenu();
@@ -193,8 +201,12 @@ export class Terminal {
     }
   }
 
-  private sayCorrectAnswerPhrase() {
+  private async sayCorrectAnswerPhrase() {
     exec(`say "${this.exercise?.getRepeatAnswerPhrase()}"`);
+    if (this.exampleSentence) {
+      await sleep(2000);
+      exec(`say "${this.exampleSentence}"`);
+    }
   }
 }
 

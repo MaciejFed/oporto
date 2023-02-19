@@ -1,5 +1,5 @@
 import { Exercise } from './exercise';
-import {Person, readAll, Verb} from '../repository/exercises-repository';
+import { Person, readAll, Verb } from '../repository/exercises-repository';
 import { VerbExercise } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
 import { TranslationType } from './translation/translation-exercise';

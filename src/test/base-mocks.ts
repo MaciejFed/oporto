@@ -1,8 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
-import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
-import { readAll } from '../repository/exercises-repository';
-
 const mockCommonModules = () => {
   // @ts-ignore
   global.process.stdin.setRawMode = (mode: boolean) => undefined;
@@ -21,14 +17,6 @@ const mockCommonModules = () => {
         white: () => {},
         bold: () => {}
       }
-    };
-  });
-
-  jest.mock('../common/common', () => {
-    const modelActual = jest.requireActual('../common/common');
-    return {
-      ...modelActual,
-      sleep: (milliseconds: number) => {}
     };
   });
 };
@@ -50,7 +38,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       const moduleActual = jest.requireActual('../exercise/generator');
       return {
         __esModule: true,
-        moduleActual,
+        ...moduleActual,
         generateExercisesForSession: mockGenerateExercisesForSession
       };
     });
