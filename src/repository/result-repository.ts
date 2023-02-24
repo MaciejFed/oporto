@@ -112,11 +112,12 @@ export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
   });
 }
 
-export function getAllResultsByDate(): DateResults[] {
-  let resultDate = DateTimeExtended.fromJSDate(getAllResults()[0].date);
+export function getAllResultsByDate(allResults: Result[]): DateResults[] {
+  let resultDate = DateTimeExtended.fromJSDate(allResults[0].date);
   const resultsByDate: DateResults[] = [];
-  while (resultDate.plus({ week: -1 }).ordinal <= DateTimeExtended.now().ordinal) {
-    const results = getAllResults().filter(
+  const endDate = DateTimeExtended.fromJSDate(allResults[allResults.length - 1].date).plus({ week: 1 });
+  while (resultDate.ordinal <= endDate.ordinal) {
+    const results = allResults.filter(
       // eslint-disable-next-line no-loop-func
       (result) => DateTimeExtended.fromJSDate(result.date).ordinal <= resultDate.ordinal
     );

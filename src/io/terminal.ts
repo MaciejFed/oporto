@@ -47,7 +47,7 @@ export class Terminal {
   exerciseInProgress: boolean;
   exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
-  exampleSentence?: string;
+  exampleSentence?: { wordStartIndex: number; exampleSentence: string; exerciseWord: string } | undefined;
 
   constructor(eventProcessor: EventProcessor) {
     this.eventProcessor = eventProcessor;
@@ -127,7 +127,11 @@ export class Terminal {
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       this.exampleSentence = findSentenceExamplesForExercise(exercise);
       if (this.exampleSentence) {
-        printExampleSentence(this.exampleSentence);
+        printExampleSentence(
+          this.exampleSentence.wordStartIndex,
+          this.exampleSentence.exerciseWord,
+          this.exampleSentence.exampleSentence
+        );
       }
       this.sayCorrectAnswerPhrase();
       if (wasCorrect) {
@@ -203,9 +207,9 @@ export class Terminal {
 
   private async sayCorrectAnswerPhrase() {
     exec(`say "${this.exercise?.getRepeatAnswerPhrase()}"`);
+    await sleep(2000);
     if (this.exampleSentence) {
-      await sleep(2000);
-      exec(`say "${this.exampleSentence}"`);
+      exec(`say "${this.exampleSentence.exampleSentence}"`);
     }
   }
 }

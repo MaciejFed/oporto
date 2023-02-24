@@ -30,6 +30,17 @@ export function generateResultForExercise(
   );
 }
 
+export function generateResultsForExerciseDaysAgo(
+  exercise: Exercise,
+  wasCorrect: boolean,
+  daysAgo: number,
+  count: number
+): Result[] {
+  return Array(count)
+    .fill(0)
+    .map(() => generateResultForExerciseDaysAgo(exercise, wasCorrect, daysAgo));
+}
+
 export function generateResultForExerciseDaysAgo(exercise: Exercise, wasCorrect: boolean, daysAgo: number): Result {
   const dateDaysAgo = new Date();
   dateDaysAgo.setDate(dateDaysAgo.getDate() - daysAgo);

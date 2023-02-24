@@ -18,18 +18,23 @@ const runExerciseSnapshotTest = (exercises: any[]) => {
     simulateTyping(answer.substring(0, answer.length - 2), true);
     simulateTyping(answer, true);
     const output = Output.getOutput();
+    const colorOutput = Output.getColorOutput();
 
     simulateContinueButton();
 
-    return output;
+    return {
+      output,
+      colorOutput
+    };
   });
 
   const eventHistory = eventProcessor.eventHistory.map((event: { event: any; args: any }) =>
     `${event.event} ${event.args ? [event.args] : ''}`.trimEnd()
   );
   expect(eventHistory.includes('APP_FINISHED')).toBe(true);
-  outputs.forEach((output) => {
+  outputs.forEach(({ output, colorOutput }) => {
     expect(output).toMatchSnapshot();
+    expect(colorOutput).toMatchSnapshot();
   });
   expect(eventHistory).toMatchSnapshot();
 };

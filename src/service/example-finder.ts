@@ -45,7 +45,15 @@ export const findSentenceExamplesForExercise = (exercise: Exercise) => {
   );
 
   if (examples.length > 0) {
-    return getRandomElement(examples).portuguese;
+    const exampleSentence = getRandomElement(examples).portuguese;
+    const exerciseWord =
+      conjugations.find((conjugation) => exampleSentence.toLowerCase().includes(conjugation.toLowerCase())) || '';
+    const wordStartIndex = exampleSentence.toLowerCase().indexOf(exerciseWord.toLowerCase());
+    return {
+      wordStartIndex,
+      exerciseWord: exampleSentence.substring(wordStartIndex, wordStartIndex + exerciseWord.length),
+      exampleSentence
+    };
   }
 
   return undefined;

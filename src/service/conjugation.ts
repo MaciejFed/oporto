@@ -27,6 +27,6 @@ export const getAllWordsConjugations = () => {
     .concat(allAdjectiveForms)
     .concat(others)
     .filter((word) => word)
-    .map((word) => word.toLowerCase())
+    .map((word) => word.toLowerCase().replace('?', '').replace(',', ''))
     .sort();
 };

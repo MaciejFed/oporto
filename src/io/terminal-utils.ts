@@ -33,7 +33,7 @@ export function printExerciseDescription(exerciseDescription: string) {
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
   Output.moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix + answer + exerciseBodySuffix);
-  terminal.moveTo(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
+  Output.moveCursor(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
 }
 
 export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
@@ -53,30 +53,30 @@ export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: stri
     answer[newIndex] !== undefined &&
     answer[newIndex].toLowerCase() === (correctAnswer[newIndex] !== undefined && correctAnswer[newIndex].toLowerCase())
   ) {
-    terminal.green();
+    Output.green();
   } else {
-    terminal.red();
+    Output.red();
   }
   Output.moveTo(1 + repeatBodyPrefix.length + answer.length - 1, EXERCISE_REPEAT_BODY_MARGIN, newKey);
-  terminal.white();
+  Output.white();
 }
 
 export function printExerciseRepeatAnswer(answer: string, correctAnswer: string) {
-  terminal.hideCursor();
+  Output.hideCursor();
   Output.moveTo(1, EXERCISE_REPEAT_BODY_MARGIN, `${repeatBodyPrefix}`);
   for (let i = 0; i < answer.length; i++) {
     if (
       (answer[i] !== undefined && answer[i].toLowerCase()) ===
       (correctAnswer[i] !== undefined && correctAnswer[i].toLowerCase())
     ) {
-      terminal.green();
+      Output.green();
     } else {
-      terminal.red();
+      Output.red();
     }
     Output.moveTo(repeatBodyPrefix.length + i + 1, EXERCISE_REPEAT_BODY_MARGIN, answer[i]);
   }
-  terminal.white();
-  terminal.hideCursor(false);
+  Output.white();
+  Output.hideCursor(false);
 }
 
 export function printInBetweenMenu(printTranslation: boolean) {
@@ -87,17 +87,20 @@ export function printInBetweenMenu(printTranslation: boolean) {
   }
 }
 
-export function printExampleSentence(exampleSentence = '') {
+export function printExampleSentence(wordStartIndex: number, exerciseWord: string, exampleSentence = '') {
   const examplePrefix = 'Example: ';
-  terminal.bold();
+  Output.bold();
   Output.moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
-  terminal.bold(false);
+  Output.bold(false);
   Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 4, `"${exampleSentence}"`);
+  Output.yellow();
+  Output.moveTo(1 + examplePrefix.length + wordStartIndex + 1, EXERCISE_MENU_MARGIN + 4, exerciseWord);
+  Output.white();
 }
 
 type FeedbackType = 'CorrectAnswer' | 'ActualAnswer';
 
-function printWithFeedback(
+export function printWithFeedback(
   x: number,
   y: number,
   answer: string,
@@ -109,14 +112,14 @@ function printWithFeedback(
   const feedbackWord = answerType === 'CorrectAnswer' ? correctAnswer : answer;
   Output.moveTo(x, y, exerciseBodyPrefix);
   for (let i = 0; i < feedbackWord.length; i++) {
-    if (answer[i] && answer[i].toLowerCase() === correctAnswer[i] && correctAnswer[i].toLowerCase()) {
-      terminal.green();
+    if (answer[i] && correctAnswer[i] && answer[i].toLowerCase() === correctAnswer[i].toLowerCase()) {
+      Output.green();
     } else {
-      terminal.red();
+      Output.red();
     }
     Output.moveTo(x + exerciseBodyPrefix.length + i, y, feedbackWord[i]);
   }
-  terminal.white();
+  Output.white();
 }
 
 export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answer: string, correctAnswer: string) {
@@ -127,9 +130,9 @@ export function printAllAnswers(results: Result[]) {
   const HISTORY_X_MARGIN = 40;
   const HISTORY_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   const HISTORY_ANSWERS_LIMIT = 5;
-  terminal.bold();
+  Output.bold();
   Output.moveTo(HISTORY_X_MARGIN, HISTORY_Y_MARGIN, 'Answers History:');
-  terminal.bold(false);
+  Output.bold(false);
   results.reverse().forEach(({ answer, exercise }, index) => {
     if (index < HISTORY_ANSWERS_LIMIT)
       printWithFeedback(
@@ -151,8 +154,6 @@ export async function animateExerciseSummary({
   const yIndex = 19;
   const animationTime = 1500;
   const barWidth = 50;
-  terminal.bold();
-  terminal.bold(false);
   Output.moveTo(0, yIndex + 2, `Last Time Attempted: ${formatDate(lastTimeAttempted)}`);
   for (let index = 1; index <= correctAttempts + failedAttempts; index++) {
     const goodValue = index <= correctAttempts ? index : correctAttempts;
@@ -187,7 +188,7 @@ export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatisti
   const yGap = Math.ceil(maxYValue / 24);
   const gapStyle = '-------';
   const gapStyleLength = gapStyle.length - 3;
-  terminal.bold();
+  Output.bold();
   const graphData = weeklyStatistics
     .map((weeklyStatistic) => [
       ...weeklyStatistic.points.map((point) =>
@@ -209,7 +210,7 @@ export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatisti
       })
     )
   );
-  terminal.moveTo(0, margin);
+  Output.moveCursor(0, margin);
   console.log(
     scatter(graphData, {
       hAxis: ['+', gapStyle, '--->'],

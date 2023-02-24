@@ -1142,6 +1142,168 @@ export const db: Schema = {
         Nós: 'passeámos',
         'Eles/Elas/Vocēs': 'passearam'
       }
+    },
+    {
+      english: 'to believe',
+      infinitive: 'acreditar',
+      presentSimple: {
+        Eu: 'acredito',
+        Tu: 'acreditas',
+        'Ela/Ele/Você': 'acredita',
+        Nós: 'acreditamos',
+        'Eles/Elas/Vocēs': 'acreditam'
+      },
+      pastPerfect: {
+        Eu: 'acreditei',
+        Tu: 'acreditaste',
+        'Ela/Ele/Você': 'acreditou',
+        Nós: 'acreditámos',
+        'Eles/Elas/Vocēs': 'acreditaram'
+      }
+    },
+    {
+      english: 'to happen',
+      infinitive: 'acontecer',
+      presentSimple: {
+        Eu: 'aconteço',
+        Tu: 'aconteces',
+        'Ela/Ele/Você': 'acontece',
+        Nós: 'acontecemos',
+        'Eles/Elas/Vocēs': 'acontecem'
+      },
+      pastPerfect: {
+        Eu: 'aconteci',
+        Tu: 'aconteceste',
+        'Ela/Ele/Você': 'aconteceu',
+        Nós: 'acontecemos',
+        'Eles/Elas/Vocēs': 'aconteceram'
+      }
+    },
+    {
+      english: 'to adore',
+      infinitive: 'adorar',
+      presentSimple: {
+        Eu: 'adoro',
+        Tu: 'adoras',
+        'Ela/Ele/Você': 'adora',
+        Nós: 'adoramos',
+        'Eles/Elas/Vocēs': 'adoram'
+      },
+      pastPerfect: {
+        Eu: 'adorei',
+        Tu: 'adoraste',
+        'Ela/Ele/Você': 'adorou',
+        Nós: 'adorámos',
+        'Eles/Elas/Vocēs': 'adoraram'
+      }
+    },
+    {
+      english: 'to achieve',
+      infinitive: 'alcançar',
+      presentSimple: {
+        Eu: 'alcanço',
+        Tu: 'alcanças',
+        'Ela/Ele/Você': 'alcança',
+        Nós: 'alcançamos',
+        'Eles/Elas/Vocēs': 'alcançam'
+      },
+      pastPerfect: {
+        Eu: 'alcancei',
+        Tu: 'alcançaste',
+        'Ela/Ele/Você': 'alcançou',
+        Nós: 'alcançámos',
+        'Eles/Elas/Vocēs': 'alcançaram'
+      }
+    },
+    {
+      english: 'to alter',
+      infinitive: 'alterou',
+      presentSimple: {
+        Eu: 'altero',
+        Tu: 'alteras',
+        'Ela/Ele/Você': 'altera',
+        Nós: 'alteramos',
+        'Eles/Elas/Vocēs': 'alteram'
+      },
+      pastPerfect: {
+        Eu: 'alterei',
+        Tu: 'alteraste',
+        'Ela/Ele/Você': 'alterou',
+        Nós: 'alterámos',
+        'Eles/Elas/Vocēs': 'alteraram'
+      }
+    },
+    {
+      english: 'to apply',
+      infinitive: 'aplicar',
+      presentSimple: {
+        Eu: 'aplico',
+        Tu: 'aplicas',
+        'Ela/Ele/Você': 'aplica',
+        Nós: 'aplicamos',
+        'Eles/Elas/Vocēs': 'aplicam'
+      },
+      pastPerfect: {
+        Eu: 'apliquei',
+        Tu: 'aplicaste',
+        'Ela/Ele/Você': 'aplicou',
+        Nós: 'aplicámos',
+        'Eles/Elas/Vocēs': 'aplicaram'
+      }
+    },
+    {
+      english: 'to assure',
+      infinitive: 'assegurar',
+      presentSimple: {
+        Eu: 'asseguro',
+        Tu: 'asseguras',
+        'Ela/Ele/Você': 'assegura',
+        Nós: 'asseguramos',
+        'Eles/Elas/Vocēs': 'asseguram'
+      },
+      pastPerfect: {
+        Eu: 'assegurei',
+        Tu: 'asseguraste',
+        'Ela/Ele/Você': 'assegurou',
+        Nós: 'assegurámos',
+        'Eles/Elas/Vocēs': 'asseguraram'
+      }
+    },
+    {
+      english: 'to sign',
+      infinitive: 'assinar',
+      presentSimple: {
+        Eu: 'assino',
+        Tu: 'assinas',
+        'Ela/Ele/Você': 'assina',
+        Nós: 'assinamos',
+        'Eles/Elas/Vocēs': 'assinam'
+      },
+      pastPerfect: {
+        Eu: 'assinei',
+        Tu: 'assinaste',
+        'Ela/Ele/Você': 'assinou',
+        Nós: 'assinámos',
+        'Eles/Elas/Vocēs': 'assinaram'
+      }
+    },
+    {
+      english: 'to increase',
+      infinitive: 'aumentar',
+      presentSimple: {
+        Eu: 'aumento',
+        Tu: 'aumentas',
+        'Ela/Ele/Você': 'aumenta',
+        Nós: 'aumentamos',
+        'Eles/Elas/Vocēs': 'aumentam'
+      },
+      pastPerfect: {
+        Eu: 'aumentei',
+        Tu: 'aumentaste',
+        'Ela/Ele/Você': 'aumentou',
+        Nós: 'aumentámos',
+        'Eles/Elas/Vocēs': 'aumentaram'
+      }
     }
   ],
   nouns: [
@@ -1250,6 +1412,7 @@ export const db: Schema = {
       english: 'lesson',
       portuguese: {
         word: 'aula',
+        plural: 'aulas',
         gender: 'feminine'
       }
     },
@@ -1257,6 +1420,7 @@ export const db: Schema = {
       english: 'year',
       portuguese: {
         word: 'ano',
+        plural: 'anos',
         gender: 'masculine'
       }
     },
@@ -1828,6 +1992,7 @@ export const db: Schema = {
       english: 'friend',
       portuguese: {
         word: 'amigo',
+        plural: 'amigos',
         gender: 'masculine'
       }
     },
@@ -2575,6 +2740,93 @@ export const db: Schema = {
         word: 'gengibre',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'accident',
+      portuguese: {
+        word: 'acidente',
+        plural: 'acidentes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'airport',
+      portuguese: {
+        word: 'aeroporto',
+        plural: 'aeroportos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'way',
+      portuguese: {
+        word: 'caminho',
+        plural: 'caminhos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'car',
+      portuguese: {
+        word: 'carro',
+        plural: 'carros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'letter',
+      portuguese: {
+        word: 'carta',
+        plural: 'cartas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'cause',
+      portuguese: {
+        word: 'causa',
+        plural: 'causas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'accusation',
+      portuguese: {
+        word: 'acusação',
+        plural: 'acusações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'birthday',
+      portuguese: {
+        word: 'aniversário',
+        plural: 'aniversários',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'surrounding',
+      portuguese: {
+        word: 'arredor',
+        plural: 'arredores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'art',
+      portuguese: {
+        word: 'arte',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'subject',
+      portuguese: {
+        word: 'assunto',
+        plural: 'assuntos',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -2620,7 +2872,7 @@ export const db: Schema = {
     },
     {
       english: 'tomorrow',
-      portuguese: 'amanha'
+      portuguese: 'amanhã'
     },
     {
       english: 'since',
@@ -2849,6 +3101,54 @@ export const db: Schema = {
     {
       english: 'or',
       portuguese: 'ou'
+    },
+    {
+      english: 'with',
+      portuguese: 'com'
+    },
+    {
+      english: 'here',
+      portuguese: 'aqui'
+    },
+    {
+      english: 'until',
+      portuguese: 'até'
+    },
+    {
+      english: 'no',
+      portuguese: 'não'
+    },
+    {
+      english: 'everything',
+      portuguese: 'tudo'
+    },
+    {
+      english: 'truth',
+      portuguese: 'verdade'
+    },
+    {
+      english: 'about',
+      portuguese: 'sobre'
+    },
+    {
+      english: 'all',
+      portuguese: 'todo'
+    },
+    {
+      english: 'that',
+      portuguese: 'essa'
+    },
+    {
+      english: 'now',
+      portuguese: 'agora'
+    },
+    {
+      english: 'both',
+      portuguese: 'ambos'
+    },
+    {
+      english: 'sincerely',
+      portuguese: 'atenciosamente'
     }
   ],
   adjectives: [
@@ -3123,8 +3423,8 @@ export const db: Schema = {
       sentenceType: 'statement'
     },
     {
-      english: 'Andre and Paula are friends',
-      portuguese: 'O Andre e a Paula são amigos',
+      english: 'André and Paula are friends',
+      portuguese: 'O André e a Paula são amigos',
       sentenceType: 'statement'
     },
     {
@@ -3453,8 +3753,8 @@ export const db: Schema = {
       sentenceType: 'statement'
     },
     {
-      english: "I always write 'sincerely' at the end of letters",
-      portuguese: "Escrevo sempre 'atenciosamente' no fim das cartas",
+      english: 'I always write sincerely at the end of letters',
+      portuguese: 'Escrevo sempre atenciosamente no fim das cartas',
       sentenceType: 'statement'
     },
     {
@@ -3833,27 +4133,27 @@ export const db: Schema = {
       portuguese: 'Ele acredita em Deus'
     },
     {
-      english: 'Por favor, segure a porta',
-      portuguese: 'Por favor, segure a porta'
+      english: 'Please hold the door',
+      portuguese: 'Por favor segure a porta'
     },
     {
-      english: 'Vou realizar o meu sonho',
+      english: 'I will fulfill my dream',
       portuguese: 'Vou realizar o meu sonho'
     },
     {
-      english: 'Vou trazer o jantar',
+      english: 'I will bring dinner',
       portuguese: 'Vou trazer o jantar'
     },
     {
-      english: 'Ele levou a mala para o aeroporto',
+      english: 'He took the suitcase to the airport',
       portuguese: 'Ele levou a mala para o aeroporto'
     },
     {
-      english: 'O que aconteceu aqui?',
+      english: 'What happened here?',
       portuguese: 'O que aconteceu aqui?'
     },
     {
-      english: 'Isso não costuma ocorrer',
+      english: "This doesn't usually happen",
       portuguese: 'Isso não costuma ocorrer'
     },
     {
@@ -3869,7 +4169,7 @@ export const db: Schema = {
       portuguese: 'Gosto de falar com amigos'
     },
     {
-      english: 'Precisamos conversar sobre isso',
+      english: 'We need to talk about this',
       portuguese: 'Precisamos conversar sobre isso'
     },
     {
@@ -3917,7 +4217,7 @@ export const db: Schema = {
       portuguese: 'Vou mudar de emprego'
     },
     {
-      english: 'He changed the plans',
+      english: 'He altered the plans',
       portuguese: 'Ele alterou os planos'
     },
     {
@@ -4019,10 +4319,6 @@ export const db: Schema = {
     {
       portuguese: 'Não esperava essa reação',
       english: "I didn't expect that reaction."
-    },
-    {
-      portuguese: 'Espero antecipar o projeto',
-      english: 'I hope to expedite the project'
     },
     {
       portuguese: 'Vou escolher um vestido',
