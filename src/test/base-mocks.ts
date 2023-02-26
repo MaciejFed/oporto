@@ -15,7 +15,8 @@ const mockCommonModules = () => {
         green: () => {},
         red: () => {},
         white: () => {},
-        bold: () => {}
+        bold: () => {},
+        yellow: () => {}
       }
     };
   });

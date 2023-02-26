@@ -20,6 +20,8 @@ describe('Example Finder', () => {
 
     expect(exampleSentenceForVerbExercise).toBeDefined();
     expect(exampleSentenceForVerTranslation).toBeDefined();
+    expect(exampleSentenceForVerTranslation?.exerciseWord).toEqual('Sou');
+    expect(exampleSentenceForVerTranslation?.wordStartIndex).toEqual(0);
   });
 
   it('Returns Undefined For Unknown Verb', () => {
@@ -175,10 +177,11 @@ describe('Example Finder', () => {
     const allWordsInExamples = onlyDistinct(
       readAll()
         .sentences.flatMap((sentence) => sentence.portuguese.split(' '))
-        .map((word) => new Word(word.toLowerCase()))
+        .map((word) => new Word(word.toLowerCase().replace(',', '').replace('?', '').replace("'", '')))
     )
       .map((word) => (word as Word).word)
-      .sort();
+      .sort()
+      .filter((word) => word.length > 2);
 
     const orphanWords = allWordsInExamples.filter((word) => !allConjugations.includes(word));
     const nonOrphanWords = allWordsInExamples.filter((word) => allConjugations.includes(word));

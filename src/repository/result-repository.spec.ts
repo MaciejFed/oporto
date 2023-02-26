@@ -14,6 +14,9 @@ describe('Result Repository', () => {
     exercises.forEach((exercise, index) => {
       const resultsForExercise = getAllResultsForExercise(allResults, exercise);
 
+      if (resultsForExercise.length > 1) {
+        console.log(resultsForExercise);
+      }
       expect(resultsForExercise.length).toBe(1);
       expect(exercise.getCorrectAnswer()).toEqual(exercises[index].getCorrectAnswer());
     });

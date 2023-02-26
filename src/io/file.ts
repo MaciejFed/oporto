@@ -4,7 +4,7 @@ import path from 'path';
 import { logger } from '../common/logger';
 
 const resultDbFilePath = path.join(os.homedir(), 'results.json');
-const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');
+const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
 
 export function readFromFile(): string {
   logger.info('reading results...');
@@ -16,6 +16,6 @@ export function saveToFile(data: string) {
   fs.writeFileSync(resultDbFilePath, data);
 }
 
-export function saveUniqueWords(data: string) {
+export function saveProgressToFile(data: string) {
   fs.writeFileSync(chartDataJsonPath, data);
 }

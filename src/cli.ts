@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+import { saveProgress } from './commands/progress';
 import { startSpeakSession } from './commands/speaking';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
@@ -32,6 +33,13 @@ program
   .description('Show statistics')
   .action((str, options) => {
     displayStatistics(true);
+  });
+
+program
+  .command('progress')
+  .description('Save progress')
+  .action(() => {
+    saveProgress();
   });
 
 program.parse();
