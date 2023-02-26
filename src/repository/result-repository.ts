@@ -122,7 +122,7 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
       (result) => DateTimeExtended.fromJSDate(result.date).ordinal <= resultDate.ordinal
     );
     resultsByDate.push({
-      date: resultDate,
+      date: DateTimeExtended.fromJSDate(resultDate.toJSDate()),
       results
     });
     resultDate = resultDate.plus({ week: 1 });

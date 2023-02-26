@@ -2,6 +2,7 @@ import { NounTranslationExercise } from '../exercise/translation/noun-translatio
 import { generateResultsForExerciseDaysAgo } from '../priority/priority.util';
 import { readAll } from '../repository/exercises-repository';
 import { progressByDate } from './progress';
+import { getAllResults, getAllResultsByDate } from '../repository/result-repository';
 
 const nounExercise0 = NounTranslationExercise.new(readAll().nouns[0], 'toPortuguese');
 const nounExercise1 = NounTranslationExercise.new(readAll().nouns[1], 'toPortuguese');
@@ -26,7 +27,15 @@ const results = [
 ].sort((a, b) => (a.date.getTime() > b.date.getTime() ? 1 : -1));
 
 describe('Progress', () => {
-  it('should calculate progress', () => {
+  it('Should get results by date', () => {
+    const resultsByDate = getAllResultsByDate(results);
+
+    expect(resultsByDate.length).toEqual(5);
+    expect(resultsByDate[0].date.toJSDate()).not.toEqual(resultsByDate[1].date.toJSDate());
+    expect(resultsByDate[4].results.length).toEqual(results.length);
+  });
+
+  it('Should calculate progress', () => {
     const progress = progressByDate(results);
 
     expect(progress.length).toEqual(5);

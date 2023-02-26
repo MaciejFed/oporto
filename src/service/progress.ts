@@ -126,7 +126,8 @@ type ProgressOnDay = {
 
 export function progressByDate(results: Result[]): ProgressOnDay[] {
   const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
-  const uniqueByDay = getAllResultsByDate(results)
+  const resultsByDate = getAllResultsByDate(results);
+  const uniqueByDay = resultsByDate
     .map((dateResult) => {
       const resultsByDay = allUniqueWordsAsExercises.map((exercise) =>
         getSingleExerciseProgress(dateResult.results, exercise)
@@ -134,23 +135,26 @@ export function progressByDate(results: Result[]): ProgressOnDay[] {
       return {
         ...dateResult,
         words: resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer()),
-        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date)
+        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date),
       };
     })
     .map((dateResult) => {
       return {
-        day: dateResult.date,
+        day: dateResult.date.toJSDate(),
         words: dateResult.words,
         exercisesDone: Math.floor(dateResult.exercisesDone.length / 10)
       };
     });
+  const alluniqueWords = getAllUniqueWords();
   return uniqueByDay.map((unique, index) => {
     const previous = index > 0 ? uniqueByDay[index - 1].words : [];
     const newWords = unique.words.filter((word) => !previous.includes(word));
     const lostWords = previous.filter((word) => !unique.words.includes(word));
     return {
-      day: unique.day.toJSDate().toDateString(),
+      day: unique.day.toDateString(),
       wordCount: unique.words.length,
+      wordsDone: unique.words,
+      wordsMissing: alluniqueWords.filter((w) => !unique.words.includes(w)),
       exercisesDone: unique.exercisesDone,
       newWords,
       lostWords

@@ -3,15 +3,15 @@ import { Zone } from 'luxon/src/zone';
 import { DurationLike } from 'luxon/src/duration';
 
 export class DateTimeExtended {
-  private date: DateTime;
+  private readonly date: DateTime;
 
   private constructor(date: Date) {
     this.date = DateTime.fromJSDate(date);
   }
 
   public plus(duration: DurationLike) {
-    this.date = this.date.plus(duration);
-    return this;
+    const newDate = this.date.plus(duration);
+    return DateTimeExtended.fromJSDate(newDate.toJSDate());
   }
 
   public toJSDate(): Date {
