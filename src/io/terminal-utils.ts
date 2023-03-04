@@ -149,12 +149,14 @@ export function printAllAnswers(results: Result[]) {
 export async function animateExerciseSummary({
   correctAttempts,
   failedAttempts,
-  lastTimeAttempted
+  lastTimeAttempted,
+  firstTimeAttempted
 }: ExerciseStatistics) {
   const yIndex = 19;
   const animationTime = 1500;
   const barWidth = 50;
-  Output.moveTo(0, yIndex + 2, `Last Time Attempted: ${formatDate(lastTimeAttempted)}`);
+  Output.moveTo(0, yIndex + 2, `Last Time Attempted:  ${formatDate(lastTimeAttempted)}`);
+  // Output.moveTo(0, yIndex + 2, `First Time Attempted: ${formatDate(firstTimeAttempted)}`);
   for (let index = 1; index <= correctAttempts + failedAttempts; index++) {
     const goodValue = index <= correctAttempts ? index : correctAttempts;
     const wrongValue = Math.max(0, index - goodValue);

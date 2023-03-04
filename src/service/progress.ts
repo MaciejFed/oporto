@@ -1,7 +1,8 @@
-import { Exercise } from '../exercise/exercise';
+import { Exercise, ExerciseType } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { readAll } from '../repository/exercises-repository';
 import {
+  getAllResults,
   getAllResultsBeforeDateOneWeek,
   getAllResultsByDate,
   getAllResultsForExercise
@@ -13,11 +14,12 @@ import { NounTranslationExercise } from '../exercise/translation/noun-translatio
 import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
+import { onlyDistinct } from '../common/common';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
 
-type ExerciseProgress = {
+export type ExerciseProgress = {
   exercise: Exercise;
   correctAnswers: number;
   incorrectAnswers: number;
@@ -30,7 +32,15 @@ export type Progress = {
   count: number;
 };
 
-export function getSingleExerciseProgress(results: Result[], exercise: Exercise) {
+export function getGroupExerciseProgress(results: Result[], exerciseType: ExerciseType): ExerciseProgress[] {
+  const exercisesOfType = onlyDistinct(
+    results.filter((result) => result.exercise.exerciseType === exerciseType).map((r) => r.exercise)
+  );
+
+  return exercisesOfType.map((exerciseOfType) => getSingleExerciseProgress(results, exerciseOfType as Exercise));
+}
+
+export function getSingleExerciseProgress(results: Result[], exercise: Exercise): ExerciseProgress {
   const exerciseResults = getAllResultsForExercise(results, exercise);
   const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
   const incorrectAnswers = exerciseResults.length - correctAnswers;
@@ -124,6 +134,18 @@ type ProgressOnDay = {
   lostWords: string[];
 };
 
+export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, ExerciseProgress[]> {
+  return {
+    VerbExercise: getGroupExerciseProgress(results, 'VerbExercise'),
+    SentenceTranslation: getGroupExerciseProgress(results, 'SentenceTranslation'),
+    NounTranslation: getGroupExerciseProgress(results, 'NounTranslation'),
+    OtherTranslation: getGroupExerciseProgress(results, 'OtherTranslation'),
+    AdjectiveTranslation: getGroupExerciseProgress(results, 'AdjectiveTranslation'),
+    VerbTranslation: getGroupExerciseProgress(results, 'VerbTranslation'),
+    FitInGap: getGroupExerciseProgress(results, 'FitInGap')
+  };
+}
+
 export function progressByDate(results: Result[]): ProgressOnDay[] {
   const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
   const resultsByDate = getAllResultsByDate(results);
@@ -135,7 +157,7 @@ export function progressByDate(results: Result[]): ProgressOnDay[] {
       return {
         ...dateResult,
         words: resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer()),
-        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date),
+        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date)
       };
     })
     .map((dateResult) => {

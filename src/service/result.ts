@@ -42,6 +42,7 @@ export type ExerciseStatistics = {
   correctAttempts: number;
   failedAttempts: number;
   lastTimeAttempted: Date;
+  firstTimeAttempted: Date;
 };
 
 export type Result = {
@@ -81,7 +82,8 @@ export function getStatisticForExercise(allResults: Result[], exercise: Exercise
     exercise,
     correctAttempts,
     failedAttempts: allResultsForExercise.length - correctAttempts,
-    lastTimeAttempted: allResultsForExercise.length > 1 ? allResultsForExercise[1].date : allResultsForExercise[0].date
+    lastTimeAttempted: allResultsForExercise.length > 1 ? allResultsForExercise[1].date : allResultsForExercise[0].date,
+    firstTimeAttempted: allResultsForExercise[allResultsForExercise.length - 1].date
   };
 }
 
