@@ -4115,14 +4115,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'guitar',
-      portuguese: {
-        word: 'substantivo,',
-        plural: 'violão',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'visit',
       portuguese: {
         word: 'visita',
@@ -4205,7 +4197,7 @@ export const db: Schema = {
     {
       english: 'talent',
       portuguese: {
-        word: 'talento,',
+        word: 'talento',
         gender: 'masculine'
       }
     },
@@ -4773,7 +4765,7 @@ export const db: Schema = {
     },
     {
       portuguese: 'quanto',
-      english: 'how'
+      english: 'how much'
     },
     {
       portuguese: 'quase',

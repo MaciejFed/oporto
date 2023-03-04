@@ -1,19 +1,18 @@
 import { Exercise, ExerciseType } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
-import { getAllResultsForExercise } from '../../../repository/result-repository';
 import { noPriority, Priority } from '../../priority';
-import { ExerciseProgress, getSingleExerciseProgress, RatioRange } from '../../../service/progress';
+import { ExerciseProgress, RatioRange } from '../../../service/progress';
 import { onlyDistinct } from '../../../common/common';
 
 export const VALUE_EXERCISE_LIMIT = -1000;
 
 export const exerciseTypeToLimit: Record<ExerciseType, number> = {
   SentenceTranslation: 5,
-  VerbExercise: 5,
-  NounTranslation: 0,
+  VerbExercise: 10,
+  NounTranslation: 20,
   OtherTranslation: 0,
-  AdjectiveTranslation: 10,
-  VerbTranslation: 0,
+  AdjectiveTranslation: 15,
+  VerbTranslation: 20,
   FitInGap: 0
 };
 
