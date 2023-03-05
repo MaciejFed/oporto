@@ -1,18 +1,21 @@
-import { readAll, Verb } from '../repository/exercises-repository';
-import { VerbExerciseGenerator } from '../exercise/generator';
-import { VerbExercise } from '../exercise/verb-exercise';
-
-const getConjugationsForVerb = (verb: Verb) => {
-  // eslint-disable-next-line new-cap
-  return VerbExerciseGenerator()
-    .filter((verbExercise) => (verbExercise as VerbExercise).verb.infinitive === verb.infinitive)
-    .map((verbExercise) => verbExercise.getCorrectAnswer())
-    .concat(verb.infinitive)
-    .sort((a, b) => a.localeCompare(b));
-};
+import { readAll } from '../repository/exercises-repository';
 
 export const getAllWordsConjugations = () => {
-  const allVerbsForms = readAll().verbs.flatMap((verb) => getConjugationsForVerb(verb));
+  const allVerbsForms = readAll()
+    .verbs.flatMap((verb) => [
+      verb.infinitive,
+      verb.presentSimple.Eu,
+      verb.presentSimple.Tu,
+      verb.presentSimple['Ela/Ele/Você'],
+      verb.presentSimple.Nós,
+      verb.presentSimple['Eles/Elas/Vocēs'],
+      verb.pastPerfect?.Eu,
+      verb.pastPerfect?.Tu,
+      verb.pastPerfect?.['Ela/Ele/Você'],
+      verb.pastPerfect?.Nós,
+      verb.pastPerfect?.['Eles/Elas/Vocēs']
+    ])
+    .filter((w) => w !== undefined);
   const allNounForms = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural || '']);
   const allAdjectiveForms = readAll().adjectives.flatMap((adjective) => [
     adjective.feminine.singular,
@@ -27,6 +30,6 @@ export const getAllWordsConjugations = () => {
     .concat(allAdjectiveForms)
     .concat(others)
     .filter((word) => word)
-    .map((word) => word.toLowerCase().replace('?', '').replace(',', ''))
+    .map((word) => word!.toLowerCase().replace('?', '').replace(',', ''))
     .sort();
 };

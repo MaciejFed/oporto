@@ -1,15 +1,18 @@
 import { Exercise } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { TranslationExercise } from '../../../exercise/translation/translation-exercise';
-import { noPriority, Priority } from '../../priority';
+import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 
 export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING = -500;
 
-export function exerciseTranslationNeverDoneFromHearing(exercise: Exercise, results: Result[]): Priority[] {
+export function exerciseTranslationNeverDoneFromHearing(
+  exercise: Exercise,
+  { allResults }: ExerciseResultContext
+): Priority[] {
   if (!(exercise instanceof TranslationExercise) || exercise.isTranslationToPortugueseFromHearing()) {
     return noPriority(exercise);
   }
-  const fromHearingTranslationsCorrect = results.filter((result) => {
+  const fromHearingTranslationsCorrect = allResults.filter((result) => {
     if (
       result.exercise.exerciseType === exercise.exerciseType &&
       (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)

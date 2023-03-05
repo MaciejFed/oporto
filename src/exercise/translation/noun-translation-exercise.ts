@@ -54,6 +54,9 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
   equal = (other: NounTranslationExercise) =>
     other.exerciseType === 'NounTranslation' &&
     this.noun.portuguese.word === other.noun.portuguese.word &&
+    this.noun.portuguese.plural === other.noun.portuguese.plural &&
+    this.noun.portuguese.gender === other.noun.portuguese.gender &&
+    this.noun.english === other.noun.english &&
     this.translationType === other.translationType;
 
   getWordWithGender() {

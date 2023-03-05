@@ -26,6 +26,6 @@ export interface Exercise extends Comparable {
   getCorrectAnswer(): string;
   checkAnswerCorrect(answer: string): boolean;
   getRepeatAnswerPhrase(): string;
-  getMaxWantedProgress(): RatioRange | '100+';
+  getMaxWantedProgress(): RatioRange;
   getMinimumAnswers(): number;
 }

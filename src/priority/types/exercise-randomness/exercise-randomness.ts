@@ -1,10 +1,9 @@
 import { Exercise } from '../../../exercise/exercise';
-import { Result } from '../../../service/result';
 import { Priority } from '../../priority';
 
 export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
 
-export function exerciseRandomness(exercise: Exercise, results: Result[]): Priority[] {
+export function exerciseRandomness(exercise: Exercise): Priority[] {
   return [
     {
       exercise,

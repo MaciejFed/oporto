@@ -34,7 +34,7 @@ export type Adjective = {
     singular: string;
     plural: string;
   };
-  placing: 'before' | 'after';
+  placing?: 'before' | 'after';
   english: string;
 };
 
@@ -355,7 +355,7 @@ export const db: Schema = {
       pastPerfect: {
         Eu: 'andei',
         Tu: 'andaste',
-        'Ela/Ele/Você': 'andaste',
+        'Ela/Ele/Você': 'andou',
         Nós: 'andámos',
         'Eles/Elas/Vocēs': 'andaram'
       }
@@ -513,17 +513,6 @@ export const db: Schema = {
         'Ela/Ele/Você': 'encontra',
         Nós: 'encontramos',
         'Eles/Elas/Vocēs': 'encontram'
-      }
-    },
-    {
-      english: 'to hear',
-      infinitive: 'ouvir',
-      presentSimple: {
-        Eu: 'ouço',
-        Tu: 'ouves',
-        'Ela/Ele/Você': 'ouve',
-        Nós: 'ouvimos',
-        'Eles/Elas/Vocēs': 'ouvem'
       }
     },
     {
@@ -890,17 +879,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to serve',
-      infinitive: 'sirver',
-      presentSimple: {
-        Eu: 'sirvo',
-        Tu: 'serves',
-        'Ela/Ele/Você': 'serve',
-        Nós: 'servimos',
-        'Eles/Elas/Vocēs': 'servem'
-      }
-    },
-    {
       english: 'to feel',
       infinitive: 'sentir',
       presentSimple: {
@@ -1217,7 +1195,7 @@ export const db: Schema = {
     },
     {
       english: 'to alter',
-      infinitive: 'alterou',
+      infinitive: 'alterar',
       presentSimple: {
         Eu: 'altero',
         Tu: 'alteras',
@@ -1303,6 +1281,1032 @@ export const db: Schema = {
         'Ela/Ele/Você': 'aumentou',
         Nós: 'aumentámos',
         'Eles/Elas/Vocēs': 'aumentaram'
+      }
+    },
+    {
+      english: 'to fall',
+      infinitive: 'cair',
+      presentSimple: {
+        Eu: 'caio',
+        Tu: 'cais',
+        'Ela/Ele/Você': 'cai',
+        Nós: 'caímos',
+        'Eles/Elas/Vocēs': 'caem'
+      },
+      pastPerfect: {
+        Eu: 'caí',
+        Tu: 'caíste',
+        'Ela/Ele/Você': 'caiu',
+        Nós: 'caímos',
+        'Eles/Elas/Vocēs': 'caíram'
+      }
+    },
+    {
+      english: 'to carry',
+      infinitive: 'carregar',
+      presentSimple: {
+        Eu: 'carrego',
+        Tu: 'carregas',
+        'Ela/Ele/Você': 'carrega',
+        Nós: 'carregamos',
+        'Eles/Elas/Vocēs': 'carregam'
+      },
+      pastPerfect: {
+        Eu: 'carreguei',
+        Tu: 'carregaste',
+        'Ela/Ele/Você': 'carregou',
+        Nós: 'carregámos',
+        'Eles/Elas/Vocēs': 'carregaram'
+      }
+    },
+    {
+      english: 'to arrive',
+      infinitive: 'chegar',
+      presentSimple: {
+        Eu: 'chego',
+        Tu: 'chegas',
+        'Ela/Ele/Você': 'chega',
+        Nós: 'chegamos',
+        'Eles/Elas/Vocēs': 'chegam'
+      },
+      pastPerfect: {
+        Eu: 'cheguei',
+        Tu: 'chegaste',
+        'Ela/Ele/Você': 'chegou',
+        Nós: 'chegámos',
+        'Eles/Elas/Vocēs': 'chegaram'
+      }
+    },
+    {
+      english: 'to focus',
+      infinitive: 'concentrar',
+      presentSimple: {
+        Eu: 'concentro',
+        Tu: 'concentras',
+        'Ela/Ele/Você': 'concentra',
+        Nós: 'concentramos',
+        'Eles/Elas/Vocēs': 'concentram'
+      },
+      pastPerfect: {
+        Eu: 'concentrei',
+        Tu: 'concentraste',
+        'Ela/Ele/Você': 'concentrou',
+        Nós: 'concentrámos',
+        'Eles/Elas/Vocēs': 'concentraram'
+      }
+    },
+    {
+      english: 'to build',
+      infinitive: 'construir',
+      presentSimple: {
+        Eu: 'construo',
+        Tu: 'constróis',
+        'Ela/Ele/Você': 'constrói',
+        Nós: 'construímos',
+        'Eles/Elas/Vocēs': 'constroem'
+      },
+      pastPerfect: {
+        Eu: 'construí',
+        Tu: 'construíste',
+        'Ela/Ele/Você': 'construiu',
+        Nós: 'construímos',
+        'Eles/Elas/Vocēs': 'construíram'
+      }
+    },
+    {
+      english: 'to continue',
+      infinitive: 'continuar',
+      presentSimple: {
+        Eu: 'continuo',
+        Tu: 'continuas',
+        'Ela/Ele/Você': 'continua',
+        Nós: 'continuamos',
+        'Eles/Elas/Vocēs': 'continuam'
+      },
+      pastPerfect: {
+        Eu: 'continuei',
+        Tu: 'continuaste',
+        'Ela/Ele/Você': 'continuou',
+        Nós: 'continuámos',
+        'Eles/Elas/Vocēs': 'continuaram'
+      }
+    },
+    {
+      english: 'to talk',
+      infinitive: 'conversar',
+      presentSimple: {
+        Eu: 'converso',
+        Tu: 'conversas',
+        'Ela/Ele/Você': 'conversa',
+        Nós: 'conversamos',
+        'Eles/Elas/Vocēs': 'conversam'
+      },
+      pastPerfect: {
+        Eu: 'conversei',
+        Tu: 'conversaste',
+        'Ela/Ele/Você': 'conversou',
+        Nós: 'conversámos',
+        'Eles/Elas/Vocēs': 'conversaram'
+      }
+    },
+    {
+      english: 'to create',
+      infinitive: 'criar',
+      presentSimple: {
+        Eu: 'crio',
+        Tu: 'crias',
+        'Ela/Ele/Você': 'cria',
+        Nós: 'criamos',
+        'Eles/Elas/Vocēs': 'criam'
+      },
+      pastPerfect: {
+        Eu: 'criei',
+        Tu: 'criaste',
+        'Ela/Ele/Você': 'criou',
+        Nós: 'criámos',
+        'Eles/Elas/Vocēs': 'criaram'
+      }
+    },
+    {
+      english: 'to dance',
+      infinitive: 'dançar',
+      presentSimple: {
+        Eu: 'danço',
+        Tu: 'danças',
+        'Ela/Ele/Você': 'dança',
+        Nós: 'dançamos',
+        'Eles/Elas/Vocēs': 'dançam'
+      },
+      pastPerfect: {
+        Eu: 'dancei',
+        Tu: 'dançaste',
+        'Ela/Ele/Você': 'dançou',
+        Nós: 'dançámos',
+        'Eles/Elas/Vocēs': 'dançaram'
+      }
+    },
+    {
+      english: 'to give',
+      infinitive: 'dar',
+      presentSimple: {
+        Eu: 'dou',
+        Tu: 'dás',
+        'Ela/Ele/Você': 'dá',
+        Nós: 'damos',
+        'Eles/Elas/Vocēs': 'dão'
+      },
+      pastPerfect: {
+        Eu: 'dei',
+        Tu: 'deste',
+        'Ela/Ele/Você': 'deu',
+        Nós: 'demos',
+        'Eles/Elas/Vocēs': 'deram'
+      }
+    },
+    {
+      english: 'to define',
+      infinitive: 'definir',
+      presentSimple: {
+        Eu: 'defino',
+        Tu: 'defines',
+        'Ela/Ele/Você': 'define',
+        Nós: 'definimos',
+        'Eles/Elas/Vocēs': 'definem'
+      },
+      pastPerfect: {
+        Eu: 'defini',
+        Tu: 'definiste',
+        'Ela/Ele/Você': 'definiu',
+        Nós: 'definimos',
+        'Eles/Elas/Vocēs': 'definiram'
+      }
+    },
+    {
+      english: 'to determine',
+      infinitive: 'determinar',
+      presentSimple: {
+        Eu: 'determino',
+        Tu: 'determinas',
+        'Ela/Ele/Você': 'determina',
+        Nós: 'determinamos',
+        'Eles/Elas/Vocēs': 'determinam'
+      },
+      pastPerfect: {
+        Eu: 'determinei',
+        Tu: 'determinaste',
+        'Ela/Ele/Você': 'determinou',
+        Nós: 'determinámos',
+        'Eles/Elas/Vocēs': 'determinaram'
+      }
+    },
+    {
+      english: 'to sleep',
+      infinitive: 'dormir',
+      presentSimple: {
+        Eu: 'durmo',
+        Tu: 'dormes',
+        'Ela/Ele/Você': 'dorme',
+        Nós: 'dormimos',
+        'Eles/Elas/Vocēs': 'dormem'
+      },
+      pastPerfect: {
+        Eu: 'dormi',
+        Tu: 'dormiste',
+        'Ela/Ele/Você': 'dormiu',
+        Nós: 'dormimos',
+        'Eles/Elas/Vocēs': 'dormiram'
+      }
+    },
+    {
+      english: 'to send message',
+      infinitive: 'enviar',
+      presentSimple: {
+        Eu: 'envio',
+        Tu: 'envias',
+        'Ela/Ele/Você': 'envia',
+        Nós: 'enviamos',
+        'Eles/Elas/Vocēs': 'enviam'
+      },
+      pastPerfect: {
+        Eu: 'enviei',
+        Tu: 'enviaste',
+        'Ela/Ele/Você': 'enviou',
+        Nós: 'enviámos',
+        'Eles/Elas/Vocēs': 'enviaram'
+      }
+    },
+    {
+      english: 'to wait',
+      infinitive: 'esperar',
+      presentSimple: {
+        Eu: 'espero',
+        Tu: 'esperas',
+        'Ela/Ele/Você': 'espera',
+        Nós: 'esperamos',
+        'Eles/Elas/Vocēs': 'esperam'
+      },
+      pastPerfect: {
+        Eu: 'esperei',
+        Tu: 'esperaste',
+        'Ela/Ele/Você': 'esperou',
+        Nós: 'esperámos',
+        'Eles/Elas/Vocēs': 'esperaram'
+      }
+    },
+    {
+      english: 'to study',
+      infinitive: 'estudar',
+      presentSimple: {
+        Eu: 'estudo',
+        Tu: 'estudas',
+        'Ela/Ele/Você': 'estuda',
+        Nós: 'estudamos',
+        'Eles/Elas/Vocēs': 'estudam'
+      },
+      pastPerfect: {
+        Eu: 'estudei',
+        Tu: 'estudaste',
+        'Ela/Ele/Você': 'estudou',
+        Nós: 'estudámos',
+        'Eles/Elas/Vocēs': 'estudaram'
+      }
+    },
+    {
+      english: 'to explain',
+      infinitive: 'explicar',
+      presentSimple: {
+        Eu: 'explico',
+        Tu: 'explicas',
+        'Ela/Ele/Você': 'explica',
+        Nós: 'explicamos',
+        'Eles/Elas/Vocēs': 'explicam'
+      },
+      pastPerfect: {
+        Eu: 'expliquei',
+        Tu: 'explicaste',
+        'Ela/Ele/Você': 'explicou',
+        Nós: 'explicámos',
+        'Eles/Elas/Vocēs': 'explicaram'
+      }
+    },
+    {
+      english: 'to smoke',
+      infinitive: 'fumar',
+      presentSimple: {
+        Eu: 'fumo',
+        Tu: 'fumas',
+        'Ela/Ele/Você': 'fuma',
+        Nós: 'fumamos',
+        'Eles/Elas/Vocēs': 'fumam'
+      },
+      pastPerfect: {
+        Eu: 'fumei',
+        Tu: 'fumaste',
+        'Ela/Ele/Você': 'fumou',
+        Nós: 'fumámos',
+        'Eles/Elas/Vocēs': 'fumaram'
+      }
+    },
+    {
+      english: 'to spend money',
+      infinitive: 'gastar',
+      presentSimple: {
+        Eu: 'gasto',
+        Tu: 'gastas',
+        'Ela/Ele/Você': 'gasta',
+        Nós: 'gastamos',
+        'Eles/Elas/Vocēs': 'gastam'
+      },
+      pastPerfect: {
+        Eu: 'gastei',
+        Tu: 'gastaste',
+        'Ela/Ele/Você': 'gastou',
+        Nós: 'gastámos',
+        'Eles/Elas/Vocēs': 'gastaram'
+      }
+    },
+    {
+      english: 'to remember',
+      infinitive: 'lembrar',
+      presentSimple: {
+        Eu: 'lembro',
+        Tu: 'lembras',
+        'Ela/Ele/Você': 'lembra',
+        Nós: 'lembramos',
+        'Eles/Elas/Vocēs': 'lembram'
+      },
+      pastPerfect: {
+        Eu: 'lembrei',
+        Tu: 'lembraste',
+        'Ela/Ele/Você': 'lembrou',
+        Nós: 'lembrámos',
+        'Eles/Elas/Vocēs': 'lembraram'
+      }
+    },
+    {
+      english: 'to mention',
+      infinitive: 'mencionar',
+      presentSimple: {
+        Eu: 'menciono',
+        Tu: 'mencionas',
+        'Ela/Ele/Você': 'menciona',
+        Nós: 'mencionamos',
+        'Eles/Elas/Vocēs': 'mencionam'
+      },
+      pastPerfect: {
+        Eu: 'mencionei',
+        Tu: 'mencionaste',
+        'Ela/Ele/Você': 'mencionou',
+        Nós: 'mencionámos',
+        'Eles/Elas/Vocēs': 'mencionaram'
+      }
+    },
+    {
+      english: 'to change',
+      infinitive: 'mudar',
+      presentSimple: {
+        Eu: 'mudo',
+        Tu: 'mudas',
+        'Ela/Ele/Você': 'muda',
+        Nós: 'mudamos',
+        'Eles/Elas/Vocēs': 'mudam'
+      },
+      pastPerfect: {
+        Eu: 'mudei',
+        Tu: 'mudaste',
+        'Ela/Ele/Você': 'mudou',
+        Nós: 'mudámos',
+        'Eles/Elas/Vocēs': 'mudaram'
+      }
+    },
+    {
+      english: 'to deny',
+      infinitive: 'negar',
+      presentSimple: {
+        Eu: 'nego',
+        Tu: 'negas',
+        'Ela/Ele/Você': 'nega',
+        Nós: 'negamos',
+        'Eles/Elas/Vocēs': 'negam'
+      },
+      pastPerfect: {
+        Eu: 'neguei',
+        Tu: 'negaste',
+        'Ela/Ele/Você': 'negou',
+        Nós: 'negámos',
+        'Eles/Elas/Vocēs': 'negaram'
+      }
+    },
+    {
+      english: 'to stop',
+      infinitive: 'parar',
+      presentSimple: {
+        Eu: 'paro',
+        Tu: 'paras',
+        'Ela/Ele/Você': 'para',
+        Nós: 'paramos',
+        'Eles/Elas/Vocēs': 'param'
+      },
+      pastPerfect: {
+        Eu: 'parei',
+        Tu: 'paraste',
+        'Ela/Ele/Você': 'parou',
+        Nós: 'parámos',
+        'Eles/Elas/Vocēs': 'pararam'
+      }
+    },
+    {
+      english: 'to pass by',
+      infinitive: 'passar',
+      presentSimple: {
+        Eu: 'passo',
+        Tu: 'passas',
+        'Ela/Ele/Você': 'passa',
+        Nós: 'passamos',
+        'Eles/Elas/Vocēs': 'passam'
+      },
+      pastPerfect: {
+        Eu: 'passei',
+        Tu: 'passaste',
+        'Ela/Ele/Você': 'passou',
+        Nós: 'passámos',
+        'Eles/Elas/Vocēs': 'passaram'
+      }
+    },
+    {
+      english: 'to think - more',
+      infinitive: 'pensar',
+      presentSimple: {
+        Eu: 'penso',
+        Tu: 'pensas',
+        'Ela/Ele/Você': 'pensa',
+        Nós: 'pensamos',
+        'Eles/Elas/Vocēs': 'pensam'
+      },
+      pastPerfect: {
+        Eu: 'pensei',
+        Tu: 'pensaste',
+        'Ela/Ele/Você': 'pensou',
+        Nós: 'pensámos',
+        'Eles/Elas/Vocēs': 'pensaram'
+      }
+    },
+    {
+      english: 'to save',
+      infinitive: 'poupar',
+      presentSimple: {
+        Eu: 'poupo',
+        Tu: 'poupas',
+        'Ela/Ele/Você': 'poupa',
+        Nós: 'poupamos',
+        'Eles/Elas/Vocēs': 'poupam'
+      },
+      pastPerfect: {
+        Eu: 'poupei',
+        Tu: 'poupaste',
+        'Ela/Ele/Você': 'poupou',
+        Nós: 'poupámos',
+        'Eles/Elas/Vocēs': 'pouparam'
+      }
+    },
+    {
+      english: 'to prepare',
+      infinitive: 'preparar',
+      presentSimple: {
+        Eu: 'preparo',
+        Tu: 'preparas',
+        'Ela/Ele/Você': 'prepara',
+        Nós: 'preparamos',
+        'Eles/Elas/Vocēs': 'preparam'
+      },
+      pastPerfect: {
+        Eu: 'preparei',
+        Tu: 'preparaste',
+        'Ela/Ele/Você': 'preparou',
+        Nós: 'preparámos',
+        'Eles/Elas/Vocēs': 'prepararam'
+      }
+    },
+    {
+      english: 'to break',
+      infinitive: 'quebrar',
+      presentSimple: {
+        Eu: 'quebro',
+        Tu: 'quebras',
+        'Ela/Ele/Você': 'quebra',
+        Nós: 'quebramos',
+        'Eles/Elas/Vocēs': 'quebram'
+      },
+      pastPerfect: {
+        Eu: 'quebrei',
+        Tu: 'quebraste',
+        'Ela/Ele/Você': 'quebrou',
+        Nós: 'quebrámos',
+        'Eles/Elas/Vocēs': 'quebraram'
+      }
+    },
+    {
+      english: 'to carry out',
+      infinitive: 'realizar',
+      presentSimple: {
+        Eu: 'realizo',
+        Tu: 'realizas',
+        'Ela/Ele/Você': 'realiza',
+        Nós: 'realizamos',
+        'Eles/Elas/Vocēs': 'realizam'
+      },
+      pastPerfect: {
+        Eu: 'realizei',
+        Tu: 'realizaste',
+        'Ela/Ele/Você': 'realizou',
+        Nós: 'realizámos',
+        'Eles/Elas/Vocēs': 'realizaram'
+      }
+    },
+    {
+      english: 'to reflect',
+      infinitive: 'refletir',
+      presentSimple: {
+        Eu: 'refleto',
+        Tu: 'refletes',
+        'Ela/Ele/Você': 'reflete',
+        Nós: 'refletimos',
+        'Eles/Elas/Vocēs': 'refletem'
+      },
+      pastPerfect: {
+        Eu: 'refleti',
+        Tu: 'refletiste',
+        'Ela/Ele/Você': 'refletiu',
+        Nós: 'refletimos',
+        'Eles/Elas/Vocēs': 'refletiram'
+      }
+    },
+    {
+      english: 'to leave',
+      infinitive: 'sair',
+      presentSimple: {
+        Eu: 'saio',
+        Tu: 'sais',
+        'Ela/Ele/Você': 'sai',
+        Nós: 'saímos',
+        'Eles/Elas/Vocēs': 'saem'
+      },
+      pastPerfect: {
+        Eu: 'saí',
+        Tu: 'saíste',
+        'Ela/Ele/Você': 'saiu',
+        Nós: 'saímos',
+        'Eles/Elas/Vocēs': 'saíram'
+      }
+    },
+    {
+      english: 'to follow',
+      infinitive: 'seguir',
+      presentSimple: {
+        Eu: 'sigo',
+        Tu: 'segues',
+        'Ela/Ele/Você': 'segue',
+        Nós: 'seguimos',
+        'Eles/Elas/Vocēs': 'seguem'
+      },
+      pastPerfect: {
+        Eu: 'segui',
+        Tu: 'seguiste',
+        'Ela/Ele/Você': 'seguiu',
+        Nós: 'seguimos',
+        'Eles/Elas/Vocēs': 'seguiram'
+      }
+    },
+    {
+      english: 'to serve',
+      infinitive: 'servir',
+      presentSimple: {
+        Eu: 'sirvo',
+        Tu: 'serves',
+        'Ela/Ele/Você': 'serve',
+        Nós: 'servimos',
+        'Eles/Elas/Vocēs': 'servem'
+      },
+      pastPerfect: {
+        Eu: 'servi',
+        Tu: 'serviste',
+        'Ela/Ele/Você': 'serviu',
+        Nós: 'servimos',
+        'Eles/Elas/Vocēs': 'serviram'
+      }
+    },
+    {
+      english: 'to suggest',
+      infinitive: 'sugerir',
+      presentSimple: {
+        Eu: 'sugiro',
+        Tu: 'sugeres',
+        'Ela/Ele/Você': 'sugere',
+        Nós: 'sugerimos',
+        'Eles/Elas/Vocēs': 'sugerem'
+      },
+      pastPerfect: {
+        Eu: 'sugeri',
+        Tu: 'sugeriste',
+        'Ela/Ele/Você': 'sugeriu',
+        Nós: 'sugerimos',
+        'Eles/Elas/Vocēs': 'sugeriram'
+      }
+    },
+    {
+      english: 'to try',
+      infinitive: 'tentar',
+      presentSimple: {
+        Eu: 'tento',
+        Tu: 'tentas',
+        'Ela/Ele/Você': 'tenta',
+        Nós: 'tentamos',
+        'Eles/Elas/Vocēs': 'tentam'
+      },
+      pastPerfect: {
+        Eu: 'tentei',
+        Tu: 'tentaste',
+        'Ela/Ele/Você': 'tentou',
+        Nós: 'tentámos',
+        'Eles/Elas/Vocēs': 'tentaram'
+      }
+    },
+    {
+      english: 'to turn',
+      infinitive: 'virar',
+      presentSimple: {
+        Eu: 'viro',
+        Tu: 'viras',
+        'Ela/Ele/Você': 'vira',
+        Nós: 'viramos',
+        'Eles/Elas/Vocēs': 'viram'
+      },
+      pastPerfect: {
+        Eu: 'virei',
+        Tu: 'viraste',
+        'Ela/Ele/Você': 'virou',
+        Nós: 'virámos',
+        'Eles/Elas/Vocēs': 'viraram'
+      }
+    },
+    {
+      english: 'to sell',
+      infinitive: 'vender',
+      presentSimple: {
+        Eu: 'vendo',
+        Tu: 'vendes',
+        'Ela/Ele/Você': 'vende',
+        Nós: 'vendemos',
+        'Eles/Elas/Vocēs': 'vendem'
+      },
+      pastPerfect: {
+        Eu: 'vendi',
+        Tu: 'vendeste',
+        'Ela/Ele/Você': 'vendeu',
+        Nós: 'vendemos',
+        'Eles/Elas/Vocēs': 'venderam'
+      }
+    },
+    {
+      english: 'to bring',
+      infinitive: 'trazer',
+      presentSimple: {
+        Eu: 'trago',
+        Tu: 'trazes',
+        'Ela/Ele/Você': 'traz',
+        Nós: 'trazemos',
+        'Eles/Elas/Vocēs': 'trazem'
+      },
+      pastPerfect: {
+        Eu: 'trouxe',
+        Tu: 'trouxeste',
+        'Ela/Ele/Você': 'trouxe',
+        Nós: 'trouxemos',
+        'Eles/Elas/Vocēs': 'trouxeram'
+      }
+    },
+    {
+      english: 'to become',
+      infinitive: 'transformar-se',
+      presentSimple: {
+        Eu: 'transformo-me',
+        Tu: 'transformas-te',
+        'Ela/Ele/Você': 'transforma-se',
+        Nós: 'transformamo-nos',
+        'Eles/Elas/Vocēs': 'transformam-se'
+      },
+      pastPerfect: {
+        Eu: 'transformei-me',
+        Tu: 'transformaste-te',
+        'Ela/Ele/Você': 'transformou-se',
+        Nós: 'transformámo-nos',
+        'Eles/Elas/Vocēs': 'transformaram-se'
+      }
+    },
+    {
+      english: 'to transport',
+      infinitive: 'transportar',
+      presentSimple: {
+        Eu: 'transporto',
+        Tu: 'transportas',
+        'Ela/Ele/Você': 'transporta',
+        Nós: 'transportamos',
+        'Eles/Elas/Vocēs': 'transportam'
+      },
+      pastPerfect: {
+        Eu: 'transportei',
+        Tu: 'transportaste',
+        'Ela/Ele/Você': 'transportou',
+        Nós: 'transportámos',
+        'Eles/Elas/Vocēs': 'transportaram'
+      }
+    },
+    {
+      english: 'to suffer',
+      infinitive: 'sofrer',
+      presentSimple: {
+        Eu: 'sofro',
+        Tu: 'sofres',
+        'Ela/Ele/Você': 'sofre',
+        Nós: 'sofremos',
+        'Eles/Elas/Vocēs': 'sofrem'
+      },
+      pastPerfect: {
+        Eu: 'sofri',
+        Tu: 'sofreste',
+        'Ela/Ele/Você': 'sofreu',
+        Nós: 'sofremos',
+        'Eles/Elas/Vocēs': 'sofreram'
+      }
+    },
+    {
+      english: 'to hold',
+      infinitive: 'segurar',
+      presentSimple: {
+        Eu: 'seguro',
+        Tu: 'seguras',
+        'Ela/Ele/Você': 'segura',
+        Nós: 'seguramos',
+        'Eles/Elas/Vocēs': 'seguram'
+      },
+      pastPerfect: {
+        Eu: 'segurei',
+        Tu: 'seguraste',
+        'Ela/Ele/Você': 'segurou',
+        Nós: 'segurámos',
+        'Eles/Elas/Vocēs': 'seguraram'
+      }
+    },
+    {
+      english: 'to mean',
+      infinitive: 'significar',
+      presentSimple: {
+        Eu: 'significo',
+        Tu: 'significas',
+        'Ela/Ele/Você': 'significa',
+        Nós: 'significamos',
+        'Eles/Elas/Vocēs': 'significam'
+      },
+      pastPerfect: {
+        Eu: 'signifiquei',
+        Tu: 'significaste',
+        'Ela/Ele/Você': 'significou',
+        Nós: 'significámos',
+        'Eles/Elas/Vocēs': 'significaram'
+      }
+    },
+    {
+      english: 'to save',
+      infinitive: 'salvar',
+      presentSimple: {
+        Eu: 'salvo',
+        Tu: 'salvas',
+        'Ela/Ele/Você': 'salva',
+        Nós: 'salvamos',
+        'Eles/Elas/Vocēs': 'salvam'
+      },
+      pastPerfect: {
+        Eu: 'salvei',
+        Tu: 'salvaste',
+        'Ela/Ele/Você': 'salvou',
+        Nós: 'salvámos',
+        'Eles/Elas/Vocēs': 'salvaram'
+      }
+    },
+    {
+      english: 'to heal',
+      infinitive: 'sarar',
+      presentSimple: {
+        Eu: 'saro',
+        Tu: 'saras',
+        'Ela/Ele/Você': 'sara',
+        Nós: 'saramos',
+        'Eles/Elas/Vocēs': 'saram'
+      },
+      pastPerfect: {
+        Eu: 'sarei',
+        Tu: 'saraste',
+        'Ela/Ele/Você': 'sarou',
+        Nós: 'sarámos',
+        'Eles/Elas/Vocēs': 'sararam'
+      }
+    },
+    {
+      english: 'to provide',
+      infinitive: 'prover',
+      presentSimple: {
+        Eu: 'provejo',
+        Tu: 'provês',
+        'Ela/Ele/Você': 'provê',
+        Nós: 'provemos',
+        'Eles/Elas/Vocēs': 'provêem'
+      },
+      pastPerfect: {
+        Eu: 'provi',
+        Tu: 'proveste',
+        'Ela/Ele/Você': 'proveu',
+        Nós: 'provemos',
+        'Eles/Elas/Vocēs': 'proveram'
+      }
+    },
+    {
+      english: 'to break',
+      infinitive: 'romper',
+      presentSimple: {
+        Eu: 'rompo',
+        Tu: 'rompes',
+        'Ela/Ele/Você': 'rompe',
+        Nós: 'rompemos',
+        'Eles/Elas/Vocēs': 'rompem'
+      },
+      pastPerfect: {
+        Eu: 'rompi',
+        Tu: 'rompeste',
+        'Ela/Ele/Você': 'rompeu',
+        Nós: 'rompemos',
+        'Eles/Elas/Vocēs': 'romperam'
+      }
+    },
+    {
+      english: 'to remain',
+      infinitive: 'permanecer',
+      presentSimple: {
+        Eu: 'permaneço',
+        Tu: 'permaneces',
+        'Ela/Ele/Você': 'permanece',
+        Nós: 'permanecemos',
+        'Eles/Elas/Vocēs': 'permanecem'
+      },
+      pastPerfect: {
+        Eu: 'permaneci',
+        Tu: 'permaneceste',
+        'Ela/Ele/Você': 'permaneceu',
+        Nós: 'permanecemos',
+        'Eles/Elas/Vocēs': 'permaneceram'
+      }
+    },
+    {
+      english: 'to need',
+      infinitive: 'precisar',
+      presentSimple: {
+        Eu: 'preciso',
+        Tu: 'precisas',
+        'Ela/Ele/Você': 'precisa',
+        Nós: 'precisamos',
+        'Eles/Elas/Vocēs': 'precisam'
+      },
+      pastPerfect: {
+        Eu: 'precisei',
+        Tu: 'precisaste',
+        'Ela/Ele/Você': 'precisou',
+        Nós: 'precisámos',
+        'Eles/Elas/Vocēs': 'precisaram'
+      }
+    },
+    {
+      english: 'to hear',
+      infinitive: 'ouvir',
+      presentSimple: {
+        Eu: 'ouço/oiço',
+        Tu: 'ouves',
+        'Ela/Ele/Você': 'ouve',
+        Nós: 'ouvimos',
+        'Eles/Elas/Vocēs': 'ouvem'
+      },
+      pastPerfect: {
+        Eu: 'ouvi',
+        Tu: 'ouviste',
+        'Ela/Ele/Você': 'ouviu',
+        Nós: 'ouvimos',
+        'Eles/Elas/Vocēs': 'ouviram'
+      }
+    },
+    {
+      english: 'to ask',
+      infinitive: 'pedir',
+      presentSimple: {
+        Eu: 'peço',
+        Tu: 'pedes',
+        'Ela/Ele/Você': 'pede',
+        Nós: 'pedimos',
+        'Eles/Elas/Vocēs': 'pedem'
+      },
+      pastPerfect: {
+        Eu: 'pedi',
+        Tu: 'pediste',
+        'Ela/Ele/Você': 'pediu',
+        Nós: 'pedimos',
+        'Eles/Elas/Vocēs': 'pediram'
+      }
+    },
+    {
+      english: 'to offer',
+      infinitive: 'oferecer',
+      presentSimple: {
+        Eu: 'ofereço',
+        Tu: 'ofereces',
+        'Ela/Ele/Você': 'oferece',
+        Nós: 'oferecemos',
+        'Eles/Elas/Vocēs': 'oferecem'
+      },
+      pastPerfect: {
+        Eu: 'ofereci',
+        Tu: 'ofereceste',
+        'Ela/Ele/Você': 'ofereceu',
+        Nós: 'oferecemos',
+        'Eles/Elas/Vocēs': 'ofereceram'
+      }
+    },
+    {
+      english: 'to obtain',
+      infinitive: 'obter',
+      presentSimple: {
+        Eu: 'obtenho',
+        Tu: 'obténs',
+        'Ela/Ele/Você': 'obtém',
+        Nós: 'obtemos',
+        'Eles/Elas/Vocēs': 'obtêm'
+      },
+      pastPerfect: {
+        Eu: 'obtive',
+        Tu: 'obtiveste',
+        'Ela/Ele/Você': 'obteve',
+        Nós: 'obtivemos',
+        'Eles/Elas/Vocēs': 'obtiveram'
+      }
+    },
+    {
+      english: 'to occur',
+      infinitive: 'ocorrer',
+      presentSimple: {
+        Eu: 'ocorro',
+        Tu: 'ocorres',
+        'Ela/Ele/Você': 'ocorre',
+        Nós: 'ocorremos',
+        'Eles/Elas/Vocēs': 'ocorrem'
+      },
+      pastPerfect: {
+        Eu: 'ocorri',
+        Tu: 'ocorreste',
+        'Ela/Ele/Você': 'ocorreu',
+        Nós: 'ocorremos',
+        'Eles/Elas/Vocēs': 'ocorreram'
+      }
+    },
+    {
+      english: 'to move',
+      infinitive: 'mover',
+      presentSimple: {
+        Eu: 'movo',
+        Tu: 'moves',
+        'Ela/Ele/Você': 'move',
+        Nós: 'movemos',
+        'Eles/Elas/Vocēs': 'movem'
+      },
+      pastPerfect: {
+        Eu: 'movi',
+        Tu: 'moveste',
+        'Ela/Ele/Você': 'moveu',
+        Nós: 'movemos',
+        'Eles/Elas/Vocēs': 'moveram'
+      }
+    },
+    {
+      english: 'to show',
+      infinitive: 'mostrar',
+      presentSimple: {
+        Eu: 'mostro',
+        Tu: 'mostras',
+        'Ela/Ele/Você': 'mostra',
+        Nós: 'mostramos',
+        'Eles/Elas/Vocēs': 'mostram'
+      },
+      pastPerfect: {
+        Eu: 'mostrei',
+        Tu: 'mostraste',
+        'Ela/Ele/Você': 'mostrou',
+        Nós: 'mostrámos',
+        'Eles/Elas/Vocēs': 'mostraram'
       }
     }
   ],
@@ -1405,6 +2409,7 @@ export const db: Schema = {
       english: 'bathroom',
       portuguese: {
         word: 'casa-de-banho',
+        plural: 'casa-de-banhos',
         gender: 'feminine'
       }
     },
@@ -1428,6 +2433,7 @@ export const db: Schema = {
       english: 'month',
       portuguese: {
         word: 'mês',
+        plural: 'meses',
         gender: 'masculine'
       }
     },
@@ -1438,13 +2444,7 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-    {
-      english: 'day',
-      portuguese: {
-        word: 'dia',
-        gender: 'masculine'
-      }
-    },
+
     {
       english: 'country',
       portuguese: {
@@ -1456,6 +2456,7 @@ export const db: Schema = {
       english: 'desert',
       portuguese: {
         word: 'sobremesa',
+        plural: 'sobremesas',
         gender: 'feminine'
       }
     },
@@ -1635,13 +2636,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'hour',
-      portuguese: {
-        word: 'hora',
-        gender: 'feminine'
-      }
-    },
-    {
       english: 'stairs',
       portuguese: {
         word: 'escadas',
@@ -1651,7 +2645,8 @@ export const db: Schema = {
     {
       english: 'calculator',
       portuguese: {
-        word: 'calculadore',
+        word: 'calculadora',
+        plural: 'calculadoras',
         gender: 'feminine'
       }
     },
@@ -1777,9 +2772,10 @@ export const db: Schema = {
       }
     },
     {
-      english: 'bicicle',
+      english: 'bicycle',
       portuguese: {
         word: 'bicicleta',
+        plural: 'bicicletas',
         gender: 'feminine'
       }
     },
@@ -2235,13 +3231,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'person',
-      portuguese: {
-        word: 'pessoa',
-        gender: 'feminine'
-      }
-    },
-    {
       english: 'form',
       portuguese: {
         word: 'forma',
@@ -2273,13 +3262,6 @@ export const db: Schema = {
       english: 'work',
       portuguese: {
         word: 'trabalho',
-        gender: 'masculine'
-      }
-    },
-    {
-      english: 'side',
-      portuguese: {
-        word: 'lado',
         gender: 'masculine'
       }
     },
@@ -2827,6 +3809,602 @@ export const db: Schema = {
         plural: 'assuntos',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'author',
+      portuguese: {
+        word: 'autor',
+        plural: 'autores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'bath',
+      portuguese: {
+        word: 'banho',
+        plural: 'banhos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'ball',
+      portuguese: {
+        word: 'bola',
+        plural: 'bolas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'dog',
+      portuguese: {
+        word: 'cachorro',
+        plural: 'cachorros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'coffee',
+      portuguese: {
+        word: 'café',
+        plural: 'cafés',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'hike',
+      portuguese: {
+        word: 'caminhada',
+        plural: 'caminhadas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'truck',
+      portuguese: {
+        word: 'camião',
+        plural: 'camiões',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'load',
+      portuguese: {
+        word: 'carga',
+        plural: 'cargas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'portfolio',
+      portuguese: {
+        word: 'carteira',
+        plural: 'carteiras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'colleague',
+      portuguese: {
+        word: 'colega',
+        plural: 'colegas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'condition',
+      portuguese: {
+        word: 'condição',
+        plural: 'condições',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'contract',
+      portuguese: {
+        word: 'contrato',
+        plural: 'contratos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'god',
+      portuguese: {
+        word: 'deus',
+        plural: 'deuses',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'day',
+      portuguese: {
+        word: 'dia',
+        plural: 'dias',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'money',
+      portuguese: {
+        word: 'dinheiro',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'disk',
+      portuguese: {
+        word: 'disco',
+        plural: 'discos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'dialogue',
+      portuguese: {
+        word: 'diálogo',
+        plural: 'diálogos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'hunger',
+      portuguese: {
+        word: 'fome',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'photo',
+      portuguese: {
+        word: 'fotografia',
+        plural: 'fotografias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'employee',
+      portuguese: {
+        word: 'funcionário',
+        plural: 'funcionários',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'factory',
+      portuguese: {
+        word: 'fábrica',
+        plural: 'fábricas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'drawer',
+      portuguese: {
+        word: 'gaveta',
+        plural: 'gavetas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'guitar',
+      portuguese: {
+        word: 'guitarra',
+        plural: 'guitarras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'ability',
+      portuguese: {
+        word: 'habilidade',
+        plural: 'habilidades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'history',
+      portuguese: {
+        word: 'história',
+        plural: 'histórias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'hour',
+      portuguese: {
+        word: 'hora',
+        plural: 'horas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'tax',
+      portuguese: {
+        word: 'imposto',
+        plural: 'impostos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'information',
+      portuguese: {
+        word: 'informação',
+        plural: 'informações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'instruction',
+      portuguese: {
+        word: 'instrução',
+        plural: 'instruções',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'side',
+      portuguese: {
+        word: 'lado',
+        plural: 'lados',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'garbage',
+      portuguese: {
+        word: 'lixo',
+        plural: 'lixos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'dishes',
+      portuguese: {
+        word: 'loiça,',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'language',
+      portuguese: {
+        word: 'língua',
+        plural: 'línguas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'morning',
+      portuguese: {
+        word: 'manhã',
+        plural: 'manhãs',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'sock',
+      portuguese: {
+        word: 'meia',
+        plural: 'meias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'backpack',
+      portuguese: {
+        word: 'mochila',
+        plural: 'mochilas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'strawberry',
+      portuguese: {
+        word: 'morango',
+        plural: 'morangos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'dress',
+      portuguese: {
+        word: 'vestido',
+        plural: 'vestidos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'life',
+      portuguese: {
+        word: 'vida',
+        plural: 'vidas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'visit',
+      portuguese: {
+        word: 'visita',
+        plural: 'visitas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'return',
+      portuguese: {
+        word: 'volta',
+        plural: 'voltas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'victim',
+      portuguese: {
+        word: 'vítima',
+        plural: 'vítimas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'television',
+      portuguese: {
+        word: 'televisão',
+        plural: 'televisões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'theory',
+      portuguese: {
+        word: 'teoria',
+        plural: 'teorias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'test',
+      portuguese: {
+        word: 'teste',
+        plural: 'testes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'text',
+      portuguese: {
+        word: 'texto',
+        plural: 'textos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'university',
+      portuguese: {
+        word: 'universidade',
+        plural: 'universidades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'vacancy',
+      portuguese: {
+        word: 'vaga',
+        plural: 'vagas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'supermarket',
+      portuguese: {
+        word: 'supermercado',
+        plural: 'supermercados',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'talent',
+      portuguese: {
+        word: 'talento',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'afternoon',
+      portuguese: {
+        word: 'tarde',
+        plural: 'tardes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'telephone',
+      portuguese: {
+        word: 'telefone',
+        plural: 'telefones',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'shoes',
+      portuguese: {
+        word: 'sapato',
+        plural: 'sapatos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'service',
+      portuguese: {
+        word: 'serviço',
+        plural: 'serviços',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'situation',
+      portuguese: {
+        word: 'situação',
+        plural: 'situações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'solution',
+      portuguese: {
+        word: 'solução',
+        plural: 'soluções',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'suggestion',
+      portuguese: {
+        word: 'sugestão',
+        plural: 'sugestões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'reaction',
+      portuguese: {
+        word: 'reação',
+        plural: 'reações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'rule',
+      portuguese: {
+        word: 'regra',
+        plural: 'regras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'response',
+      portuguese: {
+        word: 'resposta',
+        plural: 'respostas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'restaurant',
+      portuguese: {
+        word: 'restaurante',
+        plural: 'restaurantes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'meeting',
+      portuguese: {
+        word: 'reunião',
+        plural: 'reuniões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'salary',
+      portuguese: {
+        word: 'salário',
+        plural: 'salários',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'product',
+      portuguese: {
+        word: 'produto',
+        plural: 'produtos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'teacher',
+      portuguese: {
+        word: 'professor',
+        plural: 'professores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'teacher',
+      portuguese: {
+        word: 'professora',
+        plural: 'professoras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'project',
+      portuguese: {
+        word: 'projeto',
+        plural: 'projetos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'evidence',
+      portuguese: {
+        word: 'prova',
+        plural: 'provas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'experience',
+      portuguese: {
+        word: 'prática',
+        plural: 'práticas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'price',
+      portuguese: {
+        word: 'preço',
+        plural: 'preços',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'person',
+      portuguese: {
+        word: 'pessoa',
+        plural: 'pessoas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'opinion',
+      portuguese: {
+        word: 'opinião',
+        plural: 'opiniões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'package',
+      portuguese: {
+        word: 'pacote',
+        plural: 'pacotes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'opinion',
+      portuguese: {
+        word: 'parece',
+        plural: 'pareceres',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'world',
+      portuguese: {
+        word: 'mundo',
+        plural: 'mundos',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -2995,7 +4573,7 @@ export const db: Schema = {
       portuguese: 'parte de'
     },
     {
-      english: 'me',
+      english: 'I',
       portuguese: 'eu'
     },
     {
@@ -3149,6 +4727,58 @@ export const db: Schema = {
     {
       english: 'sincerely',
       portuguese: 'atenciosamente'
+    },
+    {
+      english: 'well',
+      portuguese: 'bem'
+    },
+    {
+      english: 'early',
+      portuguese: 'cedo'
+    },
+    {
+      portuguese: 'demais',
+      english: 'too'
+    },
+    {
+      english: 'fast',
+      portuguese: 'depressa'
+    },
+    {
+      english: 'out',
+      portuguese: 'fora'
+    },
+    {
+      portuguese: 'mesmo',
+      english: 'even'
+    },
+    {
+      portuguese: 'mais',
+      english: 'more'
+    },
+    {
+      portuguese: 'muito',
+      english: 'very'
+    },
+    {
+      portuguese: 'novamente',
+      english: 'again'
+    },
+    {
+      portuguese: 'pacientemente',
+      english: 'patiently'
+    },
+    {
+      portuguese: 'quanto',
+      english: 'how much'
+    },
+    {
+      portuguese: 'quase',
+      english: 'almost'
+    },
+    {
+      portuguese: 'rapidamente',
+      english: 'quickly'
     }
   ],
   adjectives: [
@@ -3379,6 +5009,238 @@ export const db: Schema = {
       },
       placing: 'after',
       english: 'hard'
+    },
+    {
+      english: 'calm',
+      masculine: {
+        singular: 'calmo',
+        plural: 'calmos'
+      },
+      feminine: {
+        singular: 'calma',
+        plural: 'calmas'
+      }
+    },
+    {
+      english: 'damaged',
+      masculine: {
+        singular: 'estragado',
+        plural: 'estragados'
+      },
+      feminine: {
+        singular: 'estragada',
+        plural: 'estragadas'
+      }
+    },
+    {
+      english: 'strange',
+      masculine: {
+        singular: 'estranho',
+        plural: 'estranhos'
+      },
+      feminine: {
+        singular: 'estranha',
+        plural: 'estranhas'
+      }
+    },
+    {
+      english: 'famous',
+      masculine: {
+        singular: 'famoso',
+        plural: 'famosos'
+      },
+      feminine: {
+        singular: 'famosa',
+        plural: 'famosas'
+      }
+    },
+    {
+      english: 'happy',
+      masculine: {
+        singular: 'feliz',
+        plural: 'feliz'
+      },
+      feminine: {
+        singular: 'feliz',
+        plural: 'feliz'
+      }
+    },
+    {
+      english: 'cold',
+      masculine: {
+        singular: 'frio',
+        plural: 'frios'
+      },
+      feminine: {
+        singular: 'fria',
+        plural: 'frias'
+      }
+    },
+    {
+      english: 'icy',
+      masculine: {
+        singular: 'gelado',
+        plural: 'gelados'
+      },
+      feminine: {
+        singular: 'gelada',
+        plural: 'geladas'
+      }
+    },
+    {
+      english: 'important',
+      masculine: {
+        singular: 'importante',
+        plural: 'importantes'
+      },
+      feminine: {
+        singular: 'importantes',
+        plural: 'importantes'
+      }
+    },
+    {
+      english: 'amazing',
+      masculine: {
+        singular: 'impressionante',
+        plural: 'impressionante'
+      },
+      feminine: {
+        singular: 'impressionante',
+        plural: 'impressionante'
+      }
+    },
+    {
+      english: 'together',
+      masculine: {
+        singular: 'juntos',
+        plural: 'juntos'
+      },
+      feminine: {
+        singular: 'junta',
+        plural: 'juntas'
+      }
+    },
+    {
+      english: 'beautiful',
+      masculine: {
+        singular: 'lindo',
+        plural: 'lindos'
+      },
+      feminine: {
+        singular: 'linda',
+        plural: 'lindas'
+      }
+    },
+
+    {
+      english: 'better',
+      masculine: {
+        singular: 'melhor',
+        plural: 'melhor'
+      },
+      feminine: {
+        singular: 'melhor',
+        plural: 'melhor'
+      }
+    },
+    {
+      english: 'liar',
+      masculine: {
+        singular: 'mentiroso',
+        plural: 'mentirosos'
+      },
+      feminine: {
+        singular: 'mentirosa',
+        plural: 'mentirosas'
+      }
+    },
+    {
+      english: 'friendly',
+      masculine: {
+        singular: 'simpático',
+        plural: 'simpáticos'
+      },
+      feminine: {
+        singular: 'simpática',
+        plural: 'simpáticas'
+      }
+    },
+    {
+      english: 'used',
+      masculine: {
+        singular: 'usado',
+        plural: 'usados'
+      },
+      feminine: {
+        singular: 'usada',
+        plural: 'usadas'
+      }
+    },
+    {
+      english: 'quiet',
+      masculine: {
+        singular: 'quieto',
+        plural: 'quietos'
+      },
+      feminine: {
+        singular: 'quieta',
+        plural: 'quietas'
+      }
+    },
+    {
+      english: 'fast',
+      masculine: {
+        singular: 'rápido',
+        plural: 'rápidos'
+      },
+      feminine: {
+        singular: 'rápida',
+        plural: 'rápidas'
+      }
+    },
+    {
+      english: 'little',
+      masculine: {
+        singular: 'pouco',
+        plural: 'poucos'
+      },
+      feminine: {
+        singular: 'pouca',
+        plural: 'poucas'
+      }
+    },
+    {
+      english: 'necessary',
+      masculine: {
+        singular: 'preciso',
+        plural: 'precisos'
+      },
+      feminine: {
+        singular: 'precisa',
+        plural: 'precisas'
+      }
+    },
+    {
+      english: 'lazy',
+      masculine: {
+        singular: 'preguiçoso',
+        plural: 'preguiçosos'
+      },
+      feminine: {
+        singular: 'preguiçosa',
+        plural: 'preguiçosas'
+      }
+    },
+    {
+      english: 'perfect',
+      masculine: {
+        singular: 'perfeito',
+        plural: 'perfeitos'
+      },
+      feminine: {
+        singular: 'perfeita',
+        plural: 'perfeitas'
+      }
     }
   ],
   sentences: [
@@ -4061,10 +5923,6 @@ export const db: Schema = {
       english: 'He became a better person'
     },
     {
-      portuguese: 'Vamos iniciar a reunião',
-      english: "Let's start the meeting."
-    },
-    {
       portuguese: 'Ele começou a correr',
       english: 'He started running'
     },
@@ -4135,10 +5993,6 @@ export const db: Schema = {
     {
       english: 'Please hold the door',
       portuguese: 'Por favor segure a porta'
-    },
-    {
-      english: 'I will fulfill my dream',
-      portuguese: 'Vou realizar o meu sonho'
     },
     {
       english: 'I will bring dinner',
@@ -4247,10 +6101,6 @@ export const db: Schema = {
     {
       english: 'I want to develop my skills',
       portuguese: 'Quero desenvolver as minhas habilidades'
-    },
-    {
-      english: 'The company is developing a new product',
-      portuguese: 'A empresa está desenvolvendo um novo produto'
     },
     {
       english: 'Can you explain again?',
@@ -4551,6 +6401,10 @@ export const db: Schema = {
     {
       portuguese: 'Ele viu o acidente acontecer',
       english: 'He saw the accident happen'
+    },
+    {
+      portuguese: 'Mesmo as pessoas mais inteligentes cometem erros',
+      english: 'Even the most intelligent people make mistakes'
     }
   ],
   fitIn: [

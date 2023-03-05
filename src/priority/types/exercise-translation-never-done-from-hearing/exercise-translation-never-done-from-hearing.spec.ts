@@ -1,4 +1,5 @@
 import { NounTranslationExercise } from '../../../exercise/translation/noun-translation-exercise';
+import { ExerciseResultContext } from '../../priority';
 import { generateResultForExercise } from '../../priority.util';
 import {
   exerciseTranslationNeverDoneFromHearing,
@@ -9,8 +10,10 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING', () => {
   it('Exercise Translation Never Done From Hearing', () => {
     const toPortugueseTranslationExercise = new NounTranslationExercise();
     toPortugueseTranslationExercise.translationType = 'toPortuguese';
-    const results = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
-    const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, results);
+    const allResults = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
+    const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, {
+      allResults
+    } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);
     expect(actualPriority[0].priorityName).toEqual('EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING');
@@ -24,8 +27,10 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING', () => {
     toPortugueseFromHearingTranslationExercise.translationType = 'toPortugueseFromHearing';
     toPortugueseFromHearingTranslationExercise.noun = toPortugueseTranslationExercise.noun;
 
-    const results = generateResultForExercise(toPortugueseFromHearingTranslationExercise, true, 'keyboard', 1);
-    const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, results);
+    const allResults = generateResultForExercise(toPortugueseFromHearingTranslationExercise, true, 'keyboard', 1);
+    const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, {
+      allResults
+    } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);
     expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');

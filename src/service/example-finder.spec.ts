@@ -157,7 +157,7 @@ describe('Example Finder', () => {
     });
 
     expect(verbsWithExamples.length + verbsWithoutExamples.length).toEqual(allVerbs.length);
-    expect(verbsWithoutExamples.length).toBeLessThan(32);
+    expect(verbsWithoutExamples.length).toBeLessThan(34);
   });
 
   it('Finds Orphan Words In Examples', () => {

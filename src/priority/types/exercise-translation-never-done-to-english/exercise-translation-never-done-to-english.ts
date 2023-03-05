@@ -1,16 +1,19 @@
 import { Exercise } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { TranslationExercise } from '../../../exercise/translation/translation-exercise';
-import { noPriority, Priority } from '../../priority';
+import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 import { exerciseTranslationNeverDoneFromHearing } from '../exercise-translation-never-done-from-hearing/exercise-translation-never-done-from-hearing';
 
 export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH = -250;
 
-export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, results: Result[]): Priority[] {
+export function exerciseTranslationNeverDoneToEnglish(
+  exercise: Exercise,
+  exerciseResultContext: ExerciseResultContext
+): Priority[] {
   if (!(exercise instanceof TranslationExercise)) {
     return noPriority(exercise);
   }
-  const toEnglishTranslationsCorrect = results.filter((result) => {
+  const toEnglishTranslationsCorrect = exerciseResultContext.allResults.filter((result) => {
     if (result.exercise.exerciseType === exercise.exerciseType) {
       const translationExercise = result.exercise as unknown as TranslationExercise;
       return !translationExercise.isTranslationToPortuguese() && result.wasCorrect;
@@ -19,7 +22,7 @@ export function exerciseTranslationNeverDoneToEnglish(exercise: Exercise, result
   });
   if (
     toEnglishTranslationsCorrect.length === 0 &&
-    exerciseTranslationNeverDoneFromHearing(exercise, results)[0].priorityName !== 'NO_PRIORITY'
+    exerciseTranslationNeverDoneFromHearing(exercise, exerciseResultContext)[0].priorityName !== 'NO_PRIORITY'
   ) {
     return [
       {

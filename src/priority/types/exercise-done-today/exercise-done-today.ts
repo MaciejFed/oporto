@@ -1,7 +1,7 @@
 import { Exercise } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { getAllResultsForExerciseSubject } from '../../../repository/result-repository';
-import { noPriority, Priority } from '../../priority';
+import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 
 export function valueDoneToday(doneTodayCount: number): number {
   switch (doneTodayCount) {
@@ -18,8 +18,8 @@ export function valueDoneToday(doneTodayCount: number): number {
   }
 }
 
-export function exerciseDoneToday(exercise: Exercise, results: Result[]): Priority[] {
-  const resultsToday = getAllResultsForExerciseSubject(results, exercise).filter(
+export function exerciseDoneToday(exercise: Exercise, { allResults }: ExerciseResultContext): Priority[] {
+  const resultsToday = getAllResultsForExerciseSubject(allResults, exercise).filter(
     (result) => new Date(result.date).toDateString() === new Date().toDateString()
   );
   if (resultsToday.length > 0) {

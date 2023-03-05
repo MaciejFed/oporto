@@ -173,7 +173,6 @@ export class Terminal {
   }
 
   private onKeyExerciseRepetitionInProgress(key: string) {
-    logger.info(`getting new key ${key}`);
     if (key === 'backspace') {
       this.repetitionAnswer = this.repetitionAnswer.substring(0, Math.max(0, this.repetitionAnswer.length - 1));
       clearLine(process.stdout, 0);

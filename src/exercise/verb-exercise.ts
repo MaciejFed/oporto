@@ -48,7 +48,7 @@ export class VerbExercise implements Exercise, Comparable {
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
-  getMaxWantedProgress(): RatioRange | '100+' {
+  getMaxWantedProgress(): RatioRange {
     return '80-100';
   }
 
@@ -61,6 +61,7 @@ export class VerbExercise implements Exercise, Comparable {
   equal = (exercise: VerbExercise) =>
     exercise.exerciseType === 'VerbExercise' &&
     this.verb.infinitive === exercise.verb.infinitive &&
+    this.verb.english === exercise.verb.english &&
     this.verbTime === exercise.verbTime &&
     this.person === exercise.person;
 }

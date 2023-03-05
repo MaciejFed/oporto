@@ -1,13 +1,14 @@
 import { Exercise } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { getAllResultsForExercise } from '../../../repository/result-repository';
-import { Priority } from '../../priority';
+import { ExerciseResultContext, Priority } from '../../priority';
+import { ExerciseProgress, RatioRange } from '../../../service/progress';
 
 export const VALUE_EXERCISE_CORRECT = -10;
 
-export function exerciseCorrect(exercise: Exercise, results: Result[]): Priority[] {
+export function exerciseCorrect(exercise: Exercise, { exerciseResults }: ExerciseResultContext): Priority[] {
   return [
-    getAllResultsForExercise(results, exercise)
+    exerciseResults
       .filter((result) => result.wasCorrect)
       .reduce(
         (previous) => {

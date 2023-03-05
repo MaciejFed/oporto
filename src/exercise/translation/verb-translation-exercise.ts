@@ -56,5 +56,6 @@ export class VerbTranslationExercise extends TranslationExercise implements Comp
   equal = (other: VerbTranslationExercise) =>
     other.exerciseType === 'VerbTranslation' &&
     this.verb.infinitive === other.verb.infinitive &&
+    this.verb.english === other.verb.english &&
     this.translationType === other.translationType;
 }

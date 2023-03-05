@@ -52,12 +52,14 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
 
   getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.sentence.portuguese);
 
-  public getMaxWantedProgress(): RatioRange | '100+' {
+  public getMaxWantedProgress(): RatioRange {
     return '80-100';
   }
 
   equal = (other: SentenceTranslationExercise) =>
     other.exerciseType === 'SentenceTranslation' &&
     this.sentence.portuguese === other.sentence.portuguese &&
+    this.sentence.english === other.sentence.english &&
+    this.sentence.sentenceType === other.sentence.sentenceType &&
     this.translationType === other.translationType;
 }

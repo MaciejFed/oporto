@@ -7,8 +7,8 @@ import { getAllResultsForExercise } from '../../../repository/result-repository'
 export const VALUE_EXERCISE_MAX_PROGRESS_DONE = -1000;
 
 export function exerciseMaxProgressDone(exercise: Exercise, results: Result[], ratio: RatioRange): Priority[] {
-  const resultsForExercise = getAllResultsForExercise(results, exercise);
-  if (ratio === exercise.getMaxWantedProgress() && exercise.getMinimumAnswers() <= resultsForExercise.length) {
+  const correctResultsForExercise = getAllResultsForExercise(results, exercise).filter((r) => r.wasCorrect);
+  if (ratio === exercise.getMaxWantedProgress() && exercise.getMinimumAnswers() <= correctResultsForExercise.length) {
     return [
       {
         exercise,

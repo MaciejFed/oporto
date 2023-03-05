@@ -28,11 +28,8 @@ export abstract class TranslationExercise implements Exercise {
     return this.translationType === 'toPortugueseFromHearing';
   }
 
-  public getMaxWantedProgress(): RatioRange | '100+' {
-    if (this.translationType === 'toEnglish') {
-      return '80-100';
-    }
-    return '100+';
+  public getMaxWantedProgress(): RatioRange {
+    return '80-100';
   }
 
   getMinimumAnswers(): number {
