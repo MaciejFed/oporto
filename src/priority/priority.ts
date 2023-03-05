@@ -23,6 +23,7 @@ import {
 } from '../service/progress';
 import { exerciseTypeInProgressLimit } from './types/exercise-type-in-progress-limit/exercise-type-in-progress-limit';
 import { exerciseSentenceUnknownWords } from './types/exercise-sentence-unknown-words/exercise-sentence-unknown-words';
+import { logger } from '../common/logger';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -55,7 +56,7 @@ export type Priority = {
 
 const priorityCompilers: PriorityCompiler[] = [
   exerciseNeverDone,
-  exerciseNeverDoneByVoice,
+  // exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
   exerciseSentenceUnknownWords,
@@ -65,28 +66,44 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseDoneToday,
   exerciseDoneInLastHour,
   exerciseDoneCorrectly2TimesInRow,
-  exerciseMaxProgressDone,
   exerciseTypeInProgressLimit,
   exerciseRandomness
 ];
 
-type PriorityCompiler = (
-  exercise: Exercise,
-  results: Result[],
-  ratio: RatioRange,
-  exerciseTypeProgress: ExerciseProgress[]
-) => Priority[];
+export interface ExerciseResultContext {
+  allResults: Result[];
+  ratioRange: RatioRange;
+  exerciseTypeProgress: ExerciseProgress[];
+  exerciseResults: Result[];
+}
+
+type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResultContext) => Priority[];
 
 export function sortExercises(exercises: Exercise[]): Exercise[] {
   const allResults = getAllResults();
   const exerciseProgressMap = getExerciseProgressMap(allResults);
 
-  const exercisesWithPriorities = exercises
+  const start = Date.now();
+
+  const exercisesWithoutWantedProgress = exercises
     .map((ex) => getSingleExerciseProgress(allResults, ex))
+    .filter((ex) => {
+      return ex.ratioRange !== ex.exercise.getMaxWantedProgress();
+    });
+
+  logger.info(`Exercises Total Count: [${exercises.length}]`);
+  logger.info(`Exercises Not Done Count: [${exercisesWithoutWantedProgress.length}]`);
+
+  const exercisesWithPriorities = exercisesWithoutWantedProgress
     .map((ex) => {
       const combinedPriorities = priorityCompilers
         .flatMap((priorityCompiler) =>
-          priorityCompiler(ex.exercise, allResults, ex.ratioRange, exerciseProgressMap[ex.exercise.exerciseType])
+          priorityCompiler(ex.exercise, {
+            allResults,
+            ratioRange: ex.ratioRange,
+            exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
+            exerciseResults: ex.exerciseResults
+          })
         )
         .reduce(
           (previous, current) => {
@@ -121,6 +138,10 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
     .sort((a, b) => b.priorityValueTotal - a.priorityValueTotal);
 
   fs.writeFileSync('priorities.json', JSON.stringify(exercisesWithPriorities, null, 2));
+
+  const end = Date.now();
+
+  logger.info(`Sorting took [${(end - start) / 1000} seconds]`);
 
   return exercisesWithPriorities.map((ewp) => ewp.exercise);
 }

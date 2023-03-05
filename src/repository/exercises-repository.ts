@@ -1360,10 +1360,10 @@ export const db: Schema = {
       infinitive: 'construir',
       presentSimple: {
         Eu: 'construo',
-        Tu: 'constróis/construis',
-        'Ela/Ele/Você': 'constrói/construi',
+        Tu: 'constróis',
+        'Ela/Ele/Você': 'constrói',
         Nós: 'construímos',
-        'Eles/Elas/Vocēs': 'constroem/construem'
+        'Eles/Elas/Vocēs': 'constroem'
       },
       pastPerfect: {
         Eu: 'construí',
@@ -1716,7 +1716,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to spend',
+      english: 'to pass by',
       infinitive: 'passar',
       presentSimple: {
         Eu: 'passo',
@@ -2409,6 +2409,7 @@ export const db: Schema = {
       english: 'bathroom',
       portuguese: {
         word: 'casa-de-banho',
+        plural: 'casa-de-banhos',
         gender: 'feminine'
       }
     },
@@ -2432,6 +2433,7 @@ export const db: Schema = {
       english: 'month',
       portuguese: {
         word: 'mês',
+        plural: 'meses',
         gender: 'masculine'
       }
     },
@@ -2454,6 +2456,7 @@ export const db: Schema = {
       english: 'desert',
       portuguese: {
         word: 'sobremesa',
+        plural: 'sobremesas',
         gender: 'feminine'
       }
     },
@@ -2642,7 +2645,8 @@ export const db: Schema = {
     {
       english: 'calculator',
       portuguese: {
-        word: 'calculadore',
+        word: 'calculadora',
+        plural: 'calculadoras',
         gender: 'feminine'
       }
     },
@@ -2768,9 +2772,10 @@ export const db: Schema = {
       }
     },
     {
-      english: 'bicicle',
+      english: 'bicycle',
       portuguese: {
         word: 'bicicleta',
+        plural: 'bicicletas',
         gender: 'feminine'
       }
     },

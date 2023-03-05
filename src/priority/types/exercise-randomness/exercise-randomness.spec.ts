@@ -5,8 +5,7 @@ import { exerciseRandomness, VALUE_EXERCISE_RANDOMNESS_UP_LIMIT } from './exerci
 describe('Priority - EXERCISE_RANDOMNESS', () => {
   it('Exercise Randomness', () => {
     const testExercise = new VerbExercise();
-    const results = generateResultForExercise(testExercise, true, 'keyboard', 1);
-    const actualPriority = exerciseRandomness(testExercise, results);
+    const actualPriority = exerciseRandomness(testExercise);
 
     expect(actualPriority.length).toEqual(1);
     expect(actualPriority[0].priorityName).toEqual('EXERCISE_RANDOMNESS');

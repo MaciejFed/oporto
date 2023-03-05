@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "http-server progress",
+    "start-test": "ts-node src/cli.ts test",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",

@@ -60,5 +60,6 @@ export class OtherTranslationExercise extends TranslationExercise implements Com
   equal = (other: OtherTranslationExercise) =>
     other.exerciseType === 'OtherTranslation' &&
     this.other.portuguese === other.other.portuguese &&
+    this.other.english === other.other.english &&
     this.translationType === other.translationType;
 }

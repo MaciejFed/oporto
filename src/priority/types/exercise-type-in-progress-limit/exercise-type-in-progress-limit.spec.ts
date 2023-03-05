@@ -9,7 +9,7 @@ import {
 } from './exercise-type-in-progress-limit';
 import { NounTranslationExercise } from '../../../exercise/translation/noun-translation-exercise';
 import { readAll } from '../../../repository/exercises-repository';
-import { noPriority } from '../../priority';
+import { ExerciseResultContext, noPriority } from '../../priority';
 import { getGroupExerciseProgress, getSingleExerciseProgress } from '../../../service/progress';
 
 describe('Priority - EXERCISE_TYPE_IN_PROGRESS_LIMIT', () => {
@@ -34,18 +34,12 @@ describe('Priority - EXERCISE_TYPE_IN_PROGRESS_LIMIT', () => {
       'EXERCISE_TYPE_IN_PROGRESS_LIMIT',
       VALUE_EXERCISE_LIMIT
     );
-    const actualPriorityInLimit = exerciseTypeInProgressLimit(
-      exerciseInLimit,
-      results,
-      getSingleExerciseProgress(results, exerciseInLimit).ratioRange,
-      getGroupExerciseProgress(results, 'SentenceTranslation')
-    );
-    const actualPriorityOutOfLimit = exerciseTypeInProgressLimit(
-      exerciseOutOfLimit,
-      results,
-      getSingleExerciseProgress(results, exerciseOutOfLimit).ratioRange,
-      getGroupExerciseProgress(results, 'SentenceTranslation')
-    );
+    const actualPriorityInLimit = exerciseTypeInProgressLimit(exerciseInLimit, {
+      exerciseTypeProgress: getGroupExerciseProgress(results, 'SentenceTranslation')
+    } as ExerciseResultContext);
+    const actualPriorityOutOfLimit = exerciseTypeInProgressLimit(exerciseOutOfLimit, {
+      exerciseTypeProgress: getGroupExerciseProgress(results, 'SentenceTranslation')
+    } as ExerciseResultContext);
 
     expect(exerciseInLimitExpectedPriority).toStrictEqual(actualPriorityInLimit);
     expect(exerciseOutOfLimitExpectedPriority).toStrictEqual(actualPriorityOutOfLimit);

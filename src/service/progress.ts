@@ -24,6 +24,7 @@ export type ExerciseProgress = {
   correctAnswers: number;
   incorrectAnswers: number;
   ratio: number;
+  exerciseResults: Result[];
   ratioRange: RatioRange;
 };
 
@@ -50,6 +51,7 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
     correctAnswers,
     incorrectAnswers,
     ratio,
+    exerciseResults,
     ratioRange: mapToRatioRange(ratio, exerciseResults.length === 0)
   };
 }
@@ -67,6 +69,7 @@ export function getExercisesProgress(results: Result[], filter: (e: Exercise) =>
         correctAnswers,
         incorrectAnswers,
         ratio,
+        exerciseResults,
         ratioRange: mapToRatioRange(ratio, exerciseResults.length === 0)
       };
     })

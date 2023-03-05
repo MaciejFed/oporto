@@ -23,7 +23,7 @@ export class FitInGapExercise implements Exercise, Comparable {
 
   getCorrectAnswer = () => this.fitIn.answer;
 
-  getMaxWantedProgress(): RatioRange | '100+' {
+  getMaxWantedProgress(): RatioRange {
     return '80-100';
   }
 

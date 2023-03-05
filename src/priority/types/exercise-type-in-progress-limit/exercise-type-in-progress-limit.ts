@@ -1,6 +1,6 @@
 import { Exercise, ExerciseType } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
-import { noPriority, Priority } from '../../priority';
+import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 import { ExerciseProgress, RatioRange } from '../../../service/progress';
 import { onlyDistinct } from '../../../common/common';
 
@@ -11,16 +11,14 @@ export const exerciseTypeToLimit: Record<ExerciseType, number> = {
   VerbExercise: 10,
   NounTranslation: 20,
   OtherTranslation: 0,
-  AdjectiveTranslation: 15,
-  VerbTranslation: 20,
+  AdjectiveTranslation: 10,
+  VerbTranslation: 10,
   FitInGap: 0
 };
 
 export function exerciseTypeInProgressLimit(
   exercise: Exercise,
-  results: Result[],
-  ratio: RatioRange,
-  exerciseTypeProgress: ExerciseProgress[]
+  { exerciseTypeProgress }: ExerciseResultContext
 ): Priority[] {
   const limit = exerciseTypeToLimit[exercise.exerciseType];
   if (!limit) return noPriority(exercise);
