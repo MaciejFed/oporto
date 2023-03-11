@@ -627,13 +627,13 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- Infinitive: to be - long               Answers History:              
+ Infinitive: to be - long               Answers History:    Cojugations:
  [Past Perfect] Tu: foste                                             
- Wrong! [voice]                         1. fos                        
-                                                                      
- Repeat: foste                                                        
- Press key to continue...                                             
- r - repeat the answer                                                
+ Wrong! [voice]                         1. fos              Eu:   sou  |fui
+                                                            Tu:   és   |foste
+ Repeat: foste                                              Ela:  é    |foi
+ Press key to continue...                                   Nós:  somos|fomos
+ r - repeat the answer                                      Eles: são  |foram
                                                                       
                                                                       
  Example: \\"Sou a Marta\\"                                               
@@ -690,13 +690,13 @@ exports[`Exercises Integration Snapshots VerbExercise 2`] = `
                                                                       
                                                                       
                                                                       
- WWWWWWWWWWWWWWWWWWWWWWWW               WWWWWWWWWWWWWWWW              
+ WWWWWWWWWWWWWWWWWWWWWWWW               WWWWWWWWWWWWWWWW    WWWWWWWWWWWW
  WWWWWWWWWWWWWWWWWWWGGGRR                                             
- WWWWWWWWWWWWWW                         WWWGGG                        
-                                                                      
- WWWWWWWWGGGGG                                                        
- WWWWWWWWWWWWWWWWWWWWWWWW                                             
- WWWWWWWWWWWWWWWWWWWWW                                                
+ WWWWWWWWWWWWWW                         WWWGGG              WWWWWWWWWWWWWWW
+                                                            WWWWWWWWWWWWWWWWW
+ WWWWWWWWGGGGG                                              WWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWWWWWW                                   WWWWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWWW                                      WWWWWWWWWWWWWWWWW
                                                                       
                                                                       
  WWWWWWWWWWYYYWWWWWWWWW                                               
@@ -753,13 +753,13 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- Infinitive: to be - long               Answers History:              
+ Infinitive: to be - long               Answers History:    Cojugations:
  [Present Simple] Tu: ése                                             
- Correct! [voice]                       1. éss                        
-                                                                      
- Repeat: foste                                                        
- Press key to continue...                                             
- r - repeat the answer                                                
+ Correct! [voice]                       1. éss              Eu:   sou  |fui
+                                                            Tu:   és   |foste
+ Repeat: foste                                              Ela:  é    |foi
+ Press key to continue...                                   Nós:  somos|fomos
+ r - repeat the answer                                      Eles: são  |foram
                                                                       
                                                                       
  Example: \\"Sou a Marta\\"                                               
@@ -816,13 +816,13 @@ exports[`Exercises Integration Snapshots VerbExercise 4`] = `
                                                                       
                                                                       
                                                                       
- WWWWWWWWWWWWWWWWWWWWWWWW               WWWWWWWWWWWWWWWW              
+ WWWWWWWWWWWWWWWWWWWWWWWW               WWWWWWWWWWWWWWWW    WWWWWWWWWWWW
  WWWWWWWWWWWWWWWWWWWWWGGR                                             
- WWWWWWWWWWWWWWWW                       WWWGGG                        
-                                                                      
- WWWWWWWWGGGGG                                                        
- WWWWWWWWWWWWWWWWWWWWWWWW                                             
- WWWWWWWWWWWWWWWWWWWWW                                                
+ WWWWWWWWWWWWWWWW                       WWWGGG              WWWWWWWWWWWWWWW
+                                                            WWWWWWWWWWWWWWWWW
+ WWWWWWWWGGGGG                                              WWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWWWWWW                                   WWWWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWWW                                      WWWWWWWWWWWWWWWWW
                                                                       
                                                                       
  WWWWWWWWWWYYYWWWWWWWWW                                               

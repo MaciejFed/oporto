@@ -1,5 +1,4 @@
 import { Exercise } from '../../../exercise/exercise';
-import { Result } from '../../../service/result';
 import { getAllResultsForExerciseSubject } from '../../../repository/result-repository';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 

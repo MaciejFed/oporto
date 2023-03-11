@@ -18,7 +18,8 @@ jest.mock('../io/file', () => {
 jest.mock('../common/logger', () => {
   return {
     logger: {
-      info: () => {}
+      info: () => {},
+      debug: () => {}
     }
   };
 });

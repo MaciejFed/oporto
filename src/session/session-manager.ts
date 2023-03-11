@@ -79,7 +79,7 @@ export class SessionManager implements AppEventListener {
       } else {
         this.answer += key;
       }
-      logger.info(`Answer: "${this.answer}"`);
+      logger.debug(`Answer: "${this.answer}"`);
     });
   }
 
@@ -93,7 +93,7 @@ export class SessionManager implements AppEventListener {
       this.answer = this.answer.trim();
       const wasCorrect = this.currentExercise?.checkAnswerCorrect(this.answer);
       saveNewResult(convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
-      logger.info(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
+      logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         wasCorrect,
         correctAnswer,
@@ -117,7 +117,7 @@ export class SessionManager implements AppEventListener {
   }
 
   private resetAnswer() {
-    logger.info('Resting answer...');
+    logger.debug('Resting answer...');
     this.answer = '';
     if (this.hearingLoop) {
       clearInterval(this.hearingLoop);

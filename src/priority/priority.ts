@@ -82,6 +82,16 @@ type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResu
 export function sortExercises(exercises: Exercise[]): Exercise[] {
   const allResults = getAllResults();
   const exerciseProgressMap = getExerciseProgressMap(allResults);
+  Object.keys(exerciseProgressMap).forEach((key) => {
+    const notStartedCount = exerciseProgressMap[key as ExerciseType].filter(
+      (ex) => ex.ratioRange === 'Never Done'
+    ).length;
+    const inProgressCount = exerciseProgressMap[key as ExerciseType].filter(
+      (ex) => ex.ratioRange !== 'Never Done' && ex.ratioRange !== '80-100'
+    ).length;
+
+    logger.info(`${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}] `);
+  });
 
   const start = Date.now();
 

@@ -1,6 +1,4 @@
 import { Exercise } from '../../../exercise/exercise';
-import { Result } from '../../../service/result';
-import { getAllResultsForExercise } from '../../../repository/result-repository';
 import { ExerciseResultContext, Priority } from '../../priority';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;

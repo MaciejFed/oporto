@@ -1045,7 +1045,7 @@ export const db: Schema = {
         Eu: 'enchi',
         Tu: 'encheste',
         'Ela/Ele/Você': 'encheu',
-        Nós: 'enchestes',
+        Nós: 'enchemos',
         'Eles/Elas/Vocēs': 'encheram'
       }
     },
@@ -1104,7 +1104,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to walk',
+      english: 'to stroll',
       infinitive: 'passear',
       presentSimple: {
         Eu: 'passeio',
@@ -4059,7 +4059,7 @@ export const db: Schema = {
     {
       english: 'dishes',
       portuguese: {
-        word: 'loiça,',
+        word: 'loiça',
         gender: 'feminine'
       }
     },
@@ -4769,6 +4769,10 @@ export const db: Schema = {
       english: 'patiently'
     },
     {
+      portuguese: 'como se',
+      english: 'as if'
+    },
+    {
       portuguese: 'quanto',
       english: 'how much'
     },
@@ -4779,6 +4783,10 @@ export const db: Schema = {
     {
       portuguese: 'rapidamente',
       english: 'quickly'
+    },
+    {
+      portuguese: 'se',
+      english: 'if'
     }
   ],
   adjectives: [
@@ -4852,7 +4860,7 @@ export const db: Schema = {
         plural: 'bonitas'
       },
       placing: 'after',
-      english: 'beautiful'
+      english: 'beautiful - classic'
     },
     {
       masculine: {
@@ -5094,7 +5102,7 @@ export const db: Schema = {
         plural: 'importantes'
       },
       feminine: {
-        singular: 'importantes',
+        singular: 'importante',
         plural: 'importantes'
       }
     },
@@ -5621,8 +5629,8 @@ export const db: Schema = {
     },
     {
       english: 'Would you fancy a drink?',
-      portuguese: 'Deseja um café?',
-      sentenceType: 'statement'
+      portuguese: 'Deseja uma bebida?',
+      sentenceType: 'question'
     },
     {
       english: 'Stop bothering me',
@@ -6219,7 +6227,7 @@ export const db: Schema = {
       english: 'He dropped out of the project'
     },
     {
-      portuguese: 'Quero alcançar meus objetivos',
+      portuguese: 'Quero alcançar os meus objetivos',
       english: 'I want to achieve my goals'
     },
     {

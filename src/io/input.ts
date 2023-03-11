@@ -37,7 +37,7 @@ export class Input {
           break;
         default:
           if (this.inputTimes.length === 0 && key.sequence === ' ') {
-            logger.info('Empty space as a first input.');
+            logger.debug('Empty space as a first input.');
             this.eventProcessor.emit(KEY_PRESSED, '');
             break;
           }
@@ -51,7 +51,7 @@ export class Input {
   getAnswerTime(): number {
     const startIndex = this.inputTimes.length > 1 ? this.inputTimes.length - 2 : 0;
     const answerTime = this.inputTimes[this.inputTimes.length - 1].getTime() - this.inputTimes[startIndex].getTime();
-    logger.info(`answer time: ${answerTime}`);
+    logger.debug(`answer time: ${answerTime}`);
     return answerTime;
   }
 }

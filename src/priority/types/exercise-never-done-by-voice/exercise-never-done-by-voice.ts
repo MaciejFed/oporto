@@ -1,6 +1,4 @@
 import { Exercise } from '../../../exercise/exercise';
-import { Result } from '../../../service/result';
-import { getAllResultsForExercise } from '../../../repository/result-repository';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 
 export const VALUE_EXERCISE_NEVER_DONE_BY_VOICE = 25;

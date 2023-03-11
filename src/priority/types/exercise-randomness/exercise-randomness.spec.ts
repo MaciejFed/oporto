@@ -9,6 +9,6 @@ describe('Priority - EXERCISE_RANDOMNESS', () => {
 
     expect(actualPriority.length).toEqual(1);
     expect(actualPriority[0].priorityName).toEqual('EXERCISE_RANDOMNESS');
-    expect(actualPriority[0].priorityValue).toBeLessThan(VALUE_EXERCISE_RANDOMNESS_UP_LIMIT);
+    expect(actualPriority[0].priorityValue).toBeGreaterThan(0);
   });
 });

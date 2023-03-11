@@ -131,7 +131,7 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
 }
 
 export function saveNewResult(newResult: Result) {
-  logger.info(`Saving new result ${JSON.stringify(newResult)}`);
+  logger.debug(`Saving new result ${JSON.stringify(newResult)}`);
   const results = getAllResults();
   results.push(newResult);
 

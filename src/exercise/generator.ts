@@ -28,7 +28,7 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
   return pastPerfectVerbs.concat(presentSimpleVerbs);
 };
 
-const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toPortuguese', 'toEnglish'];
+const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toEnglish', 'toPortuguese'];
 
 const NounTranslationGenerator: ExerciseGenerator = () => {
   return readAll().nouns.flatMap((noun) =>
