@@ -6,10 +6,13 @@ import { onlyDistinct } from '../../../common/common';
 import { logger } from '../../../common/logger';
 
 export const VALUE_EXERCISE_LIMIT = -1000;
+export const VALUE_EXERCISE_BELLOW_LIMIT = 100;
+
+let bellowBonusCount = 1;
 
 export const exerciseTypeToLimit: Record<ExerciseType, number> = {
-  SentenceTranslation: 5,
-  VerbExercise: 10,
+  SentenceTranslation: 7,
+  VerbExercise: 15,
   NounTranslation: 20,
   OtherTranslation: 0,
   AdjectiveTranslation: 10,
@@ -39,18 +42,35 @@ export function exerciseTypeInProgressLimit(
       .map((ep) => ep.exercise)
   );
 
+  const exerciseInProgress = exercisesOfTypeInProgress.some((e) => e.equal(exercise));
+
   if (exercisesOfTypeInProgress.length < limit) {
-    return noPriority(exercise);
+    if (exerciseInProgress || bellowBonusCount === 0) {
+      return noPriority(exercise);
+    }
+    bellowBonusCount--;
+    logger.debug(
+      `Promoting ${exercise.exerciseType} [${exercise.getCorrectAnswer()}] as it's bellow limit [${
+        exercisesOfTypeInProgress.length
+      }/${limit}]`
+    );
+    return [
+      {
+        exercise,
+        priorityName: 'EXERCISE_TYPE_BELLOW_PROGRESS_LIMIT',
+        priorityValue: VALUE_EXERCISE_BELLOW_LIMIT
+      }
+    ];
   }
 
-  if (exercisesOfTypeInProgress.some((e) => e.equal(exercise))) {
+  if (exerciseInProgress) {
     inProgressMap = {
       ...inProgressMap,
       [exercise.exerciseType]: inProgressMap[exercise.exerciseType] + 1
     };
     const inProressOfType = inProgressMap[exercise.exerciseType];
     if (inProressOfType < limit) {
-      logger.info(
+      logger.debug(
         `${exercise.exerciseType} in progress: [${exercise.getCorrectAnswer()}] is within a limit [${
           inProressOfType + 1
         }/${limit}}]`
@@ -61,7 +81,7 @@ export function exerciseTypeInProgressLimit(
   return [
     {
       exercise,
-      priorityName: 'EXERCISE_TYPE_IN_PROGRESS_LIMIT',
+      priorityName: 'EXERCISE_TYPE_ABOVE_PROGRESS_LIMIT',
       priorityValue: VALUE_EXERCISE_LIMIT
     }
   ];

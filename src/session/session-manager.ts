@@ -7,7 +7,8 @@ import {
   EXERCISE_DESCRIPTION_PRINTED,
   EXERCISE_NEXT,
   EXERCISE_STARTED,
-  KEY_PRESSED
+  KEY_PRESSED,
+  HEARING_EXERCISE_REPEAT
 } from '../event/events';
 import { AppEventListener } from '../event/event-listener';
 import { EventProcessor } from '../event/event-processor';
@@ -50,6 +51,7 @@ export class SessionManager implements AppEventListener {
     this.registerKeyPressedEventListener();
     this.registerAnswerSubmittedEventListener();
     this.registerNextExerciseEventListener();
+    this.registerHearingExerciseRepeat();
   }
 
   private registerAppStartedEventListener() {
@@ -116,6 +118,12 @@ export class SessionManager implements AppEventListener {
     });
   }
 
+  private registerHearingExerciseRepeat() {
+    this.eventProcessor.on(HEARING_EXERCISE_REPEAT, () => {
+      this.handleExerciseFromHearing(this.currentExercise);
+    });
+  }
+
   private resetAnswer() {
     logger.debug('Resting answer...');
     this.answer = '';
@@ -129,9 +137,6 @@ export class SessionManager implements AppEventListener {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
       exec(`say ${correctAnswer}`);
-      this.hearingLoop = setInterval(() => {
-        exec(`say ${correctAnswer}`);
-      }, 5000);
     }
   }
 }

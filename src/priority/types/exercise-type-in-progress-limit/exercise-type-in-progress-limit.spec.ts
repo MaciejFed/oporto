@@ -31,7 +31,7 @@ describe('Priority - EXERCISE_TYPE_IN_PROGRESS_LIMIT', () => {
     const exerciseInLimitExpectedPriority = noPriority(exerciseInLimit);
     const exerciseOutOfLimitExpectedPriority = generatePriority(
       exerciseOutOfLimit,
-      'EXERCISE_TYPE_IN_PROGRESS_LIMIT',
+      'EXERCISE_TYPE_ABOVE_PROGRESS_LIMIT',
       VALUE_EXERCISE_LIMIT
     );
     const actualPriorityInLimit = exerciseTypeInProgressLimit(exerciseInLimit, {

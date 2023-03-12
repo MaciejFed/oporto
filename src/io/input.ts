@@ -1,5 +1,5 @@
 import { EventProcessor } from '../event/event-processor';
-import { ANSWER_SUBMITTED, APP_FINISHED, KEY_PRESSED } from '../event/events';
+import { ANSWER_SUBMITTED, APP_FINISHED, HEARING_EXERCISE_REPEAT, KEY_PRESSED } from '../event/events';
 import readline from 'readline';
 import { logger } from '../common/logger';
 
@@ -21,6 +21,10 @@ export class Input {
 
   registerListener() {
     process.stdin.on('keypress', (str, key) => {
+      if (key.sequence === '.') {
+        this.eventProcessor.emit(HEARING_EXERCISE_REPEAT);
+        return;
+      }
       switch (key.name) {
         case 'escape':
           this.eventProcessor.emit(APP_FINISHED);

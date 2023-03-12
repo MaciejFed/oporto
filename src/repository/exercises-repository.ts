@@ -4391,14 +4391,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'opinion',
-      portuguese: {
-        word: 'parece',
-        plural: 'pareceres',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'world',
       portuguese: {
         word: 'mundo',
@@ -6413,6 +6405,42 @@ export const db: Schema = {
     {
       portuguese: 'Mesmo as pessoas mais inteligentes cometem erros',
       english: 'Even the most intelligent people make mistakes'
+    },
+    {
+      portuguese: 'O dono anterior vendeu a casa porque se mudou',
+      english: 'The previous owner sold the house because he moved'
+    },
+    {
+      portuguese: 'A história do livro é triste mas tem um final feliz',
+      english: 'The story of the book is sad, but it has a happy ending'
+    },
+    {
+      portuguese: 'O professor corrigiu o erro do aluno',
+      english: "The teacher corrected the student's mistake"
+    },
+    {
+      portuguese: 'O filme encheu minha mente de pensamentos felizes',
+      english: 'The film filled my mind with happy thoughts'
+    },
+    {
+      portuguese: 'Posso precisar de ajuda com as caixas grandes',
+      english: 'I might need help with the big boxes'
+    },
+    {
+      portuguese: 'Ninguém percebeu minha ausência no trabalho hoje',
+      english: 'Nobody noticed my absence at work today'
+    },
+    {
+      portuguese: 'Deslizei no caminho gelado',
+      english: 'I slipped on the icy road'
+    },
+    {
+      portuguese: 'As letras na tela estão nítidas e fáceis de ler',
+      english: 'The letters on the screen are clear and easy to read'
+    },
+    {
+      portuguese: 'A criança acariciou o pelo macio do coelho',
+      english: "The child stroked the rabbit's soft fur"
     }
   ],
   fitIn: [
