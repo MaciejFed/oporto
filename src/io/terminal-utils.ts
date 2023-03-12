@@ -7,6 +7,7 @@ import { ExerciseStatistics, Result, WeekdayStatistics } from '../service/result
 import { AnswerInputType } from './input';
 import eventProcessor from '../event/event-processor';
 import Output from './output';
+import { Person, Verb } from '../repository/exercises-repository';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -146,6 +147,29 @@ export function printAllAnswers(results: Result[]) {
   });
 }
 
+export function printAllVerbConjugations({ presentSimple, pastPerfect }: Verb) {
+  const CONJUGATION_X_MARGIN = 60;
+  const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
+  Output.bold();
+  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
+  Output.bold(false);
+
+  const longestConjugationSize = Object.values(Person).reduce((prev, curr) => {
+    const currSize = presentSimple[curr as Person].length;
+    return prev > currSize ? prev : currSize;
+  }, 0);
+
+  Object.values(Person).forEach((person, index) => {
+    const past = pastPerfect ? pastPerfect[person as Person] : '';
+    const personText = person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`;
+    Output.moveTo(
+      CONJUGATION_X_MARGIN,
+      CONJUGATION_Y_MARGIN + 2 + index,
+      `${personText.padEnd(5)} ${presentSimple[person as Person].padEnd(longestConjugationSize)}|${past}`
+    );
+  });
+}
+
 export async function animateExerciseSummary({
   correctAttempts,
   failedAttempts,
@@ -157,14 +181,15 @@ export async function animateExerciseSummary({
   const barWidth = 50;
   Output.moveTo(0, yIndex + 2, `Last Time Attempted: ${formatDate(lastTimeAttempted)}`);
   // Output.moveTo(0, yIndex + 2, `First Time Attempted: ${formatDate(firstTimeAttempted)}`);
-  for (let index = 1; index <= correctAttempts + failedAttempts; index++) {
+  const totalValue = Math.max(failedAttempts * VALUE_WRONG_TO_CORRECT_RATIO, correctAttempts);
+  for (let index = 1; index <= totalValue; index++) {
     const goodValue = index <= correctAttempts ? index : correctAttempts;
     const wrongValue = Math.max(0, index - goodValue);
-    const totalValue = correctAttempts + failedAttempts;
-    const missingAnswers = goodValue - wrongValue * VALUE_WRONG_TO_CORRECT_RATIO;
+    const totalValueLabel = correctAttempts + failedAttempts;
+    const missingAnswers = goodValue - failedAttempts * VALUE_WRONG_TO_CORRECT_RATIO;
 
-    const allLabel = `All - ${totalValue}`;
-    const correctWrongLabel = `Correct/Wrong ${goodValue}/${wrongValue}(${missingAnswers})`;
+    const allLabel = `All - ${totalValueLabel} `;
+    const correctWrongLabel = `Correct/Wrong ${goodValue}/${failedAttempts} (${missingAnswers})`;
     let bulletData = [
       { key: allLabel, value: totalValue, style: bg('blue'), barWidth: 1 },
       { key: correctWrongLabel, value: index, style: bg('red'), barWidth: 1 }

@@ -7,7 +7,8 @@ import {
   EXERCISE_DESCRIPTION_PRINTED,
   EXERCISE_NEXT,
   EXERCISE_STARTED,
-  KEY_PRESSED
+  KEY_PRESSED,
+  HEARING_EXERCISE_REPEAT
 } from '../event/events';
 import { AppEventListener } from '../event/event-listener';
 import { EventProcessor } from '../event/event-processor';
@@ -50,6 +51,7 @@ export class SessionManager implements AppEventListener {
     this.registerKeyPressedEventListener();
     this.registerAnswerSubmittedEventListener();
     this.registerNextExerciseEventListener();
+    this.registerHearingExerciseRepeat();
   }
 
   private registerAppStartedEventListener() {
@@ -79,7 +81,7 @@ export class SessionManager implements AppEventListener {
       } else {
         this.answer += key;
       }
-      logger.info(`Answer: "${this.answer}"`);
+      logger.debug(`Answer: "${this.answer}"`);
     });
   }
 
@@ -93,7 +95,7 @@ export class SessionManager implements AppEventListener {
       this.answer = this.answer.trim();
       const wasCorrect = this.currentExercise?.checkAnswerCorrect(this.answer);
       saveNewResult(convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
-      logger.info(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
+      logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         wasCorrect,
         correctAnswer,
@@ -116,8 +118,14 @@ export class SessionManager implements AppEventListener {
     });
   }
 
+  private registerHearingExerciseRepeat() {
+    this.eventProcessor.on(HEARING_EXERCISE_REPEAT, () => {
+      this.handleExerciseFromHearing(this.currentExercise);
+    });
+  }
+
   private resetAnswer() {
-    logger.info('Resting answer...');
+    logger.debug('Resting answer...');
     this.answer = '';
     if (this.hearingLoop) {
       clearInterval(this.hearingLoop);
@@ -129,9 +137,6 @@ export class SessionManager implements AppEventListener {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
       exec(`say ${correctAnswer}`);
-      this.hearingLoop = setInterval(() => {
-        exec(`say ${correctAnswer}`);
-      }, 5000);
     }
   }
 }

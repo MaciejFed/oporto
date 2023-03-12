@@ -1,5 +1,4 @@
 import { Exercise } from '../../../exercise/exercise';
-import { Result } from '../../../service/result';
 import { VerbExercise } from '../../../exercise/verb-exercise';
 import { TranslationExercise } from '../../../exercise/translation/translation-exercise';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';

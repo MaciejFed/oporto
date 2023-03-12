@@ -1045,7 +1045,7 @@ export const db: Schema = {
         Eu: 'enchi',
         Tu: 'encheste',
         'Ela/Ele/Você': 'encheu',
-        Nós: 'enchestes',
+        Nós: 'enchemos',
         'Eles/Elas/Vocēs': 'encheram'
       }
     },
@@ -1104,7 +1104,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to walk',
+      english: 'to stroll',
       infinitive: 'passear',
       presentSimple: {
         Eu: 'passeio',
@@ -4059,7 +4059,7 @@ export const db: Schema = {
     {
       english: 'dishes',
       portuguese: {
-        word: 'loiça,',
+        word: 'loiça',
         gender: 'feminine'
       }
     },
@@ -4387,14 +4387,6 @@ export const db: Schema = {
       portuguese: {
         word: 'pacote',
         plural: 'pacotes',
-        gender: 'masculine'
-      }
-    },
-    {
-      english: 'opinion',
-      portuguese: {
-        word: 'parece',
-        plural: 'pareceres',
         gender: 'masculine'
       }
     },
@@ -4769,6 +4761,10 @@ export const db: Schema = {
       english: 'patiently'
     },
     {
+      portuguese: 'como se',
+      english: 'as if'
+    },
+    {
       portuguese: 'quanto',
       english: 'how much'
     },
@@ -4779,6 +4775,10 @@ export const db: Schema = {
     {
       portuguese: 'rapidamente',
       english: 'quickly'
+    },
+    {
+      portuguese: 'se',
+      english: 'if'
     }
   ],
   adjectives: [
@@ -4852,7 +4852,7 @@ export const db: Schema = {
         plural: 'bonitas'
       },
       placing: 'after',
-      english: 'beautiful'
+      english: 'beautiful - classic'
     },
     {
       masculine: {
@@ -5094,7 +5094,7 @@ export const db: Schema = {
         plural: 'importantes'
       },
       feminine: {
-        singular: 'importantes',
+        singular: 'importante',
         plural: 'importantes'
       }
     },
@@ -5621,8 +5621,8 @@ export const db: Schema = {
     },
     {
       english: 'Would you fancy a drink?',
-      portuguese: 'Deseja um café?',
-      sentenceType: 'statement'
+      portuguese: 'Deseja uma bebida?',
+      sentenceType: 'question'
     },
     {
       english: 'Stop bothering me',
@@ -6219,7 +6219,7 @@ export const db: Schema = {
       english: 'He dropped out of the project'
     },
     {
-      portuguese: 'Quero alcançar meus objetivos',
+      portuguese: 'Quero alcançar os meus objetivos',
       english: 'I want to achieve my goals'
     },
     {
@@ -6405,6 +6405,46 @@ export const db: Schema = {
     {
       portuguese: 'Mesmo as pessoas mais inteligentes cometem erros',
       english: 'Even the most intelligent people make mistakes'
+    },
+    {
+      portuguese: 'O dono anterior vendeu a casa porque se mudou',
+      english: 'The previous owner sold the house because he moved'
+    },
+    {
+      portuguese: 'A história do livro é triste mas tem um final feliz',
+      english: 'The story of the book is sad, but it has a happy ending'
+    },
+    {
+      portuguese: 'O professor corrigiu o erro do aluno',
+      english: "The teacher corrected the student's mistake"
+    },
+    {
+      portuguese: 'O filme encheu a minha mente de pensamentos felizes',
+      english: 'The film filled my mind with happy thoughts'
+    },
+    {
+      portuguese: 'Posso precisar de ajuda com as caixas grandes',
+      english: 'I might need help with the big boxes'
+    },
+    {
+      portuguese: 'Ninguém percebeu minha ausência no trabalho hoje',
+      english: 'Nobody noticed my absence at work today'
+    },
+    {
+      portuguese: 'Escorreguei no caminho gelado',
+      english: 'I slipped on the icy road'
+    },
+    {
+      portuguese: 'As letras no ecrã estão nítidas e fáceis de ler',
+      english: 'The letters on the screen are clear and easy to read'
+    },
+    {
+      portuguese: 'A criança acariciou o pelo macio do coelho',
+      english: "The child stroked the rabbit's soft fur"
+    },
+    {
+      portuguese: 'Aos domingos o meu marido e eu normalmente passeamos no parque',
+      english: 'On Sundays my husband and I usually stroll in the park'
     }
   ],
   fitIn: [

@@ -28,7 +28,8 @@ import {
   printExerciseRepeatAnswerKey,
   printExerciseRepeatBody,
   printInBetweenMenu,
-  printExampleSentence
+  printExampleSentence,
+  printAllVerbConjugations
 } from './terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
@@ -85,7 +86,7 @@ export class Terminal {
 
   private registerOnBodyPrintedEventListener() {
     this.eventProcessor.on(EXERCISE_BODY_PRINTED, (body: EXERCISE_BODY_PRINTED_BODY) => {
-      logger.info(`exercise: ${JSON.stringify(body)}`);
+      logger.debug(`exercise: ${JSON.stringify(body)}`);
       this.exerciseBodyPrefix = body.exerciseBodyPrefix;
       this.exerciseBodySuffix = body.exerciseBodySuffix;
       this.exerciseTranslation = body.exerciseTranslation;
@@ -149,7 +150,7 @@ export class Terminal {
       clearLine(process.stdout, 0);
     } else {
       if (this.answer.length === 0 && key === ' ') {
-        logger.info('Empty space as a first input - skipping...');
+        logger.debug('Empty space as a first input - skipping...');
         return;
       }
       this.answer = this.answer + key;
@@ -164,6 +165,10 @@ export class Terminal {
     if (this.exercise) {
       const allResults = getAllResults();
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
+      if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
+        // @ts-ignore
+        printAllVerbConjugations(this.exercise.verb);
+      }
       const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {
         animateExerciseSummary(exerciseStatistics);
@@ -179,7 +184,7 @@ export class Terminal {
       printExerciseRepeatAnswer(this.repetitionAnswer, this.correctAnswer);
     } else {
       if (this.repetitionAnswer.length === 0 && key === ' ') {
-        logger.info('Empty space as a first input - skipping...');
+        logger.debug('Empty space as a first input - skipping...');
         return;
       }
       this.repetitionAnswer = this.repetitionAnswer + key;

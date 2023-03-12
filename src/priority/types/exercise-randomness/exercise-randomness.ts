@@ -1,9 +1,12 @@
+import { getRandomElement } from '../../../common/common';
+import { logger } from '../../../common/logger';
 import { Exercise } from '../../../exercise/exercise';
-import { Priority } from '../../priority';
+import { generateAllPossibleExercises } from '../../../exercise/generator';
+import { ExerciseResultContext, Priority } from '../../priority';
 
 export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
 
-export function exerciseRandomness(exercise: Exercise): Priority[] {
+export function exerciseRandomness(exercise: Exercise, { allExercises }: ExerciseResultContext): Priority[] {
   return [
     {
       exercise,

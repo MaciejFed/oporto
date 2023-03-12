@@ -1,6 +1,4 @@
 import { Exercise } from '../../../exercise/exercise';
-import { Result } from '../../../service/result';
-import { getAllResultsForExercise } from '../../../repository/result-repository';
 import { noPriority, Priority } from '../../priority';
 import { getAllWordsConjugations } from '../../../service/conjugation';
 import { SentenceTranslationExercise } from '../../../exercise/translation/sentence-translation-exercise';

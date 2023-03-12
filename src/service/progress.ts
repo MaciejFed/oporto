@@ -9,7 +9,7 @@ import {
 } from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { Result } from './result';
-import { generateExercisesForSession } from '../exercise/generator';
+import { generateAllPossibleExercises, generateExercisesForSession } from '../exercise/generator';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
@@ -34,10 +34,7 @@ export type Progress = {
 };
 
 export function getGroupExerciseProgress(results: Result[], exerciseType: ExerciseType): ExerciseProgress[] {
-  const exercisesOfType = onlyDistinct(
-    results.filter((result) => result.exercise.exerciseType === exerciseType).map((r) => r.exercise)
-  );
-
+  const exercisesOfType = generateAllPossibleExercises().filter((exercise) => exercise.exerciseType === exerciseType);
   return exercisesOfType.map((exerciseOfType) => getSingleExerciseProgress(results, exerciseOfType as Exercise));
 }
 

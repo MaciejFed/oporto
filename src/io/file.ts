@@ -7,12 +7,12 @@ const resultDbFilePath = path.join(os.homedir(), 'results.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
 
 export function readFromFile(): string {
-  logger.info('reading results...');
+  logger.debug('reading results...');
   return fs.readFileSync(resultDbFilePath, { encoding: 'utf-8' }).toString();
 }
 
 export function saveToFile(data: string) {
-  logger.info('saving  results...');
+  logger.debug('saving  results...');
   fs.writeFileSync(resultDbFilePath, data);
 }
 

@@ -24,6 +24,7 @@ import {
 import { exerciseTypeInProgressLimit } from './types/exercise-type-in-progress-limit/exercise-type-in-progress-limit';
 import { exerciseSentenceUnknownWords } from './types/exercise-sentence-unknown-words/exercise-sentence-unknown-words';
 import { logger } from '../common/logger';
+import { getRandomElement } from '../common/common';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -41,7 +42,8 @@ export type PriorityName =
   | 'EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING'
   | 'EXERCISE_TRANSLATION_NEVER_DONE_BY_VOICE'
   | 'EXERCISE_SENTENCE_UNKNOWN_WORDS'
-  | 'EXERCISE_TYPE_IN_PROGRESS_LIMIT'
+  | 'EXERCISE_TYPE_ABOVE_PROGRESS_LIMIT'
+  | 'EXERCISE_TYPE_BELLOW_PROGRESS_LIMIT'
   | 'EXERCISE_VERB_NEVER_TRANSLATED'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_MAX_PROGRESS_DONE'
@@ -72,6 +74,7 @@ const priorityCompilers: PriorityCompiler[] = [
 
 export interface ExerciseResultContext {
   allResults: Result[];
+  allExercises: Exercise[];
   ratioRange: RatioRange;
   exerciseTypeProgress: ExerciseProgress[];
   exerciseResults: Result[];
@@ -82,6 +85,16 @@ type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResu
 export function sortExercises(exercises: Exercise[]): Exercise[] {
   const allResults = getAllResults();
   const exerciseProgressMap = getExerciseProgressMap(allResults);
+  Object.keys(exerciseProgressMap).forEach((key) => {
+    const notStartedCount = exerciseProgressMap[key as ExerciseType].filter(
+      (ex) => ex.ratioRange === 'Never Done'
+    ).length;
+    const inProgressCount = exerciseProgressMap[key as ExerciseType].filter(
+      (ex) => ex.ratioRange !== 'Never Done' && ex.ratioRange !== '80-100'
+    ).length;
+
+    logger.info(`${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}] `);
+  });
 
   const start = Date.now();
 
@@ -93,12 +106,18 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
 
   logger.info(`Exercises Total Count: [${exercises.length}]`);
   logger.info(`Exercises Not Done Count: [${exercisesWithoutWantedProgress.length}]`);
+  logger.info(
+    `Exercises In Progress Count: [${
+      exercisesWithoutWantedProgress.filter((e) => e.ratioRange !== 'Never Done').length
+    }]`
+  );
 
   const exercisesWithPriorities = exercisesWithoutWantedProgress
     .map((ex) => {
       const combinedPriorities = priorityCompilers
         .flatMap((priorityCompiler) =>
           priorityCompiler(ex.exercise, {
+            allExercises: exercises,
             allResults,
             ratioRange: ex.ratioRange,
             exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
@@ -143,7 +162,16 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
 
   logger.info(`Sorting took [${(end - start) / 1000} seconds]`);
 
-  return exercisesWithPriorities.map((ewp) => ewp.exercise);
+  const randomIndex = Math.floor(Math.random() * 10);
+  const randomExercsie = getRandomElement(exercises);
+
+  const sortedExercises = exercisesWithPriorities.map((ewp) => ewp.exercise);
+  if (randomIndex < sortedExercises.length) {
+    sortedExercises[randomIndex] = randomExercsie;
+    logger.info(`Including random exercise [${randomExercsie.getCorrectAnswer()}]`);
+  }
+
+  return sortedExercises;
 }
 
 export function noPriority(exercise: Exercise): Priority[] {

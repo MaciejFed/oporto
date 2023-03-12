@@ -34,9 +34,9 @@ export class EventProcessor {
 
   private logEvent(event: APP_EVENT, args?: any) {
     if (args && typeof args === 'object') {
-      logger.info(`${event}: [${JSON.stringify(args)}]`);
+      logger.debug(`${event}: [${JSON.stringify(args)}]`);
     } else {
-      logger.info(`${event}: [${args}]`);
+      logger.debug(`${event}: [${args}]`);
     }
   }
 
