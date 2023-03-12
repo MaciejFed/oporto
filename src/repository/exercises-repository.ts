@@ -6441,6 +6441,10 @@ export const db: Schema = {
     {
       portuguese: 'A criança acariciou o pelo macio do coelho',
       english: "The child stroked the rabbit's soft fur"
+    },
+    {
+      portuguese: 'Aos domingos o meu marido e eu normalmente passeamos no parque',
+      english: "On Sundays my husband and I usually stroll in the park"
     }
   ],
   fitIn: [
