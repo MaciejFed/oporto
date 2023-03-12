@@ -6419,7 +6419,7 @@ export const db: Schema = {
       english: "The teacher corrected the student's mistake"
     },
     {
-      portuguese: 'O filme encheu minha mente de pensamentos felizes',
+      portuguese: 'O filme encheu a minha mente de pensamentos felizes',
       english: 'The film filled my mind with happy thoughts'
     },
     {
@@ -6431,11 +6431,11 @@ export const db: Schema = {
       english: 'Nobody noticed my absence at work today'
     },
     {
-      portuguese: 'Deslizei no caminho gelado',
+      portuguese: 'Escorreguei no caminho gelado',
       english: 'I slipped on the icy road'
     },
     {
-      portuguese: 'As letras na tela estão nítidas e fáceis de ler',
+      portuguese: 'As letras no ecrã estão nítidas e fáceis de ler',
       english: 'The letters on the screen are clear and easy to read'
     },
     {
@@ -6444,7 +6444,7 @@ export const db: Schema = {
     },
     {
       portuguese: 'Aos domingos o meu marido e eu normalmente passeamos no parque',
-      english: "On Sundays my husband and I usually stroll in the park"
+      english: 'On Sundays my husband and I usually stroll in the park'
     }
   ],
   fitIn: [

@@ -68,11 +68,11 @@ export function exerciseTypeInProgressLimit(
       ...inProgressMap,
       [exercise.exerciseType]: inProgressMap[exercise.exerciseType] + 1
     };
-    const inProressOfType = inProgressMap[exercise.exerciseType];
-    if (inProressOfType < limit) {
+    const inProgressOfType = inProgressMap[exercise.exerciseType];
+    if (inProgressOfType < limit) {
       logger.debug(
         `${exercise.exerciseType} in progress: [${exercise.getCorrectAnswer()}] is within a limit [${
-          inProressOfType + 1
+          inProgressOfType + 1
         }/${limit}}]`
       );
       return noPriority(exercise);
