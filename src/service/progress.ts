@@ -2,6 +2,7 @@ import { Exercise, ExerciseType } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { readAll } from '../repository/exercises-repository';
 import {
+  DateResults,
   getAllResults,
   getAllResultsBeforeDateOneWeek,
   getAllResultsByDate,
@@ -147,39 +148,55 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
 }
 
 export function progressByDate(results: Result[]): ProgressOnDay[] {
-  const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
-  const resultsByDate = getAllResultsByDate(results);
-  const uniqueByDay = resultsByDate
-    .map((dateResult) => {
-      const resultsByDay = allUniqueWordsAsExercises.map((exercise) =>
-        getSingleExerciseProgress(dateResult.results, exercise)
-      );
-      return {
-        ...dateResult,
-        words: resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer()),
-        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date)
-      };
-    })
-    .map((dateResult) => {
-      return {
-        day: dateResult.date.toJSDate(),
-        words: dateResult.words,
-        exercisesDone: Math.floor(dateResult.exercisesDone.length / 10)
-      };
-    });
-  const alluniqueWords = getAllUniqueWords();
-  return uniqueByDay.map((unique, index) => {
+  // Extracted function to get unique words for each day
+  function getUniqueWordsForDay(dateResult: DateResults, exercises: Exercise[]) {
+    const resultsByDay = exercises.map((exercise) => getSingleExerciseProgress(dateResult.results, exercise));
+
+    return resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer());
+  }
+
+  // Extracted function to build day progress object
+  function buildDayProgress(dateResult: DateResults, exercisesDone: Result[], words: string[]) {
+    return {
+      day: dateResult.date.toJSDate(),
+      words,
+      exercisesDone: Math.floor(exercisesDone.length / 10)
+    };
+  }
+
+  // Extracted function to build final progress object
+  function buildFinalProgress(
+    unique: { day: any; words: string[]; exercisesDone: any },
+    index: number,
+    uniqueByDay: { words: string[] }[],
+    allUniqueWords: string[]
+  ) {
     const previous = index > 0 ? uniqueByDay[index - 1].words : [];
     const newWords = unique.words.filter((word) => !previous.includes(word));
     const lostWords = previous.filter((word) => !unique.words.includes(word));
+
     return {
       day: unique.day.toDateString(),
       wordCount: unique.words.length,
       wordsDone: unique.words,
-      wordsMissing: alluniqueWords.filter((w) => !unique.words.includes(w)),
+      wordsMissing: allUniqueWords.filter((w) => !unique.words.includes(w)),
       exercisesDone: unique.exercisesDone,
       newWords,
       lostWords
     };
+  }
+
+  const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
+  const resultsByDate = getAllResultsByDate(results);
+
+  const uniqueByDay = resultsByDate.map((dateResult) => {
+    const words = getUniqueWordsForDay(dateResult, allUniqueWordsAsExercises);
+    const exercisesDone = getAllResultsBeforeDateOneWeek(dateResult.date);
+
+    return buildDayProgress(dateResult, exercisesDone, words);
   });
+
+  const allUniqueWords = getAllUniqueWords();
+
+  return uniqueByDay.map((unique, index) => buildFinalProgress(unique, index, uniqueByDay, allUniqueWords));
 }

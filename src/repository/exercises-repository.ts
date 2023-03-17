@@ -1752,7 +1752,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to save',
+      english: 'to save money',
       infinitive: 'poupar',
       presentSimple: {
         Eu: 'poupo',
@@ -4315,14 +4315,6 @@ export const db: Schema = {
       portuguese: {
         word: 'produto',
         plural: 'produtos',
-        gender: 'masculine'
-      }
-    },
-    {
-      english: 'teacher',
-      portuguese: {
-        word: 'professor',
-        plural: 'professores',
         gender: 'masculine'
       }
     },

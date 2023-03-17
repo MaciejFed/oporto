@@ -1,4 +1,4 @@
-import { Adjective, readAll, Verb } from '../repository/exercises-repository';
+import { Adjective, readAll, Sentence, Verb } from '../repository/exercises-repository';
 import { VerbExerciseGenerator } from '../exercise/generator';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { getRandomElement } from '../common/common';
@@ -16,36 +16,45 @@ const getConjugationsForVerb = (verb: Verb) => {
     .sort((a, b) => a.localeCompare(b));
 };
 
-export const findSentenceExamplesForExercise = (exercise: Exercise) => {
-  let conjugations: string[] = [];
-  if (exercise.exerciseType === 'OtherTranslation') {
-    conjugations = [(exercise as OtherTranslationExercise).other.portuguese];
-  } else if (exercise.exerciseType === 'VerbExercise' || exercise.exerciseType === 'VerbTranslation') {
-    const verb = (exercise as VerbExercise).verb;
-    conjugations = getConjugationsForVerb(verb);
-  } else if (exercise.exerciseType === 'NounTranslation') {
-    const noun = (exercise as NounTranslationExercise).noun;
-    conjugations = [noun.portuguese.word].concat(noun.portuguese.plural ? noun.portuguese.plural : []);
-  } else if (exercise.exerciseType === 'AdjectiveTranslation') {
-    const adjective = (exercise as AdjectiveTranslationExercise).adjective;
-    conjugations = [
-      adjective.feminine.singular,
-      adjective.feminine.plural,
-      adjective.masculine.singular,
-      adjective.masculine.plural
-    ];
+const extractConjugationsFromExercise = (exercise: Exercise): string[] => {
+  switch (exercise.exerciseType) {
+    case 'OtherTranslation':
+      return [(exercise as OtherTranslationExercise).other.portuguese];
+    case 'VerbExercise':
+    case 'VerbTranslation':
+      return getConjugationsForVerb((exercise as VerbExercise).verb);
+    case 'NounTranslation':
+      // eslint-disable-next-line no-case-declarations
+      const noun = (exercise as NounTranslationExercise).noun;
+      return [noun.portuguese.word, ...(noun.portuguese.plural ? [noun.portuguese.plural] : [])];
+    case 'AdjectiveTranslation':
+      // eslint-disable-next-line no-case-declarations
+      const adjective = (exercise as AdjectiveTranslationExercise).adjective;
+      return [
+        adjective.feminine.singular,
+        adjective.feminine.plural,
+        adjective.masculine.singular,
+        adjective.masculine.plural
+      ];
+    default:
+      return [];
   }
-  const examples = readAll().sentences.filter((sentence) =>
-    conjugations.some((v) => {
-      return sentence.portuguese
+};
+
+const filterSentencesByConjugations = (conjugations: string[]) => {
+  return readAll().sentences.filter((sentence) =>
+    conjugations.some((v) =>
+      sentence.portuguese
         .toLowerCase()
         .split(' ')
-        .some((sentenceWord) => sentenceWord === v.toLowerCase());
-    })
+        .some((sentenceWord) => sentenceWord === v.toLowerCase())
+    )
   );
+};
 
-  if (examples.length > 0) {
-    const exampleSentence = getRandomElement(examples).portuguese;
+const findExampleSentenceAndWord = (filteredSentences: Sentence[], conjugations: string[]) => {
+  if (filteredSentences.length > 0) {
+    const exampleSentence = getRandomElement(filteredSentences).portuguese;
     const exerciseWord =
       conjugations.find((conjugation) => exampleSentence.toLowerCase().includes(conjugation.toLowerCase())) || '';
     const wordStartIndex = exampleSentence.toLowerCase().indexOf(exerciseWord.toLowerCase());
@@ -57,4 +66,10 @@ export const findSentenceExamplesForExercise = (exercise: Exercise) => {
   }
 
   return undefined;
+};
+
+export const findSentenceExamplesForExercise = (exercise: Exercise) => {
+  const conjugations = extractConjugationsFromExercise(exercise);
+  const filteredSentences = filterSentencesByConjugations(conjugations);
+  return findExampleSentenceAndWord(filteredSentences, conjugations);
 };

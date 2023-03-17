@@ -14,83 +14,84 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 
+function createVerbExercise(exerciseData: any) {
+  const verbExercise = new VerbExercise();
+  Object.assign(verbExercise, exerciseData);
+  assert(verbExercise.verb);
+  assert(verbExercise.person);
+  return verbExercise;
+}
+
+function createNounTranslationExercise(exerciseData: any) {
+  const nounTranslationExercise = new NounTranslationExercise();
+  Object.assign(nounTranslationExercise, exerciseData);
+  assert(nounTranslationExercise.noun.portuguese);
+  assert(nounTranslationExercise.noun.english);
+  return nounTranslationExercise;
+}
+
+function createAdjectiveTranslationExercise(exerciseData: any) {
+  const adjectiveTranslationExercise = new AdjectiveTranslationExercise();
+  Object.assign(adjectiveTranslationExercise, exerciseData);
+  assert(adjectiveTranslationExercise.adjective.masculine);
+  assert(adjectiveTranslationExercise.adjective.feminine);
+  assert(adjectiveTranslationExercise.adjective.english);
+  return adjectiveTranslationExercise;
+}
+
+function createVerbTranslationExercise(exerciseData: any) {
+  const verbTranslationExercise = new VerbTranslationExercise();
+  Object.assign(verbTranslationExercise, exerciseData);
+  assert(verbTranslationExercise.verb);
+  assert(verbTranslationExercise.translationType);
+  return verbTranslationExercise;
+}
+
+function createSentenceTranslationExercise(exerciseData: any) {
+  const sentenceTranslationExercise = new SentenceTranslationExercise();
+  Object.assign(sentenceTranslationExercise, exerciseData);
+  assert(sentenceTranslationExercise.sentence);
+  return sentenceTranslationExercise;
+}
+
+function createOtherTranslationExercise(exerciseData: any) {
+  const otherTranslationExercise = new OtherTranslationExercise();
+  Object.assign(otherTranslationExercise, exerciseData);
+  assert(otherTranslationExercise.other);
+  return otherTranslationExercise;
+}
+
+function createFitInGapExercise(exerciseData: any) {
+  const fitInGapExercise = new FitInGapExercise();
+  Object.assign(fitInGapExercise, exerciseData);
+  assert(fitInGapExercise.fitIn);
+  return fitInGapExercise;
+}
+
+const exerciseFactory = {
+  VerbExercise: createVerbExercise,
+  NounTranslation: createNounTranslationExercise,
+  AdjectiveTranslation: createAdjectiveTranslationExercise,
+  VerbTranslation: createVerbTranslationExercise,
+  SentenceTranslation: createSentenceTranslationExercise,
+  OtherTranslation: createOtherTranslationExercise,
+  FitInGap: createFitInGapExercise
+};
+
 export function getAllResults(): Result[] {
   const results = readFromFile();
   const resultsJson: Result[] = JSON.parse(results);
-  let exercise: Exercise;
+
   return resultsJson.map((result) => {
-    switch (result.exercise.exerciseType) {
-      case 'VerbExercise':
-        const verbExercise: VerbExercise = new VerbExercise();
-        verbExercise.verb = (result.exercise as unknown as VerbExercise).verb;
-        verbExercise.person = (result.exercise as unknown as VerbExercise).person;
-        verbExercise.verbTime = (result.exercise as unknown as VerbExercise).verbTime;
-        assert(verbExercise.verb);
-        assert(verbExercise.person);
-        exercise = verbExercise;
-        break;
-      case 'NounTranslation':
-        const nounTranslationExercise: NounTranslationExercise = new NounTranslationExercise();
-        nounTranslationExercise.noun = (result.exercise as unknown as NounTranslationExercise).noun;
-        nounTranslationExercise.translationType = (
-          result.exercise as unknown as NounTranslationExercise
-        ).translationType;
-        assert(nounTranslationExercise.noun.portuguese);
-        assert(nounTranslationExercise.noun.english);
-        exercise = nounTranslationExercise;
-        break;
-      case 'AdjectiveTranslation':
-        const adjectiveTranslationExercise: AdjectiveTranslationExercise = new AdjectiveTranslationExercise();
-        adjectiveTranslationExercise.adjective = (result.exercise as unknown as AdjectiveTranslationExercise).adjective;
-        adjectiveTranslationExercise.gender = (result.exercise as unknown as AdjectiveTranslationExercise).gender;
-        adjectiveTranslationExercise.number = (result.exercise as unknown as AdjectiveTranslationExercise).number;
-        adjectiveTranslationExercise.translationType = (
-          result.exercise as unknown as AdjectiveTranslationExercise
-        ).translationType;
-        assert(adjectiveTranslationExercise.adjective.masculine);
-        assert(adjectiveTranslationExercise.adjective.feminine);
-        assert(adjectiveTranslationExercise.adjective.english);
-        exercise = adjectiveTranslationExercise;
-        break;
-      case 'VerbTranslation':
-        const verbTranslationExercise: VerbTranslationExercise = new VerbTranslationExercise();
-        verbTranslationExercise.verb = (result.exercise as unknown as VerbTranslationExercise).verb;
-        verbTranslationExercise.translationType = (
-          result.exercise as unknown as NounTranslationExercise
-        ).translationType;
-        assert(verbTranslationExercise.verb);
-        assert(verbTranslationExercise.translationType);
-        exercise = verbTranslationExercise;
-        break;
-      case 'SentenceTranslation':
-        const sentenceTranslationExercise: SentenceTranslationExercise = new SentenceTranslationExercise();
-        sentenceTranslationExercise.sentence = (result.exercise as unknown as SentenceTranslationExercise).sentence;
-        sentenceTranslationExercise.translationType = (
-          result.exercise as unknown as SentenceTranslationExercise
-        ).translationType;
-        assert(sentenceTranslationExercise.sentence);
-        exercise = sentenceTranslationExercise;
-        break;
-      case 'OtherTranslation':
-        const otherTranslationExercise: OtherTranslationExercise = new OtherTranslationExercise();
-        otherTranslationExercise.other = (result.exercise as unknown as OtherTranslationExercise).other;
-        otherTranslationExercise.translationType = (
-          result.exercise as unknown as OtherTranslationExercise
-        ).translationType;
-        assert(otherTranslationExercise.other);
-        exercise = otherTranslationExercise;
-        break;
-      case 'FitInGap':
-        const fitInGapExercise: FitInGapExercise = new FitInGapExercise();
-        fitInGapExercise.fitIn = (result.exercise as unknown as FitInGapExercise).fitIn;
-        assert(fitInGapExercise.fitIn);
-        exercise = fitInGapExercise;
-        break;
-      default:
-        break;
+    const exerciseData = result.exercise;
+    const exerciseType = exerciseData.exerciseType;
+    const createExercise = exerciseFactory[exerciseType];
+
+    if (createExercise) {
+      result.date = new Date(result.date);
+      result.exercise = createExercise(exerciseData);
     }
-    result.date = new Date(result.date);
-    result.exercise = exercise;
+
     return result;
   });
 }

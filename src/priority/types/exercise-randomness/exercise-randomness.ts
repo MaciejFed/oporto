@@ -4,7 +4,7 @@ import { Exercise } from '../../../exercise/exercise';
 import { generateAllPossibleExercises } from '../../../exercise/generator';
 import { ExerciseResultContext, Priority } from '../../priority';
 
-export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 100;
+export const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = 200;
 
 export function exerciseRandomness(exercise: Exercise, { allExercises }: ExerciseResultContext): Priority[] {
   return [

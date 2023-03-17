@@ -147,13 +147,13 @@ export function printAllAnswers(results: Result[]) {
   });
 }
 
-export function printAllVerbConjugations({ presentSimple, pastPerfect }: Verb) {
+export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfect }: Verb) {
   const CONJUGATION_X_MARGIN = 60;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   Output.bold();
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
   Output.bold(false);
-
+  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
   const longestConjugationSize = Object.values(Person).reduce((prev, curr) => {
     const currSize = presentSimple[curr as Person].length;
     return prev > currSize ? prev : currSize;

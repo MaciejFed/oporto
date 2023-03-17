@@ -85,6 +85,31 @@ type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResu
 export function sortExercises(exercises: Exercise[]): Exercise[] {
   const allResults = getAllResults();
   const exerciseProgressMap = getExerciseProgressMap(allResults);
+  logExerciseStats(exerciseProgressMap);
+
+  const start = Date.now();
+
+  const exercisesWithoutWantedProgress = getExercisesWithoutWantedProgress(exercises, allResults);
+
+  logFilteredExercises(exercises, exercisesWithoutWantedProgress);
+
+  const exercisesWithPriorities = getExercisesWithPriorities(
+    exercisesWithoutWantedProgress,
+    exercises,
+    allResults,
+    exerciseProgressMap
+  );
+
+  logSortingTime(start);
+
+  const randomIndex = Math.floor(Math.random() * 10);
+  const randomExercise = getRandomElement(exercises);
+  const sortedExercises = insertRandomExercise(exercisesWithPriorities, randomIndex, randomExercise);
+
+  return sortedExercises;
+}
+
+function logExerciseStats(exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>): void {
   Object.keys(exerciseProgressMap).forEach((key) => {
     const notStartedCount = exerciseProgressMap[key as ExerciseType].filter(
       (ex) => ex.ratioRange === 'Never Done'
@@ -93,17 +118,19 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
       (ex) => ex.ratioRange !== 'Never Done' && ex.ratioRange !== '80-100'
     ).length;
 
-    logger.info(`${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}] `);
+    logger.info(`${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}]`);
   });
+}
 
-  const start = Date.now();
-
-  const exercisesWithoutWantedProgress = exercises
+function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Result[]) {
+  return exercises
     .map((ex) => getSingleExerciseProgress(allResults, ex))
     .filter((ex) => {
       return ex.ratioRange !== ex.exercise.getMaxWantedProgress();
     });
+}
 
+function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: any[]): void {
   logger.info(`Exercises Total Count: [${exercises.length}]`);
   logger.info(`Exercises Not Done Count: [${exercisesWithoutWantedProgress.length}]`);
   logger.info(
@@ -111,8 +138,15 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
       exercisesWithoutWantedProgress.filter((e) => e.ratioRange !== 'Never Done').length
     }]`
   );
+}
 
-  const exercisesWithPriorities = exercisesWithoutWantedProgress
+function getExercisesWithPriorities(
+  exercisesWithoutWantedProgress: ExerciseProgress[],
+  exercises: Exercise[],
+  allResults: Result[],
+  exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>
+) {
+  return exercisesWithoutWantedProgress
     .map((ex) => {
       const combinedPriorities = priorityCompilers
         .flatMap((priorityCompiler) =>
@@ -124,51 +158,66 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
             exerciseResults: ex.exerciseResults
           })
         )
-        .reduce(
-          (previous, current) => {
-            previous.priorities.push({
-              priorityName: current.priorityName,
-              priorityValue: current.priorityValue
-            });
-            return {
-              ...previous,
-              priorityValueTotal: previous.priorityValueTotal + current.priorityValue
-            };
-          },
-          {
-            priorities: [
-              {
-                priorityName: '',
-                priorityValue: 0
-              }
-            ],
-            priorityValueTotal: 0,
-            exercise: ex.exercise
-          }
-        );
-      return {
-        ...combinedPriorities,
-        priorities: combinedPriorities.priorities.filter(
-          (priority) =>
-            priority.priorityName !== '' && priority.priorityName !== 'NO_PRIORITY' && priority.priorityValue !== 0
-        )
-      };
+        .reduce(combinePriorities, initializePriorities(ex));
+
+      return filterInvalidPriorities(combinedPriorities);
     })
     .sort((a, b) => b.priorityValueTotal - a.priorityValueTotal);
+}
 
-  fs.writeFileSync('priorities.json', JSON.stringify(exercisesWithPriorities, null, 2));
+function combinePriorities(previous: Foo, current: Priority) {
+  previous.priorities.push({
+    priorityName: current.priorityName,
+    priorityValue: current.priorityValue
+  });
+  return {
+    ...previous,
+    priorityValueTotal: previous.priorityValueTotal + current.priorityValue
+  };
+}
 
+interface Foo {
+  priorities: {
+    priorityName: string;
+    priorityValue: number;
+  }[];
+  priorityValueTotal: number;
+  exercise: Exercise;
+}
+
+function initializePriorities(ex: any): Foo {
+  return {
+    priorities: [
+      {
+        priorityName: '',
+        priorityValue: 0
+      }
+    ],
+    priorityValueTotal: 0,
+    exercise: ex.exercise
+  };
+}
+
+function filterInvalidPriorities(combinedPriorities: Foo) {
+  return {
+    ...combinedPriorities,
+    priorities: combinedPriorities.priorities.filter(
+      (priority) =>
+        priority.priorityName !== '' && priority.priorityName !== 'NO_PRIORITY' && priority.priorityValue !== 0
+    )
+  };
+}
+
+function logSortingTime(start: number): void {
   const end = Date.now();
-
   logger.info(`Sorting took [${(end - start) / 1000} seconds]`);
+}
 
-  const randomIndex = Math.floor(Math.random() * 10);
-  const randomExercsie = getRandomElement(exercises);
-
+function insertRandomExercise(exercisesWithPriorities: any[], randomIndex: number, randomExercise: Exercise) {
   const sortedExercises = exercisesWithPriorities.map((ewp) => ewp.exercise);
   if (randomIndex < sortedExercises.length) {
-    sortedExercises[randomIndex] = randomExercsie;
-    logger.info(`Including random exercise [${randomExercsie.getCorrectAnswer()}]`);
+    sortedExercises[randomIndex] = randomExercise;
+    logger.info(`Including random exercise [${randomExercise.getCorrectAnswer()}]`);
   }
 
   return sortedExercises;
