@@ -2,8 +2,6 @@ import { exec } from 'child_process';
 import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
-import { EventProcessor } from '../event/event-processor';
-import { logger } from '../common/logger';
 import {
   APP_STARTED,
   EXERCISE_DESCRIPTION_PRINTED,
@@ -13,7 +11,7 @@ import {
   ANSWER_CHECKED,
   EXERCISE_NEXT,
   EXERCISE_STARTED
-} from '../event/events';
+} from '../../event/events';
 import {
   animateExerciseSummary,
   displayGenericWeeklyStatistics,
@@ -30,15 +28,16 @@ import {
   printInBetweenMenu,
   printExampleSentence,
   printAllVerbConjugations
-} from './terminal/terminal-utils';
-import { Exercise } from '../exercise/exercise';
-import { getExerciseProgress, getStatisticForExercise } from '../service/result';
-import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { sleep } from '../common/common';
-import { findSentenceExamplesForExercise } from '../service/example-finder';
+} from './terminal-utils';
+import { Exercise } from '../../exercise/exercise';
+import { getExerciseProgress, getStatisticForExercise } from '../../service/result';
+import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../../repository/result-repository';
+import { sleep } from '../../common/common';
+import { findSentenceExamplesForExercise } from '../../service/example-finder';
+import { EventProcessor } from '../../event/event-processor';
+import { logger } from '../../common/logger';
 
-export class Terminal {
-  eventProcessor: EventProcessor;
+export class TerminalRenderer {
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
   exerciseTranslation: string | undefined;
@@ -50,9 +49,7 @@ export class Terminal {
   exercise?: Exercise;
   exampleSentence?: { wordStartIndex: number; exampleSentence: string; exerciseWord: string } | undefined;
 
-  constructor(eventProcessor: EventProcessor) {
-    this.eventProcessor = eventProcessor;
-    this.registerListeners();
+  constructor() {
     this.exerciseInProgress = false;
     this.exerciseRepetitionInProgress = true;
     this.exerciseBodyPrefix = '';
@@ -63,29 +60,20 @@ export class Terminal {
     clear();
   }
 
-  private registerListeners() {
-    this.registerOnAppStartedEventListener();
-    this.registerOnDescriptionPrintedEventListener();
-    this.registerOnBodyPrintedEventListener();
-    this.registerOnKeyPressedEventListener();
-    this.registerOnExerciseStartedEventListener();
-    this.registerOnAnswerCheckedEventListener();
-  }
-
-  private registerOnAppStartedEventListener() {
-    this.eventProcessor.on(APP_STARTED, () => {
+  registerOnAppStartedEventListener(eventProcessor: EventProcessor) {
+    eventProcessor.on(APP_STARTED, () => {
       preExerciseClear();
     });
   }
 
-  private registerOnDescriptionPrintedEventListener() {
-    this.eventProcessor.on(EXERCISE_DESCRIPTION_PRINTED, (description: string) => {
+  registerOnDescriptionPrintedEventListener(eventProcessor: EventProcessor) {
+    eventProcessor.on(EXERCISE_DESCRIPTION_PRINTED, (description: string) => {
       printExerciseDescription(description);
     });
   }
 
-  private registerOnBodyPrintedEventListener() {
-    this.eventProcessor.on(EXERCISE_BODY_PRINTED, (body: EXERCISE_BODY_PRINTED_BODY) => {
+  registerOnBodyPrintedEventListener(eventProcessor: EventProcessor) {
+    eventProcessor.on(EXERCISE_BODY_PRINTED, (body: EXERCISE_BODY_PRINTED_BODY) => {
       logger.debug(`exercise: ${JSON.stringify(body)}`);
       this.exerciseBodyPrefix = body.exerciseBodyPrefix;
       this.exerciseBodySuffix = body.exerciseBodySuffix;
@@ -94,8 +82,8 @@ export class Terminal {
     });
   }
 
-  private registerOnKeyPressedEventListener() {
-    this.eventProcessor.on(KEY_PRESSED, (key) => {
+  registerOnKeyPressedEventListener(eventProcessor: EventProcessor) {
+    eventProcessor.on(KEY_PRESSED, (key) => {
       let onKeyAction;
       if (this.exerciseInProgress) {
         onKeyAction = this.onKeyExerciseInProgress.bind(this);
@@ -104,12 +92,12 @@ export class Terminal {
       } else {
         onKeyAction = this.onKeyMenu.bind(this);
       }
-      onKeyAction(key);
+      onKeyAction(key, eventProcessor);
     });
   }
 
-  private registerOnExerciseStartedEventListener() {
-    this.eventProcessor.on(EXERCISE_STARTED, () => {
+  registerOnExerciseStartedEventListener(eventProcessor: EventProcessor) {
+    eventProcessor.on(EXERCISE_STARTED, () => {
       this.exerciseInProgress = true;
       this.answer = '';
       this.repetitionAnswer = '';
@@ -119,8 +107,8 @@ export class Terminal {
     });
   }
 
-  private registerOnAnswerCheckedEventListener() {
-    this.eventProcessor.on(ANSWER_CHECKED, ({ wasCorrect, correctAnswer, answerInputType, exercise }) => {
+  registerOnAnswerCheckedEventListener(eventProcessor: EventProcessor) {
+    eventProcessor.on(ANSWER_CHECKED, ({ wasCorrect, correctAnswer, answerInputType, exercise }) => {
       this.exercise = exercise;
       this.exerciseInProgress = false;
       this.correctAnswer = correctAnswer;
@@ -144,7 +132,7 @@ export class Terminal {
     });
   }
 
-  private onKeyExerciseInProgress(key: string) {
+  onKeyExerciseInProgress(key: string) {
     if (key === 'backspace') {
       this.answer = this.answer.substring(0, Math.max(0, this.answer.length - 1));
       clearLine(process.stdout, 0);
@@ -195,7 +183,7 @@ export class Terminal {
     }
   }
 
-  private async onKeyMenu(key: string) {
+  private async onKeyMenu(key: string, eventProcessor: EventProcessor) {
     switch (key) {
       case 't':
         printExerciseTranslation(this.exerciseTranslation);
@@ -205,7 +193,7 @@ export class Terminal {
         break;
       default:
         terminal.hideCursor(false);
-        this.eventProcessor.emit(EXERCISE_NEXT);
+        eventProcessor.emit(EXERCISE_NEXT);
     }
   }
 
@@ -218,4 +206,4 @@ export class Terminal {
   }
 }
 
-export default Terminal;
+export default TerminalRenderer;

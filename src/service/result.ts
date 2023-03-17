@@ -2,8 +2,7 @@ import { DateTimeExtended, isBeforeWeekday, isOnWeekDay, onlyDistinct } from '..
 import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
 import { VerbExercise } from '../exercise/verb-exercise';
-import { AnswerInputType } from '../io/input';
-import { displayGenericWeeklyStatistics } from '../io/terminal-utils';
+import { AnswerInputType, displayGenericWeeklyStatistics } from '../io/terminal/terminal-utils';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { getProgress } from './progress';

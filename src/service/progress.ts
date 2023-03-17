@@ -148,14 +148,12 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
 }
 
 export function progressByDate(results: Result[]): ProgressOnDay[] {
-  // Extracted function to get unique words for each day
   function getUniqueWordsForDay(dateResult: DateResults, exercises: Exercise[]) {
     const resultsByDay = exercises.map((exercise) => getSingleExerciseProgress(dateResult.results, exercise));
 
     return resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer());
   }
 
-  // Extracted function to build day progress object
   function buildDayProgress(dateResult: DateResults, exercisesDone: Result[], words: string[]) {
     return {
       day: dateResult.date.toJSDate(),
@@ -164,7 +162,6 @@ export function progressByDate(results: Result[]): ProgressOnDay[] {
     };
   }
 
-  // Extracted function to build final progress object
   function buildFinalProgress(
     unique: { day: any; words: string[]; exercisesDone: any },
     index: number,

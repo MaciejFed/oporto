@@ -1,7 +1,7 @@
-import { Other } from '../repository/exercises-repository';
-import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
+import { Other } from '../../repository/exercises-repository';
+import { OtherTranslationExercise } from '../../exercise/translation/other-translation-exercise';
 import { printExampleSentence, printWithFeedback } from './terminal-utils';
-import Output from './output';
+import Output from './../output';
 
 describe('Terminal Utils', () => {
   it('Should Not Print Any Red Letters On Correct Answer', () => {

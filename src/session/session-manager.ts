@@ -15,11 +15,11 @@ import { EventProcessor } from '../event/event-processor';
 import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
 import { saveNewResult } from '../repository/result-repository';
-import { AnswerInputType } from '../io/input';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { exec } from 'child_process';
 import { Exercise } from '../exercise/exercise';
 import { generateExercisesForSession } from '../exercise/generator';
+import { AnswerInputType } from '../io/terminal/terminal-utils';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;

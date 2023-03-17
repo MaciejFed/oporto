@@ -4,23 +4,33 @@ import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 
 export const VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING = -500;
 
+function isTranslationToPortugueseFromHearing(exercise: Exercise): exercise is TranslationExercise {
+  return exercise instanceof TranslationExercise && exercise.isTranslationToPortugueseFromHearing();
+}
+
+function isMatchingTranslationSubject(resultExercise: Exercise, targetExercise: Exercise): boolean {
+  return (
+    resultExercise.exerciseType === targetExercise.exerciseType &&
+    (resultExercise as TranslationExercise).isTranslationSubjectEqual(targetExercise)
+  );
+}
+
 export function exerciseTranslationNeverDoneFromHearing(
   exercise: Exercise,
   { allResults }: ExerciseResultContext
 ): Priority[] {
-  if (!(exercise instanceof TranslationExercise) || exercise.isTranslationToPortugueseFromHearing()) {
+  if (isTranslationToPortugueseFromHearing(exercise)) {
     return noPriority(exercise);
   }
+
   const fromHearingTranslationsCorrect = allResults.filter((result) => {
-    if (
-      result.exercise.exerciseType === exercise.exerciseType &&
-      (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise)
-    ) {
-      const tranlsationExercise = result.exercise as unknown as TranslationExercise;
-      return tranlsationExercise.isTranslationToPortugueseFromHearing() && result.wasCorrect;
-    }
-    return false;
+    const resultExercise = result.exercise;
+
+    if (!isTranslationToPortugueseFromHearing(resultExercise)) return false;
+
+    return isMatchingTranslationSubject(resultExercise, exercise) && result.wasCorrect;
   });
+
   if (fromHearingTranslationsCorrect.length === 0) {
     return [
       {
@@ -30,5 +40,6 @@ export function exerciseTranslationNeverDoneFromHearing(
       }
     ];
   }
+
   return noPriority(exercise);
 }
