@@ -165,7 +165,7 @@ function getExercisesWithPriorities(
     .sort((a, b) => b.priorityValueTotal - a.priorityValueTotal);
 }
 
-function combinePriorities(previous: Foo, current: Priority) {
+function combinePriorities(previous: PriorityWithValue, current: Priority) {
   previous.priorities.push({
     priorityName: current.priorityName,
     priorityValue: current.priorityValue
@@ -176,7 +176,7 @@ function combinePriorities(previous: Foo, current: Priority) {
   };
 }
 
-interface Foo {
+interface PriorityWithValue {
   priorities: {
     priorityName: string;
     priorityValue: number;
@@ -185,7 +185,7 @@ interface Foo {
   exercise: Exercise;
 }
 
-function initializePriorities(ex: any): Foo {
+function initializePriorities(ex: any): PriorityWithValue {
   return {
     priorities: [
       {
@@ -198,7 +198,7 @@ function initializePriorities(ex: any): Foo {
   };
 }
 
-function filterInvalidPriorities(combinedPriorities: Foo) {
+function filterInvalidPriorities(combinedPriorities: PriorityWithValue) {
   return {
     ...combinedPriorities,
     priorities: combinedPriorities.priorities.filter(
