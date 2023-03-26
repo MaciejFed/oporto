@@ -15,6 +15,8 @@ export type Verb = {
   pastPerfect?: { [key in Person]: string };
 };
 
+export type WordTypes = Noun | Verb | Other | Adjective;
+
 type NounGender = 'masculine' | 'feminine' | 'none';
 
 type SentenceType = 'question' | 'statement';
