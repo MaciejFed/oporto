@@ -1,7 +1,7 @@
 import { Priority, PriorityName } from './priority';
 import { Exercise } from '../exercise/exercise';
-import { AnswerInputType } from '../io/input';
 import { Result } from '../service/result';
+import { AnswerInputType } from '../io/terminal/terminal-utils';
 
 export function generatePriority(exercise: Exercise, priorityName: PriorityName, priorityValue: number): Priority[] {
   return [

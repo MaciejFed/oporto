@@ -91,3 +91,11 @@ export function isOnWeekDay(resultDate: Date, weekday: number) {
 
   return now.weekNumber === resultDateTime.weekNumber && resultDateTime.weekday === weekday;
 }
+
+export function areSameCalendarDay(date1: Date, date2: Date): boolean {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+}

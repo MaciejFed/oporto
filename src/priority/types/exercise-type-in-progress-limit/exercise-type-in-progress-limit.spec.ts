@@ -11,6 +11,7 @@ import { NounTranslationExercise } from '../../../exercise/translation/noun-tran
 import { readAll } from '../../../repository/exercises-repository';
 import { ExerciseResultContext, noPriority } from '../../priority';
 import { getGroupExerciseProgress, getSingleExerciseProgress } from '../../../service/progress';
+import { generateAllPossibleExercises } from '../../../exercise/generator';
 
 describe('Priority - EXERCISE_TYPE_IN_PROGRESS_LIMIT', () => {
   it('Sentence Exercise In Progress Reaching Limit', () => {
@@ -34,11 +35,12 @@ describe('Priority - EXERCISE_TYPE_IN_PROGRESS_LIMIT', () => {
       'EXERCISE_TYPE_ABOVE_PROGRESS_LIMIT',
       VALUE_EXERCISE_LIMIT
     );
+    const allExercises = generateAllPossibleExercises();
     const actualPriorityInLimit = exerciseTypeInProgressLimit(exerciseInLimit, {
-      exerciseTypeProgress: getGroupExerciseProgress(results, 'SentenceTranslation')
+      exerciseTypeProgress: getGroupExerciseProgress(allExercises, results, 'SentenceTranslation')
     } as ExerciseResultContext);
     const actualPriorityOutOfLimit = exerciseTypeInProgressLimit(exerciseOutOfLimit, {
-      exerciseTypeProgress: getGroupExerciseProgress(results, 'SentenceTranslation')
+      exerciseTypeProgress: getGroupExerciseProgress(allExercises, results, 'SentenceTranslation')
     } as ExerciseResultContext);
 
     expect(exerciseInLimitExpectedPriority).toStrictEqual(actualPriorityInLimit);

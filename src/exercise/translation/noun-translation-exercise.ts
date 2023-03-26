@@ -27,13 +27,17 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     return this.noun.portuguese.word === translationExercise.noun.portuguese.word;
   }
 
-  getExerciseBodyPrefix(): string {
+  getBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
 
-  getExerciseBodySuffix = () => '';
+  getBodySuffix = () => '';
 
-  getExerciseDescription = () => {
+  getBaseWord() {
+    return this.noun;
+  }
+
+  getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.noun.english}`;
@@ -41,15 +45,15 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     return `Portuguese: ${this.getWordWithGender()}`;
   };
 
-  getExerciseTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
+  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.noun.english);
 
-  checkAnswerCorrect(answer: string): boolean {
+  isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.getWordWithGender());
+  getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.getWordWithGender());
 
   equal = (other: NounTranslationExercise) =>
     other.exerciseType === 'NounTranslation' &&

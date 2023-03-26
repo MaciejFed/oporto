@@ -4,6 +4,7 @@ import { NounTranslationExercise } from '../../../exercise/translation/noun-tran
 import { Result } from '../../../service/result';
 import { exerciseDoneToday, valueDoneToday } from './exercise-done-today';
 import { ExerciseResultContext } from '../../priority';
+import { getAllResultsForExerciseSubject } from '../../../repository/result-repository';
 
 describe('Priority - EXERCISE_DONE_TODAY', () => {
   it('Exercise Done Today 1 Time', () => {
@@ -16,7 +17,9 @@ describe('Priority - EXERCISE_DONE_TODAY', () => {
       generateResultForExerciseDaysAgo(testExercise, true, 2)
     ];
     const expectedPriority = generatePriority(testExercise, 'EXERCISE_DONE_TODAY', valueDoneToday(1));
-    const actualPriority = exerciseDoneToday(testExercise, { allResults } as ExerciseResultContext);
+    const actualPriority = exerciseDoneToday(testExercise, {
+      exerciseSubjectResults: getAllResultsForExerciseSubject(allResults, testExercise)
+    } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);
     expect(actualPriority).toStrictEqual(expectedPriority);
@@ -24,11 +27,11 @@ describe('Priority - EXERCISE_DONE_TODAY', () => {
 
   it('Exercise Done Today N Times', () => {
     const testExercise = new VerbExercise();
-    const allResults: Result[] = [];
+    const exerciseSubjectResults: Result[] = [];
     for (let i = 2; i < 8; i++) {
-      allResults.push(generateResultForExerciseDaysAgo(testExercise, true, 0));
+      exerciseSubjectResults.push(generateResultForExerciseDaysAgo(testExercise, true, 0));
       const expectedPriority = generatePriority(testExercise, 'EXERCISE_DONE_TODAY', valueDoneToday(i - 1));
-      const actualPriority = exerciseDoneToday(testExercise, { allResults } as ExerciseResultContext);
+      const actualPriority = exerciseDoneToday(testExercise, { exerciseSubjectResults } as ExerciseResultContext);
 
       expect(actualPriority.length).toEqual(1);
       expect(actualPriority).toStrictEqual(expectedPriority);

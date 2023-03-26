@@ -2,15 +2,20 @@ import { Exercise } from '../../../exercise/exercise';
 import { getAllResultsForExerciseSubject } from '../../../repository/result-repository';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 
-export function exerciseDoneInLastHour(exercise: Exercise, { allResults }: ExerciseResultContext): Priority[] {
-  const resultsToday = getAllResultsForExerciseSubject(allResults, exercise).filter(
-    (result) => result.date.getTime() > new Date().getTime() - 1000 * 60 * 60
+const now = new Date();
+
+export function exerciseDoneInLastHour(
+  exercise: Exercise,
+  { exerciseSubjectResults }: ExerciseResultContext
+): Priority[] {
+  const resultsToday = exerciseSubjectResults.filter(
+    (result) => result.date.getTime() > now.getTime() - 1000 * 60 * 60
   );
   if (resultsToday.length > 0) {
     return [
       resultsToday.reduce(
         (previous, current) => {
-          previous.priorityValue += (Math.round((current.date.getTime() - new Date().getTime()) / 60000) + 60) * -3;
+          previous.priorityValue += (Math.round((current.date.getTime() - now.getTime()) / 60000) + 60) * -3;
           return previous;
         },
         {

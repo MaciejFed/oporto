@@ -33,30 +33,34 @@ export class VerbExercise implements Exercise, Comparable {
     return verbExercise;
   }
 
-  getExerciseTranslation = () => undefined;
+  getTranslation = () => undefined;
 
-  getExerciseBodyPrefix = () => `[${vertTimePrintVersion(this.verbTime)}] ${this.person}: `;
+  getBodyPrefix = () => `[${vertTimePrintVersion(this.verbTime)}] ${this.person}: `;
 
-  getExerciseBodySuffix = () => '';
+  getBodySuffix = () => '';
 
-  getExerciseDescription = () => `Infinitive: ${this.verb.english}`;
+  getDescription = () => `Infinitive: ${this.verb.english}`;
 
   getCorrectAnswer = () => getCorrectVerbConjugation(this.verb, this.person, this.verbTime);
 
-  checkAnswerCorrect(answer: string): boolean {
+  isAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
-  getMaxWantedProgress(): RatioRange {
+  getMaxProgressRange(): RatioRange {
     return '80-100';
   }
 
-  getMinimumAnswers(): number {
+  getMinAnswerCount(): number {
     return 2;
   }
 
-  getRepeatAnswerPhrase = () => `${this.person} ${this.getCorrectAnswer()}`;
+  getBaseWord() {
+    return this.verb;
+  }
+
+  getRetryPrompt = () => `${this.person} ${this.getCorrectAnswer()}`;
 
   equal = (exercise: VerbExercise) =>
     exercise.exerciseType === 'VerbExercise' &&

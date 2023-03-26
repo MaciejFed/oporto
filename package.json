@@ -34,6 +34,7 @@
     "figlet": "^1.5.2",
     "luxon": "^3.0.1",
     "path": "^0.12.7",
+    "performance-now": "^2.1.0",
     "terminal-kit": "^2.4.0",
     "winston": "^3.8.0"
   },

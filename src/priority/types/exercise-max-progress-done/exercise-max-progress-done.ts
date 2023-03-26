@@ -8,7 +8,7 @@ export const VALUE_EXERCISE_MAX_PROGRESS_DONE = -1000;
 
 export function exerciseMaxProgressDone(exercise: Exercise, results: Result[], ratio: RatioRange): Priority[] {
   const correctResultsForExercise = getAllResultsForExercise(results, exercise).filter((r) => r.wasCorrect);
-  if (ratio === exercise.getMaxWantedProgress() && exercise.getMinimumAnswers() <= correctResultsForExercise.length) {
+  if (ratio === exercise.getMaxProgressRange() && exercise.getMinAnswerCount() <= correctResultsForExercise.length) {
     return [
       {
         exercise,

@@ -38,13 +38,13 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     return this.adjective.masculine.singular === translationExercise.adjective.masculine.singular;
   }
 
-  getExerciseBodyPrefix(): string {
+  getBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
 
-  getExerciseBodySuffix = () => ` [${this.gender}, ${this.number}]`;
+  getBodySuffix = () => ` [${this.gender}, ${this.number}]`;
 
-  getExerciseDescription = () => {
+  getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.adjective.english}`;
@@ -52,20 +52,24 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     return `Portuguese: ${this.adjective.masculine.singular}`;
   };
 
-  getExerciseTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.adjective.english : undefined);
+  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.adjective.english : undefined);
 
   getCorrectAnswer = () =>
     this.isTranslationToPortuguese() ? this.adjective[this.gender][this.number] : this.adjective.english;
 
-  checkAnswerCorrect(answer: string): boolean {
+  isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () =>
+  getRetryPrompt = () =>
     this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.adjective[this.gender][this.number];
 
-  getMinimumAnswers(): number {
+  getMinAnswerCount(): number {
     return 2;
+  }
+
+  getBaseWord() {
+    return this.adjective;
   }
 
   equal = (other: AdjectiveTranslationExercise) =>

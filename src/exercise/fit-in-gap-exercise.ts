@@ -13,30 +13,31 @@ export class FitInGapExercise implements Exercise, Comparable {
     this.fitIn = getRandomFitInExercise();
   }
 
-  getExerciseTranslation = () => this.fitIn.explanation;
+  getTranslation = () => this.fitIn.explanation;
 
-  getExerciseBodyPrefix = () => `${this.fitIn.prefix.length === 0 ? this.fitIn.prefix : this.fitIn.prefix.concat(' ')}`;
+  getBodyPrefix = () => `${this.fitIn.prefix.length === 0 ? this.fitIn.prefix : this.fitIn.prefix.concat(' ')}`;
 
-  getExerciseBodySuffix = () => ' '.concat(this.fitIn.suffix);
+  getBodySuffix = () => ' '.concat(this.fitIn.suffix);
 
-  getExerciseDescription = () => 'Complete the sentence.';
+  getDescription = () => 'Complete the sentence.';
 
   getCorrectAnswer = () => this.fitIn.answer;
 
-  getMaxWantedProgress(): RatioRange {
+  getMaxProgressRange(): RatioRange {
     return '80-100';
   }
 
-  getMinimumAnswers(): number {
+  getMinAnswerCount(): number {
     return 3;
   }
 
-  checkAnswerCorrect(answer: string): boolean {
+  isAnswerCorrect(answer: string): boolean {
     return this.fitIn.answer.toLowerCase() === answer.toLowerCase();
   }
 
-  getRepeatAnswerPhrase = () =>
-    `${this.getExerciseBodyPrefix()} ${this.getCorrectAnswer()} ${this.getExerciseBodySuffix()}}`;
+  getRetryPrompt = () => `${this.getBodyPrefix()} ${this.getCorrectAnswer()} ${this.getBodySuffix()}}`;
+
+  getBaseWord = () => undefined;
 
   equal = (exercise: FitInGapExercise) =>
     exercise.exerciseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);

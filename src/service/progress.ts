@@ -2,6 +2,7 @@ import { Exercise, ExerciseType } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { readAll } from '../repository/exercises-repository';
 import {
+  DateResults,
   getAllResults,
   getAllResultsBeforeDateOneWeek,
   getAllResultsByDate,
@@ -15,6 +16,7 @@ import { VerbTranslationExercise } from '../exercise/translation/verb-translatio
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
 import { onlyDistinct } from '../common/common';
+import { logger } from '../common/logger';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -33,8 +35,12 @@ export type Progress = {
   count: number;
 };
 
-export function getGroupExerciseProgress(results: Result[], exerciseType: ExerciseType): ExerciseProgress[] {
-  const exercisesOfType = generateAllPossibleExercises().filter((exercise) => exercise.exerciseType === exerciseType);
+export function getGroupExerciseProgress(
+  exercises: Exercise[],
+  results: Result[],
+  exerciseType: ExerciseType
+): ExerciseProgress[] {
+  const exercisesOfType = exercises.filter((exercise) => exercise.exerciseType === exerciseType);
   return exercisesOfType.map((exerciseOfType) => getSingleExerciseProgress(results, exerciseOfType as Exercise));
 }
 
@@ -135,51 +141,91 @@ type ProgressOnDay = {
 };
 
 export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, ExerciseProgress[]> {
-  return {
-    VerbExercise: getGroupExerciseProgress(results, 'VerbExercise'),
-    SentenceTranslation: getGroupExerciseProgress(results, 'SentenceTranslation'),
-    NounTranslation: getGroupExerciseProgress(results, 'NounTranslation'),
-    OtherTranslation: getGroupExerciseProgress(results, 'OtherTranslation'),
-    AdjectiveTranslation: getGroupExerciseProgress(results, 'AdjectiveTranslation'),
-    VerbTranslation: getGroupExerciseProgress(results, 'VerbTranslation'),
-    FitInGap: getGroupExerciseProgress(results, 'FitInGap')
+  const mapGeneratingStartTime = Date.now();
+  const exerciseTypes: ExerciseType[] = [
+    'VerbExercise',
+    'SentenceTranslation',
+    'NounTranslation',
+    'OtherTranslation',
+    'AdjectiveTranslation',
+    'VerbTranslation',
+    'FitInGap'
+  ];
+
+  const progressMap: Record<ExerciseType, ExerciseProgress[]> = {
+    VerbExercise: [],
+    NounTranslation: [],
+    OtherTranslation: [],
+    AdjectiveTranslation: [],
+    VerbTranslation: [],
+    SentenceTranslation: [],
+    FitInGap: []
   };
+
+  let filteredResults = results;
+  const allExercises = generateAllPossibleExercises();
+
+  for (const exerciseType of exerciseTypes) {
+    const exerciseProgress = getGroupExerciseProgress(allExercises, filteredResults, exerciseType);
+    progressMap[exerciseType] = exerciseProgress;
+
+    filteredResults = filteredResults.filter((result) => {
+      return !exerciseProgress.some((progress) => progress.exercise === result.exercise);
+    });
+  }
+
+  logger.info(`Generating amp took [${(mapGeneratingStartTime - Date.now()) / 1000} seconds]`);
+
+  return progressMap;
 }
 
 export function progressByDate(results: Result[]): ProgressOnDay[] {
-  const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
-  const resultsByDate = getAllResultsByDate(results);
-  const uniqueByDay = resultsByDate
-    .map((dateResult) => {
-      const resultsByDay = allUniqueWordsAsExercises.map((exercise) =>
-        getSingleExerciseProgress(dateResult.results, exercise)
-      );
-      return {
-        ...dateResult,
-        words: resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer()),
-        exercisesDone: getAllResultsBeforeDateOneWeek(dateResult.date)
-      };
-    })
-    .map((dateResult) => {
-      return {
-        day: dateResult.date.toJSDate(),
-        words: dateResult.words,
-        exercisesDone: Math.floor(dateResult.exercisesDone.length / 10)
-      };
-    });
-  const alluniqueWords = getAllUniqueWords();
-  return uniqueByDay.map((unique, index) => {
+  function getUniqueWordsForDay(dateResult: DateResults, exercises: Exercise[]) {
+    const resultsByDay = exercises.map((exercise) => getSingleExerciseProgress(dateResult.results, exercise));
+
+    return resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer());
+  }
+
+  function buildDayProgress(dateResult: DateResults, exercisesDone: Result[], words: string[]) {
+    return {
+      day: dateResult.date.toJSDate(),
+      words,
+      exercisesDone: Math.floor(exercisesDone.length / 10)
+    };
+  }
+
+  function buildFinalProgress(
+    unique: { day: any; words: string[]; exercisesDone: any },
+    index: number,
+    uniqueByDay: { words: string[] }[],
+    allUniqueWords: string[]
+  ) {
     const previous = index > 0 ? uniqueByDay[index - 1].words : [];
     const newWords = unique.words.filter((word) => !previous.includes(word));
     const lostWords = previous.filter((word) => !unique.words.includes(word));
+
     return {
       day: unique.day.toDateString(),
       wordCount: unique.words.length,
       wordsDone: unique.words,
-      wordsMissing: alluniqueWords.filter((w) => !unique.words.includes(w)),
+      wordsMissing: allUniqueWords.filter((w) => !unique.words.includes(w)),
       exercisesDone: unique.exercisesDone,
       newWords,
       lostWords
     };
+  }
+
+  const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
+  const resultsByDate = getAllResultsByDate(results);
+
+  const uniqueByDay = resultsByDate.map((dateResult) => {
+    const words = getUniqueWordsForDay(dateResult, allUniqueWordsAsExercises);
+    const exercisesDone = getAllResultsBeforeDateOneWeek(dateResult.date);
+
+    return buildDayProgress(dateResult, exercisesDone, words);
   });
+
+  const allUniqueWords = getAllUniqueWords();
+
+  return uniqueByDay.map((unique, index) => buildFinalProgress(unique, index, uniqueByDay, allUniqueWords));
 }

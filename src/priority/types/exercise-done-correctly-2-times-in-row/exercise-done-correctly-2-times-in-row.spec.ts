@@ -13,7 +13,7 @@ describe('Priority - EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW', () => {
     const firstTimeError = generateResultForExercise(testExercise, false, 'keyboard', 1);
     const thenCorrect = generateResultForExercise(testExercise, true, 'keyboard', 2);
     const actualPriority = exerciseDoneCorrectly2TimesInRow(testExercise, {
-      allResults: [firstTimeError, thenCorrect].flatMap((r) => r)
+      exerciseSubjectResults: [firstTimeError, thenCorrect].flatMap((r) => r)
     } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);
@@ -23,8 +23,10 @@ describe('Priority - EXERCISE_DONE_CORRECTLY_TWO_TIMES_IN_A_ROW', () => {
 
   it('Exercise Done Correctly Today 1 Time In A Row', () => {
     const testExercise = new VerbExercise();
-    const allResults = generateResultForExercise(testExercise, true, 'keyboard', 1);
-    const actualPriority = exerciseDoneCorrectly2TimesInRow(testExercise, { allResults } as ExerciseResultContext);
+    const exerciseSubjectResults = generateResultForExercise(testExercise, true, 'keyboard', 1);
+    const actualPriority = exerciseDoneCorrectly2TimesInRow(testExercise, {
+      exerciseSubjectResults
+    } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);
     expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');

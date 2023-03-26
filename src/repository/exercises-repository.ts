@@ -15,6 +15,8 @@ export type Verb = {
   pastPerfect?: { [key in Person]: string };
 };
 
+export type WordTypes = Noun | Verb | Other | Adjective;
+
 type NounGender = 'masculine' | 'feminine' | 'none';
 
 type SentenceType = 'question' | 'statement';
@@ -1752,7 +1754,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to save',
+      english: 'to save money',
       infinitive: 'poupar',
       presentSimple: {
         Eu: 'poupo',
@@ -4315,14 +4317,6 @@ export const db: Schema = {
       portuguese: {
         word: 'produto',
         plural: 'produtos',
-        gender: 'masculine'
-      }
-    },
-    {
-      english: 'teacher',
-      portuguese: {
-        word: 'professor',
-        plural: 'professores',
         gender: 'masculine'
       }
     },

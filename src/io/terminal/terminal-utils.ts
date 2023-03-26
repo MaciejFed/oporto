@@ -1,13 +1,11 @@
 import chalk from 'chalk';
 import figlet from 'figlet';
-import { terminal } from 'terminal-kit';
-import { formatDate, sleep } from '../common/common';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
-import { ExerciseStatistics, Result, WeekdayStatistics } from '../service/result';
-import { AnswerInputType } from './input';
-import eventProcessor from '../event/event-processor';
-import Output from './output';
-import { Person, Verb } from '../repository/exercises-repository';
+import { formatDate, sleep } from '../../common/common';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
+import { ExerciseStatistics, Result, WeekdayStatistics } from '../../service/result';
+import eventProcessor from '../../event/event-processor';
+import Output from '../output';
+import { Person, Verb } from '../../repository/exercises-repository';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -18,6 +16,8 @@ const EXERCISE_TOP_MARGIN = 6;
 const EXERCISE_BODY_MARGIN = EXERCISE_TOP_MARGIN + 3;
 const EXERCISE_REPEAT_BODY_MARGIN = EXERCISE_BODY_MARGIN + 3;
 const EXERCISE_MENU_MARGIN = EXERCISE_REPEAT_BODY_MARGIN + 1;
+
+export type AnswerInputType = 'keyboard' | 'voice';
 
 export function preExerciseClear() {
   eventProcessor.emit('TERMINAL_CLEARED', 'preExerciseClear');
@@ -147,13 +147,13 @@ export function printAllAnswers(results: Result[]) {
   });
 }
 
-export function printAllVerbConjugations({ presentSimple, pastPerfect }: Verb) {
+export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfect }: Verb) {
   const CONJUGATION_X_MARGIN = 60;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   Output.bold();
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
   Output.bold(false);
-
+  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
   const longestConjugationSize = Object.values(Person).reduce((prev, curr) => {
     const currSize = presentSimple[curr as Person].length;
     return prev > currSize ? prev : currSize;

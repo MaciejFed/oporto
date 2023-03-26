@@ -1,4 +1,4 @@
-import { Exercise, ExerciseType } from '../exercise';
+import { BaseWord, Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 import { RatioRange } from '../../service/progress';
 
@@ -28,23 +28,24 @@ export abstract class TranslationExercise implements Exercise {
     return this.translationType === 'toPortugueseFromHearing';
   }
 
-  public getMaxWantedProgress(): RatioRange {
+  public getMaxProgressRange(): RatioRange {
     return '80-100';
   }
 
-  getMinimumAnswers(): number {
+  getMinAnswerCount(): number {
     if (this.translationType === 'toEnglish') return 2;
     else if (this.translationType === 'toPortugueseFromHearing') return 3;
     return 5;
   }
 
   abstract exerciseType: ExerciseType;
-  abstract checkAnswerCorrect(answer: string): boolean;
+  abstract isAnswerCorrect(answer: string): boolean;
   abstract equal(other: Comparable): boolean;
   abstract getCorrectAnswer(): string;
-  abstract getExerciseBodyPrefix(): string;
-  abstract getExerciseBodySuffix(): string;
-  abstract getExerciseDescription(): string;
-  abstract getExerciseTranslation(): string | undefined;
-  abstract getRepeatAnswerPhrase(): string;
+  abstract getBodyPrefix(): string;
+  abstract getBodySuffix(): string;
+  abstract getDescription(): string;
+  abstract getTranslation(): string | undefined;
+  abstract getRetryPrompt(): string;
+  abstract getBaseWord(): BaseWord | undefined;
 }

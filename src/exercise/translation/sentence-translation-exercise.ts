@@ -28,13 +28,13 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
     return this.sentence.portuguese === translationExercise.sentence.portuguese;
   }
 
-  getExerciseBodyPrefix(): string {
+  getBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }
 
-  getExerciseBodySuffix = () => '';
+  getBodySuffix = () => '';
 
-  getExerciseDescription = () => {
+  getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.sentence.english}`;
@@ -42,19 +42,21 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
     return `Portuguese: ${this.sentence.portuguese}`;
   };
 
-  getExerciseTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.sentence.english : undefined);
+  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.sentence.english : undefined);
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.sentence.portuguese : this.sentence.english);
 
-  checkAnswerCorrect(answer: string): boolean {
+  isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase().replace('?', '') === answer.toLowerCase().replace('?', '');
   }
 
-  getRepeatAnswerPhrase = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.sentence.portuguese);
+  getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.sentence.portuguese);
 
-  public getMaxWantedProgress(): RatioRange {
+  public getMaxProgressRange(): RatioRange {
     return '80-100';
   }
+
+  getBaseWord = () => undefined;
 
   equal = (other: SentenceTranslationExercise) =>
     other.exerciseType === 'SentenceTranslation' &&

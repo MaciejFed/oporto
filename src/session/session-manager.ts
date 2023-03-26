@@ -15,11 +15,11 @@ import { EventProcessor } from '../event/event-processor';
 import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
 import { saveNewResult } from '../repository/result-repository';
-import { AnswerInputType } from '../io/input';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { exec } from 'child_process';
 import { Exercise } from '../exercise/exercise';
 import { generateExercisesForSession } from '../exercise/generator';
+import { AnswerInputType } from '../io/terminal/terminal-utils';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -63,11 +63,11 @@ export class SessionManager implements AppEventListener {
   private registerExerciseStartedEventListener() {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
       this.currentExercise = this.exercises.pop() || this.exercises[0];
-      this.eventProcessor.emit(EXERCISE_DESCRIPTION_PRINTED, this.currentExercise?.getExerciseDescription());
+      this.eventProcessor.emit(EXERCISE_DESCRIPTION_PRINTED, this.currentExercise?.getDescription());
       this.eventProcessor.emit(EXERCISE_BODY_PRINTED, {
-        exerciseBodyPrefix: this.currentExercise?.getExerciseBodyPrefix(),
-        exerciseBodySuffix: this.currentExercise?.getExerciseBodySuffix(),
-        exerciseTranslation: this.currentExercise?.getExerciseTranslation()
+        exerciseBodyPrefix: this.currentExercise?.getBodyPrefix(),
+        exerciseBodySuffix: this.currentExercise?.getBodySuffix(),
+        exerciseTranslation: this.currentExercise?.getTranslation()
       });
       this.exerciseInProgress = true;
       this.handleExerciseFromHearing(this.currentExercise);
@@ -93,7 +93,7 @@ export class SessionManager implements AppEventListener {
       this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       this.answer = this.answer.trim();
-      const wasCorrect = this.currentExercise?.checkAnswerCorrect(this.answer);
+      const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
       saveNewResult(convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
       logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {

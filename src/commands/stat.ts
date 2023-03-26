@@ -1,5 +1,5 @@
 import { logger } from '../common/logger';
-import { displayGenericWeeklyStatistics } from '../io/terminal-utils';
+import { displayGenericWeeklyStatistics } from '../io/terminal/terminal-utils';
 import { getAllResults } from '../repository/result-repository';
 import { getAllUniqueWords } from '../service/progress';
 import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
