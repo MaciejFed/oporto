@@ -4468,8 +4468,8 @@ export const db: Schema = {
     {
       english: 'bus',
       portuguese: {
-        word: 'ônibus',
-        plural: 'ônibus',
+        word: 'autocarro',
+        plural: 'autocarros',
         gender: 'masculine'
       }
     },
@@ -4612,7 +4612,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'square',
+      english: 'square - place',
       portuguese: {
         word: 'praça',
         plural: 'praças',
@@ -6674,7 +6674,7 @@ export const db: Schema = {
     },
     {
       english: 'Can I provide information?',
-      portuguese: 'Posso fornecer informações'
+      portuguese: 'Posso fornecer informações?'
     },
     {
       english: 'We need to talk about this',
