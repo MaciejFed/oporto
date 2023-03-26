@@ -17,13 +17,13 @@ function isMatchingTranslationSubject(resultExercise: Exercise, targetExercise: 
 
 export function exerciseTranslationNeverDoneFromHearing(
   exercise: Exercise,
-  { allResults }: ExerciseResultContext
+  { exerciseSubjectResults }: ExerciseResultContext
 ): Priority[] {
   if (isTranslationToPortugueseFromHearing(exercise)) {
     return noPriority(exercise);
   }
 
-  const fromHearingTranslationsCorrect = allResults.filter((result) => {
+  const fromHearingTranslationsCorrect = exerciseSubjectResults.filter((result) => {
     const resultExercise = result.exercise;
 
     if (!isTranslationToPortugueseFromHearing(resultExercise)) return false;

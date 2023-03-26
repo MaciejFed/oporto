@@ -1,3 +1,5 @@
+import { boolean } from 'yargs';
+import { areSameCalendarDay } from '../../../common/common';
 import { Exercise } from '../../../exercise/exercise';
 import { getAllResultsForExerciseSubject } from '../../../repository/result-repository';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
@@ -17,10 +19,10 @@ export function valueDoneToday(doneTodayCount: number): number {
   }
 }
 
-export function exerciseDoneToday(exercise: Exercise, { allResults }: ExerciseResultContext): Priority[] {
-  const resultsToday = getAllResultsForExerciseSubject(allResults, exercise).filter(
-    (result) => new Date(result.date).toDateString() === new Date().toDateString()
-  );
+const today = new Date();
+
+export function exerciseDoneToday(exercise: Exercise, { exerciseSubjectResults }: ExerciseResultContext): Priority[] {
+  const resultsToday = exerciseSubjectResults.filter((result) => areSameCalendarDay(result.date, today));
   if (resultsToday.length > 0) {
     return [
       {

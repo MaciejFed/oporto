@@ -10,9 +10,9 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING', () => {
   it('Exercise Translation Never Done From Hearing', () => {
     const toPortugueseTranslationExercise = new NounTranslationExercise();
     toPortugueseTranslationExercise.translationType = 'toPortuguese';
-    const allResults = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
+    const exerciseSubjectResults = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
     const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, {
-      allResults
+      exerciseSubjectResults
     } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);
@@ -27,9 +27,14 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING', () => {
     toPortugueseFromHearingTranslationExercise.translationType = 'toPortugueseFromHearing';
     toPortugueseFromHearingTranslationExercise.noun = toPortugueseTranslationExercise.noun;
 
-    const allResults = generateResultForExercise(toPortugueseFromHearingTranslationExercise, true, 'keyboard', 1);
+    const exerciseSubjectResults = generateResultForExercise(
+      toPortugueseFromHearingTranslationExercise,
+      true,
+      'keyboard',
+      1
+    );
     const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, {
-      allResults
+      exerciseSubjectResults
     } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);

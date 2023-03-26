@@ -16,6 +16,7 @@ import { VerbTranslationExercise } from '../exercise/translation/verb-translatio
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
 import { onlyDistinct } from '../common/common';
+import { logger } from '../common/logger';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -34,8 +35,12 @@ export type Progress = {
   count: number;
 };
 
-export function getGroupExerciseProgress(results: Result[], exerciseType: ExerciseType): ExerciseProgress[] {
-  const exercisesOfType = generateAllPossibleExercises().filter((exercise) => exercise.exerciseType === exerciseType);
+export function getGroupExerciseProgress(
+  exercises: Exercise[],
+  results: Result[],
+  exerciseType: ExerciseType
+): ExerciseProgress[] {
+  const exercisesOfType = exercises.filter((exercise) => exercise.exerciseType === exerciseType);
   return exercisesOfType.map((exerciseOfType) => getSingleExerciseProgress(results, exerciseOfType as Exercise));
 }
 
@@ -136,15 +141,42 @@ type ProgressOnDay = {
 };
 
 export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, ExerciseProgress[]> {
-  return {
-    VerbExercise: getGroupExerciseProgress(results, 'VerbExercise'),
-    SentenceTranslation: getGroupExerciseProgress(results, 'SentenceTranslation'),
-    NounTranslation: getGroupExerciseProgress(results, 'NounTranslation'),
-    OtherTranslation: getGroupExerciseProgress(results, 'OtherTranslation'),
-    AdjectiveTranslation: getGroupExerciseProgress(results, 'AdjectiveTranslation'),
-    VerbTranslation: getGroupExerciseProgress(results, 'VerbTranslation'),
-    FitInGap: getGroupExerciseProgress(results, 'FitInGap')
+  const mapGeneratingStartTime = Date.now();
+  const exerciseTypes: ExerciseType[] = [
+    'VerbExercise',
+    'SentenceTranslation',
+    'NounTranslation',
+    'OtherTranslation',
+    'AdjectiveTranslation',
+    'VerbTranslation',
+    'FitInGap'
+  ];
+
+  const progressMap: Record<ExerciseType, ExerciseProgress[]> = {
+    VerbExercise: [],
+    NounTranslation: [],
+    OtherTranslation: [],
+    AdjectiveTranslation: [],
+    VerbTranslation: [],
+    SentenceTranslation: [],
+    FitInGap: []
   };
+
+  let filteredResults = results;
+  const allExercises = generateAllPossibleExercises();
+
+  for (const exerciseType of exerciseTypes) {
+    const exerciseProgress = getGroupExerciseProgress(allExercises, filteredResults, exerciseType);
+    progressMap[exerciseType] = exerciseProgress;
+
+    filteredResults = filteredResults.filter((result) => {
+      return !exerciseProgress.some((progress) => progress.exercise === result.exercise);
+    });
+  }
+
+  logger.info(`Generating amp took [${(mapGeneratingStartTime - Date.now()) / 1000} seconds]`);
+
+  return progressMap;
 }
 
 export function progressByDate(results: Result[]): ProgressOnDay[] {

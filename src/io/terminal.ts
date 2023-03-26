@@ -210,7 +210,7 @@ export class Terminal {
   }
 
   private async sayCorrectAnswerPhrase() {
-    exec(`say "${this.exercise?.getRepeatAnswerPhrase()}"`);
+    exec(`say "${this.exercise?.getRetryPrompt()}"`);
     await sleep(2000);
     if (this.exampleSentence) {
       exec(`say "${this.exampleSentence.exampleSentence}"`);

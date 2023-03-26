@@ -1,4 +1,5 @@
 import { Comparable } from '../common/common';
+import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
 import { RatioRange } from '../service/progress';
 export type ExerciseType =
   | 'VerbExercise'
@@ -17,15 +18,26 @@ export const translationTypes: ExerciseType[] = [
   'SentenceTranslation'
 ];
 
-export interface Exercise extends Comparable {
+export type BaseWord = Noun | Adjective | Verb | Other;
+
+export interface ExerciseContent {
   exerciseType: ExerciseType;
-  getExerciseBodyPrefix(): string;
-  getExerciseBodySuffix(): string;
-  getExerciseDescription(): string;
-  getExerciseTranslation(): string | undefined;
-  getCorrectAnswer(): string;
-  checkAnswerCorrect(answer: string): boolean;
-  getRepeatAnswerPhrase(): string;
-  getMaxWantedProgress(): RatioRange;
-  getMinimumAnswers(): number;
+  getBodyPrefix(): string;
+  getBodySuffix(): string;
+  getDescription(): string;
+  getTranslation(): string | undefined;
+  getBaseWord(): BaseWord | undefined;
 }
+
+export interface ExerciseBehavior {
+  getCorrectAnswer(): string;
+  isAnswerCorrect(answer: string): boolean;
+  getRetryPrompt(): string;
+}
+
+export interface ExerciseProgress {
+  getMaxProgressRange(): RatioRange;
+  getMinAnswerCount(): number;
+}
+
+export interface Exercise extends ExerciseContent, ExerciseBehavior, ExerciseProgress, Comparable {}

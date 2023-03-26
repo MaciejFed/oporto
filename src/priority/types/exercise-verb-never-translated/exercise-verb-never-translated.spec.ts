@@ -29,7 +29,7 @@ describe('exerciseVerbNeverTranslated', () => {
   it('should return no priority if the given exercise is not an instance of VerbExercise', () => {
     const exercise = new NounTranslationExercise();
     const result = exerciseVerbNeverTranslated(exercise, {
-      allResults: getAllResults()
+      exerciseSubjectResults: getAllResults()
     } as unknown as ExerciseResultContext);
     expect(result).toEqual([
       {
@@ -43,7 +43,7 @@ describe('exerciseVerbNeverTranslated', () => {
   it('should return a priority with VALUE_EXERCISE_VERB_NEVER_TRANSLATED if there are less than 3 correct translations', () => {
     translationExercise.isTranslationSubjectEqual = jest.fn().mockReturnValue(true);
     const result = exerciseVerbNeverTranslated(verbExercise, {
-      allResults: getAllResults()
+      exerciseSubjectResults: getAllResults()
     } as unknown as ExerciseResultContext);
 
     expect(result).toEqual([
@@ -58,8 +58,10 @@ describe('exerciseVerbNeverTranslated', () => {
   it('should return no priority if there are 3 or more correct translations', () => {
     const newTranslationExercise = new VerbTranslationExercise();
     newTranslationExercise.isTranslationSubjectEqual = jest.fn().mockReturnValue(true);
-    const allResults = [...getAllResults(), { exercise: newTranslationExercise, wasCorrect: true }];
-    const result = exerciseVerbNeverTranslated(verbExercise, { allResults } as unknown as ExerciseResultContext);
+    const exerciseSubjectResults = [...getAllResults(), { exercise: newTranslationExercise, wasCorrect: true }];
+    const result = exerciseVerbNeverTranslated(verbExercise, {
+      exerciseSubjectResults
+    } as unknown as ExerciseResultContext);
 
     expect(result).toEqual([
       {

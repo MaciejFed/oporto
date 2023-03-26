@@ -14,12 +14,15 @@ function isTranslatedProperly(result: Result, exercise: Exercise) {
   );
 }
 
-export function exerciseVerbNeverTranslated(exercise: Exercise, { allResults }: ExerciseResultContext): Priority[] {
+export function exerciseVerbNeverTranslated(
+  exercise: Exercise,
+  { exerciseSubjectResults }: ExerciseResultContext
+): Priority[] {
   if (!(exercise instanceof VerbExercise)) {
     return noPriority(exercise);
   }
 
-  const translatedProperlyResults = allResults.filter((result) => isTranslatedProperly(result, exercise));
+  const translatedProperlyResults = exerciseSubjectResults.filter((result) => isTranslatedProperly(result, exercise));
 
   if (translatedProperlyResults.length < 3) {
     return [

@@ -16,6 +16,7 @@ describe('Result Repository', () => {
 
       if (resultsForExercise.length > 1) {
         console.log(resultsForExercise);
+        throw Error(JSON.stringify(resultsForExercise));
       }
       expect(resultsForExercise.length).toBe(1);
       expect(exercise.getCorrectAnswer()).toEqual(exercises[index].getCorrectAnswer());
