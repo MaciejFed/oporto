@@ -49,8 +49,8 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     const fileModuleActual = jest.requireActual('../io/file');
     return {
       ...fileModuleActual,
-      readFromFile: () => mockResultFile,
-      saveToFile: (data: string) => {
+      readResultsFromFile: () => mockResultFile,
+      saveResultsToFile: (data: string) => {
         mockResultFile = data;
       }
     };

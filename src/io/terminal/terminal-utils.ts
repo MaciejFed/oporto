@@ -6,6 +6,7 @@ import { ExerciseStatistics, Result, WeekdayStatistics } from '../../service/res
 import eventProcessor from '../../event/event-processor';
 import Output from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
+import { clearLine } from 'readline';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -88,15 +89,33 @@ export function printInBetweenMenu(printTranslation: boolean) {
   }
 }
 
-export function printExampleSentence(wordStartIndex: number, exerciseWord: string, exampleSentence = '') {
+export function printExampleSentence(
+  wordStartIndex: number,
+  exerciseWord: string,
+  exampleSentence: string,
+  exampleSentencePrefixLine: string
+) {
   const examplePrefix = 'Example: ';
   Output.bold();
   Output.moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
   Output.bold(false);
-  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 4, `"${exampleSentence}"`);
+  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 4, `"${exampleSentencePrefixLine}"`);
+  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 5, `"${exampleSentence}"`);
   Output.yellow();
-  Output.moveTo(1 + examplePrefix.length + wordStartIndex + 1, EXERCISE_MENU_MARGIN + 4, exerciseWord);
+  Output.moveTo(1 + examplePrefix.length + wordStartIndex + 1, EXERCISE_MENU_MARGIN + 5, exerciseWord);
   Output.white();
+}
+
+export function printExampleTranslation(
+  exampleTranslationPrefix: string | undefined,
+  exampleTranslation: string | undefined
+) {
+  Output.moveTo(
+    1,
+    EXERCISE_MENU_MARGIN + 6,
+    '                                                                          '
+  );
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 6, `${exampleTranslationPrefix}  ${exampleTranslation}`);
 }
 
 type FeedbackType = 'CorrectAnswer' | 'ActualAnswer';

@@ -108,6 +108,39 @@ function mapToRatioRange(ratio: number, neverDone: boolean): RatioRange {
   return '0-39';
 }
 
+export function getAllUniqueWordsConjugated(): string[] {
+  const nouns = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural]);
+  const verbs = readAll().verbs.flatMap((verb) => [
+    verb.infinitive,
+    verb.presentSimple.Eu,
+    verb.presentSimple.Tu,
+    verb.presentSimple['Ela/Ele/Você'],
+    verb.presentSimple.Nós,
+    verb.presentSimple['Eles/Elas/Vocēs'],
+    verb.pastPerfect?.Eu,
+    verb.pastPerfect?.Tu,
+    verb.pastPerfect?.['Ela/Ele/Você'],
+    verb.pastPerfect?.Nós,
+    verb.pastPerfect?.['Eles/Elas/Vocēs']
+  ]);
+  const others = readAll().others.map((other) => other.portuguese);
+  const adjectives = readAll().adjectives.flatMap((adjective) => [
+    adjective.masculine.singular,
+    adjective.masculine.plural,
+    adjective.feminine.singular,
+    adjective.feminine.plural
+  ]);
+
+  const allWords = [nouns, verbs, others, adjectives]
+    .flatMap((w) => w)
+    .filter((w) => w !== undefined)
+    .map((w) => w!.toLowerCase())
+    .filter((word) => word)
+    .sort();
+
+  return [...new Set(allWords)];
+}
+
 export function getAllUniqueWords(): string[] {
   const nouns = readAll().nouns.map((noun) => noun.portuguese.word);
   const verbs = readAll().verbs.map((verb) => verb.infinitive);
@@ -116,6 +149,7 @@ export function getAllUniqueWords(): string[] {
 
   const allWords = [nouns, verbs, others, adjectives]
     .flatMap((w) => w)
+    .map((w) => w.toLowerCase())
     .filter((word) => word)
     .sort();
 

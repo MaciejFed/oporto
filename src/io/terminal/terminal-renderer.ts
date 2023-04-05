@@ -33,7 +33,7 @@ import { Exercise } from '../../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../../service/result';
 import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../../repository/result-repository';
 import { sleep } from '../../common/common';
-import { findSentenceExamplesForExercise } from '../../service/example-finder';
+import { findExampleSentenceAndWord } from '../../service/example-finder';
 import { EventProcessor } from '../../event/event-processor';
 import { logger } from '../../common/logger';
 
@@ -47,7 +47,7 @@ export class TerminalRenderer {
   exerciseInProgress: boolean;
   exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
-  exampleSentence?: { wordStartIndex: number; exampleSentence: string; exerciseWord: string } | undefined;
+  exampleSentence?: string | undefined;
 
   constructor() {
     this.exerciseInProgress = false;
@@ -114,14 +114,14 @@ export class TerminalRenderer {
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      this.exampleSentence = findSentenceExamplesForExercise(exercise);
-      if (this.exampleSentence) {
-        printExampleSentence(
-          this.exampleSentence.wordStartIndex,
-          this.exampleSentence.exerciseWord,
-          this.exampleSentence.exampleSentence
-        );
-      }
+      findExampleSentenceAndWord(
+        exercise,
+        ({ wordStartIndex, exerciseWord, exampleSentencePrefixLine, exampleSentence }) => {
+          this.exampleSentence = `${exampleSentencePrefixLine}\n${exampleSentence}`;
+          logger.info(`Prefix: [${exampleSentencePrefixLine}]`);
+          printExampleSentence(wordStartIndex, exerciseWord, exampleSentence, exampleSentencePrefixLine);
+        }
+      );
       this.sayCorrectAnswerPhrase();
       if (wasCorrect) {
         this.endOfExerciseMenu();
@@ -199,9 +199,9 @@ export class TerminalRenderer {
 
   private async sayCorrectAnswerPhrase() {
     exec(`say "${this.exercise?.getRetryPrompt()}"`);
-    await sleep(2000);
+    await sleep(3000);
     if (this.exampleSentence) {
-      exec(`say "${this.exampleSentence.exampleSentence}"`);
+      exec(`say "${this.exampleSentence}"`);
     }
   }
 }

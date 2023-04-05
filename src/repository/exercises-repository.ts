@@ -62,6 +62,7 @@ export type Schema = {
   others: Other[];
   adjectives: Adjective[];
   sentences: Sentence[];
+  phrases: Sentence[];
   fitIn: FitIn[];
 };
 
@@ -2309,6 +2310,24 @@ export const db: Schema = {
         'Ela/Ele/Você': 'mostrou',
         Nós: 'mostrámos',
         'Eles/Elas/Vocēs': 'mostraram'
+      }
+    },
+    {
+      english: 'to be kidding',
+      infinitive: 'brincar',
+      presentSimple: {
+        Eu: 'brinco',
+        Tu: 'brincas',
+        'Ela/Ele/Você': 'brinca',
+        Nós: 'brincamos',
+        'Eles/Elas/Vocēs': 'brincam'
+      },
+      pastPerfect: {
+        Eu: 'brinquei',
+        Tu: 'brincaste',
+        'Ela/Ele/Você': 'brincou',
+        Nós: 'brincámos',
+        'Eles/Elas/Vocēs': 'brincaram'
       }
     }
   ],
@@ -4921,14 +4940,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'flood',
-      portuguese: {
-        word: 'enchente',
-        plural: 'enchentes',
-        gender: 'feminine'
-      }
-    },
-    {
       english: 'storm',
       portuguese: {
         word: 'tempestade',
@@ -5057,6 +5068,30 @@ export const db: Schema = {
       portuguese: {
         word: 'sombra',
         plural: 'sombras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'voice',
+      portuguese: {
+        word: 'voz',
+        plural: 'vozes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'face',
+      portuguese: {
+        word: 'rosto',
+        plural: 'rostos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'skirt',
+      portuguese: {
+        word: 'saia',
+        plural: 'saias',
         gender: 'feminine'
       }
     }
@@ -5441,6 +5476,98 @@ export const db: Schema = {
     {
       portuguese: 'se',
       english: 'if'
+    },
+    {
+      portuguese: 'lentamente',
+      english: 'slowly'
+    },
+    {
+      portuguese: 'ali',
+      english: 'over there'
+    },
+    {
+      portuguese: 'lá',
+      english: 'there'
+    },
+    {
+      portuguese: 'acima',
+      english: 'above'
+    },
+    {
+      portuguese: 'abaixo',
+      english: 'below'
+    },
+    {
+      portuguese: 'dentro',
+      english: 'inside'
+    },
+    {
+      portuguese: 'logo',
+      english: 'soon'
+    },
+    {
+      portuguese: 'então',
+      english: 'then'
+    },
+    {
+      portuguese: 'ainda',
+      english: 'still'
+    },
+    {
+      portuguese: 'já',
+      english: 'already'
+    },
+    {
+      portuguese: 'apenas',
+      english: 'just'
+    },
+    {
+      portuguese: 'também',
+      english: 'also'
+    },
+    {
+      portuguese: 'além',
+      english: 'more or less'
+    },
+    {
+      portuguese: 'cerca',
+      english: 'around'
+    },
+    {
+      portuguese: 'aproximadamente',
+      english: 'approximately'
+    },
+    {
+      portuguese: 'talvez',
+      english: 'perhaps'
+    },
+    {
+      portuguese: 'provavelmente',
+      english: 'probably'
+    },
+    {
+      portuguese: 'possivelmente',
+      english: 'possibly'
+    },
+    {
+      portuguese: 'realmente',
+      english: 'really'
+    },
+    {
+      portuguese: 'efetivamente',
+      english: 'effectively'
+    },
+    {
+      portuguese: 'especialmente',
+      english: 'especially'
+    },
+    {
+      portuguese: 'finalmente',
+      english: 'finally'
+    },
+    {
+      portuguese: 'geralmente',
+      english: 'generally'
     }
   ],
   adjectives: [
@@ -5902,6 +6029,281 @@ export const db: Schema = {
       feminine: {
         singular: 'perfeita',
         plural: 'perfeitas'
+      }
+    },
+    {
+      english: 'low',
+      masculine: {
+        singular: 'baixo',
+        plural: 'baixos'
+      },
+      feminine: {
+        singular: 'baixa',
+        plural: 'baixas'
+      }
+    },
+    {
+      english: 'ugly',
+      masculine: {
+        singular: 'feio',
+        plural: 'feios'
+      },
+      feminine: {
+        singular: 'feia',
+        plural: 'feias'
+      }
+    },
+    {
+      english: 'slow',
+      masculine: {
+        singular: 'lento',
+        plural: 'lentos'
+      },
+      feminine: {
+        singular: 'lenta',
+        plural: 'lentas'
+      }
+    },
+    {
+      english: 'short',
+      masculine: {
+        singular: 'curto',
+        plural: 'curtos'
+      },
+      feminine: {
+        singular: 'curta',
+        plural: 'curtas'
+      }
+    },
+    {
+      english: 'narrow',
+      masculine: {
+        singular: 'estreito',
+        plural: 'estreitos'
+      },
+      feminine: {
+        singular: 'estreita',
+        plural: 'estreitas'
+      }
+    },
+    {
+      english: 'expensive',
+      masculine: {
+        singular: 'caro',
+        plural: 'caros'
+      },
+      feminine: {
+        singular: 'cara',
+        plural: 'caras'
+      }
+    },
+    {
+      english: 'cheap',
+      masculine: {
+        singular: 'barato',
+        plural: 'baratos'
+      },
+      feminine: {
+        singular: 'barata',
+        plural: 'baratas'
+      }
+    },
+    {
+      english: 'fat',
+      masculine: {
+        singular: 'gordo',
+        plural: 'gordos'
+      },
+      feminine: {
+        singular: 'gorda',
+        plural: 'gordas'
+      }
+    },
+    {
+      english: 'lean',
+      masculine: {
+        singular: 'magro',
+        plural: 'magros'
+      },
+      feminine: {
+        singular: 'magra',
+        plural: 'magras'
+      }
+    },
+    {
+      english: 'elderly',
+      masculine: {
+        singular: 'idoso',
+        plural: 'idosos'
+      },
+      feminine: {
+        singular: 'idosa',
+        plural: 'idosas'
+      }
+    },
+    {
+      english: 'heavy',
+      masculine: {
+        singular: 'pesado',
+        plural: 'pesados'
+      },
+      feminine: {
+        singular: 'pesada',
+        plural: 'pesadas'
+      }
+    },
+    {
+      english: 'clean',
+      masculine: {
+        singular: 'limpo',
+        plural: 'limpos'
+      },
+      feminine: {
+        singular: 'limpa',
+        plural: 'limpas'
+      }
+    },
+    {
+      english: 'dirty',
+      masculine: {
+        singular: 'sujo',
+        plural: 'sujos'
+      },
+      feminine: {
+        singular: 'suja',
+        plural: 'sujas'
+      }
+    },
+    {
+      english: 'dry',
+      masculine: {
+        singular: 'seco',
+        plural: 'secos'
+      },
+      feminine: {
+        singular: 'seca',
+        plural: 'secas'
+      }
+    },
+    {
+      english: 'wet',
+      masculine: {
+        singular: 'molhado',
+        plural: 'molhados'
+      },
+      feminine: {
+        singular: 'molhada',
+        plural: 'molhadas'
+      }
+    },
+    {
+      english: 'bitter',
+      masculine: {
+        singular: 'amargo',
+        plural: 'amargos'
+      },
+      feminine: {
+        singular: 'amarga',
+        plural: 'amargas'
+      }
+    },
+    {
+      english: 'sour',
+      masculine: {
+        singular: 'azedo',
+        plural: 'azedos'
+      },
+      feminine: {
+        singular: 'azeda',
+        plural: 'azedas'
+      }
+    },
+    {
+      english: 'salty',
+      masculine: {
+        singular: 'salgado',
+        plural: 'salgados'
+      },
+      feminine: {
+        singular: 'salgada',
+        plural: 'salgadas'
+      }
+    },
+    {
+      english: 'deep',
+      masculine: {
+        singular: 'profundo',
+        plural: 'profundos'
+      },
+      feminine: {
+        singular: 'profunda',
+        plural: 'profundas'
+      }
+    },
+    {
+      english: 'shallow',
+      masculine: {
+        singular: 'raso',
+        plural: 'rasos'
+      },
+      feminine: {
+        singular: 'rasa',
+        plural: 'rasas'
+      }
+    },
+    {
+      english: 'sharp',
+      masculine: {
+        singular: 'afiado',
+        plural: 'afiados'
+      },
+      feminine: {
+        singular: 'afiada',
+        plural: 'afiadas'
+      }
+    },
+    {
+      english: 'blind',
+      masculine: {
+        singular: 'cego',
+        plural: 'cegos'
+      },
+      feminine: {
+        singular: 'cega',
+        plural: 'cegas'
+      }
+    },
+    {
+      english: 'deaf',
+      masculine: {
+        singular: 'surdo',
+        plural: 'surdos'
+      },
+      feminine: {
+        singular: 'surda',
+        plural: 'surdas'
+      }
+    },
+    {
+      english: 'clear',
+      masculine: {
+        singular: 'claro',
+        plural: 'claros'
+      },
+      feminine: {
+        singular: 'clara',
+        plural: 'claras'
+      }
+    },
+    {
+      english: 'dark',
+      masculine: {
+        singular: 'escuro',
+        plural: 'escuros'
+      },
+      feminine: {
+        singular: 'escura',
+        plural: 'escuras'
       }
     }
   ],
@@ -7099,6 +7501,12 @@ export const db: Schema = {
     {
       portuguese: 'Aos domingos o meu marido e eu normalmente passeamos no parque',
       english: 'On Sundays my husband and I usually stroll in the park'
+    }
+  ],
+  phrases: [
+    {
+      portuguese: 'para ser preciso',
+      english: 'to be precise'
     }
   ],
   fitIn: [

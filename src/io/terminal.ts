@@ -29,13 +29,14 @@ import {
   printExerciseRepeatBody,
   printInBetweenMenu,
   printExampleSentence,
-  printAllVerbConjugations
+  printAllVerbConjugations,
+  printExampleTranslation
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { sleep } from '../common/common';
-import { findSentenceExamplesForExercise } from '../service/example-finder';
+import { findExampleSentenceAndWord } from '../service/example-finder';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -48,7 +49,18 @@ export class Terminal {
   exerciseInProgress: boolean;
   exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
-  exampleSentence?: { wordStartIndex: number; exampleSentence: string; exerciseWord: string } | undefined;
+  exampleSentence:
+    | {
+        exampleSentencePartOne?: string | undefined;
+        exampleSentencePartTwo?: string | undefined;
+        wordStartIndex: number;
+        exerciseWord: string;
+      }
+    | undefined;
+  exampleSentenceFull?: string | undefined;
+
+  exampleSentenceTranslation?: string | undefined;
+  exampleSentenceTranslationApi?: string | undefined;
 
   constructor(eventProcessor: EventProcessor) {
     this.eventProcessor = eventProcessor;
@@ -113,7 +125,7 @@ export class Terminal {
       this.exerciseInProgress = true;
       this.answer = '';
       this.repetitionAnswer = '';
-      this.exampleSentence = undefined;
+      this.exampleSentenceFull = undefined;
       clear();
       preExerciseClear();
     });
@@ -126,15 +138,28 @@ export class Terminal {
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      this.exampleSentence = findSentenceExamplesForExercise(exercise);
-      if (this.exampleSentence) {
-        printExampleSentence(
-          this.exampleSentence.wordStartIndex,
-          this.exampleSentence.exerciseWord,
-          this.exampleSentence.exampleSentence
-        );
-      }
       this.sayCorrectAnswerPhrase();
+      findExampleSentenceAndWord(
+        exercise,
+        ({
+          wordStartIndex,
+          exerciseWord,
+          exampleSentence,
+          exampleSentencePrefixLine,
+          exampleSentenceTranslation,
+          exampleSentenceTranslationApi
+        }) => {
+          this.exampleSentence = {
+            exampleSentencePartOne: exampleSentencePrefixLine,
+            exampleSentencePartTwo: exampleSentence,
+            wordStartIndex,
+            exerciseWord
+          };
+          this.exampleSentenceFull = `${exampleSentencePrefixLine}.\n${exampleSentence}`;
+          this.exampleSentenceTranslation = exampleSentenceTranslation;
+          this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
+        }
+      );
       if (wasCorrect) {
         this.endOfExerciseMenu();
       } else {
@@ -200,6 +225,28 @@ export class Terminal {
       case 't':
         printExerciseTranslation(this.exerciseTranslation);
         break;
+      case '1':
+        printExerciseTranslation(this.exerciseTranslation);
+        printExampleTranslation('Movie:', this.exampleSentenceTranslation);
+        break;
+      case '2':
+        printExerciseTranslation(this.exerciseTranslation);
+        printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
+        break;
+      case 'a':
+        exec(`say "${this.exampleSentence?.exampleSentencePartOne}"`);
+        sleep(5000).then(() => {
+          exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+        });
+        break;
+      case 'e':
+        printExampleSentence(
+          this.exampleSentence!.wordStartIndex,
+          this.exampleSentence!.exerciseWord,
+          this.exampleSentence!.exampleSentencePartTwo!,
+          this.exampleSentence!.exampleSentencePartOne!
+        );
+        break;
       case 'r':
         this.sayCorrectAnswerPhrase();
         break;
@@ -211,10 +258,6 @@ export class Terminal {
 
   private async sayCorrectAnswerPhrase() {
     exec(`say "${this.exercise?.getRetryPrompt()}"`);
-    await sleep(2000);
-    if (this.exampleSentence) {
-      exec(`say "${this.exampleSentence.exampleSentence}"`);
-    }
   }
 }
 

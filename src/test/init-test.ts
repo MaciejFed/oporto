@@ -8,8 +8,8 @@ jest.mock('../io/file', () => {
   const fileModuleActual = jest.requireActual('../io/file');
   return {
     ...fileModuleActual,
-    readFromFile: () => global.resultsFile,
-    saveToFile: (data: string) => {
+    readResultsFromFile: () => global.resultsFile,
+    saveResultsToFile: (data: string) => {
       global.resultsFile = data;
     }
   };

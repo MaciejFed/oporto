@@ -4,7 +4,7 @@ import { FitInGapExercise } from '../exercise/fit-in-gap-exercise';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
-import { readFromFile, saveToFile } from '../io/file';
+import { readResultsFromFile, saveResultsToFile } from '../io/file';
 import assert from 'assert';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
@@ -79,7 +79,7 @@ const exerciseFactory = {
 };
 
 export function getAllResults(): Result[] {
-  const results = readFromFile();
+  const results = readResultsFromFile();
   const resultsJson: Result[] = JSON.parse(results);
 
   return resultsJson.map((result) => {
@@ -136,7 +136,7 @@ export function saveNewResult(newResult: Result) {
   const results = getAllResults();
   results.push(newResult);
 
-  saveToFile(JSON.stringify(results, null, 2));
+  saveResultsToFile(JSON.stringify(results, null, 2));
 }
 
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {
