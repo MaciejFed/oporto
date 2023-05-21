@@ -52,7 +52,10 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       readResultsFromFile: () => mockResultFile,
       saveResultsToFile: (data: string) => {
         mockResultFile = data;
-      }
+      },
+      findExampleSentence: async () => ({
+        portuguese: ["Sou a Marta", "Sou a Marta"]
+      })
     };
   });
 
