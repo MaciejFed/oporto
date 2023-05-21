@@ -19,7 +19,7 @@ export function displayStatistics(displayProgress: boolean) {
     const notDoneExercises = allExercises.filter(
       (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
     );
-    console.log(`All unique words: ${getAllUniqueWords().length}`);
+    logger.info(`All unique words: ${getAllUniqueWords().length}`);
     console.log(`Never Done: ${notDoneExercises.length}`);
   }
 }

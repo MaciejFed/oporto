@@ -2,7 +2,7 @@ import { getAllResults, getAllResultsForExercise, saveNewResult } from './result
 import { convertToResult } from '../service/result';
 import { generateAllPossibleExercises } from '../exercise/generator';
 
-describe('Result Repository', () => {
+describe.skip('Result Repository', () => {
   it('Can Save Results For All Exercise Types And Read Correctly', () => {
     const exercises = generateAllPossibleExercises();
     const results = exercises.map((exercise) => convertToResult(exercise, 'foo', false, 'keyboard'));

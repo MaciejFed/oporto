@@ -4,7 +4,7 @@ import { FitInGapExercise } from '../exercise/fit-in-gap-exercise';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
-import { readFromFile, saveToFile } from '../io/file';
+import { readResultsFromFile, saveResultsToFile } from '../io/file';
 import assert from 'assert';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
@@ -13,6 +13,7 @@ import { SentenceTranslationExercise } from '../exercise/translation/sentence-tr
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
+import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -54,6 +55,13 @@ function createSentenceTranslationExercise(exerciseData: any) {
   return sentenceTranslationExercise;
 }
 
+function createPhraseTranslationExercise(exerciseData: any) {
+  const phraseTranslationExercise = new PhraseTranslationExercise();
+  Object.assign(phraseTranslationExercise, exerciseData);
+  assert(phraseTranslationExercise.phrase);
+  return phraseTranslationExercise;
+}
+
 function createOtherTranslationExercise(exerciseData: any) {
   const otherTranslationExercise = new OtherTranslationExercise();
   Object.assign(otherTranslationExercise, exerciseData);
@@ -74,12 +82,13 @@ const exerciseFactory = {
   AdjectiveTranslation: createAdjectiveTranslationExercise,
   VerbTranslation: createVerbTranslationExercise,
   SentenceTranslation: createSentenceTranslationExercise,
+  PhraseTranslation: createPhraseTranslationExercise,
   OtherTranslation: createOtherTranslationExercise,
   FitInGap: createFitInGapExercise
 };
 
 export function getAllResults(): Result[] {
-  const results = readFromFile();
+  const results = readResultsFromFile();
   const resultsJson: Result[] = JSON.parse(results);
 
   return resultsJson.map((result) => {
@@ -136,7 +145,7 @@ export function saveNewResult(newResult: Result) {
   const results = getAllResults();
   results.push(newResult);
 
-  saveToFile(JSON.stringify(results, null, 2));
+  saveResultsToFile(JSON.stringify(results, null, 2));
 }
 
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {

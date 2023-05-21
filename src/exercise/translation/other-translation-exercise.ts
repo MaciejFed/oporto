@@ -55,7 +55,7 @@ export class OtherTranslationExercise extends TranslationExercise implements Com
     return 10;
   }
 
-  getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.other.english);
+  getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.other.portuguese);
 
   getBaseWord() {
     return this.other;

@@ -8,6 +8,7 @@ export type ExerciseType =
   | 'AdjectiveTranslation'
   | 'VerbTranslation'
   | 'SentenceTranslation'
+  | 'PhraseTranslation'
   | 'FitInGap';
 
 export const translationTypes: ExerciseType[] = [
@@ -15,6 +16,7 @@ export const translationTypes: ExerciseType[] = [
   'VerbTranslation',
   'OtherTranslation',
   'AdjectiveTranslation',
+  'PhraseTranslation',
   'SentenceTranslation'
 ];
 

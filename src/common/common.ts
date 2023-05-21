@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import { Zone } from 'luxon/src/zone';
 import { DurationLike } from 'luxon/src/duration';
+import { Exercise } from '../exercise/exercise';
 
 export class DateTimeExtended {
   private readonly date: DateTime;
@@ -50,6 +51,22 @@ export function onlyDistinct(arr: Comparable[]): Comparable[] {
     let unique = true;
     for (let j = 0; j < distinctElements.length; j++) {
       if (i !== j && arr[i].equal(distinctElements[j])) {
+        unique = false;
+      }
+    }
+    if (unique) {
+      distinctElements.push(arr[i]);
+    }
+  }
+  return distinctElements;
+}
+
+export function onlyDistinctSubjects(arr: Exercise[]): Exercise[] {
+  const distinctElements: Exercise[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    let unique = true;
+    for (let j = 0; j < distinctElements.length; j++) {
+      if (i !== j && arr[i].getBaseWord() === distinctElements[j].getBaseWord()) {
         unique = false;
       }
     }

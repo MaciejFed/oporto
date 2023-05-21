@@ -18,7 +18,7 @@ IMAGE
  r - repeat the answer                                                
                                                                       
                                                                       
- Example: \\"Conheço a cidade e os arredores muito bem\\"                 
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -81,7 +81,7 @@ exports[`Exercises Integration Snapshots NounTranslation 2`] = `
  WWWWWWWWWWWWWWWWWWWWW                                                
                                                                       
                                                                       
- WWWWWWWWWWWWWWWWWWWWYYYYYYWWWWWWWWWWWWWWWWWWWWWWWWWW                 
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -144,7 +144,7 @@ IMAGE
  r - repeat the answer                                                
                                                                       
                                                                       
- Example: \\"Conheço a cidade e os arredores muito bem\\"                 
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -207,7 +207,7 @@ exports[`Exercises Integration Snapshots NounTranslation 4`] = `
  WWWWWWWWWWWWWWWWWWWWW                                                
                                                                       
                                                                       
- WWWWWWWWWWWWWWWWWWWWYYYYYYWWWWWWWWWWWWWWWWWWWWWWWWWW                 
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -636,7 +636,7 @@ IMAGE
  r - repeat the answer                                      Eles: são  |foram
                                                                       
                                                                       
- Example: \\"Sou a Marta\\"                                               
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -699,7 +699,7 @@ exports[`Exercises Integration Snapshots VerbExercise 2`] = `
  WWWWWWWWWWWWWWWWWWWWW                                      WWWWWWWWWWWWWWWWW
                                                                       
                                                                       
- WWWWWWWWWWYYYWWWWWWWWW                                               
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -762,7 +762,7 @@ IMAGE
  r - repeat the answer                                      Eles: são  |foram
                                                                       
                                                                       
- Example: \\"Sou a Marta\\"                                               
+                                                                      
                                                                       
                                                                       
                                                                       
@@ -825,7 +825,7 @@ exports[`Exercises Integration Snapshots VerbExercise 4`] = `
  WWWWWWWWWWWWWWWWWWWWW                                      WWWWWWWWWWWWWWWWW
                                                                       
                                                                       
- WWWWWWWWWWYYYWWWWWWWWW                                               
+                                                                      
                                                                       
                                                                       
                                                                       

@@ -19,7 +19,7 @@ export function exerciseTranslationNeverDoneFromHearing(
   exercise: Exercise,
   { exerciseSubjectResults }: ExerciseResultContext
 ): Priority[] {
-  if (isTranslationToPortugueseFromHearing(exercise)) {
+  if (!(exercise instanceof TranslationExercise) || (exercise as TranslationExercise).translationType !== 'toEnglish') {
     return noPriority(exercise);
   }
 

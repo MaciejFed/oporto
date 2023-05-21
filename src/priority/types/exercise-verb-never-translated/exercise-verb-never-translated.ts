@@ -3,16 +3,13 @@ import { VerbExercise } from '../../../exercise/verb-exercise';
 import { TranslationExercise } from '../../../exercise/translation/translation-exercise';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 import { Result } from '../../../service/result';
+import { getProgress, getSingleExerciseProgress } from '../../../service/progress';
+import { logger } from '../../../common/logger';
+import { VerbTranslationExercise } from '../../../exercise/translation/verb-translation-exercise';
 
-export const VALUE_EXERCISE_VERB_NEVER_TRANSLATED = -150;
+export const VALUE_EXERCISE_VERB_NEVER_TRANSLATED = -500;
 
-function isTranslatedProperly(result: Result, exercise: Exercise) {
-  return (
-    result.exercise.exerciseType === 'VerbTranslation' &&
-    (result.exercise as unknown as TranslationExercise).isTranslationSubjectEqual(exercise) &&
-    result.wasCorrect
-  );
-}
+const verbs: string[] = [];
 
 export function exerciseVerbNeverTranslated(
   exercise: Exercise,
@@ -21,10 +18,15 @@ export function exerciseVerbNeverTranslated(
   if (!(exercise instanceof VerbExercise)) {
     return noPriority(exercise);
   }
-
-  const translatedProperlyResults = exerciseSubjectResults.filter((result) => isTranslatedProperly(result, exercise));
-
-  if (translatedProperlyResults.length < 3) {
+   const progress = getSingleExerciseProgress(
+    exerciseSubjectResults,
+    VerbTranslationExercise.new(exercise.verb, 'toPortuguese')
+  );
+  if (progress.ratioRange !== '80-100') {
+    if (!verbs.includes(exercise.verb.infinitive)) {
+      logger.info(`VerbExercise Prority: [${exercise.verb.infinitive}] [${progress.ratioRange}]`);
+      verbs.push(exercise.verb.infinitive);
+    }
     return [
       {
         exercise,

@@ -14,6 +14,6 @@ describe('Priority - EXERCISE_DONE_IN_LAST_HOUR', () => {
 
     expect(actualPriority.length).toBe(1);
     expect(actualPriority[0].priorityName).toEqual('EXERCISE_DONE_IN_LAST_HOUR');
-    expect(actualPriority[0].priorityValue).toEqual(-105 - 45);
+    expect(actualPriority[0].priorityValue).toEqual(-350 - 150);
   });
 });

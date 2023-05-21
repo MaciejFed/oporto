@@ -3,7 +3,7 @@ import { translationTypes } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { saveProgressToFile } from '../io/file';
 import { getAllResults } from '../repository/result-repository';
-import { progressByDate } from '../service/progress';
+import { getAllUniqueWords, progressByDate } from '../service/progress';
 
 interface ErrorContext {
   count: number;
@@ -85,6 +85,7 @@ export function saveProgress() {
   );
   console.log(sortedMap);
   console.log('Saving progress...');
+  console.log(`All unique words: ${getAllUniqueWords().length}`);
   const progress = progressByDate(getAllResults());
   saveProgressToFile(JSON.stringify(progress, null, 4));
   console.log('Progress saved...');

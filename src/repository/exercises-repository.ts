@@ -51,6 +51,11 @@ export type Sentence = {
   sentenceType?: SentenceType;
 };
 
+export type Phrase = {
+  english: string;
+  portuguese: string;
+};
+
 export type Other = {
   english: string;
   portuguese: string;
@@ -62,6 +67,7 @@ export type Schema = {
   others: Other[];
   adjectives: Adjective[];
   sentences: Sentence[];
+  phrases: Phrase[];
   fitIn: FitIn[];
 };
 
@@ -2132,7 +2138,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to break',
+      english: 'to break up',
       infinitive: 'romper',
       presentSimple: {
         Eu: 'rompo',
@@ -2309,6 +2315,528 @@ export const db: Schema = {
         'Ela/Ele/Você': 'mostrou',
         Nós: 'mostrámos',
         'Eles/Elas/Vocēs': 'mostraram'
+      }
+    },
+    {
+      english: 'to be kidding',
+      infinitive: 'brincar',
+      presentSimple: {
+        Eu: 'brinco',
+        Tu: 'brincas',
+        'Ela/Ele/Você': 'brinca',
+        Nós: 'brincamos',
+        'Eles/Elas/Vocēs': 'brincam'
+      },
+      pastPerfect: {
+        Eu: 'brinquei',
+        Tu: 'brincaste',
+        'Ela/Ele/Você': 'brincou',
+        Nós: 'brincámos',
+        'Eles/Elas/Vocēs': 'brincaram'
+      }
+    },
+    {
+      english: 'to travel',
+      infinitive: 'viajar',
+      presentSimple: {
+        Eu: 'viajo',
+        Tu: 'viajas',
+        'Ela/Ele/Você': 'viaja',
+        Nós: 'viajamos',
+        'Eles/Elas/Vocēs': 'viajam'
+      },
+      pastPerfect: {
+        Eu: 'viajei',
+        Tu: 'viajaste',
+        'Ela/Ele/Você': 'viajou',
+        Nós: 'viajámos',
+        'Eles/Elas/Vocēs': 'viajaram'
+      }
+    },
+    {
+      english: 'to cross',
+      infinitive: 'atravessar',
+      presentSimple: {
+        Eu: 'atravesso',
+        Tu: 'atravessas',
+        'Ela/Ele/Você': 'atravessa',
+        Nós: 'atravessamos',
+        'Eles/Elas/Vocēs': 'atravessam'
+      },
+      pastPerfect: {
+        Eu: 'atravessei',
+        Tu: 'atravessaste',
+        'Ela/Ele/Você': 'atravessou',
+        Nós: 'atravessámos',
+        'Eles/Elas/Vocēs': 'atravessaram'
+      }
+    },
+    {
+      english: 'to promote',
+      infinitive: 'promover',
+      presentSimple: {
+        Eu: 'promovo',
+        Tu: 'promoves',
+        'Ela/Ele/Você': 'promove',
+        Nós: 'promovemos',
+        'Eles/Elas/Vocēs': 'promovem'
+      },
+      pastPerfect: {
+        Eu: 'promovi',
+        Tu: 'promoveste',
+        'Ela/Ele/Você': 'promoveu',
+        Nós: 'promovemos',
+        'Eles/Elas/Vocēs': 'promoveram'
+      }
+    },
+    {
+      english: 'to marry',
+      infinitive: 'casar',
+      presentSimple: {
+        Eu: 'caso',
+        Tu: 'casas',
+        'Ela/Ele/Você': 'casa',
+        Nós: 'casamos',
+        'Eles/Elas/Vocēs': 'casam'
+      },
+      pastPerfect: {
+        Eu: 'casei',
+        Tu: 'casaste',
+        'Ela/Ele/Você': 'casou',
+        Nós: 'casámos',
+        'Eles/Elas/Vocēs': 'casaram'
+      }
+    },
+    {
+      english: 'to take',
+      infinitive: 'levar',
+      presentSimple: {
+        Eu: 'levo',
+        Tu: 'levas',
+        'Ela/Ele/Você': 'leva',
+        Nós: 'levamos',
+        'Eles/Elas/Vocēs': 'levam'
+      },
+      pastPerfect: {
+        Eu: 'levei',
+        Tu: 'levaste',
+        'Ela/Ele/Você': 'levou',
+        Nós: 'levámos',
+        'Eles/Elas/Vocēs': 'levaram'
+      }
+    },
+    {
+      english: 'to grab',
+      infinitive: 'agarrar',
+      presentSimple: {
+        Eu: 'agarro',
+        Tu: 'agarras',
+        'Ela/Ele/Você': 'agarra',
+        Nós: 'agarramos',
+        'Eles/Elas/Vocēs': 'agarram'
+      },
+      pastPerfect: {
+        Eu: 'agarrei',
+        Tu: 'agarraste',
+        'Ela/Ele/Você': 'agarrou',
+        Nós: 'agarrámos',
+        'Eles/Elas/Vocēs': 'agarraram'
+      }
+    },
+    {
+      english: 'to answer',
+      infinitive: 'responder',
+      presentSimple: {
+        Eu: 'respondo',
+        Tu: 'respondes',
+        'Ela/Ele/Você': 'responde',
+        Nós: 'respondemos',
+        'Eles/Elas/Vocēs': 'respondem'
+      },
+      pastPerfect: {
+        Eu: 'respondi',
+        Tu: 'respondeste',
+        'Ela/Ele/Você': 'respondeu',
+        Nós: 'respondemos',
+        'Eles/Elas/Vocēs': 'responderam'
+      }
+    },
+    {
+      english: 'to smile',
+      infinitive: 'sorrir',
+      presentSimple: {
+        Eu: 'sorrio',
+        Tu: 'sorris',
+        'Ela/Ele/Você': 'sorri',
+        Nós: 'sorrimos',
+        'Eles/Elas/Vocēs': 'sorriem'
+      },
+      pastPerfect: {
+        Eu: 'sorri',
+        Tu: 'sorriste',
+        'Ela/Ele/Você': 'sorriu',
+        Nós: 'sorrimos',
+        'Eles/Elas/Vocēs': 'sorriram'
+      }
+    },
+    {
+      english: 'to sigh',
+      infinitive: 'suspirar',
+      presentSimple: {
+        Eu: 'suspiro',
+        Tu: 'suspiras',
+        'Ela/Ele/Você': 'suspira',
+        Nós: 'suspiramos',
+        'Eles/Elas/Vocēs': 'suspiram'
+      },
+      pastPerfect: {
+        Eu: 'suspirei',
+        Tu: 'suspiraste',
+        'Ela/Ele/Você': 'suspirou',
+        Nós: 'suspirámos',
+        'Eles/Elas/Vocēs': 'suspiraram'
+      }
+    },
+    {
+      english: 'to swim',
+      infinitive: 'nadar',
+      presentSimple: {
+        Eu: 'nado',
+        Tu: 'nadas',
+        'Ela/Ele/Você': 'nada',
+        Nós: 'nadamos',
+        'Eles/Elas/Vocēs': 'nadam'
+      },
+      pastPerfect: {
+        Eu: 'nadei',
+        Tu: 'nadaste',
+        'Ela/Ele/Você': 'nadou',
+        Nós: 'nadámos',
+        'Eles/Elas/Vocēs': 'nadaram'
+      }
+    },
+    {
+      english: 'to fly',
+      infinitive: 'voar',
+      presentSimple: {
+        Eu: 'voo',
+        Tu: 'voas',
+        'Ela/Ele/Você': 'voa',
+        Nós: 'voamos',
+        'Eles/Elas/Vocēs': 'voam'
+      },
+      pastPerfect: {
+        Eu: 'voei',
+        Tu: 'voaste',
+        'Ela/Ele/Você': 'voou',
+        Nós: 'voámos',
+        'Eles/Elas/Vocēs': 'voaram'
+      }
+    },
+    {
+      english: 'to drop',
+      infinitive: 'soltar',
+      presentSimple: {
+        Eu: 'solto',
+        Tu: 'soltas',
+        'Ela/Ele/Você': 'solta',
+        Nós: 'soltamos',
+        'Eles/Elas/Vocēs': 'soltam'
+      },
+      pastPerfect: {
+        Eu: 'soltei',
+        Tu: 'soltaste',
+        'Ela/Ele/Você': 'soltou',
+        Nós: 'soltámos',
+        'Eles/Elas/Vocēs': 'soltaram'
+      }
+    },
+    {
+      english: 'to separate',
+      infinitive: 'separar',
+      presentSimple: {
+        Eu: 'separo',
+        Tu: 'separas',
+        'Ela/Ele/Você': 'separa',
+        Nós: 'separamos',
+        'Eles/Elas/Vocēs': 'separam'
+      },
+      pastPerfect: {
+        Eu: 'separei',
+        Tu: 'separaste',
+        'Ela/Ele/Você': 'separou',
+        Nós: 'separámos',
+        'Eles/Elas/Vocēs': 'separaram'
+      }
+    },
+    {
+      english: 'to push',
+      infinitive: 'empurrar',
+      presentSimple: {
+        Eu: 'empurro',
+        Tu: 'empurras',
+        'Ela/Ele/Você': 'empurra',
+        Nós: 'empurramos',
+        'Eles/Elas/Vocēs': 'empurram'
+      },
+      pastPerfect: {
+        Eu: 'empurrei',
+        Tu: 'empurraste',
+        'Ela/Ele/Você': 'empurrou',
+        Nós: 'empurrámos',
+        'Eles/Elas/Vocēs': 'empurraram'
+      }
+    },
+    {
+      english: 'to return',
+      infinitive: 'voltar',
+      presentSimple: {
+        Eu: 'volto',
+        Tu: 'voltas',
+        'Ela/Ele/Você': 'volta',
+        Nós: 'voltamos',
+        'Eles/Elas/Vocēs': 'voltam'
+      },
+      pastPerfect: {
+        Eu: 'voltei',
+        Tu: 'voltaste',
+        'Ela/Ele/Você': 'voltou',
+        Nós: 'voltámos',
+        'Eles/Elas/Vocēs': 'voltaram'
+      }
+    },
+    {
+      english: 'to shake',
+      infinitive: 'abanar',
+      presentSimple: {
+        Eu: 'abano',
+        Tu: 'abanas',
+        'Ela/Ele/Você': 'abana',
+        Nós: 'abanamos',
+        'Eles/Elas/Vocēs': 'abanam'
+      },
+      pastPerfect: {
+        Eu: 'abanei',
+        Tu: 'abanaste',
+        'Ela/Ele/Você': 'abanou',
+        Nós: 'abanámos',
+        'Eles/Elas/Vocēs': 'abanaram'
+      }
+    },
+    {
+      english: 'to scream',
+      infinitive: 'gritar',
+      presentSimple: {
+        Eu: 'grito',
+        Tu: 'gritas',
+        'Ela/Ele/Você': 'grita',
+        Nós: 'gritamos',
+        'Eles/Elas/Vocēs': 'gritam'
+      },
+      pastPerfect: {
+        Eu: 'gritei',
+        Tu: 'gritaste',
+        'Ela/Ele/Você': 'gritou',
+        Nós: 'gritámos',
+        'Eles/Elas/Vocēs': 'gritaram'
+      }
+    },
+    {
+      english: 'to climb',
+      infinitive: 'subir',
+      presentSimple: {
+        Eu: 'subo',
+        Tu: 'sobes',
+        'Ela/Ele/Você': 'sobe',
+        Nós: 'subimos',
+        'Eles/Elas/Vocēs': 'sobem'
+      },
+      pastPerfect: {
+        Eu: 'subi',
+        Tu: 'subiste',
+        'Ela/Ele/Você': 'subiu',
+        Nós: 'subimos',
+        'Eles/Elas/Vocēs': 'subiram'
+      }
+    },
+    {
+      english: 'to poison',
+      infinitive: 'envenenar',
+      presentSimple: {
+        Eu: 'enveneno',
+        Tu: 'envenenas',
+        'Ela/Ele/Você': 'envenena',
+        Nós: 'envenenamos',
+        'Eles/Elas/Vocēs': 'envenenam'
+      },
+      pastPerfect: {
+        Eu: 'envenenei',
+        Tu: 'envenenaste',
+        'Ela/Ele/Você': 'envenenou',
+        Nós: 'envenenámos',
+        'Eles/Elas/Vocēs': 'envenenaram'
+      }
+    },
+    {
+      english: 'to sing',
+      infinitive: 'cantar',
+      presentSimple: {
+        Eu: 'canto',
+        Tu: 'cantas',
+        'Ela/Ele/Você': 'canta',
+        Nós: 'cantamos',
+        'Eles/Elas/Vocēs': 'cantam'
+      },
+      pastPerfect: {
+        Eu: 'cantei',
+        Tu: 'cantaste',
+        'Ela/Ele/Você': 'cantou',
+        Nós: 'cantámos',
+        'Eles/Elas/Vocēs': 'cantaram'
+      }
+    },
+    {
+      english: 'to laugh',
+      infinitive: 'rir',
+      presentSimple: {
+        Eu: 'rio',
+        Tu: 'ris',
+        'Ela/Ele/Você': 'ri',
+        Nós: 'rimos',
+        'Eles/Elas/Vocēs': 'riem'
+      },
+      pastPerfect: {
+        Eu: 'ri',
+        Tu: 'riste',
+        'Ela/Ele/Você': 'riu',
+        Nós: 'rimos',
+        'Eles/Elas/Vocēs': 'riram'
+      }
+    },
+    {
+      english: 'to scare',
+      infinitive: 'assustar',
+      presentSimple: {
+        Eu: 'assusto',
+        Tu: 'assustas',
+        'Ela/Ele/Você': 'assusta',
+        Nós: 'assustamos',
+        'Eles/Elas/Vocēs': 'assustam'
+      },
+      pastPerfect: {
+        Eu: 'assustei',
+        Tu: 'assustaste',
+        'Ela/Ele/Você': 'assustou',
+        Nós: 'assustámos',
+        'Eles/Elas/Vocēs': 'assustaram'
+      }
+    },
+    {
+      english: 'to bite',
+      infinitive: 'trincar',
+      presentSimple: {
+        Eu: 'trinco',
+        Tu: 'trincas',
+        'Ela/Ele/Você': 'trinca',
+        Nós: 'trincamos',
+        'Eles/Elas/Vocēs': 'trincam'
+      },
+      pastPerfect: {
+        Eu: 'trinquei',
+        Tu: 'trincaste',
+        'Ela/Ele/Você': 'trincou',
+        Nós: 'trincámos',
+        'Eles/Elas/Vocēs': 'trincaram'
+      }
+    },
+    {
+      english: 'to sit down',
+      infinitive: 'sentar',
+      presentSimple: {
+        Eu: 'sento',
+        Tu: 'sentas',
+        'Ela/Ele/Você': 'senta',
+        Nós: 'sentamos',
+        'Eles/Elas/Vocēs': 'sentam'
+      },
+      pastPerfect: {
+        Eu: 'sentei',
+        Tu: 'sentaste',
+        'Ela/Ele/Você': 'sentou',
+        Nós: 'sentámos',
+        'Eles/Elas/Vocēs': 'sentaram'
+      }
+    },
+    {
+      english: 'to fall asleep',
+      infinitive: 'adormecer',
+      presentSimple: {
+        Eu: 'adormeço',
+        Tu: 'adormeces',
+        'Ela/Ele/Você': 'adormece',
+        Nós: 'adormecemos',
+        'Eles/Elas/Vocēs': 'adormecem'
+      },
+      pastPerfect: {
+        Eu: 'adormeci',
+        Tu: 'adormeceste',
+        'Ela/Ele/Você': 'adormeceu',
+        Nós: 'adormecemos',
+        'Eles/Elas/Vocēs': 'adormeceram'
+      }
+    },
+    {
+      english: 'to wake up',
+      infinitive: 'acordar',
+      presentSimple: {
+        Eu: 'acordo',
+        Tu: 'acordas',
+        'Ela/Ele/Você': 'acorda',
+        Nós: 'acordamos',
+        'Eles/Elas/Vocēs': 'acordam'
+      },
+      pastPerfect: {
+        Eu: 'acordei',
+        Tu: 'acordaste',
+        'Ela/Ele/Você': 'acordou',
+        Nós: 'acordámos',
+        'Eles/Elas/Vocēs': 'acordaram'
+      }
+    },
+    {
+      english: 'to repair',
+      infinitive: 'reparar',
+      presentSimple: {
+        Eu: 'reparo',
+        Tu: 'reparas',
+        'Ela/Ele/Você': 'repara',
+        Nós: 'reparamos',
+        'Eles/Elas/Vocēs': 'reparam'
+      },
+      pastPerfect: {
+        Eu: 'reparei',
+        Tu: 'reparaste',
+        'Ela/Ele/Você': 'reparou',
+        Nós: 'reparámos',
+        'Eles/Elas/Vocēs': 'repararam'
+      }
+    },
+    {
+      english: 'to defend',
+      infinitive: 'defender',
+      presentSimple: {
+        Eu: 'defendo',
+        Tu: 'defendes',
+        'Ela/Ele/Você': 'defende',
+        Nós: 'defendemos',
+        'Eles/Elas/Vocēs': 'defendem'
+      },
+      pastPerfect: {
+        Eu: 'defendi',
+        Tu: 'defendeste',
+        'Ela/Ele/Você': 'defendeu',
+        Nós: 'defendemos',
+        'Eles/Elas/Vocēs': 'defenderam'
       }
     }
   ],
@@ -2742,13 +3270,6 @@ export const db: Schema = {
       english: 'hair',
       portuguese: {
         word: 'cabelo',
-        gender: 'masculine'
-      }
-    },
-    {
-      english: 'eyes',
-      portuguese: {
-        word: 'olhos',
         gender: 'masculine'
       }
     },
@@ -4391,6 +4912,979 @@ export const db: Schema = {
         plural: 'mundos',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'love',
+      portuguese: {
+        word: 'amor',
+        plural: 'amores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'school',
+      portuguese: {
+        word: 'escola',
+        plural: 'escolas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'garden',
+      portuguese: {
+        word: 'jardim',
+        plural: 'jardins',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'animal',
+      portuguese: {
+        word: 'animal',
+        plural: 'animais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'family',
+      portuguese: {
+        word: 'família',
+        plural: 'famílias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'store',
+      portuguese: {
+        word: 'loja',
+        plural: 'lojas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'key',
+      portuguese: {
+        word: 'chave',
+        plural: 'chaves',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'color',
+      portuguese: {
+        word: 'cor',
+        plural: 'cores',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'station',
+      portuguese: {
+        word: 'estação',
+        plural: 'estações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'hotel',
+      portuguese: {
+        word: 'hotel',
+        plural: 'hotéis',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'bus',
+      portuguese: {
+        word: 'autocarro',
+        plural: 'autocarros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'paper',
+      portuguese: {
+        word: 'papel',
+        plural: 'papéis',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'pen',
+      portuguese: {
+        word: 'caneta',
+        plural: 'canetas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'summer',
+      portuguese: {
+        word: 'verão',
+        plural: 'verãos,',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'winter',
+      portuguese: {
+        word: 'inverno',
+        plural: 'invernos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'spring',
+      portuguese: {
+        word: 'primavera',
+        plural: 'primaveras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'autumn',
+      portuguese: {
+        word: 'outonos',
+        plural: 'outonos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'mountain',
+      portuguese: {
+        word: 'montanha',
+        plural: 'montanhas',
+        gender: 'feminine'
+      }
+    },
+
+    {
+      english: 'river',
+      portuguese: {
+        word: 'rio',
+        plural: 'rios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'bread',
+      portuguese: {
+        word: 'pão',
+        plural: 'pães',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'wine',
+      portuguese: {
+        word: 'vinho',
+        plural: 'vinhos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'salt',
+      portuguese: {
+        word: 'sal',
+        plural: 'sais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'holiday',
+      portuguese: {
+        word: 'feriado',
+        plural: 'feriados',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'clock',
+      portuguese: {
+        word: 'relógio',
+        plural: 'relógios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fire',
+      portuguese: {
+        word: 'fogo',
+        plural: 'fogos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'night',
+      portuguese: {
+        word: 'noite',
+        plural: 'noites',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'dream',
+      portuguese: {
+        word: 'sonho',
+        plural: 'sonhos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sound',
+      portuguese: {
+        word: 'som',
+        plural: 'sons',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'island',
+      portuguese: {
+        word: 'ilha',
+        plural: 'ilhas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'star',
+      portuguese: {
+        word: 'estrela',
+        plural: 'estrelas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'heart',
+      portuguese: {
+        word: 'coração',
+        plural: 'corações',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'square - place',
+      portuguese: {
+        word: 'praça',
+        plural: 'praças',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'hand',
+      portuguese: {
+        word: 'mão',
+        plural: 'mãos',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'egg',
+      portuguese: {
+        word: 'ovo',
+        plural: 'ovos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'eye',
+      portuguese: {
+        word: 'olho',
+        plural: 'olhos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'tooth',
+      portuguese: {
+        word: 'dente',
+        plural: 'dentes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'smile',
+      portuguese: {
+        word: 'sorriso',
+        plural: 'sorrisos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sky',
+      portuguese: {
+        word: 'céu',
+        plural: 'céus',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'cloud',
+      portuguese: {
+        word: 'nuvem',
+        plural: 'nuvens',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'sense',
+      portuguese: {
+        word: 'sentido',
+        plural: 'sentidos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'number',
+      portuguese: {
+        word: 'número',
+        plural: 'números',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'travel',
+      portuguese: {
+        word: 'viagem',
+        plural: 'viagens',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'market',
+      portuguese: {
+        word: 'mercado',
+        plural: 'mercados',
+        gender: 'masculine'
+      }
+    },
+
+    {
+      english: 'policy',
+      portuguese: {
+        word: 'política',
+        plural: 'políticas',
+        gender: 'feminine'
+      }
+    },
+
+    {
+      english: 'entry',
+      portuguese: {
+        word: 'entrada',
+        plural: 'entradas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'exit',
+      portuguese: {
+        word: 'saída',
+        plural: 'saídas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'magazine',
+      portuguese: {
+        word: 'revista',
+        plural: 'revistas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'machine',
+      portuguese: {
+        word: 'máquina',
+        plural: 'máquinas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'ring',
+      portuguese: {
+        word: 'anel',
+        plural: 'anéis',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'earring',
+      portuguese: {
+        word: 'brinco',
+        plural: 'brincos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'building',
+      portuguese: {
+        word: 'prédio',
+        plural: 'prédios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'student',
+      portuguese: {
+        word: 'aluno',
+        plural: 'alunos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'terrace',
+      portuguese: {
+        word: 'terraço',
+        plural: 'terraços',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'tie',
+      portuguese: {
+        word: 'gravata',
+        plural: 'gravatas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'construction',
+      portuguese: {
+        word: 'construção',
+        plural: 'construções',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'church',
+      portuguese: {
+        word: 'igreja',
+        plural: 'igrejas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'farm',
+      portuguese: {
+        word: 'fazenda',
+        plural: 'fazendas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'field',
+      portuguese: {
+        word: 'campo',
+        plural: 'campos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'bridge',
+      portuguese: {
+        word: 'ponte',
+        plural: 'pontes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'block of flats',
+      portuguese: {
+        word: 'edifício',
+        plural: 'edifícios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'ladder',
+      portuguese: {
+        word: 'escada',
+        plural: 'escadas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'poem',
+      portuguese: {
+        word: 'poema',
+        plural: 'poemas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'museum',
+      portuguese: {
+        word: 'museu',
+        plural: 'museus',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'brush',
+      portuguese: {
+        word: 'pincel',
+        plural: 'pincéis',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'ink',
+      portuguese: {
+        word: 'tinta',
+        plural: 'tintas',
+        gender: 'feminine'
+      }
+    },
+
+    {
+      english: 'concert',
+      portuguese: {
+        word: 'concerto',
+        plural: 'concertos',
+        gender: 'masculine'
+      }
+    },
+
+    {
+      english: 'source',
+      portuguese: {
+        word: 'fonte',
+        plural: 'fontes',
+        gender: 'feminine'
+      }
+    },
+
+    {
+      english: 'ingredient',
+      portuguese: {
+        word: 'ingrediente',
+        plural: 'ingredientes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sting',
+      portuguese: {
+        word: 'picada',
+        plural: 'picadas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'storm',
+      portuguese: {
+        word: 'tempestade',
+        plural: 'tempestades',
+        gender: 'feminine'
+      }
+    },
+
+    {
+      english: 'reflection',
+      portuguese: {
+        word: 'reflexo',
+        plural: 'reflexos',
+        gender: 'masculine'
+      }
+    },
+
+    {
+      english: 'trade',
+      portuguese: {
+        word: 'comércio',
+        plural: 'comércios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'diploma',
+      portuguese: {
+        word: 'diploma',
+        plural: 'diplomas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'conference',
+      portuguese: {
+        word: 'conferência',
+        plural: 'conferências',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'debate',
+      portuguese: {
+        word: 'debate',
+        plural: 'debates',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'room',
+      portuguese: {
+        word: 'sala',
+        plural: 'salas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'office',
+      portuguese: {
+        word: 'escritório',
+        plural: 'escritórios',
+        gender: 'masculine'
+      }
+    },
+
+    {
+      english: 'lie',
+      portuguese: {
+        word: 'mentira',
+        plural: 'mentiras',
+        gender: 'feminine'
+      }
+    },
+
+    {
+      english: 'castle',
+      portuguese: {
+        word: 'castelo',
+        plural: 'castelos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'planet',
+      portuguese: {
+        word: 'planeta',
+        plural: 'planetas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'biscuit',
+      portuguese: {
+        word: 'biscoito',
+        plural: 'biscoitos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sweet',
+      portuguese: {
+        word: 'doce',
+        plural: 'doces',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'herb',
+      portuguese: {
+        word: 'erva',
+        plural: 'ervas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'tree',
+      portuguese: {
+        word: 'árvore',
+        plural: 'árvores',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'shadow',
+      portuguese: {
+        word: 'sombra',
+        plural: 'sombras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'voice',
+      portuguese: {
+        word: 'voz',
+        plural: 'vozes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'face',
+      portuguese: {
+        word: 'rosto',
+        plural: 'rostos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'skirt',
+      portuguese: {
+        word: 'saia',
+        plural: 'saias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'kingdom',
+      portuguese: {
+        word: 'reino',
+        plural: 'reinos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'boss',
+      portuguese: {
+        word: 'chefe',
+        plural: 'chefes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'horse',
+      portuguese: {
+        word: 'cavalo',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sword',
+      portuguese: {
+        word: 'espada',
+        plural: 'espadas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'purse',
+      portuguese: {
+        word: 'bolsa',
+        plural: 'bolsas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'gold',
+      portuguese: {
+        word: 'ouro',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'currencie',
+      portuguese: {
+        word: 'moeda',
+        plural: 'moedas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'fear',
+      portuguese: {
+        word: 'medo',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'order',
+      portuguese: {
+        word: 'ordem',
+        plural: 'ordens',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'envelope',
+      portuguese: {
+        word: 'envelope',
+        plural: 'envelopes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'declaration',
+      portuguese: {
+        word: 'declaração',
+        plural: 'declarações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'security',
+      portuguese: {
+        word: 'segurança',
+        plural: 'seguranças',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'margin',
+      portuguese: {
+        word: 'margem',
+        plural: 'margens',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'luck',
+      portuguese: {
+        word: 'sorte',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'bride',
+      portuguese: {
+        word: 'noiva',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'noise',
+      portuguese: {
+        word: 'ruído',
+        plural: 'ruídos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'rope',
+      portuguese: {
+        word: 'corda',
+        plural: 'cordas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'roof',
+      portuguese: {
+        word: 'telhado',
+        plural: 'telhados',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'tower',
+      portuguese: {
+        word: 'torre',
+        plural: 'torres',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'pension',
+      portuguese: {
+        word: 'pensão',
+        plural: 'pensões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'wolf',
+      portuguese: {
+        word: 'lobo',
+        plural: 'lobos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'glass',
+      portuguese: {
+        word: 'vidro',
+        plural: 'vidros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'lantern',
+      portuguese: {
+        word: 'lanterna',
+        plural: 'lanternas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'garden',
+      portuguese: {
+        word: 'horta',
+        plural: 'hortas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'vegetable',
+      portuguese: {
+        word: 'legume',
+        plural: 'legumes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fruit',
+      portuguese: {
+        word: 'fruto',
+        plural: 'frutos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'place',
+      portuguese: {
+        word: 'lugar',
+        plural: 'lugares',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'basket',
+      portuguese: {
+        word: 'cesto',
+        plural: 'cestos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'crow',
+      portuguese: {
+        word: 'corvo',
+        plural: 'corvos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'paw',
+      portuguese: {
+        word: 'pata',
+        plural: 'patas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'witch',
+      portuguese: {
+        word: 'bruxa',
+        plural: 'bruxas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'thief',
+      portuguese: {
+        word: 'ladra',
+        plural: 'ladras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'bar',
+      portuguese: {
+        word: 'bar',
+        plural: 'bares',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -4400,6 +5894,10 @@ export const db: Schema = {
     },
     {
       english: 'behind',
+      portuguese: 'trás'
+    },
+    {
+      english: 'ago',
       portuguese: 'atrás'
     },
     {
@@ -4773,6 +6271,127 @@ export const db: Schema = {
     {
       portuguese: 'se',
       english: 'if'
+    },
+    {
+      portuguese: 'lentamente',
+      english: 'slowly'
+    },
+    {
+      portuguese: 'ali',
+      english: 'over there'
+    },
+    {
+      portuguese: 'lá',
+      english: 'there'
+    },
+    {
+      portuguese: 'acima',
+      english: 'above'
+    },
+    {
+      portuguese: 'abaixo',
+      english: 'below'
+    },
+    {
+      portuguese: 'dentro',
+      english: 'inside'
+    },
+    {
+      portuguese: 'logo',
+      english: 'soon'
+    },
+    {
+      portuguese: 'então',
+      english: 'then'
+    },
+    {
+      portuguese: 'ainda',
+      english: 'still'
+    },
+    {
+      portuguese: 'já',
+      english: 'already'
+    },
+    {
+      portuguese: 'apenas',
+      english: 'just'
+    },
+    {
+      portuguese: 'também',
+      english: 'also'
+    },
+    {
+      portuguese: 'mais ou menos',
+      english: 'more or less'
+    },
+    {
+      portuguese: 'cerca',
+      english: 'around'
+    },
+    {
+      portuguese: 'aproximadamente',
+      english: 'approximately'
+    },
+    {
+      portuguese: 'talvez',
+      english: 'perhaps'
+    },
+    {
+      portuguese: 'provavelmente',
+      english: 'probably'
+    },
+    {
+      portuguese: 'possivelmente',
+      english: 'possibly'
+    },
+    {
+      portuguese: 'realmente',
+      english: 'really'
+    },
+    {
+      portuguese: 'efetivamente',
+      english: 'effectively'
+    },
+    {
+      portuguese: 'especialmente',
+      english: 'especially'
+    },
+    {
+      portuguese: 'finalmente',
+      english: 'finally'
+    },
+    {
+      portuguese: 'geralmente',
+      english: 'generally'
+    },
+    {
+      portuguese: 'durante',
+      english: 'during'
+    },
+    {
+      portuguese: 'esquerda',
+      english: 'left'
+    },
+    {
+      portuguese: 'direita',
+      english: 'right'
+    },
+
+    {
+      portuguese: 'alguém',
+      english: 'someone'
+    },
+    {
+      portuguese: 'assim',
+      english: 'thus'
+    },
+    {
+      portuguese: 'se calhar',
+      english: 'maybe'
+    },
+    {
+      portuguese: 'repente',
+      english: 'suddenly'
     }
   ],
   adjectives: [
@@ -5234,6 +6853,480 @@ export const db: Schema = {
       feminine: {
         singular: 'perfeita',
         plural: 'perfeitas'
+      }
+    },
+    {
+      english: 'low',
+      masculine: {
+        singular: 'baixo',
+        plural: 'baixos'
+      },
+      feminine: {
+        singular: 'baixa',
+        plural: 'baixas'
+      }
+    },
+    {
+      english: 'ugly',
+      masculine: {
+        singular: 'feio',
+        plural: 'feios'
+      },
+      feminine: {
+        singular: 'feia',
+        plural: 'feias'
+      }
+    },
+    {
+      english: 'slow',
+      masculine: {
+        singular: 'lento',
+        plural: 'lentos'
+      },
+      feminine: {
+        singular: 'lenta',
+        plural: 'lentas'
+      }
+    },
+    {
+      english: 'short',
+      masculine: {
+        singular: 'curto',
+        plural: 'curtos'
+      },
+      feminine: {
+        singular: 'curta',
+        plural: 'curtas'
+      }
+    },
+    {
+      english: 'narrow',
+      masculine: {
+        singular: 'estreito',
+        plural: 'estreitos'
+      },
+      feminine: {
+        singular: 'estreita',
+        plural: 'estreitas'
+      }
+    },
+    {
+      english: 'expensive',
+      masculine: {
+        singular: 'caro',
+        plural: 'caros'
+      },
+      feminine: {
+        singular: 'cara',
+        plural: 'caras'
+      }
+    },
+    {
+      english: 'cheap',
+      masculine: {
+        singular: 'barato',
+        plural: 'baratos'
+      },
+      feminine: {
+        singular: 'barata',
+        plural: 'baratas'
+      }
+    },
+    {
+      english: 'fat',
+      masculine: {
+        singular: 'gordo',
+        plural: 'gordos'
+      },
+      feminine: {
+        singular: 'gorda',
+        plural: 'gordas'
+      }
+    },
+    {
+      english: 'lean',
+      masculine: {
+        singular: 'magro',
+        plural: 'magros'
+      },
+      feminine: {
+        singular: 'magra',
+        plural: 'magras'
+      }
+    },
+    {
+      english: 'elderly',
+      masculine: {
+        singular: 'idoso',
+        plural: 'idosos'
+      },
+      feminine: {
+        singular: 'idosa',
+        plural: 'idosas'
+      }
+    },
+    {
+      english: 'heavy',
+      masculine: {
+        singular: 'pesado',
+        plural: 'pesados'
+      },
+      feminine: {
+        singular: 'pesada',
+        plural: 'pesadas'
+      }
+    },
+    {
+      english: 'clean',
+      masculine: {
+        singular: 'limpo',
+        plural: 'limpos'
+      },
+      feminine: {
+        singular: 'limpa',
+        plural: 'limpas'
+      }
+    },
+    {
+      english: 'dirty',
+      masculine: {
+        singular: 'sujo',
+        plural: 'sujos'
+      },
+      feminine: {
+        singular: 'suja',
+        plural: 'sujas'
+      }
+    },
+    {
+      english: 'dry',
+      masculine: {
+        singular: 'seco',
+        plural: 'secos'
+      },
+      feminine: {
+        singular: 'seca',
+        plural: 'secas'
+      }
+    },
+    {
+      english: 'wet',
+      masculine: {
+        singular: 'molhado',
+        plural: 'molhados'
+      },
+      feminine: {
+        singular: 'molhada',
+        plural: 'molhadas'
+      }
+    },
+    {
+      english: 'bitter',
+      masculine: {
+        singular: 'amargo',
+        plural: 'amargos'
+      },
+      feminine: {
+        singular: 'amarga',
+        plural: 'amargas'
+      }
+    },
+    {
+      english: 'sour',
+      masculine: {
+        singular: 'azedo',
+        plural: 'azedos'
+      },
+      feminine: {
+        singular: 'azeda',
+        plural: 'azedas'
+      }
+    },
+    {
+      english: 'salty',
+      masculine: {
+        singular: 'salgado',
+        plural: 'salgados'
+      },
+      feminine: {
+        singular: 'salgada',
+        plural: 'salgadas'
+      }
+    },
+    {
+      english: 'deep',
+      masculine: {
+        singular: 'profundo',
+        plural: 'profundos'
+      },
+      feminine: {
+        singular: 'profunda',
+        plural: 'profundas'
+      }
+    },
+    {
+      english: 'shallow',
+      masculine: {
+        singular: 'raso',
+        plural: 'rasos'
+      },
+      feminine: {
+        singular: 'rasa',
+        plural: 'rasas'
+      }
+    },
+    {
+      english: 'sharp',
+      masculine: {
+        singular: 'afiado',
+        plural: 'afiados'
+      },
+      feminine: {
+        singular: 'afiada',
+        plural: 'afiadas'
+      }
+    },
+    {
+      english: 'blind',
+      masculine: {
+        singular: 'cego',
+        plural: 'cegos'
+      },
+      feminine: {
+        singular: 'cega',
+        plural: 'cegas'
+      }
+    },
+    {
+      english: 'deaf',
+      masculine: {
+        singular: 'surdo',
+        plural: 'surdos'
+      },
+      feminine: {
+        singular: 'surda',
+        plural: 'surdas'
+      }
+    },
+    {
+      english: 'clear',
+      masculine: {
+        singular: 'claro',
+        plural: 'claros'
+      },
+      feminine: {
+        singular: 'clara',
+        plural: 'claras'
+      }
+    },
+    {
+      english: 'dark',
+      masculine: {
+        singular: 'escuro',
+        plural: 'escuros'
+      },
+      feminine: {
+        singular: 'escura',
+        plural: 'escuras'
+      }
+    },
+    {
+      english: 'adventurous',
+      masculine: {
+        singular: 'aventureiro',
+        plural: 'aventureiros'
+      },
+      feminine: {
+        singular: 'aventureira',
+        plural: 'aventureiras'
+      }
+    },
+    {
+      english: 'serious',
+      masculine: {
+        singular: 'sério',
+        plural: 'sérios'
+      },
+      feminine: {
+        singular: 'séria',
+        plural: 'sérias'
+      }
+    },
+    {
+      english: 'dangerous',
+      masculine: {
+        singular: 'perigoso',
+        plural: 'perigosos'
+      },
+      feminine: {
+        singular: 'perigosa',
+        plural: 'perigosas'
+      }
+    },
+    {
+      english: 'courageous',
+      masculine: {
+        singular: 'corajoso',
+        plural: 'corajosos'
+      },
+      feminine: {
+        singular: 'corajosa',
+        plural: 'corajosas'
+      }
+    },
+    {
+      english: 'suspicious',
+      masculine: {
+        singular: 'desconfiado',
+        plural: 'desconfiados'
+      },
+      feminine: {
+        singular: 'desconfiada',
+        plural: 'desconfiadas'
+      }
+    },
+    {
+      english: 'stunned',
+      masculine: {
+        singular: 'atordoado',
+        plural: 'atordoados'
+      },
+      feminine: {
+        singular: 'atordoada',
+        plural: 'atordoadas'
+      }
+    },
+    {
+      english: 'pleasant',
+      masculine: {
+        singular: 'agradável',
+        plural: 'agradável'
+      },
+      feminine: {
+        singular: 'agradável',
+        plural: 'agradável'
+      }
+    },
+    {
+      english: 'several',
+      masculine: {
+        singular: 'vários',
+        plural: 'vários'
+      },
+      feminine: {
+        singular: 'vários',
+        plural: 'vários'
+      }
+    },
+    {
+      english: 'brown',
+      masculine: {
+        singular: 'castanho',
+        plural: 'castanhos'
+      },
+      feminine: {
+        singular: 'castanha',
+        plural: 'castanhas'
+      }
+    },
+    {
+      english: 'green',
+      masculine: {
+        singular: 'verde',
+        plural: 'verdes'
+      },
+      feminine: {
+        singular: 'verde',
+        plural: 'verdes'
+      }
+    },
+    {
+      english: 'irritated',
+      masculine: {
+        singular: 'irritado',
+        plural: 'irritados'
+      },
+      feminine: {
+        singular: 'irritada',
+        plural: 'irritadas'
+      }
+    },
+    {
+      english: 'silent',
+      masculine: {
+        singular: 'silencioso',
+        plural: 'silenciosos'
+      },
+      feminine: {
+        singular: 'silenciosa',
+        plural: 'silenciosas'
+      }
+    },
+    {
+      english: 'aromatic',
+
+      masculine: {
+        singular: 'aromático',
+        plural: 'aromáticos'
+      },
+      feminine: {
+        singular: 'aromática',
+        plural: 'aromáticas'
+      }
+    },
+    {
+      english: 'similar',
+      masculine: {
+        singular: 'parecido',
+        plural: 'parecidos'
+      },
+      feminine: {
+        singular: 'parecida',
+        plural: 'parecidas'
+      }
+    },
+    {
+      english: 'tasty',
+      masculine: {
+        singular: 'saboroso',
+        plural: 'saborosos'
+      },
+      feminine: {
+        singular: 'saborosa',
+        plural: 'saborosas'
+      }
+    },
+    {
+      english: 'dizzy',
+      masculine: {
+        singular: 'tonto',
+        plural: 'tontos'
+      },
+      feminine: {
+        singular: 'tonta',
+        plural: 'tontas'
+      }
+    },
+    {
+      english: 'drowsy',
+      masculine: {
+        singular: 'sonolento',
+        plural: 'sonolentos'
+      },
+      feminine: {
+        singular: 'sonolenta',
+        plural: 'sonolentas'
+      }
+    },
+    {
+      english: 'cursed',
+      masculine: {
+        singular: 'maldito',
+        plural: 'malditos'
+      },
+      feminine: {
+        singular: 'maldita',
+        plural: 'malditas'
       }
     }
   ],
@@ -6005,16 +8098,8 @@ export const db: Schema = {
       portuguese: 'Isso não costuma ocorrer'
     },
     {
-      english: 'Posso fornecer informações',
-      portuguese: 'Posso fornecer informações'
-    },
-    {
-      english: 'A empresa proverá o equipamento',
-      portuguese: 'A empresa proverá o equipamento'
-    },
-    {
-      english: 'Gosto de falar com amigos',
-      portuguese: 'Gosto de falar com amigos'
+      english: 'Can I provide information?',
+      portuguese: 'Posso fornecer informações?'
     },
     {
       english: 'We need to talk about this',
@@ -6439,6 +8524,20 @@ export const db: Schema = {
     {
       portuguese: 'Aos domingos o meu marido e eu normalmente passeamos no parque',
       english: 'On Sundays my husband and I usually stroll in the park'
+    }
+  ],
+  phrases: [
+    {
+      portuguese: 'para ser preciso',
+      english: 'to be precise'
+    },
+    {
+      portuguese: 'por isso mesmo',
+      english: 'precisely because of that'
+    },
+    {
+      portuguese: 'ter medo',
+      english: 'to be afraid'
     }
   ],
   fitIn: [

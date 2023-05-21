@@ -15,7 +15,7 @@ export function exerciseDoneInLastHour(
     return [
       resultsToday.reduce(
         (previous, current) => {
-          previous.priorityValue += (Math.round((current.date.getTime() - now.getTime()) / 60000) + 60) * -3;
+          previous.priorityValue += (Math.round((current.date.getTime() - now.getTime()) / 60000) + 60) * -10;
           return previous;
         },
         {
