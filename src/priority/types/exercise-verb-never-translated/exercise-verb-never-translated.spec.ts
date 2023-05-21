@@ -6,25 +6,28 @@ import { VerbTranslationExercise } from '../../../exercise/translation/verb-tran
 import { NounTranslationExercise } from '../../../exercise/translation/noun-translation-exercise';
 import { Result } from '../../../service/result';
 import { ExerciseResultContext } from '../../priority';
+import { Person, readAll } from '../../../repository/exercises-repository';
+
+const verb = readAll().verbs[0];
 
 const getAllResults = () => [
   {
-    exercise: new VerbTranslationExercise(),
+    exercise: VerbTranslationExercise.new(verb, 'toPortuguese'),
     wasCorrect: true
   },
   {
-    exercise: new VerbTranslationExercise(),
+    exercise: VerbTranslationExercise.new(verb, 'toPortuguese'),
     wasCorrect: false
   },
   {
-    exercise: new VerbTranslationExercise(),
+    exercise: VerbTranslationExercise.new(verb, 'toPortuguese'),
     wasCorrect: true
   }
 ];
 
 describe('exerciseVerbNeverTranslated', () => {
-  const verbExercise = new VerbExercise();
-  const translationExercise = new VerbTranslationExercise();
+  const verbExercise = VerbExercise.new(verb, Person.ElaEleVocê, 'presentSimple');
+  const translationExercise = VerbTranslationExercise.new(verb, 'toPortuguese');
 
   it('should return no priority if the given exercise is not an instance of VerbExercise', () => {
     const exercise = new NounTranslationExercise();
@@ -56,9 +59,10 @@ describe('exerciseVerbNeverTranslated', () => {
   });
 
   it('should return no priority if there are 3 or more correct translations', () => {
-    const newTranslationExercise = new VerbTranslationExercise();
-    newTranslationExercise.isTranslationSubjectEqual = jest.fn().mockReturnValue(true);
-    const exerciseSubjectResults = [...getAllResults(), { exercise: newTranslationExercise, wasCorrect: true }];
+    const newTranslationExercise = VerbTranslationExercise.new(verb, 'toPortuguese');
+    const exerciseSubjectResults = [...getAllResults(), 
+      { exercise: newTranslationExercise, wasCorrect: true },
+    ];
     const result = exerciseVerbNeverTranslated(verbExercise, {
       exerciseSubjectResults
     } as unknown as ExerciseResultContext);

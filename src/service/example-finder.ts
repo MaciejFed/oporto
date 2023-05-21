@@ -11,15 +11,6 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
 import { logger } from '../common/logger';
 
-const getConjugationsForVerb = (verb: Verb) => {
-  // eslint-disable-next-line new-cap
-  return VerbExerciseGenerator()
-    .filter((verbExercise) => (verbExercise as VerbExercise).verb.infinitive === verb.infinitive)
-    .map((verbExercise) => verbExercise.getCorrectAnswer().toLowerCase())
-    .concat(verb.infinitive)
-    .sort((a, b) => a.localeCompare(b));
-};
-
 const extractWordToFindFromExercise = (exercise: Exercise): string | undefined => {
   switch (exercise.exerciseType) {
     case 'OtherTranslation':
@@ -69,8 +60,8 @@ export const findExampleSentenceAndWord = (
       callback({
         wordStartIndex,
         exerciseWord,
-        exampleSentencePrefixLine: result.portuguese[0].replace('- ', '').replace('-', ''),
-        exampleSentence: exampleSentence[1].replace('- ', '').replace('-', ''),
+        exampleSentencePrefixLine: result.portuguese[0].replace('- ', ''),
+        exampleSentence: exampleSentence[1].replace('- ', ''),
         exampleSentenceTranslation: result.english,
         exampleSentenceTranslationApi: result.englishApi
       });

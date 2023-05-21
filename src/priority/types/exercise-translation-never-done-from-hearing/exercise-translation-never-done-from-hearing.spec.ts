@@ -1,4 +1,5 @@
 import { NounTranslationExercise } from '../../../exercise/translation/noun-translation-exercise';
+import { readAll } from '../../../repository/exercises-repository';
 import { ExerciseResultContext } from '../../priority';
 import { generateResultForExercise } from '../../priority.util';
 import {
@@ -9,9 +10,13 @@ import {
 describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING', () => {
   it('Exercise Translation Never Done From Hearing', () => {
     const toPortugueseTranslationExercise = new NounTranslationExercise();
-    toPortugueseTranslationExercise.translationType = 'toPortuguese';
+    toPortugueseTranslationExercise.noun = readAll().nouns[0];
+    toPortugueseTranslationExercise.translationType = 'toPortugueseFromHearing';
+    const toEnglishTranslationExercise = new NounTranslationExercise();
+    toEnglishTranslationExercise.translationType = 'toEnglish';
+    toEnglishTranslationExercise.noun = readAll().nouns[1];
     const exerciseSubjectResults = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
-    const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, {
+    const actualPriority = exerciseTranslationNeverDoneFromHearing(toEnglishTranslationExercise, {
       exerciseSubjectResults
     } as ExerciseResultContext);
 
@@ -20,20 +25,32 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING', () => {
     expect(actualPriority[0].priorityValue).toEqual(VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING);
   });
 
-  it('Exercise Translation Done From Hearing', () => {
+  it('Exercise Translation Never Done From Hearing Correctly', () => {
     const toPortugueseTranslationExercise = new NounTranslationExercise();
-    toPortugueseTranslationExercise.translationType = 'toPortuguese';
-    const toPortugueseFromHearingTranslationExercise = new NounTranslationExercise();
-    toPortugueseFromHearingTranslationExercise.translationType = 'toPortugueseFromHearing';
-    toPortugueseFromHearingTranslationExercise.noun = toPortugueseTranslationExercise.noun;
+    toPortugueseTranslationExercise.noun = readAll().nouns[0];
+    toPortugueseTranslationExercise.translationType = 'toPortugueseFromHearing';
+    const toEnglishTranslationExercise = new NounTranslationExercise();
+    toEnglishTranslationExercise.translationType = 'toEnglish';
+    toEnglishTranslationExercise.noun = readAll().nouns[0];
+    const exerciseSubjectResults = generateResultForExercise(toPortugueseTranslationExercise, false, 'keyboard', 1);
+    const actualPriority = exerciseTranslationNeverDoneFromHearing(toEnglishTranslationExercise, {
+      exerciseSubjectResults
+    } as ExerciseResultContext);
 
-    const exerciseSubjectResults = generateResultForExercise(
-      toPortugueseFromHearingTranslationExercise,
-      true,
-      'keyboard',
-      1
-    );
-    const actualPriority = exerciseTranslationNeverDoneFromHearing(toPortugueseTranslationExercise, {
+    expect(actualPriority.length).toEqual(1);
+    expect(actualPriority[0].priorityName).toEqual('EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING');
+    expect(actualPriority[0].priorityValue).toEqual(VALUE_EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING);
+  });
+
+  it('Exercise Translation Done From Hearing Correctly', () => {
+    const toPortugueseTranslationExercise = new NounTranslationExercise();
+    toPortugueseTranslationExercise.noun = readAll().nouns[0];
+    toPortugueseTranslationExercise.translationType = 'toPortugueseFromHearing';
+    const toEnglishTranslationExercise = new NounTranslationExercise();
+    toEnglishTranslationExercise.translationType = 'toEnglish';
+    toEnglishTranslationExercise.noun = readAll().nouns[0];
+    const exerciseSubjectResults = generateResultForExercise(toPortugueseTranslationExercise, true, 'keyboard', 1);
+    const actualPriority = exerciseTranslationNeverDoneFromHearing(toEnglishTranslationExercise, {
       exerciseSubjectResults
     } as ExerciseResultContext);
 

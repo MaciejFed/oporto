@@ -1,5 +1,5 @@
 import { getRandomElement } from '../common/common';
-import { Adjective, Other, readAll, Verb } from '../repository/exercises-repository';
+import { Adjective, Other, Phrase, readAll, Verb } from '../repository/exercises-repository';
 import { Noun, Sentence } from '../repository/exercises-repository';
 
 export const getRandomNoun: () => Noun = () => {
@@ -20,4 +20,8 @@ export const getRandomVerb: () => Verb = () => {
 
 export const getRandomSentence: () => Sentence = () => {
   return getRandomElement(readAll().sentences);
+};
+
+export const getRandomPhrase: () => Phrase = () => {
+  return getRandomElement(readAll().phrases);
 };

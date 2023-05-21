@@ -193,6 +193,7 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
     AdjectiveTranslation: [],
     VerbTranslation: [],
     SentenceTranslation: [],
+    PhraseTranslation: [],
     FitInGap: []
   };
 

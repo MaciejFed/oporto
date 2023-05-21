@@ -11,7 +11,10 @@ jest.mock('../io/file', () => {
     readResultsFromFile: () => global.resultsFile,
     saveResultsToFile: (data: string) => {
       global.resultsFile = data;
-    }
+    },
+    findExampleSentence: () => ({
+      portuguese: ["Sou a Marta", "Sou a Marta"]
+    })
   };
 });
 

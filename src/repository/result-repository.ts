@@ -13,6 +13,7 @@ import { SentenceTranslationExercise } from '../exercise/translation/sentence-tr
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
+import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -54,6 +55,13 @@ function createSentenceTranslationExercise(exerciseData: any) {
   return sentenceTranslationExercise;
 }
 
+function createPhraseTranslationExercise(exerciseData: any) {
+  const phraseTranslationExercise = new PhraseTranslationExercise();
+  Object.assign(phraseTranslationExercise, exerciseData);
+  assert(phraseTranslationExercise.phrase);
+  return phraseTranslationExercise;
+}
+
 function createOtherTranslationExercise(exerciseData: any) {
   const otherTranslationExercise = new OtherTranslationExercise();
   Object.assign(otherTranslationExercise, exerciseData);
@@ -74,6 +82,7 @@ const exerciseFactory = {
   AdjectiveTranslation: createAdjectiveTranslationExercise,
   VerbTranslation: createVerbTranslationExercise,
   SentenceTranslation: createSentenceTranslationExercise,
+  PhraseTranslation: createPhraseTranslationExercise,
   OtherTranslation: createOtherTranslationExercise,
   FitInGap: createFitInGapExercise
 };

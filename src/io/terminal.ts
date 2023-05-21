@@ -158,6 +158,13 @@ export class Terminal {
           this.exampleSentenceFull = `${exampleSentencePrefixLine}.\n${exampleSentence}`;
           this.exampleSentenceTranslation = exampleSentenceTranslation;
           this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
+        exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+          printExampleSentence(
+            this.exampleSentence!.wordStartIndex,
+            this.exampleSentence!.exerciseWord,
+            this.exampleSentence!.exampleSentencePartTwo!,
+            this.exampleSentence!.exampleSentencePartOne!
+          );
         }
       );
       if (wasCorrect) {
@@ -234,10 +241,10 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say "${this.exampleSentence?.exampleSentencePartOne}"`);
-        sleep(5000).then(() => {
-          exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
-        });
+        exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+        // sleep(5000).then(() => {
+        //   exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+        // });
         break;
       case 'e':
         printExampleSentence(
