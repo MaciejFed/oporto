@@ -60,9 +60,7 @@ describe('exerciseVerbNeverTranslated', () => {
 
   it('should return no priority if there are 3 or more correct translations', () => {
     const newTranslationExercise = VerbTranslationExercise.new(verb, 'toPortuguese');
-    const exerciseSubjectResults = [...getAllResults(), 
-      { exercise: newTranslationExercise, wasCorrect: true },
-    ];
+    const exerciseSubjectResults = [...getAllResults(), { exercise: newTranslationExercise, wasCorrect: true }];
     const result = exerciseVerbNeverTranslated(verbExercise, {
       exerciseSubjectResults
     } as unknown as ExerciseResultContext);

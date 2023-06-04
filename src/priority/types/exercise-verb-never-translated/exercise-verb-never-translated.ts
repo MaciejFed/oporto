@@ -18,13 +18,13 @@ export function exerciseVerbNeverTranslated(
   if (!(exercise instanceof VerbExercise)) {
     return noPriority(exercise);
   }
-   const progress = getSingleExerciseProgress(
+  const progress = getSingleExerciseProgress(
     exerciseSubjectResults,
     VerbTranslationExercise.new(exercise.verb, 'toPortuguese')
   );
   if (progress.ratioRange !== '80-100') {
     if (!verbs.includes(exercise.verb.infinitive)) {
-      logger.info(`VerbExercise Prority: [${exercise.verb.infinitive}] [${progress.ratioRange}]`);
+      logger.debug(`VerbExercise Prority: [${exercise.verb.infinitive}] [${progress.ratioRange}]`);
       verbs.push(exercise.verb.infinitive);
     }
     return [
