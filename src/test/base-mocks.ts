@@ -54,7 +54,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
         mockResultFile = data;
       },
       findExampleSentence: async () => ({
-        portuguese: ["Sou a Marta", "Sou a Marta"]
+        portuguese: ['Sou a Marta', 'Sou a Marta']
       })
     };
   });

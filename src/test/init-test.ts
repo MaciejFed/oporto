@@ -13,7 +13,7 @@ jest.mock('../io/file', () => {
       global.resultsFile = data;
     },
     findExampleSentence: async () => ({
-      portuguese: ["Sou a Marta", "Sou a Marta"]
+      portuguese: ['Sou a Marta', 'Sou a Marta']
     })
   };
 });

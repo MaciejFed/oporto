@@ -105,8 +105,7 @@ export async function findExampleSentence(numberOfLinesToRead: number, wordToFin
     };
     const linesWithCount = matchingLines
       .reduce<LineCount[]>((prev, curr, index) => {
-        const combinedSentence = `${curr[0]} ${curr[1]}`;
-        const sentenceWords = combinedSentence
+        const sentenceWords = curr[1]
           .toLowerCase()
           .split(' ')
           .map((word) => word.replace('.', '').replace(',', '').replace('?', '').replace('!', ''))

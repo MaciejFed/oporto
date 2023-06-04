@@ -158,7 +158,7 @@ export class Terminal {
           this.exampleSentenceFull = `${exampleSentencePrefixLine}.\n${exampleSentence}`;
           this.exampleSentenceTranslation = exampleSentenceTranslation;
           this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
-        exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+          exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
             this.exampleSentence!.exerciseWord,

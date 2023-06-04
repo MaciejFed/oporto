@@ -2838,6 +2838,222 @@ export const db: Schema = {
         Nós: 'defendemos',
         'Eles/Elas/Vocēs': 'defenderam'
       }
+    },
+    {
+      english: 'to escape',
+      infinitive: 'fugir',
+      presentSimple: {
+        Eu: 'fujo',
+        Tu: 'foges',
+        'Ela/Ele/Você': 'foge',
+        Nós: 'fugimos',
+        'Eles/Elas/Vocēs': 'fogem'
+      },
+      pastPerfect: {
+        Eu: 'fugi',
+        Tu: 'fugiste',
+        'Ela/Ele/Você': 'fugiu',
+        Nós: 'fugimos',
+        'Eles/Elas/Vocēs': 'fugiram'
+      }
+    },
+    {
+      english: 'to convince',
+      infinitive: 'convencer',
+      presentSimple: {
+        Eu: 'convenço',
+        Tu: 'convences',
+        'Ela/Ele/Você': 'convence',
+        Nós: 'convencemos',
+        'Eles/Elas/Vocēs': 'convencem'
+      },
+      pastPerfect: {
+        Eu: 'convenci',
+        Tu: 'convenceste',
+        'Ela/Ele/Você': 'convenceu',
+        Nós: 'convencemos',
+        'Eles/Elas/Vocēs': 'convenceram'
+      }
+    },
+    {
+      english: 'to scratch',
+      infinitive: 'coçar',
+      presentSimple: {
+        Eu: 'coço',
+        Tu: 'coças',
+        'Ela/Ele/Você': 'coça',
+        Nós: 'coçamos',
+        'Eles/Elas/Vocēs': 'coçam'
+      },
+      pastPerfect: {
+        Eu: 'cocei',
+        Tu: 'coçaste',
+        'Ela/Ele/Você': 'coçou',
+        Nós: 'coçámos',
+        'Eles/Elas/Vocēs': 'coçaram'
+      }
+    },
+    {
+      english: 'to hit',
+      infinitive: 'bater',
+      presentSimple: {
+        Eu: 'bato',
+        Tu: 'bates',
+        'Ela/Ele/Você': 'bate',
+        Nós: 'batemos',
+        'Eles/Elas/Vocēs': 'batem'
+      },
+      pastPerfect: {
+        Eu: 'bati',
+        Tu: 'bateste',
+        'Ela/Ele/Você': 'bateu',
+        Nós: 'batemos',
+        'Eles/Elas/Vocēs': 'bateram'
+      }
+    },
+    {
+      english: 'to blink',
+      infinitive: 'piscar',
+      presentSimple: {
+        Eu: 'pisco',
+        Tu: 'piscas',
+        'Ela/Ele/Você': 'pisca',
+        Nós: 'piscamos',
+        'Eles/Elas/Vocēs': 'piscam'
+      },
+      pastPerfect: {
+        Eu: 'pisquei',
+        Tu: 'piscaste',
+        'Ela/Ele/Você': 'piscou',
+        Nós: 'piscámos',
+        'Eles/Elas/Vocēs': 'piscaram'
+      }
+    },
+    {
+      english: 'to leave',
+      infinitive: 'deixar',
+      presentSimple: {
+        Eu: 'deixo',
+        Tu: 'deixas',
+        'Ela/Ele/Você': 'deixa',
+        Nós: 'deixamos',
+        'Eles/Elas/Vocēs': 'deixam'
+      },
+      pastPerfect: {
+        Eu: 'deixei',
+        Tu: 'deixaste',
+        'Ela/Ele/Você': 'deixou',
+        Nós: 'deixámos',
+        'Eles/Elas/Vocēs': 'deixaram'
+      }
+    },
+    {
+      english: 'to catch sight of',
+      infinitive: 'avistar',
+      presentSimple: {
+        Eu: 'avisto',
+        Tu: 'avistas',
+        'Ela/Ele/Você': 'avista',
+        Nós: 'avistamos',
+        'Eles/Elas/Vocēs': 'avistam'
+      },
+      pastPerfect: {
+        Eu: 'avistei',
+        Tu: 'avistaste',
+        'Ela/Ele/Você': 'avistou',
+        Nós: 'avistámos',
+        'Eles/Elas/Vocēs': 'avistaram'
+      }
+    },
+    {
+      english: 'to jump',
+      infinitive: 'saltar',
+      presentSimple: {
+        Eu: 'salto',
+        Tu: 'saltas',
+        'Ela/Ele/Você': 'salta',
+        Nós: 'saltamos',
+        'Eles/Elas/Vocēs': 'saltam'
+      },
+      pastPerfect: {
+        Eu: 'saltei',
+        Tu: 'saltaste',
+        'Ela/Ele/Você': 'saltou',
+        Nós: 'saltámos',
+        'Eles/Elas/Vocēs': 'saltaram'
+      }
+    },
+    {
+      english: 'to move',
+      infinitive: 'mexer',
+      presentSimple: {
+        Eu: 'mexo',
+        Tu: 'mexes',
+        'Ela/Ele/Você': 'mexe',
+        Nós: 'mexemos',
+        'Eles/Elas/Vocēs': 'mexem'
+      },
+      pastPerfect: {
+        Eu: 'mexi',
+        Tu: 'mexeste',
+        'Ela/Ele/Você': 'mexeu',
+        Nós: 'mexemos',
+        'Eles/Elas/Vocēs': 'mexeram'
+      }
+    },
+    {
+      english: 'to shoot',
+      infinitive: 'atirar',
+      presentSimple: {
+        Eu: 'atiro',
+        Tu: 'atiras',
+        'Ela/Ele/Você': 'atira',
+        Nós: 'atiramos',
+        'Eles/Elas/Vocēs': 'atiram'
+      },
+      pastPerfect: {
+        Eu: 'atirei',
+        Tu: 'atiraste',
+        'Ela/Ele/Você': 'atirou',
+        Nós: 'atirámos',
+        'Eles/Elas/Vocēs': 'atiraram'
+      }
+    },
+    {
+      english: 'to hit',
+      infinitive: 'acertar',
+      presentSimple: {
+        Eu: 'acerto',
+        Tu: 'acertas',
+        'Ela/Ele/Você': 'acerta',
+        Nós: 'acertamos',
+        'Eles/Elas/Vocēs': 'acertam'
+      },
+      pastPerfect: {
+        Eu: 'acertei',
+        Tu: 'acertaste',
+        'Ela/Ele/Você': 'acertou',
+        Nós: 'acertámos',
+        'Eles/Elas/Vocēs': 'acertaram'
+      }
+    },
+    {
+      english: 'to pull',
+      infinitive: 'puxar',
+      presentSimple: {
+        Eu: 'puxo',
+        Tu: 'puxas',
+        'Ela/Ele/Você': 'puxa',
+        Nós: 'puxamos',
+        'Eles/Elas/Vocēs': 'puxam'
+      },
+      pastPerfect: {
+        Eu: 'puxei',
+        Tu: 'puxaste',
+        'Ela/Ele/Você': 'puxou',
+        Nós: 'puxámos',
+        'Eles/Elas/Vocēs': 'puxaram'
+      }
     }
   ],
   nouns: [
@@ -5044,7 +5260,7 @@ export const db: Schema = {
     {
       english: 'autumn',
       portuguese: {
-        word: 'outonos',
+        word: 'outono',
         plural: 'outonos',
         gender: 'masculine'
       }
@@ -5883,6 +6099,76 @@ export const db: Schema = {
       portuguese: {
         word: 'bar',
         plural: 'bares',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'column',
+      portuguese: {
+        word: 'coluna',
+        plural: 'colunas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'plate',
+      portuguese: {
+        word: 'placa',
+        plural: 'placas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'spider',
+      portuguese: {
+        word: 'aranha',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'giant',
+      portuguese: {
+        word: 'gigante',
+        plural: 'gigantes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'relief',
+      portuguese: {
+        word: 'socorro',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'web',
+      portuguese: {
+        word: 'teia',
+        plural: 'teias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'corner',
+      portuguese: {
+        word: 'canto',
+        plural: 'cantos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sign',
+      portuguese: {
+        word: 'sinal',
+        plural: 'sinais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'advice',
+      portuguese: {
+        word: 'conselho',
+        plural: 'conselhos',
         gender: 'masculine'
       }
     }
@@ -7328,6 +7614,116 @@ export const db: Schema = {
         singular: 'maldita',
         plural: 'malditas'
       }
+    },
+    {
+      english: 'upset',
+      masculine: {
+        singular: 'chateado',
+        plural: 'chateados'
+      },
+      feminine: {
+        singular: 'chateada',
+        plural: 'chateadas'
+      }
+    },
+    {
+      english: 'colored',
+      masculine: {
+        singular: 'colorido',
+        plural: 'coloridos'
+      },
+      feminine: {
+        singular: 'colorida',
+        plural: 'coloridas'
+      }
+    },
+    {
+      english: 'decorated',
+      masculine: {
+        singular: 'decorado',
+        plural: 'decorados'
+      },
+      feminine: {
+        singular: 'decorada',
+        plural: 'decoradas'
+      }
+    },
+    {
+      english: 'connected',
+      masculine: {
+        singular: 'ligada',
+        plural: 'ligada'
+      },
+      feminine: {
+        singular: 'ligada',
+        plural: 'ligada'
+      }
+    },
+    {
+      english: 'illuminated',
+      masculine: {
+        singular: 'iluminado',
+        plural: 'iluminados'
+      },
+      feminine: {
+        singular: 'iluminada',
+        plural: 'iluminadas'
+      }
+    },
+    {
+      english: 'hairy',
+      masculine: {
+        singular: 'peludo',
+        plural: 'peludos'
+      },
+      feminine: {
+        singular: 'peluda',
+        plural: 'peludas'
+      }
+    },
+    {
+      english: 'thoughtful',
+      masculine: {
+        singular: 'pensativo',
+        plural: 'pensativos'
+      },
+      feminine: {
+        singular: 'pensativa',
+        plural: 'pensativas'
+      }
+    },
+    {
+      english: 'ethical',
+      masculine: {
+        singular: 'ético',
+        plural: 'éticos'
+      },
+      feminine: {
+        singular: 'ética',
+        plural: 'éticas'
+      }
+    },
+    {
+      english: 'disappointed',
+      masculine: {
+        singular: 'desapontado',
+        plural: 'desapontados'
+      },
+      feminine: {
+        singular: 'desapontada',
+        plural: 'desapontadas'
+      }
+    },
+    {
+      english: 'stuck',
+      masculine: {
+        singular: 'preso',
+        plural: 'presos'
+      },
+      feminine: {
+        singular: 'presa',
+        plural: 'presas'
+      }
     }
   ],
   sentences: [
@@ -8538,6 +8934,10 @@ export const db: Schema = {
     {
       portuguese: 'ter medo',
       english: 'to be afraid'
+    },
+    {
+      portuguese: 'tem cuidado com',
+      english: 'be careful with'
     }
   ],
   fitIn: [

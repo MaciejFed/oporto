@@ -2,7 +2,7 @@ import { BaseWord, Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 import { RatioRange } from '../../service/progress';
 
-export type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing';
+export type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing' | 'introduction';
 
 export abstract class TranslationExercise implements Exercise {
   translationType: TranslationType;

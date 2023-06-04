@@ -214,7 +214,7 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
   return progressMap;
 }
 
-export function progressByDate(results: Result[]): ProgressOnDay[] {
+export function progressByDate(results: Result[]) {
   function getUniqueWordsForDay(dateResult: DateResults, exercises: Exercise[]) {
     const resultsByDay = exercises.map((exercise) => getSingleExerciseProgress(dateResult.results, exercise));
 
