@@ -5,15 +5,18 @@ import { logger } from '../common/logger';
 import * as readline from 'readline';
 import * as https from 'https';
 import { getAllUniqueWordsConjugated } from '../service/progress';
+import { getLanguage, Language } from '../common/language';
 
 const resultDbFilePath = path.join(os.homedir(), 'results.json');
+const resultDEDbFilePath = path.join(os.homedir(), 'results_de.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
 const ptExamplesPath = path.join(os.homedir(), 'pt/pt.txt');
 const enExamplesPath = path.join(os.homedir(), 'pt/en.txt');
 
 export function readResultsFromFile(): string {
   logger.debug('reading results...');
-  return fs.readFileSync(resultDbFilePath, { encoding: 'utf-8' }).toString();
+  const finalPath = getLanguage() === Language.Portuguese ? resultDbFilePath : resultDEDbFilePath;
+  return fs.readFileSync(finalPath, { encoding: 'utf-8' }).toString();
 }
 
 async function translateToEnglish(text: [string, string]): Promise<string> {
@@ -161,7 +164,8 @@ export async function findExampleSentence(numberOfLinesToRead: number, wordToFin
 
 export function saveResultsToFile(data: string) {
   logger.debug('saving  results...');
-  fs.writeFileSync(resultDbFilePath, data);
+  const finalPath = getLanguage() === Language.Portuguese ? resultDbFilePath : resultDEDbFilePath;
+  fs.writeFileSync(finalPath, data);
 }
 
 export function saveProgressToFile(data: string) {

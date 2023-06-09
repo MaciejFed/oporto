@@ -1,9 +1,18 @@
 import { getRandomElement } from '../common/common';
 import { Adjective, Other, Phrase, readAll, Verb } from '../repository/exercises-repository';
 import { Noun, Sentence } from '../repository/exercises-repository';
+import { GermanNoun, GermanVerb, readAllDE } from '../repository/german-exercises-repository';
 
 export const getRandomNoun: () => Noun = () => {
   return getRandomElement(readAll().nouns);
+};
+
+export const getRandomGermanNoun: () => GermanNoun = () => {
+  return getRandomElement(readAllDE().nouns);
+};
+
+export const getRandomGermanVerb: () => GermanVerb = () => {
+  return getRandomElement(readAllDE().verbs);
 };
 
 export const getRandomOther: () => Other = () => {

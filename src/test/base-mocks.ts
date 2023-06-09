@@ -1,3 +1,5 @@
+import { Language, setLanguage } from '../common/language';
+
 /* eslint-disable @typescript-eslint/no-var-requires */
 const mockCommonModules = () => {
   // @ts-ignore
@@ -26,6 +28,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
   process.stdin.removeAllListeners();
   let mockResultFile = '[]';
   const sayCommands: string[] = [];
+  setLanguage(Language.German);
 
   mockCommonModules();
 

@@ -3,6 +3,7 @@ import { saveProgress } from './commands/progress';
 import { startSpeakSession } from './commands/speaking';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
+import { Language } from './common/language';
 const program = new Command();
 
 program.name('oporto').description('CLI to learn Portuguese').version('0.1.0');
@@ -11,7 +12,14 @@ program
   .command('test')
   .description('Start test session')
   .action((str, options) => {
-    startTestSession(true);
+    startTestSession(true, Language.Portuguese);
+  });
+
+program
+  .command('testde')
+  .description('Start German Test session')
+  .action((str, options) => {
+    startTestSession(true, Language.German);
   });
 
 program
@@ -25,7 +33,7 @@ program
   .command('random')
   .description('Start test session with random questions')
   .action((str, options) => {
-    startTestSession(false);
+    startTestSession(false, Language.Portuguese);
   });
 
 program

@@ -7,6 +7,7 @@ import { getAllResults } from '../repository/result-repository';
 import { Exercise, translationTypes } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { exerciseTranslationNeverDoneByVoice } from '../priority/types/exercise-translation-never-done-by-voice/exercise-translation-never-done-by-voice';
+import { Language } from '../common/language';
 
 function hearingFilter() {
   const allResults = getAllResults();
@@ -27,7 +28,7 @@ export function startSpeakSession() {
   const eventProcessor = new EventProcessor();
   const terminal = new Terminal(eventProcessor);
   const input = new Input(eventProcessor);
-  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, false, hearingFilter());
+  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, false, Language.Portuguese);
 
   eventProcessor.emit(APP_STARTED);
 }

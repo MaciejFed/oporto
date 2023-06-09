@@ -20,6 +20,7 @@ import { exec } from 'child_process';
 import { Exercise } from '../exercise/exercise';
 import { generateExercisesForSession } from '../exercise/generator';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
+import { getVoice, Language } from '../common/language';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -30,15 +31,10 @@ export class SessionManager implements AppEventListener {
   exerciseInProgress: boolean;
   hearingLoop?: NodeJS.Timer;
 
-  constructor(
-    eventProcessor: EventProcessor,
-    exerciseCount: number,
-    sortExercises: boolean,
-    exerciseFilter: (ex: Exercise) => boolean
-  ) {
+  constructor(eventProcessor: EventProcessor, exerciseCount: number, sortExercises: boolean, language: Language) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = generateExercisesForSession(exerciseCount, sortExercises, exerciseFilter);
+    this.exercises = generateExercisesForSession(exerciseCount, true, language);
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';
@@ -136,7 +132,7 @@ export class SessionManager implements AppEventListener {
     if (exercise instanceof TranslationExercise && exercise.isTranslationToPortugueseFromHearing()) {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
-      exec(`say ${correctAnswer}`);
+      exec(`say -v ${getVoice()} ${correctAnswer}`);
     }
   }
 }

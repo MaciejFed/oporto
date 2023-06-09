@@ -14,9 +14,20 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
+import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
+import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
+import { GermanVerbExercise } from '../exercise/german-verb-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
+  Object.assign(verbExercise, exerciseData);
+  assert(verbExercise.verb);
+  assert(verbExercise.person);
+  return verbExercise;
+}
+
+function createGermanVerbExercise(exerciseData: any) {
+  const verbExercise = new GermanVerbExercise();
   Object.assign(verbExercise, exerciseData);
   assert(verbExercise.verb);
   assert(verbExercise.person);
@@ -29,6 +40,22 @@ function createNounTranslationExercise(exerciseData: any) {
   assert(nounTranslationExercise.noun.portuguese);
   assert(nounTranslationExercise.noun.english);
   return nounTranslationExercise;
+}
+
+function createGermanNounTranslationExercise(exerciseData: any) {
+  const nounTranslationExercise = new GermanNounTranslationExercise();
+  Object.assign(nounTranslationExercise, exerciseData);
+  assert(nounTranslationExercise.noun.german);
+  assert(nounTranslationExercise.noun.english);
+  return nounTranslationExercise;
+}
+
+function createGermanVerbTranslationExercise(exerciseData: any) {
+  const verbTranslationExercise = new GermanVerbTranslationExercise();
+  Object.assign(verbTranslationExercise, exerciseData);
+  assert(verbTranslationExercise.verb.presentSimple);
+  assert(verbTranslationExercise.verb.english);
+  return verbTranslationExercise;
 }
 
 function createAdjectiveTranslationExercise(exerciseData: any) {
@@ -78,13 +105,16 @@ function createFitInGapExercise(exerciseData: any) {
 
 const exerciseFactory = {
   VerbExercise: createVerbExercise,
+  GermanVerbExercise: createGermanVerbExercise,
   NounTranslation: createNounTranslationExercise,
   AdjectiveTranslation: createAdjectiveTranslationExercise,
   VerbTranslation: createVerbTranslationExercise,
   SentenceTranslation: createSentenceTranslationExercise,
   PhraseTranslation: createPhraseTranslationExercise,
   OtherTranslation: createOtherTranslationExercise,
-  FitInGap: createFitInGapExercise
+  FitInGap: createFitInGapExercise,
+  GermanNounTranslation: createGermanNounTranslationExercise,
+  GermanVerbTranslation: createGermanVerbTranslationExercise
 };
 
 export function getAllResults(): Result[] {

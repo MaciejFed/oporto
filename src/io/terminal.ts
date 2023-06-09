@@ -37,6 +37,7 @@ import { getExerciseProgress, getStatisticForExercise } from '../service/result'
 import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { sleep } from '../common/common';
 import { findExampleSentenceAndWord } from '../service/example-finder';
+import { getVoice } from '../common/language';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -158,7 +159,7 @@ export class Terminal {
           this.exampleSentenceFull = `${exampleSentencePrefixLine}.\n${exampleSentence}`;
           this.exampleSentenceTranslation = exampleSentenceTranslation;
           this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
-          exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+          exec(`say -v ${getVoice()} "${this.exampleSentence?.exampleSentencePartTwo}"`);
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
             this.exampleSentence!.exerciseWord,
@@ -197,7 +198,11 @@ export class Terminal {
     if (this.exercise) {
       const allResults = getAllResults();
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
-      if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
+      if (
+        ['VerbExercise', 'VerbTranslation', 'GermanVerbExercise', 'GermanVerbTranslation'].includes(
+          this.exercise.exerciseType
+        )
+      ) {
         // @ts-ignore
         printAllVerbConjugations(this.exercise.verb);
       }
@@ -241,7 +246,7 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+        exec(`say -v ${getVoice()}" ${this.exampleSentence?.exampleSentencePartTwo}"`);
         // sleep(5000).then(() => {
         //   exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
         // });
@@ -264,7 +269,7 @@ export class Terminal {
   }
 
   private async sayCorrectAnswerPhrase() {
-    exec(`say "${this.exercise?.getRetryPrompt()}"`);
+    exec(`say -v ${getVoice()} "${this.exercise?.getRetryPrompt()}"`);
   }
 }
 

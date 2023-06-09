@@ -146,6 +146,7 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
       }
       if (!prev.wordsUsed.some((word) => JSON.stringify(curr.getBaseWord()) === JSON.stringify(word))) {
         return {
+          // @ts-ignore
           wordsUsed: prev.wordsUsed.concat(baseWord),
           exercises: prev.exercises.concat(curr)
         };

@@ -5,6 +5,7 @@ import { getAllUniqueWords } from '../service/progress';
 import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
 import { generateExercisesForSession } from '../exercise/generator';
 import clear from 'clear';
+import { Language } from '../common/language';
 
 export function displayStatistics(displayProgress: boolean) {
   clear();
@@ -15,7 +16,7 @@ export function displayStatistics(displayProgress: boolean) {
     logger.info(`Overall Progress: ${getOverallProgres()}`);
 
     const allResults = getAllResults();
-    const allExercises = generateExercisesForSession(20000, false, () => true);
+    const allExercises = generateExercisesForSession(20000, false, Language.Portuguese);
     const notDoneExercises = allExercises.filter(
       (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
     );

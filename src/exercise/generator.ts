@@ -10,6 +10,11 @@ import { FitInGapExercise } from './fit-in-gap-exercise';
 import { OtherTranslationExercise } from './translation/other-translation-exercise';
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
+import { Language } from '../common/language';
+import { GermanPerson, readAllDE } from '../repository/german-exercises-repository';
+import { GermanNounTranslationExercise } from './translation/de/german-noun-translation-exercise';
+import { GermanVerbTranslationExercise } from './translation/de/german-verb-translation-exercise';
+import { GermanVerbExercise } from './german-verb-exercise';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -29,11 +34,32 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
   return pastPerfectVerbs.concat(presentSimpleVerbs);
 };
 
+export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
+  const presentSimpleVerbs = readAllDE().verbs.flatMap((verb) =>
+    Object.keys(GermanPerson).flatMap((person) =>
+      GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'presentSimple')
+    )
+  );
+  return presentSimpleVerbs;
+};
+
 const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toEnglish', 'toPortuguese'];
 
 const NounTranslationGenerator: ExerciseGenerator = () => {
   return readAll().nouns.flatMap((noun) =>
     translationTypes.map((translationType) => NounTranslationExercise.new(noun, translationType))
+  );
+};
+
+const GermanNounTranslationGenerator: ExerciseGenerator = () => {
+  return readAllDE().nouns.flatMap((noun) =>
+    translationTypes.map((translationType) => GermanNounTranslationExercise.new(noun, translationType))
+  );
+};
+
+const GermanVerbTranslationGenerator: ExerciseGenerator = () => {
+  return readAllDE().verbs.flatMap((verb) =>
+    translationTypes.map((translationType) => GermanVerbTranslationExercise.new(verb, translationType))
   );
 };
 
@@ -83,25 +109,29 @@ const FitInGapGenerator: ExerciseGenerator = () => {
   });
 };
 
-export function generateAllPossibleExercises(): Exercise[] {
-  return [
-    VerbExerciseGenerator,
-    NounTranslationGenerator,
-    VerbTranslationGenerator,
-    SentenceTranslationGenerator,
-    PhraseTranslationGenerator,
-    OtherTranslationGenerator,
-    AdjectiveTranslationGenerator,
-    FitInGapGenerator
-  ].flatMap((generator) => generator());
+export function generateAllPossibleExercises(language: Language): Exercise[] {
+  switch (language) {
+    case Language.German:
+      return [GermanVerbExerciseGenerator, GermanNounTranslationGenerator, GermanVerbTranslationGenerator].flatMap(
+        (generator) => generator()
+      );
+    case Language.Portuguese:
+    default:
+      return [
+        VerbExerciseGenerator,
+        NounTranslationGenerator,
+        VerbTranslationGenerator,
+        SentenceTranslationGenerator,
+        PhraseTranslationGenerator,
+        OtherTranslationGenerator,
+        AdjectiveTranslationGenerator,
+        FitInGapGenerator
+      ].flatMap((generator) => generator());
+  }
 }
 
-export function generateExercisesForSession(
-  exerciseCount: number,
-  sort: boolean,
-  filter: (ex: Exercise) => boolean
-): Exercise[] {
-  const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
+export function generateExercisesForSession(exerciseCount: number, sort: boolean, language: Language): Exercise[] {
+  const exercises = generateAllPossibleExercises(language);
   const exercisesFinal = sort ? sortExercises(exercises) : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();

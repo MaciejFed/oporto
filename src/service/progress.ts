@@ -17,6 +17,7 @@ import { OtherTranslationExercise } from '../exercise/translation/other-translat
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
 import { onlyDistinct } from '../common/common';
 import { logger } from '../common/logger';
+import { Language } from '../common/language';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -60,7 +61,7 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
 }
 
 export function getExercisesProgress(results: Result[], filter: (e: Exercise) => boolean) {
-  const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(50000, false, () => true)
+  const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(50000, false, Language.Portuguese)
     .filter(filter)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
@@ -188,6 +189,9 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
 
   const progressMap: Record<ExerciseType, ExerciseProgress[]> = {
     VerbExercise: [],
+    GermanVerbExercise: [],
+    GermanNounTranslation: [],
+    GermanVerbTranslation: [],
     NounTranslation: [],
     OtherTranslation: [],
     AdjectiveTranslation: [],
@@ -198,7 +202,7 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
   };
 
   let filteredResults = results;
-  const allExercises = generateAllPossibleExercises();
+  const allExercises = generateAllPossibleExercises(Language.Portuguese);
 
   for (const exerciseType of exerciseTypes) {
     const exerciseProgress = getGroupExerciseProgress(allExercises, filteredResults, exerciseType);

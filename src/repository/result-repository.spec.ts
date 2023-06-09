@@ -1,10 +1,11 @@
 import { getAllResults, getAllResultsForExercise, saveNewResult } from './result-repository';
 import { convertToResult } from '../service/result';
 import { generateAllPossibleExercises } from '../exercise/generator';
+import { Language } from '../common/language';
 
 describe('Result Repository', () => {
   it('Can Save Results For All Exercise Types And Read Correctly', () => {
-    const exercises = generateAllPossibleExercises();
+    const exercises = generateAllPossibleExercises(Language.Portuguese);
     const results = exercises.map((exercise) => convertToResult(exercise, 'foo', false, 'keyboard'));
 
     results.forEach((result) => saveNewResult(result));

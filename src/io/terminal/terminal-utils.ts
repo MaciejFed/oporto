@@ -7,6 +7,7 @@ import eventProcessor from '../../event/event-processor';
 import Output from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
 import { clearLine } from 'readline';
+import { GermanPerson, GermanVerb } from '../../repository/german-exercises-repository';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -166,25 +167,28 @@ export function printAllAnswers(results: Result[]) {
   });
 }
 
-export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfect }: Verb) {
+export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfect }: Verb | GermanVerb) {
   const CONJUGATION_X_MARGIN = 60;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   Output.bold();
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
   Output.bold(false);
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
-  const longestConjugationSize = Object.values(Person).reduce((prev, curr) => {
-    const currSize = presentSimple[curr as Person].length;
+  const longestConjugationSize = Object.keys(presentSimple).reduce((prev, curr) => {
+    // @ts-ignore
+    const currSize = presentSimple[curr].length;
     return prev > currSize ? prev : currSize;
   }, 0);
 
-  Object.values(Person).forEach((person, index) => {
-    const past = pastPerfect ? pastPerfect[person as Person] : '';
+  Object.keys(presentSimple).forEach((person, index) => {
+    // @ts-ignore
+    const past = pastPerfect ? pastPerfect[person] : '';
     const personText = person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`;
     Output.moveTo(
       CONJUGATION_X_MARGIN,
       CONJUGATION_Y_MARGIN + 2 + index,
-      `${personText.padEnd(5)} ${presentSimple[person as Person].padEnd(longestConjugationSize)}|${past}`
+      // @ts-ignore
+      `${personText.padEnd(5)} ${presentSimple[person].padEnd(longestConjugationSize)}|${past}`
     );
   });
 }

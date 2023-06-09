@@ -7,7 +7,9 @@
     "oporto": "./build/cli.js"
   },
   "scripts": {
-    "start": "http-server progress",
+    "server": "http-server progress",
+    "start": "ts-node src/cli.ts test",
+    "startde": "ts-node src/cli.ts testde",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
