@@ -2,12 +2,25 @@ import { terminal } from 'terminal-kit';
 import clear from 'clear';
 import { AppEventListener } from '../event/event-listener';
 import eventProcessor, { EventProcessor } from '../event/event-processor';
+import { GermanPerson } from '../repository/german-exercises-repository';
 
-enum Color {
+export enum Color {
+  B = 'B',
   R = 'R',
   G = 'G',
   W = 'W',
   Y = 'Y'
+}
+
+export class ColoredText {
+  public text: string;
+  public colors: Color[];
+
+  public constructor(text: string, colors: Color[]) {
+    if (text.length !== colors.length) throw new Error('colors array lenght not equal to text lenght');
+    this.text = text;
+    this.colors = colors;
+  }
 }
 
 class Output implements AppEventListener {
@@ -15,6 +28,13 @@ class Output implements AppEventListener {
   private colorTable: string[][] = [];
   private textColor: Color;
   private eventProcessor: EventProcessor;
+  private colorMap: Record<Color, Function> = {
+    B: this.blue,
+    R: this.red,
+    G: this.green,
+    W: this.white,
+    Y: this.yellow
+  };
 
   public constructor() {
     this.resetTable();
@@ -24,6 +44,14 @@ class Output implements AppEventListener {
 
   public moveCursor(x: number, y: number) {
     terminal.moveTo(x, y);
+  }
+
+  public moveToColored(x: number, y: number, coloredText: ColoredText) {
+    coloredText.text.split('').forEach((char, index) => {
+      this.colorMap[coloredText.colors[index]]();
+      this.moveTo(x + index, y, char);
+    });
+    this.white();
   }
 
   public moveTo(x: number, y: number, text: string | undefined) {
@@ -53,6 +81,12 @@ class Output implements AppEventListener {
   public yellow(): Output {
     this.textColor = Color.Y;
     terminal.yellow();
+    return this;
+  }
+
+  public blue(): Output {
+    this.textColor = Color.B;
+    terminal.blue();
     return this;
   }
 

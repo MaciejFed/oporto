@@ -8,6 +8,7 @@ import Output from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
 import { clearLine } from 'readline';
 import { GermanPerson, GermanVerb } from '../../repository/german-exercises-repository';
+import { GermanPersonWithInf, parseGermanVerb } from '../../service/conjugation/german-conjugation';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -173,22 +174,22 @@ export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfec
   Output.bold();
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
   Output.bold(false);
-  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
+  // Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
   const longestConjugationSize = Object.keys(presentSimple).reduce((prev, curr) => {
     // @ts-ignore
     const currSize = presentSimple[curr].length;
     return prev > currSize ? prev : currSize;
   }, 0);
 
-  Object.keys(presentSimple).forEach((person, index) => {
+  const parsedVerb = parseGermanVerb({ infinitive, presentSimple } as GermanVerb);
+  ['Inf'].concat(Object.keys(presentSimple)).forEach((person, index) => {
     // @ts-ignore
     const past = pastPerfect ? pastPerfect[person] : '';
     const personText = person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`;
-    Output.moveTo(
+    Output.moveToColored(
       CONJUGATION_X_MARGIN,
       CONJUGATION_Y_MARGIN + 2 + index,
-      // @ts-ignore
-      `${personText.padEnd(5)} ${presentSimple[person].padEnd(longestConjugationSize)}|${past}`
+      parsedVerb[person.replace('/', '').replace('/', '') as GermanPersonWithInf]
     );
   });
 }
