@@ -1,3 +1,5 @@
+import { getRandomElement } from './common';
+
 export enum Language {
   Portuguese = 'Portuguese',
   German = 'German'
@@ -16,5 +18,8 @@ export function getLanguage(): Language {
 }
 
 export function getVoice(): string {
-  return getLanguage() === Language.Portuguese ? 'Joana' : 'Petra';
+  if (getLanguage() === Language.Portuguese) {
+    return getRandomElement(['Joana', 'Catarina']);
+  }
+  return getRandomElement(['Anna', 'Petra', 'Yannick']);
 }

@@ -10,6 +10,8 @@ import { findExampleSentence } from '../io/file';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
 import { logger } from '../common/logger';
+import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
+import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
 
 const extractWordToFindFromExercise = (exercise: Exercise): string | undefined => {
   switch (exercise.exerciseType) {
@@ -22,10 +24,16 @@ const extractWordToFindFromExercise = (exercise: Exercise): string | undefined =
     case 'VerbTranslation':
       if ((exercise as VerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as VerbTranslationExercise).verb.infinitive;
+    case 'GermanVerbTranslation':
+      if ((exercise as GermanVerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
+      return (exercise as GermanVerbTranslationExercise).verb.infinitive;
     case 'NounTranslation':
       if ((exercise as NounTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as NounTranslationExercise).noun.portuguese.word;
+    case 'GermanNounTranslation':
+      return (exercise as GermanNounTranslationExercise).noun.german.singular;
     case 'VerbExercise':
+    case 'GermanVerbExercise':
       return exercise.getCorrectAnswer();
     default:
       return undefined;

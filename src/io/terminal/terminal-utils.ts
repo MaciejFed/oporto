@@ -4,7 +4,7 @@ import { formatDate, sleep } from '../../common/common';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
 import { ExerciseStatistics, Result, WeekdayStatistics } from '../../service/result';
 import eventProcessor from '../../event/event-processor';
-import Output from '../output';
+import Output, { Color, ColoredText } from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
 import { clearLine } from 'readline';
 import { GermanPerson, GermanVerb } from '../../repository/german-exercises-repository';
@@ -102,10 +102,16 @@ export function printExampleSentence(
   Output.moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
   Output.bold(false);
   Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 4, `"${exampleSentencePrefixLine}"`);
-  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 5, `"${exampleSentence}"`);
-  Output.yellow();
-  Output.moveTo(1 + examplePrefix.length + wordStartIndex + 1, EXERCISE_MENU_MARGIN + 5, exerciseWord);
-  Output.white();
+  Output.moveToColored(
+    1 + examplePrefix.length,
+    EXERCISE_MENU_MARGIN + 5,
+    new ColoredText(
+      `"${exampleSentence}"`,
+      Array(wordStartIndex + 1)
+        .fill(Color.W)
+        .concat(Array(exerciseWord.length).fill(Color.Y).concat(Array(100).fill(Color.W)))
+    )
+  );
 }
 
 export function printExampleTranslation(

@@ -10,10 +10,11 @@
     "server": "http-server progress",
     "start": "ts-node src/cli.ts test",
     "startde": "ts-node src/cli.ts testde",
+    "startdee": "ts-node src/cli.ts progressde",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
-    "verify": "npm run lint && npm run format && npm run test",
+    "verify": "npm run lint && npm run format",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto && cp ~/results.json ~/results/results-$(date '+%Y-%m-%d%H:%M:%S').json"

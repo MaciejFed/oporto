@@ -40,6 +40,391 @@ export const db: Schema = {
       english: 'house',
       german: {
         singular: 'Haus',
+        plural: 'Häuser',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'time',
+      german: {
+        singular: 'Zeit',
+        plural: 'Zeiten',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'man',
+      german: {
+        singular: 'Mann',
+        plural: 'Männer',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'woman',
+      german: {
+        singular: 'Frau',
+        plural: 'Frauen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'child',
+      german: {
+        singular: 'Kind',
+        plural: 'Kinder',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'day',
+      german: {
+        singular: 'Tag',
+        plural: 'Tage',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'year',
+      german: {
+        singular: 'Jahr',
+        plural: 'Jahre',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'hand',
+      german: {
+        singular: 'Hand',
+        plural: 'Hände',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'eye',
+      german: {
+        singular: 'Auge',
+        plural: 'Augen',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'way',
+      german: {
+        singular: 'Weg',
+        plural: 'Wege',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'car',
+      german: {
+        singular: 'Auto',
+        plural: 'Autos',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'friend',
+      german: {
+        singular: 'Freund',
+        plural: 'Freunde',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'water',
+      german: {
+        singular: 'Wasser',
+        plural: 'Wasser',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'city',
+      german: {
+        singular: 'Stadt',
+        plural: 'Städte',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'country',
+      german: {
+        singular: 'Land',
+        plural: 'Länder',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'word',
+      german: {
+        singular: 'Wort',
+        plural: 'Wörter',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'family',
+      german: {
+        singular: 'Familie',
+        plural: 'Familien',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'head',
+      german: {
+        singular: 'Kopf',
+        plural: 'Köpfe',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'father',
+      german: {
+        singular: 'Vater',
+        plural: 'Väter',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'mother',
+      german: {
+        singular: 'Mutter',
+        plural: 'Mütter',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'work',
+      german: {
+        singular: 'Arbeit',
+        plural: 'Arbeiten',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'life',
+      german: {
+        singular: 'Leben',
+        plural: 'Leben',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'world',
+      german: {
+        singular: 'Welt',
+        plural: 'Welten',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'person',
+      german: {
+        singular: 'Person',
+        plural: 'Personen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'moment',
+      german: {
+        singular: 'Moment',
+        plural: 'Momente',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'school',
+      german: {
+        singular: 'Schule',
+        plural: 'Schulen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'history',
+      german: {
+        singular: 'Geschichte',
+        plural: 'Geschichten',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'war',
+      german: {
+        singular: 'Krieg',
+        plural: 'Kriege',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'space',
+      german: {
+        singular: 'Raum',
+        plural: 'Räume',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'face',
+      german: {
+        singular: 'Gesicht',
+        plural: 'Gesichter',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'night',
+      german: {
+        singular: 'Nacht',
+        plural: 'Nächte',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'book',
+      german: {
+        singular: 'Buch',
+        plural: 'Bücher',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'end',
+      german: {
+        singular: 'Ende',
+        plural: 'Enden',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'group',
+      german: {
+        singular: 'Gruppe',
+        plural: 'Gruppen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'heart',
+      german: {
+        singular: 'Herz',
+        plural: 'Herzen',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'sun',
+      german: {
+        singular: 'Sonne',
+        plural: 'Sonnen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'brother',
+      german: {
+        singular: 'Bruder',
+        plural: 'Brüder',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sister',
+      german: {
+        singular: 'Schwester',
+        plural: 'Schwestern',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'question',
+      german: {
+        singular: 'Frage',
+        plural: 'Fragen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'answer',
+      german: {
+        singular: 'Antwort',
+        plural: 'Antworten',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'love',
+      german: {
+        singular: 'Liebe',
+        plural: 'Lieben',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'game',
+      german: {
+        singular: 'Spiel',
+        plural: 'Spiele',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'view',
+      german: {
+        singular: 'Bild',
+        plural: 'Bilder',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'science',
+      german: {
+        singular: 'Wissenschaft',
+        plural: 'Wissenschaften',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'music',
+      german: {
+        singular: 'Musik',
+        plural: 'Musiken',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'idea',
+      german: {
+        singular: 'Idee',
+        plural: 'Ideen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'problem',
+      german: {
+        singular: 'Problem',
+        plural: 'Probleme',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'newspaper',
+      german: {
+        singular: 'Zeitung',
+        plural: 'Zeitungen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'week',
+      german: {
+        singular: 'Woche',
+        plural: 'Wochen',
         gender: 'feminine'
       }
     }
@@ -70,7 +455,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to be',
+      english: 'will',
       infinitive: 'werden',
       presentSimple: {
         Ich: 'werde',

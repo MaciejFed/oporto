@@ -64,7 +64,15 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
     this.translationType === other.translationType;
 
   getWordWithGender() {
-    if (this.noun.german.gender === 'none') return this.noun.german.singular;
-    return `${this.noun.german.gender === 'masculine' ? 'Die' : 'Das'} ${this.noun.german.singular}`;
+    switch (this.noun.german.gender) {
+      case 'masculine':
+        return `Der ${this.noun.german.singular}`;
+      case 'feminine':
+        return `Die ${this.noun.german.singular}`;
+      case 'none':
+        return `Das ${this.noun.german.singular}`;
+      default:
+        throw new Error(`Unknown gender ${this.noun.german.gender}`);
+    }
   }
 }

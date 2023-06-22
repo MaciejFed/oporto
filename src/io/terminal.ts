@@ -198,11 +198,7 @@ export class Terminal {
     if (this.exercise) {
       const allResults = getAllResults();
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
-      if (
-        ['VerbExercise', 'VerbTranslation', 'GermanVerbExercise', 'GermanVerbTranslation'].includes(
-          this.exercise.exerciseType
-        )
-      ) {
+      if (['GermanVerbExercise', 'GermanVerbTranslation'].includes(this.exercise.exerciseType)) {
         // @ts-ignore
         printAllVerbConjugations(this.exercise.verb);
       }

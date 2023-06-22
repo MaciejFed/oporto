@@ -11,6 +11,7 @@ const resultDbFilePath = path.join(os.homedir(), 'results.json');
 const resultDEDbFilePath = path.join(os.homedir(), 'results_de.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
 const ptExamplesPath = path.join(os.homedir(), 'pt/pt.txt');
+const deExamplesPath = path.join(os.homedir(), 'pt/de.txt');
 const enExamplesPath = path.join(os.homedir(), 'pt/en.txt');
 
 export function readResultsFromFile(): string {
@@ -21,8 +22,9 @@ export function readResultsFromFile(): string {
 
 async function translateToEnglish(text: [string, string]): Promise<string> {
   const baseUrl = 'https://api.mymemory.translated.net/get';
+  const langsource = getLanguage() === Language.Portuguese ? 'pt' : 'de';
   const lang = 'en';
-  const url = `${baseUrl}?q=${encodeURIComponent(text[0].concat(` ${text[1]}`))}&langpair=pt|${lang}`;
+  const url = `${baseUrl}?q=${encodeURIComponent(text[1])}&langpair=${langsource}|${lang}`;
 
   return new Promise((resolve, reject) => {
     https.get(url, (response) => {
@@ -54,7 +56,7 @@ export async function findExampleSentence(numberOfLinesToRead: number, wordToFin
   const wordRegex = new RegExp(`\\b${wordToFind}\\b`, 'i');
   // @ts-ignore
   const readInterfacePt = readline.createInterface({
-    input: fs.createReadStream(ptExamplesPath),
+    input: fs.createReadStream(getLanguage() === Language.Portuguese ? ptExamplesPath : deExamplesPath),
     console: false
   });
 

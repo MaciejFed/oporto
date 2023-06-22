@@ -5,7 +5,7 @@ import {
   getAllResultsForExercise,
   getAllResultsForExerciseSubject
 } from '../repository/result-repository';
-import fs from 'fs';
+import fs, { writeFileSync } from 'fs';
 import { Result } from '../service/result';
 import { exerciseNeverDone } from './types/exercise-never-done/exercise-never-done';
 import { exerciseNeverDoneByVoice } from './types/exercise-never-done-by-voice/exercise-never-done-by-voice';
@@ -32,6 +32,7 @@ import { logger } from '../common/logger';
 import { getRandomElement } from '../common/common';
 import { WordTypes } from '../repository/exercises-repository';
 import performance from 'performance-now';
+import { json } from 'stream/consumers';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -128,6 +129,7 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
     exerciseProgressMap,
     exerciseSubjectResultMap
   );
+  writeFileSync('priorities.json', JSON.stringify(exercisesWithPriorities, null, 4));
 
   logSortingTime(start);
 
@@ -135,7 +137,7 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
   const randomExercise = getRandomElement(exercises);
   const sortedExercises = insertRandomExercise(exercisesWithPriorities, randomIndex, randomExercise);
 
-  return sortedExercises.reduce(
+  const priorities = sortedExercises.reduce(
     (prev, curr) => {
       const baseWord = curr.getBaseWord();
       if (!baseWord) {
@@ -158,7 +160,8 @@ export function sortExercises(exercises: Exercise[]): Exercise[] {
       wordsUsed: new Array<WordTypes>(),
       exercises: new Array<Exercise>()
     }
-  ).exercises;
+  );
+  return priorities.exercises;
 }
 
 function logExerciseStats(exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>): void {

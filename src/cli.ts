@@ -3,7 +3,7 @@ import { saveProgress } from './commands/progress';
 import { startSpeakSession } from './commands/speaking';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
-import { Language } from './common/language';
+import { Language, setLanguage } from './common/language';
 const program = new Command();
 
 program.name('oporto').description('CLI to learn Portuguese').version('0.1.0');
@@ -47,6 +47,15 @@ program
   .command('progress')
   .description('Save progress')
   .action(() => {
+    setLanguage(Language.Portuguese);
+    saveProgress();
+  });
+
+program
+  .command('progressde')
+  .description('Save German progress')
+  .action(() => {
+    setLanguage(Language.German);
     saveProgress();
   });
 

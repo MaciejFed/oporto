@@ -17,7 +17,7 @@ export class ColoredText {
   public colors: Color[];
 
   public constructor(text: string, colors: Color[]) {
-    if (text.length !== colors.length) throw new Error('colors array lenght not equal to text lenght');
+    if (text.length > colors.length) throw new Error('colors array lenght not equal to text lenght');
     this.text = text;
     this.colors = colors;
   }
@@ -28,7 +28,7 @@ class Output implements AppEventListener {
   private colorTable: string[][] = [];
   private textColor: Color;
   private eventProcessor: EventProcessor;
-  private colorMap: Record<Color, Function> = {
+  private colorMap: Record<Color, () => Output> = {
     B: this.blue,
     R: this.red,
     G: this.green,

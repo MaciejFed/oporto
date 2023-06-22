@@ -17,7 +17,10 @@ import { OtherTranslationExercise } from '../exercise/translation/other-translat
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
 import { onlyDistinct } from '../common/common';
 import { logger } from '../common/logger';
-import { Language } from '../common/language';
+import { getLanguage, Language } from '../common/language';
+import { readAllDE } from '../repository/german-exercises-repository';
+import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
+import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -110,29 +113,49 @@ function mapToRatioRange(ratio: number, neverDone: boolean): RatioRange {
 }
 
 export function getAllUniqueWordsConjugated(): string[] {
-  const nouns = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural]);
-  const verbs = readAll().verbs.flatMap((verb) => [
-    verb.infinitive,
-    verb.presentSimple.Eu,
-    verb.presentSimple.Tu,
-    verb.presentSimple['Ela/Ele/Você'],
-    verb.presentSimple.Nós,
-    verb.presentSimple['Eles/Elas/Vocēs'],
-    verb.pastPerfect?.Eu,
-    verb.pastPerfect?.Tu,
-    verb.pastPerfect?.['Ela/Ele/Você'],
-    verb.pastPerfect?.Nós,
-    verb.pastPerfect?.['Eles/Elas/Vocēs']
-  ]);
-  const others = readAll().others.map((other) => other.portuguese);
-  const adjectives = readAll().adjectives.flatMap((adjective) => [
-    adjective.masculine.singular,
-    adjective.masculine.plural,
-    adjective.feminine.singular,
-    adjective.feminine.plural
-  ]);
+  if (getLanguage() === Language.Portuguese) {
+    const nouns = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural]);
+    const verbs = readAll().verbs.flatMap((verb) => [
+      verb.infinitive,
+      verb.presentSimple.Eu,
+      verb.presentSimple.Tu,
+      verb.presentSimple['Ela/Ele/Você'],
+      verb.presentSimple.Nós,
+      verb.presentSimple['Eles/Elas/Vocēs'],
+      verb.pastPerfect?.Eu,
+      verb.pastPerfect?.Tu,
+      verb.pastPerfect?.['Ela/Ele/Você'],
+      verb.pastPerfect?.Nós,
+      verb.pastPerfect?.['Eles/Elas/Vocēs']
+    ]);
+    const others = readAll().others.map((other) => other.portuguese);
+    const adjectives = readAll().adjectives.flatMap((adjective) => [
+      adjective.masculine.singular,
+      adjective.masculine.plural,
+      adjective.feminine.singular,
+      adjective.feminine.plural
+    ]);
 
-  const allWords = [nouns, verbs, others, adjectives]
+    const allWords = [nouns, verbs, others, adjectives]
+      .flatMap((w) => w)
+      .filter((w) => w !== undefined)
+      .map((w) => w!.toLowerCase())
+      .filter((word) => word)
+      .sort();
+
+    return [...new Set(allWords)];
+  }
+  const nouns = readAllDE().nouns.flatMap((noun) => [noun.german.singular, noun.german.plural]);
+  const verbs = readAllDE().verbs.flatMap((verb) => [
+    verb.infinitive,
+    verb.presentSimple.Ich,
+    verb.presentSimple.Du,
+    verb.presentSimple['Er/Sie/Es'],
+    verb.presentSimple.Wir,
+    verb.presentSimple.Ihr,
+    verb.presentSimple.Sie
+  ]);
+  const allWords = [nouns, verbs]
     .flatMap((w) => w)
     .filter((w) => w !== undefined)
     .map((w) => w!.toLowerCase())
@@ -143,12 +166,24 @@ export function getAllUniqueWordsConjugated(): string[] {
 }
 
 export function getAllUniqueWords(): string[] {
-  const nouns = readAll().nouns.map((noun) => noun.portuguese.word);
-  const verbs = readAll().verbs.map((verb) => verb.infinitive);
-  const others = readAll().others.map((other) => other.portuguese);
-  const adjectives = readAll().adjectives.map((adjective) => adjective.masculine.singular);
+  if (getLanguage() === Language.Portuguese) {
+    const nouns = readAll().nouns.map((noun) => noun.portuguese.word);
+    const verbs = readAll().verbs.map((verb) => verb.infinitive);
+    const others = readAll().others.map((other) => other.portuguese);
+    const adjectives = readAll().adjectives.map((adjective) => adjective.masculine.singular);
 
-  const allWords = [nouns, verbs, others, adjectives]
+    const allWords = [nouns, verbs, others, adjectives]
+      .flatMap((w) => w)
+      .map((w) => w.toLowerCase())
+      .filter((word) => word)
+      .sort();
+
+    return [...new Set(allWords)];
+  }
+  const nouns = readAllDE().nouns.map((noun) => noun.german.singular);
+  const verbs = readAllDE().verbs.map((verb) => verb.infinitive);
+
+  const allWords = [nouns, verbs]
     .flatMap((w) => w)
     .map((w) => w.toLowerCase())
     .filter((word) => word)
@@ -158,14 +193,20 @@ export function getAllUniqueWords(): string[] {
 }
 
 export function getAllUniqueWordsAsExercises(): Exercise[] {
-  const nounExercises = readAll().nouns.map((noun) => NounTranslationExercise.new(noun, 'toPortuguese'));
-  const verbExercises = readAll().verbs.map((verb) => VerbTranslationExercise.new(verb, 'toPortuguese'));
-  const otherExercises = readAll().others.map((other) => OtherTranslationExercise.new(other, 'toPortuguese'));
-  const adjectivesExercises = readAll().adjectives.map((adjective) =>
-    AdjectiveTranslationExercise.new(adjective, 'toPortuguese', 'masculine', 'singular')
-  );
+  if (getLanguage() === Language.Portuguese) {
+    const nounExercises = readAll().nouns.map((noun) => NounTranslationExercise.new(noun, 'toPortuguese'));
+    const verbExercises = readAll().verbs.map((verb) => VerbTranslationExercise.new(verb, 'toPortuguese'));
+    const otherExercises = readAll().others.map((other) => OtherTranslationExercise.new(other, 'toPortuguese'));
+    const adjectivesExercises = readAll().adjectives.map((adjective) =>
+      AdjectiveTranslationExercise.new(adjective, 'toPortuguese', 'masculine', 'singular')
+    );
 
-  return [...nounExercises, ...verbExercises, ...otherExercises, ...adjectivesExercises];
+    return [...nounExercises, ...verbExercises, ...otherExercises, ...adjectivesExercises];
+  }
+  const nounExercises = readAllDE().nouns.map((noun) => GermanNounTranslationExercise.new(noun, 'toPortuguese'));
+  const verbExercises = readAllDE().verbs.map((verb) => GermanVerbTranslationExercise.new(verb, 'toPortuguese'));
+
+  return [...nounExercises, ...verbExercises];
 }
 
 type ProgressOnDay = {
@@ -177,7 +218,7 @@ type ProgressOnDay = {
 
 export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, ExerciseProgress[]> {
   const mapGeneratingStartTime = Date.now();
-  const exerciseTypes: ExerciseType[] = [
+  const exerciseTypesPt: ExerciseType[] = [
     'VerbExercise',
     'SentenceTranslation',
     'NounTranslation',
@@ -186,6 +227,8 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
     'VerbTranslation',
     'FitInGap'
   ];
+
+  const exerciseTypesDe: ExerciseType[] = ['GermanVerbExercise', 'GermanNounTranslation', 'GermanVerbTranslation'];
 
   const progressMap: Record<ExerciseType, ExerciseProgress[]> = {
     VerbExercise: [],
@@ -202,9 +245,9 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
   };
 
   let filteredResults = results;
-  const allExercises = generateAllPossibleExercises(Language.Portuguese);
+  const allExercises = generateAllPossibleExercises(getLanguage());
 
-  for (const exerciseType of exerciseTypes) {
+  for (const exerciseType of getLanguage() === Language.Portuguese ? exerciseTypesPt : exerciseTypesDe) {
     const exerciseProgress = getGroupExerciseProgress(allExercises, filteredResults, exerciseType);
     progressMap[exerciseType] = exerciseProgress;
 

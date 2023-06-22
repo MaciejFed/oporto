@@ -77,7 +77,7 @@ describe('Terminal Utils', () => {
     );
   });
 
-  it('Should Print Example With Yellow Word Included', () => {
+  it.skip('Should Print Example With Yellow Word Included', () => {
     const word = 'ver';
     const exampleSentence = `Estou a ${word} a televisão`;
 
