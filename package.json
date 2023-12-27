@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "http-server progress",
+    "start-server": "ts-node src/server/server",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
@@ -30,10 +31,13 @@
     "chalk": "^4.1.2",
     "clear": "^0.1.0",
     "commander": "^9.3.0",
+    "dotenv": "^16.3.1",
     "ervy": "^1.0.7",
+    "express": "^4.18.2",
     "figlet": "^1.5.2",
     "line-reader": "^0.4.0",
     "luxon": "^3.0.1",
+    "mongodb": "^6.3.0",
     "path": "^0.12.7",
     "performance-now": "^2.1.0",
     "terminal-kit": "^2.4.0",
@@ -45,10 +49,12 @@
     "@babel/preset-typescript": "^7.17.12",
     "@spotify/eslint-config": "^13.0.1",
     "@types/clear": "^0.1.2",
+    "@types/express": "^4.17.21",
     "@types/figlet": "^1.5.4",
     "@types/jest": "^28.1.1",
     "@types/line-reader": "^0.0.34",
     "@types/luxon": "^2.3.2",
+    "@types/mongodb": "^4.0.7",
     "@types/node": "^17.0.42",
     "@types/terminal-kit": "^1.34.0",
     "@types/yargs": "^17.0.10",
@@ -69,7 +75,8 @@
     "assets": [
       "node_modules/figlet/fonts/Standard.flf",
       "node_modules/terminal-kit/lib/termconfig/**.js",
-      "node_modules/terminal-kit/lib/colorScheme/**.**"
+      "node_modules/terminal-kit/lib/colorScheme/**.**",
+      "!node_modules/bson/lib/bson.cjs"
     ],
     "outputPath": "bin"
   }
