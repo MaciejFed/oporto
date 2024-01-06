@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import { MongoClient } from 'mongodb';
 import { loadValidConfig } from './configuration';
 import { Result } from '../service/result';
+import { generateExercisesForSessionAsync } from '../exercise/generator';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
@@ -49,6 +50,11 @@ app.use((req, res, next) => {
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
   res.send(results);
+});
+
+app.get('/generate/local', async (_req: Request, res: Response) => {
+  const exercies = await generateExercisesForSessionAsync(5, true, () => true);
+  res.send(exercies);
 });
 
 app.listen(port, () => {

@@ -18,7 +18,7 @@ import { saveNewResult } from '../repository/result-repository';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { exec } from 'child_process';
 import { Exercise } from '../exercise/exercise';
-import { generateExercisesForSession } from '../exercise/generator';
+import { fetchExercisesForSession } from '../exercise/generator';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
 
 export class SessionManager implements AppEventListener {
@@ -38,7 +38,7 @@ export class SessionManager implements AppEventListener {
   ) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = generateExercisesForSession(exerciseCount, sortExercises, exerciseFilter);
+    this.exercises = fetchExercisesForSession();
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';

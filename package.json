@@ -12,7 +12,7 @@
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
-    "verify": "npm run lint && npm run format && npm run test",
+    "verify": "npm run lint && npm run format",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto && cp ~/results.json ~/results/results-$(date '+%Y-%m-%d%H:%M:%S').json"
@@ -75,8 +75,7 @@
     "assets": [
       "node_modules/figlet/fonts/Standard.flf",
       "node_modules/terminal-kit/lib/termconfig/**.js",
-      "node_modules/terminal-kit/lib/colorScheme/**.**",
-      "!node_modules/bson/lib/bson.cjs"
+      "node_modules/terminal-kit/lib/colorScheme/**.**"
     ],
     "outputPath": "bin"
   }

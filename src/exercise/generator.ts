@@ -10,6 +10,8 @@ import { FitInGapExercise } from './fit-in-gap-exercise';
 import { OtherTranslationExercise } from './translation/other-translation-exercise';
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
+import { exerciseFactory, getAllResults, getAllResultsAsync } from '../repository/result-repository';
+import { execSync } from 'child_process';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -96,13 +98,40 @@ export function generateAllPossibleExercises(): Exercise[] {
   ].flatMap((generator) => generator());
 }
 
+export async function generateExercisesForSessionAsync(
+  exerciseCount: number,
+  sort: boolean,
+  filter: (ex: Exercise) => boolean
+): Promise<Exercise[]> {
+  const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
+  const allResults = await getAllResultsAsync();
+  const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
+
+  return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
+}
+
+export function fetchExercisesForSession(): Exercise[] {
+  const exercise = execSync(
+    'curl --location --request GET http://localhost:3000/generate/local --header "Authorization: Bearer AF1E32DB-5EC0-4EC6-B561-5021AB5F0B35"'
+  ).toString();
+  console.log(`Exercises for session: [${exercise}]`);
+  const exerciseJSON: Exercise[] = JSON.parse(exercise);
+  const exercies = exerciseJSON.map((ex) => {
+    const exerciseType = ex.exerciseType;
+    const createExercise = exerciseFactory[exerciseType];
+    return createExercise(ex);
+  });
+  return exercies;
+}
+
 export function generateExercisesForSession(
   exerciseCount: number,
   sort: boolean,
   filter: (ex: Exercise) => boolean
 ): Exercise[] {
   const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
-  const exercisesFinal = sort ? sortExercises(exercises) : exercises;
+  const allResults = getAllResults();
+  const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }

@@ -3,8 +3,11 @@ import os from 'os';
 import path from 'path';
 import { logger } from '../common/logger';
 import * as readline from 'readline';
+import * as http from 'http';
 import * as https from 'https';
 import { getAllUniqueWordsConjugated } from '../service/progress';
+import { Result } from '../service/result';
+import fetch from 'node-fetch';
 
 const resultDbFilePath = path.join(os.homedir(), 'results.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
@@ -14,6 +17,38 @@ const enExamplesPath = path.join(os.homedir(), 'pt/en.txt');
 export function readResultsFromFile(): string {
   logger.debug('reading results...');
   return fs.readFileSync(resultDbFilePath, { encoding: 'utf-8' }).toString();
+}
+
+export async function readResultsFromDB(): Promise<Result[]> {
+  return new Promise((resolve, reject) => {
+    http.get(
+      {
+        hostname: 'localhost',
+        path: '/results',
+        port: 3000,
+        headers: {
+          Authorization: 'Bearer AF1E32DB-5EC0-4EC6-B561-5021AB5F0B35'
+        }
+      },
+      (response) => {
+        let data = '';
+
+        response.on('data', (chunk) => {
+          data += chunk;
+        });
+
+        response.on('end', () => {
+          const parsedData = JSON.parse(data);
+          resolve(parsedData);
+        });
+
+        response.on('error', (error) => {
+          console.error('Error:', error.message);
+          reject(error);
+        });
+      }
+    );
+  });
 }
 
 async function translateToEnglish(text: [string, string]): Promise<string> {
