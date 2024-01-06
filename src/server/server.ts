@@ -55,21 +55,18 @@ app.get('/results', async (_req: Request, res: Response) => {
 
 let cachedExercises: any[] = [];
 
-const preFetch = () => {
-  generateExercisesForSessionAsync(5, true, () => true).then((exercies) => {
-    cachedExercises = exercies;
-    console.log(`Saved exercises to cache ${new Date()}`)
-  })
+const preFetch = async () => {
+  cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
+  console.log(`Saved exercises to cache ${new Date()}`)
 }
-
-preFetch();
 
 
 app.get('/generate/local', async (_req: Request, res: Response) => {
   preFetch();
-  res.send(cachedExercises);
+  res.json(cachedExercises);
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
+  await preFetch();
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
