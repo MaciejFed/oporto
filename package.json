@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/MaciejFed/oporto#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
     "clear": "^0.1.0",
     "commander": "^9.3.0",
@@ -73,6 +74,7 @@
   "pkg": {
     "scripts": "build/**/*.js",
     "assets": [
+      ".env",
       "node_modules/figlet/fonts/Standard.flf",
       "node_modules/terminal-kit/lib/termconfig/**.js",
       "node_modules/terminal-kit/lib/colorScheme/**.**"

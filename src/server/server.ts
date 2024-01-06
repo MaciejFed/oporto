@@ -4,6 +4,7 @@ import { MongoClient } from 'mongodb';
 import { loadValidConfig } from './configuration';
 import { Result } from '../service/result';
 import { generateExercisesForSessionAsync } from '../exercise/generator';
+import bodyParser from 'body-parser';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
@@ -24,10 +25,9 @@ async function saveNewResult(newResult: Result): Promise<string> {
     const collection = db.collection(collectionName);
     const insertedResult = await collection.insertOne(newResult);
 
-    console.log(`Insered new result=[${insertedResult.insertedId}`);
+    console.log(`Insered new result=[${insertedResult.insertedId}]`);
 
     return insertedResult.insertedId.toString();
-
   } finally {
     await client.close();
   }
@@ -50,6 +50,8 @@ async function readAllResults(): Promise<Result[]> {
 }
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 const port = 3000;
 
 // eslint-disable-next-line consistent-return
@@ -77,7 +79,7 @@ app.get('/results', async (_req: Request, res: Response) => {
 });
 
 app.post('/results/save', async (req: Request, res: Response) => {
-  console.log(req.body);
+  console.log(req);
   const resultId = await saveNewResult(req.body);
   res.send(resultId);
 });
@@ -87,7 +89,9 @@ app.get('/generate/local', async (_req: Request, res: Response) => {
   res.json(cachedExercises);
 });
 
+
+
 app.listen(port, async () => {
-  await preFetch();
+  //wait preFetch();
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
