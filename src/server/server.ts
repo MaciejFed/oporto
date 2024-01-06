@@ -16,6 +16,23 @@ const client = new MongoClient(config.dbHost, {
   }
 });
 
+async function saveNewResult(newResult: Result): Promise<string> {
+  try {
+    await client.connect();
+
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    const insertedResult = await collection.insertOne(newResult);
+
+    console.log(`Insered new result=[${insertedResult.insertedId}`);
+
+    return insertedResult.insertedId.toString();
+
+  } finally {
+    await client.close();
+  }
+}
+
 async function readAllResults(): Promise<Result[]> {
   try {
     await client.connect();
@@ -47,19 +64,23 @@ app.use((req, res, next) => {
   next();
 });
 
+let cachedExercises: any[] = [];
+
+const preFetch = async () => {
+  cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
+  console.log(`Saved exercises to cache ${new Date()}`);
+};
+
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
   res.send(results);
 });
 
-
-let cachedExercises: any[] = [];
-
-const preFetch = async () => {
-  cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
-  console.log(`Saved exercises to cache ${new Date()}`)
-}
-
+app.post('/results/save', async (req: Request, res: Response) => {
+  console.log(req.body);
+  const resultId = await saveNewResult(req.body);
+  res.send(resultId);
+});
 
 app.get('/generate/local', async (_req: Request, res: Response) => {
   preFetch();

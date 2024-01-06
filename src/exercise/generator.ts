@@ -12,6 +12,7 @@ import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
 import { exerciseFactory, getAllResults, getAllResultsAsync } from '../repository/result-repository';
 import { execSync } from 'child_process';
+import { loadValidConfig } from '../server/configuration';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -111,8 +112,9 @@ export async function generateExercisesForSessionAsync(
 }
 
 export function fetchExercisesForSession(): Exercise[] {
+  const apiKey = loadValidConfig().apiKey;
   const exercise = execSync(
-    'curl --location --request GET http://localhost:3000/generate/local --header "Authorization: Bearer AF1E32DB-5EC0-4EC6-B561-5021AB5F0B35"'
+    `curl --location --request GET http://159.89.98.99:3000/generate/local --header "Authorization: Bearer ${apiKey}"`
   ).toString();
   console.log(`Exercises for session: [${exercise}]`);
   const exerciseJSON: Exercise[] = JSON.parse(exercise);

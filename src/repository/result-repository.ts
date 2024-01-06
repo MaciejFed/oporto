@@ -14,6 +14,8 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
+import { loadValidConfig } from '../server/configuration';
+import { execSync } from 'child_process';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -161,10 +163,11 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
 
 export function saveNewResult(newResult: Result) {
   logger.debug(`Saving new result ${JSON.stringify(newResult)}`);
-  const results = getAllResults();
-  results.push(newResult);
-
-  saveResultsToFile(JSON.stringify(results, null, 2));
+  const apiKey = loadValidConfig().apiKey;
+  const resultId = execSync(
+    `curl --location --request POST http://159.89.98.99:3000/results/save' --header "Authorization: Bearer ${apiKey}" --data '${newResult}'`
+  ).toString();
+  logger.info(`Saved new result: [${resultId}]`)
 }
 
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {

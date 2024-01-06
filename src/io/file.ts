@@ -50,35 +50,36 @@ export async function readResultsFromDB(): Promise<Result[]> {
   });
 }
 
-async function translateToEnglish(text: [string, string]): Promise<string> {
-  const baseUrl = 'https://api.mymemory.translated.net/get';
-  const lang = 'en';
-  const url = `${baseUrl}?q=${encodeURIComponent(text[0].concat(` ${text[1]}`))}&langpair=pt|${lang}`;
+async function translateToEnglish(_text: [string, string]): Promise<string> {
+  return '';
+  // const baseUrl = 'https://api.mymemory.translated.net/get';
+  // const lang = 'en';
+  // const url = `${baseUrl}?q=${encodeURIComponent(text[0].concat(` ${text[1]}`))}&langpair=pt|${lang}`;
 
-  return new Promise((resolve, reject) => {
-    https.get(url, (response) => {
-      let data = '';
+  // return new Promise((resolve, reject) => {
+  //   https.get(url, (response) => {
+  //     let data = '';
 
-      response.on('data', (chunk) => {
-        data += chunk;
-      });
+  //     response.on('data', (chunk) => {
+  //       data += chunk;
+  //     });
 
-      response.on('end', () => {
-        const parsedData = JSON.parse(data);
+  //     response.on('end', () => {
+  //       const parsedData = JSON.parse(data);
 
-        if (parsedData.responseStatus === 200) {
-          resolve(parsedData.responseData.translatedText);
-        } else {
-          reject(new Error(`Translation API error: ${parsedData.responseDetails}`));
-        }
-      });
+  //       if (parsedData.responseStatus === 200) {
+  //         resolve(parsedData.responseData.translatedText);
+  //       } else {
+  //         reject(new Error(`Translation API error: ${parsedData.responseDetails}`));
+  //       }
+  //     });
 
-      response.on('error', (error) => {
-        console.error('Error:', error.message);
-        reject(error);
-      });
-    });
-  });
+  //     response.on('error', (error) => {
+  //       console.error('Error:', error.message);
+  //       reject(error);
+  //     });
+  //   });
+  // });
 }
 
 export async function findExampleSentence(numberOfLinesToRead: number, wordToFind: string) {
