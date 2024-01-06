@@ -7,7 +7,6 @@ import * as http from 'http';
 import * as https from 'https';
 import { getAllUniqueWordsConjugated } from '../service/progress';
 import { Result } from '../service/result';
-import fetch from 'node-fetch';
 
 const resultDbFilePath = path.join(os.homedir(), 'results.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
