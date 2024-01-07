@@ -5,11 +5,11 @@ import { loadValidConfig } from './configuration';
 import { Result } from '../service/result';
 import { generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
+import { findExampleSentence } from '../io/file';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
 const collectionName = 'results';
-
 
 async function saveNewResult(newResult: Result): Promise<string> {
   const client = new MongoClient(config.dbHost, {
@@ -38,7 +38,7 @@ async function readAllResults(): Promise<Result[]> {
     auth: {
       username: config.dbUsername,
       password: config.dbPassword
-    },
+    }
   });
   try {
     await client.connect();
@@ -56,8 +56,8 @@ async function readAllResults(): Promise<Result[]> {
 }
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 const port = 3000;
 
 // eslint-disable-next-line consistent-return
@@ -75,11 +75,6 @@ app.use((req, res, next) => {
 let cachedExercises: any[] = [];
 let isRefreshing = false;
 
-
-setInterval(() => {
-  preFetch();
-}, 60000)
-
 const preFetch = async () => {
   try {
     if (!isRefreshing) {
@@ -87,9 +82,8 @@ const preFetch = async () => {
       cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
       console.log(`Saved exercises to cache ${new Date()}`);
     } else {
-      console.log('Is already refreshing - skipping')
+      console.log('Is already refreshing - skipping');
     }
-
   } catch (e) {
     isRefreshing = false;
     console.log('error refreshng cache', e);
@@ -98,13 +92,16 @@ const preFetch = async () => {
   }
 };
 
+setInterval(() => {
+  preFetch();
+}, 60000 * 10);
+
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
   res.send(results);
 });
 
 app.post('/results/save', async (req: Request, res: Response) => {
-
   try {
     console.log(req.body);
     const resultId = await saveNewResult(req.body);
@@ -122,7 +119,12 @@ app.get('/generate/local', async (_req: Request, res: Response) => {
   }
 });
 
+app.post('/example/find', async (req: Request, res: Response) => {
+  const { word } = req.body;
+  const example = await findExampleSentence(100000, word);
 
+  res.send(example);
+});
 
 app.listen(port, async () => {
   await preFetch();

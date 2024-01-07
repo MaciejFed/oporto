@@ -7,6 +7,8 @@ import * as http from 'http';
 import * as https from 'https';
 import { getAllUniqueWordsConjugated } from '../service/progress';
 import { Result } from '../service/result';
+import { loadValidConfig } from '../server/configuration';
+import { execSync } from 'child_process';
 
 const resultDbFilePath = path.join(os.homedir(), 'results.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
@@ -50,36 +52,16 @@ export async function readResultsFromDB(): Promise<Result[]> {
   });
 }
 
-async function translateToEnglish(_text: [string, string]): Promise<string> {
-  return '';
-  // const baseUrl = 'https://api.mymemory.translated.net/get';
-  // const lang = 'en';
-  // const url = `${baseUrl}?q=${encodeURIComponent(text[0].concat(` ${text[1]}`))}&langpair=pt|${lang}`;
+async function translateToEnglish(text: [string, string]): Promise<string> {
+  const authKey = loadValidConfig().deepLApiKey;
+  const translation = JSON.parse(
+    execSync(`curl -X POST 'https://api-free.deepl.com/v2/translate' \
+  --header 'Authorization: DeepL-Auth-Key ${authKey}' \
+  --data-urlencode 'text=${text[0].concat(` ${text[1]}`)}' \
+  --data-urlencode 'target_lang=DE'`).toString()
+  );
 
-  // return new Promise((resolve, reject) => {
-  //   https.get(url, (response) => {
-  //     let data = '';
-
-  //     response.on('data', (chunk) => {
-  //       data += chunk;
-  //     });
-
-  //     response.on('end', () => {
-  //       const parsedData = JSON.parse(data);
-
-  //       if (parsedData.responseStatus === 200) {
-  //         resolve(parsedData.responseData.translatedText);
-  //       } else {
-  //         reject(new Error(`Translation API error: ${parsedData.responseDetails}`));
-  //       }
-  //     });
-
-  //     response.on('error', (error) => {
-  //       console.error('Error:', error.message);
-  //       reject(error);
-  //     });
-  //   });
-  // });
+  return translation.translations[0].text;
 }
 
 export async function findExampleSentence(numberOfLinesToRead: number, wordToFind: string) {

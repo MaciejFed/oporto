@@ -1,6 +1,7 @@
 .idea
 .DS_Store
 .env
+.oporto.env
 priorities.json
 bin
 build

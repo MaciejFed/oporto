@@ -10,6 +10,8 @@ import { findExampleSentence } from '../io/file';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
 import { logger } from '../common/logger';
+import { exec, execSync } from 'child_process';
+import { loadValidConfig } from '../server/configuration';
 
 const extractWordToFindFromExercise = (exercise: Exercise): string | undefined => {
   switch (exercise.exerciseType) {
@@ -50,9 +52,23 @@ export const findExampleSentenceAndWord = (
     exampleSentenceTranslationApi: string;
   }) => void
 ) => {
+  const getWord = async (word: string) => {
+    const { apiKey, apiURL} = loadValidConfig();
+    const result = JSON.parse(
+      execSync(`curl --location '${apiURL}/example/find' \
+    --header 'Authorization: Bearer ${apiKey}' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "word": "${word}"
+    }'`).toString()
+    );
+
+    return result;
+  };
+
   const wordToFind = extractWordToFindFromExercise(exercise);
   if (wordToFind) {
-    findExampleSentence(500000, wordToFind).then((result) => {
+    getWord(wordToFind).then((result) => {
       const wordStartIndex = result.portuguese[1].toLowerCase().indexOf(wordToFind.toLowerCase());
       const exerciseWord = result.portuguese[1].substring(wordStartIndex, wordStartIndex + wordToFind.length);
       const exampleSentence = result.portuguese;

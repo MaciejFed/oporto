@@ -163,11 +163,13 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
 
 export function saveNewResult(newResult: Result) {
   logger.debug(`Saving new result ${JSON.stringify(newResult)}`);
-  const apiKey = loadValidConfig().apiKey;
+  const { apiKey, apiURL} = loadValidConfig();
   const resultId = execSync(
-    `curl --location --request POST http://159.89.98.99:3000/results/save' --header "Authorization: Bearer ${apiKey}" --data '${newResult}'`
+    `curl -s --location --request POST ${apiURL}/results/save --header "Authorization: Bearer ${apiKey}" --data '${JSON.stringify(
+      newResult
+    )}'`
   ).toString();
-  logger.info(`Saved new result: [${resultId}]`)
+  logger.info(`Saved new result: [${resultId}]`);
 }
 
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {
