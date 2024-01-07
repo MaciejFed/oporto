@@ -43,7 +43,7 @@ async function readAllResults(): Promise<Result[]> {
 
     const findResult = await collection.find<Result>({}).toArray();
 
-    return findResult;
+    return findResult.filter((result) => result.exercise);
   } finally {
     await client.close();
   }
