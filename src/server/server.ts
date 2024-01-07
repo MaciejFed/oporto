@@ -10,14 +10,14 @@ const config = loadValidConfig();
 const dbName = 'oporto';
 const collectionName = 'results';
 
-const client = new MongoClient(config.dbHost, {
-  auth: {
-    username: config.dbUsername,
-    password: config.dbPassword
-  }
-});
 
 async function saveNewResult(newResult: Result): Promise<string> {
+  const client = new MongoClient(config.dbHost, {
+    auth: {
+      username: config.dbUsername,
+      password: config.dbPassword
+    }
+  });
   try {
     await client.connect();
 
@@ -34,6 +34,12 @@ async function saveNewResult(newResult: Result): Promise<string> {
 }
 
 async function readAllResults(): Promise<Result[]> {
+  const client = new MongoClient(config.dbHost, {
+    auth: {
+      username: config.dbUsername,
+      password: config.dbPassword
+    },
+  });
   try {
     await client.connect();
     console.log('Connected successfully to server');
