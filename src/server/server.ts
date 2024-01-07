@@ -121,7 +121,7 @@ app.get('/generate/local', async (_req: Request, res: Response) => {
 
 app.post('/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
-  const example = await findExampleSentence(100000, word);
+  const example = await findExampleSentence(250000, word);
 
   res.send(example);
 });
