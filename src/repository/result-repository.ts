@@ -163,7 +163,7 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
 
 export function saveNewResult(newResult: Result) {
   logger.debug(`Saving new result ${JSON.stringify(newResult)}`);
-  const { apiKey, apiURL} = loadValidConfig();
+  const { apiKey, apiURL } = loadValidConfig();
   const resultId = execSync(
     `curl -s --location --request POST ${apiURL}/results/save --header "Authorization: Bearer ${apiKey}" --data '${JSON.stringify(
       newResult

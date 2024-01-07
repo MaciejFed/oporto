@@ -112,7 +112,7 @@ export async function generateExercisesForSessionAsync(
 }
 
 export function fetchExercisesForSession(): Exercise[] {
-  const { apiKey, apiURL} = loadValidConfig();
+  const { apiKey, apiURL } = loadValidConfig();
   const exercise = execSync(
     `curl -s --location --request GET ${apiURL}/generate/local --header "Authorization: Bearer ${apiKey}"`
   ).toString();

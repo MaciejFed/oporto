@@ -53,9 +53,9 @@ export const findExampleSentenceAndWord = (
   }) => void
 ) => {
   const getWord = async (word: string) => {
-    const { apiKey, apiURL} = loadValidConfig();
+    const { apiKey, apiURL } = loadValidConfig();
     const result = JSON.parse(
-      execSync(`curl --location '${apiURL}/example/find' \
+      execSync(`curl -s --location '${apiURL}/example/find' \
     --header 'Authorization: Bearer ${apiKey}' \
     --header 'Content-Type: application/json' \
     --data '{

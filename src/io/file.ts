@@ -58,7 +58,7 @@ async function translateToEnglish(text: [string, string]): Promise<string> {
     execSync(`curl -X POST 'https://api-free.deepl.com/v2/translate' \
   --header 'Authorization: DeepL-Auth-Key ${authKey}' \
   --data-urlencode 'text=${text[0].concat(` ${text[1]}`)}' \
-  --data-urlencode 'target_lang=DE'`).toString()
+  --data-urlencode 'target_lang=EN'`).toString()
   );
 
   return translation.translations[0].text;

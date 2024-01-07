@@ -1,7 +1,7 @@
 import os from 'os';
 import path from 'path';
 import dotenv from 'dotenv';
-dotenv.config({ path: path.join(os.homedir(), '.oporto.env')});
+dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
 
 export interface Configuration {
   apiKey: string;
@@ -17,7 +17,6 @@ export const loadValidConfig: () => Configuration = () => {
     if (!value) {
       throw new Error(`[${name}] is empty!`);
     }
-    console.log(`${name} [${value}]`);
     return value;
   };
 
