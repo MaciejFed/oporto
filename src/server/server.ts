@@ -73,10 +73,29 @@ app.use((req, res, next) => {
 });
 
 let cachedExercises: any[] = [];
+let isRefreshing = false;
+
+
+setInterval(() => {
+  preFetch();
+}, 60000)
 
 const preFetch = async () => {
-  cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
-  console.log(`Saved exercises to cache ${new Date()}`);
+  try {
+    if (!isRefreshing) {
+      isRefreshing = true;
+      cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
+      console.log(`Saved exercises to cache ${new Date()}`);
+    } else {
+      console.log('Is already refreshing - skipping')
+    }
+
+  } catch (e) {
+    isRefreshing = false;
+    console.log('error refreshng cache', e);
+  } finally {
+    isRefreshing = false;
+  }
 };
 
 app.get('/results', async (_req: Request, res: Response) => {
@@ -85,14 +104,22 @@ app.get('/results', async (_req: Request, res: Response) => {
 });
 
 app.post('/results/save', async (req: Request, res: Response) => {
-  console.log(req.body);
-  const resultId = await saveNewResult(req.body);
-  res.send(resultId);
+
+  try {
+    console.log(req.body);
+    const resultId = await saveNewResult(req.body);
+    res.send(resultId);
+  } catch (e) {
+    console.log('Error saving exercises');
+  }
 });
 
 app.get('/generate/local', async (_req: Request, res: Response) => {
-  preFetch();
-  res.json(cachedExercises);
+  try {
+    res.send(cachedExercises);
+  } catch (e) {
+    console.log('Error generating exercises');
+  }
 });
 
 
