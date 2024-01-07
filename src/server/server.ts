@@ -22,7 +22,7 @@ async function saveNewResult(newResult: Result): Promise<string> {
     await client.connect();
 
     const db = client.db(dbName);
-    const collection = db.collection(collectionName);
+    const collection = db.collection('tmp');
     const insertedResult = await collection.insertOne(newResult);
 
     console.log(`Insered new result=[${insertedResult.insertedId}]`);
