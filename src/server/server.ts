@@ -22,7 +22,7 @@ async function saveNewResult(newResult: Result): Promise<string> {
     await client.connect();
 
     const db = client.db(dbName);
-    const collection = db.collection('tmp');
+    const collection = db.collection(collectionName);
     const insertedResult = await collection.insertOne(newResult);
 
     console.log(`Insered new result=[${insertedResult.insertedId}]`);
@@ -79,7 +79,7 @@ app.get('/results', async (_req: Request, res: Response) => {
 });
 
 app.post('/results/save', async (req: Request, res: Response) => {
-  console.log(req);
+  console.log(req.body);
   const resultId = await saveNewResult(req.body);
   res.send(resultId);
 });
