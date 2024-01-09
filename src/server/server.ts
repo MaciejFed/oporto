@@ -81,7 +81,7 @@ const preFetch = async () => {
       cachedExercises = await generateExercisesForSessionAsync(25, true, () => true);
       logger.info(`Saved exercises to cache ${new Date()}`);
     } else {
-      logger.info('Is already refreshing - skipping');
+      logger.info(`Cache still has [${cachedExercises.length}] exercises - skipping refresh.`);
     }
   } catch (e) {
     logger.error('error refreshng cache', e);
