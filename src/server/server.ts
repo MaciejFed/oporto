@@ -6,6 +6,7 @@ import { Result } from '../service/result';
 import { generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
 import { findExampleSentence } from '../io/file';
+import { logger } from '../common/logger';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
@@ -78,12 +79,12 @@ const preFetch = async () => {
   try {
     if (!cachedExercises.length) {
       cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
-      console.log(`Saved exercises to cache ${new Date()}`);
+      logger.info(`Saved exercises to cache ${new Date()}`);
     } else {
-      console.log('Is already refreshing - skipping');
+      logger.info('Is already refreshing - skipping');
     }
   } catch (e) {
-    console.log('error refreshng cache', e);
+    logger.error('error refreshng cache', e);
   } finally {
   }
 };
