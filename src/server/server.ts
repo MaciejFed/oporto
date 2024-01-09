@@ -73,28 +73,24 @@ app.use((req, res, next) => {
 });
 
 let cachedExercises: any[] = [];
-let isRefreshing = false;
 
 const preFetch = async () => {
   try {
-    if (!isRefreshing) {
-      isRefreshing = true;
+    if (!cachedExercises.length) {
       cachedExercises = await generateExercisesForSessionAsync(5, true, () => true);
       console.log(`Saved exercises to cache ${new Date()}`);
     } else {
       console.log('Is already refreshing - skipping');
     }
   } catch (e) {
-    isRefreshing = false;
     console.log('error refreshng cache', e);
   } finally {
-    isRefreshing = false;
   }
 };
 
 setInterval(() => {
   preFetch();
-}, 60000 * 10);
+}, 30000);
 
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
@@ -114,6 +110,7 @@ app.post('/results/save', async (req: Request, res: Response) => {
 app.get('/generate/local', async (_req: Request, res: Response) => {
   try {
     res.send(cachedExercises);
+    cachedExercises = [];
   } catch (e) {
     console.log('Error generating exercises');
   }
