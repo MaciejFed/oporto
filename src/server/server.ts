@@ -26,7 +26,7 @@ async function saveNewResult(newResult: Result): Promise<string> {
     const collection = db.collection(collectionName);
     const insertedResult = await collection.insertOne(newResult);
 
-    console.log(`Insered new result=[${insertedResult.insertedId}]`);
+    logger.info(`Insered new result=[${insertedResult.insertedId}]`);
 
     return insertedResult.insertedId.toString();
   } finally {
