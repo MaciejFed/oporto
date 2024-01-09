@@ -91,7 +91,7 @@ const preFetch = async () => {
 
 setInterval(() => {
   preFetch();
-}, 30000);
+}, 90000);
 
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
