@@ -51,6 +51,7 @@ export const translateToEnglish = async (text: [string, string]): Promise<string
     if (stderr) {
       logger.error(`Error translating to English: [${stderr}]`);
     }
+    logger.info(`Translation Result: [${stdout}] [${stderr}]`)
     const translation = stdout ? JSON.parse(stdout) : { translations: [{ text: '' }] };
     return translation.translations[0].text;
   } catch (error) {
