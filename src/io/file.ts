@@ -4,11 +4,9 @@ import path from 'path';
 import { logger } from '../common/logger';
 import * as readline from 'readline';
 import * as http from 'http';
-import * as https from 'https';
 import { getAllUniqueWordsConjugated } from '../service/progress';
 import { Result } from '../service/result';
-import { loadValidConfig } from '../server/configuration';
-import { execSync } from 'child_process';
+import { translateToEnglish } from '../client/client';
 
 const resultDbFilePath = path.join(os.homedir(), 'results.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
@@ -52,19 +50,13 @@ export async function readResultsFromDB(): Promise<Result[]> {
   });
 }
 
-async function translateToEnglish(text: [string, string]): Promise<string> {
-  const authKey = loadValidConfig().deepLApiKey;
-  const translation = JSON.parse(
-    execSync(`curl -X POST 'https://api-free.deepl.com/v2/translate' \
-  --header 'Authorization: DeepL-Auth-Key ${authKey}' \
-  --data-urlencode 'text=${text[0].concat(` ${text[1]}`)}' \
-  --data-urlencode 'target_lang=EN'`).toString()
-  );
-
-  return translation.translations[0].text;
+export interface MoveieExample {
+  portuguese: [string, string];
+  english: string;
+  englishApi: string;
 }
 
-export async function findExampleSentence(numberOfLinesToRead: number, wordToFind: string) {
+export async function findExampleSentence(numberOfLinesToRead: number, wordToFind: string): Promise<MoveieExample> {
   const wordRegex = new RegExp(`\\b${wordToFind}\\b`, 'i');
   // @ts-ignore
   const readInterfacePt = readline.createInterface({

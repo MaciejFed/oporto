@@ -161,17 +161,6 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
   return resultsByDate;
 }
 
-export function saveNewResult(newResult: Result) {
-  logger.debug(`Saving new result ${JSON.stringify(newResult)}`);
-  const { apiKey, apiURL } = loadValidConfig();
-  const resultId = execSync(
-    `curl -s --location --request POST ${apiURL}/results/save --header "Authorization: Bearer ${apiKey}" --data '${JSON.stringify(
-      newResult
-    )}'`
-  ).toString();
-  logger.info(`Saved new result: [${resultId}]`);
-}
-
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {
   return results.filter((result) => result.exercise.exerciseType === exerciseType);
 }

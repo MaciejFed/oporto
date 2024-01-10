@@ -85,7 +85,6 @@ const preFetch = async () => {
     }
   } catch (e) {
     logger.error('error refreshng cache', e);
-  } finally {
   }
 };
 
