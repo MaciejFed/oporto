@@ -5,7 +5,7 @@ import { loadValidConfig } from './configuration';
 import { Result } from '../service/result';
 import { generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
-import { findExampleSentence } from '../io/file';
+import { MoveieExample, findExampleSentence } from '../io/file';
 import { logger } from '../common/logger';
 
 const config = loadValidConfig();
@@ -43,8 +43,6 @@ async function readAllResults(): Promise<Result[]> {
   });
   try {
     await client.connect();
-    console.log('Connected successfully to server');
-
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
 
@@ -99,11 +97,11 @@ app.get('/results', async (_req: Request, res: Response) => {
 
 app.post('/results/save', async (req: Request, res: Response) => {
   try {
-    console.log(req.body);
+    logger.info(JSON.stringify(req.body));
     const resultId = await saveNewResult(req.body);
     res.send(resultId);
   } catch (e) {
-    console.log('Error saving exercises');
+    logger.error('Error saving exercises', e);
   }
 });
 
@@ -111,18 +109,27 @@ app.get('/generate/local', async (_req: Request, res: Response) => {
   try {
     res.send(cachedExercises.splice(0, 5));
   } catch (e) {
-    console.log('Error generating exercises');
+    logger.error('Error generating exercises', 3);
   }
 });
 
 app.post('/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
-  const example = await findExampleSentence(250000, word);
-
-  res.send(example);
+  try {
+    const example = await findExampleSentence(250000, word);
+    res.send(example);
+  } catch (e) {
+    logger.error('Error finding examples', e);
+    const empty: MoveieExample = {
+      portuguese: ['', ''],
+      english: '',
+      englishApi: ''
+    };
+    res.send(empty);
+  }
 });
 
 app.listen(port, async () => {
   await preFetch();
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+  logger.info(`[server]: Server is running at http://localhost:${port}`);
 });
