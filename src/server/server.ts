@@ -97,7 +97,8 @@ app.get('/results', async (_req: Request, res: Response) => {
 
 app.post('/results/save', async (req: Request, res: Response) => {
   try {
-    const resultId = await saveNewResult(JSON.parse(req.body));
+    logger.info(req.body.exercise)
+    const resultId = await saveNewResult(req.body);
     res.send(resultId);
   } catch (e) {
     logger.error('Error saving exercises', e);
