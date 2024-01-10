@@ -97,7 +97,6 @@ app.get('/results', async (_req: Request, res: Response) => {
 
 app.post('/results/save', async (req: Request, res: Response) => {
   try {
-    logger.info(req.body.exercise)
     const resultId = await saveNewResult(req.body);
     res.send(resultId);
   } catch (e) {
@@ -130,7 +129,7 @@ app.post('/example/find', async (req: Request, res: Response) => {
 });
 
 app.listen(port, async () => {
-  logger.info(`Starting server...`);
+  logger.info('Starting server...');
   await preFetch();
   logger.info(`[server]: Server is running at http://localhost:${port}`);
 });

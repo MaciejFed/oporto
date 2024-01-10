@@ -53,7 +53,6 @@ export const findExampleSentenceAndWord = (
       const wordStartIndex = result.portuguese[1].toLowerCase().indexOf(wordToFind.toLowerCase());
       const exerciseWord = result.portuguese[1].substring(wordStartIndex, wordStartIndex + wordToFind.length);
       const exampleSentence = result.portuguese;
-      logger.info(result.portuguese);
       callback({
         wordStartIndex,
         exerciseWord,

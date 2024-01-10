@@ -29,19 +29,17 @@ export const fetchExercisesForSession = (): Exercise[] => {
 };
 
 export const saveNewResult = async (newResult: Result) => {
-  logger.debug(`Saving new result ${JSON.stringify(newResult)}`);
-  execAsync(
-    `curl -s --location --request POST ${apiURL}/results/save --header "Authorization: Bearer ${apiKey}" --data '${JSON.stringify(
-      newResult
-    )}'`
-  ).then(({ stdout: resultId }) => {
+  const command = `curl -s --location --request POST ${apiURL}/results/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
+    newResult
+  )}'`;
+  execAsync(command).then(({ stdout: resultId }) => {
     logger.info(`Saved new result: [${resultId}]`);
   });
 };
 
 export const translateToEnglish = async (text: [string, string]): Promise<string> => {
-    const translationBody = `text=${text[0].concat(` ${text[1]}`)}`;
-    const command = `curl -s -X POST 'https://api-free.deepl.com/v2/translate' \
+  const translationBody = `text=${text[0].concat(` ${text[1]}`)}`;
+  const command = `curl -s -X POST 'https://api-free.deepl.com/v2/translate' \
       --header 'Authorization: DeepL-Auth-Key ${deepLApiKey}' \
       --data-urlencode '${translationBody}' \
       --data-urlencode 'target_lang=EN'`;
@@ -50,7 +48,7 @@ export const translateToEnglish = async (text: [string, string]): Promise<string
     if (stderr) {
       logger.error(`Error translating to English: [${stderr}]`);
     }
-    logger.info(`Translation Result: [${stdout}] [${stderr}]`)
+    logger.info(`Translation Result: [${stdout}] [${stderr}]`);
     const translation = stdout ? JSON.parse(stdout) : { translations: [{ text: '' }] };
     return translation.translations[0].text;
   } catch (error) {
