@@ -40,7 +40,7 @@ export const saveNewResult = async (newResult: Result) => {
 };
 
 export const translateToEnglish = async (text: [string, string]): Promise<string> => {
-  const command = `curl -X POST 'https://api-free.deepl.com/v2/translate' \
+  const command = `curl -s -X POST 'https://api-free.deepl.com/v2/translate' \
       --header 'Authorization: DeepL-Auth-Key ${apiKey}' \
       --data-urlencode 'text=${text[0].concat(` ${text[1]}`)}' \
       --data-urlencode 'target_lang=EN'`;
