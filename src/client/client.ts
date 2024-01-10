@@ -7,7 +7,7 @@ import { Result } from '../service/result';
 import { logger } from '../common/logger';
 
 const execAsync = util.promisify(exec);
-const { apiKey, apiURL } = loadValidConfig();
+const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
 
 export const fetchMoveiExample = async (word: string): Promise<MoveieExample> => {
   const command = `curl -s --location '${apiURL}/example/find' \
@@ -42,11 +42,10 @@ export const saveNewResult = async (newResult: Result) => {
 export const translateToEnglish = async (text: [string, string]): Promise<string> => {
     const translationBody = `text=${text[0].concat(` ${text[1]}`)}`;
     const command = `curl -s -X POST 'https://api-free.deepl.com/v2/translate' \
-      --header 'Authorization: DeepL-Auth-Key ${apiKey}' \
+      --header 'Authorization: DeepL-Auth-Key ${deepLApiKey}' \
       --data-urlencode '${translationBody}' \
       --data-urlencode 'target_lang=EN'`;
   try {
-    logger.info(`Translation Body: [${translationBody}]`)
     const { stdout, stderr } = await execAsync(command);
     if (stderr) {
       logger.error(`Error translating to English: [${stderr}]`);
