@@ -45,8 +45,11 @@ export const translateToEnglish = async (text: [string, string]): Promise<string
       --data-urlencode 'text=${text[0].concat(` ${text[1]}`)}' \
       --data-urlencode 'target_lang=EN'`;
   try {
-    const { stdout } = await execAsync(command);
-    const translation = JSON.parse(stdout);
+    const { stdout, stderr } = await execAsync(command);
+    if (stderr) {
+      logger.error(`Error translating to English: [${stderr}]`);
+    }
+    const translation = stdout ? JSON.parse(stdout) : { translations: [{ text: '' }] };
     return translation.translations[0].text;
   } catch (error) {
     console.error('Error during translation:', error);
