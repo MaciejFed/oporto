@@ -31,7 +31,7 @@ let cachedExercises: any[] = [];
 const preFetch = async () => {
   try {
     if (cachedExercises.length <= 10) {
-      cachedExercises = await generateExercisesForSessionAsync(25, true, () => true);
+      cachedExercises = await generateExercisesForSessionAsync(30, true, () => true);
       logger.info(`Saved exercises to cache ${new Date()}`);
     } else {
       logger.info(`Cache still has [${cachedExercises.length}] exercises - skipping refresh.`);
@@ -62,7 +62,7 @@ app.post('/results/save', async (req: Request, res: Response) => {
 
 app.get('/generate/local', async (_req: Request, res: Response) => {
   try {
-    res.send(cachedExercises.splice(0, 5));
+    res.send(cachedExercises.splice(0, 10));
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
