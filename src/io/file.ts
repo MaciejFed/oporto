@@ -7,6 +7,7 @@ import * as http from 'http';
 import { getAllUniqueWordsConjugated } from '../service/progress';
 import { Result } from '../service/result';
 import { translateToEnglish } from '../client/client';
+import { loadValidConfig } from '../server/configuration';
 
 const resultDbFilePath = path.join(os.homedir(), 'results.json');
 const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
@@ -18,37 +19,6 @@ export function readResultsFromFile(): string {
   return fs.readFileSync(resultDbFilePath, { encoding: 'utf-8' }).toString();
 }
 
-export async function readResultsFromDB(): Promise<Result[]> {
-  return new Promise((resolve, reject) => {
-    http.get(
-      {
-        hostname: 'localhost',
-        path: '/results',
-        port: 3000,
-        headers: {
-          Authorization: 'Bearer AF1E32DB-5EC0-4EC6-B561-5021AB5F0B35'
-        }
-      },
-      (response) => {
-        let data = '';
-
-        response.on('data', (chunk) => {
-          data += chunk;
-        });
-
-        response.on('end', () => {
-          const parsedData = JSON.parse(data);
-          resolve(parsedData);
-        });
-
-        response.on('error', (error) => {
-          console.error('Error:', error.message);
-          reject(error);
-        });
-      }
-    );
-  });
-}
 
 export interface MoveieExample {
   portuguese: [string, string];

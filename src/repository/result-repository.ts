@@ -4,7 +4,6 @@ import { FitInGapExercise } from '../exercise/fit-in-gap-exercise';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
-import { readResultsFromDB, readResultsFromFile, saveResultsToFile } from '../io/file';
 import assert from 'assert';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
@@ -14,8 +13,8 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
-import { loadValidConfig } from '../server/configuration';
-import { execSync } from 'child_process';
+import { fetchAllResults } from '../client/client';
+import { readAllResults } from '../server/db';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -90,7 +89,7 @@ export const exerciseFactory = {
 };
 
 export async function getAllResultsAsync(): Promise<Result[]> {
-  const results = await readResultsFromDB();
+  const results = await readAllResults();
 
   logger.info(`Fetched ${results.length} from DB`);
 
@@ -109,8 +108,7 @@ export async function getAllResultsAsync(): Promise<Result[]> {
 }
 
 export function getAllResults(): Result[] {
-  const results = readResultsFromFile();
-  const resultsJson: Result[] = JSON.parse(results);
+  const resultsJson: Result[] = fetchAllResults();
 
   return resultsJson.map((result) => {
     const exerciseData = result.exercise;

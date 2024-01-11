@@ -1,58 +1,13 @@
 // src/index.js
 import express, { Request, Response } from 'express';
-import { MongoClient } from 'mongodb';
 import { loadValidConfig } from './configuration';
-import { Result } from '../service/result';
 import { generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
 import { MoveieExample, findExampleSentence } from '../io/file';
 import { logger } from '../common/logger';
+import { readAllResults, saveNewResult } from './db';
 
 const config = loadValidConfig();
-const dbName = 'oporto';
-const collectionName = 'results';
-
-async function saveNewResult(newResult: Result): Promise<string> {
-  const client = new MongoClient(config.dbHost, {
-    auth: {
-      username: config.dbUsername,
-      password: config.dbPassword
-    }
-  });
-  try {
-    await client.connect();
-
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-    const insertedResult = await collection.insertOne(newResult);
-
-    logger.info(`Insered new result=[${insertedResult.insertedId}]`);
-
-    return insertedResult.insertedId.toString();
-  } finally {
-    await client.close();
-  }
-}
-
-async function readAllResults(): Promise<Result[]> {
-  const client = new MongoClient(config.dbHost, {
-    auth: {
-      username: config.dbUsername,
-      password: config.dbPassword
-    }
-  });
-  try {
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-
-    const findResult = await collection.find<Result>({}).toArray();
-
-    return findResult.filter((result) => result.exercise);
-  } finally {
-    await client.close();
-  }
-}
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -97,6 +52,7 @@ app.get('/results', async (_req: Request, res: Response) => {
 
 app.post('/results/save', async (req: Request, res: Response) => {
   try {
+    logger.info(req.body.exercise);
     const resultId = await saveNewResult(req.body);
     res.send(resultId);
   } catch (e) {

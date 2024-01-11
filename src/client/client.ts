@@ -5,9 +5,27 @@ import { MoveieExample } from '../io/file';
 import { Exercise } from '../exercise/exercise';
 import { Result } from '../service/result';
 import { logger } from '../common/logger';
+import { readAllResults } from '../server/db';
 
 const execAsync = util.promisify(exec);
 const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
+
+let resultsCached: Result[] = [];
+
+const preFetchAllResults = (): Result[] => {
+  if (!resultsCached.length) {
+    logger.info('Fetching all results...');
+    readAllResults().then((results) => {
+      logger.info('Results saved to cache');
+      resultsCached = results;
+    })
+  }
+  return resultsCached;
+};
+
+export const fetchAllResults = (): Result[] => resultsCached;
+
+preFetchAllResults();
 
 export const fetchMoveiExample = async (word: string): Promise<MoveieExample> => {
   const command = `curl -s --location '${apiURL}/example/find' \
@@ -29,6 +47,7 @@ export const fetchExercisesForSession = (): Exercise[] => {
 };
 
 export const saveNewResult = async (newResult: Result) => {
+  resultsCached.push(newResult);
   const command = `curl -s --location --request POST ${apiURL}/results/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
     newResult
   )}'`;

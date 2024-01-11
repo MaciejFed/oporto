@@ -7,7 +7,7 @@ jobs:
     name: SSH Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Test SSH
+    - name: Update Envs
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -20,3 +20,10 @@ jobs:
           echo 'DB_USERNAME="${{ secrets.DB_USERNAME }}"' >> ~/.oporto.env 
           echo 'DB_PASSWORD="${{ secrets.DB_PASSWORD }}"' >> ~/.oporto.env 
           echo 'DEEPL_API_KEY="${{ secrets.DEEPL_API_KEY }}"' >> ~/.oporto.env 
+    - name: Restart Server
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: systemctl restart oporto-server 
