@@ -1,15 +1,12 @@
-import { Adjective, readAll, Sentence, Verb } from '../repository/exercises-repository';
-import { VerbExerciseGenerator } from '../exercise/generator';
-import { VerbExercise } from '../exercise/verb-exercise';
-import { getRandomElement } from '../common/common';
 import { Exercise } from '../exercise/exercise';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
-import { findExampleSentence } from '../io/file';
-import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
 import { logger } from '../common/logger';
+import { exec } from 'child_process';
+import util from 'util';
+import { fetchMovieExample } from '../client/client';
 
 const extractWordToFindFromExercise = (exercise: Exercise): string | undefined => {
   switch (exercise.exerciseType) {
@@ -52,11 +49,10 @@ export const findExampleSentenceAndWord = (
 ) => {
   const wordToFind = extractWordToFindFromExercise(exercise);
   if (wordToFind) {
-    findExampleSentence(500000, wordToFind).then((result) => {
+    fetchMovieExample(wordToFind).then((result) => {
       const wordStartIndex = result.portuguese[1].toLowerCase().indexOf(wordToFind.toLowerCase());
       const exerciseWord = result.portuguese[1].substring(wordStartIndex, wordStartIndex + wordToFind.length);
       const exampleSentence = result.portuguese;
-      logger.info(result.portuguese);
       callback({
         wordStartIndex,
         exerciseWord,

@@ -3,51 +3,20 @@ import os from 'os';
 import path from 'path';
 import { logger } from '../common/logger';
 import * as readline from 'readline';
-import * as https from 'https';
 import { getAllUniqueWordsConjugated } from '../service/progress';
+import { translateToEnglish } from '../client/client';
 
-const resultDbFilePath = path.join(os.homedir(), 'results.json');
-const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
+const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');
 const ptExamplesPath = path.join(os.homedir(), 'pt/pt.txt');
 const enExamplesPath = path.join(os.homedir(), 'pt/en.txt');
 
-export function readResultsFromFile(): string {
-  logger.debug('reading results...');
-  return fs.readFileSync(resultDbFilePath, { encoding: 'utf-8' }).toString();
+export interface MoveieExample {
+  portuguese: [string, string];
+  english: string;
+  englishApi: string;
 }
 
-async function translateToEnglish(text: [string, string]): Promise<string> {
-  const baseUrl = 'https://api.mymemory.translated.net/get';
-  const lang = 'en';
-  const url = `${baseUrl}?q=${encodeURIComponent(text[0].concat(` ${text[1]}`))}&langpair=pt|${lang}`;
-
-  return new Promise((resolve, reject) => {
-    https.get(url, (response) => {
-      let data = '';
-
-      response.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      response.on('end', () => {
-        const parsedData = JSON.parse(data);
-
-        if (parsedData.responseStatus === 200) {
-          resolve(parsedData.responseData.translatedText);
-        } else {
-          reject(new Error(`Translation API error: ${parsedData.responseDetails}`));
-        }
-      });
-
-      response.on('error', (error) => {
-        console.error('Error:', error.message);
-        reject(error);
-      });
-    });
-  });
-}
-
-export async function findExampleSentence(numberOfLinesToRead: number, wordToFind: string) {
+export async function findExampleSentence(numberOfLinesToRead: number, wordToFind: string): Promise<MoveieExample> {
   const wordRegex = new RegExp(`\\b${wordToFind}\\b`, 'i');
   // @ts-ignore
   const readInterfacePt = readline.createInterface({
@@ -157,11 +126,6 @@ export async function findExampleSentence(numberOfLinesToRead: number, wordToFin
     english: matchingLinesEn[randomIndex],
     englishApi
   };
-}
-
-export function saveResultsToFile(data: string) {
-  logger.debug('saving  results...');
-  fs.writeFileSync(resultDbFilePath, data);
 }
 
 export function saveProgressToFile(data: string) {

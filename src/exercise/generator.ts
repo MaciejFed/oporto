@@ -10,6 +10,11 @@ import { FitInGapExercise } from './fit-in-gap-exercise';
 import { OtherTranslationExercise } from './translation/other-translation-exercise';
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
+import { exerciseFactory, getAllResults, getAllResultsAsync, parseResults } from '../repository/result-repository';
+import { execSync } from 'child_process';
+import { loadValidConfig } from '../server/configuration';
+import { fetchExercisesForSession } from '../client/client';
+import { Result } from '../service/result';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -96,13 +101,37 @@ export function generateAllPossibleExercises(): Exercise[] {
   ].flatMap((generator) => generator());
 }
 
+export async function generateExercisesForSessionAsync(
+  exerciseCount: number,
+  sort: boolean,
+  filter: (ex: Exercise) => boolean,
+  results?: Result[]
+): Promise<Exercise[]> {
+  const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
+  const allResults = results ? parseResults(results) : await getAllResultsAsync();
+  const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
+
+  return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
+}
+
+export function getExercisesForSession(): Exercise[] {
+  const exerciseJSON: Exercise[] = fetchExercisesForSession();
+  const exercies = exerciseJSON.map((ex) => {
+    const exerciseType = ex.exerciseType;
+    const createExercise = exerciseFactory[exerciseType];
+    return createExercise(ex);
+  });
+  return exercies;
+}
+
 export function generateExercisesForSession(
   exerciseCount: number,
   sort: boolean,
   filter: (ex: Exercise) => boolean
 ): Exercise[] {
   const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
-  const exercisesFinal = sort ? sortExercises(exercises) : exercises;
+  const allResults = getAllResults();
+  const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }

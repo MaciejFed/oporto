@@ -14,12 +14,12 @@ import { AppEventListener } from '../event/event-listener';
 import { EventProcessor } from '../event/event-processor';
 import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
-import { saveNewResult } from '../repository/result-repository';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { exec } from 'child_process';
 import { Exercise } from '../exercise/exercise';
-import { generateExercisesForSession } from '../exercise/generator';
+import { generateExercisesForSession, getExercisesForSession } from '../exercise/generator';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
+import { fetchExercisesForSession, saveNewResult } from '../client/client';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -38,7 +38,7 @@ export class SessionManager implements AppEventListener {
   ) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = generateExercisesForSession(exerciseCount, sortExercises, exerciseFilter);
+    this.exercises = getExercisesForSession();
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';

@@ -109,10 +109,8 @@ export interface ExerciseResultContext {
 
 type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResultContext) => Priority[];
 
-export function sortExercises(exercises: Exercise[]): Exercise[] {
+export function sortExercises(exercises: Exercise[], allResults: Result[]): Exercise[] {
   const start = Date.now();
-  const allResults = getAllResults();
-
   const exerciseProgressMap = getExerciseProgressMap(allResults);
   const exerciseSubjectResultMap = getExerciseSubjectResults(allResults);
   logExerciseStats(exerciseProgressMap);

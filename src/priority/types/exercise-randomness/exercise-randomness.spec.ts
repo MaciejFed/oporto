@@ -1,6 +1,5 @@
-import { generateResultForExercise } from '../../priority.util';
 import { VerbExercise } from '../../../exercise/verb-exercise';
-import { exerciseRandomness, VALUE_EXERCISE_RANDOMNESS_UP_LIMIT } from './exercise-randomness';
+import { exerciseRandomness } from './exercise-randomness';
 import { ExerciseResultContext } from '../../priority';
 
 describe('Priority - EXERCISE_RANDOMNESS', () => {

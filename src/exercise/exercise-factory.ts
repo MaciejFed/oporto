@@ -1,9 +1,7 @@
-/* eslint-disable no-case-declarations */
 import { Exercise, ExerciseType } from '../exercise/exercise';
 import { FitInGapExercise } from '../exercise/fit-in-gap-exercise';
 import { VerbExercise } from '../exercise/verb-exercise';
-import { logger } from '../common/logger';
-import { Result } from '../service/result';
+
 import assert from 'assert';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
@@ -13,7 +11,6 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
-import { fetchAllResults, fetchAllResultsSync } from '../client/client';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -86,111 +83,3 @@ export const exerciseFactory = {
   OtherTranslation: createOtherTranslationExercise,
   FitInGap: createFitInGapExercise
 };
-
-export function parseResults(results: Result[]): Result[] {
-  return results.map((result) => {
-    const exerciseData = result.exercise;
-    const exerciseType = exerciseData.exerciseType;
-    const createExercise = exerciseFactory[exerciseType];
-
-    if (createExercise) {
-      result.date = new Date(result.date);
-      result.exercise = createExercise(exerciseData);
-    }
-    return result;
-  });
-}
-
-export async function getAllResultsAsync(): Promise<Result[]> {
-  const results = fetchAllResultsSync();
-
-  logger.info(`Fetched ${results.length} from DB`);
-
-  return parseResults(results);
-}
-
-export function getAllResults(sync = false): Result[] {
-  const resultsJson: Result[] = sync ? fetchAllResultsSync() : fetchAllResults();
-
-  return resultsJson.map((result) => {
-    const exerciseData = result.exercise;
-    const exerciseType = exerciseData.exerciseType;
-    const createExercise = exerciseFactory[exerciseType];
-
-    if (createExercise) {
-      result.date = new Date(result.date);
-      result.exercise = createExercise(exerciseData);
-    }
-
-    return result;
-  });
-}
-
-export type DateResults = {
-  date: DateTimeExtended;
-  results: Result[];
-};
-
-export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
-  return getAllResults().filter((result) => {
-    const upDateLimit = date.ordinal;
-    const downDateLimit = date.plus({ week: -1 }).ordinal;
-
-    return (
-      DateTimeExtended.fromJSDate(result.date).ordinal >= downDateLimit &&
-      DateTimeExtended.fromJSDate(result.date).ordinal <= upDateLimit
-    );
-  });
-}
-
-export function getAllResultsByDate(allResults: Result[]): DateResults[] {
-  let resultDate = DateTimeExtended.fromJSDate(allResults[0].date);
-  const resultsByDate: DateResults[] = [];
-  const endDate = DateTimeExtended.fromJSDate(allResults[allResults.length - 1].date).plus({ week: 1 });
-  while (resultDate.ordinal <= endDate.ordinal) {
-    const results = allResults.filter(
-      // eslint-disable-next-line no-loop-func
-      (result) => DateTimeExtended.fromJSDate(result.date).ordinal <= resultDate.ordinal
-    );
-    resultsByDate.push({
-      date: DateTimeExtended.fromJSDate(resultDate.toJSDate()),
-      results
-    });
-    resultDate = resultDate.plus({ week: 1 });
-  }
-  return resultsByDate;
-}
-
-export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {
-  return results.filter((result) => result.exercise.exerciseType === exerciseType);
-}
-
-export function getAllResultsForExercise(
-  results: Result[],
-  exercise: Exercise,
-  resultFilter: (result: Result) => boolean = (_) => true
-): Result[] {
-  return results
-    .filter((result) => {
-      return result.exercise.equal(exercise);
-    })
-    .filter(resultFilter);
-}
-
-export function getAllAnswersForExercise(exercise: Exercise): string[] {
-  const allResults = getAllResultsForExercise(getAllResults(), exercise);
-
-  return allResults.map((result) => result.answer);
-}
-
-export function getAllResultsForExerciseSubject(results: Result[], exercise: Exercise): Result[] {
-  return results.filter((result) => {
-    if (exercise instanceof TranslationExercise) {
-      return (exercise as TranslationExercise).isTranslationSubjectEqual(result.exercise);
-    }
-    if (exercise instanceof VerbExercise && result.exercise instanceof VerbExercise) {
-      return exercise.verb.infinitive === result.exercise.verb.infinitive;
-    }
-    return result.exercise.equal(exercise);
-  });
-}
