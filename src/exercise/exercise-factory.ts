@@ -1,9 +1,7 @@
 import { Exercise, ExerciseType } from '../exercise/exercise';
 import { FitInGapExercise } from '../exercise/fit-in-gap-exercise';
 import { VerbExercise } from '../exercise/verb-exercise';
-import { logger } from '../common/logger';
-import { Result } from '../service/result';
-import { readResultsFromFile, saveResultsToFile } from '../io/file';
+
 import assert from 'assert';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';

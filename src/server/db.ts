@@ -1,11 +1,13 @@
-import { MongoClient } from "mongodb";
-import { logger } from "../common/logger";
-import { Result } from "../service/result";
-import { loadValidConfig } from "./configuration";
+import { MongoClient } from 'mongodb';
+import { logger } from '../common/logger';
+import { Result } from '../service/result';
+import { loadValidConfig } from './configuration';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
 const collectionName = 'results';
+
+// save favoriutes and return them to watch
 
 export async function saveNewResult(newResult: Result): Promise<string> {
   const client = new MongoClient(config.dbHost, {

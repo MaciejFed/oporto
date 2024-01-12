@@ -3,8 +3,10 @@ import { APP_STARTED } from '../event/events';
 import { Input } from '../io/input';
 import { SessionManager } from '../session/session-manager';
 import { Terminal } from '../io/terminal';
+import { preFetchAllResults } from '../client/client';
 
 export function startTestSession(sortExercises: boolean) {
+  preFetchAllResults();
   const EXERCISES_PER_SESSION = 10;
 
   const eventProcessor = new EventProcessor();

@@ -24,7 +24,7 @@ function findWord(index: number, word: string) {
 
 export function saveProgress() {
   const map: Map<string, ErrorContext> = new Map<string, ErrorContext>();
-  getAllResults().map((result) => {
+  getAllResults(true).map((result) => {
     if (!result.wasCorrect) {
       if (translationTypes.includes(result.exercise.exerciseType) && result.exercise.exerciseType) {
         const translationExercise = result.exercise as TranslationExercise;
@@ -86,7 +86,7 @@ export function saveProgress() {
   console.log(sortedMap);
   console.log('Saving progress...');
   console.log(`All unique words: ${getAllUniqueWords().length}`);
-  const progress = progressByDate(getAllResults());
+  const progress = progressByDate(getAllResults(true));
   saveProgressToFile(JSON.stringify(progress, null, 4));
   console.log('Progress saved...');
 }

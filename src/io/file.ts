@@ -3,22 +3,12 @@ import os from 'os';
 import path from 'path';
 import { logger } from '../common/logger';
 import * as readline from 'readline';
-import * as http from 'http';
 import { getAllUniqueWordsConjugated } from '../service/progress';
-import { Result } from '../service/result';
 import { translateToEnglish } from '../client/client';
-import { loadValidConfig } from '../server/configuration';
 
-const resultDbFilePath = path.join(os.homedir(), 'results.json');
-const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
+const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');
 const ptExamplesPath = path.join(os.homedir(), 'pt/pt.txt');
 const enExamplesPath = path.join(os.homedir(), 'pt/en.txt');
-
-export function readResultsFromFile(): string {
-  logger.debug('reading results...');
-  return fs.readFileSync(resultDbFilePath, { encoding: 'utf-8' }).toString();
-}
-
 
 export interface MoveieExample {
   portuguese: [string, string];
@@ -136,11 +126,6 @@ export async function findExampleSentence(numberOfLinesToRead: number, wordToFin
     english: matchingLinesEn[randomIndex],
     englishApi
   };
-}
-
-export function saveResultsToFile(data: string) {
-  logger.debug('saving  results...');
-  fs.writeFileSync(resultDbFilePath, data);
 }
 
 export function saveProgressToFile(data: string) {

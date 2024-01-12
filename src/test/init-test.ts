@@ -1,17 +1,30 @@
 // @ts-nocheck
-
 console.log('Initializing Tests...');
 
 global.resultsFile = '[]';
+
+jest.mock('../client/client', () => {
+  const fileModuleActual = jest.requireActual('../client/client');
+  const results: any[] = [];
+  return {
+    ...fileModuleActual,
+    fetchAllResults: () => results,
+    fetchExercisesForSession: () => [],
+    fetchMovieExample: async () => ({
+      portuguese: ['', ''],
+      englishApi: '',
+      english: ''
+    }),
+    saveNewResult: async (result: any) => {
+      results.push(result);
+    }
+  };
+});
 
 jest.mock('../io/file', () => {
   const fileModuleActual = jest.requireActual('../io/file');
   return {
     ...fileModuleActual,
-    readResultsFromFile: () => global.resultsFile,
-    saveResultsToFile: (data: string) => {
-      global.resultsFile = data;
-    },
     findExampleSentence: async () => ({
       portuguese: ['Sou a Marta', 'Sou a Marta']
     })

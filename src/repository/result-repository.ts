@@ -13,8 +13,7 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
-import { fetchAllResults } from '../client/client';
-import { readAllResults } from '../server/db';
+import { fetchAllResults, fetchAllResultsSync } from '../client/client';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -89,7 +88,7 @@ export const exerciseFactory = {
 };
 
 export async function getAllResultsAsync(): Promise<Result[]> {
-  const results = await readAllResults();
+  const results = fetchAllResultsSync();
 
   logger.info(`Fetched ${results.length} from DB`);
 
@@ -107,8 +106,8 @@ export async function getAllResultsAsync(): Promise<Result[]> {
   });
 }
 
-export function getAllResults(): Result[] {
-  const resultsJson: Result[] = fetchAllResults();
+export function getAllResults(sync = false): Result[] {
+  const resultsJson: Result[] = sync ? fetchAllResultsSync() : fetchAllResults();
 
   return resultsJson.map((result) => {
     const exerciseData = result.exercise;

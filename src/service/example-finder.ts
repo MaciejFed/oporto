@@ -6,7 +6,7 @@ import { VerbTranslationExercise } from '../exercise/translation/verb-translatio
 import { logger } from '../common/logger';
 import { exec } from 'child_process';
 import util from 'util';
-import { fetchMoveiExample } from '../client/client';
+import { fetchMovieExample } from '../client/client';
 
 const extractWordToFindFromExercise = (exercise: Exercise): string | undefined => {
   switch (exercise.exerciseType) {
@@ -49,7 +49,7 @@ export const findExampleSentenceAndWord = (
 ) => {
   const wordToFind = extractWordToFindFromExercise(exercise);
   if (wordToFind) {
-    fetchMoveiExample(wordToFind).then((result) => {
+    fetchMovieExample(wordToFind).then((result) => {
       const wordStartIndex = result.portuguese[1].toLowerCase().indexOf(wordToFind.toLowerCase());
       const exerciseWord = result.portuguese[1].substring(wordStartIndex, wordStartIndex + wordToFind.length);
       const exampleSentence = result.portuguese;

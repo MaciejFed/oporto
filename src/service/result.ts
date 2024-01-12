@@ -1,8 +1,7 @@
 import { DateTimeExtended, isBeforeWeekday, isOnWeekDay, onlyDistinct } from '../common/common';
 import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
-import { VerbExercise } from '../exercise/verb-exercise';
-import { AnswerInputType, displayGenericWeeklyStatistics } from '../io/terminal/terminal-utils';
+import { AnswerInputType } from '../io/terminal/terminal-utils';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { getProgress } from './progress';
@@ -114,10 +113,12 @@ export function getWeekdayStatistics(): WeekdayStatistics[] {
   const currentWeekday = DateTimeExtended.fromJSDate(new Date()).weekday;
   const allResults = getAllResults();
 
+  const year = new Date().getFullYear();
+
   return [...Array(currentWeekday).keys()]
     .map((i) => i + 1)
     .map((weekday) => {
-      const resultOnDay = allResults.filter((result) => isOnWeekDay(result.date, weekday));
+      const resultOnDay = allResults.filter((result) => isOnWeekDay(result.date, weekday, year));
       const allAttempts: StatisticPoint = {
         keyName: 'All',
         value: resultOnDay.length,
