@@ -14,6 +14,7 @@ import { exerciseFactory, getAllResults, getAllResultsAsync } from '../repositor
 import { execSync } from 'child_process';
 import { loadValidConfig } from '../server/configuration';
 import { fetchExercisesForSession } from '../client/client';
+import { Result } from '../service/result';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -103,10 +104,11 @@ export function generateAllPossibleExercises(): Exercise[] {
 export async function generateExercisesForSessionAsync(
   exerciseCount: number,
   sort: boolean,
-  filter: (ex: Exercise) => boolean
+  filter: (ex: Exercise) => boolean,
+  results?: Result[]
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
-  const allResults = await getAllResultsAsync();
+  const allResults = results ? results : await getAllResultsAsync();
   const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();

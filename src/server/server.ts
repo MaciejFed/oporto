@@ -31,7 +31,8 @@ let cachedExercises: any[] = [];
 const preFetch = async () => {
   try {
     if (cachedExercises.length <= 10) {
-      cachedExercises = await generateExercisesForSessionAsync(50, true, () => true);
+      const results = await readAllResults();
+      cachedExercises = await generateExercisesForSessionAsync(50, true, () => true, results);
       logger.info(`Saved exercises to cache ${new Date()}`);
     } else {
       logger.info(`Cache still has [${cachedExercises.length}] exercises - skipping refresh.`);
