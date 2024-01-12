@@ -86,6 +86,5 @@ app.post('/example/find', async (req: Request, res: Response) => {
 
 app.listen(port, async () => {
   logger.info('Starting server...');
-  await preFetch();
   logger.info(`[server]: Server is running at http://localhost:${port}`);
 });
