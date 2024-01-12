@@ -87,11 +87,7 @@ export const exerciseFactory = {
   FitInGap: createFitInGapExercise
 };
 
-export async function getAllResultsAsync(): Promise<Result[]> {
-  const results = fetchAllResultsSync();
-
-  logger.info(`Fetched ${results.length} from DB`);
-
+export function parseResults(results: Result[]): Result[] {
   return results.map((result) => {
     const exerciseData = result.exercise;
     const exerciseType = exerciseData.exerciseType;
@@ -101,9 +97,16 @@ export async function getAllResultsAsync(): Promise<Result[]> {
       result.date = new Date(result.date);
       result.exercise = createExercise(exerciseData);
     }
-
     return result;
   });
+}
+
+export async function getAllResultsAsync(): Promise<Result[]> {
+  const results = fetchAllResultsSync();
+
+  logger.info(`Fetched ${results.length} from DB`);
+
+  return parseResults(results);
 }
 
 export function getAllResults(sync = false): Result[] {

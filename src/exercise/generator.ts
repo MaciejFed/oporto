@@ -10,7 +10,7 @@ import { FitInGapExercise } from './fit-in-gap-exercise';
 import { OtherTranslationExercise } from './translation/other-translation-exercise';
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
-import { exerciseFactory, getAllResults, getAllResultsAsync } from '../repository/result-repository';
+import { exerciseFactory, getAllResults, getAllResultsAsync, parseResults } from '../repository/result-repository';
 import { execSync } from 'child_process';
 import { loadValidConfig } from '../server/configuration';
 import { fetchExercisesForSession } from '../client/client';
@@ -108,7 +108,7 @@ export async function generateExercisesForSessionAsync(
   results?: Result[]
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
-  const allResults = results ? results : await getAllResultsAsync();
+  const allResults = results ? parseResults(results) : await getAllResultsAsync();
   const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
