@@ -1,7 +1,22 @@
 // @ts-nocheck
+import { loadValidConfig } from '../server/configuration';
+
 console.log('Initializing Tests...');
 
 global.resultsFile = '[]';
+
+jest.mock('../server/configuration', () => {
+  return {
+    loadValidConfig: () => ({
+      apiKey: 'dummy',
+      apiURL: 'dummy',
+      dbHost: 'dummy',
+      dbUsername: 'dummy',
+      dbPassword: 'dummy',
+      deepLApiKey: 'dummy'
+    })
+  };
+});
 
 jest.mock('../client/client', () => {
   const fileModuleActual = jest.requireActual('../client/client');
