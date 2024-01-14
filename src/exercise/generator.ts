@@ -1,5 +1,5 @@
 import { Exercise } from './exercise';
-import { Person, readAll, Verb } from '../repository/exercises-repository';
+import { Person, readAll, Verb, wordDatabase } from '../repository/exercises-repository';
 import { VerbExercise } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
 import { TranslationType } from './translation/translation-exercise';
@@ -15,17 +15,19 @@ import { execSync } from 'child_process';
 import { loadValidConfig } from '../server/configuration';
 import { fetchExercisesForSession } from '../client/client';
 import { Result } from '../service/result';
+import { checkStandardConjugation } from '../service/verb/verb';
 
 type ExerciseGenerator = () => Exercise[];
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
-  const presentSimpleVerbs = readAll().verbs.flatMap((verb) =>
+  const verbsNonStandard = readAll().verbs.filter((verb) => !checkStandardConjugation(verb.infinitive).isStandard);
+  const presentSimpleVerbs = verbsNonStandard.flatMap((verb) =>
     Object.keys(Person).flatMap((person) =>
       VerbExercise.new(verb, Person[person as keyof typeof Person], 'presentSimple')
     )
   );
-  const pastPerfectVerbs = readAll()
-    .verbs.filter((verb) => verb.pastPerfect)
+  const pastPerfectVerbs = verbsNonStandard
+    .filter((verb) => verb.pastPerfect)
     .flatMap((verb) =>
       Object.keys(Person).flatMap((person) =>
         VerbExercise.new(verb, Person[person as keyof typeof Person], 'pastPerfect')

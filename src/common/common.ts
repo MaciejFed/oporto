@@ -118,3 +118,9 @@ export function areSameCalendarDay(date1: Date, date2: Date): boolean {
     date1.getDate() === date2.getDate()
   );
 }
+
+export function assertNonNull<T>(value?: T): T {
+  if (!value) throw new Error('Unexpected Undefined!');
+
+  return value;
+}
