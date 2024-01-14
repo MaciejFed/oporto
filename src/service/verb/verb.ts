@@ -6,14 +6,14 @@ export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
 };
 
+export const getRandomPerson: () => Person = () => {
+  return getRandomElement(Object.values(Person));
+};
+
 export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: VerbTime): string => {
   const VerbExercise = readAll().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
   // @ts-ignore
   return VerbExercise[verbTime][person];
-};
-
-export const getRandomPerson: () => Person = () => {
-  return getRandomElement(Object.values(Person));
 };
 
 export interface StandardConjugation {
