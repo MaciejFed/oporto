@@ -11,8 +11,6 @@ import { OtherTranslationExercise } from './translation/other-translation-exerci
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
 import { exerciseFactory, getAllResults, getAllResultsAsync, parseResults } from '../repository/result-repository';
-import { execSync } from 'child_process';
-import { loadValidConfig } from '../server/configuration';
 import { fetchExercisesForSession } from '../client/client';
 import { Result } from '../service/result';
 import { checkStandardConjugation } from '../service/verb/verb';

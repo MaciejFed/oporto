@@ -37,6 +37,7 @@ import { getExerciseProgress, getStatisticForExercise } from '../service/result'
 import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { sleep } from '../common/common';
 import { findExampleSentenceAndWord } from '../service/example-finder';
+import { VerbExercise } from '../exercise/verb-exercise';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -198,8 +199,7 @@ export class Terminal {
       const allResults = getAllResults();
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
       if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
-        // @ts-ignore
-        printAllVerbConjugations(this.exercise.verb);
+        printAllVerbConjugations((this.exercise as VerbExercise).verb);
       }
       const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {
