@@ -34,10 +34,10 @@ import {
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
-import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { sleep } from '../common/common';
+import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { findExampleSentenceAndWord } from '../service/example-finder';
 import { VerbExercise } from '../exercise/verb-exercise';
+import { checkStandardConjugation } from '../service/verb/verb';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -199,7 +199,8 @@ export class Terminal {
       const allResults = getAllResults();
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
       if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
-        printAllVerbConjugations((this.exercise as VerbExercise).verb);
+        const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive);
+        printAllVerbConjugations(conjugation);
       }
       const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {

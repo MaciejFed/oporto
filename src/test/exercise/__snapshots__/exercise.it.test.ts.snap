@@ -627,13 +627,13 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- Infinitive: to be - long               Answers History:    Cojugations:
- [Past Perfect] Tu: foste                                   Infinitive: [ser]
- Wrong! [voice]                         1. fos              Eu:   sou  |fui
-                                                            Tu:   és   |foste
- Repeat: foste                                              Ela:  é    |foi
- Press key to continue...                                   Nós:  somos|fomos
- r - repeat the answer                                      Eles: são  |foram
+ Infinitive: to build                   Answers History:    Cojugations:
+ [Past Perfect] Tu: construíste                             Infinitive: [construir]
+ Wrong! [voice]                         1. construís        Eu:   construo   |construí
+                                                            Tu:   constróis  |construíste
+ Repeat: construíste                                        Ela:  constrói   |construiu
+ Press key to continue...                                   Nós:  construímos|construímos
+ r - repeat the answer                                      Eles: constroem  |construíram
                                                                       
                                                                       
                                                                       
@@ -690,13 +690,13 @@ exports[`Exercises Integration Snapshots VerbExercise 2`] = `
                                                                       
                                                                       
                                                                       
- WWWWWWWWWWWWWWWWWWWWWWWW               WWWWWWWWWWWWWWWW    WWWWWWWWWWWW
- WWWWWWWWWWWWWWWWWWWGGGRR                                   WWWWWWWWWWWWWWWWW
- WWWWWWWWWWWWWW                         WWWGGG              WWWWWWWWWWWWWWW
-                                                            WWWWWWWWWWWWWWWWW
- WWWWWWWWGGGGG                                              WWWWWWWWWWWWWWW
- WWWWWWWWWWWWWWWWWWWWWWWW                                   WWWWWWWWWWWWWWWWW
- WWWWWWWWWWWWWWWWWWWWW                                      WWWWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWW                   WWWWWWWWWWWWWWWW    WWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWGGGGGGGGGRR                             WWWWWWWWWWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWW                         WWWGGGGGGGGG        WWWWWWWWWWWWWWWWWWYYYYYYYY
+                                                            WWWWWYYYYYYYYYYYYWYYYYYYYYYYY
+ WWWWWWWWGGGGGGGGGGG                                        WWWWWYYYYYYYYYYYYWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWWWWWW                                   WWWWWYYYYYYYYYYYYWYYYYYYYYYYY
+ WWWWWWWWWWWWWWWWWWWWW                                      WWWWWYYYYYYYYYYYYWYYYYYYYYYYY
                                                                       
                                                                       
                                                                       
@@ -753,13 +753,13 @@ IMAGE
 IMAGE                                                                     
                                                                       
                                                                       
- Infinitive: to be - long               Answers History:    Cojugations:
- [Present Simple] Tu: ése                                   Infinitive: [ser]
- Correct! [voice]                       1. éss              Eu:   sou  |fui
-                                                            Tu:   és   |foste
- Repeat: foste                                              Ela:  é    |foi
- Press key to continue...                                   Nós:  somos|fomos
- r - repeat the answer                                      Eles: são  |foram
+ Infinitive: to build                   Answers History:    Cojugations:
+ [Present Simple] Tu: constróis                             Infinitive: [construir]
+ Wrong! [voice]                         1. constróís        Eu:   construo   |construí
+                                                            Tu:   constróis  |construíste
+ Repeat: constróiste                                        Ela:  constrói   |construiu
+ Press key to continue...                                   Nós:  construímos|construímos
+ r - repeat the answer                                      Eles: constroem  |construíram
                                                                       
                                                                       
                                                                       
@@ -816,13 +816,13 @@ exports[`Exercises Integration Snapshots VerbExercise 4`] = `
                                                                       
                                                                       
                                                                       
- WWWWWWWWWWWWWWWWWWWWWWWW               WWWWWWWWWWWWWWWW    WWWWWWWWWWWW
- WWWWWWWWWWWWWWWWWWWWWGGR                                   WWWWWWWWWWWWWWWWW
- WWWWWWWWWWWWWWWW                       WWWGGG              WWWWWWWWWWWWWWW
-                                                            WWWWWWWWWWWWWWWWW
- WWWWWWWWGGGGG                                              WWWWWWWWWWWWWWW
- WWWWWWWWWWWWWWWWWWWWWWWW                                   WWWWWWWWWWWWWWWWW
- WWWWWWWWWWWWWWWWWWWWW                                      WWWWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWW                   WWWWWWWWWWWWWWWW    WWWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWWWGGGGGGGRR                             WWWWWWWWWWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWW                         WWWGGGGGGGGG        WWWWWWWWWWWWWWWWWWYYYYYYYY
+                                                            WWWWWYYYYYYYYYYYYWYYYYYYYYYYY
+ WWWWWWWWGGGGGGGGGGG                                        WWWWWYYYYYYYYYYYYWWWWWWWWWW
+ WWWWWWWWWWWWWWWWWWWWWWWW                                   WWWWWYYYYYYYYYYYYWYYYYYYYYYYY
+ WWWWWWWWWWWWWWWWWWWWW                                      WWWWWYYYYYYYYYYYYWYYYYYYYYYYY
                                                                       
                                                                       
                                                                       
@@ -876,15 +876,27 @@ Array [
   "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_STARTED",
   "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to be - long",
+  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to build",
   "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED f",
+  "KEY_PRESSED c",
   "KEY_PRESSED o",
+  "KEY_PRESSED n",
+  "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED r",
+  "KEY_PRESSED u",
+  "KEY_PRESSED í",
   "KEY_PRESSED s",
   "ANSWER_SUBMITTED voice",
   "ANSWER_CHECKED [object Object]",
-  "KEY_PRESSED f",
+  "KEY_PRESSED c",
   "KEY_PRESSED o",
+  "KEY_PRESSED n",
+  "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED r",
+  "KEY_PRESSED u",
+  "KEY_PRESSED í",
   "KEY_PRESSED s",
   "KEY_PRESSED t",
   "KEY_PRESSED e",
@@ -893,12 +905,27 @@ Array [
   "EXERCISE_NEXT",
   "EXERCISE_STARTED",
   "TERMINAL_CLEARED preExerciseClear",
-  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to be - long",
+  "EXERCISE_DESCRIPTION_PRINTED Infinitive: to build",
   "EXERCISE_BODY_PRINTED [object Object]",
-  "KEY_PRESSED é",
+  "KEY_PRESSED c",
+  "KEY_PRESSED o",
+  "KEY_PRESSED n",
   "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED r",
+  "KEY_PRESSED ó",
   "ANSWER_SUBMITTED voice",
   "ANSWER_CHECKED [object Object]",
+  "KEY_PRESSED c",
+  "KEY_PRESSED o",
+  "KEY_PRESSED n",
+  "KEY_PRESSED s",
+  "KEY_PRESSED t",
+  "KEY_PRESSED r",
+  "KEY_PRESSED ó",
+  "KEY_PRESSED i",
+  "KEY_PRESSED s",
+  "ANSWER_SUBMITTED voice",
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "APP_FINISHED",
