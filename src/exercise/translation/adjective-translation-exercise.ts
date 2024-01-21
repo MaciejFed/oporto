@@ -72,6 +72,10 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     return this.adjective;
   }
 
+  getBaseWordAsString(): string {
+    return this.getBaseWord().masculine.singular;
+  }
+
   equal = (other: AdjectiveTranslationExercise) =>
     other.exerciseType === 'AdjectiveTranslation' &&
     this.gender === other.gender &&

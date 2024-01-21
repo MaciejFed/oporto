@@ -3,7 +3,7 @@ import { VerbExercise } from '../../../exercise/verb-exercise';
 import { TranslationExercise } from '../../../exercise/translation/translation-exercise';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 import { Result } from '../../../service/result';
-import { getProgress, getSingleExerciseProgress } from '../../../service/progress';
+import { getProgress, getSingleExerciseProgress } from '../../../service/progress/progress';
 import { logger } from '../../../common/logger';
 import { VerbTranslationExercise } from '../../../exercise/translation/verb-translation-exercise';
 

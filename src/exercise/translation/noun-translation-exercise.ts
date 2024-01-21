@@ -37,6 +37,10 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     return this.noun;
   }
 
+  getBaseWordAsString(): string | undefined {
+    return this.getBaseWord().portuguese.word;
+  }
+
   getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {

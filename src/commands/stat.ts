@@ -1,7 +1,7 @@
 import { logger } from '../common/logger';
 import { displayGenericWeeklyStatistics } from '../io/terminal/terminal-utils';
 import { getAllResults } from '../repository/result-repository';
-import { getAllUniqueWords } from '../service/progress';
+import { getAllUniqueWords } from '../service/progress/progress';
 import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
 import { generateExercisesForSession } from '../exercise/generator';
 import clear from 'clear';

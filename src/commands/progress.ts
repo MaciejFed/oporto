@@ -1,9 +1,8 @@
-import { string } from 'yargs';
 import { translationTypes } from '../exercise/exercise';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { saveProgressToFile } from '../io/file';
 import { getAllResults } from '../repository/result-repository';
-import { getAllUniqueWords, progressByDate } from '../service/progress';
+import { getAllUniqueWords, progressByDate } from '../service/progress/progress';
 
 interface ErrorContext {
   count: number;

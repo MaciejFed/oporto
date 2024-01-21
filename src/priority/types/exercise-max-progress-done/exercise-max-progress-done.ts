@@ -1,7 +1,7 @@
 import { Exercise } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { noPriority, Priority } from '../../priority';
-import { RatioRange } from '../../../service/progress';
+import { RatioRange } from '../../../service/progress/progress';
 import { getAllResultsForExercise } from '../../../repository/result-repository';
 
 export const VALUE_EXERCISE_MAX_PROGRESS_DONE = -1000;

@@ -57,6 +57,10 @@ export class VerbTranslationExercise extends TranslationExercise implements Comp
     return this.verb;
   }
 
+  getBaseWordAsString(): string | undefined {
+    return this.getBaseWord().infinitive;
+  }
+
   equal = (other: VerbTranslationExercise) =>
     other.exerciseType === 'VerbTranslation' &&
     this.verb.infinitive === other.verb.infinitive &&

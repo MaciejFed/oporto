@@ -1,14 +1,6 @@
-import { BaseWord, Exercise, ExerciseType } from '../exercise/exercise';
-import {
-  getAllAnswersForExercise,
-  getAllResults,
-  getAllResultsForExercise,
-  getAllResultsForExerciseSubject
-} from '../repository/result-repository';
-import fs from 'fs';
+import { Exercise, ExerciseType } from '../exercise/exercise';
 import { Result } from '../service/result';
 import { exerciseNeverDone } from './types/exercise-never-done/exercise-never-done';
-import { exerciseNeverDoneByVoice } from './types/exercise-never-done-by-voice/exercise-never-done-by-voice';
 import { exerciseWrong } from './types/exercise-wrong/exercise-wrong';
 import { exerciseVerbNeverTranslated } from './types/exercise-verb-never-translated/exercise-verb-never-translated';
 import { exerciseDoneToday } from './types/exercise-done-today/exercise-done-today';
@@ -18,14 +10,12 @@ import { exerciseTranslationNeverDoneToEnglish } from './types/exercise-translat
 import { exerciseTranslationNeverDoneFromHearing } from './types/exercise-translation-never-done-from-hearing/exercise-translation-never-done-from-hearing';
 import { exerciseDoneCorrectly2TimesInRow } from './types/exercise-done-correctly-2-times-in-row/exercise-done-correctly-2-times-in-row';
 import { exerciseRandomness } from './types/exercise-randomness/exercise-randomness';
-import { exerciseMaxProgressDone } from './types/exercise-max-progress-done/exercise-max-progress-done';
 import {
   ExerciseProgress,
   getExerciseProgressMap,
-  getGroupExerciseProgress,
   getSingleExerciseProgress,
   RatioRange
-} from '../service/progress';
+} from '../service/progress/progress';
 import { exerciseTypeInProgressLimit } from './types/exercise-type-in-progress-limit/exercise-type-in-progress-limit';
 import { exerciseSentenceUnknownWords } from './types/exercise-sentence-unknown-words/exercise-sentence-unknown-words';
 import { logger } from '../common/logger';
@@ -171,7 +161,7 @@ function logExerciseStats(exerciseProgressMap: Record<ExerciseType, ExerciseProg
   });
 }
 
-function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Result[]) {
+function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Result[]): ExerciseProgress[] {
   return exercises
     .map((ex) => getSingleExerciseProgress(allResults, ex))
     .filter((ex) => {
@@ -179,7 +169,7 @@ function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Re
     });
 }
 
-function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: any[]): void {
+function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: ExerciseProgress[]): void {
   logger.info(`Exercises Total Count: [${exercises.length}]`);
   logger.info(`Exercises Not Done Count: [${exercisesWithoutWantedProgress.length}]`);
   logger.info(

@@ -1,7 +1,7 @@
 import { Exercise, ExerciseType } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
-import { ExerciseProgress, RatioRange } from '../../../service/progress';
+import { ExerciseProgress, RatioRange } from '../../../service/progress/progress';
 import { onlyDistinct } from '../../../common/common';
 import { logger } from '../../../common/logger';
 

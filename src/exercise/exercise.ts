@@ -1,6 +1,6 @@
 import { Comparable } from '../common/common';
 import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
-import { RatioRange } from '../service/progress';
+import { RatioRange } from '../service/progress/progress';
 export type ExerciseType =
   | 'VerbExercise'
   | 'NounTranslation'
@@ -29,6 +29,7 @@ export interface ExerciseContent {
   getDescription(): string;
   getTranslation(): string | undefined;
   getBaseWord(): BaseWord | undefined;
+  getBaseWordAsString(): string | undefined;
 }
 
 export interface ExerciseBehavior {

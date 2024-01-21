@@ -6164,14 +6164,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'hill',
-      portuguese: {
-        word: 'morro',
-        plural: 'morros',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'death',
       portuguese: {
         word: 'morte',
@@ -6600,14 +6592,6 @@ export const db: Schema = {
       portuguese: {
         word: 'mapa',
         plural: 'mapas',
-        gender: 'masculine'
-      }
-    },
-    {
-      english: 'party',
-      portuguese: {
-        word: 'partido',
-        plural: 'partidos',
         gender: 'masculine'
       }
     },

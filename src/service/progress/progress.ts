@@ -1,22 +1,20 @@
-import { Exercise, ExerciseType } from '../exercise/exercise';
-import { TranslationExercise } from '../exercise/translation/translation-exercise';
-import { readAll } from '../repository/exercises-repository';
+import { Exercise, ExerciseType } from '../../exercise/exercise';
+import { TranslationExercise } from '../../exercise/translation/translation-exercise';
+import { readAll } from '../../repository/exercises-repository';
 import {
   DateResults,
-  getAllResults,
   getAllResultsBeforeDateOneWeek,
   getAllResultsByDate,
   getAllResultsForExercise
-} from '../repository/result-repository';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
-import { Result } from './result';
-import { generateAllPossibleExercises, generateExercisesForSession } from '../exercise/generator';
-import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
-import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
-import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
-import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
-import { onlyDistinct } from '../common/common';
-import { logger } from '../common/logger';
+} from '../../repository/result-repository';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
+import { Result } from '../result';
+import { generateAllPossibleExercises, generateExercisesForSession } from '../../exercise/generator';
+import { NounTranslationExercise } from '../../exercise/translation/noun-translation-exercise';
+import { VerbTranslationExercise } from '../../exercise/translation/verb-translation-exercise';
+import { OtherTranslationExercise } from '../../exercise/translation/other-translation-exercise';
+import { AdjectiveTranslationExercise } from '../../exercise/translation/adjective-translation-exercise';
+import { logger } from '../../common/logger';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];

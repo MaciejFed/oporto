@@ -61,6 +61,10 @@ export class OtherTranslationExercise extends TranslationExercise implements Com
     return this.other;
   }
 
+  getBaseWordAsString(): string | undefined {
+    return this.getBaseWord().portuguese;
+  }
+
   equal = (other: OtherTranslationExercise) =>
     other.exerciseType === 'OtherTranslation' &&
     this.other.portuguese === other.other.portuguese &&

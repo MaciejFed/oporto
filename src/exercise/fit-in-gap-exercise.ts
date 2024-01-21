@@ -2,7 +2,7 @@ import { Comparable } from '../common/common';
 import { FitIn } from '../repository/exercises-repository';
 import { getRandomFitInExercise } from '../service/fit-in';
 import { Exercise, ExerciseType } from './exercise';
-import { RatioRange } from '../service/progress';
+import { RatioRange } from '../service/progress/progress';
 
 export class FitInGapExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
@@ -38,6 +38,8 @@ export class FitInGapExercise implements Exercise, Comparable {
   getRetryPrompt = () => `${this.getBodyPrefix()} ${this.getCorrectAnswer()} ${this.getBodySuffix()}}`;
 
   getBaseWord = () => undefined;
+
+  getBaseWordAsString = () => undefined;
 
   equal = (exercise: FitInGapExercise) =>
     exercise.exerciseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);

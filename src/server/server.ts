@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import { MoveieExample, findExampleSentence } from '../io/file';
 import { logger } from '../common/logger';
 import { readAllResults, saveNewResult } from './db';
+import { getProgressAggregate } from '../service/progress/progress-aggregate';
 
 const config = loadValidConfig();
 
@@ -13,6 +14,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const port = 3000;
+
+console.log('starting');
 
 // eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
@@ -49,6 +52,11 @@ setInterval(() => {
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
   res.send(results);
+});
+
+app.get('/progress', (_req: Request, res: Response) => {
+  const aggregate = getProgressAggregate();
+  res.send(aggregate);
 });
 
 app.post('/results/save', async (req: Request, res: Response) => {

@@ -4,7 +4,7 @@ import { Exercise } from '../exercise/exercise';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
-import { getProgress } from './progress';
+import { getProgress } from './progress/progress';
 
 type KeyMarker = {
   color: string;

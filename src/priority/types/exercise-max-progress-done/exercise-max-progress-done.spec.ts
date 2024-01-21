@@ -3,7 +3,7 @@ import { exerciseMaxProgressDone, VALUE_EXERCISE_MAX_PROGRESS_DONE } from './exe
 import { VerbTranslationExercise } from '../../../exercise/translation/verb-translation-exercise';
 import { readAll } from '../../../repository/exercises-repository';
 import { noPriority } from '../../priority';
-import { getExercisesProgress } from '../../../service/progress';
+import { getExercisesProgress } from '../../../service/progress/progress';
 
 describe('Priority - EXERCISE_MAX_PROGRESS_DONE', () => {
   it('Exercise translation in 80-100 range done only 1 time', () => {

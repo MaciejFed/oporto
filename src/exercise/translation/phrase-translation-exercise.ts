@@ -3,7 +3,7 @@ import { Comparable } from '../../common/common';
 import { Phrase } from '../../repository/exercises-repository';
 import { getRandomPhrase } from '../../service/translation';
 import { TranslationExercise, TranslationType } from './translation-exercise';
-import { RatioRange } from '../../service/progress';
+import { RatioRange } from '../../service/progress/progress';
 
 export class PhraseTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
@@ -57,6 +57,8 @@ export class PhraseTranslationExercise extends TranslationExercise implements Co
   }
 
   getBaseWord = () => undefined;
+
+  getBaseWordAsString = () => undefined;
 
   equal = (other: PhraseTranslationExercise) =>
     other.exerciseType === 'PhraseTranslation' &&
