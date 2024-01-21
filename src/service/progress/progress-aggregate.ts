@@ -1,5 +1,5 @@
 import { generateAllPossibleExercises } from '../../exercise/generator';
-import { ExerciseProgress, getSingleExerciseProgress } from './progress';
+import {ExerciseProgress, getAllUniqueWordsAsExercises, getSingleExerciseProgress} from './progress';
 import { readAllResults } from '../../server/db';
 import {getAllResults, toResultsParsed} from "../../repository/result-repository";
 
@@ -10,14 +10,10 @@ enum ProgressType {
 }
 
 const progressExerciseTypes = [
-  'VerbExercise',
   'NounTranslation',
   'OtherTranslation',
   'AdjectiveTranslation',
   'VerbTranslation',
-  'SentenceTranslation',
-  'PhraseTranslation',
-  'FitInGap'
 ] as const;
 
 type ExerciseTypeKey = (typeof progressExerciseTypes)[number];
@@ -60,8 +56,10 @@ const emptyProgressAggregate: ProgressAggregate = progressExerciseTypes.reduce(
 
 export async function getProgressAggregate(): Promise<ProgressAggregate> {
   const allResults = toResultsParsed(await readAllResults());
-  const allExercises = generateAllPossibleExercises();
-  const exercisesProgress = allExercises.map((exercise) => getSingleExerciseProgress(allResults, exercise));
+  const allExercises = getAllUniqueWordsAsExercises();
+  const exercisesProgress = allExercises
+      .map((exercise) => getSingleExerciseProgress(allResults, exercise))
+      .sort((a, b) => a.ratio - b.ratio);
 
   const addProgress = (
     typeToDetails: Record<ProgressType, ProgressDetails>,
