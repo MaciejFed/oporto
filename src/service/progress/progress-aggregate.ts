@@ -1,8 +1,6 @@
-import { ExerciseType } from '../../exercise/exercise';
 import { generateAllPossibleExercises } from '../../exercise/generator';
 import { ExerciseProgress, getSingleExerciseProgress } from './progress';
-import { getAllResults } from '../../repository/result-repository';
-import {readAllResults} from "../../server/db";
+import { readAllResults } from '../../server/db';
 
 enum ProgressType {
   DONE = 'DONE',
