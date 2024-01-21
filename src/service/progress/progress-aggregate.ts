@@ -2,6 +2,7 @@ import { ExerciseType } from '../../exercise/exercise';
 import { generateAllPossibleExercises } from '../../exercise/generator';
 import { ExerciseProgress, getSingleExerciseProgress } from './progress';
 import { getAllResults } from '../../repository/result-repository';
+import {readAllResults} from "../../server/db";
 
 enum ProgressType {
   DONE = 'DONE',
@@ -58,8 +59,8 @@ const emptyProgressAggregate: ProgressAggregate = progressExerciseTypes.reduce(
   {}
 ) as ProgressAggregate;
 
-export function getProgressAggregate(): ProgressAggregate {
-  const allResults = getAllResults(true);
+export async function getProgressAggregate(): Promise<ProgressAggregate> {
+  const allResults = await readAllResults();
   const allExercises = generateAllPossibleExercises();
   const exercisesProgress = allExercises.map((exercise) => getSingleExerciseProgress(allResults, exercise));
 

@@ -54,8 +54,8 @@ app.get('/results', async (_req: Request, res: Response) => {
   res.send(results);
 });
 
-app.get('/progress', (_req: Request, res: Response) => {
-  const aggregate = getProgressAggregate();
+app.get('/progress', async (_req: Request, res: Response) => {
+  const aggregate = await getProgressAggregate();
   res.send(aggregate);
 });
 
