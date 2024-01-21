@@ -6,7 +6,7 @@ import { ExerciseStatistics, Result, WeekdayStatistics } from '../../service/res
 import eventProcessor from '../../event/event-processor';
 import Output from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
-import { clearLine } from 'readline';
+import { StandardConjugation } from '../../service/verb/verb';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -166,7 +166,7 @@ export function printAllAnswers(results: Result[]) {
   });
 }
 
-export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfect }: Verb) {
+export function printAllVerbConjugations({ verb: { infinitive, presentSimple, pastPerfect } }: StandardConjugation) {
   const CONJUGATION_X_MARGIN = 60;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   Output.bold();
@@ -174,18 +174,34 @@ export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfec
   Output.bold(false);
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
   const longestConjugationSize = Object.values(Person).reduce((prev, curr) => {
-    const currSize = presentSimple[curr as Person].length;
+    const currSize = presentSimple![curr as Person].conjugation.length;
     return prev > currSize ? prev : currSize;
   }, 0);
 
   Object.values(Person).forEach((person, index) => {
-    const past = pastPerfect ? pastPerfect[person as Person] : '';
-    const personText = person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`;
+    const present = presentSimple![person as Person];
+    const past = pastPerfect ? pastPerfect[person as Person] : undefined;
+    const personText = (person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`).padEnd(5);
+    Output.white();
+    Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 2 + index, personText);
+    if (!present.isStandard) {
+      Output.yellow();
+    }
+    const text = ` ${presentSimple![person as Person].conjugation.padEnd(longestConjugationSize)}`;
+    Output.moveTo(CONJUGATION_X_MARGIN + personText.length, CONJUGATION_Y_MARGIN + 2 + index, text);
+    Output.white();
+    Output.moveTo(CONJUGATION_X_MARGIN + personText.length + text.length, CONJUGATION_Y_MARGIN + 2 + index, '|');
+    if (past && !past.isStandard) {
+      Output.yellow();
+    } else {
+      Output.white();
+    }
     Output.moveTo(
-      CONJUGATION_X_MARGIN,
+      CONJUGATION_X_MARGIN + personText.length + text.length + 1,
       CONJUGATION_Y_MARGIN + 2 + index,
-      `${personText.padEnd(5)} ${presentSimple[person as Person].padEnd(longestConjugationSize)}|${past}`
+      past?.conjugation ?? ''
     );
+    Output.white();
   });
 }
 

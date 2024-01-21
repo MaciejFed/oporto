@@ -3112,7 +3112,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-
     {
       english: 'country',
       portuguese: {
@@ -3360,14 +3359,6 @@ export const db: Schema = {
         gender: 'masculine'
       }
     },
-    // {
-    //   english: 'shoes',
-    //   portuguese: {
-    //     word: 'sapatos',
-    //     gender: 'masculine'
-    //   },
-    //
-    // },
     {
       english: 'long sleeve',
       portuguese: {
@@ -3375,14 +3366,6 @@ export const db: Schema = {
         gender: 'masculine'
       }
     },
-    // {
-    //   english: 'pants',
-    //   portuguese: {
-    //     word: 'calças',
-    //     gender: 'feminine'
-    //   },
-    //
-    // },
     {
       english: 'mobile phone',
       portuguese: {
@@ -3454,14 +3437,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-    // {
-    //   english: 'socks',
-    //   portuguese: {
-    //     word: 'meias',
-    //     gender: 'feminine'
-    //   },
-    //
-    // },
     {
       english: 'sink',
       portuguese: {
@@ -3525,14 +3500,6 @@ export const db: Schema = {
         gender: 'masculine'
       }
     },
-    // {
-    //   english: 'cutlery',
-    //   portuguese: {
-    //     word: 'talheres',
-    //     gender: 'masculine'
-    //   },
-    //
-    // },
     {
       english: 'sofa',
       portuguese: {
@@ -5195,7 +5162,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-
     {
       english: 'river',
       portuguese: {
@@ -5396,7 +5362,6 @@ export const db: Schema = {
         gender: 'masculine'
       }
     },
-
     {
       english: 'policy',
       portuguese: {
@@ -5405,7 +5370,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-
     {
       english: 'entry',
       portuguese: {
@@ -5574,7 +5538,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-
     {
       english: 'concert',
       portuguese: {
@@ -5583,7 +5546,6 @@ export const db: Schema = {
         gender: 'masculine'
       }
     },
-
     {
       english: 'source',
       portuguese: {
@@ -5592,7 +5554,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-
     {
       english: 'ingredient',
       portuguese: {
@@ -5617,7 +5578,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-
     {
       english: 'reflection',
       portuguese: {
@@ -5626,7 +5586,6 @@ export const db: Schema = {
         gender: 'masculine'
       }
     },
-
     {
       english: 'trade',
       portuguese: {
@@ -5675,7 +5634,6 @@ export const db: Schema = {
         gender: 'masculine'
       }
     },
-
     {
       english: 'lie',
       portuguese: {
@@ -5684,7 +5642,6 @@ export const db: Schema = {
         gender: 'feminine'
       }
     },
-
     {
       english: 'castle',
       portuguese: {
@@ -6092,6 +6049,934 @@ export const db: Schema = {
         word: 'conselho',
         plural: 'conselhos',
         gender: 'masculine'
+      }
+    },
+    {
+      english: 'sea',
+      portuguese: {
+        word: 'mar',
+        plural: 'mares',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'brand',
+      portuguese: {
+        word: 'marca',
+        plural: 'marcas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'mask',
+      portuguese: {
+        word: 'máscara',
+        plural: 'máscaras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'mass',
+      portuguese: {
+        word: 'massa',
+        plural: 'massas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'material',
+      portuguese: {
+        word: 'material',
+        plural: 'materiais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'matter',
+      portuguese: {
+        word: 'matéria',
+        plural: 'matérias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'matrix',
+      portuguese: {
+        word: 'matriz',
+        plural: 'matrizes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'memory',
+      portuguese: {
+        word: 'memória',
+        plural: 'memórias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'method',
+      portuguese: {
+        word: 'método',
+        plural: 'métodos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'microphone',
+      portuguese: {
+        word: 'microfone',
+        plural: 'microfones',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'miracle',
+      portuguese: {
+        word: 'milagre',
+        plural: 'milagres',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'mile',
+      portuguese: {
+        word: 'milha',
+        plural: 'milhas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'model',
+      portuguese: {
+        word: 'modelo',
+        plural: 'modelos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'mode',
+      portuguese: {
+        word: 'modo',
+        plural: 'modos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'hill',
+      portuguese: {
+        word: 'morro',
+        plural: 'morros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'death',
+      portuguese: {
+        word: 'morte',
+        plural: 'mortes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'reason',
+      portuguese: {
+        word: 'motivo',
+        plural: 'motivos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'engine',
+      portuguese: {
+        word: 'motor',
+        plural: 'motores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'move',
+      portuguese: {
+        word: 'movimento',
+        plural: 'movimentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'musician',
+      portuguese: {
+        word: 'músico',
+        plural: 'músicos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'birth',
+      portuguese: {
+        word: 'nascimento',
+        plural: 'nascimentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'need',
+      portuguese: {
+        word: 'necessidade',
+        plural: 'necessidades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'party',
+      portuguese: {
+        word: 'festa',
+        plural: 'festas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'end',
+      portuguese: {
+        word: 'final',
+        plural: 'finais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'focus',
+      portuguese: {
+        word: 'foco',
+        plural: 'focos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'photo',
+      portuguese: {
+        word: 'foto',
+        plural: 'fotos',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'sentence',
+      portuguese: {
+        word: 'frase',
+        plural: 'frases',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'front',
+      portuguese: {
+        word: 'frente',
+        plural: 'frentes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'function',
+      portuguese: {
+        word: 'função',
+        plural: 'funções',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'fund',
+      portuguese: {
+        word: 'fundo',
+        plural: 'fundos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'cat',
+      portuguese: {
+        word: 'gato',
+        plural: 'gatos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'gender',
+      portuguese: {
+        word: 'gênero',
+        plural: 'gêneros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'like',
+      portuguese: {
+        word: 'gosto',
+        plural: 'gostos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'grace',
+      portuguese: {
+        word: 'graça',
+        plural: 'graças',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'chart',
+      portuguese: {
+        word: 'gráfico',
+        plural: 'gráficos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'war',
+      portuguese: {
+        word: 'guerra',
+        plural: 'guerras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'guid',
+      portuguese: {
+        word: 'guias',
+        plural: 'guia',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'habit',
+      portuguese: {
+        word: 'hábito',
+        plural: 'hábitos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'hero',
+      portuguese: {
+        word: 'herói',
+        plural: 'heróis',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'hospital',
+      portuguese: {
+        word: 'hospital',
+        plural: 'hospitais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'age',
+      portuguese: {
+        word: 'idade',
+        plural: 'idades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'index',
+      portuguese: {
+        word: 'índice',
+        plural: 'índices',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'individual',
+      portuguese: {
+        word: 'indivíduo',
+        plural: 'indivíduos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'beginning',
+      portuguese: {
+        word: 'início',
+        plural: 'inícios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'enemy',
+      portuguese: {
+        word: 'inimigo',
+        plural: 'inimigos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'instrument',
+      portuguese: {
+        word: 'instrumento',
+        plural: 'instrumentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'interest',
+      portuguese: {
+        word: 'interesse',
+        plural: 'interesses',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'research',
+      portuguese: {
+        word: 'investigação',
+        plural: 'investigações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'newspaper',
+      portuguese: {
+        word: 'jornal',
+        plural: 'jornais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'judge',
+      portuguese: {
+        word: 'juiz',
+        plural: 'juízes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'lake',
+      portuguese: {
+        word: 'lago',
+        plural: 'lagos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'snack',
+      portuguese: {
+        word: 'lanche',
+        plural: 'lanches',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'leader',
+      portuguese: {
+        word: 'líder',
+        plural: 'líderes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'reminder',
+      portuguese: {
+        word: 'lembrete',
+        plural: 'lembretes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'limit',
+      portuguese: {
+        word: 'limite',
+        plural: 'limites',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'list',
+      portuguese: {
+        word: 'lista',
+        plural: 'listas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'logic',
+      portuguese: {
+        word: 'lógica',
+        plural: 'lógicas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'case',
+      portuguese: {
+        word: 'caso',
+        plural: 'casos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'country',
+      portuguese: {
+        word: 'país',
+        plural: 'países',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'moment',
+      portuguese: {
+        word: 'momento',
+        plural: 'momentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'level',
+      portuguese: {
+        word: 'nível',
+        plural: 'níveis',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'process',
+      portuguese: {
+        word: 'processo',
+        plural: 'processos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'study',
+      portuguese: {
+        word: 'estudo',
+        plural: 'estudos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'program',
+      portuguese: {
+        word: 'programa',
+        plural: 'programas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'game',
+      portuguese: {
+        word: 'jogo',
+        plural: 'jogos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'example',
+      portuguese: {
+        word: 'exemplo',
+        plural: 'exemplos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'course',
+      portuguese: {
+        word: 'curso',
+        plural: 'cursos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'word',
+      portuguese: {
+        word: 'palavra',
+        plural: 'palavras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'map',
+      portuguese: {
+        word: 'mapa',
+        plural: 'mapas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'party',
+      portuguese: {
+        word: 'partido',
+        plural: 'partidos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'companion',
+      portuguese: {
+        word: 'companhia',
+        plural: 'companhias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'line',
+      portuguese: {
+        word: 'linha',
+        plural: 'linhas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'member',
+      portuguese: {
+        word: 'membro',
+        plural: 'membros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'law',
+      portuguese: {
+        word: 'lei',
+        plural: 'leis',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'question',
+      portuguese: {
+        word: 'questão',
+        plural: 'questões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'studen',
+      portuguese: {
+        word: 'estudantes',
+        plural: 'estudante',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fact',
+      portuguese: {
+        word: 'fato',
+        plural: 'fatos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'area',
+      portuguese: {
+        word: 'área',
+        plural: 'áreas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'activity',
+      portuguese: {
+        word: 'atividade',
+        plural: 'atividades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'letter',
+      portuguese: {
+        word: 'letra',
+        plural: 'letras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'road',
+      portuguese: {
+        word: 'estrada',
+        plural: 'estradas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'type',
+      portuguese: {
+        word: 'tipo',
+        plural: 'tipos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'child',
+      portuguese: {
+        word: 'criança',
+        plural: 'crianças',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'image',
+      portuguese: {
+        word: 'imagem',
+        plural: 'imagens',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'piece',
+      portuguese: {
+        word: 'peça',
+        plural: 'peças',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'reason',
+      portuguese: {
+        word: 'razão',
+        plural: 'razões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'relationship',
+      portuguese: {
+        word: 'relação',
+        plural: 'relações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'use',
+      portuguese: {
+        word: 'uso',
+        plural: 'usos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'vision',
+      portuguese: {
+        word: 'visão',
+        plural: 'visões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'account',
+      portuguese: {
+        word: 'conta',
+        plural: 'contas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'body',
+      portuguese: {
+        word: 'corpo',
+        plural: 'corpos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'desire',
+      portuguese: {
+        word: 'desejo',
+        plural: 'desejos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'destination',
+      portuguese: {
+        word: 'destino',
+        plural: 'destinos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'direction',
+      portuguese: {
+        word: 'direção',
+        plural: 'direções',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'disease',
+      portuguese: {
+        word: 'doença',
+        plural: 'doenças',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'doubt',
+      portuguese: {
+        word: 'dúvida',
+        plural: 'dúvidas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'effect',
+      portuguese: {
+        word: 'efeito',
+        plural: 'efeitos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'employment',
+      portuguese: {
+        word: 'emprego',
+        plural: 'empregos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'team',
+      portuguese: {
+        word: 'equipe',
+        plural: 'equipes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'error',
+      portuguese: {
+        word: 'erro',
+        plural: 'erros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'style',
+      portuguese: {
+        word: 'estilo',
+        plural: 'estilos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'structure',
+      portuguese: {
+        word: 'estrutura',
+        plural: 'estruturas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'examination',
+      portuguese: {
+        word: 'exame',
+        plural: 'exames',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'experience',
+      portuguese: {
+        word: 'experiência',
+        plural: 'experiências',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'explanation',
+      portuguese: {
+        word: 'explicação',
+        plural: 'explicações',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'expression',
+      portuguese: {
+        word: 'expressão',
+        plural: 'expressões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'faculty',
+      portuguese: {
+        word: 'faculdade',
+        plural: 'faculdades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'failure',
+      portuguese: {
+        word: 'falha',
+        plural: 'falhas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'phase',
+      portuguese: {
+        word: 'fase',
+        plural: 'fases',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'investment',
+      portuguese: {
+        word: 'investimento',
+        plural: 'investimentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'boy',
+      portuguese: {
+        word: 'menino',
+        plural: 'meninos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'wheel',
+      portuguese: {
+        word: 'roda',
+        plural: 'rodas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'feeling',
+      portuguese: {
+        word: 'sentimento',
+        plural: 'sentimentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'theatre',
+      portuguese: {
+        word: 'teatro',
+        plural: 'teatros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'advantage',
+      portuguese: {
+        word: 'vantagem',
+        plural: 'vantagens',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'version',
+      portuguese: {
+        word: 'versão',
+        plural: 'versões',
+        gender: 'feminine'
       }
     }
   ],

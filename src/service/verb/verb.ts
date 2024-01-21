@@ -12,21 +12,36 @@ export const getRandomPerson: () => Person = () => {
 
 export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: VerbTime): string => {
   const VerbExercise = readAll().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
-  // @ts-ignore
-  return VerbExercise[verbTime][person];
+  return VerbExercise[verbTime]![person];
 };
+
+export interface VerbChecked {
+  infinitive: string;
+  presentSimple?: {
+    [key in Person]: {
+      conjugation: string;
+      isStandard: boolean;
+      expectedConjugation: string;
+    };
+  };
+  pastPerfect?: {
+    [key in Person]: {
+      conjugation: string;
+      isStandard: boolean;
+      expectedConjugation: string;
+    };
+  };
+}
 
 export interface StandardConjugation {
   isStandard: boolean;
-  verbExpected?: Verb;
-  verbActual?: Verb;
+  verb: VerbChecked;
 }
 
 export function checkStandardConjugation(verbInfinitive: VerbInfinitive): StandardConjugation {
   const verb = wordDatabase.verb(verbInfinitive);
   const normalize = (word: string) => {
-    const normalized = word.replace('á', 'a').replace('ç', 'c');
-    return normalized.includes('-') ? normalized.substring(0, normalized.indexOf('-')) : normalized;
+    return word.includes('-') ? word.substring(0, word.indexOf('-')) : word;
   };
 
   type Tense = 'presentSimple' | 'pastPerfect';
@@ -62,7 +77,7 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive): Standa
         [Person.Eu]: 'ei',
         [Person.Tu]: 'aste',
         [Person.ElaEleVocê]: 'ou',
-        [Person.Nós]: 'amos',
+        [Person.Nós]: 'ámos',
         [Person.ElesElasVosēs]: 'aram'
       },
       er: {
@@ -84,13 +99,49 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive): Standa
 
   const tenses: Tense[] = ['presentSimple', 'pastPerfect'];
 
+  let returnValue: Partial<StandardConjugation> = {
+    isStandard: true
+  };
+  let isStandard = true;
+
   for (const tense of tenses) {
     if (!verb[tense]) continue;
     const verbEnding = normalize(verb.infinitive).slice(-2) as VerbEnding;
-    if (!standardVerbEndings.includes(verbEnding))
+    if (!standardVerbEndings.includes(verbEnding)) {
       return {
-        isStandard: false
+        isStandard: false,
+        verb: {
+          infinitive: verb.infinitive,
+          // @ts-ignore
+          presentSimple: Object.keys(verb.presentSimple).reduce(
+            (prev, curr) => ({
+              ...prev,
+              [curr]: {
+                isStandard: false,
+                // @ts-ignore
+                conjugation: verb.presentSimple[curr]
+              }
+            }),
+            {}
+          ),
+          // @ts-ignore
+          pastPerfect: !verb.pastPerfect
+            ? undefined
+            : Object.keys(verb.pastPerfect).reduce(
+                (prev, curr) => ({
+                  ...prev,
+                  [curr]: {
+                    isStandard: false,
+                    // @ts-ignore
+                    conjugation: verb.pastPerfect[curr]
+                  }
+                }),
+                {}
+              )
+        }
       };
+    }
+
     const standardPatterns = standardConjugations[tense][verbEnding];
 
     for (const person of Object.values(Person)) {
@@ -99,14 +150,48 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive): Standa
       if (!verbTense) continue;
       const actualConjugation: string = normalize(verbTense[person]);
       if (expectedConjugation !== actualConjugation) {
-        return {
-          isStandard: false
+        isStandard = false;
+        returnValue = {
+          ...returnValue,
+          isStandard: false,
+          verb: {
+            ...returnValue.verb,
+            infinitive: verb.infinitive,
+            [tense]: {
+              // @ts-ignore
+              ...(returnValue.verb ? returnValue.verb[tense] : undefined),
+              [person]: {
+                isStandard: false,
+                conjugation: verbTense[person],
+                expectedConjugation
+              }
+            }
+          }
+        };
+      } else {
+        returnValue = {
+          ...returnValue,
+          verb: {
+            ...returnValue.verb,
+            infinitive: verb.infinitive,
+            [tense]: {
+              // @ts-ignore
+              ...(returnValue.verb ? returnValue.verb[tense] : undefined),
+              [person]: {
+                isStandard: true,
+                conjugation: verbTense[person],
+                expectedConjugation
+              }
+            }
+          }
         };
       }
     }
   }
+  // @ts-ignore
 
   return {
-    isStandard: true
+    ...returnValue,
+    isStandard
   };
 }
