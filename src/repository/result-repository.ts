@@ -112,6 +112,10 @@ export async function getAllResultsAsync(): Promise<Result[]> {
 export function getAllResults(sync = false): Result[] {
   const resultsJson: Result[] = sync ? fetchAllResultsSync() : fetchAllResults();
 
+  return toResultsParsed(resultsJson);
+}
+
+export function toResultsParsed(resultsJson: Result[]): Result[] {
   return resultsJson.map((result) => {
     const exerciseData = result.exercise;
     const exerciseType = exerciseData.exerciseType;
