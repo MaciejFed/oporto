@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress Aggregate getProgressAggregate 1`] = `
+Object {
+  "exercises": Object {
+    "AdjectiveTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+    "NounTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+    "OtherTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+    "VerbExercise": Object {
+      "DONE": Object {
+        "baseWords": Array [
+          "conhecer",
+          "saber",
+        ],
+        "count": 2,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [
+          "saber",
+        ],
+        "count": 1,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [
+          "ver",
+        ],
+        "count": 1,
+      },
+    },
+    "VerbTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+  },
+  "words": Object {
+    "DONE": Object {
+      "baseWords": Array [
+        "conhecer",
+      ],
+      "count": 1,
+    },
+    "IN_PROGRESS": Object {
+      "baseWords": Array [
+        "saber",
+      ],
+      "count": 1,
+    },
+    "NEVER_DONE": Object {
+      "baseWords": Array [
+        "ver",
+      ],
+      "count": 1,
+    },
+  },
+}
+`;

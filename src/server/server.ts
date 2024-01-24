@@ -1,7 +1,7 @@
 // src/index.js
 import express, { Request, Response } from 'express';
 import { loadValidConfig } from './configuration';
-import { generateExercisesForSessionAsync } from '../exercise/generator';
+import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
 import { MoveieExample, findExampleSentence } from '../io/file';
 import { logger } from '../common/logger';
@@ -55,7 +55,9 @@ app.get('/results', async (_req: Request, res: Response) => {
 });
 
 app.get('/progress', async (_req: Request, res: Response) => {
-  const aggregate = await getProgressAggregate();
+  const exercises = generateAllPossibleExercises();
+  const results = await readAllResults();
+  const aggregate = getProgressAggregate(results, exercises);
   res.send(aggregate);
 });
 
