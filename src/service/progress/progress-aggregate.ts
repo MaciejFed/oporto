@@ -1,7 +1,7 @@
 import { ExerciseProgress, getSingleExerciseProgress } from './progress';
 import { Result } from '../result';
 import { Exercise } from '../../exercise/exercise';
-import {logger} from "../../common/logger";
+import { logger } from '../../common/logger';
 
 enum ProgressType {
   DONE = 'DONE',

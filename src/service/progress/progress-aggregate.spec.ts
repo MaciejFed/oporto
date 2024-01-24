@@ -2,7 +2,7 @@ import { generateResultForExercise } from '../../priority/priority.util';
 import { Person, wordDatabase } from '../../repository/exercises-repository';
 import { VerbExercise } from '../../exercise/verb-exercise';
 import { getProgressAggregate } from './progress-aggregate';
-import {generateAllPossibleExercises} from "../../exercise/generator";
+import { generateAllPossibleExercises } from '../../exercise/generator';
 
 const conhecerVerbExerciseDone1 = VerbExercise.new(wordDatabase.verb('conhecer'), Person.Tu, 'presentSimple');
 const saberVerbExerciseDone1 = VerbExercise.new(wordDatabase.verb('saber'), Person.Eu, 'pastPerfect');
