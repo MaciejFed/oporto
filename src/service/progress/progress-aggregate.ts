@@ -1,6 +1,7 @@
 import { ExerciseProgress, getSingleExerciseProgress } from './progress';
 import { Result } from '../result';
 import { Exercise } from '../../exercise/exercise';
+import {logger} from "../../common/logger";
 
 enum ProgressType {
   DONE = 'DONE',
@@ -149,7 +150,8 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
         }
       };
     }
-    throw new Error('Unexpected state');
+    logger.error('Unexpected state');
+    return prev;
   }, emptyWordProgressAggregate);
 
   return {

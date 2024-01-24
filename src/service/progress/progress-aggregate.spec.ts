@@ -2,6 +2,7 @@ import { generateResultForExercise } from '../../priority/priority.util';
 import { Person, wordDatabase } from '../../repository/exercises-repository';
 import { VerbExercise } from '../../exercise/verb-exercise';
 import { getProgressAggregate } from './progress-aggregate';
+import {generateAllPossibleExercises} from "../../exercise/generator";
 
 const conhecerVerbExerciseDone1 = VerbExercise.new(wordDatabase.verb('conhecer'), Person.Tu, 'presentSimple');
 const saberVerbExerciseDone1 = VerbExercise.new(wordDatabase.verb('saber'), Person.Eu, 'pastPerfect');
@@ -22,6 +23,12 @@ describe('Progress Aggregate', () => {
       saberVerbExerciseInProgress1,
       verVerbExerciseNeverDone
     ]);
+
+    expect(progressAggregate).toMatchSnapshot();
+  });
+
+  it('getProgressAggregate full exercises', () => {
+    const progressAggregate = getProgressAggregate(results, generateAllPossibleExercises());
 
     expect(progressAggregate).toMatchSnapshot();
   });
