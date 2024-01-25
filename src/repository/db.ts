@@ -6636,14 +6636,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'studen',
-      portuguese: {
-        word: 'estudantes',
-        plural: 'estudante',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'fact',
       portuguese: {
         word: 'fato',
