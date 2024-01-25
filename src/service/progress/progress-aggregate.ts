@@ -110,7 +110,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
         : ep.ratioRange === '80-100'
         ? ProgressType.DONE
         : ProgressType.IN_PROGRESS;
-    const baseWords = [...new Set(typeToDetails[key].baseWords.concat(ep.exercise.getBaseWordAsString() || ''))].sort();
+    const baseWords = [...new Set(typeToDetails[key].baseWords.concat(ep.exercise.getBaseWordAsString() || ''))];
     return {
       ...typeToDetails,
       [key]: {
@@ -177,7 +177,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
         [wordType]: {
           ...prev[wordType],
           [ProgressType.DONE]: {
-            baseWords: prev[wordType].DONE.baseWords.concat(curr).sort(),
+            baseWords: prev[wordType].DONE.baseWords.concat(curr),
             count: prev[wordType].DONE.count + 1
           }
         }
@@ -189,7 +189,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
         [wordType]: {
           ...prev[wordType],
           [ProgressType.IN_PROGRESS]: {
-            baseWords: prev[wordType].IN_PROGRESS.baseWords.concat(curr).sort(),
+            baseWords: prev[wordType].IN_PROGRESS.baseWords.concat(curr),
             count: prev[wordType].IN_PROGRESS.count + 1
           }
         }
@@ -201,7 +201,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
         [wordType]: {
           ...prev[wordType],
           [ProgressType.NEVER_DONE]: {
-            baseWords: prev[wordType].NEVER_DONE.baseWords.concat(curr).sort(),
+            baseWords: prev[wordType].NEVER_DONE.baseWords.concat(curr),
             count: prev[wordType].NEVER_DONE.count + 1
           }
         }
