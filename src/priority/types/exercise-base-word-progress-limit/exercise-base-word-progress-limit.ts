@@ -3,9 +3,9 @@ import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 export const VALUE_EXERCISE_LIMIT = -2500;
 
 const inProgressLimitMap: Record<BaseWordType, number> = {
-  [BaseWordType.NOUN]: 10,
-  [BaseWordType.VERB]: 5,
-  [BaseWordType.ADJECTIVE]: 5,
+  [BaseWordType.NOUN]: 20,
+  [BaseWordType.VERB]: 10,
+  [BaseWordType.ADJECTIVE]: 8,
   [BaseWordType.OTHER]: 10
 };
 
