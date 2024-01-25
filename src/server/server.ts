@@ -7,7 +7,7 @@ import { MoveieExample, findExampleSentence } from '../io/file';
 import { logger } from '../common/logger';
 import { readAllResults, saveNewResult } from './db';
 import { getProgressAggregate } from '../service/progress/progress-aggregate';
-import { parseResults } from '../repository/result-repository';
+import { sortExercises } from '../priority/priority';
 
 const config = loadValidConfig();
 
@@ -55,10 +55,18 @@ app.get('/results', async (_req: Request, res: Response) => {
   res.send(results);
 });
 
+app.get('/priority', async (_req: Request, res: Response) => {
+  const exercises = generateAllPossibleExercises();
+  const results = await readAllResults();
+  const { exercisesWithPriorities } = sortExercises(exercises, results);
+  exercisesWithPriorities.flatMap((ep) => ep.priorities);
+  res.send(exercisesWithPriorities);
+});
+
 app.get('/progress', async (_req: Request, res: Response) => {
   const exercises = generateAllPossibleExercises();
   const results = await readAllResults();
-  const aggregate = getProgressAggregate(parseResults(results), exercises);
+  const aggregate = getProgressAggregate(results, exercises);
   res.send(aggregate);
 });
 

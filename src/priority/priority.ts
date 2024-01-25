@@ -22,6 +22,8 @@ import { logger } from '../common/logger';
 import { getRandomElement } from '../common/common';
 import { WordTypes } from '../repository/exercises-repository';
 import performance from 'performance-now';
+import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
+import { exerciseBaseWordProgressLimit } from './types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -40,6 +42,7 @@ export type PriorityName =
   | 'EXERCISE_TRANSLATION_NEVER_DONE_BY_VOICE'
   | 'EXERCISE_SENTENCE_UNKNOWN_WORDS'
   | 'EXERCISE_TYPE_ABOVE_PROGRESS_LIMIT'
+  | 'EXERCISE_BASE_WORD_ABOVE_IN_PROGRESS_LIMIT'
   | 'EXERCISE_TYPE_BELLOW_PROGRESS_LIMIT'
   | 'EXERCISE_VERB_NEVER_TRANSLATED'
   | 'EXERCISE_RANDOMNESS'
@@ -64,7 +67,7 @@ type ExerciseWithPriorites = {
 
 function getExerciseSubjectResults(allResults: Result[]): Record<string, Result[]> {
   return allResults.reduce<Record<string, Result[]>>((prev, curr) => {
-    const baseWordKey = JSON.stringify(curr.exercise.getBaseWord());
+    const baseWordKey = curr.exercise.getBaseWordAsString() || JSON.stringify(curr.exercise.getBaseWord());
     const currentResults: Result[] = prev[baseWordKey] || [];
     currentResults.push(curr);
     prev[baseWordKey] = currentResults;
@@ -85,6 +88,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseDoneInLastHour,
   exerciseDoneCorrectly2TimesInRow,
   exerciseTypeInProgressLimit,
+  exerciseBaseWordProgressLimit,
   exerciseRandomness
 ];
 
@@ -95,11 +99,18 @@ export interface ExerciseResultContext {
   allExercises: Exercise[];
   ratioRange: RatioRange;
   exerciseTypeProgress: ExerciseProgress[];
+  progressAggregate: ProgressAggregate;
 }
 
 type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResultContext) => Priority[];
 
-export function sortExercises(exercises: Exercise[], allResults: Result[]): Exercise[] {
+export function sortExercises(
+  exercises: Exercise[],
+  allResults: Result[]
+): {
+  exercises: Exercise[];
+  exercisesWithPriorities: ExerciseWithPriorites[];
+} {
   const start = Date.now();
   const exerciseProgressMap = getExerciseProgressMap(allResults);
   const exerciseSubjectResultMap = getExerciseSubjectResults(allResults);
@@ -123,29 +134,10 @@ export function sortExercises(exercises: Exercise[], allResults: Result[]): Exer
   const randomExercise = getRandomElement(exercises);
   const sortedExercises = insertRandomExercise(exercisesWithPriorities, randomIndex, randomExercise);
 
-  return sortedExercises.reduce(
-    (prev, curr) => {
-      const baseWord = curr.getBaseWord();
-      if (!baseWord) {
-        return {
-          ...prev,
-          exercises: prev.exercises.concat(curr)
-        };
-      }
-      if (!prev.wordsUsed.some((word) => JSON.stringify(curr.getBaseWord()) === JSON.stringify(word))) {
-        return {
-          wordsUsed: prev.wordsUsed.concat(baseWord),
-          exercises: prev.exercises.concat(curr)
-        };
-      }
-
-      return prev;
-    },
-    {
-      wordsUsed: new Array<WordTypes>(),
-      exercises: new Array<Exercise>()
-    }
-  ).exercises;
+  return {
+    exercises: sortedExercises,
+    exercisesWithPriorities
+  };
 }
 
 function logExerciseStats(exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>): void {
@@ -187,6 +179,7 @@ function getExercisesWithPriorities(
   exerciseSubjectResultMap: Record<string, Result[]>
 ): ExerciseWithPriorites[] {
   const priorityCompilerTimes: Record<string, number> = {};
+  const progressAggregate = getProgressAggregate(allResults, exercises);
 
   const x = exercisesWithoutWantedProgress
     .map((ex) => {
@@ -199,7 +192,8 @@ function getExercisesWithPriorities(
             exerciseSubjectResults: exerciseSubjectResultMap[JSON.stringify(ex.exercise.getBaseWord())] || [],
             ratioRange: ex.ratioRange,
             exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
-            exerciseResults: ex.exerciseResults
+            exerciseResults: ex.exerciseResults,
+            progressAggregate
           });
           const endTime = performance();
 

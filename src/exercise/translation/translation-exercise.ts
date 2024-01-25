@@ -1,4 +1,4 @@
-import { BaseWord, Exercise, ExerciseType } from '../exercise';
+import { BaseWord, BaseWordType, Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 import { RatioRange } from '../../service/progress/progress';
 
@@ -48,5 +48,6 @@ export abstract class TranslationExercise implements Exercise {
   abstract getTranslation(): string | undefined;
   abstract getRetryPrompt(): string;
   abstract getBaseWord(): BaseWord | undefined;
+  abstract getBaseWordType(): BaseWordType | undefined;
   abstract getBaseWordAsString(): string | undefined;
 }

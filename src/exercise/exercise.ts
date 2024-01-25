@@ -22,6 +22,13 @@ export const translationTypes: ExerciseType[] = [
 
 export type BaseWord = Noun | Adjective | Verb | Other;
 
+export enum BaseWordType {
+  NOUN = 'NOUN',
+  VERB = 'VERB',
+  ADJECTIVE = 'ADJECTIVE',
+  OTHER = 'OTHER'
+}
+
 export interface ExerciseContent {
   exerciseType: ExerciseType;
   getBodyPrefix(): string;
@@ -29,6 +36,7 @@ export interface ExerciseContent {
   getDescription(): string;
   getTranslation(): string | undefined;
   getBaseWord(): BaseWord | undefined;
+  getBaseWordType(): BaseWordType | undefined;
   getBaseWordAsString(): string | undefined;
 }
 

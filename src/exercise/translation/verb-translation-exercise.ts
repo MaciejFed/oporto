@@ -1,4 +1,4 @@
-import { Exercise, ExerciseType } from '../exercise';
+import { BaseWordType, Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 import { Verb } from '../../repository/exercises-repository';
 import { getRandomVerb } from '../../service/translation';
@@ -55,6 +55,10 @@ export class VerbTranslationExercise extends TranslationExercise implements Comp
 
   getBaseWord() {
     return this.verb;
+  }
+
+  getBaseWordType(): BaseWordType {
+    return BaseWordType.VERB;
   }
 
   getBaseWordAsString(): string | undefined {

@@ -11,13 +11,13 @@ export const VALUE_EXERCISE_BELLOW_LIMIT = 100;
 let bellowBonusCount = 1;
 
 export const exerciseTypeToLimit: Record<ExerciseType, number> = {
-  SentenceTranslation: 5,
-  PhraseTranslation: 10,
-  VerbExercise: 15,
-  NounTranslation: 20,
+  SentenceTranslation: 1,
+  PhraseTranslation: 1,
+  VerbExercise: 0,
+  NounTranslation: 0,
   OtherTranslation: 0,
-  AdjectiveTranslation: 10,
-  VerbTranslation: 10,
+  AdjectiveTranslation: 0,
+  VerbTranslation: 0,
   FitInGap: 0
 };
 

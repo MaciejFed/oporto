@@ -1,4 +1,4 @@
-import { ExerciseType } from '../exercise';
+import { BaseWordType, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 import { Other } from '../../repository/exercises-repository';
 import { getRandomOther } from '../../service/translation';
@@ -59,6 +59,10 @@ export class OtherTranslationExercise extends TranslationExercise implements Com
 
   getBaseWord() {
     return this.other;
+  }
+
+  getBaseWordType(): BaseWordType {
+    return BaseWordType.OTHER;
   }
 
   getBaseWordAsString(): string | undefined {

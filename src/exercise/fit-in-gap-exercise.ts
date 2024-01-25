@@ -1,7 +1,7 @@
 import { Comparable } from '../common/common';
 import { FitIn } from '../repository/exercises-repository';
 import { getRandomFitInExercise } from '../service/fit-in';
-import { Exercise, ExerciseType } from './exercise';
+import { BaseWordType, Exercise, ExerciseType } from './exercise';
 import { RatioRange } from '../service/progress/progress';
 
 export class FitInGapExercise implements Exercise, Comparable {
@@ -29,6 +29,10 @@ export class FitInGapExercise implements Exercise, Comparable {
 
   getMinAnswerCount(): number {
     return 3;
+  }
+
+  getBaseWordType(): BaseWordType | undefined {
+    return undefined;
   }
 
   isAnswerCorrect(answer: string): boolean {

@@ -138,7 +138,7 @@ export type DateResults = {
 export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
   return getAllResults().filter((result) => {
     const upDateLimit = date.ordinal;
-    const downDateLimit = date.plus({ week: -1 }).ordinal;
+    const downDateLimit = date.plus({ month: -1 }).ordinal;
 
     return (
       DateTimeExtended.fromJSDate(result.date).ordinal >= downDateLimit &&
@@ -150,7 +150,7 @@ export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
 export function getAllResultsByDate(allResults: Result[]): DateResults[] {
   let resultDate = DateTimeExtended.fromJSDate(allResults[0].date);
   const resultsByDate: DateResults[] = [];
-  const endDate = DateTimeExtended.fromJSDate(allResults[allResults.length - 1].date).plus({ week: 1 });
+  const endDate = DateTimeExtended.fromJSDate(allResults[allResults.length - 1].date).plus({ month: 1 });
   while (resultDate.ordinal <= endDate.ordinal) {
     const results = allResults.filter(
       // eslint-disable-next-line no-loop-func
@@ -160,7 +160,7 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
       date: DateTimeExtended.fromJSDate(resultDate.toJSDate()),
       results
     });
-    resultDate = resultDate.plus({ week: 1 });
+    resultDate = resultDate.plus({ month: 1 });
   }
   return resultsByDate;
 }

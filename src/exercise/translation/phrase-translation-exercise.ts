@@ -58,6 +58,8 @@ export class PhraseTranslationExercise extends TranslationExercise implements Co
 
   getBaseWord = () => undefined;
 
+  getBaseWordType = () => undefined;
+
   getBaseWordAsString = () => undefined;
 
   equal = (other: PhraseTranslationExercise) =>

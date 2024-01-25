@@ -1,4 +1,4 @@
-import { ExerciseType } from '../exercise';
+import { BaseWordType, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 import { Sentence } from '../../repository/exercises-repository';
 import { getRandomSentence } from '../../service/translation';
@@ -57,6 +57,10 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
   }
 
   getBaseWord = () => undefined;
+
+  getBaseWordType(): BaseWordType | undefined {
+    return undefined;
+  }
 
   getBaseWordAsString = () => undefined;
 
