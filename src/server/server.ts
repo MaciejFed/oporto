@@ -1,15 +1,15 @@
 // src/index.js
-import express, {Request, Response} from 'express';
-import {loadValidConfig} from './configuration';
-import {generateAllPossibleExercises, generateExercisesForSessionAsync} from '../exercise/generator';
+import express, { Request, Response } from 'express';
+import { loadValidConfig } from './configuration';
+import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
-import {findExampleSentence, MoveieExample} from '../io/file';
-import {logger} from '../common/logger';
-import {readAllResults, saveNewResult} from './db';
-import {getProgressAggregate, ProgressAggregate} from '../service/progress/progress-aggregate';
-import {sortExercises} from '../priority/priority';
-import {Person, wordDatabase} from "../repository/exercises-repository";
-import {checkStandardConjugation} from "../service/verb/verb";
+import { findExampleSentence, MoveieExample } from '../io/file';
+import { logger } from '../common/logger';
+import { readAllResults, saveNewResult } from './db';
+import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
+import { sortExercises } from '../priority/priority';
+import { Person, wordDatabase } from '../repository/exercises-repository';
+import { checkStandardConjugation } from '../service/verb/verb';
 
 const config = loadValidConfig();
 
@@ -39,7 +39,7 @@ const preFetchAggregate = async () => {
   const exercises = generateAllPossibleExercises();
   const results = await readAllResults();
   cachedAggregate = getProgressAggregate(results, exercises);
-}
+};
 
 const preFetch = async () => {
   try {
@@ -58,7 +58,7 @@ const preFetch = async () => {
 setInterval(() => {
   preFetch().then(() => {
     preFetchAggregate();
-  })
+  });
 }, 120000);
 
 app.get('/results', async (_req: Request, res: Response) => {
@@ -71,21 +71,23 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   const toLearn = verbs.map((verb) => {
     // @ts-ignore
     const verbBase = wordDatabase.verb(verb);
-    const conjugation = checkStandardConjugation(verbBase.infinitive)
+    const conjugation = checkStandardConjugation(verbBase.infinitive);
     return Object.values(Person).map((person: Person) => {
       const firstCon = conjugation.verb.presentSimple![person];
       const first = firstCon.isStandard ? firstCon.conjugation : `@${firstCon.conjugation}`;
       let second = '';
       const pastPerfect = conjugation.verb.pastPerfect;
       if (pastPerfect) {
-        second = pastPerfect[person].isStandard ? pastPerfect[person].conjugation : `@${pastPerfect[person].conjugation}`
+        second = pastPerfect[person].isStandard
+          ? pastPerfect[person].conjugation
+          : `@${pastPerfect[person].conjugation}`;
       }
       return {
         first,
-        second,
-      }
+        second
+      };
     });
-  })
+  });
   res.send(toLearn);
 });
 

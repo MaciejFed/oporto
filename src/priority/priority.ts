@@ -170,10 +170,13 @@ function logCurrentWordsInProgress(progressAggregate: ProgressAggregate): void {
     return progressAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
   };
   const joinWithPointsMissing = (baseWords: string[]) => {
-    return baseWords.reduce((prev, curr) => ({
-      ...prev,
-      [curr]: findMissingPoints(curr),
-    }), {});
+    return baseWords.reduce(
+      (prev, curr) => ({
+        ...prev,
+        [curr]: findMissingPoints(curr)
+      }),
+      {}
+    );
   };
   const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
   logger.info(
