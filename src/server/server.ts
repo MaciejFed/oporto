@@ -6,8 +6,9 @@ import bodyParser from 'body-parser';
 import { MoveieExample, findExampleSentence } from '../io/file';
 import { logger } from '../common/logger';
 import { readAllResults, saveNewResult } from './db';
-import { getProgressAggregate } from '../service/progress/progress-aggregate';
+import {getProgressAggregate, ProgressAggregate} from '../service/progress/progress-aggregate';
 import { sortExercises } from '../priority/priority';
+import {Person, wordDatabase} from "../repository/exercises-repository";
 
 const config = loadValidConfig();
 
@@ -31,6 +32,13 @@ app.use((req, res, next) => {
 });
 
 let cachedExercises: any[] = [];
+let cachedAggregate: ProgressAggregate;
+
+const preFetchAggregate = async () => {
+  const exercises = generateAllPossibleExercises();
+  const results = await readAllResults();
+  cachedAggregate = getProgressAggregate(results, exercises);
+}
 
 const preFetch = async () => {
   try {
@@ -47,12 +55,32 @@ const preFetch = async () => {
 };
 
 setInterval(() => {
-  preFetch();
-}, 90000);
+  preFetch().then(() => {
+    preFetchAggregate();
+  })
+}, 120000);
 
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
   res.send(results);
+});
+
+app.get('/learn/verb', async (_req: Request, res: Response) => {
+  const verb = cachedAggregate.words.VERB.IN_PROGRESS.baseWords[0];
+  // @ts-ignore
+  const verbBase = wordDatabase.verb(verb);
+  const result = Object.values(Person).map((person: Person) => {
+    const first = verbBase.presentSimple[person];
+    let second = '';
+    if (verbBase.pastPerfect) {
+      second = verbBase.pastPerfect[person];
+    }
+    return {
+      first,
+      second,
+    }
+  })
+  res.send(result);
 });
 
 app.get('/priority', async (_req: Request, res: Response) => {
