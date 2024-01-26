@@ -1,13 +1,13 @@
 // src/index.js
-import express, { Request, Response } from 'express';
-import { loadValidConfig } from './configuration';
-import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '../exercise/generator';
+import express, {Request, Response} from 'express';
+import {loadValidConfig} from './configuration';
+import {generateAllPossibleExercises, generateExercisesForSessionAsync} from '../exercise/generator';
 import bodyParser from 'body-parser';
-import { MoveieExample, findExampleSentence } from '../io/file';
-import { logger } from '../common/logger';
-import { readAllResults, saveNewResult } from './db';
+import {findExampleSentence, MoveieExample} from '../io/file';
+import {logger} from '../common/logger';
+import {readAllResults, saveNewResult} from './db';
 import {getProgressAggregate, ProgressAggregate} from '../service/progress/progress-aggregate';
-import { sortExercises } from '../priority/priority';
+import {sortExercises} from '../priority/priority';
 import {Person, wordDatabase} from "../repository/exercises-repository";
 
 const config = loadValidConfig();
@@ -66,21 +66,23 @@ app.get('/results', async (_req: Request, res: Response) => {
 });
 
 app.get('/learn/verb', async (_req: Request, res: Response) => {
-  const verb = cachedAggregate.words.VERB.IN_PROGRESS.baseWords[0];
-  // @ts-ignore
-  const verbBase = wordDatabase.verb(verb);
-  const result = Object.values(Person).map((person: Person) => {
-    const first = verbBase.presentSimple[person];
-    let second = '';
-    if (verbBase.pastPerfect) {
-      second = verbBase.pastPerfect[person];
-    }
-    return {
-      first,
-      second,
-    }
+  const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, 10);
+  const toLearn = verbs.map((verb) => {
+    // @ts-ignore
+    const verbBase = wordDatabase.verb(verb);
+    return Object.values(Person).map((person: Person) => {
+      const first = verbBase.presentSimple[person];
+      let second = '';
+      if (verbBase.pastPerfect) {
+        second = verbBase.pastPerfect[person];
+      }
+      return {
+        first,
+        second,
+      }
+    });
   })
-  res.send(result);
+  res.send(toLearn);
 });
 
 app.get('/priority', async (_req: Request, res: Response) => {
