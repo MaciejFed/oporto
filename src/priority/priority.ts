@@ -23,7 +23,10 @@ import { getRandomElement } from '../common/common';
 import { WordTypes } from '../repository/exercises-repository';
 import performance from 'performance-now';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
-import { exerciseBaseWordProgressLimit } from './types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
+import {
+  exerciseBaseWordProgressLimit,
+  IN_PROGRESS_LIMIT_MAP
+} from './types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -161,6 +164,21 @@ function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Re
     });
 }
 
+function logCurrentWordsInProgress(progressAggregate: ProgressAggregate): void {
+  const { VERB, ADJECTIVE, NOUN, OTHER } = IN_PROGRESS_LIMIT_MAP;
+  logger.info(`Current Words In Progress: VERB: ${progressAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB)}`);
+  logger.info(
+    `Current Words In Progress: ADJECTIVES: ${progressAggregate.words.ADJECTIVE.IN_PROGRESS.baseWords.slice(
+      0,
+      ADJECTIVE
+    )}`
+  );
+  logger.info(`Current Words In Progress: NOUNS: ${progressAggregate.words.NOUN.IN_PROGRESS.baseWords.slice(0, NOUN)}`);
+  logger.info(
+    `Current Words In Progress: OTHER: ${progressAggregate.words.OTHER.IN_PROGRESS.baseWords.slice(0, OTHER)}`
+  );
+}
+
 function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: ExerciseProgress[]): void {
   logger.info(`Exercises Total Count: [${exercises.length}]`);
   logger.info(`Exercises Not Done Count: [${exercisesWithoutWantedProgress.length}]`);
@@ -180,6 +198,7 @@ function getExercisesWithPriorities(
 ): ExerciseWithPriorites[] {
   const priorityCompilerTimes: Record<string, number> = {};
   const progressAggregate = getProgressAggregate(allResults, exercises);
+  logCurrentWordsInProgress(progressAggregate);
 
   const x = exercisesWithoutWantedProgress
     .map((ex) => {

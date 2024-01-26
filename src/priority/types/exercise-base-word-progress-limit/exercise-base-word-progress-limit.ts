@@ -2,7 +2,7 @@ import { BaseWordType, Exercise } from '../../../exercise/exercise';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 export const VALUE_EXERCISE_LIMIT = -2500;
 
-const inProgressLimitMap: Record<BaseWordType, number> = {
+export const IN_PROGRESS_LIMIT_MAP: Record<BaseWordType, number> = {
   [BaseWordType.NOUN]: 20,
   [BaseWordType.VERB]: 15,
   [BaseWordType.ADJECTIVE]: 8,
@@ -18,7 +18,7 @@ export function exerciseBaseWordProgressLimit(
   if (!baseWord || !baseWordType) {
     return noPriority(exercise);
   }
-  const wordTypeLimit = inProgressLimitMap[baseWordType];
+  const wordTypeLimit = IN_PROGRESS_LIMIT_MAP[baseWordType];
 
   const currentBaseWordsInProgress = words[baseWordType].IN_PROGRESS.baseWords;
 
