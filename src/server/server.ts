@@ -9,6 +9,7 @@ import {readAllResults, saveNewResult} from './db';
 import {getProgressAggregate, ProgressAggregate} from '../service/progress/progress-aggregate';
 import {sortExercises} from '../priority/priority';
 import {Person, wordDatabase} from "../repository/exercises-repository";
+import {checkStandardConjugation} from "../service/verb/verb";
 
 const config = loadValidConfig();
 
@@ -70,11 +71,14 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   const toLearn = verbs.map((verb) => {
     // @ts-ignore
     const verbBase = wordDatabase.verb(verb);
+    const conjugation = checkStandardConjugation(verbBase.infinitive)
     return Object.values(Person).map((person: Person) => {
-      const first = verbBase.presentSimple[person];
+      const firstCon = conjugation.verb.presentSimple![person];
+      const first = firstCon.isStandard ? firstCon.conjugation : `@${firstCon.conjugation}`;
       let second = '';
-      if (verbBase.pastPerfect) {
-        second = verbBase.pastPerfect[person];
+      const pastPerfect = conjugation.verb.pastPerfect;
+      if (pastPerfect) {
+        second = pastPerfect[person].isStandard ? pastPerfect[person].conjugation : `@${pastPerfect[person].conjugation}`
       }
       return {
         first,
