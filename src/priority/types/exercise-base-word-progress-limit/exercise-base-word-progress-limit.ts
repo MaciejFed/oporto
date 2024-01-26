@@ -4,7 +4,7 @@ export const VALUE_EXERCISE_LIMIT = -2500;
 
 const inProgressLimitMap: Record<BaseWordType, number> = {
   [BaseWordType.NOUN]: 20,
-  [BaseWordType.VERB]: 10,
+  [BaseWordType.VERB]: 15,
   [BaseWordType.ADJECTIVE]: 8,
   [BaseWordType.OTHER]: 10
 };

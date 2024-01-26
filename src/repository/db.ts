@@ -3113,13 +3113,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'country',
-      portuguese: {
-        word: 'pais',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'desert',
       portuguese: {
         word: 'sobremesa',
