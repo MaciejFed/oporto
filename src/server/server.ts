@@ -56,8 +56,6 @@ const preFetch = async () => {
   }
 };
 
-preFetchAggregate();
-
 setInterval(() => {
   preFetchAggregate();
 }, 10000000)
@@ -72,6 +70,9 @@ app.get('/results', async (_req: Request, res: Response) => {
 });
 
 app.get('/learn/verb', async (_req: Request, res: Response) => {
+  if (!cachedAggregate) {
+    await preFetchAggregate();
+  }
   const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, 10);
   const toLearn = verbs.map((verb) => {
     // @ts-ignore
