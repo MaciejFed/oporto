@@ -55,11 +55,16 @@ const preFetch = async () => {
   }
 };
 
+preFetchAggregate();
+
 setInterval(() => {
-  preFetch().then(() => {
-    preFetchAggregate();
-  });
-}, 120000);
+  preFetchAggregate();
+  logger.info('Refreshing Aggregate...')
+}, 10000000)
+
+setInterval(() => {
+  preFetch();
+}, 90000);
 
 app.get('/results', async (_req: Request, res: Response) => {
   const results = await readAllResults();
