@@ -72,7 +72,7 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
     // @ts-ignore
     const verbBase = wordDatabase.verb(verb);
     const conjugation = checkStandardConjugation(verbBase.infinitive);
-    return Object.values(Person).map((person: Person) => {
+    const conjugations = Object.values(Person).map((person: Person) => {
       const firstCon = conjugation.verb.presentSimple![person];
       const first = firstCon.isStandard ? firstCon.conjugation : `@${firstCon.conjugation}`;
       let second = '';
@@ -87,6 +87,10 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
         second
       };
     });
+    return {
+      infinitive: conjugation.verb.infinitive,
+      conjugations
+    }
   });
   res.send(toLearn);
 });
