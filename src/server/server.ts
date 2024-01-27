@@ -73,7 +73,11 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   if (!cachedAggregate) {
     await preFetchAggregate();
   }
-  const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, 10);
+  const findMissingPoints = (word: string) => {
+    return cachedAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
+  };
+  const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
+  const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, 10).sort(sortPointsMissing);
   const toLearn = verbs.map((verb) => {
     // @ts-ignore
     const verbBase = wordDatabase.verb(verb);
