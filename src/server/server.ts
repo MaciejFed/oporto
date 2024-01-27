@@ -36,6 +36,7 @@ let cachedExercises: any[] = [];
 let cachedAggregate: ProgressAggregate;
 
 const preFetchAggregate = async () => {
+  logger.info('Refreshing Aggregate...')
   const exercises = generateAllPossibleExercises();
   const results = await readAllResults();
   cachedAggregate = getProgressAggregate(results, exercises);
@@ -59,7 +60,6 @@ preFetchAggregate();
 
 setInterval(() => {
   preFetchAggregate();
-  logger.info('Refreshing Aggregate...')
 }, 10000000)
 
 setInterval(() => {
