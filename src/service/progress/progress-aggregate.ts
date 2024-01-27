@@ -162,6 +162,11 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
   }, emptyProgressAggregate);
 
   const allBaseWords = [...new Set(exercisesFiltered.map((exercise) => exercise.getBaseWordAsString() || ''))];
+  const findMissingPoints = (word: string) => {
+    return pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
+  };
+  const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
+
   const wordProgressAggregate: WordProgressAggregate = allBaseWords.reduce((prev, curr) => {
     const wordExerciseProgress = exercisesProgress.filter((ep) => ep.exercise.getBaseWordAsString() === curr);
     const neverDoneCount = wordExerciseProgress.filter((ep) => ep.ratioRange === 'Never Done').length;
@@ -189,7 +194,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
         [wordType]: {
           ...prev[wordType],
           [ProgressType.IN_PROGRESS]: {
-            baseWords: prev[wordType].IN_PROGRESS.baseWords.concat(curr),
+            baseWords: prev[wordType].IN_PROGRESS.baseWords.concat(curr).sort(sortPointsMissing),
             count: prev[wordType].IN_PROGRESS.count + 1
           }
         }

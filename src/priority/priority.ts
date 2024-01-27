@@ -178,26 +178,21 @@ function logCurrentWordsInProgress(progressAggregate: ProgressAggregate): void {
       {}
     );
   };
-  const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
   logger.info(
-    `Current Words In Progress: VERBS: ${joinWithPointsMissing(
-      progressAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB).sort(sortPointsMissing)
-    )}`
+    'Current Words In Progress: VERBS:',
+    joinWithPointsMissing(progressAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB))
   );
   logger.info(
-    `Current Words In Progress: ADJECTIVES: ${joinWithPointsMissing(
-      progressAggregate.words.ADJECTIVE.IN_PROGRESS.baseWords.slice(0, ADJECTIVE).sort(sortPointsMissing)
-    )}`
+    'Current Words In Progress: ADJECTIVES',
+    joinWithPointsMissing(progressAggregate.words.ADJECTIVE.IN_PROGRESS.baseWords.slice(0, ADJECTIVE))
   );
   logger.info(
-    `Current Words In Progress: NOUNS: ${joinWithPointsMissing(
-      progressAggregate.words.NOUN.IN_PROGRESS.baseWords.slice(0, NOUN).sort(sortPointsMissing)
-    )}`
+    'Current Words In Progress: NOUNS:',
+    joinWithPointsMissing(progressAggregate.words.NOUN.IN_PROGRESS.baseWords.slice(0, NOUN))
   );
   logger.info(
-    `Current Words In Progress: OTHER: ${joinWithPointsMissing(
-      progressAggregate.words.OTHER.IN_PROGRESS.baseWords.slice(0, OTHER).sort(sortPointsMissing)
-    )}`
+    'Current Words In Progress: OTHER:',
+    joinWithPointsMissing(progressAggregate.words.OTHER.IN_PROGRESS.baseWords.slice(0, OTHER))
   );
 }
 

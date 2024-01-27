@@ -36,7 +36,7 @@ let cachedExercises: any[] = [];
 let cachedAggregate: ProgressAggregate;
 
 const preFetchAggregate = async () => {
-  logger.info('Refreshing Aggregate...')
+  logger.info('Refreshing Aggregate...');
   const exercises = generateAllPossibleExercises();
   const results = await readAllResults();
   cachedAggregate = getProgressAggregate(results, exercises);
@@ -58,7 +58,7 @@ const preFetch = async () => {
 
 setInterval(() => {
   preFetchAggregate();
-}, 10000000)
+}, 10000000);
 
 setInterval(() => {
   preFetch();
@@ -96,7 +96,7 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
     return {
       infinitive: conjugation.verb.infinitive,
       conjugations
-    }
+    };
   });
   res.send(toLearn);
 });
