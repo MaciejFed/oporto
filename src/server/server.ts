@@ -10,6 +10,9 @@ import { getProgressAggregate, ProgressAggregate } from '../service/progress/pro
 import { sortExercises } from '../priority/priority';
 import { Person, wordDatabase } from '../repository/exercises-repository';
 import { checkStandardConjugation } from '../service/verb/verb';
+import {
+  IN_PROGRESS_LIMIT_MAP
+} from "../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit";
 
 const config = loadValidConfig();
 
@@ -73,11 +76,12 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   if (!cachedAggregate) {
     await preFetchAggregate();
   }
+  const { VERB } = IN_PROGRESS_LIMIT_MAP;
   const findMissingPoints = (word: string) => {
     return cachedAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
   };
   const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
-  const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, 10).sort(sortPointsMissing);
+  const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB).sort(sortPointsMissing);
   const toLearn = verbs.map((verb) => {
     // @ts-ignore
     const verbBase = wordDatabase.verb(verb);
