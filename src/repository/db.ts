@@ -939,7 +939,7 @@ export const db: Schema = {
         Eu: 'cuidei',
         Tu: 'cuidaste',
         'Ela/Ele/Você': 'cuidou',
-        Nós: 'cuidastes',
+        Nós: 'cuidámos',
         'Eles/Elas/Vocēs': 'cuidaram'
       }
     },
