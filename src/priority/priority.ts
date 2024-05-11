@@ -151,11 +151,11 @@ function logExerciseStats(exerciseProgressMap: Record<ExerciseType, ExerciseProg
     const inProgressCount = exerciseProgressMap[key as ExerciseType].filter(
       (ex) => ex.ratioRange !== 'Never Done' && ex.ratioRange !== '80-100'
     ).length;
-    const doneCount = exerciseProgressMap[key as ExerciseType].filter(
-        (ex) => ex.ratioRange === '80-100'
-    ).length;
+    const doneCount = exerciseProgressMap[key as ExerciseType].filter((ex) => ex.ratioRange === '80-100').length;
 
-    logger.info(`${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}], Done: [${doneCount}]`);
+    logger.info(
+      `${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}], Done: [${doneCount}]`
+    );
   });
 }
 

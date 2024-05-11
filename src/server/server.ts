@@ -10,9 +10,7 @@ import { getProgressAggregate, ProgressAggregate } from '../service/progress/pro
 import { sortExercises } from '../priority/priority';
 import { Person, wordDatabase } from '../repository/exercises-repository';
 import { checkStandardConjugation } from '../service/verb/verb';
-import {
-  IN_PROGRESS_LIMIT_MAP
-} from "../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit";
+import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 
 const config = loadValidConfig();
 
