@@ -1,7 +1,7 @@
 import { Comparable } from '../common/common';
 import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
+import { RatioRange } from '../service/progress/progress';
 import { GermanNoun, GermanVerb } from '../repository/german-exercises-repository';
-import { RatioRange } from '../service/progress';
 export type ExerciseType =
   | 'VerbExercise'
   | 'GermanVerbExercise'
@@ -28,6 +28,13 @@ export const translationTypes: ExerciseType[] = [
 
 export type BaseWord = Noun | Adjective | Verb | Other | GermanNoun | GermanVerb;
 
+export enum BaseWordType {
+  NOUN = 'NOUN',
+  VERB = 'VERB',
+  ADJECTIVE = 'ADJECTIVE',
+  OTHER = 'OTHER'
+}
+
 export interface ExerciseContent {
   exerciseType: ExerciseType;
   getBodyPrefix(): string;
@@ -35,6 +42,8 @@ export interface ExerciseContent {
   getDescription(): string;
   getTranslation(): string | undefined;
   getBaseWord(): BaseWord | undefined;
+  getBaseWordType(): BaseWordType | undefined;
+  getBaseWordAsString(): string | undefined;
 }
 
 export interface ExerciseBehavior {

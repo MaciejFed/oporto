@@ -3,16 +3,16 @@ import { APP_STARTED } from '../event/events';
 import { Input } from '../io/input';
 import { SessionManager } from '../session/session-manager';
 import { Terminal } from '../io/terminal';
-import { Language, setLanguage } from '../common/language';
+import { preFetchAllResults } from '../client/client';
+import { Language } from '../common/language';
 
 export function startTestSession(sortExercises: boolean, language: Language) {
+  preFetchAllResults();
   const EXERCISES_PER_SESSION = 10;
-
   const eventProcessor = new EventProcessor();
-  const terminal = new Terminal(eventProcessor);
+  const terminal = new Terminal(eventProcessor, language);
   const input = new Input(eventProcessor);
-  setLanguage(language);
-  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, sortExercises, language);
+  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, sortExercises, () => true, language);
 
   eventProcessor.emit(APP_STARTED);
 }

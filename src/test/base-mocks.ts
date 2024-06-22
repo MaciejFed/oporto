@@ -1,6 +1,11 @@
-import { Language, setLanguage } from '../common/language';
+import { Language } from '../common/language';
 
 /* eslint-disable @typescript-eslint/no-var-requires */
+
+const testExercises =
+  '[{"translationType":"toEnglish","exerciseType":"AdjectiveTranslation","adjective":{"english":"bitter","masculine":{"singular":"amargo","plural":"amargos"},"feminine":{"singular":"amarga","plural":"amargas"}},"gender":"masculine","number":"singular"},' +
+  '{"exerciseType":"VerbExercise","verb":{"english":"to have","infinitive":"ter","presentSimple":{"Eu":"tenho","Tu":"tens","Ela/Ele/Você":"tem","Nós":"temos","Eles/Elas/Vocēs":"têm"},"pastPerfect":{"Eu":"tive","Tu":"tiveste","Ela/Ele/Você":"teve","Nós":"tivemos","Eles/Elas/Vocēs":"tiveram"}},"person":"Eles/Elas/Vocēs","verbTime":"pastPerfect"},' +
+  '{"exerciseType":"VerbExercise","verb":{"english":"to enter","infinitive":"entrar","presentSimple":{"Eu":"entro","Tu":"entras","Ela/Ele/Você":"entra","Nós":"entramos","Eles/Elas/Vocēs":"entram"},"pastPerfect":{"Eu":"entrei","Tu":"entraste","Ela/Ele/Você":"entrou","Nós":"entrámos","Eles/Elas/Vocēs":"entraram"}},"person":"Ela/Ele/Você","verbTime":"presentSimple"}]';
 const mockCommonModules = () => {
   // @ts-ignore
   global.process.stdin.setRawMode = (mode: boolean) => undefined;
@@ -26,36 +31,37 @@ const mockCommonModules = () => {
 
 export const withBaseMocks = (mockGenerator?: boolean) => {
   process.stdin.removeAllListeners();
-  let mockResultFile = '[]';
   const sayCommands: string[] = [];
-  setLanguage(Language.German);
 
   mockCommonModules();
 
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
 
-  const mockGenerateExercisesForSession = jest.fn();
+  const mockGenerateExercisesForSession = jest.fn().mockReturnValue(JSON.parse(testExercises));
 
-  if (mockGenerator) {
-    jest.mock('../exercise/generator', () => {
-      const moduleActual = jest.requireActual('../exercise/generator');
-      return {
-        __esModule: true,
-        ...moduleActual,
-        generateExercisesForSession: mockGenerateExercisesForSession
-      };
-    });
-  }
+  jest.mock('../client/client', () => {
+    const fileModuleActual = jest.requireActual('../client/client');
+    const results: any[] = [];
+    return {
+      ...fileModuleActual,
+      fetchAllResults: () => results,
+      fetchExercisesForSession: mockGenerateExercisesForSession,
+      fetchMovieExample: async () => ({
+        portuguese: ['', ''],
+        englishApi: '',
+        english: ''
+      }),
+      saveNewResult: async (result: any) => {
+        results.push(result);
+      }
+    };
+  });
 
   jest.mock('../io/file', () => {
     const fileModuleActual = jest.requireActual('../io/file');
     return {
       ...fileModuleActual,
-      readResultsFromFile: () => mockResultFile,
-      saveResultsToFile: (data: string) => {
-        mockResultFile = data;
-      },
       findExampleSentence: async () => ({
         portuguese: ['Sou a Marta', 'Sou a Marta']
       })
@@ -84,7 +90,6 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
 
   return {
     mockExit,
-    mockResultFile,
     sayCommands,
     eventProcessor,
     getAllResults,

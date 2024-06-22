@@ -1,7 +1,7 @@
 import { Exercise, ExerciseType } from '../../../exercise/exercise';
 import { Result } from '../../../service/result';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
-import { ExerciseProgress, RatioRange } from '../../../service/progress';
+import { ExerciseProgress, RatioRange } from '../../../service/progress/progress';
 import { onlyDistinct } from '../../../common/common';
 import { logger } from '../../../common/logger';
 
@@ -11,16 +11,16 @@ export const VALUE_EXERCISE_BELLOW_LIMIT = 100;
 let bellowBonusCount = 1;
 
 export const exerciseTypeToLimit: Record<ExerciseType, number> = {
-  SentenceTranslation: 5,
-  PhraseTranslation: 10,
-  VerbExercise: 15,
-  GermanVerbExercise: 15,
+  SentenceTranslation: 1,
+  PhraseTranslation: 1,
+  VerbExercise: 10,
   NounTranslation: 20,
-  GermanNounTranslation: 20,
-  GermanVerbTranslation: 20,
   OtherTranslation: 0,
   AdjectiveTranslation: 10,
-  VerbTranslation: 10,
+  VerbTranslation: 20,
+  GermanVerbExercise: 15,
+  GermanNounTranslation: 20,
+  GermanVerbTranslation: 20,
   FitInGap: 0
 };
 
@@ -28,8 +28,8 @@ let inProgressMap: Record<ExerciseType, number> = {
   SentenceTranslation: 0,
   PhraseTranslation: 0,
   VerbExercise: 0,
-  GermanVerbExercise: 0,
   NounTranslation: 0,
+  GermanVerbExercise: 0,
   GermanNounTranslation: 0,
   GermanVerbTranslation: 0,
   OtherTranslation: 0,

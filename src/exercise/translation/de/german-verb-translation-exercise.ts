@@ -1,7 +1,7 @@
 import { Comparable } from '../../../common/common';
 import { GermanVerb } from '../../../repository/german-exercises-repository';
 import { getRandomGermanVerb } from '../../../service/translation';
-import { Exercise, ExerciseType } from '../../exercise';
+import { BaseWordType, Exercise, ExerciseType } from '../../exercise';
 import { TranslationExercise, TranslationType } from '../translation-exercise';
 
 export class GermanVerbTranslationExercise extends TranslationExercise implements Comparable {
@@ -53,6 +53,14 @@ export class GermanVerbTranslationExercise extends TranslationExercise implement
 
   getBaseWord() {
     return this.verb;
+  }
+
+  getBaseWordAsString(): string | undefined {
+    return this.verb.infinitive;
+  }
+
+  getBaseWordType(): BaseWordType | undefined {
+    return BaseWordType.VERB;
   }
 
   equal = (other: GermanVerbTranslationExercise) =>

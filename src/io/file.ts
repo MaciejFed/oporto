@@ -3,60 +3,30 @@ import os from 'os';
 import path from 'path';
 import { logger } from '../common/logger';
 import * as readline from 'readline';
-import * as https from 'https';
-import { getAllUniqueWordsConjugated } from '../service/progress';
-import { getLanguage, Language } from '../common/language';
+import { getAllUniqueWordsConjugated } from '../service/progress/progress';
+import { translateToEnglish } from '../client/client';
+import { Language } from '../common/language';
 
-const resultDbFilePath = path.join(os.homedir(), 'results.json');
-const resultDEDbFilePath = path.join(os.homedir(), 'results_de.json');
-const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
+const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');
 const ptExamplesPath = path.join(os.homedir(), 'pt/pt.txt');
 const deExamplesPath = path.join(os.homedir(), 'pt/de.txt');
 const enExamplesPath = path.join(os.homedir(), 'pt/en.txt');
 
-export function readResultsFromFile(): string {
-  logger.debug('reading results...');
-  const finalPath = getLanguage() === Language.Portuguese ? resultDbFilePath : resultDEDbFilePath;
-  return fs.readFileSync(finalPath, { encoding: 'utf-8' }).toString();
+export interface MoveieExample {
+  portuguese: [string, string];
+  english: string;
+  englishApi: string;
 }
 
-async function translateToEnglish(text: [string, string]): Promise<string> {
-  const baseUrl = 'https://api.mymemory.translated.net/get';
-  const langsource = getLanguage() === Language.Portuguese ? 'pt' : 'de';
-  const lang = 'en';
-  const url = `${baseUrl}?q=${encodeURIComponent(text[1])}&langpair=${langsource}|${lang}`;
-
-  return new Promise((resolve, reject) => {
-    https.get(url, (response) => {
-      let data = '';
-
-      response.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      response.on('end', () => {
-        const parsedData = JSON.parse(data);
-
-        if (parsedData.responseStatus === 200) {
-          resolve(parsedData.responseData.translatedText);
-        } else {
-          reject(new Error(`Translation API error: ${parsedData.responseDetails}`));
-        }
-      });
-
-      response.on('error', (error) => {
-        console.error('Error:', error.message);
-        reject(error);
-      });
-    });
-  });
-}
-
-export async function findExampleSentence(numberOfLinesToRead: number, wordToFind: string) {
+export async function findExampleSentence(
+  numberOfLinesToRead: number,
+  wordToFind: string,
+  language: Language
+): Promise<MoveieExample> {
   const wordRegex = new RegExp(`\\b${wordToFind}\\b`, 'i');
   // @ts-ignore
   const readInterfacePt = readline.createInterface({
-    input: fs.createReadStream(getLanguage() === Language.Portuguese ? ptExamplesPath : deExamplesPath),
+    input: fs.createReadStream(language === Language.Portuguese ? ptExamplesPath : deExamplesPath),
     console: false
   });
 
@@ -98,7 +68,7 @@ export async function findExampleSentence(numberOfLinesToRead: number, wordToFin
 
   if (matchingLines.length > 5) {
     logger.info(`Found more than 5 lines with match for [${wordToFind}]`);
-    const allWords = getAllUniqueWordsConjugated();
+    const allWords = getAllUniqueWordsConjugated(language);
     type LineCount = {
       line: [string, string];
       knownWordsCount: number;
@@ -162,12 +132,6 @@ export async function findExampleSentence(numberOfLinesToRead: number, wordToFin
     english: matchingLinesEn[randomIndex],
     englishApi
   };
-}
-
-export function saveResultsToFile(data: string) {
-  logger.debug('saving  results...');
-  const finalPath = getLanguage() === Language.Portuguese ? resultDbFilePath : resultDEDbFilePath;
-  fs.writeFileSync(finalPath, data);
 }
 
 export function saveProgressToFile(data: string) {

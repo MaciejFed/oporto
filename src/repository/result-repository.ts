@@ -4,7 +4,6 @@ import { FitInGapExercise } from '../exercise/fit-in-gap-exercise';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
-import { readResultsFromFile, saveResultsToFile } from '../io/file';
 import assert from 'assert';
 import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
 import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
@@ -14,6 +13,7 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
+import { fetchAllResults, fetchAllResultsSync } from '../client/client';
 import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
 import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
 import { GermanVerbExercise } from '../exercise/german-verb-exercise';
@@ -103,7 +103,7 @@ function createFitInGapExercise(exerciseData: any) {
   return fitInGapExercise;
 }
 
-const exerciseFactory = {
+export const exerciseFactory = {
   VerbExercise: createVerbExercise,
   GermanVerbExercise: createGermanVerbExercise,
   NounTranslation: createNounTranslationExercise,
@@ -117,10 +117,35 @@ const exerciseFactory = {
   GermanVerbTranslation: createGermanVerbTranslationExercise
 };
 
-export function getAllResults(): Result[] {
-  const results = readResultsFromFile();
-  const resultsJson: Result[] = JSON.parse(results);
+export function parseResults(results: Result[]): Result[] {
+  return results.map((result) => {
+    const exerciseData = result.exercise;
+    const exerciseType = exerciseData.exerciseType;
+    const createExercise = exerciseFactory[exerciseType];
 
+    if (createExercise) {
+      result.date = new Date(result.date);
+      result.exercise = createExercise(exerciseData);
+    }
+    return result;
+  });
+}
+
+export async function getAllResultsAsync(): Promise<Result[]> {
+  const results = fetchAllResultsSync();
+
+  logger.info(`Fetched ${results.length} from DB`);
+
+  return parseResults(results);
+}
+
+export function getAllResults(sync = false): Result[] {
+  const resultsJson: Result[] = sync ? fetchAllResultsSync() : fetchAllResults();
+
+  return toResultsParsed(resultsJson);
+}
+
+export function toResultsParsed(resultsJson: Result[]): Result[] {
   return resultsJson.map((result) => {
     const exerciseData = result.exercise;
     const exerciseType = exerciseData.exerciseType;
@@ -143,7 +168,7 @@ export type DateResults = {
 export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
   return getAllResults().filter((result) => {
     const upDateLimit = date.ordinal;
-    const downDateLimit = date.plus({ week: -1 }).ordinal;
+    const downDateLimit = date.plus({ month: -1 }).ordinal;
 
     return (
       DateTimeExtended.fromJSDate(result.date).ordinal >= downDateLimit &&
@@ -155,7 +180,7 @@ export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
 export function getAllResultsByDate(allResults: Result[]): DateResults[] {
   let resultDate = DateTimeExtended.fromJSDate(allResults[0].date);
   const resultsByDate: DateResults[] = [];
-  const endDate = DateTimeExtended.fromJSDate(allResults[allResults.length - 1].date).plus({ week: 1 });
+  const endDate = DateTimeExtended.fromJSDate(allResults[allResults.length - 1].date).plus({ month: 1 });
   while (resultDate.ordinal <= endDate.ordinal) {
     const results = allResults.filter(
       // eslint-disable-next-line no-loop-func
@@ -165,17 +190,9 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
       date: DateTimeExtended.fromJSDate(resultDate.toJSDate()),
       results
     });
-    resultDate = resultDate.plus({ week: 1 });
+    resultDate = resultDate.plus({ month: 1 });
   }
   return resultsByDate;
-}
-
-export function saveNewResult(newResult: Result) {
-  logger.debug(`Saving new result ${JSON.stringify(newResult)}`);
-  const results = getAllResults();
-  results.push(newResult);
-
-  saveResultsToFile(JSON.stringify(results, null, 2));
 }
 
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {

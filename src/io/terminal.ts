@@ -34,10 +34,11 @@ import {
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
-import { getAllAnswersForExercise, getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { sleep } from '../common/common';
+import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { findExampleSentenceAndWord } from '../service/example-finder';
-import { getVoice } from '../common/language';
+import { getVoice, Language } from '../common/language';
+import { VerbExercise } from '../exercise/verb-exercise';
+import { checkStandardConjugation } from '../service/verb/verb';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -62,8 +63,9 @@ export class Terminal {
 
   exampleSentenceTranslation?: string | undefined;
   exampleSentenceTranslationApi?: string | undefined;
+  language: Language;
 
-  constructor(eventProcessor: EventProcessor) {
+  constructor(eventProcessor: EventProcessor, language: Language) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exerciseInProgress = false;
@@ -74,6 +76,7 @@ export class Terminal {
     this.repetitionAnswer = '';
     this.correctAnswer = '';
     clear();
+    this.language = language;
   }
 
   private registerListeners() {
@@ -159,7 +162,7 @@ export class Terminal {
           this.exampleSentenceFull = `${exampleSentencePrefixLine}.\n${exampleSentence}`;
           this.exampleSentenceTranslation = exampleSentenceTranslation;
           this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
-          exec(`say -v ${getVoice()} "${this.exampleSentence?.exampleSentencePartTwo}"`);
+          exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.exampleSentencePartTwo}"`);
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
             this.exampleSentence!.exerciseWord,
@@ -198,9 +201,14 @@ export class Terminal {
     if (this.exercise) {
       const allResults = getAllResults();
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
-      if (['GermanVerbExercise', 'GermanVerbTranslation'].includes(this.exercise.exerciseType)) {
-        // @ts-ignore
-        printAllVerbConjugations(this.exercise.verb);
+      // Broken
+      if (
+        ['GermanVerbExercise', 'GermanVerbTranslation', 'VerbExercise', 'VerbTranslation'].includes(
+          this.exercise.exerciseType
+        )
+      ) {
+        const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive);
+        printAllVerbConjugations(conjugation);
       }
       const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {
@@ -242,7 +250,7 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say -v ${getVoice()}" ${this.exampleSentence?.exampleSentencePartTwo}"`);
+        exec(`say -v ${getVoice(this.language)}" ${this.exampleSentence?.exampleSentencePartTwo}"`);
         // sleep(5000).then(() => {
         //   exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
         // });
@@ -265,7 +273,7 @@ export class Terminal {
   }
 
   private async sayCorrectAnswerPhrase() {
-    exec(`say -v ${getVoice()} "${this.exercise?.getRetryPrompt()}"`);
+    exec(`say -v ${getVoice(this.language)} "${this.exercise?.getRetryPrompt()}"`);
   }
 }
 

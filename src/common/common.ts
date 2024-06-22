@@ -102,11 +102,13 @@ export function isBeforeWeekday(resultDate: Date, weekday: number) {
   return resultDayInYear <= dayInYearNow;
 }
 
-export function isOnWeekDay(resultDate: Date, weekday: number) {
+export function isOnWeekDay(resultDate: Date, weekday: number, year: number) {
   const now = DateTime.now();
   const resultDateTime = DateTime.fromJSDate(resultDate);
 
-  return now.weekNumber === resultDateTime.weekNumber && resultDateTime.weekday === weekday;
+  return (
+    now.weekNumber === resultDateTime.weekNumber && resultDateTime.weekday === weekday && resultDateTime.year === year
+  );
 }
 
 export function areSameCalendarDay(date1: Date, date2: Date): boolean {
@@ -115,4 +117,10 @@ export function areSameCalendarDay(date1: Date, date2: Date): boolean {
     date1.getMonth() === date2.getMonth() &&
     date1.getDate() === date2.getDate()
   );
+}
+
+export function assertNonNull<T>(value?: T): T {
+  if (!value) throw new Error('Unexpected Undefined!');
+
+  return value;
 }

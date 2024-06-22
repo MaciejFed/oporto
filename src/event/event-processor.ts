@@ -3,7 +3,7 @@ import { terminal } from 'terminal-kit';
 import { displayStatistics } from '../commands/stat';
 import { logger } from '../common/logger';
 import { APP_EVENT } from './events';
-import Output from '../io/output';
+import { Language } from '../common/language';
 
 type EmittedEvent = {
   event: APP_EVENT;
@@ -45,7 +45,7 @@ export class EventProcessor {
       case 'APP_FINISHED':
         this.eventEmitter.removeAllListeners();
         terminal.hideCursor(false);
-        displayStatistics(false);
+        displayStatistics(false, Language.Portuguese);
         process.exit(0);
         break;
       default:

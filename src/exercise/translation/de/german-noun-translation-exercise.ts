@@ -1,7 +1,7 @@
 import { Comparable } from '../../../common/common';
 import { GermanNoun } from '../../../repository/german-exercises-repository';
 import { getRandomGermanNoun, getRandomNoun } from '../../../service/translation';
-import { ExerciseType } from '../../exercise';
+import { BaseWordType, ExerciseType } from '../../exercise';
 import { TranslationExercise, TranslationType } from '../translation-exercise';
 
 export class GermanNounTranslationExercise extends TranslationExercise implements Comparable {
@@ -54,6 +54,14 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
   }
 
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.getWordWithGender());
+
+  getBaseWordAsString(): string | undefined {
+    return this.noun.german.singular;
+  }
+
+  getBaseWordType(): BaseWordType | undefined {
+    return BaseWordType.NOUN;
+  }
 
   equal = (other: GermanNounTranslationExercise) =>
     other.exerciseType === 'GermanNounTranslation' &&

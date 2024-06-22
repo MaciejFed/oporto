@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { simulateContinueButton, simulateTyping } from '../util';
 import { withBaseMocks } from '../base-mocks';
+import { wordDatabase } from '../../repository/exercises-repository';
 
 const runExerciseSnapshotTest = (exercises: any[]) => {
   const { mockGenerateExercisesForSession, eventProcessor, SessionManager, Output } = withBaseMocks(true);
@@ -71,8 +72,9 @@ describe('Exercises Integration Snapshots', () => {
 
   it('VerbExercise', () => {
     const VerbExercise = require('../../exercise/verb-exercise').VerbExercise;
-    const verbExercisePresent = VerbExercise.new(readAll().verbs[0], 'Tu', 'presentSimple');
-    const verbExercisePast = VerbExercise.new(readAll().verbs[0], 'Tu', 'pastPerfect');
+    const verb = wordDatabase.verb('construir');
+    const verbExercisePresent = VerbExercise.new(verb, 'Tu', 'presentSimple');
+    const verbExercisePast = VerbExercise.new(verb, 'Tu', 'pastPerfect');
 
     runExerciseSnapshotTest([verbExercisePresent, verbExercisePast]);
   });

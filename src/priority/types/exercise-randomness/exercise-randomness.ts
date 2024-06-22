@@ -1,12 +1,9 @@
-import { getRandomElement } from '../../../common/common';
-import { getLanguage, Language } from '../../../common/language';
-import { logger } from '../../../common/logger';
+import { Language } from '../../../common/language';
 import { Exercise } from '../../../exercise/exercise';
-import { generateAllPossibleExercises } from '../../../exercise/generator';
 import { ExerciseResultContext, Priority } from '../../priority';
 
-export function exerciseRandomness(exercise: Exercise, { allExercises }: ExerciseResultContext): Priority[] {
-  const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = getLanguage() === Language.Portuguese ? 200 : 25;
+export function exerciseRandomness(exercise: Exercise, { language }: ExerciseResultContext): Priority[] {
+  const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = language === Language.Portuguese ? 200 : 25;
 
   return [
     {

@@ -4,7 +4,7 @@ import { generateExercisesForSession } from '../../exercise/generator';
 
 describe('Exercise Provider', () => {
   it('Generate Distinct Exercises', async () => {
-    const maybeUniqueExercises = generateExercisesForSession(10, true, Language.Portuguese);
+    const maybeUniqueExercises = generateExercisesForSession(10, true, () => true, Language.Portuguese);
     const uniqueExercises = onlyDistinct(maybeUniqueExercises);
 
     expect(uniqueExercises.length).toEqual(10);

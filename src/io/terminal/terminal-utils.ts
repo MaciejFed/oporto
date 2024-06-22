@@ -6,6 +6,7 @@ import { ExerciseStatistics, Result, WeekdayStatistics } from '../../service/res
 import eventProcessor from '../../event/event-processor';
 import Output, { Color, ColoredText } from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
+import { StandardConjugation } from '../../service/verb/verb';
 import { clearLine } from 'readline';
 import { GermanPerson, GermanVerb } from '../../repository/german-exercises-repository';
 import { GermanPersonWithInf, parseGermanVerb } from '../../service/conjugation/german-conjugation';
@@ -174,29 +175,42 @@ export function printAllAnswers(results: Result[]) {
   });
 }
 
-export function printAllVerbConjugations({ infinitive, presentSimple, pastPerfect }: Verb | GermanVerb) {
+export function printAllVerbConjugations({ verb: { infinitive, presentSimple, pastPerfect } }: StandardConjugation) {
   const CONJUGATION_X_MARGIN = 60;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   Output.bold();
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
   Output.bold(false);
-  // Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
-  const longestConjugationSize = Object.keys(presentSimple).reduce((prev, curr) => {
-    // @ts-ignore
-    const currSize = presentSimple[curr].length;
+  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
+  const longestConjugationSize = Object.values(Person).reduce((prev, curr) => {
+    const currSize = presentSimple![curr as Person].conjugation.length;
     return prev > currSize ? prev : currSize;
   }, 0);
 
-  const parsedVerb = parseGermanVerb({ infinitive, presentSimple } as GermanVerb);
-  ['Inf'].concat(Object.keys(presentSimple)).forEach((person, index) => {
-    // @ts-ignore
-    const past = pastPerfect ? pastPerfect[person] : '';
-    const personText = person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`;
-    Output.moveToColored(
-      CONJUGATION_X_MARGIN,
+  Object.values(Person).forEach((person, index) => {
+    const present = presentSimple![person as Person];
+    const past = pastPerfect ? pastPerfect[person as Person] : undefined;
+    const personText = (person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`).padEnd(5);
+    Output.white();
+    Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 2 + index, personText);
+    if (!present.isStandard) {
+      Output.yellow();
+    }
+    const text = ` ${presentSimple![person as Person].conjugation.padEnd(longestConjugationSize)}`;
+    Output.moveTo(CONJUGATION_X_MARGIN + personText.length, CONJUGATION_Y_MARGIN + 2 + index, text);
+    Output.white();
+    Output.moveTo(CONJUGATION_X_MARGIN + personText.length + text.length, CONJUGATION_Y_MARGIN + 2 + index, '|');
+    if (past && !past.isStandard) {
+      Output.yellow();
+    } else {
+      Output.white();
+    }
+    Output.moveTo(
+      CONJUGATION_X_MARGIN + personText.length + text.length + 1,
       CONJUGATION_Y_MARGIN + 2 + index,
-      parsedVerb[person.replace('/', '').replace('/', '') as GermanPersonWithInf]
+      past?.conjugation ?? ''
     );
+    Output.white();
   });
 }
 

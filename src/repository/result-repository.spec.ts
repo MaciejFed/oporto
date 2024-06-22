@@ -1,6 +1,7 @@
-import { getAllResults, getAllResultsForExercise, saveNewResult } from './result-repository';
+import { getAllResults, getAllResultsForExercise } from './result-repository';
 import { convertToResult } from '../service/result';
 import { generateAllPossibleExercises } from '../exercise/generator';
+import { saveNewResult } from '../client/client';
 import { Language } from '../common/language';
 
 describe('Result Repository', () => {

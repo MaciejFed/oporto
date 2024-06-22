@@ -5,20 +5,8 @@ export enum Language {
   German = 'German'
 }
 
-export function setLanguage(language: Language) {
-  process.env.oportolanguage = language;
-}
-
-export function getLanguage(): Language {
-  const language = process.env.oportolanguage;
-  if (language) {
-    return language as Language;
-  }
-  throw new Error('Unknown language');
-}
-
-export function getVoice(): string {
-  if (getLanguage() === Language.Portuguese) {
+export function getVoice(language: Language): string {
+  if (language === Language.Portuguese) {
     return getRandomElement(['Joana', 'Catarina']);
   }
   return getRandomElement(['Anna', 'Petra', 'Yannick']);

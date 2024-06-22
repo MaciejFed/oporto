@@ -1,14 +1,10 @@
 import { Comparable } from '../common/common';
-import {
-  getCorrectGermanVerbConjugation,
-  getRandomGermanPerson,
-  getRandomPerson,
-  getRandomVerb
-} from '../service/verb';
-import { Exercise, ExerciseType } from './exercise';
-import { RatioRange } from '../service/progress';
+
+import { BaseWordType, Exercise, ExerciseType } from './exercise';
 import { GermanPerson, GermanVerb } from '../repository/german-exercises-repository';
 import { getRandomGermanVerb } from '../service/translation';
+import { RatioRange } from '../service/progress/progress';
+import { getCorrectGermanVerbConjugation, getRandomGermanPerson } from '../service/verb/verb';
 
 export type VerbTime = 'presentSimple' | 'pastPerfect';
 
@@ -67,6 +63,14 @@ export class GermanVerbExercise implements Exercise, Comparable {
   }
 
   getRetryPrompt = () => `${this.person} ${this.getCorrectAnswer()}`;
+
+  getBaseWordType(): BaseWordType | undefined {
+    return BaseWordType.VERB;
+  }
+
+  getBaseWordAsString(): string | undefined {
+    return this.verb.infinitive;
+  }
 
   equal = (exercise: GermanVerbExercise) =>
     exercise.exerciseType === 'GermanVerbExercise' &&

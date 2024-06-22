@@ -7,17 +7,15 @@
     "oporto": "./build/cli.js"
   },
   "scripts": {
-    "server": "http-server progress",
-    "start": "ts-node src/cli.ts test",
-    "startde": "ts-node src/cli.ts testde",
-    "startdee": "ts-node src/cli.ts progressde",
+    "start": "http-server progress",
+    "start-server": "ts-node src/server/server",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
-    "verify": "npm run lint && npm run format",
+    "verify": "npm run lint && npm run format && npm run test",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
-    "execute": "npm run package && cp bin/oporto ~/bin/oporto && cp ~/results.json ~/results/results-$(date '+%Y-%m-%d%H:%M:%S').json"
+    "execute": "npm run package && cp bin/oporto ~/bin/oporto && rm -rf ./build"
   },
   "repository": {
     "type": "git",
@@ -30,13 +28,17 @@
   },
   "homepage": "https://github.com/MaciejFed/oporto#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
     "clear": "^0.1.0",
     "commander": "^9.3.0",
+    "dotenv": "^16.3.1",
     "ervy": "^1.0.7",
+    "express": "^4.18.2",
     "figlet": "^1.5.2",
     "line-reader": "^0.4.0",
     "luxon": "^3.0.1",
+    "mongodb": "^6.3.0",
     "path": "^0.12.7",
     "performance-now": "^2.1.0",
     "terminal-kit": "^2.4.0",
@@ -48,10 +50,12 @@
     "@babel/preset-typescript": "^7.17.12",
     "@spotify/eslint-config": "^13.0.1",
     "@types/clear": "^0.1.2",
+    "@types/express": "^4.17.21",
     "@types/figlet": "^1.5.4",
     "@types/jest": "^28.1.1",
     "@types/line-reader": "^0.0.34",
     "@types/luxon": "^2.3.2",
+    "@types/mongodb": "^4.0.7",
     "@types/node": "^17.0.42",
     "@types/terminal-kit": "^1.34.0",
     "@types/yargs": "^17.0.10",
@@ -70,6 +74,7 @@
   "pkg": {
     "scripts": "build/**/*.js",
     "assets": [
+      ".env",
       "node_modules/figlet/fonts/Standard.flf",
       "node_modules/terminal-kit/lib/termconfig/**.js",
       "node_modules/terminal-kit/lib/colorScheme/**.**"

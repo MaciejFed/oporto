@@ -1,26 +1,25 @@
-import { Exercise, ExerciseType } from '../exercise/exercise';
-import { TranslationExercise } from '../exercise/translation/translation-exercise';
-import { readAll } from '../repository/exercises-repository';
+import { Exercise, ExerciseType } from '../../exercise/exercise';
+import { TranslationExercise } from '../../exercise/translation/translation-exercise';
+import { readAll } from '../../repository/exercises-repository';
 import {
   DateResults,
-  getAllResults,
   getAllResultsBeforeDateOneWeek,
   getAllResultsByDate,
   getAllResultsForExercise
-} from '../repository/result-repository';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
-import { Result } from './result';
-import { generateAllPossibleExercises, generateExercisesForSession } from '../exercise/generator';
-import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
-import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
-import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
-import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
-import { onlyDistinct } from '../common/common';
-import { logger } from '../common/logger';
-import { getLanguage, Language } from '../common/language';
-import { readAllDE } from '../repository/german-exercises-repository';
-import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
-import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
+} from '../../repository/result-repository';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
+import { Result } from '../result';
+import { generateAllPossibleExercises, generateExercisesForSession } from '../../exercise/generator';
+import { NounTranslationExercise } from '../../exercise/translation/noun-translation-exercise';
+import { VerbTranslationExercise } from '../../exercise/translation/verb-translation-exercise';
+import { OtherTranslationExercise } from '../../exercise/translation/other-translation-exercise';
+import { AdjectiveTranslationExercise } from '../../exercise/translation/adjective-translation-exercise';
+import { logger } from '../../common/logger';
+import { getProgressAggregate } from './progress-aggregate';
+import { Language } from '../../common/language';
+import { readAllDE } from '../../repository/german-exercises-repository';
+import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
+import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -52,7 +51,7 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
   const exerciseResults = getAllResultsForExercise(results, exercise);
   const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
   const incorrectAnswers = exerciseResults.length - correctAnswers;
-  const ratio = (correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
+  const ratio = Math.floor(correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
   return {
     exercise,
     correctAnswers,
@@ -64,7 +63,12 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
 }
 
 export function getExercisesProgress(results: Result[], filter: (e: Exercise) => boolean) {
-  const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(50000, false, Language.Portuguese)
+  const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(
+    50000,
+    false,
+    () => true,
+    Language.Portuguese
+  )
     .filter(filter)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
@@ -112,8 +116,8 @@ function mapToRatioRange(ratio: number, neverDone: boolean): RatioRange {
   return '0-39';
 }
 
-export function getAllUniqueWordsConjugated(): string[] {
-  if (getLanguage() === Language.Portuguese) {
+export function getAllUniqueWordsConjugated(language: Language): string[] {
+  if (language === Language.Portuguese) {
     const nouns = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural]);
     const verbs = readAll().verbs.flatMap((verb) => [
       verb.infinitive,
@@ -165,8 +169,8 @@ export function getAllUniqueWordsConjugated(): string[] {
   return [...new Set(allWords)];
 }
 
-export function getAllUniqueWords(): string[] {
-  if (getLanguage() === Language.Portuguese) {
+export function getAllUniqueWords(language: Language): string[] {
+  if (language === Language.Portuguese) {
     const nouns = readAll().nouns.map((noun) => noun.portuguese.word);
     const verbs = readAll().verbs.map((verb) => verb.infinitive);
     const others = readAll().others.map((other) => other.portuguese);
@@ -192,8 +196,8 @@ export function getAllUniqueWords(): string[] {
   return [...new Set(allWords)];
 }
 
-export function getAllUniqueWordsAsExercises(): Exercise[] {
-  if (getLanguage() === Language.Portuguese) {
+export function getAllUniqueWordsAsExercises(language: Language): Exercise[] {
+  if (language === Language.Portuguese) {
     const nounExercises = readAll().nouns.map((noun) => NounTranslationExercise.new(noun, 'toPortuguese'));
     const verbExercises = readAll().verbs.map((verb) => VerbTranslationExercise.new(verb, 'toPortuguese'));
     const otherExercises = readAll().others.map((other) => OtherTranslationExercise.new(other, 'toPortuguese'));
@@ -216,7 +220,10 @@ type ProgressOnDay = {
   lostWords: string[];
 };
 
-export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, ExerciseProgress[]> {
+export function getExerciseProgressMap(
+  results: Result[],
+  language: Language
+): Record<ExerciseType, ExerciseProgress[]> {
   const mapGeneratingStartTime = Date.now();
   const exerciseTypesPt: ExerciseType[] = [
     'VerbExercise',
@@ -245,9 +252,9 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
   };
 
   let filteredResults = results;
-  const allExercises = generateAllPossibleExercises(getLanguage());
+  const allExercises = generateAllPossibleExercises(language);
 
-  for (const exerciseType of getLanguage() === Language.Portuguese ? exerciseTypesPt : exerciseTypesDe) {
+  for (const exerciseType of language === Language.Portuguese ? exerciseTypesPt : exerciseTypesDe) {
     const exerciseProgress = getGroupExerciseProgress(allExercises, filteredResults, exerciseType);
     progressMap[exerciseType] = exerciseProgress;
 
@@ -261,11 +268,14 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
   return progressMap;
 }
 
-export function progressByDate(results: Result[]) {
+export function progressByDate(results: Result[], language: Language) {
   function getUniqueWordsForDay(dateResult: DateResults, exercises: Exercise[]) {
-    const resultsByDay = exercises.map((exercise) => getSingleExerciseProgress(dateResult.results, exercise));
-
-    return resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer());
+    const progressAggregate = getProgressAggregate(dateResult.results, exercises);
+    const { VERB, NOUN, ADJECTIVE, OTHER } = progressAggregate.words;
+    return VERB.DONE.baseWords
+      .concat(NOUN.DONE.baseWords)
+      .concat(ADJECTIVE.DONE.baseWords)
+      .concat(OTHER.DONE.baseWords);
   }
 
   function buildDayProgress(dateResult: DateResults, exercisesDone: Result[], words: string[]) {
@@ -297,17 +307,18 @@ export function progressByDate(results: Result[]) {
     };
   }
 
-  const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
+  const exercises = generateAllPossibleExercises(language);
   const resultsByDate = getAllResultsByDate(results);
 
   const uniqueByDay = resultsByDate.map((dateResult) => {
-    const words = getUniqueWordsForDay(dateResult, allUniqueWordsAsExercises);
+    console.log(dateResult.date.toJSDate());
+    const words = getUniqueWordsForDay(dateResult, exercises);
     const exercisesDone = getAllResultsBeforeDateOneWeek(dateResult.date);
 
     return buildDayProgress(dateResult, exercisesDone, words);
   });
 
-  const allUniqueWords = getAllUniqueWords();
+  const allUniqueWords = getAllUniqueWords(language);
 
   return uniqueByDay.map((unique, index) => buildFinalProgress(unique, index, uniqueByDay, allUniqueWords));
 }

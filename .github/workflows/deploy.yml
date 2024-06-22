@@ -1,0 +1,29 @@
+name: Deploy to remote
+
+on: [push]
+
+jobs:
+  build:
+    name: SSH Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Update Envs
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          echo 'API_KEY="${{ secrets.API_KEY }}"' > ~/.oporto.env 
+          echo 'API_URL="${{ secrets.API_URL }}"' >> ~/.oporto.env 
+          echo 'DB_HOST="${{ secrets.DB_HOST }}"' >> ~/.oporto.env 
+          echo 'DB_USERNAME="${{ secrets.DB_USERNAME }}"' >> ~/.oporto.env 
+          echo 'DB_PASSWORD="${{ secrets.DB_PASSWORD }}"' >> ~/.oporto.env 
+          echo 'DEEPL_API_KEY="${{ secrets.DEEPL_API_KEY }}"' >> ~/.oporto.env 
+    - name: Restart Server
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: systemctl restart oporto-server 

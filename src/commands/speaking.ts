@@ -26,9 +26,15 @@ export function startSpeakSession() {
   const EXERCISES_PER_SESSION = 5;
 
   const eventProcessor = new EventProcessor();
-  const terminal = new Terminal(eventProcessor);
+  const terminal = new Terminal(eventProcessor, Language.Portuguese);
   const input = new Input(eventProcessor);
-  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, false, Language.Portuguese);
+  const sessionManager = new SessionManager(
+    eventProcessor,
+    EXERCISES_PER_SESSION,
+    false,
+    () => true,
+    Language.Portuguese
+  );
 
   eventProcessor.emit(APP_STARTED);
 }
