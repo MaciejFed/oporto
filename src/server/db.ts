@@ -2,6 +2,7 @@ import { MongoClient } from 'mongodb';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { loadValidConfig } from './configuration';
+import { parseResults } from '../repository/result-repository';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
@@ -45,7 +46,7 @@ export async function readAllResults(): Promise<Result[]> {
 
     const findResult = await collection.find<Result>({}).toArray();
 
-    return findResult.filter((result) => result.exercise);
+    return parseResults(findResult.filter((result) => result.exercise));
   } finally {
     await client.close();
   }

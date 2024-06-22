@@ -939,7 +939,7 @@ export const db: Schema = {
         Eu: 'cuidei',
         Tu: 'cuidaste',
         'Ela/Ele/Você': 'cuidou',
-        Nós: 'cuidastes',
+        Nós: 'cuidámos',
         'Eles/Elas/Vocēs': 'cuidaram'
       }
     },
@@ -3110,13 +3110,6 @@ export const db: Schema = {
       portuguese: {
         word: 'semana',
         gender: 'feminine'
-      }
-    },
-    {
-      english: 'country',
-      portuguese: {
-        word: 'pais',
-        gender: 'masculine'
       }
     },
     {
@@ -6164,14 +6157,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'hill',
-      portuguese: {
-        word: 'morro',
-        plural: 'morros',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'death',
       portuguese: {
         word: 'morte',
@@ -6604,14 +6589,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'party',
-      portuguese: {
-        word: 'partido',
-        plural: 'partidos',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'companion',
       portuguese: {
         word: 'companhia',
@@ -6649,14 +6626,6 @@ export const db: Schema = {
         word: 'questão',
         plural: 'questões',
         gender: 'feminine'
-      }
-    },
-    {
-      english: 'studen',
-      portuguese: {
-        word: 'estudantes',
-        plural: 'estudante',
-        gender: 'masculine'
       }
     },
     {

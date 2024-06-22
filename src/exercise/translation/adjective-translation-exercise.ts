@@ -1,6 +1,6 @@
-import { ExerciseType } from '../exercise';
+import { BaseWordType, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
-import { Adjective, Verb } from '../../repository/exercises-repository';
+import { Adjective } from '../../repository/exercises-repository';
 import { getRandomAdjective } from '../../service/translation';
 import { TranslationExercise, TranslationType } from './translation-exercise';
 
@@ -70,6 +70,14 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
 
   getBaseWord() {
     return this.adjective;
+  }
+
+  getBaseWordType(): BaseWordType {
+    return BaseWordType.ADJECTIVE;
+  }
+
+  getBaseWordAsString(): string {
+    return this.getBaseWord().masculine.singular;
   }
 
   equal = (other: AdjectiveTranslationExercise) =>

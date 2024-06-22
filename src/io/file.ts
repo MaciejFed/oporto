@@ -3,7 +3,7 @@ import os from 'os';
 import path from 'path';
 import { logger } from '../common/logger';
 import * as readline from 'readline';
-import { getAllUniqueWordsConjugated } from '../service/progress';
+import { getAllUniqueWordsConjugated } from '../service/progress/progress';
 import { translateToEnglish } from '../client/client';
 
 const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');

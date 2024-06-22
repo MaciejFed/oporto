@@ -1,22 +1,21 @@
-import { Exercise, ExerciseType } from '../exercise/exercise';
-import { TranslationExercise } from '../exercise/translation/translation-exercise';
-import { readAll } from '../repository/exercises-repository';
+import { Exercise, ExerciseType } from '../../exercise/exercise';
+import { TranslationExercise } from '../../exercise/translation/translation-exercise';
+import { readAll } from '../../repository/exercises-repository';
 import {
   DateResults,
-  getAllResults,
   getAllResultsBeforeDateOneWeek,
   getAllResultsByDate,
   getAllResultsForExercise
-} from '../repository/result-repository';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
-import { Result } from './result';
-import { generateAllPossibleExercises, generateExercisesForSession } from '../exercise/generator';
-import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
-import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
-import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
-import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
-import { onlyDistinct } from '../common/common';
-import { logger } from '../common/logger';
+} from '../../repository/result-repository';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
+import { Result } from '../result';
+import { generateAllPossibleExercises, generateExercisesForSession } from '../../exercise/generator';
+import { NounTranslationExercise } from '../../exercise/translation/noun-translation-exercise';
+import { VerbTranslationExercise } from '../../exercise/translation/verb-translation-exercise';
+import { OtherTranslationExercise } from '../../exercise/translation/other-translation-exercise';
+import { AdjectiveTranslationExercise } from '../../exercise/translation/adjective-translation-exercise';
+import { logger } from '../../common/logger';
+import { getProgressAggregate } from './progress-aggregate';
 
 export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
 const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
@@ -48,7 +47,7 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
   const exerciseResults = getAllResultsForExercise(results, exercise);
   const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
   const incorrectAnswers = exerciseResults.length - correctAnswers;
-  const ratio = (correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
+  const ratio = Math.floor(correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
   return {
     exercise,
     correctAnswers,
@@ -216,9 +215,12 @@ export function getExerciseProgressMap(results: Result[]): Record<ExerciseType, 
 
 export function progressByDate(results: Result[]) {
   function getUniqueWordsForDay(dateResult: DateResults, exercises: Exercise[]) {
-    const resultsByDay = exercises.map((exercise) => getSingleExerciseProgress(dateResult.results, exercise));
-
-    return resultsByDay.filter((r) => r.ratioRange === '80-100').map((r) => r.exercise.getCorrectAnswer());
+    const progressAggregate = getProgressAggregate(dateResult.results, exercises);
+    const { VERB, NOUN, ADJECTIVE, OTHER } = progressAggregate.words;
+    return VERB.DONE.baseWords
+      .concat(NOUN.DONE.baseWords)
+      .concat(ADJECTIVE.DONE.baseWords)
+      .concat(OTHER.DONE.baseWords);
   }
 
   function buildDayProgress(dateResult: DateResults, exercisesDone: Result[], words: string[]) {
@@ -250,11 +252,12 @@ export function progressByDate(results: Result[]) {
     };
   }
 
-  const allUniqueWordsAsExercises = getAllUniqueWordsAsExercises();
+  const exercises = generateAllPossibleExercises();
   const resultsByDate = getAllResultsByDate(results);
 
   const uniqueByDay = resultsByDate.map((dateResult) => {
-    const words = getUniqueWordsForDay(dateResult, allUniqueWordsAsExercises);
+    console.log(dateResult.date.toJSDate());
+    const words = getUniqueWordsForDay(dateResult, exercises);
     const exercisesDone = getAllResultsBeforeDateOneWeek(dateResult.date);
 
     return buildDayProgress(dateResult, exercisesDone, words);

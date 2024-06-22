@@ -1,8 +1,8 @@
 import { Comparable } from '../common/common';
 import { Person, Verb } from '../repository/exercises-repository';
 import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb } from '../service/verb/verb';
-import { Exercise, ExerciseType } from './exercise';
-import { RatioRange } from '../service/progress';
+import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { RatioRange } from '../service/progress/progress';
 
 export type VerbTime = 'presentSimple' | 'pastPerfect';
 
@@ -58,6 +58,14 @@ export class VerbExercise implements Exercise, Comparable {
 
   getBaseWord() {
     return this.verb;
+  }
+
+  getBaseWordType(): BaseWordType {
+    return BaseWordType.VERB;
+  }
+
+  getBaseWordAsString(): string | undefined {
+    return this.getBaseWord().infinitive;
   }
 
   getRetryPrompt = () => `${this.person} ${this.getCorrectAnswer()}`;

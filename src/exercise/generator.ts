@@ -109,7 +109,7 @@ export async function generateExercisesForSessionAsync(
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
   const allResults = results ? parseResults(results) : await getAllResultsAsync();
-  const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
+  const exercisesFinal = sort ? sortExercises(exercises, allResults).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
@@ -131,7 +131,7 @@ export function generateExercisesForSession(
 ): Exercise[] {
   const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
   const allResults = getAllResults();
-  const exercisesFinal = sort ? sortExercises(exercises, allResults) : exercises;
+  const exercisesFinal = sort ? sortExercises(exercises, allResults).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
