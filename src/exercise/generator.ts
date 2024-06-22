@@ -93,7 +93,6 @@ export function generateAllPossibleExercises(): Exercise[] {
     VerbExerciseGenerator,
     NounTranslationGenerator,
     VerbTranslationGenerator,
-    SentenceTranslationGenerator,
     PhraseTranslationGenerator,
     OtherTranslationGenerator,
     AdjectiveTranslationGenerator,
