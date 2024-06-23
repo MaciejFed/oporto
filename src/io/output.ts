@@ -1,8 +1,6 @@
 import { terminal } from 'terminal-kit';
 import clear from 'clear';
 import { AppEventListener } from '../event/event-listener';
-import eventProcessor, { EventProcessor } from '../event/event-processor';
-import { GermanPerson } from '../repository/german-exercises-repository';
 
 export enum Color {
   B = 'B',
@@ -27,7 +25,6 @@ class Output implements AppEventListener {
   private outputTable: string[][] = [];
   private colorTable: string[][] = [];
   private textColor: Color;
-  private eventProcessor: EventProcessor;
   private colorMap: Record<Color, () => Output> = {
     B: this.blue,
     R: this.red,
@@ -38,7 +35,6 @@ class Output implements AppEventListener {
 
   public constructor() {
     this.resetTable();
-    this.eventProcessor = eventProcessor;
     this.textColor = Color.W;
   }
 
@@ -136,11 +132,7 @@ class Output implements AppEventListener {
     this.colorTable = new Array(60).fill(' ').map(() => new Array(70).fill(' '));
   }
 
-  public registerListeners(): void {
-    this.eventProcessor.on('TERMINAL_CLEARED', () => {
-      this.clearTerminal();
-    });
-  }
+  public registerListeners(): void {}
 }
 
 export default new Output();

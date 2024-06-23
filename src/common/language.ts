@@ -7,7 +7,7 @@ export enum Language {
 
 export function getVoice(language: Language): string {
   if (language === Language.Portuguese) {
-    return getRandomElement(['Joana', 'Catarina']);
+    return getRandomElement(['Joana', 'Catarina', 'Joaquim']);
   }
-  return getRandomElement(['Anna', 'Petra', 'Yannick']);
+  return getRandomElement(['Anna', 'Petra', 'Markus']);
 }

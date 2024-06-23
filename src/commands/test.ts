@@ -9,7 +9,7 @@ import { Language } from '../common/language';
 export function startTestSession(language: Language) {
   preFetchAllResults(language);
   const EXERCISES_PER_SESSION = 10;
-  const eventProcessor = new EventProcessor();
+  const eventProcessor = new EventProcessor(language);
   const terminal = new Terminal(eventProcessor, language);
   const input = new Input(eventProcessor);
   const sessionManager = new SessionManager(eventProcessor, language);

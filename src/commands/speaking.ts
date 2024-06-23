@@ -25,7 +25,7 @@ function hearingFilter(language: Language) {
 export function startSpeakSession() {
   const EXERCISES_PER_SESSION = 5;
 
-  const eventProcessor = new EventProcessor();
+  const eventProcessor = new EventProcessor(Language.Portuguese);
   const terminal = new Terminal(eventProcessor, Language.Portuguese);
   const input = new Input(eventProcessor);
   const sessionManager = new SessionManager(eventProcessor, Language.Portuguese);

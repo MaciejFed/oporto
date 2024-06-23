@@ -13,10 +13,12 @@ type EmittedEvent = {
 export class EventProcessor {
   eventEmitter: EventEmitter;
   eventHistory: EmittedEvent[];
+  language: Language;
 
-  constructor() {
+  constructor(language: Language) {
     this.eventEmitter = new EventEmitter();
     this.eventHistory = [];
+    this.language = language;
   }
 
   public on(eventName: APP_EVENT, callback: (...args: any[]) => void) {
@@ -45,7 +47,7 @@ export class EventProcessor {
       case 'APP_FINISHED':
         this.eventEmitter.removeAllListeners();
         terminal.hideCursor(false);
-        displayStatistics(false, Language.Portuguese);
+        displayStatistics(false, this.language);
         process.exit(0);
         break;
       default:
@@ -53,5 +55,3 @@ export class EventProcessor {
     }
   }
 }
-
-export default new EventProcessor();

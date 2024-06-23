@@ -78,13 +78,14 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     };
   });
 
-  const eventProcessor = require('../event/event-processor').default;
+  const { EventProcessor } = require('../event/event-processor');
   const Terminal = require('../io/terminal').default;
   const Input = require('../io/input').default;
   const SessionManager = require('../session/session-manager').default;
   const getAllResults = require('../repository/result-repository').getAllResults;
   const Output = require('../io/output').default;
 
+  const eventProcessor = new EventProcessor(Language.Portuguese);
   const terminal = new Terminal(eventProcessor, Language.Portuguese);
   const input = new Input(eventProcessor);
 

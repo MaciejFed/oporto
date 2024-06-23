@@ -62,13 +62,8 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
   };
 }
 
-export function getExercisesProgress(results: Result[], filter: (e: Exercise) => boolean) {
-  const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(
-    50000,
-    false,
-    () => true,
-    Language.Portuguese
-  )
+export function getExercisesProgress(results: Result[], filter: (e: Exercise) => boolean, language: Language) {
+  const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(50000, false, () => true, language)
     .filter(filter)
     .map((exercise) => {
       const exerciseResults = getAllResultsForExercise(results, exercise);
@@ -89,10 +84,11 @@ export function getExercisesProgress(results: Result[], filter: (e: Exercise) =>
   return exerciseProgress;
 }
 
-export function getProgress(results: Result[]): Progress[] {
+export function getProgress(results: Result[], language: Language): Progress[] {
   const exerciseProgress = getExercisesProgress(
     results,
-    (exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese()
+    (exercise) => exercise instanceof TranslationExercise && exercise.isTranslationToPortuguese(),
+    language
   );
 
   const progress = ratioRanges.map((ratioRange) =>

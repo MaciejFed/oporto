@@ -85,8 +85,8 @@ export function saveProgress(language: Language) {
   );
   console.log(sortedMap);
   console.log('Saving progress...');
-  console.log(`All unique words: ${getAllUniqueWords(Language.Portuguese).length}`);
-  const progress = progressByDate(getAllResults(language, true), Language.Portuguese);
+  console.log(`All unique words: ${getAllUniqueWords(language).length}`);
+  const progress = progressByDate(getAllResults(language, true), language);
   saveProgressToFile(JSON.stringify(progress, null, 4));
   console.log('Progress saved...');
 }

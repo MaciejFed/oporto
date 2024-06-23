@@ -16,7 +16,7 @@ export function displayStatistics(displayProgress: boolean, language: Language) 
     logger.info(`Overall Progress: ${getOverallProgres(language)}`);
 
     const allResults = getAllResults(language);
-    const allExercises = generateExercisesForSession(20000, false, () => true, Language.Portuguese);
+    const allExercises = generateExercisesForSession(20000, false, () => true, language);
     const notDoneExercises = allExercises.filter(
       (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
     );

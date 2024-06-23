@@ -30,7 +30,8 @@ import {
   printInBetweenMenu,
   printExampleSentence,
   printAllVerbConjugations,
-  printExampleTranslation
+  printExampleTranslation,
+  printAllVerbConjugationsDE
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
@@ -203,13 +204,12 @@ export class Terminal {
       const allResults = getAllResults(this.language);
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
       // Broken
-      if (
-        ['GermanVerbExercise', 'GermanVerbTranslation', 'VerbExercise', 'VerbTranslation'].includes(
-          this.exercise.exerciseType
-        )
-      ) {
+      if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
         const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive);
         printAllVerbConjugations(conjugation);
+      } else if (['GermanVerbExercise', 'GermanVerbTranslation'].includes(this.exercise.exerciseType)) {
+        // @ts-ignore
+        printAllVerbConjugationsDE(this.exercise.verb);
       }
       const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {

@@ -156,7 +156,7 @@ export function getWeekdayProgress(language: Language): WeekdayStatistics[] {
     .map((i) => i + 1)
     .map((weekday) => {
       const resultOnDay = allResults.filter((result) => isBeforeWeekday(result.date, weekday));
-      const progressOnDay = getProgress(resultOnDay);
+      const progressOnDay = getProgress(resultOnDay, language);
 
       const all: StatisticPoint = {
         keyName: 'All',
