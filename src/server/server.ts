@@ -66,7 +66,19 @@ setInterval(() => {
   preFetch();
 }, 90000);
 
-app.get('/results', async (_req: Request, res: Response) => {
+const getLanguage = (req: Request) => {
+  switch (req.params.role.toLowerCase()) {
+    case Language.Portuguese.toLowerCase():
+      return Language.Portuguese;
+    case Language.German.toLowerCase():
+      return Language.German;
+    default:
+      throw new Error(`Unknown Language: [${req.params.language}]`);
+  }
+}
+
+app.get('/:language/results', async (req: Request, res: Response) => {
+  const language = getLanguage(req);
   const results = await readAllResults(Language.Portuguese);
   res.send(results);
 });
@@ -108,43 +120,48 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   res.send(toLearn);
 });
 
-app.get('/priority', async (_req: Request, res: Response) => {
-  const exercises = generateAllPossibleExercises(Language.Portuguese);
-  const results = await readAllResults(Language.Portuguese);
-  const { exercisesWithPriorities } = sortExercises(exercises, results, Language.Portuguese);
+app.get('/:language/priority', async (req: Request, res: Response) => {
+  const language = getLanguage(req);
+  const exercises = generateAllPossibleExercises(language);
+  const results = await readAllResults(language);
+  const { exercisesWithPriorities } = sortExercises(exercises, results, language);
   exercisesWithPriorities.flatMap((ep) => ep.priorities);
   res.send(exercisesWithPriorities);
 });
 
-app.get('/progress', async (_req: Request, res: Response) => {
-  const exercises = generateAllPossibleExercises(Language.Portuguese);
-  const results = await readAllResults(Language.Portuguese);
+app.get('/:language/progress', async (req: Request, res: Response) => {
+  const language = getLanguage(req);
+  const exercises = generateAllPossibleExercises(language);
+  const results = await readAllResults(language);
   const aggregate = getProgressAggregate(results, exercises);
   res.send(aggregate);
 });
 
-app.post('/results/save', async (req: Request, res: Response) => {
+app.post('/:language/results/save', async (req: Request, res: Response) => {
   try {
+    const language = getLanguage(req);
     logger.info(req.body.exercise);
-    const resultId = await saveNewResult(req.body, Language.Portuguese);
+    const resultId = await saveNewResult(req.body, language);
     res.send(resultId);
   } catch (e) {
     logger.error('Error saving exercises', e);
   }
 });
 
-app.get('/generate/local', async (_req: Request, res: Response) => {
+app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
+    const language = getLanguage(req);
     res.send(cachedExercisesPt.splice(0, 10));
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
 });
 
-app.post('/example/find', async (req: Request, res: Response) => {
+app.post('/:language/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
   try {
-    const example = await findExampleSentence(250000, word, Language.Portuguese);
+    const language = getLanguage(req);
+    const example = await findExampleSentence(250000, word, language);
     res.send(example);
   } catch (e) {
     logger.error('Error finding examples', e);
