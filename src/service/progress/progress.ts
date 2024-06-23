@@ -313,7 +313,7 @@ export function progressByDate(results: Result[], language: Language) {
   const uniqueByDay = resultsByDate.map((dateResult) => {
     console.log(dateResult.date.toJSDate());
     const words = getUniqueWordsForDay(dateResult, exercises);
-    const exercisesDone = getAllResultsBeforeDateOneWeek(dateResult.date);
+    const exercisesDone = getAllResultsBeforeDateOneWeek(language, dateResult.date);
 
     return buildDayProgress(dateResult, exercisesDone, words);
   });

@@ -22,7 +22,7 @@ describe('IT', () => {
   const EXERCISES_PER_SESSION = 3;
 
   const { mockExit, eventProcessor, getAllResults, SessionManager } = withBaseMocks();
-  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, Language.Portuguese);
+  const sessionManager = new SessionManager(eventProcessor, Language.Portuguese);
 
   afterEach(() => {
     process.stdin.removeAllListeners();

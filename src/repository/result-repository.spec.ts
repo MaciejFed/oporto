@@ -9,8 +9,8 @@ describe('Result Repository', () => {
     const exercises = generateAllPossibleExercises(Language.Portuguese);
     const results = exercises.map((exercise) => convertToResult(exercise, 'foo', false, 'keyboard'));
 
-    results.forEach((result) => saveNewResult(result));
-    const allResults = getAllResults();
+    results.forEach((result) => saveNewResult(Language.Portuguese, result));
+    const allResults = getAllResults(Language.Portuguese);
 
     expect(allResults.length).toBe(exercises.length);
     exercises.forEach((exercise, index) => {

@@ -144,6 +144,7 @@ export class Terminal {
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       this.sayCorrectAnswerPhrase();
       findExampleSentenceAndWord(
+        this.language,
         exercise,
         ({
           wordStartIndex,
@@ -199,7 +200,7 @@ export class Terminal {
     terminal.hideCursor();
     printInBetweenMenu(this.exerciseTranslation !== undefined && this.exerciseTranslation.length > 0);
     if (this.exercise) {
-      const allResults = getAllResults();
+      const allResults = getAllResults(this.language);
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
       // Broken
       if (

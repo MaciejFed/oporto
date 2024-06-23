@@ -6,13 +6,13 @@ import { Terminal } from '../io/terminal';
 import { preFetchAllResults } from '../client/client';
 import { Language } from '../common/language';
 
-export function startTestSession(sortExercises: boolean, language: Language) {
-  preFetchAllResults();
+export function startTestSession(language: Language) {
+  preFetchAllResults(language);
   const EXERCISES_PER_SESSION = 10;
   const eventProcessor = new EventProcessor();
   const terminal = new Terminal(eventProcessor, language);
   const input = new Input(eventProcessor);
-  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, sortExercises, () => true, language);
+  const sessionManager = new SessionManager(eventProcessor, language);
 
   eventProcessor.emit(APP_STARTED);
 }

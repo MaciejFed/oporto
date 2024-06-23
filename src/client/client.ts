@@ -5,6 +5,7 @@ import { MoveieExample } from '../io/file';
 import { Exercise } from '../exercise/exercise';
 import { Result } from '../service/result';
 import { logger } from '../common/logger';
+import { Language } from '../common/language';
 
 const execAsync = util.promisify(exec);
 const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
@@ -12,12 +13,13 @@ const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
 let resultsCached: Result[] = [];
 const MAX_BUFFER = 10 * 1024 * 1024;
 
-const fetchResults = `curl -s --location --request GET ${apiURL}/results --header "Authorization: Bearer ${apiKey}"`;
+const fetchResults = (language: Language) =>
+  `curl -s --location --request GET ${apiURL}/${language}/results --header "Authorization: Bearer ${apiKey}"`;
 
-export const preFetchAllResults = (): void => {
+export const preFetchAllResults = (language: Language): void => {
   if (!resultsCached.length) {
     logger.info('Fetching all results...');
-    execAsync(fetchResults, { maxBuffer: MAX_BUFFER }).then(({ stdout: results }) => {
+    execAsync(fetchResults(language), { maxBuffer: MAX_BUFFER }).then(({ stdout: results }) => {
       logger.info('Results saved to cache');
       resultsCached = JSON.parse(results);
     });
@@ -26,13 +28,13 @@ export const preFetchAllResults = (): void => {
 
 export const fetchAllResults = (): Result[] => resultsCached;
 
-export const fetchAllResultsSync = (): Result[] => {
-  const results = execSync(fetchResults, { maxBuffer: MAX_BUFFER }).toString();
+export const fetchAllResultsSync = (language: Language): Result[] => {
+  const results = execSync(fetchResults(language), { maxBuffer: MAX_BUFFER }).toString();
   return JSON.parse(results);
 };
 
-export const fetchMovieExample = async (word: string): Promise<MoveieExample> => {
-  const command = `curl -s --location '${apiURL}/example/find' \
+export const fetchMovieExample = async (language: Language, word: string): Promise<MoveieExample> => {
+  const command = `curl -s --location '${apiURL}/${language}/example/find' \
     --header 'Authorization: Bearer ${apiKey}' \
     --header 'Content-Type: application/json' \
     --data '{
@@ -42,16 +44,16 @@ export const fetchMovieExample = async (word: string): Promise<MoveieExample> =>
   return JSON.parse(stdout);
 };
 
-export const fetchExercisesForSession = (): Exercise[] => {
+export const fetchExercisesForSession = (language: Language): Exercise[] => {
   const exercise = execSync(
-    `curl -s --location --request GET ${apiURL}/generate/local --header "Authorization: Bearer ${apiKey}"`
+    `curl -s --location --request GET ${apiURL}/${language}/generate/local --header "Authorization: Bearer ${apiKey}"`
   ).toString();
   return JSON.parse(exercise);
 };
 
-export const saveNewResult = async (newResult: Result) => {
+export const saveNewResult = async (language: Language, newResult: Result) => {
   resultsCached.push(newResult);
-  const command = `curl -s --location --request POST ${apiURL}/results/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
+  const command = `curl -s --location --request POST ${apiURL}/${language}/results/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
     newResult
   )}'`;
   execAsync(command).then(({ stdout: resultId }) => {

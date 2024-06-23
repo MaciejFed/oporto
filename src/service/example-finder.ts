@@ -9,6 +9,7 @@ import util from 'util';
 import { fetchMovieExample } from '../client/client';
 import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
 import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
+import { Language } from '../common/language';
 
 const extractWordToFindFromExercise = (exercise: Exercise): string | undefined => {
   switch (exercise.exerciseType) {
@@ -38,6 +39,7 @@ const extractWordToFindFromExercise = (exercise: Exercise): string | undefined =
 };
 
 export const findExampleSentenceAndWord = (
+  language: Language,
   exercise: Exercise,
   callback: ({
     wordStartIndex,
@@ -57,7 +59,7 @@ export const findExampleSentenceAndWord = (
 ) => {
   const wordToFind = extractWordToFindFromExercise(exercise);
   if (wordToFind) {
-    fetchMovieExample(wordToFind).then((result) => {
+    fetchMovieExample(language, wordToFind).then((result) => {
       const wordStartIndex = result.portuguese[1].toLowerCase().indexOf(wordToFind.toLowerCase());
       const exerciseWord = result.portuguese[1].substring(wordStartIndex, wordStartIndex + wordToFind.length);
       const exampleSentence = result.portuguese;

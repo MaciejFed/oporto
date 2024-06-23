@@ -141,14 +141,14 @@ export async function generateExercisesForSessionAsync(
   results?: Result[]
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
-  const allResults = results ? parseResults(results) : await getAllResultsAsync();
+  const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
   const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
 
-export function getExercisesForSession(): Exercise[] {
-  const exerciseJSON: Exercise[] = fetchExercisesForSession();
+export function getExercisesForSession(language: Language): Exercise[] {
+  const exerciseJSON: Exercise[] = fetchExercisesForSession(language);
   const exercies = exerciseJSON.map((ex) => {
     const exerciseType = ex.exerciseType;
     const createExercise = exerciseFactory[exerciseType];
@@ -164,7 +164,7 @@ export function generateExercisesForSession(
   language: Language
 ): Exercise[] {
   const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
-  const allResults = getAllResults();
+  const allResults = getAllResults(language);
   const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();

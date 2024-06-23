@@ -32,16 +32,10 @@ export class SessionManager implements AppEventListener {
   hearingLoop?: NodeJS.Timer;
   language: Language;
 
-  constructor(
-    eventProcessor: EventProcessor,
-    exerciseCount: number,
-    sortExercises: boolean,
-    exerciseFilter: (ex: Exercise) => boolean,
-    language: Language
-  ) {
+  constructor(eventProcessor: EventProcessor, language: Language) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = getExercisesForSession();
+    this.exercises = getExercisesForSession(language);
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';
@@ -98,7 +92,7 @@ export class SessionManager implements AppEventListener {
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       this.answer = this.answer.trim();
       const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
-      saveNewResult(convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
+      saveNewResult(this.language, convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
       logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         wasCorrect,

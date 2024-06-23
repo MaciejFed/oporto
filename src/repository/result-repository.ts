@@ -17,6 +17,7 @@ import { fetchAllResults, fetchAllResultsSync } from '../client/client';
 import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
 import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
 import { GermanVerbExercise } from '../exercise/german-verb-exercise';
+import { Language } from '../common/language';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -131,16 +132,16 @@ export function parseResults(results: Result[]): Result[] {
   });
 }
 
-export async function getAllResultsAsync(): Promise<Result[]> {
-  const results = fetchAllResultsSync();
+export async function getAllResultsAsync(language: Language): Promise<Result[]> {
+  const results = fetchAllResultsSync(language);
 
   logger.info(`Fetched ${results.length} from DB`);
 
   return parseResults(results);
 }
 
-export function getAllResults(sync = false): Result[] {
-  const resultsJson: Result[] = sync ? fetchAllResultsSync() : fetchAllResults();
+export function getAllResults(language: Language, sync = false): Result[] {
+  const resultsJson: Result[] = sync ? fetchAllResultsSync(language) : fetchAllResults();
 
   return toResultsParsed(resultsJson);
 }
@@ -165,8 +166,8 @@ export type DateResults = {
   results: Result[];
 };
 
-export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
-  return getAllResults().filter((result) => {
+export function getAllResultsBeforeDateOneWeek(language: Language, date: DateTimeExtended) {
+  return getAllResults(language).filter((result) => {
     const upDateLimit = date.ordinal;
     const downDateLimit = date.plus({ month: -1 }).ordinal;
 
@@ -211,8 +212,8 @@ export function getAllResultsForExercise(
     .filter(resultFilter);
 }
 
-export function getAllAnswersForExercise(exercise: Exercise): string[] {
-  const allResults = getAllResultsForExercise(getAllResults(), exercise);
+export function getAllAnswersForExercise(language: Language, exercise: Exercise): string[] {
+  const allResults = getAllResultsForExercise(getAllResults(language), exercise);
 
   return allResults.map((result) => result.answer);
 }

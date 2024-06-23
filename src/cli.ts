@@ -12,14 +12,14 @@ program
   .command('test')
   .description('Start test session')
   .action((str, options) => {
-    startTestSession(true, Language.Portuguese);
+    startTestSession(Language.Portuguese);
   });
 
 program
   .command('testde')
   .description('Start German Test session')
   .action((str, options) => {
-    startTestSession(true, Language.German);
+    startTestSession(Language.German);
   });
 
 program
@@ -33,7 +33,7 @@ program
   .command('random')
   .description('Start test session with random questions')
   .action((str, options) => {
-    startTestSession(false, Language.Portuguese);
+    startTestSession(Language.Portuguese);
   });
 
 program
@@ -47,14 +47,14 @@ program
   .command('progress')
   .description('Save progress')
   .action(() => {
-    saveProgress();
+    saveProgress(Language.Portuguese);
   });
 
 program
   .command('progressde')
   .description('Save German progress')
   .action(() => {
-    saveProgress();
+    saveProgress(Language.German);
   });
 
 program.parse();

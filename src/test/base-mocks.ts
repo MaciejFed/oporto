@@ -1,6 +1,6 @@
-import { Language } from '../common/language';
-
 /* eslint-disable @typescript-eslint/no-var-requires */
+
+import { Language } from '../common/language';
 
 const testExercises =
   '[{"translationType":"toEnglish","exerciseType":"AdjectiveTranslation","adjective":{"english":"bitter","masculine":{"singular":"amargo","plural":"amargos"},"feminine":{"singular":"amarga","plural":"amargas"}},"gender":"masculine","number":"singular"},' +
@@ -52,7 +52,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
         englishApi: '',
         english: ''
       }),
-      saveNewResult: async (result: any) => {
+      saveNewResult: async (_language: any, result: any) => {
         results.push(result);
       }
     };
@@ -85,7 +85,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
   const getAllResults = require('../repository/result-repository').getAllResults;
   const Output = require('../io/output').default;
 
-  const terminal = new Terminal(eventProcessor);
+  const terminal = new Terminal(eventProcessor, Language.Portuguese);
   const input = new Input(eventProcessor);
 
   return {

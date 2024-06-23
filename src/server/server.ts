@@ -67,7 +67,7 @@ setInterval(() => {
 }, 90000);
 
 const getLanguage = (req: Request) => {
-  switch (req.params.role.toLowerCase()) {
+  switch (req.params.language.toLowerCase()) {
     case Language.Portuguese.toLowerCase():
       return Language.Portuguese;
     case Language.German.toLowerCase():
@@ -75,7 +75,7 @@ const getLanguage = (req: Request) => {
     default:
       throw new Error(`Unknown Language: [${req.params.language}]`);
   }
-}
+};
 
 app.get('/:language/results', async (req: Request, res: Response) => {
   const language = getLanguage(req);

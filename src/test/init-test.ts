@@ -29,7 +29,7 @@ jest.mock('../client/client', () => {
       englishApi: '',
       english: ''
     }),
-    saveNewResult: async (result: any) => {
+    saveNewResult: async (_language: any, result: any) => {
       results.push(result);
     }
   };
