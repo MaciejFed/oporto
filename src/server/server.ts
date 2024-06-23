@@ -12,6 +12,7 @@ import { Person, wordDatabase } from '../repository/exercises-repository';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 import { Language } from '../common/language';
+import { Exercise } from '../exercise/exercise';
 
 const config = loadValidConfig();
 
@@ -34,7 +35,10 @@ app.use((req, res, next) => {
   next();
 });
 
-let cachedExercisesPt: any[] = [];
+const cachedExercises: Record<Language, Exercise[]> = {
+  [Language.Portuguese]: [],
+  [Language.German]: []
+};
 let cachedAggregate: ProgressAggregate;
 
 const preFetchAggregate = async () => {
@@ -44,14 +48,14 @@ const preFetchAggregate = async () => {
   cachedAggregate = getProgressAggregate(results, exercises);
 };
 
-const preFetch = async () => {
+const preFetch = async (language: Language) => {
   try {
-    if (cachedExercisesPt.length <= 10) {
-      const results = await readAllResults(Language.Portuguese);
-      cachedExercisesPt = await generateExercisesForSessionAsync(50, true, () => true, Language.Portuguese, results);
+    if (cachedExercises[language].length <= 10) {
+      const results = await readAllResults(language);
+      cachedExercises[language] = await generateExercisesForSessionAsync(50, true, () => true, language, results);
       logger.info(`Saved exercises to cache ${new Date()}`);
     } else {
-      logger.info(`Cache still has [${cachedExercisesPt.length}] exercises - skipping refresh.`);
+      logger.info(`Cache still has [${cachedExercises[language].length}] exercises - skipping refresh.`);
     }
   } catch (e) {
     logger.error('error refreshng cache', e);
@@ -63,7 +67,9 @@ setInterval(() => {
 }, 10000000);
 
 setInterval(() => {
-  preFetch();
+  preFetch(Language.Portuguese).then(() => {
+    preFetch(Language.German);
+  });
 }, 90000);
 
 const getLanguage = (req: Request) => {
@@ -151,7 +157,7 @@ app.post('/:language/results/save', async (req: Request, res: Response) => {
 app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    res.send(cachedExercisesPt.splice(0, 10));
+    res.send(cachedExercises[language].splice(0, 10));
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
