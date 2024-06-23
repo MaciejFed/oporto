@@ -83,7 +83,7 @@ const getLanguage = (req: Request) => {
 
 app.get('/:language/results', async (req: Request, res: Response) => {
   const language = getLanguage(req);
-  const results = await readAllResults(Language.Portuguese);
+  const results = await readAllResults(language);
   res.send(results);
 });
 
