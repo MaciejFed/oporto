@@ -12,6 +12,8 @@
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
+    "pt": "ts-node src/cli.ts test",
+    "de": "ts-node src/cli.ts testde",
     "verify": "npm run lint && npm run format && npm run test",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
