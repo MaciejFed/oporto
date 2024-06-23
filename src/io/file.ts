@@ -9,7 +9,7 @@ import { Language } from '../common/language';
 
 const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');
 const ptExamplesPath = path.join(os.homedir(), 'pt/pt.txt');
-const deExamplesPath = path.join(os.homedir(), 'pt/de.txt');
+const deExamplesPath = path.join(os.homedir(), 'de/de.txt');
 const enExamplesPath = path.join(os.homedir(), 'pt/en.txt');
 
 export interface MoveieExample {
