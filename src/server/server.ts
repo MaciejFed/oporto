@@ -66,9 +66,11 @@ setInterval(() => {
   preFetchAggregate();
 }, 10000000);
 
-setTimeout(() => {
-  preFetch(Language.German);
-}, 10000);
+setInterval(() => {
+  preFetch(Language.Portuguese).then(() => {
+    preFetch(Language.German);
+  })
+}, 90000);
 
 const getLanguage = (req: Request) => {
   switch (req.params.language.toLowerCase()) {
