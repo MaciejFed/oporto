@@ -58,6 +58,21 @@ export async function isExampleSavedAlready(word: string, language: Language): P
   }
 }
 
+export async function getExamples(word: string, language: Language): Promise<WordExampleLine[]> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
+
+    const examples = await collectionTop.findOne({
+      [word]: { $exists: true }
+    });
+    return examples ? Object.values(examples)[1] : [];
+  } finally {
+    await client.close();
+  }
+}
+
 export async function saveExamples(
   word: string,
   wordExampleLines: WordExampleLine[],

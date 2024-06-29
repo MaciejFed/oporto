@@ -6,8 +6,6 @@ import { startTestSession } from './commands/test';
 import { Language } from './common/language';
 const program = new Command();
 
-require('module-alias/register');
-
 program.name('oporto').description('CLI to learn Portuguese').version('0.1.0');
 
 program

@@ -5,7 +5,7 @@ import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '
 import bodyParser from 'body-parser';
 import { MovieExample } from '../io/file';
 import { logger } from '../common/logger';
-import { readAllResults, saveNewResult } from './db';
+import { getExamples, readAllResults, saveNewResult } from './db';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import { sortExercises } from '../priority/priority';
 import { Person, wordDatabase } from '../repository/exercises-repository';
@@ -13,6 +13,7 @@ import { checkStandardConjugation } from '../service/verb/verb';
 import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
+import { selectMovieExample } from '../service/example-finder/select-movie-example';
 
 const config = loadValidConfig();
 
@@ -167,12 +168,15 @@ app.post('/:language/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
   try {
     const language = getLanguage(req);
-    // const example = await findExampleSentence(250000, word, language);
-    res.send('example');
+    const examples = await getExamples(word, language);
+    const exampleSelected = await selectMovieExample(examples, word);
+    res.send(exampleSelected);
   } catch (e) {
     logger.error('Error finding examples', e);
     const empty: MovieExample = {
-      portuguese: '',
+      word,
+      wordStartIndex: 0,
+      targetLanguage: '',
       english: '',
       englishApi: ''
     };

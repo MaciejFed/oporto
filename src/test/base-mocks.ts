@@ -48,9 +48,11 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       fetchAllResults: () => results,
       fetchExercisesForSession: mockGenerateExercisesForSession,
       fetchMovieExample: async () => ({
-        portuguese: '',
-        englishApi: '',
-        english: ''
+        word: 'cadeira',
+        targetLanguage: 'O meu chefe vai usar a cadeira de rodas para sempre.',
+        english: 'My boss will use a wheelchair for life.',
+        englishApi: 'My boss will use the wheelchair forever.',
+        wordStartIndex: 23
       }),
       saveNewResult: async (_language: any, result: any) => {
         results.push(result);
@@ -73,6 +75,9 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     return {
       ...fileModuleActual,
       exec: (command: string) => {
+        sayCommands.push(command);
+      },
+      execSync: (command: string) => {
         sayCommands.push(command);
       }
     };

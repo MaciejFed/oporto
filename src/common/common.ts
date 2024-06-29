@@ -84,8 +84,17 @@ export function onlyDistinctSubjects(arr: Exercise[]): Exercise[] {
   return distinctElements;
 }
 
-export function getRandomElement<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
+export function findWordStartIndex(sentence: string, word: string) {
+  const words = sentence.split(' ');
+  const index = words.indexOf(word);
+
+  return words.slice(0, index).reduce((prev, curr) => curr.length + prev + 1, 0);
+}
+
+export function getRandomElement<T>(arr: T[], maxLength?: number): T {
+  // eslint-disable-next-line no-nested-ternary
+  const length = maxLength ? (arr.length > maxLength ? maxLength : arr.length) : arr.length;
+  return arr[Math.floor(Math.random() * length)];
 }
 
 export async function sleep(milliseconds: number) {

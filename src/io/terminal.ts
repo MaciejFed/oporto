@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
@@ -146,20 +146,14 @@ export class Terminal {
       findExampleSentenceAndWord(
         this.language,
         exercise,
-        ({
-          wordStartIndex,
-          exerciseWord,
-          exampleSentence,
-          exampleSentenceTranslation,
-          exampleSentenceTranslationApi
-        }) => {
+        ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
           this.exampleSentence = {
-            exampleSentenceLine: exampleSentence,
+            exampleSentenceLine: targetLanguage,
             wordStartIndex,
-            exerciseWord
+            exerciseWord: word
           };
-          this.exampleSentenceTranslation = exampleSentenceTranslation;
-          this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
+          this.exampleSentenceTranslation = english;
+          this.exampleSentenceTranslationApi = englishApi;
           exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.exampleSentenceLine}"`);
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
@@ -267,8 +261,8 @@ export class Terminal {
     }
   }
 
-  private async sayCorrectAnswerPhrase() {
-    exec(`say -v ${getVoice(this.language)} "${this.exercise?.getRetryPrompt()}"`);
+  private sayCorrectAnswerPhrase() {
+    execSync(`say -v ${getVoice(this.language)} "${this.exercise?.getRetryPrompt()}"`);
   }
 }
 

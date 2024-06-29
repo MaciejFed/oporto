@@ -7,6 +7,7 @@ import { fetchMovieExample } from '../../client/client';
 import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
 import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
 import { Language } from '../../common/language';
+import { MovieExample } from '../../io/file';
 
 export function extractWordToFindFromExercise(exercise: Exercise): string | undefined {
   switch (exercise.exerciseType) {
@@ -37,32 +38,21 @@ export function extractWordToFindFromExercise(exercise: Exercise): string | unde
 export function findExampleSentenceAndWord(
   language: Language,
   exercise: Exercise,
-  callback: ({
-    wordStartIndex,
-    exerciseWord,
-    exampleSentence,
-    exampleSentenceTranslation,
-    exampleSentenceTranslationApi
-  }: {
-    wordStartIndex: number;
-    exerciseWord: string;
-    exampleSentence: string;
-    exampleSentenceTranslation: string;
-    exampleSentenceTranslationApi: string;
-  }) => void
+  callback: ({ wordStartIndex, word, targetLanguage, english, englishApi }: MovieExample) => void
 ): void {
   const wordToFind = extractWordToFindFromExercise(exercise);
   if (wordToFind) {
     fetchMovieExample(language, wordToFind).then((result) => {
-      const wordStartIndex = result.portuguese.toLowerCase().indexOf(wordToFind.toLowerCase());
-      const exerciseWord = result.portuguese.substring(wordStartIndex, wordStartIndex + wordToFind.length);
-      const exampleSentence = result.portuguese;
+      const exerciseWord = result.targetLanguage.substring(
+        result.wordStartIndex,
+        result.wordStartIndex + wordToFind.length
+      );
       callback({
-        wordStartIndex,
-        exerciseWord,
-        exampleSentence: exampleSentence.replace('- ', ''),
-        exampleSentenceTranslation: result.english,
-        exampleSentenceTranslationApi: result.englishApi
+        wordStartIndex: result.wordStartIndex,
+        word: exerciseWord,
+        targetLanguage: result.targetLanguage,
+        english: result.english,
+        englishApi: result.englishApi
       });
     });
   }
