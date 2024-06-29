@@ -36,7 +36,7 @@ import {
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { findExampleSentenceAndWord } from '../service/example-finder';
+import { findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { getVoice, Language } from '../common/language';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
@@ -54,8 +54,7 @@ export class Terminal {
   exercise?: Exercise;
   exampleSentence:
     | {
-        exampleSentencePartOne?: string | undefined;
-        exampleSentencePartTwo?: string | undefined;
+        exampleSentenceLine?: string | undefined;
         wordStartIndex: number;
         exerciseWord: string;
       }
@@ -151,25 +150,21 @@ export class Terminal {
           wordStartIndex,
           exerciseWord,
           exampleSentence,
-          exampleSentencePrefixLine,
           exampleSentenceTranslation,
           exampleSentenceTranslationApi
         }) => {
           this.exampleSentence = {
-            exampleSentencePartOne: exampleSentencePrefixLine,
-            exampleSentencePartTwo: exampleSentence,
+            exampleSentenceLine: exampleSentence,
             wordStartIndex,
             exerciseWord
           };
-          this.exampleSentenceFull = `${exampleSentencePrefixLine}.\n${exampleSentence}`;
           this.exampleSentenceTranslation = exampleSentenceTranslation;
           this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
-          exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.exampleSentencePartTwo}"`);
+          exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.exampleSentenceLine}"`);
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
             this.exampleSentence!.exerciseWord,
-            this.exampleSentence!.exampleSentencePartTwo!,
-            this.exampleSentence!.exampleSentencePartOne!
+            this.exampleSentence!.exampleSentenceLine!
           );
         }
       );
@@ -251,7 +246,7 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say -v ${getVoice(this.language)}" ${this.exampleSentence?.exampleSentencePartTwo}"`);
+        exec(`say -v ${getVoice(this.language)}" ${this.exampleSentence?.exampleSentenceLine}"`);
         // sleep(5000).then(() => {
         //   exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
         // });
@@ -260,8 +255,7 @@ export class Terminal {
         printExampleSentence(
           this.exampleSentence!.wordStartIndex,
           this.exampleSentence!.exerciseWord,
-          this.exampleSentence!.exampleSentencePartTwo!,
-          this.exampleSentence!.exampleSentencePartOne!
+          this.exampleSentence!.exampleSentenceLine!
         );
         break;
       case 'r':

@@ -61,6 +61,13 @@ export function onlyDistinct(arr: Comparable[]): Comparable[] {
   return distinctElements;
 }
 
+export function enforceArrayLimit(arr: any[], limit: number) {
+  if (arr.length > limit) {
+    arr.splice(limit);
+  }
+  return arr;
+}
+
 export function onlyDistinctSubjects(arr: Exercise[]): Exercise[] {
   const distinctElements: Exercise[] = [];
   for (let i = 0; i < arr.length; i++) {

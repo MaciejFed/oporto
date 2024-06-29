@@ -91,17 +91,11 @@ export function printInBetweenMenu(printTranslation: boolean) {
   }
 }
 
-export function printExampleSentence(
-  wordStartIndex: number,
-  exerciseWord: string,
-  exampleSentence: string,
-  exampleSentencePrefixLine: string
-) {
+export function printExampleSentence(wordStartIndex: number, exerciseWord: string, exampleSentence: string) {
   const examplePrefix = 'Example: ';
   Output.bold();
   Output.moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
   Output.bold(false);
-  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 4, `"${exampleSentencePrefixLine}"`);
   Output.moveToColored(
     1 + examplePrefix.length,
     EXERCISE_MENU_MARGIN + 5,

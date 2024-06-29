@@ -81,7 +81,7 @@ describe('Terminal Utils', () => {
     const word = 'ver';
     const exampleSentence = `Estou a ${word} a televisão`;
 
-    printExampleSentence(8, 'ver', exampleSentence, '');
+    printExampleSentence(8, 'ver', exampleSentence);
 
     const colorOutput = Output.getColorOutput()
       .split('')

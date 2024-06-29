@@ -1,17 +1,14 @@
-import { Exercise } from '../exercise/exercise';
-import { NounTranslationExercise } from '../exercise/translation/noun-translation-exercise';
-import { AdjectiveTranslationExercise } from '../exercise/translation/adjective-translation-exercise';
-import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
-import { VerbTranslationExercise } from '../exercise/translation/verb-translation-exercise';
-import { logger } from '../common/logger';
-import { exec } from 'child_process';
-import util from 'util';
-import { fetchMovieExample } from '../client/client';
-import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
-import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
-import { Language } from '../common/language';
+import { Exercise } from '../../exercise/exercise';
+import { NounTranslationExercise } from '../../exercise/translation/noun-translation-exercise';
+import { AdjectiveTranslationExercise } from '../../exercise/translation/adjective-translation-exercise';
+import { OtherTranslationExercise } from '../../exercise/translation/other-translation-exercise';
+import { VerbTranslationExercise } from '../../exercise/translation/verb-translation-exercise';
+import { fetchMovieExample } from '../../client/client';
+import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
+import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
+import { Language } from '../../common/language';
 
-const extractWordToFindFromExercise = (exercise: Exercise): string | undefined => {
+export function extractWordToFindFromExercise(exercise: Exercise): string | undefined {
   switch (exercise.exerciseType) {
     case 'OtherTranslation':
       if ((exercise as OtherTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
@@ -26,7 +23,6 @@ const extractWordToFindFromExercise = (exercise: Exercise): string | undefined =
       if ((exercise as GermanVerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as GermanVerbTranslationExercise).verb.infinitive;
     case 'NounTranslation':
-      if ((exercise as NounTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as NounTranslationExercise).noun.portuguese.word;
     case 'GermanNounTranslation':
       return (exercise as GermanNounTranslationExercise).noun.german.singular;
@@ -36,41 +32,38 @@ const extractWordToFindFromExercise = (exercise: Exercise): string | undefined =
     default:
       return undefined;
   }
-};
+}
 
-export const findExampleSentenceAndWord = (
+export function findExampleSentenceAndWord(
   language: Language,
   exercise: Exercise,
   callback: ({
     wordStartIndex,
     exerciseWord,
-    exampleSentencePrefixLine,
     exampleSentence,
     exampleSentenceTranslation,
     exampleSentenceTranslationApi
   }: {
     wordStartIndex: number;
     exerciseWord: string;
-    exampleSentencePrefixLine: string;
     exampleSentence: string;
     exampleSentenceTranslation: string;
     exampleSentenceTranslationApi: string;
   }) => void
-) => {
+): void {
   const wordToFind = extractWordToFindFromExercise(exercise);
   if (wordToFind) {
     fetchMovieExample(language, wordToFind).then((result) => {
-      const wordStartIndex = result.portuguese[1].toLowerCase().indexOf(wordToFind.toLowerCase());
-      const exerciseWord = result.portuguese[1].substring(wordStartIndex, wordStartIndex + wordToFind.length);
+      const wordStartIndex = result.portuguese.toLowerCase().indexOf(wordToFind.toLowerCase());
+      const exerciseWord = result.portuguese.substring(wordStartIndex, wordStartIndex + wordToFind.length);
       const exampleSentence = result.portuguese;
       callback({
         wordStartIndex,
         exerciseWord,
-        exampleSentencePrefixLine: result.portuguese[0].replace('- ', ''),
-        exampleSentence: exampleSentence[1].replace('- ', ''),
+        exampleSentence: exampleSentence.replace('- ', ''),
         exampleSentenceTranslation: result.english,
         exampleSentenceTranslationApi: result.englishApi
       });
     });
   }
-};
+}

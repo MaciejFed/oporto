@@ -48,7 +48,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       fetchAllResults: () => results,
       fetchExercisesForSession: mockGenerateExercisesForSession,
       fetchMovieExample: async () => ({
-        portuguese: ['', ''],
+        portuguese: '',
         englishApi: '',
         english: ''
       }),

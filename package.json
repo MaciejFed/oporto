@@ -9,6 +9,8 @@
   "scripts": {
     "start": "http-server progress",
     "start-server": "ts-node src/server/server",
+    "examples": "ts-node src/commands/examples",
+    "unknown": "ts-node src/commands/unknown",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",

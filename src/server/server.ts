@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express';
 import { loadValidConfig } from './configuration';
 import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
-import { findExampleSentence, MoveieExample } from '../io/file';
+import { MovieExample } from '../io/file';
 import { logger } from '../common/logger';
 import { readAllResults, saveNewResult } from './db';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
@@ -69,7 +69,7 @@ setInterval(() => {
 setInterval(() => {
   preFetch(Language.Portuguese).then(() => {
     preFetch(Language.German);
-  })
+  });
 }, 90000);
 
 const getLanguage = (req: Request) => {
@@ -167,12 +167,12 @@ app.post('/:language/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
   try {
     const language = getLanguage(req);
-    const example = await findExampleSentence(250000, word, language);
-    res.send(example);
+    // const example = await findExampleSentence(250000, word, language);
+    res.send('example');
   } catch (e) {
     logger.error('Error finding examples', e);
-    const empty: MoveieExample = {
-      portuguese: ['', ''],
+    const empty: MovieExample = {
+      portuguese: '',
       english: '',
       englishApi: ''
     };

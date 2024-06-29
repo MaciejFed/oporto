@@ -1,7 +1,7 @@
 import { exec, execSync } from 'child_process';
 import util from 'util';
 import { loadValidConfig } from '../server/configuration';
-import { MoveieExample } from '../io/file';
+import { MovieExample } from '../io/file';
 import { Exercise } from '../exercise/exercise';
 import { Result } from '../service/result';
 import { logger } from '../common/logger';
@@ -33,7 +33,7 @@ export const fetchAllResultsSync = (language: Language): Result[] => {
   return JSON.parse(results);
 };
 
-export const fetchMovieExample = async (language: Language, word: string): Promise<MoveieExample> => {
+export const fetchMovieExample = async (language: Language, word: string): Promise<MovieExample> => {
   const command = `curl -s --location '${apiURL}/${language}/example/find' \
     --header 'Authorization: Bearer ${apiKey}' \
     --header 'Content-Type: application/json' \
@@ -61,8 +61,8 @@ export const saveNewResult = async (language: Language, newResult: Result) => {
   });
 };
 
-export const translateToEnglish = async (text: [string, string]): Promise<string> => {
-  const translationBody = `text=${text[0].concat(` ${text[1]}`)}`;
+export const translateToEnglish = async (text: string): Promise<string> => {
+  const translationBody = `text=${text}`;
   const command = `curl -s -X POST 'https://api-free.deepl.com/v2/translate' \
       --header 'Authorization: DeepL-Auth-Key ${deepLApiKey}' \
       --data-urlencode '${translationBody}' \
