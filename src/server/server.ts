@@ -207,6 +207,7 @@ app.post('/:language/audio', async (req, res) => {
       }
     });
   } catch (e) {
+    logger.error(e);
     res.send('fail');
   }
 });
