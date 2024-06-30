@@ -2,6 +2,7 @@ import { Key } from 'readline';
 import { EventProcessor } from '../event/event-processor';
 import { ANSWER_SUBMITTED, APP_FINISHED, HEARING_EXERCISE_REPEAT, KEY_PRESSED } from '../event/events';
 import Input from './input';
+import { Language } from '../common/language';
 
 const mockEmit = jest.fn();
 
@@ -23,7 +24,7 @@ describe('Input', () => {
   let input: Input;
 
   beforeEach(() => {
-    input = new Input(new EventProcessor());
+    input = new Input(new EventProcessor(Language.Portuguese));
     mockEmit.mockClear();
   });
 

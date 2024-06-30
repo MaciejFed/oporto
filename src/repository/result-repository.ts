@@ -14,9 +14,21 @@ import { DateTimeExtended } from '../common/common';
 import { OtherTranslationExercise } from '../exercise/translation/other-translation-exercise';
 import { PhraseTranslationExercise } from '../exercise/translation/phrase-translation-exercise';
 import { fetchAllResults, fetchAllResultsSync } from '../client/client';
+import { GermanNounTranslationExercise } from '../exercise/translation/de/german-noun-translation-exercise';
+import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
+import { GermanVerbExercise } from '../exercise/german-verb-exercise';
+import { Language } from '../common/language';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
+  Object.assign(verbExercise, exerciseData);
+  assert(verbExercise.verb);
+  assert(verbExercise.person);
+  return verbExercise;
+}
+
+function createGermanVerbExercise(exerciseData: any) {
+  const verbExercise = new GermanVerbExercise();
   Object.assign(verbExercise, exerciseData);
   assert(verbExercise.verb);
   assert(verbExercise.person);
@@ -29,6 +41,22 @@ function createNounTranslationExercise(exerciseData: any) {
   assert(nounTranslationExercise.noun.portuguese);
   assert(nounTranslationExercise.noun.english);
   return nounTranslationExercise;
+}
+
+function createGermanNounTranslationExercise(exerciseData: any) {
+  const nounTranslationExercise = new GermanNounTranslationExercise();
+  Object.assign(nounTranslationExercise, exerciseData);
+  assert(nounTranslationExercise.noun.german);
+  assert(nounTranslationExercise.noun.english);
+  return nounTranslationExercise;
+}
+
+function createGermanVerbTranslationExercise(exerciseData: any) {
+  const verbTranslationExercise = new GermanVerbTranslationExercise();
+  Object.assign(verbTranslationExercise, exerciseData);
+  assert(verbTranslationExercise.verb.presentSimple);
+  assert(verbTranslationExercise.verb.english);
+  return verbTranslationExercise;
 }
 
 function createAdjectiveTranslationExercise(exerciseData: any) {
@@ -78,13 +106,16 @@ function createFitInGapExercise(exerciseData: any) {
 
 export const exerciseFactory = {
   VerbExercise: createVerbExercise,
+  GermanVerbExercise: createGermanVerbExercise,
   NounTranslation: createNounTranslationExercise,
   AdjectiveTranslation: createAdjectiveTranslationExercise,
   VerbTranslation: createVerbTranslationExercise,
   SentenceTranslation: createSentenceTranslationExercise,
   PhraseTranslation: createPhraseTranslationExercise,
   OtherTranslation: createOtherTranslationExercise,
-  FitInGap: createFitInGapExercise
+  FitInGap: createFitInGapExercise,
+  GermanNounTranslation: createGermanNounTranslationExercise,
+  GermanVerbTranslation: createGermanVerbTranslationExercise
 };
 
 export function parseResults(results: Result[]): Result[] {
@@ -101,16 +132,16 @@ export function parseResults(results: Result[]): Result[] {
   });
 }
 
-export async function getAllResultsAsync(): Promise<Result[]> {
-  const results = fetchAllResultsSync();
+export async function getAllResultsAsync(language: Language): Promise<Result[]> {
+  const results = fetchAllResultsSync(language);
 
   logger.info(`Fetched ${results.length} from DB`);
 
   return parseResults(results);
 }
 
-export function getAllResults(sync = false): Result[] {
-  const resultsJson: Result[] = sync ? fetchAllResultsSync() : fetchAllResults();
+export function getAllResults(language: Language, sync = false): Result[] {
+  const resultsJson: Result[] = sync ? fetchAllResultsSync(language) : fetchAllResults();
 
   return toResultsParsed(resultsJson);
 }
@@ -135,8 +166,8 @@ export type DateResults = {
   results: Result[];
 };
 
-export function getAllResultsBeforeDateOneWeek(date: DateTimeExtended) {
-  return getAllResults().filter((result) => {
+export function getAllResultsBeforeDateOneWeek(language: Language, date: DateTimeExtended) {
+  return getAllResults(language).filter((result) => {
     const upDateLimit = date.ordinal;
     const downDateLimit = date.plus({ month: -1 }).ordinal;
 
@@ -181,8 +212,8 @@ export function getAllResultsForExercise(
     .filter(resultFilter);
 }
 
-export function getAllAnswersForExercise(exercise: Exercise): string[] {
-  const allResults = getAllResultsForExercise(getAllResults(), exercise);
+export function getAllAnswersForExercise(language: Language, exercise: Exercise): string[] {
+  const allResults = getAllResultsForExercise(getAllResults(language), exercise);
 
   return allResults.map((result) => result.answer);
 }

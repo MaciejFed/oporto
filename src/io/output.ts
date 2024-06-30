@@ -1,29 +1,53 @@
 import { terminal } from 'terminal-kit';
 import clear from 'clear';
 import { AppEventListener } from '../event/event-listener';
-import eventProcessor, { EventProcessor } from '../event/event-processor';
 
-enum Color {
+export enum Color {
+  B = 'B',
   R = 'R',
   G = 'G',
   W = 'W',
   Y = 'Y'
 }
 
+export class ColoredText {
+  public text: string;
+  public colors: Color[];
+
+  public constructor(text: string, colors: Color[]) {
+    if (text.length > colors.length) throw new Error('colors array lenght not equal to text lenght');
+    this.text = text;
+    this.colors = colors;
+  }
+}
+
 class Output implements AppEventListener {
   private outputTable: string[][] = [];
   private colorTable: string[][] = [];
   private textColor: Color;
-  private eventProcessor: EventProcessor;
+  private colorMap: Record<Color, () => Output> = {
+    B: this.blue,
+    R: this.red,
+    G: this.green,
+    W: this.white,
+    Y: this.yellow
+  };
 
   public constructor() {
     this.resetTable();
-    this.eventProcessor = eventProcessor;
     this.textColor = Color.W;
   }
 
   public moveCursor(x: number, y: number) {
     terminal.moveTo(x, y);
+  }
+
+  public moveToColored(x: number, y: number, coloredText: ColoredText) {
+    coloredText.text.split('').forEach((char, index) => {
+      this.colorMap[coloredText.colors[index]]();
+      this.moveTo(x + index, y, char);
+    });
+    this.white();
   }
 
   public moveTo(x: number, y: number, text: string | undefined) {
@@ -53,6 +77,12 @@ class Output implements AppEventListener {
   public yellow(): Output {
     this.textColor = Color.Y;
     terminal.yellow();
+    return this;
+  }
+
+  public blue(): Output {
+    this.textColor = Color.B;
+    terminal.blue();
     return this;
   }
 
@@ -102,11 +132,7 @@ class Output implements AppEventListener {
     this.colorTable = new Array(60).fill(' ').map(() => new Array(70).fill(' '));
   }
 
-  public registerListeners(): void {
-    this.eventProcessor.on('TERMINAL_CLEARED', () => {
-      this.clearTerminal();
-    });
-  }
+  public registerListeners(): void {}
 }
 
 export default new Output();

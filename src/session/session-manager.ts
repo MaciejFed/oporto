@@ -19,6 +19,7 @@ import { exec } from 'child_process';
 import { Exercise } from '../exercise/exercise';
 import { generateExercisesForSession, getExercisesForSession } from '../exercise/generator';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
+import { getVoice, Language } from '../common/language';
 import { fetchExercisesForSession, saveNewResult } from '../client/client';
 
 export class SessionManager implements AppEventListener {
@@ -29,20 +30,17 @@ export class SessionManager implements AppEventListener {
   answer: string;
   exerciseInProgress: boolean;
   hearingLoop?: NodeJS.Timer;
+  language: Language;
 
-  constructor(
-    eventProcessor: EventProcessor,
-    exerciseCount: number,
-    sortExercises: boolean,
-    exerciseFilter: (ex: Exercise) => boolean
-  ) {
+  constructor(eventProcessor: EventProcessor, language: Language) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
-    this.exercises = getExercisesForSession();
+    this.exercises = getExercisesForSession(language);
     this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';
     this.exerciseInProgress = false;
+    this.language = language;
   }
 
   registerListeners() {
@@ -94,7 +92,7 @@ export class SessionManager implements AppEventListener {
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       this.answer = this.answer.trim();
       const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
-      saveNewResult(convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
+      saveNewResult(this.language, convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
       logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         wasCorrect,
@@ -136,7 +134,7 @@ export class SessionManager implements AppEventListener {
     if (exercise instanceof TranslationExercise && exercise.isTranslationToPortugueseFromHearing()) {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
-      exec(`say ${correctAnswer}`);
+      exec(`say -v ${getVoice(this.language)} ${correctAnswer}`);
     }
   }
 }

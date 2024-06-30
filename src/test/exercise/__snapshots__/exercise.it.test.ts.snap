@@ -255,9 +255,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 exports[`Exercises Integration Snapshots NounTranslation 5`] = `
 Array [
   "APP_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_DESCRIPTION_PRINTED Portuguese: a cidade",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED c",
@@ -272,7 +270,6 @@ Array [
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_DESCRIPTION_PRINTED English: city",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED a",
@@ -553,9 +550,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 exports[`Exercises Integration Snapshots SentenceTranslation 5`] = `
 Array [
   "APP_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_DESCRIPTION_PRINTED Portuguese: Como estás?",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED H",
@@ -586,7 +581,6 @@ Array [
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_DESCRIPTION_PRINTED English: How are you?",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED C",
@@ -873,9 +867,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 exports[`Exercises Integration Snapshots VerbExercise 5`] = `
 Array [
   "APP_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_DESCRIPTION_PRINTED Infinitive: to build",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED c",
@@ -904,7 +896,6 @@ Array [
   "KEY_PRESSED",
   "EXERCISE_NEXT",
   "EXERCISE_STARTED",
-  "TERMINAL_CLEARED preExerciseClear",
   "EXERCISE_DESCRIPTION_PRINTED Infinitive: to build",
   "EXERCISE_BODY_PRINTED [object Object]",
   "KEY_PRESSED c",

@@ -3,14 +3,17 @@ import express, { Request, Response } from 'express';
 import { loadValidConfig } from './configuration';
 import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '../exercise/generator';
 import bodyParser from 'body-parser';
-import { findExampleSentence, MoveieExample } from '../io/file';
+import { MovieExample } from '../io/file';
 import { logger } from '../common/logger';
-import { readAllResults, saveNewResult } from './db';
+import { getExamples, readAllResults, saveFavoriteExample, saveNewResult } from './db';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import { sortExercises } from '../priority/priority';
 import { Person, wordDatabase } from '../repository/exercises-repository';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
+import { Language } from '../common/language';
+import { Exercise } from '../exercise/exercise';
+import { selectMovieExample } from '../service/example-finder/select-movie-example';
 
 const config = loadValidConfig();
 
@@ -33,24 +36,27 @@ app.use((req, res, next) => {
   next();
 });
 
-let cachedExercises: any[] = [];
+const cachedExercises: Record<Language, Exercise[]> = {
+  [Language.Portuguese]: [],
+  [Language.German]: []
+};
 let cachedAggregate: ProgressAggregate;
 
 const preFetchAggregate = async () => {
   logger.info('Refreshing Aggregate...');
-  const exercises = generateAllPossibleExercises();
-  const results = await readAllResults();
+  const exercises = generateAllPossibleExercises(Language.Portuguese);
+  const results = await readAllResults(Language.Portuguese);
   cachedAggregate = getProgressAggregate(results, exercises);
 };
 
-const preFetch = async () => {
+const preFetch = async (language: Language) => {
   try {
-    if (cachedExercises.length <= 10) {
-      const results = await readAllResults();
-      cachedExercises = await generateExercisesForSessionAsync(50, true, () => true, results);
+    if (cachedExercises[language].length <= 10) {
+      const results = await readAllResults(language);
+      cachedExercises[language] = await generateExercisesForSessionAsync(50, true, () => true, language, results);
       logger.info(`Saved exercises to cache ${new Date()}`);
     } else {
-      logger.info(`Cache still has [${cachedExercises.length}] exercises - skipping refresh.`);
+      logger.info(`Cache still has [${cachedExercises[language].length}] exercises - skipping refresh.`);
     }
   } catch (e) {
     logger.error('error refreshng cache', e);
@@ -62,11 +68,25 @@ setInterval(() => {
 }, 10000000);
 
 setInterval(() => {
-  preFetch();
+  preFetch(Language.Portuguese).then(() => {
+    preFetch(Language.German);
+  });
 }, 90000);
 
-app.get('/results', async (_req: Request, res: Response) => {
-  const results = await readAllResults();
+const getLanguage = (req: Request) => {
+  switch (req.params.language.toLowerCase()) {
+    case Language.Portuguese.toLowerCase():
+      return Language.Portuguese;
+    case Language.German.toLowerCase():
+      return Language.German;
+    default:
+      throw new Error(`Unknown Language: [${req.params.language}]`);
+  }
+};
+
+app.get('/:language/results', async (req: Request, res: Response) => {
+  const language = getLanguage(req);
+  const results = await readAllResults(language);
   res.send(results);
 });
 
@@ -107,52 +127,71 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   res.send(toLearn);
 });
 
-app.get('/priority', async (_req: Request, res: Response) => {
-  const exercises = generateAllPossibleExercises();
-  const results = await readAllResults();
-  const { exercisesWithPriorities } = sortExercises(exercises, results);
+app.get('/:language/priority', async (req: Request, res: Response) => {
+  const language = getLanguage(req);
+  const exercises = generateAllPossibleExercises(language);
+  const results = await readAllResults(language);
+  const { exercisesWithPriorities } = sortExercises(exercises, results, language);
   exercisesWithPriorities.flatMap((ep) => ep.priorities);
   res.send(exercisesWithPriorities);
 });
 
-app.get('/progress', async (_req: Request, res: Response) => {
-  const exercises = generateAllPossibleExercises();
-  const results = await readAllResults();
+app.get('/:language/progress', async (req: Request, res: Response) => {
+  const language = getLanguage(req);
+  const exercises = generateAllPossibleExercises(language);
+  const results = await readAllResults(language);
   const aggregate = getProgressAggregate(results, exercises);
   res.send(aggregate);
 });
 
-app.post('/results/save', async (req: Request, res: Response) => {
+app.post('/:language/results/save', async (req: Request, res: Response) => {
   try {
+    const language = getLanguage(req);
     logger.info(req.body.exercise);
-    const resultId = await saveNewResult(req.body);
+    const resultId = await saveNewResult(req.body, language);
     res.send(resultId);
   } catch (e) {
     logger.error('Error saving exercises', e);
   }
 });
 
-app.get('/generate/local', async (_req: Request, res: Response) => {
+app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
-    res.send(cachedExercises.splice(0, 10));
+    const language = getLanguage(req);
+    res.send(cachedExercises[language].splice(0, 10));
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
 });
 
-app.post('/example/find', async (req: Request, res: Response) => {
+app.post('/:language/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
   try {
-    const example = await findExampleSentence(250000, word);
-    res.send(example);
+    const language = getLanguage(req);
+    const examples = await getExamples(word, language);
+    const exampleSelected = await selectMovieExample(examples, word);
+    res.send(exampleSelected);
   } catch (e) {
     logger.error('Error finding examples', e);
-    const empty: MoveieExample = {
-      portuguese: ['', ''],
+    const empty: MovieExample = {
+      word,
+      wordStartIndex: 0,
+      targetLanguage: '',
       english: '',
       englishApi: ''
     };
     res.send(empty);
+  }
+});
+
+app.post('/:language/example/save', async (req: Request, res: Response) => {
+  try {
+    const language = getLanguage(req);
+    const example = req.body;
+    await saveFavoriteExample(language, example);
+    res.send('done');
+  } catch (e) {
+    res.send('fail');
   }
 });
 

@@ -1,5 +1,5 @@
 import { Exercise } from './exercise';
-import { Person, readAll, Verb, wordDatabase } from '../repository/exercises-repository';
+import { Person, readAll } from '../repository/exercises-repository';
 import { VerbExercise } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
 import { TranslationType } from './translation/translation-exercise';
@@ -14,6 +14,11 @@ import { exerciseFactory, getAllResults, getAllResultsAsync, parseResults } from
 import { fetchExercisesForSession } from '../client/client';
 import { Result } from '../service/result';
 import { checkStandardConjugation } from '../service/verb/verb';
+import { Language } from '../common/language';
+import { GermanPerson, readAllDE } from '../repository/german-exercises-repository';
+import { GermanNounTranslationExercise } from './translation/de/german-noun-translation-exercise';
+import { GermanVerbTranslationExercise } from './translation/de/german-verb-translation-exercise';
+import { GermanVerbExercise } from './german-verb-exercise';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -34,11 +39,31 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
   return pastPerfectVerbs.concat(presentSimpleVerbs);
 };
 
+export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
+  return readAllDE().verbs.flatMap((verb) =>
+    Object.keys(GermanPerson).flatMap((person) =>
+      GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'presentSimple')
+    )
+  );
+};
+
 const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toEnglish', 'toPortuguese'];
 
 const NounTranslationGenerator: ExerciseGenerator = () => {
   return readAll().nouns.flatMap((noun) =>
     translationTypes.map((translationType) => NounTranslationExercise.new(noun, translationType))
+  );
+};
+
+const GermanNounTranslationGenerator: ExerciseGenerator = () => {
+  return readAllDE().nouns.flatMap((noun) =>
+    translationTypes.map((translationType) => GermanNounTranslationExercise.new(noun, translationType))
+  );
+};
+
+const GermanVerbTranslationGenerator: ExerciseGenerator = () => {
+  return readAllDE().verbs.flatMap((verb) =>
+    translationTypes.map((translationType) => GermanVerbTranslationExercise.new(verb, translationType))
   );
 };
 
@@ -88,33 +113,42 @@ const FitInGapGenerator: ExerciseGenerator = () => {
   });
 };
 
-export function generateAllPossibleExercises(): Exercise[] {
-  return [
-    VerbExerciseGenerator,
-    NounTranslationGenerator,
-    VerbTranslationGenerator,
-    PhraseTranslationGenerator,
-    OtherTranslationGenerator,
-    AdjectiveTranslationGenerator,
-    FitInGapGenerator
-  ].flatMap((generator) => generator());
+export function generateAllPossibleExercises(language: Language): Exercise[] {
+  switch (language) {
+    case Language.German:
+      return [GermanVerbExerciseGenerator, GermanNounTranslationGenerator, GermanVerbTranslationGenerator].flatMap(
+        (generator) => generator()
+      );
+    case Language.Portuguese:
+    default:
+      return [
+        VerbExerciseGenerator,
+        NounTranslationGenerator,
+        VerbTranslationGenerator,
+        PhraseTranslationGenerator,
+        OtherTranslationGenerator,
+        AdjectiveTranslationGenerator,
+        FitInGapGenerator
+      ].flatMap((generator) => generator());
+  }
 }
 
 export async function generateExercisesForSessionAsync(
   exerciseCount: number,
   sort: boolean,
   filter: (ex: Exercise) => boolean,
+  language: Language,
   results?: Result[]
 ): Promise<Exercise[]> {
-  const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
-  const allResults = results ? parseResults(results) : await getAllResultsAsync();
-  const exercisesFinal = sort ? sortExercises(exercises, allResults).exercises : exercises;
+  const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
+  const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
+  const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
 
-export function getExercisesForSession(): Exercise[] {
-  const exerciseJSON: Exercise[] = fetchExercisesForSession();
+export function getExercisesForSession(language: Language): Exercise[] {
+  const exerciseJSON: Exercise[] = fetchExercisesForSession(language);
   const exercies = exerciseJSON.map((ex) => {
     const exerciseType = ex.exerciseType;
     const createExercise = exerciseFactory[exerciseType];
@@ -126,11 +160,12 @@ export function getExercisesForSession(): Exercise[] {
 export function generateExercisesForSession(
   exerciseCount: number,
   sort: boolean,
-  filter: (ex: Exercise) => boolean
+  filter: (ex: Exercise) => boolean,
+  language: Language
 ): Exercise[] {
-  const exercises = generateAllPossibleExercises().filter((exercise) => filter(exercise));
-  const allResults = getAllResults();
-  const exercisesFinal = sort ? sortExercises(exercises, allResults).exercises : exercises;
+  const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
+  const allResults = getAllResults(language);
+  const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }

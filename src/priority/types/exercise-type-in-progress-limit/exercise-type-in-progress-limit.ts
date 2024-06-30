@@ -18,6 +18,9 @@ export const exerciseTypeToLimit: Record<ExerciseType, number> = {
   OtherTranslation: 0,
   AdjectiveTranslation: 10,
   VerbTranslation: 20,
+  GermanVerbExercise: 15,
+  GermanNounTranslation: 20,
+  GermanVerbTranslation: 20,
   FitInGap: 0
 };
 
@@ -26,6 +29,9 @@ let inProgressMap: Record<ExerciseType, number> = {
   PhraseTranslation: 0,
   VerbExercise: 0,
   NounTranslation: 0,
+  GermanVerbExercise: 0,
+  GermanNounTranslation: 0,
+  GermanVerbTranslation: 0,
   OtherTranslation: 0,
   AdjectiveTranslation: 0,
   VerbTranslation: 0,

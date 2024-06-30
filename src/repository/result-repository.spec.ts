@@ -2,14 +2,15 @@ import { getAllResults, getAllResultsForExercise } from './result-repository';
 import { convertToResult } from '../service/result';
 import { generateAllPossibleExercises } from '../exercise/generator';
 import { saveNewResult } from '../client/client';
+import { Language } from '../common/language';
 
 describe('Result Repository', () => {
   it('Can Save Results For All Exercise Types And Read Correctly', () => {
-    const exercises = generateAllPossibleExercises();
+    const exercises = generateAllPossibleExercises(Language.Portuguese);
     const results = exercises.map((exercise) => convertToResult(exercise, 'foo', false, 'keyboard'));
 
-    results.forEach((result) => saveNewResult(result));
-    const allResults = getAllResults();
+    results.forEach((result) => saveNewResult(Language.Portuguese, result));
+    const allResults = getAllResults(Language.Portuguese);
 
     expect(allResults.length).toBe(exercises.length);
     exercises.forEach((exercise, index) => {

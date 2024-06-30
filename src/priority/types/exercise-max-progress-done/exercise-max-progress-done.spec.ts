@@ -4,13 +4,14 @@ import { VerbTranslationExercise } from '../../../exercise/translation/verb-tran
 import { readAll } from '../../../repository/exercises-repository';
 import { noPriority } from '../../priority';
 import { getExercisesProgress } from '../../../service/progress/progress';
+import { Language } from '../../../common/language';
 
 describe('Priority - EXERCISE_MAX_PROGRESS_DONE', () => {
   it('Exercise translation in 80-100 range done only 1 time', () => {
     const testExercise = VerbTranslationExercise.new(readAll().verbs[0], 'toEnglish');
     const results = generateResultForExercise(testExercise, true, 'keyboard', 1);
     const expectedPriority = noPriority(testExercise);
-    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise))[0];
+    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise), Language.Portuguese)[0];
     const actualPriority = exerciseMaxProgressDone(testExercise, results, ratioRange);
 
     expect(actualPriority.length).toEqual(1);
@@ -25,7 +26,7 @@ describe('Priority - EXERCISE_MAX_PROGRESS_DONE', () => {
       'EXERCISE_MAX_PROGRESS_DONE',
       VALUE_EXERCISE_MAX_PROGRESS_DONE
     );
-    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise))[0];
+    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise), Language.Portuguese)[0];
     const actualPriority = exerciseMaxProgressDone(testExercise, results, ratioRange);
 
     expect(actualPriority.length).toEqual(1);
@@ -39,7 +40,7 @@ describe('Priority - EXERCISE_MAX_PROGRESS_DONE', () => {
       generateResultForExercise(testExercise, false, 'keyboard', 2)
     ].flatMap((r) => r);
     const expectedPriority = noPriority(testExercise);
-    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise))[0];
+    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise), Language.Portuguese)[0];
     const actualPriority = exerciseMaxProgressDone(testExercise, results, ratioRange);
 
     expect(actualPriority.length).toEqual(1);
@@ -50,7 +51,7 @@ describe('Priority - EXERCISE_MAX_PROGRESS_DONE', () => {
     const testExercise = VerbTranslationExercise.new(readAll().verbs[0], 'toPortuguese');
     const results = generateResultForExercise(testExercise, true, 'keyboard', 1);
     const expectedPriority = noPriority(testExercise);
-    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise))[0];
+    const { ratioRange } = getExercisesProgress(results, (e) => e.equal(testExercise), Language.Portuguese)[0];
     const actualPriority = exerciseMaxProgressDone(testExercise, results, ratioRange);
 
     expect(actualPriority.length).toEqual(1);

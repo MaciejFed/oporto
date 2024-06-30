@@ -27,6 +27,7 @@ import {
   exerciseBaseWordProgressLimit,
   IN_PROGRESS_LIMIT_MAP
 } from './types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
+import { Language } from '../common/language';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -103,19 +104,21 @@ export interface ExerciseResultContext {
   ratioRange: RatioRange;
   exerciseTypeProgress: ExerciseProgress[];
   progressAggregate: ProgressAggregate;
+  language: Language;
 }
 
 type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResultContext) => Priority[];
 
 export function sortExercises(
   exercises: Exercise[],
-  allResults: Result[]
+  allResults: Result[],
+  language: Language
 ): {
   exercises: Exercise[];
   exercisesWithPriorities: ExerciseWithPriorites[];
 } {
   const start = Date.now();
-  const exerciseProgressMap = getExerciseProgressMap(allResults);
+  const exerciseProgressMap = getExerciseProgressMap(allResults, language);
   const exerciseSubjectResultMap = getExerciseSubjectResults(allResults);
   logExerciseStats(exerciseProgressMap);
 
@@ -128,7 +131,8 @@ export function sortExercises(
     exercises,
     allResults,
     exerciseProgressMap,
-    exerciseSubjectResultMap
+    exerciseSubjectResultMap,
+    language
   );
 
   logSortingTime(start);
@@ -217,7 +221,8 @@ function getExercisesWithPriorities(
   exercises: Exercise[],
   allResults: Result[],
   exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>,
-  exerciseSubjectResultMap: Record<string, Result[]>
+  exerciseSubjectResultMap: Record<string, Result[]>,
+  language: Language
 ): ExerciseWithPriorites[] {
   const priorityCompilerTimes: Record<string, number> = {};
   const progressAggregate = getProgressAggregate(allResults, exercises);
@@ -235,7 +240,8 @@ function getExercisesWithPriorities(
             ratioRange: ex.ratioRange,
             exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
             exerciseResults: ex.exerciseResults,
-            progressAggregate
+            progressAggregate,
+            language
           });
           const endTime = performance();
 

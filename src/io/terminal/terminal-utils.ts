@@ -3,10 +3,12 @@ import figlet from 'figlet';
 import { formatDate, sleep } from '../../common/common';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
 import { ExerciseStatistics, Result, WeekdayStatistics } from '../../service/result';
-import eventProcessor from '../../event/event-processor';
-import Output from '../output';
+import Output, { Color, ColoredText } from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
 import { StandardConjugation } from '../../service/verb/verb';
+import { clear } from 'console';
+import { GermanPersonWithInf, parseGermanVerb } from '../../service/conjugation/german-conjugation';
+import { GermanVerb } from '../../repository/german-exercises-repository';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -21,7 +23,7 @@ const EXERCISE_MENU_MARGIN = EXERCISE_REPEAT_BODY_MARGIN + 1;
 export type AnswerInputType = 'keyboard' | 'voice';
 
 export function preExerciseClear() {
-  eventProcessor.emit('TERMINAL_CLEARED', 'preExerciseClear');
+  clear();
   Output.moveTo(0, 0, AppLogo);
 }
 
@@ -89,21 +91,26 @@ export function printInBetweenMenu(printTranslation: boolean) {
   }
 }
 
-export function printExampleSentence(
-  wordStartIndex: number,
-  exerciseWord: string,
-  exampleSentence: string,
-  exampleSentencePrefixLine: string
-) {
+export function printExampleSentence(wordStartIndex: number, exerciseWord: string, exampleSentence: string) {
   const examplePrefix = 'Example: ';
   Output.bold();
   Output.moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
   Output.bold(false);
-  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 4, `"${exampleSentencePrefixLine}"`);
-  Output.moveTo(1 + examplePrefix.length, EXERCISE_MENU_MARGIN + 5, `"${exampleSentence}"`);
-  Output.yellow();
-  Output.moveTo(1 + examplePrefix.length + wordStartIndex + 1, EXERCISE_MENU_MARGIN + 5, exerciseWord);
-  Output.white();
+  Output.moveToColored(
+    1 + examplePrefix.length,
+    EXERCISE_MENU_MARGIN + 4,
+    new ColoredText(
+      `"${exampleSentence}"`,
+      Array(wordStartIndex + 1)
+        .fill(Color.W)
+        .concat(Array(exerciseWord.length).fill(Color.Y).concat(Array(100).fill(Color.W)))
+    )
+  );
+}
+
+export function logSaved(status: 'Saving example...' | 'Example saved.') {
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, Array(20).join(' '));
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, status);
 }
 
 export function printExampleTranslation(
@@ -112,10 +119,10 @@ export function printExampleTranslation(
 ) {
   Output.moveTo(
     1,
-    EXERCISE_MENU_MARGIN + 6,
+    EXERCISE_MENU_MARGIN + 5,
     '                                                                          '
   );
-  Output.moveTo(1, EXERCISE_MENU_MARGIN + 6, `${exampleTranslationPrefix}  ${exampleTranslation}`);
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, `${exampleTranslationPrefix}  ${exampleTranslation}`);
 }
 
 type FeedbackType = 'CorrectAnswer' | 'ActualAnswer';
@@ -163,6 +170,32 @@ export function printAllAnswers(results: Result[]) {
         'ActualAnswer',
         `${index + 1}. `
       );
+  });
+}
+
+export function printAllVerbConjugationsDE({ infinitive, presentSimple, pastPerfect }: Verb | GermanVerb) {
+  const CONJUGATION_X_MARGIN = 60;
+  const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
+  Output.bold();
+  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
+  Output.bold(false);
+  // Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
+  const longestConjugationSize = Object.keys(presentSimple).reduce((prev, curr) => {
+    // @ts-ignore
+    const currSize = presentSimple[curr].length;
+    return prev > currSize ? prev : currSize;
+  }, 0);
+
+  const parsedVerb = parseGermanVerb({ infinitive, presentSimple } as GermanVerb);
+  ['Inf'].concat(Object.keys(presentSimple)).forEach((person, index) => {
+    // @ts-ignore
+    const past = pastPerfect ? pastPerfect[person] : '';
+    const personText = person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`;
+    Output.moveToColored(
+      CONJUGATION_X_MARGIN,
+      CONJUGATION_Y_MARGIN + 2 + index,
+      parsedVerb[person.replace('/', '').replace('/', '') as GermanPersonWithInf]
+    );
   });
 }
 

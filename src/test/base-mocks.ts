@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+import { Language } from '../common/language';
+
 const testExercises =
   '[{"translationType":"toEnglish","exerciseType":"AdjectiveTranslation","adjective":{"english":"bitter","masculine":{"singular":"amargo","plural":"amargos"},"feminine":{"singular":"amarga","plural":"amargas"}},"gender":"masculine","number":"singular"},' +
   '{"exerciseType":"VerbExercise","verb":{"english":"to have","infinitive":"ter","presentSimple":{"Eu":"tenho","Tu":"tens","Ela/Ele/Você":"tem","Nós":"temos","Eles/Elas/Vocēs":"têm"},"pastPerfect":{"Eu":"tive","Tu":"tiveste","Ela/Ele/Você":"teve","Nós":"tivemos","Eles/Elas/Vocēs":"tiveram"}},"person":"Eles/Elas/Vocēs","verbTime":"pastPerfect"},' +
@@ -46,11 +48,13 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       fetchAllResults: () => results,
       fetchExercisesForSession: mockGenerateExercisesForSession,
       fetchMovieExample: async () => ({
-        portuguese: ['', ''],
-        englishApi: '',
-        english: ''
+        word: 'cadeira',
+        targetLanguage: 'O meu chefe vai usar a cadeira de rodas para sempre.',
+        english: 'My boss will use a wheelchair for life.',
+        englishApi: 'My boss will use the wheelchair forever.',
+        wordStartIndex: 23
       }),
-      saveNewResult: async (result: any) => {
+      saveNewResult: async (_language: any, result: any) => {
         results.push(result);
       }
     };
@@ -72,18 +76,22 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       ...fileModuleActual,
       exec: (command: string) => {
         sayCommands.push(command);
+      },
+      execSync: (command: string) => {
+        sayCommands.push(command);
       }
     };
   });
 
-  const eventProcessor = require('../event/event-processor').default;
+  const { EventProcessor } = require('../event/event-processor');
   const Terminal = require('../io/terminal').default;
   const Input = require('../io/input').default;
   const SessionManager = require('../session/session-manager').default;
   const getAllResults = require('../repository/result-repository').getAllResults;
   const Output = require('../io/output').default;
 
-  const terminal = new Terminal(eventProcessor);
+  const eventProcessor = new EventProcessor(Language.Portuguese);
+  const terminal = new Terminal(eventProcessor, Language.Portuguese);
   const input = new Input(eventProcessor);
 
   return {

@@ -12,6 +12,7 @@ import { readAll } from '../../../repository/exercises-repository';
 import { ExerciseResultContext, noPriority } from '../../priority';
 import { getGroupExerciseProgress, getSingleExerciseProgress } from '../../../service/progress/progress';
 import { generateAllPossibleExercises } from '../../../exercise/generator';
+import { Language } from '../../../common/language';
 
 describe.skip('Priority - EXERCISE_TYPE_IN_PROGRESS_LIMIT', () => {
   it('Sentence Exercise In Progress Reaching Limit', () => {
@@ -35,7 +36,7 @@ describe.skip('Priority - EXERCISE_TYPE_IN_PROGRESS_LIMIT', () => {
       'EXERCISE_TYPE_ABOVE_PROGRESS_LIMIT',
       VALUE_EXERCISE_LIMIT
     );
-    const allExercises = generateAllPossibleExercises();
+    const allExercises = generateAllPossibleExercises(Language.Portuguese);
     const actualPriorityInLimit = exerciseTypeInProgressLimit(exerciseInLimit, {
       exerciseTypeProgress: getGroupExerciseProgress(allExercises, results, 'SentenceTranslation')
     } as ExerciseResultContext);

@@ -1,5 +1,6 @@
 import { simulateContinueButton, simulateTyping } from './util';
 import { withBaseMocks } from './base-mocks';
+import { Language } from '../common/language';
 
 const doExercise = (sessionManager: any, correctly: boolean) => {
   const correctAnswer = sessionManager.currentExercise?.getCorrectAnswer() || '';
@@ -21,7 +22,7 @@ describe('IT', () => {
   const EXERCISES_PER_SESSION = 3;
 
   const { mockExit, eventProcessor, getAllResults, SessionManager } = withBaseMocks();
-  const sessionManager = new SessionManager(eventProcessor, EXERCISES_PER_SESSION, true, () => true);
+  const sessionManager = new SessionManager(eventProcessor, Language.Portuguese);
 
   afterEach(() => {
     process.stdin.removeAllListeners();

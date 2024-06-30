@@ -3,6 +3,7 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { saveProgressToFile } from '../io/file';
 import { getAllResults } from '../repository/result-repository';
 import { getAllUniqueWords, progressByDate } from '../service/progress/progress';
+import { Language } from '../common/language';
 
 interface ErrorContext {
   count: number;
@@ -21,9 +22,9 @@ function findWord(index: number, word: string) {
   return word.substring(a, b);
 }
 
-export function saveProgress() {
+export function saveProgress(language: Language) {
   const map: Map<string, ErrorContext> = new Map<string, ErrorContext>();
-  getAllResults(true).map((result) => {
+  getAllResults(language, true).map((result) => {
     if (!result.wasCorrect) {
       if (translationTypes.includes(result.exercise.exerciseType) && result.exercise.exerciseType) {
         const translationExercise = result.exercise as TranslationExercise;
@@ -84,8 +85,8 @@ export function saveProgress() {
   );
   console.log(sortedMap);
   console.log('Saving progress...');
-  console.log(`All unique words: ${getAllUniqueWords().length}`);
-  const progress = progressByDate(getAllResults(true));
+  console.log(`All unique words: ${getAllUniqueWords(language).length}`);
+  const progress = progressByDate(getAllResults(language, true), language);
   saveProgressToFile(JSON.stringify(progress, null, 4));
   console.log('Progress saved...');
 }

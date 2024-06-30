@@ -5,6 +5,7 @@ import { AnswerInputType } from '../io/terminal/terminal-utils';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { getProgress } from './progress/progress';
+import { Language } from '../common/language';
 
 type KeyMarker = {
   color: string;
@@ -85,9 +86,9 @@ export function getStatisticForExercise(allResults: Result[], exercise: Exercise
   };
 }
 
-export function getWeeklyStatistics(): WeeklyStatistics[] {
+export function getWeeklyStatistics(language: Language): WeeklyStatistics[] {
   const weeksBack = 10;
-  const allResults = getAllResults();
+  const allResults = getAllResults(language);
   const currentWekkNumber = DateTimeExtended.fromJSDate(new Date()).weekNumber;
 
   return [...Array(weeksBack).keys()]
@@ -109,9 +110,9 @@ export function getWeeklyStatistics(): WeeklyStatistics[] {
     });
 }
 
-export function getWeekdayStatistics(): WeekdayStatistics[] {
+export function getWeekdayStatistics(language: Language): WeekdayStatistics[] {
   const currentWeekday = DateTimeExtended.fromJSDate(new Date()).weekday;
-  const allResults = getAllResults();
+  const allResults = getAllResults(language);
 
   const year = new Date().getFullYear();
 
@@ -147,15 +148,15 @@ export function getWeekdayStatistics(): WeekdayStatistics[] {
     });
 }
 
-export function getWeekdayProgress(): WeekdayStatistics[] {
+export function getWeekdayProgress(language: Language): WeekdayStatistics[] {
   const currentWeekday = DateTimeExtended.fromJSDate(new Date()).weekday;
-  const allResults = getAllResults();
+  const allResults = getAllResults(language);
 
   return [...Array(currentWeekday).keys()]
     .map((i) => i + 1)
     .map((weekday) => {
       const resultOnDay = allResults.filter((result) => isBeforeWeekday(result.date, weekday));
-      const progressOnDay = getProgress(resultOnDay);
+      const progressOnDay = getProgress(resultOnDay, language);
 
       const all: StatisticPoint = {
         keyName: 'All',
@@ -239,8 +240,8 @@ function getExerciseProgressDaily(resultForExercise: Result[], devider: number):
     });
 }
 
-export function getOverallProgres(): string {
-  const results = getAllResults();
+export function getOverallProgres(language: Language): string {
+  const results = getAllResults(language);
   const correctAnswers = results.filter((r) => r.wasCorrect).length;
   const wrongAsnwers = results.length - correctAnswers;
 

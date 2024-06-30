@@ -1,5 +1,4 @@
 // @ts-nocheck
-import { loadValidConfig } from '../server/configuration';
 
 console.log('Initializing Tests...');
 
@@ -30,7 +29,7 @@ jest.mock('../client/client', () => {
       englishApi: '',
       english: ''
     }),
-    saveNewResult: async (result: any) => {
+    saveNewResult: async (_language: any, result: any) => {
       results.push(result);
     }
   };
@@ -59,7 +58,7 @@ jest.mock('../common/common', () => {
   const modelActual = jest.requireActual('../common/common');
   return {
     ...modelActual,
-    sleep: () => {},
+    sleep: () => Promise.resolve(),
     getRandomElement: <T>(arr: T[]) => arr[0]
   };
 });

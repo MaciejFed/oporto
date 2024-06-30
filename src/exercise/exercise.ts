@@ -1,9 +1,13 @@
 import { Comparable } from '../common/common';
 import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
 import { RatioRange } from '../service/progress/progress';
+import { GermanNoun, GermanVerb } from '../repository/german-exercises-repository';
 export type ExerciseType =
   | 'VerbExercise'
+  | 'GermanVerbExercise'
   | 'NounTranslation'
+  | 'GermanNounTranslation'
+  | 'GermanVerbTranslation'
   | 'OtherTranslation'
   | 'AdjectiveTranslation'
   | 'VerbTranslation'
@@ -13,6 +17,8 @@ export type ExerciseType =
 
 export const translationTypes: ExerciseType[] = [
   'NounTranslation',
+  'GermanNounTranslation',
+  'GermanVerbTranslation',
   'VerbTranslation',
   'OtherTranslation',
   'AdjectiveTranslation',
@@ -20,7 +26,7 @@ export const translationTypes: ExerciseType[] = [
   'SentenceTranslation'
 ];
 
-export type BaseWord = Noun | Adjective | Verb | Other;
+export type BaseWord = Noun | Adjective | Verb | Other | GermanNoun | GermanVerb;
 
 export enum BaseWordType {
   NOUN = 'NOUN',

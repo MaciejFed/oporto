@@ -3,6 +3,7 @@ import { Person, wordDatabase } from '../../repository/exercises-repository';
 import { VerbExercise } from '../../exercise/verb-exercise';
 import { getProgressAggregate } from './progress-aggregate';
 import { generateAllPossibleExercises } from '../../exercise/generator';
+import { Language } from '../../common/language';
 
 const conhecerVerbExerciseDone1 = VerbExercise.new(wordDatabase.verb('conhecer'), Person.Tu, 'presentSimple');
 const saberVerbExerciseDone1 = VerbExercise.new(wordDatabase.verb('saber'), Person.Eu, 'pastPerfect');
@@ -28,7 +29,7 @@ describe('Progress Aggregate', () => {
   });
 
   it('getProgressAggregate full exercises', () => {
-    const progressAggregate = getProgressAggregate(results, generateAllPossibleExercises());
+    const progressAggregate = getProgressAggregate(results, generateAllPossibleExercises(Language.Portuguese));
 
     expect(progressAggregate).toMatchSnapshot();
   });

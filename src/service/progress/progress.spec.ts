@@ -4,6 +4,7 @@ import { Person, readAll } from '../../repository/exercises-repository';
 import { getSingleExerciseProgress, progressByDate } from './progress';
 import { getAllResultsByDate } from '../../repository/result-repository';
 import { VerbExercise } from '../../exercise/verb-exercise';
+import { Language } from '../../common/language';
 
 const nounExercise0 = NounTranslationExercise.new(readAll().nouns[0], 'toPortuguese');
 const nounExercise1 = NounTranslationExercise.new(readAll().nouns[1], 'toPortuguese');
@@ -37,7 +38,7 @@ describe.skip('Progress', () => {
   });
 
   it('Should calculate progress', () => {
-    const progress = progressByDate(results);
+    const progress = progressByDate(results, Language.Portuguese);
 
     expect(progress.length).toEqual(5);
     expect(progress[0].lostWords.length).toEqual(0);

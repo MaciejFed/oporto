@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 import { clear } from 'console';
 import { clearLine } from 'readline';
 import { terminal } from 'terminal-kit';
@@ -30,14 +30,20 @@ import {
   printInBetweenMenu,
   printExampleSentence,
   printAllVerbConjugations,
-  printExampleTranslation
+  printExampleTranslation,
+  printAllVerbConjugationsDE,
+  logSaved
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { findExampleSentenceAndWord } from '../service/example-finder';
+import { findExampleSentenceAndWord } from '../service/example-finder/example-finder';
+import { getVoice, Language } from '../common/language';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
+import { sleep } from '../common/common';
+import { MovieExample } from './file';
+import { saveFavoriteExample } from '../client/client';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -50,20 +56,14 @@ export class Terminal {
   exerciseInProgress: boolean;
   exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
-  exampleSentence:
-    | {
-        exampleSentencePartOne?: string | undefined;
-        exampleSentencePartTwo?: string | undefined;
-        wordStartIndex: number;
-        exerciseWord: string;
-      }
-    | undefined;
+  exampleSentence: MovieExample | undefined;
   exampleSentenceFull?: string | undefined;
 
   exampleSentenceTranslation?: string | undefined;
   exampleSentenceTranslationApi?: string | undefined;
+  language: Language;
 
-  constructor(eventProcessor: EventProcessor) {
+  constructor(eventProcessor: EventProcessor, language: Language) {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exerciseInProgress = false;
@@ -74,6 +74,7 @@ export class Terminal {
     this.repetitionAnswer = '';
     this.correctAnswer = '';
     clear();
+    this.language = language;
   }
 
   private registerListeners() {
@@ -141,31 +142,25 @@ export class Terminal {
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
       this.sayCorrectAnswerPhrase();
       findExampleSentenceAndWord(
+        this.language,
         exercise,
-        ({
-          wordStartIndex,
-          exerciseWord,
-          exampleSentence,
-          exampleSentencePrefixLine,
-          exampleSentenceTranslation,
-          exampleSentenceTranslationApi
-        }) => {
+        ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
           this.exampleSentence = {
-            exampleSentencePartOne: exampleSentencePrefixLine,
-            exampleSentencePartTwo: exampleSentence,
+            english,
+            englishApi,
+            targetLanguage,
             wordStartIndex,
-            exerciseWord
+            word
           };
-          this.exampleSentenceFull = `${exampleSentencePrefixLine}.\n${exampleSentence}`;
-          this.exampleSentenceTranslation = exampleSentenceTranslation;
-          this.exampleSentenceTranslationApi = exampleSentenceTranslationApi;
-          exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
+          this.exampleSentenceTranslation = english;
+          this.exampleSentenceTranslationApi = englishApi;
+          execSync(`say -r 140 -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
-            this.exampleSentence!.exerciseWord,
-            this.exampleSentence!.exampleSentencePartTwo!,
-            this.exampleSentence!.exampleSentencePartOne!
+            this.exampleSentence!.word,
+            this.exampleSentence!.targetLanguage!
           );
+          sleep(1000).then(() => exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`));
         }
       );
       if (wasCorrect) {
@@ -196,11 +191,15 @@ export class Terminal {
     terminal.hideCursor();
     printInBetweenMenu(this.exerciseTranslation !== undefined && this.exerciseTranslation.length > 0);
     if (this.exercise) {
-      const allResults = getAllResults();
+      const allResults = getAllResults(this.language);
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
+      // Broken
       if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
         const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive);
         printAllVerbConjugations(conjugation);
+      } else if (['GermanVerbExercise', 'GermanVerbTranslation'].includes(this.exercise.exerciseType)) {
+        // @ts-ignore
+        printAllVerbConjugationsDE(this.exercise.verb);
       }
       const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
       if (exerciseStatistics) {
@@ -242,17 +241,18 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
-        // sleep(5000).then(() => {
-        //   exec(`say "${this.exampleSentence?.exampleSentencePartTwo}"`);
-        // });
+        exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
+        break;
+      case 'l':
+        logSaved('Saving example...');
+        await saveFavoriteExample(this.language, this.exampleSentence!);
+        logSaved('Example saved.');
         break;
       case 'e':
         printExampleSentence(
           this.exampleSentence!.wordStartIndex,
-          this.exampleSentence!.exerciseWord,
-          this.exampleSentence!.exampleSentencePartTwo!,
-          this.exampleSentence!.exampleSentencePartOne!
+          this.exampleSentence!.word,
+          this.exampleSentence!.targetLanguage!
         );
         break;
       case 'r':
@@ -264,8 +264,8 @@ export class Terminal {
     }
   }
 
-  private async sayCorrectAnswerPhrase() {
-    exec(`say "${this.exercise?.getRetryPrompt()}"`);
+  private sayCorrectAnswerPhrase() {
+    execSync(`say -v ${getVoice(this.language)} "${this.exercise?.getRetryPrompt()}"`);
   }
 }
 
