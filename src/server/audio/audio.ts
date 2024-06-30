@@ -1,6 +1,6 @@
 import { Language } from '../../common/language';
 import { getRandomElement } from '../../common/common';
-import { getAudio, saveAudio } from '../db';
+import { getAudio, getPreviousAudioVoice, saveAudio } from '../db';
 import { logger } from '../../common/logger';
 import textToSpeech from '@google-cloud/text-to-speech';
 import dotenv from 'dotenv';
@@ -17,7 +17,9 @@ const AUDIO_DIR = path.join(os.homedir(), 'audio');
 
 dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
 
-const getVoiceForLanguage = (language: Language) => {
+const getVoiceForLanguage = async (language: Language, text: string) => {
+  const audioPrev = await getPreviousAudioVoice(language, text);
+  if (audioPrev) return audioPrev;
   switch (language) {
     case Language.Portuguese:
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
@@ -33,7 +35,7 @@ const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.75 : 1);
 
 const synthesize = async (language: Language, text: string, rate: Rate) => {
   const client = new textToSpeech.TextToSpeechClient();
-  const voice = getVoiceForLanguage(language);
+  const voice = await getVoiceForLanguage(language, text);
   const request: protos.google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
     input: { text: text },
     voice: { languageCode: getLocaleForLanguage(language), name: voice },

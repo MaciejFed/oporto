@@ -37,7 +37,7 @@ import {
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { findExampleSentenceAndWord } from '../service/example-finder/example-finder';
+import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { getVoice, Language } from '../common/language';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
@@ -267,8 +267,10 @@ export class Terminal {
   }
 
   private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate) {
+    const text =
+      type === 'answer' ? extractWordToFindFromExercise(this.exercise!) : this.exampleSentence?.targetLanguage;
     if (download) {
-      getAudio(this.language, this.exercise!.getCorrectAnswer(), type, rate);
+      getAudio(this.language, text!, type, rate);
     }
     execSync(`afplay ${getSavedAudioPath(type, rate)}`);
   }

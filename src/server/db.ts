@@ -158,6 +158,23 @@ export async function readAllResults(language: Language): Promise<Result[]> {
   }
 }
 
+export async function getPreviousAudioVoice(language: Language, text: string): Promise<string | null> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(getAudiosCollectionName(language));
+    const audio = await collection.findOne<Audio>({
+      text
+    });
+    if (audio) {
+      return audio.voice;
+    }
+    return null;
+  } finally {
+    await client.close();
+  }
+}
+
 export async function getAudio(language: Language, text: string, rate: Rate): Promise<Audio | null> {
   const client = await getClient();
   try {
