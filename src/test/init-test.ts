@@ -58,7 +58,7 @@ jest.mock('../common/common', () => {
   const modelActual = jest.requireActual('../common/common');
   return {
     ...modelActual,
-    sleep: () => {},
+    sleep: () => Promise.resolve(),
     getRandomElement: <T>(arr: T[]) => arr[0]
   };
 });

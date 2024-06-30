@@ -58,6 +58,9 @@ export async function isExampleSavedAlready(word: string, language: Language): P
   }
 }
 
+// then to get Favs and try to understand from hearing
+export async function saveFavoriteExample(example: string, language: Language): Promise<void> {}
+
 export async function getExamples(word: string, language: Language): Promise<WordExampleLine[]> {
   const client = await getClient();
   try {

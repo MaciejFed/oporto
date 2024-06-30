@@ -98,7 +98,7 @@ export function printExampleSentence(wordStartIndex: number, exerciseWord: strin
   Output.bold(false);
   Output.moveToColored(
     1 + examplePrefix.length,
-    EXERCISE_MENU_MARGIN + 5,
+    EXERCISE_MENU_MARGIN + 4,
     new ColoredText(
       `"${exampleSentence}"`,
       Array(wordStartIndex + 1)
@@ -114,10 +114,10 @@ export function printExampleTranslation(
 ) {
   Output.moveTo(
     1,
-    EXERCISE_MENU_MARGIN + 6,
+    EXERCISE_MENU_MARGIN + 5,
     '                                                                          '
   );
-  Output.moveTo(1, EXERCISE_MENU_MARGIN + 6, `${exampleTranslationPrefix}  ${exampleTranslation}`);
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, `${exampleTranslationPrefix}  ${exampleTranslation}`);
 }
 
 type FeedbackType = 'CorrectAnswer' | 'ActualAnswer';
