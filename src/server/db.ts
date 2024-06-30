@@ -7,7 +7,7 @@ import { Language } from '../common/language';
 import { WordExampleLine } from '../service/example-finder/example-finder.types';
 import { enforceArrayLimit } from '../common/common';
 import { MovieExample } from '../io/file';
-import { Audio } from './audio/audio.types';
+import { Audio, Rate } from './audio/audio.types';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
@@ -158,13 +158,14 @@ export async function readAllResults(language: Language): Promise<Result[]> {
   }
 }
 
-export async function getAudio(language: Language, text: string): Promise<Audio | null> {
+export async function getAudio(language: Language, text: string, rate: Rate): Promise<Audio | null> {
   const client = await getClient();
   try {
     const db = client.db(dbName);
     const collection = db.collection(getAudiosCollectionName(language));
     return await collection.findOne<Audio>({
-      text
+      text,
+      rate
     });
   } finally {
     await client.close();

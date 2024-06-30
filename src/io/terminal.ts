@@ -43,7 +43,9 @@ import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { sleep } from '../common/common';
 import { MovieExample } from './file';
-import { saveFavoriteExample } from '../client/client';
+import { getAudio, saveFavoriteExample } from '../client/client';
+import { getSavedAudioPath } from '../server/configuration';
+import { Rate } from '../server/audio/audio.types';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -140,7 +142,7 @@ export class Terminal {
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      this.sayCorrectAnswerPhrase();
+      this.playAudio(true, 'answer', 'normal');
       findExampleSentenceAndWord(
         this.language,
         exercise,
@@ -154,13 +156,13 @@ export class Terminal {
           };
           this.exampleSentenceTranslation = english;
           this.exampleSentenceTranslationApi = englishApi;
-          execSync(`say -r 140 -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
+          this.playAudio(true, 'example', 'slow');
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
             this.exampleSentence!.word,
             this.exampleSentence!.targetLanguage!
           );
-          sleep(1000).then(() => exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`));
+          sleep(1000).then(() => this.playAudio(true, 'example', 'normal'));
         }
       );
       if (wasCorrect) {
@@ -241,7 +243,7 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
+        this.playAudio(false, 'example', 'normal');
         break;
       case 'l':
         logSaved('Saving example...');
@@ -256,7 +258,7 @@ export class Terminal {
         );
         break;
       case 'r':
-        this.sayCorrectAnswerPhrase();
+        this.playAudio(false, 'answer', 'normal');
         break;
       default:
         terminal.hideCursor(false);
@@ -264,8 +266,11 @@ export class Terminal {
     }
   }
 
-  private sayCorrectAnswerPhrase() {
-    execSync(`say -v ${getVoice(this.language)} "${this.exercise?.getRetryPrompt()}"`);
+  private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate) {
+    if (download) {
+      getAudio(this.language, this.exercise!.getCorrectAnswer(), type, rate);
+    }
+    execSync(`afplay ${getSavedAudioPath(type, rate)}`);
   }
 }
 

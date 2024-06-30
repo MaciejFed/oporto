@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 console.log('Initializing Tests...');
 
 global.resultsFile = '[]';
@@ -13,7 +12,8 @@ jest.mock('../server/configuration', () => {
       dbUsername: 'dummy',
       dbPassword: 'dummy',
       deepLApiKey: 'dummy'
-    })
+    }),
+    getSavedAudioPath: () => '/foo'
   };
 });
 
@@ -31,7 +31,8 @@ jest.mock('../client/client', () => {
     }),
     saveNewResult: async (_language: any, result: any) => {
       results.push(result);
-    }
+    },
+    getAudio: () => {}
   };
 });
 

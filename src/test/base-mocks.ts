@@ -56,7 +56,8 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       }),
       saveNewResult: async (_language: any, result: any) => {
         results.push(result);
-      }
+      },
+      getAudio: () => {}
     };
   });
 

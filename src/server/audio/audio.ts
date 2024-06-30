@@ -11,7 +11,7 @@ import util from 'util';
 import * as protos from '@google-cloud/text-to-speech/build/protos/protos';
 import { execSync } from 'child_process';
 import { randomUUID } from 'node:crypto';
-import { Audio } from './audio.types';
+import { Audio, Rate } from './audio.types';
 
 const AUDIO_DIR = path.join(os.homedir(), 'audio');
 
@@ -29,14 +29,15 @@ const getVoiceForLanguage = (language: Language) => {
 };
 
 const getLocaleForLanguage = (language: Language) => (language === Language.Portuguese ? 'pt-PT' : 'de-DE');
+const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.75 : 1);
 
-const synthesize = async (language: Language, text: string) => {
+const synthesize = async (language: Language, text: string, rate: Rate) => {
   const client = new textToSpeech.TextToSpeechClient();
   const voice = getVoiceForLanguage(language);
   const request: protos.google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
     input: { text: text },
     voice: { languageCode: getLocaleForLanguage(language), name: voice },
-    audioConfig: { audioEncoding: 'MP3' }
+    audioConfig: { audioEncoding: 'MP3', speakingRate: getRateInNumber(rate) }
   };
 
   const audioFilePath = `${AUDIO_DIR}/${randomUUID()}.mp3`;
@@ -48,17 +49,18 @@ const synthesize = async (language: Language, text: string) => {
     return {
       path: audioFilePath,
       text,
-      voice
+      voice,
+      rate
     } as Audio;
   }
   throw new Error(`Could not create audio for [${language}][${text}]`);
 };
 
-export async function getAudioForText(language: Language, text: string): Promise<Audio> {
-  let audio = await getAudio(language, text);
+export async function getAudioForText(language: Language, text: string, rate: Rate): Promise<Audio> {
+  let audio = await getAudio(language, text, rate);
   if (!audio) {
     logger.info(`Audio for [${language}] [${text}]. Doesn't exist. Creating...`);
-    audio = await synthesize(language, text);
+    audio = await synthesize(language, text, rate);
     await saveAudio(language, audio);
   }
   return audio;
