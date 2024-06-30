@@ -4,13 +4,15 @@ import { findWordStartIndex, getRandomElement } from '../../common/common';
 import { translateToEnglish } from '../../client/client';
 
 const MAX_LENGTH = 5;
+const MAX_LINE_LENGTH = 60;
 
 export async function selectMovieExample(
   exampleLines: WordExampleLine[],
   word: string
 ): Promise<MovieExample | undefined> {
   if (!exampleLines.length) return undefined;
-  const example = getRandomElement(exampleLines, MAX_LENGTH);
+  const linesBelowRange = exampleLines.filter((line) => line.lineTargetLanguage.length < MAX_LINE_LENGTH);
+  const example = getRandomElement(linesBelowRange, MAX_LENGTH);
   const apiTranslation = await translateToEnglish(example.lineTargetLanguage);
 
   return {
