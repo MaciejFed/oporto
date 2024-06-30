@@ -31,7 +31,8 @@ import {
   printExampleSentence,
   printAllVerbConjugations,
   printExampleTranslation,
-  printAllVerbConjugationsDE
+  printAllVerbConjugationsDE,
+  logSaved
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
@@ -41,6 +42,8 @@ import { getVoice, Language } from '../common/language';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { sleep } from '../common/common';
+import { MovieExample } from './file';
+import { saveFavoriteExample } from '../client/client';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -53,13 +56,7 @@ export class Terminal {
   exerciseInProgress: boolean;
   exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
-  exampleSentence:
-    | {
-        exampleSentenceLine?: string | undefined;
-        wordStartIndex: number;
-        exerciseWord: string;
-      }
-    | undefined;
+  exampleSentence: MovieExample | undefined;
   exampleSentenceFull?: string | undefined;
 
   exampleSentenceTranslation?: string | undefined;
@@ -149,21 +146,21 @@ export class Terminal {
         exercise,
         ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
           this.exampleSentence = {
-            exampleSentenceLine: targetLanguage,
+            english,
+            englishApi,
+            targetLanguage,
             wordStartIndex,
-            exerciseWord: word
+            word
           };
           this.exampleSentenceTranslation = english;
           this.exampleSentenceTranslationApi = englishApi;
-          execSync(`say -r 140 -v ${getVoice(this.language)} "${this.exampleSentence?.exampleSentenceLine}"`);
+          execSync(`say -r 140 -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
           printExampleSentence(
             this.exampleSentence!.wordStartIndex,
-            this.exampleSentence!.exerciseWord,
-            this.exampleSentence!.exampleSentenceLine!
+            this.exampleSentence!.word,
+            this.exampleSentence!.targetLanguage!
           );
-          sleep(1000).then(() =>
-            exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.exampleSentenceLine}"`)
-          );
+          sleep(1000).then(() => exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`));
         }
       );
       if (wasCorrect) {
@@ -244,13 +241,18 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.exampleSentenceLine}"`);
+        exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
+        break;
+      case 'l':
+        logSaved('Saving example...');
+        await saveFavoriteExample(this.language, this.exampleSentence!);
+        logSaved('Example saved.');
         break;
       case 'e':
         printExampleSentence(
           this.exampleSentence!.wordStartIndex,
-          this.exampleSentence!.exerciseWord,
-          this.exampleSentence!.exampleSentenceLine!
+          this.exampleSentence!.word,
+          this.exampleSentence!.targetLanguage!
         );
         break;
       case 'r':

@@ -6,6 +6,7 @@ import { parseResults } from '../repository/result-repository';
 import { Language } from '../common/language';
 import { WordExampleLine } from '../service/example-finder/example-finder.types';
 import { enforceArrayLimit } from '../common/common';
+import { MovieExample } from '../io/file';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
@@ -13,12 +14,17 @@ const collectionName = 'results';
 const collectionNameDE = 'results_de';
 const examplesPT = 'examples_pt';
 const examplesDE = 'examples_de';
+const favoriteExamplesPT = 'favorite_examples_pt';
+const favoriteExamplesDE = 'favorite_examples_de';
 
 const getCollectionName = (language: Language) =>
   language === Language.Portuguese ? collectionName : collectionNameDE;
 
 const getExamplesCollectionName = (language: Language, type: 'top' | 'total') =>
   language === Language.Portuguese ? `${examplesPT}_${type}` : `${examplesDE}_${type}`;
+
+const getFavoriteExamplesCollectionName = (language: Language) =>
+  language === Language.Portuguese ? favoriteExamplesPT : favoriteExamplesDE;
 
 const getClient = async () => {
   const client = new MongoClient(config.dbHost, {
@@ -58,8 +64,25 @@ export async function isExampleSavedAlready(word: string, language: Language): P
   }
 }
 
-// then to get Favs and try to understand from hearing
-export async function saveFavoriteExample(example: string, language: Language): Promise<void> {}
+export async function saveFavoriteExample(language: Language, example: MovieExample): Promise<void> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const favoriteExamples = db.collection(getFavoriteExamplesCollectionName(language));
+
+    const examples = await favoriteExamples.countDocuments({
+      targetLanguage: example.targetLanguage
+    });
+    const alreadyExists = examples > 0;
+    if (alreadyExists) {
+      logger.info(`[${example.targetLanguage}] already saved.`);
+    } else {
+      await favoriteExamples.insertOne(example);
+    }
+  } finally {
+    await client.close();
+  }
+}
 
 export async function getExamples(word: string, language: Language): Promise<WordExampleLine[]> {
   const client = await getClient();

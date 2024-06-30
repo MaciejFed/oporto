@@ -61,6 +61,13 @@ export const saveNewResult = async (language: Language, newResult: Result) => {
   });
 };
 
+export const saveFavoriteExample = async (language: Language, example: MovieExample) => {
+  const command = `curl -s --location --request POST ${apiURL}/${language}/example/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
+    example
+  )}'`;
+  execSync(command);
+};
+
 export const translateToEnglish = async (text: string): Promise<string> => {
   const translationBody = `text=${text}`;
   const command = `curl -s -X POST 'https://api-free.deepl.com/v2/translate' \

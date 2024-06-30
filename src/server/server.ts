@@ -5,7 +5,7 @@ import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '
 import bodyParser from 'body-parser';
 import { MovieExample } from '../io/file';
 import { logger } from '../common/logger';
-import { getExamples, readAllResults, saveNewResult } from './db';
+import { getExamples, readAllResults, saveFavoriteExample, saveNewResult } from './db';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import { sortExercises } from '../priority/priority';
 import { Person, wordDatabase } from '../repository/exercises-repository';
@@ -181,6 +181,17 @@ app.post('/:language/example/find', async (req: Request, res: Response) => {
       englishApi: ''
     };
     res.send(empty);
+  }
+});
+
+app.post('/:language/example/save', async (req: Request, res: Response) => {
+  try {
+    const language = getLanguage(req);
+    const example = req.body;
+    await saveFavoriteExample(language, example);
+    res.send('done');
+  } catch (e) {
+    res.send('fail');
   }
 });
 

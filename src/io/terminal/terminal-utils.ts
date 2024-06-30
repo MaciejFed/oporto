@@ -108,6 +108,11 @@ export function printExampleSentence(wordStartIndex: number, exerciseWord: strin
   );
 }
 
+export function logSaved(status: 'Saving example...' | 'Example saved.') {
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, Array(20).join(' '));
+  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, status);
+}
+
 export function printExampleTranslation(
   exampleTranslationPrefix: string | undefined,
   exampleTranslation: string | undefined
