@@ -14,6 +14,7 @@ import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-prog
 import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
+import { getAudioForText } from './audio/audio';
 
 const config = loadValidConfig();
 
@@ -190,6 +191,21 @@ app.post('/:language/example/save', async (req: Request, res: Response) => {
     const example = req.body;
     await saveFavoriteExample(language, example);
     res.send('done');
+  } catch (e) {
+    res.send('fail');
+  }
+});
+
+app.post('/:language/audio', async (req, res) => {
+  try {
+    const language = getLanguage(req);
+    const audio = await getAudioForText(language, req.body.text);
+    res.download(audio.path, 'audio.mp3', (err) => {
+      if (err) {
+        console.error('Error sending file:', err);
+        res.status(500).send('Error sending audio');
+      }
+    });
   } catch (e) {
     res.send('fail');
   }
