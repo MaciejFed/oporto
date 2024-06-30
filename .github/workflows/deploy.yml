@@ -20,7 +20,7 @@ jobs:
           echo 'DB_USERNAME="${{ secrets.DB_USERNAME }}"' >> ~/.oporto.env 
           echo 'DB_PASSWORD="${{ secrets.DB_PASSWORD }}"' >> ~/.oporto.env 
           echo 'DEEPL_API_KEY="${{ secrets.DEEPL_API_KEY }}"' >> ~/.oporto.env 
-          echo 'DEEPL_API_KEY="${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"' >> ~/.oporto.env
+          echo 'GOOGLE_APPLICATION_CREDENTIALS="${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"' >> ~/.oporto.env
           echo '${{ secrets.GOOGLE_KEY }}' > ~/.google/key.json
     - name: Restart Server
       uses: appleboy/ssh-action@v1.0.3
