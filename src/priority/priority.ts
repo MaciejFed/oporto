@@ -19,8 +19,7 @@ import {
 import { exerciseTypeInProgressLimit } from './types/exercise-type-in-progress-limit/exercise-type-in-progress-limit';
 import { exerciseSentenceUnknownWords } from './types/exercise-sentence-unknown-words/exercise-sentence-unknown-words';
 import { logger } from '../common/logger';
-import { getRandomElement } from '../common/common';
-import { WordTypes } from '../repository/exercises-repository';
+import { getRandomElement, removeRepetitionFromBlocks } from '../common/common';
 import performance from 'performance-now';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import {
@@ -142,7 +141,11 @@ export function sortExercises(
   const sortedExercises = insertRandomExercise(exercisesWithPriorities, randomIndex, randomExercise);
 
   return {
-    exercises: sortedExercises,
+    exercises: removeRepetitionFromBlocks(
+      sortedExercises,
+      (a, b) => a.getBaseWordAsString() === b.getBaseWordAsString(),
+      10
+    ),
     exercisesWithPriorities
   };
 }
