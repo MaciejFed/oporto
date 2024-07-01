@@ -142,7 +142,7 @@ export class Terminal {
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      this.playAudio(true, 'answer', 'normal');
+      this.playAudio(true, 'answer', 'normal', false);
       findExampleSentenceAndWord(
         this.language,
         exercise,
@@ -154,15 +154,17 @@ export class Terminal {
             wordStartIndex,
             word
           };
-          this.exampleSentenceTranslation = english;
-          this.exampleSentenceTranslationApi = englishApi;
-          this.playAudio(true, 'example', 'slow');
-          printExampleSentence(
-            this.exampleSentence!.wordStartIndex,
-            this.exampleSentence!.word,
-            this.exampleSentence!.targetLanguage!
-          );
-          sleep(1000).then(() => this.playAudio(true, 'example', 'normal'));
+          sleep(2_000).then(() => {
+            this.exampleSentenceTranslation = english;
+            this.exampleSentenceTranslationApi = englishApi;
+            this.playAudio(true, 'example', 'slow');
+            printExampleSentence(
+              this.exampleSentence!.wordStartIndex,
+              this.exampleSentence!.word,
+              this.exampleSentence!.targetLanguage!
+            );
+            sleep(1000).then(() => this.playAudio(true, 'example', 'normal'));
+          });
         }
       );
       if (wasCorrect) {
@@ -266,13 +268,14 @@ export class Terminal {
     }
   }
 
-  private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate) {
+  private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate, sync = true) {
     const text =
       type === 'answer' ? extractWordToFindFromExercise(this.exercise!) : this.exampleSentence?.targetLanguage;
     if (download) {
       getAudio(this.language, text!, type, rate);
     }
-    execSync(`afplay ${getSavedAudioPath(type, rate)}`);
+    const syncFn = sync ? execSync : exec;
+    syncFn(`afplay ${getSavedAudioPath(type, rate)}`);
   }
 }
 

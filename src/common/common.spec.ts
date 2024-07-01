@@ -18,7 +18,7 @@ describe('Common', () => {
   });
 
   describe('findWordStartIndex', () => {
-    const sentence = 'the brown fox jumps over the lazy dog';
+    const sentence = 'the brown fox jumps, over the lazy dog';
     it('as first word is sentence', () => {
       const index = findWordStartIndex(sentence, 'the');
 
@@ -31,7 +31,7 @@ describe('Common', () => {
       const word = sentence.substring(index, index + wordToFind.length);
 
       expect(word).toEqual(wordToFind);
-      expect(index).toEqual(20);
+      expect(index).toEqual(21);
     });
   });
 

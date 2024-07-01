@@ -86,7 +86,7 @@ export function onlyDistinctSubjects(arr: Exercise[]): Exercise[] {
 
 export function findWordStartIndex(sentence: string, word: string) {
   const words = sentence.split(' ');
-  const index = words.indexOf(word);
+  const index = words.map((w) => w.replace(/[,.]/g, '')).indexOf(word);
 
   return words.slice(0, index).reduce((prev, curr) => curr.length + prev + 1, 0);
 }
