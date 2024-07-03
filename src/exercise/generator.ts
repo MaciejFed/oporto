@@ -95,12 +95,17 @@ const OtherTranslationGenerator: ExerciseGenerator = () => {
 
 const AdjectiveTranslationGenerator: ExerciseGenerator = () => {
   return readAll().adjectives.flatMap((noun) =>
-    translationTypes.flatMap((translationType) => [
-      AdjectiveTranslationExercise.new(noun, translationType, 'masculine', 'singular'),
-      AdjectiveTranslationExercise.new(noun, translationType, 'masculine', 'plural'),
-      AdjectiveTranslationExercise.new(noun, translationType, 'feminine', 'singular'),
-      AdjectiveTranslationExercise.new(noun, translationType, 'feminine', 'plural')
-    ])
+    translationTypes.flatMap((translationType) => {
+      if (translationType === 'toPortuguese') {
+        return [
+          AdjectiveTranslationExercise.new(noun, translationType, 'masculine', 'singular'),
+          AdjectiveTranslationExercise.new(noun, translationType, 'masculine', 'plural'),
+          AdjectiveTranslationExercise.new(noun, translationType, 'feminine', 'singular'),
+          AdjectiveTranslationExercise.new(noun, translationType, 'feminine', 'plural')
+        ];
+      }
+      return [AdjectiveTranslationExercise.new(noun, translationType, 'masculine', 'singular')];
+    })
   );
 };
 
