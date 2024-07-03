@@ -11,10 +11,13 @@ enum ProgressType {
 
 export const progressExerciseTypes = [
   'NounTranslation',
+  'GermanNounTranslation',
   'OtherTranslation',
   'AdjectiveTranslation',
   'VerbTranslation',
-  'VerbExercise'
+  'GermanVerbTranslation',
+  'VerbExercise',
+  'GermanVerbExercise'
 ] as const;
 
 type ExerciseTypeKey = (typeof progressExerciseTypes)[number];
@@ -127,7 +130,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
       if (curr.ratioRange === 'Never Done' || curr.ratioRange === '80-100') return prev;
       const exists = prev.find((res) => res.baseWord === baseWord);
       if (!exists) {
-        const currPointsMissing = 80 - curr.ratio;
+        const currPointsMissing = curr.correctAnswers - curr.incorrectAnswers;
         return prev.concat({
           baseWord,
           pointsMissing: currPointsMissing,
@@ -137,7 +140,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
       }
       return prev.map((res) => {
         if (res.baseWord === baseWord) {
-          const currPointsMissing = res.pointsMissing + 80 - curr.ratio;
+          const currPointsMissing = res.pointsMissing + curr.correctAnswers - curr.incorrectAnswers;
           const currIncorrectAnswers = res.incorrectAnswers + curr.incorrectAnswers;
           return {
             baseWord,

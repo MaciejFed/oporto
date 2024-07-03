@@ -17,6 +17,48 @@ Object {
         "count": 0,
       },
     },
+    "GermanNounTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+    "GermanVerbExercise": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+    "GermanVerbTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
     "NounTranslation": Object {
       "DONE": Object {
         "baseWords": Array [],
@@ -85,8 +127,8 @@ Object {
     Object {
       "baseWord": "saber",
       "incorrectAnswers": 1,
-      "pointsMissing": 80,
-      "total": 105,
+      "pointsMissing": -1,
+      "total": 24,
     },
   ],
   "words": Object {
@@ -265,6 +307,48 @@ Object {
           "preso",
         ],
         "count": 93,
+      },
+    },
+    "GermanNounTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+    "GermanVerbExercise": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+    },
+    "GermanVerbTranslation": Object {
+      "DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "IN_PROGRESS": Object {
+        "baseWords": Array [],
+        "count": 0,
+      },
+      "NEVER_DONE": Object {
+        "baseWords": Array [],
+        "count": 0,
       },
     },
     "NounTranslation": Object {
@@ -1223,8 +1307,8 @@ Object {
     Object {
       "baseWord": "saber",
       "incorrectAnswers": 1,
-      "pointsMissing": 80,
-      "total": 105,
+      "pointsMissing": -1,
+      "total": 24,
     },
   ],
   "words": Object {
