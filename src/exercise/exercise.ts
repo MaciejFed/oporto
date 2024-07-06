@@ -1,6 +1,5 @@
 import { Comparable } from '../common/common';
 import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
-import { RatioRange } from '../service/progress/progress';
 import { GermanNoun, GermanVerb } from '../repository/german-exercises-repository';
 export type ExerciseType =
   | 'VerbExercise'
@@ -53,7 +52,6 @@ export interface ExerciseBehavior {
 }
 
 export interface ExerciseProgress {
-  getMaxProgressRange(): RatioRange;
   getMinAnswerCount(): number;
 }
 

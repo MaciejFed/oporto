@@ -104,7 +104,7 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   const toLearn = verbs.map((verb) => {
     // @ts-ignore
     const verbBase = wordDatabase.verb(verb);
-    const conjugation = checkStandardConjugation(verbBase.infinitive);
+    const conjugation = checkStandardConjugation(verbBase.infinitive, []);
     const conjugations = Object.values(Person).map((person: Person) => {
       const firstCon = conjugation.verb.presentSimple![person];
       const first = firstCon.isStandard ? firstCon.conjugation : `@${firstCon.conjugation}`;

@@ -1,7 +1,7 @@
 import { NounTranslationExercise } from '../../exercise/translation/noun-translation-exercise';
 import { generateResultsForExerciseDaysAgo } from '../../priority/priority.util';
 import { Person, readAll } from '../../repository/exercises-repository';
-import { getSingleExerciseProgress, progressByDate } from './progress';
+import { getSingleExerciseProgress, progressByDate, ProgressType } from './progress';
 import { getAllResultsByDate } from '../../repository/result-repository';
 import { VerbExercise } from '../../exercise/verb-exercise';
 import { Language } from '../../common/language';
@@ -28,8 +28,8 @@ const results = [
   ...generateResultsForExerciseDaysAgo(nounExercise4, true, 1, 3)
 ].sort((a, b) => (a.date.getTime() > b.date.getTime() ? 1 : -1));
 
-describe.skip('Progress', () => {
-  it('Should get results by date', () => {
+describe('Progress', () => {
+  it.skip('Should get results by date', () => {
     const resultsByDate = getAllResultsByDate(results);
 
     expect(resultsByDate.length).toEqual(5);
@@ -37,7 +37,7 @@ describe.skip('Progress', () => {
     expect(resultsByDate[4].results.length).toEqual(results.length);
   });
 
-  it('Should calculate progress', () => {
+  it.skip('Should calculate progress', () => {
     const progress = progressByDate(results, Language.Portuguese);
 
     expect(progress.length).toEqual(5);
@@ -64,8 +64,8 @@ describe.skip('Progress', () => {
 
       expect(progress.correctAnswers).toEqual(1);
       expect(progress.incorrectAnswers).toEqual(0);
-      expect(progress.ratioRange).toEqual('80-100');
-      expect(progress.ratio).toEqual(Infinity);
+      expect(progress.progressType).toEqual(ProgressType.DONE);
+      expect(progress.ratio).toEqual(100);
     });
 
     it('should calculate 80 - 100 progress for multiple results', () => {
@@ -76,8 +76,8 @@ describe.skip('Progress', () => {
 
       expect(progress.correctAnswers).toEqual(7);
       expect(progress.incorrectAnswers).toEqual(2);
-      expect(progress.ratioRange).toEqual('80-100');
-      expect(progress.ratio).toEqual(116.66666666666667);
+      expect(progress.progressType).toEqual(ProgressType.DONE);
+      expect(progress.ratio).toEqual(100);
     });
   });
 });

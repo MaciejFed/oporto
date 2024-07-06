@@ -169,7 +169,7 @@ export type DateResults = {
 export function getAllResultsBeforeDateOneWeek(language: Language, date: DateTimeExtended) {
   return getAllResults(language).filter((result) => {
     const upDateLimit = date.ordinal;
-    const downDateLimit = date.plus({ month: -1 }).ordinal;
+    const downDateLimit = date.plus({ week: -2 }).ordinal;
 
     return (
       DateTimeExtended.fromJSDate(result.date).ordinal >= downDateLimit &&
@@ -191,7 +191,7 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
       date: DateTimeExtended.fromJSDate(resultDate.toJSDate()),
       results
     });
-    resultDate = resultDate.plus({ month: 1 });
+    resultDate = resultDate.plus({ week: 2 });
   }
   return resultsByDate;
 }

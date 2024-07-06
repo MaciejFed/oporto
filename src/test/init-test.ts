@@ -64,8 +64,4 @@ jest.mock('../common/common', () => {
   };
 });
 
-Object.defineProperty(global, 'performance', {
-  writable: true
-});
-
 jest.useFakeTimers().setSystemTime(new Date('2022-07-19T12:36'));

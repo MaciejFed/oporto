@@ -1,7 +1,9 @@
 import { Person, readAll, Verb, VerbInfinitive, wordDatabase } from '../../repository/exercises-repository';
 import { getRandomElement } from '../../common/common';
-import { VerbTime } from '../../exercise/verb-exercise';
+import { VerbExercise, VerbTime } from '../../exercise/verb-exercise';
 import { GermanPerson, GermanVerb, readAllDE } from '../../repository/german-exercises-repository';
+import { Result } from '../result';
+import { getSingleExerciseProgress } from '../progress/progress';
 
 export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
@@ -16,31 +18,30 @@ export const getRandomGermanPerson: () => GermanPerson = () => {
 };
 
 export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: VerbTime): string => {
-  const VerbExercise = readAll().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
-  return VerbExercise[verbTime]![person];
+  const verbExercise = readAll().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
+  return verbExercise[verbTime]![person];
 };
 
 export const getCorrectGermanVerbConjugation = (verb: GermanVerb, person: GermanPerson, verbTime: VerbTime): string => {
-  const VerbExercise = readAllDE().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
+  const verbExercise = readAllDE().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
   // @ts-ignore
-  return VerbExercise[verbTime][person];
+  return verbExercise[verbTime][person];
 };
+
+interface VerbDetails {
+  conjugation: string;
+  isStandard: boolean;
+  expectedConjugation: string;
+  status?: 'string';
+}
 
 export interface VerbChecked {
   infinitive: string;
   presentSimple?: {
-    [key in Person]: {
-      conjugation: string;
-      isStandard: boolean;
-      expectedConjugation: string;
-    };
+    [key in Person]: VerbDetails;
   };
   pastPerfect?: {
-    [key in Person]: {
-      conjugation: string;
-      isStandard: boolean;
-      expectedConjugation: string;
-    };
+    [key in Person]: VerbDetails;
   };
 }
 
@@ -49,8 +50,9 @@ export interface StandardConjugation {
   verb: VerbChecked;
 }
 
-export function checkStandardConjugation(verbInfinitive: VerbInfinitive): StandardConjugation {
+export function checkStandardConjugation(verbInfinitive: VerbInfinitive, allResults: Result[]): StandardConjugation {
   const verb = wordDatabase.verb(verbInfinitive);
+
   const normalize = (word: string) => {
     return word.includes('-') ? word.substring(0, word.indexOf('-')) : word;
   };
@@ -130,7 +132,9 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive): Standa
               [curr]: {
                 isStandard: false,
                 // @ts-ignore
-                conjugation: verb.presentSimple[curr]
+                conjugation: verb.presentSimple[curr],
+                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, curr as Person, 'presentSimple'))
+                  .progressType
               }
             }),
             {}
@@ -144,7 +148,9 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive): Standa
                   [curr]: {
                     isStandard: false,
                     // @ts-ignore
-                    conjugation: verb.pastPerfect[curr]
+                    conjugation: verb.pastPerfect[curr],
+                    status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, curr as Person, 'pastPerfect'))
+                      .progressType
                   }
                 }),
                 {}
@@ -174,7 +180,9 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive): Standa
               [person]: {
                 isStandard: false,
                 conjugation: verbTense[person],
-                expectedConjugation
+                expectedConjugation,
+                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, 'presentSimple'))
+                  .progressType
               }
             }
           }
@@ -191,7 +199,9 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive): Standa
               [person]: {
                 isStandard: true,
                 conjugation: verbTense[person],
-                expectedConjugation
+                expectedConjugation,
+                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, 'pastPerfect'))
+                  .progressType
               }
             }
           }

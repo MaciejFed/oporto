@@ -9,7 +9,6 @@ import os from 'os';
 import fs from 'fs';
 import util from 'util';
 import * as protos from '@google-cloud/text-to-speech/build/protos/protos';
-import { execSync } from 'child_process';
 import { randomUUID } from 'node:crypto';
 import { Audio, Rate } from './audio.types';
 
@@ -24,7 +23,9 @@ const getVoiceForLanguage = async (language: Language, text: string) => {
     case Language.Portuguese:
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
     case Language.German:
-      return getRandomElement(['A', 'B', 'C', 'D', 'F'].map((index) => `de-DE-Neural2-${index}`));
+      return getRandomElement(
+        ['A', 'B', 'C', 'D', 'F'].map((index) => `de-DE-Neural2-${index}`).concat('de-DE-Polyglot-1')
+      );
     default:
       throw new Error(`Unknown language: [${language}]`);
   }

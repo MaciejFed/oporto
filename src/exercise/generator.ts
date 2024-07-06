@@ -23,7 +23,7 @@ import { GermanVerbExercise } from './german-verb-exercise';
 type ExerciseGenerator = () => Exercise[];
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
-  const verbsNonStandard = readAll().verbs.filter((verb) => !checkStandardConjugation(verb.infinitive).isStandard);
+  const verbsNonStandard = readAll().verbs.filter((verb) => !checkStandardConjugation(verb.infinitive, []).isStandard);
   const presentSimpleVerbs = verbsNonStandard.flatMap((verb) =>
     Object.keys(Person).flatMap((person) =>
       VerbExercise.new(verb, Person[person as keyof typeof Person], 'presentSimple')

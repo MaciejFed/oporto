@@ -253,7 +253,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 `;
 
 exports[`Exercises Integration Snapshots NounTranslation 5`] = `
-Array [
+[
   "APP_STARTED",
   "EXERCISE_STARTED",
   "EXERCISE_DESCRIPTION_PRINTED Portuguese: a cidade",
@@ -548,7 +548,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 `;
 
 exports[`Exercises Integration Snapshots SentenceTranslation 5`] = `
-Array [
+[
   "APP_STARTED",
   "EXERCISE_STARTED",
   "EXERCISE_DESCRIPTION_PRINTED Portuguese: Como estás?",

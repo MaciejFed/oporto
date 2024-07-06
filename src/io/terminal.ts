@@ -199,7 +199,7 @@ export class Terminal {
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
       // Broken
       if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
-        const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive);
+        const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive, allResults);
         printAllVerbConjugations(conjugation);
       } else if (['GermanVerbExercise', 'GermanVerbTranslation'].includes(this.exercise.exerciseType)) {
         // @ts-ignore

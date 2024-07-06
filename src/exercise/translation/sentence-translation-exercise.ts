@@ -3,7 +3,6 @@ import { Comparable } from '../../common/common';
 import { Sentence } from '../../repository/exercises-repository';
 import { getRandomSentence } from '../../service/translation';
 import { TranslationExercise, TranslationType } from './translation-exercise';
-import { RatioRange } from '../../service/progress/progress';
 
 export class SentenceTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
@@ -51,10 +50,6 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
   }
 
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.sentence.portuguese);
-
-  public getMaxProgressRange(): RatioRange {
-    return '80-100';
-  }
 
   getBaseWord = () => undefined;
 

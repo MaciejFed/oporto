@@ -1,13 +1,7 @@
-import { ExerciseProgress, getSingleExerciseProgress } from './progress';
+import { ExerciseProgress, getSingleExerciseProgress, ProgressType } from './progress';
 import { Result } from '../result';
 import { BaseWordType, Exercise } from '../../exercise/exercise';
 import { logger } from '../../common/logger';
-
-enum ProgressType {
-  DONE = 'DONE',
-  IN_PROGRESS = 'IN_PROGRESS',
-  NEVER_DONE = 'NEVER_DONE'
-}
 
 export const progressExerciseTypes = [
   'NounTranslation',
@@ -48,51 +42,53 @@ export type ProgressAggregate = {
   words: WordProgressAggregate;
 };
 
-const emptyProgressAggregate: ExerciseProgressAggregate = progressExerciseTypes.reduce(
-  (prev, curr) => ({
-    ...prev,
-    ...{
-      [curr]: {
-        [ProgressType.DONE]: {
-          count: 0,
-          baseWords: []
-        },
-        [ProgressType.IN_PROGRESS]: {
-          count: 0,
-          baseWords: []
-        },
-        [ProgressType.NEVER_DONE]: {
-          count: 0,
-          baseWords: []
+const emptyProgressAggregate = () =>
+  progressExerciseTypes.reduce(
+    (prev, curr) => ({
+      ...prev,
+      ...{
+        [curr]: {
+          [ProgressType.DONE]: {
+            count: 0,
+            baseWords: []
+          },
+          [ProgressType.IN_PROGRESS]: {
+            count: 0,
+            baseWords: []
+          },
+          [ProgressType.NEVER_DONE]: {
+            count: 0,
+            baseWords: []
+          }
         }
       }
-    }
-  }),
-  {}
-) as ExerciseProgressAggregate;
+    }),
+    {}
+  ) as ExerciseProgressAggregate;
 
-const emptyWordProgressAggregate: WordProgressAggregate = Object.values(BaseWordType).reduce(
-  (prev, curr) => ({
-    ...prev,
-    ...{
-      [curr]: {
-        [ProgressType.DONE]: {
-          count: 0,
-          baseWords: []
-        },
-        [ProgressType.IN_PROGRESS]: {
-          count: 0,
-          baseWords: []
-        },
-        [ProgressType.NEVER_DONE]: {
-          count: 0,
-          baseWords: []
+const emptyWordProgressAggregate = () =>
+  Object.values(BaseWordType).reduce(
+    (prev, curr) => ({
+      ...prev,
+      ...{
+        [curr]: {
+          [ProgressType.DONE]: {
+            count: 0,
+            baseWords: []
+          },
+          [ProgressType.IN_PROGRESS]: {
+            count: 0,
+            baseWords: []
+          },
+          [ProgressType.NEVER_DONE]: {
+            count: 0,
+            baseWords: []
+          }
         }
       }
-    }
-  }),
-  {}
-) as WordProgressAggregate;
+    }),
+    {}
+  ) as WordProgressAggregate;
 
 export function getProgressAggregate(results: Result[], exercises: Exercise[]): ProgressAggregate {
   const exercisesFiltered = exercises.filter((exercise) =>
@@ -106,13 +102,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
     typeToDetails: Record<ProgressType, ProgressDetails>,
     ep: ExerciseProgress
   ): Record<ProgressType, ProgressDetails> => {
-    const key =
-      // eslint-disable-next-line no-nested-ternary
-      ep.ratioRange === 'Never Done'
-        ? ProgressType.NEVER_DONE
-        : ep.ratioRange === '80-100'
-        ? ProgressType.DONE
-        : ProgressType.IN_PROGRESS;
+    const key = ep.progressType;
     const baseWords = [...new Set(typeToDetails[key].baseWords.concat(ep.exercise.getBaseWordAsString() || ''))];
     return {
       ...typeToDetails,
@@ -127,7 +117,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
     .reduce<PointsMissing[]>((prev, curr) => {
       const INCORRECT_ANSWER_BONUS = 25 * (curr.exercise.exerciseType === 'NounTranslation' ? 3 : 1);
       const baseWord = curr.exercise.getBaseWordAsString() || '';
-      if (curr.ratioRange === 'Never Done' || curr.ratioRange === '80-100') return prev;
+      if (curr.progressType === ProgressType.NEVER_DONE || curr.progressType === ProgressType.DONE) return prev;
       const exists = prev.find((res) => res.baseWord === baseWord);
       if (!exists) {
         const currPointsMissing = curr.correctAnswers - curr.incorrectAnswers;
@@ -162,16 +152,14 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
         ...addProgress(prev[curr.exercise.exerciseType as ExerciseTypeKey], curr)
       }
     };
-  }, emptyProgressAggregate);
+  }, emptyProgressAggregate());
 
   const allBaseWords = [...new Set(exercisesFiltered.map((exercise) => exercise.getBaseWordAsString() || ''))];
   const wordProgressAggregate: WordProgressAggregate = allBaseWords.reduce((prev, curr) => {
     const wordExerciseProgress = exercisesProgress.filter((ep) => ep.exercise.getBaseWordAsString() === curr);
-    const neverDoneCount = wordExerciseProgress.filter((ep) => ep.ratioRange === 'Never Done').length;
-    const inProgressCount = wordExerciseProgress.filter(
-      (ep) => ep.ratioRange === '0-39' || ep.ratioRange === '40-79'
-    ).length;
-    const doneProgressCount = wordExerciseProgress.filter((ep) => ep.ratioRange === '80-100').length;
+    const neverDoneCount = wordExerciseProgress.filter((ep) => ep.progressType === ProgressType.NEVER_DONE).length;
+    const inProgressCount = wordExerciseProgress.filter((ep) => ep.progressType === ProgressType.IN_PROGRESS).length;
+    const doneProgressCount = wordExerciseProgress.filter((ep) => ep.progressType === ProgressType.DONE).length;
     const wordType = wordExerciseProgress[0].exercise.getBaseWordType()!;
 
     if (doneProgressCount > 0 && inProgressCount === 0 && neverDoneCount === 0) {
@@ -212,7 +200,7 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
     }
     logger.error('Unexpected state');
     return prev;
-  }, emptyWordProgressAggregate);
+  }, emptyWordProgressAggregate());
 
   return {
     words: wordProgressAggregate,

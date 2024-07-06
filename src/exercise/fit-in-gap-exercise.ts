@@ -2,7 +2,6 @@ import { Comparable } from '../common/common';
 import { FitIn } from '../repository/exercises-repository';
 import { getRandomFitInExercise } from '../service/fit-in';
 import { BaseWordType, Exercise, ExerciseType } from './exercise';
-import { RatioRange } from '../service/progress/progress';
 
 export class FitInGapExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
@@ -22,10 +21,6 @@ export class FitInGapExercise implements Exercise, Comparable {
   getDescription = () => 'Complete the sentence.';
 
   getCorrectAnswer = () => this.fitIn.answer;
-
-  getMaxProgressRange(): RatioRange {
-    return '80-100';
-  }
 
   getMinAnswerCount(): number {
     return 3;

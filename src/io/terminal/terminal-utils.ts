@@ -9,6 +9,7 @@ import { StandardConjugation } from '../../service/verb/verb';
 import { clear } from 'console';
 import { GermanPersonWithInf, parseGermanVerb } from '../../service/conjugation/german-conjugation';
 import { GermanVerb } from '../../repository/german-exercises-repository';
+import { ProgressType } from '../../service/progress/progress';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -202,6 +203,8 @@ export function printAllVerbConjugationsDE({ infinitive, presentSimple, pastPerf
 export function printAllVerbConjugations({ verb: { infinitive, presentSimple, pastPerfect } }: StandardConjugation) {
   const CONJUGATION_X_MARGIN = 60;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
+  // eslint-disable-next-line no-nested-ternary
+  const getStatusEmoji = (status?: string) => (status ? (status === ProgressType.DONE ? ' ✅' : ' ❌') : '');
   Output.bold();
   Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
   Output.bold(false);
@@ -213,17 +216,20 @@ export function printAllVerbConjugations({ verb: { infinitive, presentSimple, pa
 
   Object.values(Person).forEach((person, index) => {
     const present = presentSimple![person as Person];
-    const past = pastPerfect ? pastPerfect[person as Person] : undefined;
+    const past = pastPerfect ? pastPerfect[person as Person] : { conjugation: '' };
     const personText = (person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`).padEnd(5);
     Output.white();
     Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 2 + index, personText);
     if (!present.isStandard) {
       Output.yellow();
     }
-    const text = ` ${presentSimple![person as Person].conjugation.padEnd(longestConjugationSize)}`;
+    const text = ` ${presentSimple![person as Person].conjugation
+      .concat(getStatusEmoji(presentSimple![person as Person].status))
+      .padEnd(longestConjugationSize + 2)}`;
     Output.moveTo(CONJUGATION_X_MARGIN + personText.length, CONJUGATION_Y_MARGIN + 2 + index, text);
     Output.white();
     Output.moveTo(CONJUGATION_X_MARGIN + personText.length + text.length, CONJUGATION_Y_MARGIN + 2 + index, '|');
+    // @ts-ignore
     if (past && !past.isStandard) {
       Output.yellow();
     } else {
@@ -232,7 +238,8 @@ export function printAllVerbConjugations({ verb: { infinitive, presentSimple, pa
     Output.moveTo(
       CONJUGATION_X_MARGIN + personText.length + text.length + 1,
       CONJUGATION_Y_MARGIN + 2 + index,
-      past?.conjugation ?? ''
+      // @ts-ignore
+      past.conjugation.concat(getStatusEmoji(past.status))
     );
     Output.white();
   });

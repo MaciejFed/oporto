@@ -14,7 +14,7 @@ import {
   ExerciseProgress,
   getExerciseProgressMap,
   getSingleExerciseProgress,
-  RatioRange
+  ProgressType
 } from '../service/progress/progress';
 import { exerciseTypeInProgressLimit } from './types/exercise-type-in-progress-limit/exercise-type-in-progress-limit';
 import { exerciseSentenceUnknownWords } from './types/exercise-sentence-unknown-words/exercise-sentence-unknown-words';
@@ -100,7 +100,7 @@ export interface ExerciseResultContext {
   exerciseResults: Result[];
   exerciseSubjectResults: Result[];
   allExercises: Exercise[];
-  ratioRange: RatioRange;
+  progressType: ProgressType;
   exerciseTypeProgress: ExerciseProgress[];
   progressAggregate: ProgressAggregate;
   language: Language;
@@ -153,12 +153,14 @@ export function sortExercises(
 function logExerciseStats(exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>): void {
   Object.keys(exerciseProgressMap).forEach((key) => {
     const notStartedCount = exerciseProgressMap[key as ExerciseType].filter(
-      (ex) => ex.ratioRange === 'Never Done'
+      (ex) => ex.progressType === ProgressType.NEVER_DONE
     ).length;
     const inProgressCount = exerciseProgressMap[key as ExerciseType].filter(
-      (ex) => ex.ratioRange !== 'Never Done' && ex.ratioRange !== '80-100'
+      (ex) => ex.progressType !== ProgressType.NEVER_DONE && ex.progressType !== ProgressType.DONE
     ).length;
-    const doneCount = exerciseProgressMap[key as ExerciseType].filter((ex) => ex.ratioRange === '80-100').length;
+    const doneCount = exerciseProgressMap[key as ExerciseType].filter(
+      (ex) => ex.progressType === ProgressType.DONE
+    ).length;
 
     logger.info(
       `${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}], Done: [${doneCount}]`
@@ -170,7 +172,7 @@ function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Re
   return exercises
     .map((ex) => getSingleExerciseProgress(allResults, ex))
     .filter((ex) => {
-      return ex.ratioRange !== ex.exercise.getMaxProgressRange();
+      return ex.progressType !== ProgressType.DONE;
     });
 }
 
@@ -214,7 +216,7 @@ function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgr
   logger.info(`Exercises Not Done Count: [${exercisesWithoutWantedProgress.length}]`);
   logger.info(
     `Exercises In Progress Count: [${
-      exercisesWithoutWantedProgress.filter((e) => e.ratioRange !== 'Never Done').length
+      exercisesWithoutWantedProgress.filter((e) => e.progressType !== ProgressType.NEVER_DONE).length
     }]`
   );
 }
@@ -240,7 +242,7 @@ function getExercisesWithPriorities(
             allExercises: exercises,
             allResults,
             exerciseSubjectResults: exerciseSubjectResultMap[JSON.stringify(ex.exercise.getBaseWord())] || [],
-            ratioRange: ex.ratioRange,
+            progressType: ex.progressType,
             exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
             exerciseResults: ex.exerciseResults,
             progressAggregate,

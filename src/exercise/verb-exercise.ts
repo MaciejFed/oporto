@@ -2,7 +2,6 @@ import { Comparable } from '../common/common';
 import { Person, Verb } from '../repository/exercises-repository';
 import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb } from '../service/verb/verb';
 import { BaseWordType, Exercise, ExerciseType } from './exercise';
-import { RatioRange } from '../service/progress/progress';
 
 export type VerbTime = 'presentSimple' | 'pastPerfect';
 
@@ -46,10 +45,6 @@ export class VerbExercise implements Exercise, Comparable {
   isAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
-  }
-
-  getMaxProgressRange(): RatioRange {
-    return '80-100';
   }
 
   getMinAnswerCount(): number {
