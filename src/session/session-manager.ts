@@ -15,12 +15,13 @@ import { EventProcessor } from '../event/event-processor';
 import { logger } from '../common/logger';
 import { convertToResult, Result } from '../service/result';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 import { Exercise } from '../exercise/exercise';
 import { generateExercisesForSession, getExercisesForSession } from '../exercise/generator';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
 import { getVoice, Language } from '../common/language';
-import { fetchExercisesForSession, saveNewResult } from '../client/client';
+import { fetchExercisesForSession, getAudio, saveNewResult } from '../client/client';
+import { getSavedAudioPath } from '../server/configuration';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -134,7 +135,9 @@ export class SessionManager implements AppEventListener {
     if (exercise instanceof TranslationExercise && exercise.isTranslationToPortugueseFromHearing()) {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
-      exec(`say -v ${getVoice(this.language)} ${correctAnswer}`);
+
+      getAudio(this.language, correctAnswer, 'answer', 'normal');
+      execSync(`afplay ${getSavedAudioPath('answer', 'normal')}`);
     }
   }
 }

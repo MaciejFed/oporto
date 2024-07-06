@@ -21,8 +21,11 @@ import { readAllDE } from '../../repository/german-exercises-repository';
 import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
 import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
 
-export type RatioRange = 'Never Done' | '0-39' | '40-79' | '80-100';
-const ratioRanges: RatioRange[] = ['Never Done', '0-39', '40-79', '80-100'];
+export enum ProgressType {
+  DONE = 'DONE',
+  IN_PROGRESS = 'IN_PROGRESS',
+  NEVER_DONE = 'NEVER_DONE'
+}
 
 export type ExerciseProgress = {
   exercise: Exercise;
@@ -30,11 +33,11 @@ export type ExerciseProgress = {
   incorrectAnswers: number;
   ratio: number;
   exerciseResults: Result[];
-  ratioRange: RatioRange;
+  progressType: ProgressType;
 };
 
 export type Progress = {
-  ratioRange: RatioRange & 'All';
+  ratioRange: ProgressType & 'All';
   count: number;
 };
 
@@ -47,38 +50,37 @@ export function getGroupExerciseProgress(
   return exercisesOfType.map((exerciseOfType) => getSingleExerciseProgress(results, exerciseOfType as Exercise));
 }
 
+const getRatio = (correctAnswers: number, incorrectAnswers: number) => {
+  if (!correctAnswers && !incorrectAnswers) return 0;
+  if (!incorrectAnswers) return 100;
+  return Math.floor(correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
+};
+
+const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: number) => {
+  if (!correctAnswers && !incorrectAnswers) return ProgressType.NEVER_DONE;
+  const ratio = getRatio(correctAnswers, incorrectAnswers);
+  return ratio < 100 ? ProgressType.IN_PROGRESS : ProgressType.DONE;
+};
+
 export function getSingleExerciseProgress(results: Result[], exercise: Exercise): ExerciseProgress {
   const exerciseResults = getAllResultsForExercise(results, exercise);
   const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
   const incorrectAnswers = exerciseResults.length - correctAnswers;
-  const ratio = Math.floor(correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
+  const ratio = getRatio(correctAnswers, incorrectAnswers);
   return {
     exercise,
     correctAnswers,
     incorrectAnswers,
     ratio,
     exerciseResults,
-    ratioRange: mapToRatioRange(ratio, exerciseResults.length === 0)
+    progressType: mapRatioToProgress(correctAnswers, incorrectAnswers)
   };
 }
 
 export function getExercisesProgress(results: Result[], filter: (e: Exercise) => boolean, language: Language) {
   const exerciseProgress: ExerciseProgress[] = generateExercisesForSession(50000, false, () => true, language)
     .filter(filter)
-    .map((exercise) => {
-      const exerciseResults = getAllResultsForExercise(results, exercise);
-      const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
-      const incorrectAnswers = exerciseResults.length - correctAnswers;
-      const ratio = (correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
-      return {
-        exercise,
-        correctAnswers,
-        incorrectAnswers,
-        ratio,
-        exerciseResults,
-        ratioRange: mapToRatioRange(ratio, exerciseResults.length === 0)
-      };
-    })
+    .map((exercise) => getSingleExerciseProgress(results, exercise))
     .sort((a, b) => a.correctAnswers - b.correctAnswers);
 
   return exerciseProgress;
@@ -91,27 +93,13 @@ export function getProgress(results: Result[], language: Language): Progress[] {
     language
   );
 
-  const progress = ratioRanges.map((ratioRange) =>
+  return Object.values(ProgressType).map((progressType) =>
     Object.assign({
-      ratioRange: ratioRange,
-      count: exerciseProgress.filter((e) => e.ratioRange === ratioRange).length
+      progressType,
+      count: exerciseProgress.filter((e) => e.progressType === progressType).length
     })
   );
-  // progress.unshift({
-  //   ratioRange: 'All',
-  //   count: allExercises.length
-  // });
-
-  return progress;
 }
-
-function mapToRatioRange(ratio: number, neverDone: boolean): RatioRange {
-  if (neverDone) return 'Never Done';
-  if (!isFinite(ratio) || ratio >= 80) return '80-100';
-  if (ratio >= 40 && ratio < 80) return '40-79';
-  return '0-39';
-}
-
 export function getAllUniqueWordsConjugated(language: Language): string[] {
   if (language === Language.Portuguese) {
     const nouns = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural]);

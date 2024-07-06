@@ -1,7 +1,7 @@
 import { Exercise } from '../../../exercise/exercise';
 import { VerbExercise } from '../../../exercise/verb-exercise';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
-import { getProgress, getSingleExerciseProgress } from '../../../service/progress/progress';
+import { getSingleExerciseProgress, ProgressType } from '../../../service/progress/progress';
 import { logger } from '../../../common/logger';
 import { VerbTranslationExercise } from '../../../exercise/translation/verb-translation-exercise';
 import { Language } from '../../../common/language';
@@ -25,9 +25,9 @@ export function exerciseVerbNeverTranslated(
     // @ts-ignore
     ExerciseType.new(exercise.verb, 'toPortuguese')
   );
-  if (progress.ratioRange !== '80-100') {
+  if (progress.progressType !== ProgressType.DONE) {
     if (!verbs.includes(exercise.verb.infinitive)) {
-      logger.debug(`VerbExercise Prority: [${exercise.verb.infinitive}] [${progress.ratioRange}]`);
+      logger.debug(`VerbExercise Prority: [${exercise.verb.infinitive}] [${progress.progressType}]`);
       verbs.push(exercise.verb.infinitive);
     }
     return [

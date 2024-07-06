@@ -1,6 +1,5 @@
 import { BaseWord, BaseWordType, Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
-import { RatioRange } from '../../service/progress/progress';
 
 export type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing' | 'introduction';
 
@@ -26,10 +25,6 @@ export abstract class TranslationExercise implements Exercise {
 
   public isTranslationToPortugueseFromHearing(): boolean {
     return this.translationType === 'toPortugueseFromHearing';
-  }
-
-  public getMaxProgressRange(): RatioRange {
-    return '80-100';
   }
 
   getMinAnswerCount(): number {

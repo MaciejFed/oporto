@@ -7,6 +7,7 @@ import { Language } from '../common/language';
 import { WordExampleLine } from '../service/example-finder/example-finder.types';
 import { enforceArrayLimit } from '../common/common';
 import { MovieExample } from '../io/file';
+import { Audio, Rate } from './audio/audio.types';
 
 const config = loadValidConfig();
 const dbName = 'oporto';
@@ -16,6 +17,8 @@ const examplesPT = 'examples_pt';
 const examplesDE = 'examples_de';
 const favoriteExamplesPT = 'favorite_examples_pt';
 const favoriteExamplesDE = 'favorite_examples_de';
+const audiosPT = 'audios_pt';
+const audiosDE = 'audios_de';
 
 const getCollectionName = (language: Language) =>
   language === Language.Portuguese ? collectionName : collectionNameDE;
@@ -25,6 +28,8 @@ const getExamplesCollectionName = (language: Language, type: 'top' | 'total') =>
 
 const getFavoriteExamplesCollectionName = (language: Language) =>
   language === Language.Portuguese ? favoriteExamplesPT : favoriteExamplesDE;
+
+const getAudiosCollectionName = (language: Language) => (language === Language.Portuguese ? audiosPT : audiosDE);
 
 const getClient = async () => {
   const client = new MongoClient(config.dbHost, {
@@ -148,6 +153,52 @@ export async function readAllResults(language: Language): Promise<Result[]> {
     const findResult = await collection.find<Result>({}).toArray();
 
     return parseResults(findResult.filter((result) => result.exercise));
+  } finally {
+    await client.close();
+  }
+}
+
+export async function getPreviousAudioVoice(language: Language, text: string): Promise<string | null> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(getAudiosCollectionName(language));
+    const audio = await collection.findOne<Audio>({
+      text
+    });
+    if (audio) {
+      return audio.voice;
+    }
+    return null;
+  } finally {
+    await client.close();
+  }
+}
+
+export async function getAudio(language: Language, text: string, rate: Rate): Promise<Audio | null> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(getAudiosCollectionName(language));
+    return await collection.findOne<Audio>({
+      text,
+      rate
+    });
+  } finally {
+    await client.close();
+  }
+}
+
+export async function saveAudio(language: Language, audio: Audio): Promise<string> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(getAudiosCollectionName(language));
+    const insertedAudio = await collection.insertOne(audio);
+
+    logger.info(`Inserted new audio=[${insertedAudio.insertedId}]`);
+
+    return insertedAudio.insertedId.toString();
   } finally {
     await client.close();
   }

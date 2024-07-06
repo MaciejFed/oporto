@@ -3,7 +3,6 @@ import { Comparable } from '../common/common';
 import { BaseWordType, Exercise, ExerciseType } from './exercise';
 import { GermanPerson, GermanVerb } from '../repository/german-exercises-repository';
 import { getRandomGermanVerb } from '../service/translation';
-import { RatioRange } from '../service/progress/progress';
 import { getCorrectGermanVerbConjugation, getRandomGermanPerson } from '../service/verb/verb';
 
 export type VerbTime = 'presentSimple' | 'pastPerfect';
@@ -48,10 +47,6 @@ export class GermanVerbExercise implements Exercise, Comparable {
   isAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
-  }
-
-  getMaxProgressRange(): RatioRange {
-    return '80-100';
   }
 
   getMinAnswerCount(): number {

@@ -1,7 +1,6 @@
 import { Exercise, ExerciseType } from '../../../exercise/exercise';
-import { Result } from '../../../service/result';
 import { ExerciseResultContext, noPriority, Priority } from '../../priority';
-import { ExerciseProgress, RatioRange } from '../../../service/progress/progress';
+import { ProgressType } from '../../../service/progress/progress';
 import { onlyDistinct } from '../../../common/common';
 import { logger } from '../../../common/logger';
 
@@ -46,7 +45,9 @@ export function exerciseTypeInProgressLimit(
   if (!limit) return noPriority(exercise);
   const exercisesOfTypeInProgress = onlyDistinct(
     exerciseTypeProgress
-      .filter((progress) => progress.ratioRange !== 'Never Done' && progress.ratioRange !== '80-100')
+      .filter(
+        (progress) => progress.progressType !== ProgressType.NEVER_DONE && progress.progressType !== ProgressType.DONE
+      )
       .map((ep) => ep.exercise)
   );
 

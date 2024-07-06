@@ -86,7 +86,7 @@ export function onlyDistinctSubjects(arr: Exercise[]): Exercise[] {
 
 export function findWordStartIndex(sentence: string, word: string) {
   const words = sentence.split(' ');
-  const index = words.indexOf(word);
+  const index = words.map((w) => w.replace(/[,.]/g, '')).indexOf(word);
 
   return words.slice(0, index).reduce((prev, curr) => curr.length + prev + 1, 0);
 }
@@ -95,6 +95,27 @@ export function getRandomElement<T>(arr: T[], maxLength?: number): T {
   // eslint-disable-next-line no-nested-ternary
   const length = maxLength ? (arr.length > maxLength ? maxLength : arr.length) : arr.length;
   return arr[Math.floor(Math.random() * length)];
+}
+
+export function removeRepetitionFromBlocks<T>(arr: T[], equalFn: (a: T, b: T) => boolean, blockSize = 5): T[] {
+  const hasDuplicates = (block: T[]): boolean => {
+    return block.some((element) => block.filter((e) => equalFn(element, e)).length > 1);
+  };
+
+  return arr
+    .reduce<T[][]>(
+      (prev, curr) => {
+        const firstElementWithoutRepetition = prev.findIndex(
+          (subArray) => !hasDuplicates([...subArray, curr]) && subArray.length < blockSize
+        );
+        if (firstElementWithoutRepetition === -1) return prev.concat([[curr]]);
+        return prev.map((subArray, index) =>
+          index === firstElementWithoutRepetition ? [...subArray, curr] : subArray
+        );
+      },
+      [[]]
+    )
+    .flatMap((a) => a);
 }
 
 export async function sleep(milliseconds: number) {

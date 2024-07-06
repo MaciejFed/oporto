@@ -1,4 +1,4 @@
-import { findWordStartIndex, getRandomElement } from './common';
+import { findWordStartIndex, getRandomElement, removeRepetitionFromBlocks } from './common';
 
 describe('Common', () => {
   describe('getRandomElement', () => {
@@ -18,7 +18,7 @@ describe('Common', () => {
   });
 
   describe('findWordStartIndex', () => {
-    const sentence = 'the brown fox jumps over the lazy dog';
+    const sentence = 'the brown fox jumps, over the lazy dog';
     it('as first word is sentence', () => {
       const index = findWordStartIndex(sentence, 'the');
 
@@ -31,7 +31,25 @@ describe('Common', () => {
       const word = sentence.substring(index, index + wordToFind.length);
 
       expect(word).toEqual(wordToFind);
-      expect(index).toEqual(20);
+      expect(index).toEqual(21);
+    });
+  });
+
+  describe('removeRepetitionFromBlocks', () => {
+    it('removes repetition from block', () => {
+      const arrayWithRepetitions = [2, 1, 2, 4, 6, 2, 8, 9, 0];
+      const result = removeRepetitionFromBlocks(arrayWithRepetitions, (a, b) => a === b, 3);
+
+      expect(arrayWithRepetitions.length).toEqual(result.length);
+      expect(result).toEqual([2, 1, 4, 2, 6, 8, 2, 9, 0]);
+    });
+
+    it('removes repetition from block simple', () => {
+      const arrayWithRepetitions = ['a', 'a', 'a', 'a', 'b', 'b', 'b'];
+      const result = removeRepetitionFromBlocks(arrayWithRepetitions, (a, b) => a === b, 2);
+
+      expect(arrayWithRepetitions.length).toEqual(result.length);
+      expect(result).toEqual(['a', 'b', 'a', 'b', 'a', 'b', 'a']);
     });
   });
 });

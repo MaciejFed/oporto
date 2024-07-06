@@ -37,13 +37,15 @@ import {
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { findExampleSentenceAndWord } from '../service/example-finder/example-finder';
+import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { getVoice, Language } from '../common/language';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { sleep } from '../common/common';
 import { MovieExample } from './file';
-import { saveFavoriteExample } from '../client/client';
+import { getAudio, saveFavoriteExample } from '../client/client';
+import { getSavedAudioPath } from '../server/configuration';
+import { Rate } from '../server/audio/audio.types';
 
 export class Terminal {
   eventProcessor: EventProcessor;
@@ -140,7 +142,7 @@ export class Terminal {
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      this.sayCorrectAnswerPhrase();
+      this.playAudio(true, 'answer', 'normal', false);
       findExampleSentenceAndWord(
         this.language,
         exercise,
@@ -152,15 +154,17 @@ export class Terminal {
             wordStartIndex,
             word
           };
-          this.exampleSentenceTranslation = english;
-          this.exampleSentenceTranslationApi = englishApi;
-          execSync(`say -r 140 -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
-          printExampleSentence(
-            this.exampleSentence!.wordStartIndex,
-            this.exampleSentence!.word,
-            this.exampleSentence!.targetLanguage!
-          );
-          sleep(1000).then(() => exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`));
+          sleep(2_000).then(() => {
+            this.exampleSentenceTranslation = english;
+            this.exampleSentenceTranslationApi = englishApi;
+            this.playAudio(true, 'example', 'slow');
+            printExampleSentence(
+              this.exampleSentence!.wordStartIndex,
+              this.exampleSentence!.word,
+              this.exampleSentence!.targetLanguage!
+            );
+            sleep(1000).then(() => this.playAudio(true, 'example', 'normal'));
+          });
         }
       );
       if (wasCorrect) {
@@ -195,7 +199,7 @@ export class Terminal {
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
       // Broken
       if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
-        const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive);
+        const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive, allResults);
         printAllVerbConjugations(conjugation);
       } else if (['GermanVerbExercise', 'GermanVerbTranslation'].includes(this.exercise.exerciseType)) {
         // @ts-ignore
@@ -241,7 +245,7 @@ export class Terminal {
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
       case 'a':
-        exec(`say -v ${getVoice(this.language)} "${this.exampleSentence?.targetLanguage}"`);
+        this.playAudio(false, 'example', 'normal');
         break;
       case 'l':
         logSaved('Saving example...');
@@ -256,7 +260,7 @@ export class Terminal {
         );
         break;
       case 'r':
-        this.sayCorrectAnswerPhrase();
+        this.playAudio(false, 'answer', 'normal');
         break;
       default:
         terminal.hideCursor(false);
@@ -264,8 +268,14 @@ export class Terminal {
     }
   }
 
-  private sayCorrectAnswerPhrase() {
-    execSync(`say -v ${getVoice(this.language)} "${this.exercise?.getRetryPrompt()}"`);
+  private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate, sync = true) {
+    const text =
+      type === 'answer' ? extractWordToFindFromExercise(this.exercise!) : this.exampleSentence?.targetLanguage;
+    if (download) {
+      getAudio(this.language, text!, type, rate);
+    }
+    const syncFn = sync ? execSync : exec;
+    syncFn(`afplay ${getSavedAudioPath(type, rate)}`);
   }
 }
 

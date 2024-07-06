@@ -1,11 +1,12 @@
 import { exec, execSync } from 'child_process';
 import util from 'util';
-import { loadValidConfig } from '../server/configuration';
+import { getSavedAudioPath, loadValidConfig } from '../server/configuration';
 import { MovieExample } from '../io/file';
 import { Exercise } from '../exercise/exercise';
 import { Result } from '../service/result';
 import { logger } from '../common/logger';
 import { Language } from '../common/language';
+import { Rate } from '../server/audio/audio.types';
 
 const execAsync = util.promisify(exec);
 const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
@@ -31,6 +32,19 @@ export const fetchAllResults = (): Result[] => resultsCached;
 export const fetchAllResultsSync = (language: Language): Result[] => {
   const results = execSync(fetchResults(language), { maxBuffer: MAX_BUFFER }).toString();
   return JSON.parse(results);
+};
+
+export const getAudio = (language: Language, text: string, type: 'example' | 'answer', rate: Rate) => {
+  const outputPath = getSavedAudioPath(type, rate);
+  const command = `curl -s --location '${apiURL}/${language}/audio' \
+    --header 'Authorization: Bearer ${apiKey}' \
+    --header 'Content-Type: application/json' \
+    -o ${outputPath} \
+    --data '{
+        "text": "${text}",
+        "rate": "${rate}"
+    }'`;
+  execSync(command);
 };
 
 export const fetchMovieExample = async (language: Language, word: string): Promise<MovieExample> => {
@@ -64,7 +78,7 @@ export const saveNewResult = async (language: Language, newResult: Result) => {
 export const saveFavoriteExample = async (language: Language, example: MovieExample) => {
   const command = `curl -s --location --request POST ${apiURL}/${language}/example/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
     example
-  )}'`;
+  ).replace(/[']/g, '')}'`;
   execSync(command);
 };
 

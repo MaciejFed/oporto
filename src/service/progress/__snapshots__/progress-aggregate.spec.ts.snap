@@ -1,152 +1,194 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Progress Aggregate getProgressAggregate 1`] = `
-Object {
-  "exercises": Object {
-    "AdjectiveTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+{
+  "exercises": {
+    "AdjectiveTranslation": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [],
-        "count": 0,
-      },
-    },
-    "NounTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
-        "count": 0,
-      },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
-        "count": 0,
-      },
-      "NEVER_DONE": Object {
-        "baseWords": Array [],
+      "NEVER_DONE": {
+        "baseWords": [],
         "count": 0,
       },
     },
-    "OtherTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "GermanNounTranslation": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [],
+      "NEVER_DONE": {
+        "baseWords": [],
         "count": 0,
       },
     },
-    "VerbExercise": Object {
-      "DONE": Object {
-        "baseWords": Array [
+    "GermanVerbExercise": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "GermanVerbTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "NounTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "OtherTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "VerbExercise": {
+      "DONE": {
+        "baseWords": [
           "conhecer",
           "saber",
         ],
         "count": 2,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [
+      "IN_PROGRESS": {
+        "baseWords": [
           "saber",
         ],
         "count": 1,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "ver",
         ],
         "count": 1,
       },
     },
-    "VerbTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "VerbTranslation": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [],
+      "NEVER_DONE": {
+        "baseWords": [],
         "count": 0,
       },
     },
   },
-  "pointsMissing": Array [
-    Object {
+  "pointsMissing": [
+    {
       "baseWord": "saber",
       "incorrectAnswers": 1,
-      "pointsMissing": 80,
-      "total": 105,
+      "pointsMissing": -1,
+      "total": 24,
     },
   ],
-  "words": Object {
-    "ADJECTIVE": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+  "words": {
+    "ADJECTIVE": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [],
-        "count": 0,
-      },
-    },
-    "NOUN": Object {
-      "DONE": Object {
-        "baseWords": Array [],
-        "count": 0,
-      },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
-        "count": 0,
-      },
-      "NEVER_DONE": Object {
-        "baseWords": Array [],
+      "NEVER_DONE": {
+        "baseWords": [],
         "count": 0,
       },
     },
-    "OTHER": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "NOUN": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [],
+      "NEVER_DONE": {
+        "baseWords": [],
         "count": 0,
       },
     },
-    "VERB": Object {
-      "DONE": Object {
-        "baseWords": Array [
+    "OTHER": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "VERB": {
+      "DONE": {
+        "baseWords": [
           "conhecer",
         ],
         "count": 1,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [
+      "IN_PROGRESS": {
+        "baseWords": [
           "saber",
         ],
         "count": 1,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "ver",
         ],
         "count": 1,
@@ -157,19 +199,19 @@ Object {
 `;
 
 exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
-Object {
-  "exercises": Object {
-    "AdjectiveTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+{
+  "exercises": {
+    "AdjectiveTranslation": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "grande",
           "alto",
           "bom",
@@ -267,17 +309,59 @@ Object {
         "count": 93,
       },
     },
-    "NounTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "GermanNounTranslation": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "GermanVerbExercise": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "GermanVerbTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "NounTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [
           "cidade",
           "chá",
           "livro",
@@ -795,17 +879,17 @@ Object {
         "count": 513,
       },
     },
-    "OtherTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "OtherTranslation": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "debaixo",
           "trás",
           "atrás",
@@ -936,22 +1020,22 @@ Object {
         "count": 126,
       },
     },
-    "VerbExercise": Object {
-      "DONE": Object {
-        "baseWords": Array [
+    "VerbExercise": {
+      "DONE": {
+        "baseWords": [
           "saber",
           "conhecer",
         ],
         "count": 2,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [
+      "IN_PROGRESS": {
+        "baseWords": [
           "saber",
         ],
         "count": 1,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "ser",
           "estar",
           "ir",
@@ -1021,17 +1105,17 @@ Object {
         "count": 65,
       },
     },
-    "VerbTranslation": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "VerbTranslation": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "ser",
           "estar",
           "ir",
@@ -1219,26 +1303,26 @@ Object {
       },
     },
   },
-  "pointsMissing": Array [
-    Object {
+  "pointsMissing": [
+    {
       "baseWord": "saber",
       "incorrectAnswers": 1,
-      "pointsMissing": 80,
-      "total": 105,
+      "pointsMissing": -1,
+      "total": 24,
     },
   ],
-  "words": Object {
-    "ADJECTIVE": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+  "words": {
+    "ADJECTIVE": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "grande",
           "alto",
           "bom",
@@ -1336,17 +1420,17 @@ Object {
         "count": 93,
       },
     },
-    "NOUN": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "NOUN": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "cidade",
           "chá",
           "livro",
@@ -1864,17 +1948,17 @@ Object {
         "count": 513,
       },
     },
-    "OTHER": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "OTHER": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [],
+      "IN_PROGRESS": {
+        "baseWords": [],
         "count": 0,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "debaixo",
           "trás",
           "atrás",
@@ -2004,20 +2088,20 @@ Object {
         "count": 125,
       },
     },
-    "VERB": Object {
-      "DONE": Object {
-        "baseWords": Array [],
+    "VERB": {
+      "DONE": {
+        "baseWords": [],
         "count": 0,
       },
-      "IN_PROGRESS": Object {
-        "baseWords": Array [
+      "IN_PROGRESS": {
+        "baseWords": [
           "saber",
           "conhecer",
         ],
         "count": 2,
       },
-      "NEVER_DONE": Object {
-        "baseWords": Array [
+      "NEVER_DONE": {
+        "baseWords": [
           "ser",
           "estar",
           "ir",

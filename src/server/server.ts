@@ -14,6 +14,7 @@ import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-prog
 import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
+import { getAudioForText } from './audio/audio';
 
 const config = loadValidConfig();
 
@@ -103,7 +104,7 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   const toLearn = verbs.map((verb) => {
     // @ts-ignore
     const verbBase = wordDatabase.verb(verb);
-    const conjugation = checkStandardConjugation(verbBase.infinitive);
+    const conjugation = checkStandardConjugation(verbBase.infinitive, []);
     const conjugations = Object.values(Person).map((person: Person) => {
       const firstCon = conjugation.verb.presentSimple![person];
       const first = firstCon.isStandard ? firstCon.conjugation : `@${firstCon.conjugation}`;
@@ -191,6 +192,22 @@ app.post('/:language/example/save', async (req: Request, res: Response) => {
     await saveFavoriteExample(language, example);
     res.send('done');
   } catch (e) {
+    res.send('fail');
+  }
+});
+
+app.post('/:language/audio', async (req, res) => {
+  try {
+    const language = getLanguage(req);
+    const audio = await getAudioForText(language, req.body.text, req.body.rate);
+    res.download(audio.path, 'audio.mp3', (err) => {
+      if (err) {
+        console.error('Error sending file:', err);
+        res.status(500).send('Error sending audio');
+      }
+    });
+  } catch (e) {
+    logger.error(e);
     res.send('fail');
   }
 });
