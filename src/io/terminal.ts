@@ -5,40 +5,42 @@ import { terminal } from 'terminal-kit';
 import { EventProcessor } from '../event/event-processor';
 import { logger } from '../common/logger';
 import {
+  ANSWER_CHECKED,
   APP_STARTED,
-  EXERCISE_DESCRIPTION_PRINTED,
   EXERCISE_BODY_PRINTED,
   EXERCISE_BODY_PRINTED_BODY,
-  KEY_PRESSED,
-  ANSWER_CHECKED,
+  EXERCISE_DESCRIPTION_PRINTED,
   EXERCISE_NEXT,
-  EXERCISE_STARTED
+  EXERCISE_STARTED,
+  KEY_PRESSED,
+  NEW_WORD_LEARNED
 } from '../event/events';
 import {
   animateExerciseSummary,
   displayGenericWeeklyStatistics,
+  logSaved,
   preExerciseClear,
   printAllAnswers,
+  printAllVerbConjugations,
+  printAllVerbConjugationsDE,
+  printExampleSentence,
+  printExampleTranslation,
   printExerciseBody,
   printExerciseBodyWithCorrection,
   printExerciseDescription,
-  printExerciseTranslation,
   printExerciseFeedback,
   printExerciseRepeatAnswer,
   printExerciseRepeatAnswerKey,
   printExerciseRepeatBody,
+  printExerciseTranslation,
   printInBetweenMenu,
-  printExampleSentence,
-  printAllVerbConjugations,
-  printExampleTranslation,
-  printAllVerbConjugationsDE,
-  logSaved
+  printNewWordLearned
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForExercise } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
-import { getVoice, Language } from '../common/language';
+import { Language } from '../common/language';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { sleep } from '../common/common';
@@ -86,6 +88,7 @@ export class Terminal {
     this.registerOnKeyPressedEventListener();
     this.registerOnExerciseStartedEventListener();
     this.registerOnAnswerCheckedEventListener();
+    this.registerNewWordLearnedListener();
   }
 
   private registerOnAppStartedEventListener() {
@@ -173,6 +176,12 @@ export class Terminal {
         this.exerciseRepetitionInProgress = true;
         printExerciseRepeatBody();
       }
+    });
+  }
+
+  private registerNewWordLearnedListener() {
+    this.eventProcessor.on(NEW_WORD_LEARNED, (newWord) => {
+      printNewWordLearned(newWord);
     });
   }
 

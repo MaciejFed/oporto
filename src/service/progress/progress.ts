@@ -41,6 +41,24 @@ export type Progress = {
   count: number;
 };
 
+export function newWordsBetweenResults(resultStart: Result[], resultEnd: Result[], language: Language): string[] {
+  const getAllDoneWords = (result: Result[]) => {
+    const exercises = generateAllPossibleExercises(language);
+    const {
+      words: { NOUN, VERB, ADJECTIVE, OTHER }
+    } = getProgressAggregate(result, exercises);
+
+    return NOUN.DONE.baseWords
+      .concat(VERB.DONE.baseWords)
+      .concat(ADJECTIVE.DONE.baseWords)
+      .concat(OTHER.DONE.baseWords);
+  };
+  const doneStart = getAllDoneWords(resultStart);
+  const doneEnd = getAllDoneWords(resultEnd);
+
+  return doneEnd.filter((word) => !doneStart.includes(word));
+}
+
 export function getGroupExerciseProgress(
   exercises: Exercise[],
   results: Result[],

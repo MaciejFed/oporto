@@ -245,6 +245,16 @@ export function printAllVerbConjugations({ verb: { infinitive, presentSimple, pa
   });
 }
 
+export function printNewWordLearned(newWord: string) {
+  const text = 'New word learnt! ';
+  Output.bold();
+  Output.moveTo(0, 19, text);
+  Output.green();
+  Output.moveTo(text.length + 1, 19, newWord);
+  Output.bold(false);
+  Output.white();
+}
+
 export async function animateExerciseSummary({
   correctAttempts,
   failedAttempts,

@@ -8,7 +8,8 @@ import {
   EXERCISE_NEXT,
   EXERCISE_STARTED,
   KEY_PRESSED,
-  HEARING_EXERCISE_REPEAT
+  HEARING_EXERCISE_REPEAT,
+  NEW_WORD_LEARNED
 } from '../event/events';
 import { AppEventListener } from '../event/event-listener';
 import { EventProcessor } from '../event/event-processor';
@@ -22,11 +23,12 @@ import { AnswerInputType } from '../io/terminal/terminal-utils';
 import { getVoice, Language } from '../common/language';
 import { fetchExercisesForSession, getAudio, saveNewResult } from '../client/client';
 import { getSavedAudioPath } from '../server/configuration';
+import { getAllResults } from '../repository/result-repository';
+import { newWordsBetweenResults } from '../service/progress/progress';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
   exercises: Exercise[];
-  results: Result[];
   currentExercise: Exercise;
   answer: string;
   exerciseInProgress: boolean;
@@ -37,7 +39,6 @@ export class SessionManager implements AppEventListener {
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exercises = getExercisesForSession(language);
-    this.results = [];
     this.currentExercise = this.exercises[0];
     this.answer = '';
     this.exerciseInProgress = false;
@@ -93,7 +94,16 @@ export class SessionManager implements AppEventListener {
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       this.answer = this.answer.trim();
       const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
-      saveNewResult(this.language, convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType));
+      const result = convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType);
+      const newWords = newWordsBetweenResults(
+        getAllResults(this.language),
+        getAllResults(this.language).concat(result),
+        this.language
+      );
+      if (newWords.length) {
+        this.eventProcessor.emit(NEW_WORD_LEARNED, newWords[0]);
+      }
+      saveNewResult(this.language, result);
       logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         wasCorrect,

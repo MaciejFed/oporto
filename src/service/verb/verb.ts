@@ -181,7 +181,7 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive, allResu
                 isStandard: false,
                 conjugation: verbTense[person],
                 expectedConjugation,
-                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, 'presentSimple'))
+                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, tense))
                   .progressType
               }
             }
@@ -200,7 +200,7 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive, allResu
                 isStandard: true,
                 conjugation: verbTense[person],
                 expectedConjugation,
-                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, 'pastPerfect'))
+                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, tense))
                   .progressType
               }
             }
