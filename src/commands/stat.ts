@@ -1,26 +1,56 @@
 import { logger } from '../common/logger';
 import { displayGenericWeeklyStatistics } from '../io/terminal/terminal-utils';
 import { getAllResults } from '../repository/result-repository';
-import { getAllUniqueWords } from '../service/progress/progress';
-import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics } from '../service/result';
-import { generateExercisesForSession } from '../exercise/generator';
+import { getAllUniqueWords, ProgressType } from '../service/progress/progress';
+import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics, Result } from '../service/result';
+import { generateAllPossibleExercises, generateExercisesForSession } from '../exercise/generator';
 import clear from 'clear';
 import { Language } from '../common/language';
+import { getProgressAggregate, ProgressDetails } from '../service/progress/progress-aggregate';
+import { Table } from 'console-table-printer';
 
-export function displayStatistics(displayProgress: boolean, language: Language) {
+const createTable = (
+  title: string,
+  { DONE, IN_PROGRESS, NEVER_DONE }: Record<ProgressType, ProgressDetails>,
+  results: Result[]
+) => {
+  const table = new Table({
+    title,
+    columns: [
+      { name: 'Done', alignment: 'left', minLen: 10, color: 'green' },
+      { name: 'In Progress', alignment: 'left', minLen: 10 },
+      { name: 'Never Done', alignment: 'left', minLen: 10 }
+    ]
+  });
+  const sortMostRecent = (wordA: string, wordB: string) => {
+    const indexA = results.findIndex((result) => result.exercise.getBaseWordAsString() === wordA);
+    const indexB = results.findIndex((result) => result.exercise.getBaseWordAsString() === wordB);
+
+    return indexA - indexB;
+  };
+  const doneWords = DONE.baseWords.map((word) => word).sort(sortMostRecent);
+  const inProgressWords = IN_PROGRESS.baseWords.map((word) => word).sort(sortMostRecent);
+  const neverDoneWords = NEVER_DONE.baseWords.map((word) => word).sort(sortMostRecent);
+  Array(20)
+    .fill(0)
+    .forEach((_i, index) => {
+      table.addRow({
+        Done: doneWords[index] ? `${index + 1}. ${doneWords[index]}` : '',
+        'In Progress': inProgressWords[index] ? `${index + 1}. ${inProgressWords[index]}` : '',
+        'Never Done': neverDoneWords[index] ? `${index + 1}. ${neverDoneWords[index]}` : ''
+      });
+    });
+
+  return table;
+};
+
+export function displayStatistics(_displayProgress: boolean, language: Language) {
   clear();
-  displayGenericWeeklyStatistics(getWeekdayStatistics(language), 0);
-  if (displayProgress) {
-    displayGenericWeeklyStatistics(getWeekdayProgress(language), 30);
-    console.log(`Overall Progress: ${getOverallProgres(language)}`);
-    logger.info(`Overall Progress: ${getOverallProgres(language)}`);
-
-    const allResults = getAllResults(language);
-    const allExercises = generateExercisesForSession(20000, false, () => true, language);
-    const notDoneExercises = allExercises.filter(
-      (e) => allResults.filter((result) => result.exercise.equal(e)).length === 0
-    );
-    logger.info(`All unique words: ${getAllUniqueWords(language).length}`);
-    console.log(`Never Done: ${notDoneExercises.length}`);
-  }
+  // displayGenericWeeklyStatistics(getWeekdayStatistics(language), 0);
+  const results = getAllResults(language);
+  const progress = getProgressAggregate(results.reverse(), generateAllPossibleExercises(language));
+  const tableNouns = createTable('Nouns', progress.words.NOUN, results);
+  const tableVerbs = createTable('Verbs', progress.words.VERB, results);
+  tableNouns.printTable();
+  tableVerbs.printTable();
 }

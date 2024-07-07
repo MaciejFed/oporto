@@ -136,9 +136,7 @@ export function sortExercises(
 
   logSortingTime(start);
 
-  const randomIndex = Math.floor(Math.random() * 10);
-  const randomExercise = getRandomElement(exercises);
-  const sortedExercises = insertRandomExercise(exercisesWithPriorities, randomIndex, randomExercise);
+  const sortedExercises = exercisesWithPriorities.map((e) => e.exercise);
 
   return {
     exercises: removeRepetitionFromBlocks(

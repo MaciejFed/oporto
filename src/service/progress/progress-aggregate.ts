@@ -23,7 +23,7 @@ type PointsMissing = {
   total: number;
 };
 
-type ProgressDetails = {
+export type ProgressDetails = {
   count: number;
   baseWords: string[];
 };

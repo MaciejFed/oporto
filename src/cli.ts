@@ -44,6 +44,13 @@ program
   });
 
 program
+  .command('statde')
+  .description('Show statistics DE')
+  .action((str, options) => {
+    displayStatistics(true, Language.German);
+  });
+
+program
   .command('progress')
   .description('Save progress')
   .action(() => {

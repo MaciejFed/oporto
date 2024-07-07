@@ -19,7 +19,9 @@
     "de": "ts-node src/cli.ts testde",
     "progress": "ts-node src/cli.ts progress",
     "progressde": "ts-node src/cli.ts progressde",
-    "verify": "npm run lint && npm run format && npm run test",
+    "stat": "ts-node src/cli.ts stat",
+    "statdee": "ts-node src/cli.ts statde",
+    "verify": "npm run lint && npm run format",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto && rm -rf ./build"
@@ -40,6 +42,7 @@
     "chalk": "^4.1.2",
     "clear": "^0.1.0",
     "commander": "^9.3.0",
+    "console-table-printer": "^2.12.1",
     "dotenv": "^16.3.1",
     "ervy": "^1.0.7",
     "express": "^4.18.2",
