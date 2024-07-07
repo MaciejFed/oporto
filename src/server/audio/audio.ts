@@ -24,7 +24,7 @@ const getVoiceForLanguage = async (language: Language, text: string) => {
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
     case Language.German:
       return getRandomElement(
-        ['A', 'B', 'C'].map((index) => `de-DE-Neural2-${index}`).concat('de-DE-Polyglot-1')
+        ['A', 'B'].map((index) => `de-DE-Neural2-${index}`).concat('de-DE-Polyglot-1')
       );
     default:
       throw new Error(`Unknown language: [${language}]`);
