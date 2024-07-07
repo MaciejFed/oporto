@@ -15,6 +15,13 @@ import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
 import { getAudioForText } from './audio/audio';
+import { createTable } from '../commands/stat';
+import { getAllResults } from '../repository/result-repository';
+import { DateTimeExtended } from '../common/common';
+import { DateTime } from 'luxon';
+import path from 'path';
+import os from 'os';
+import { writeFileSync } from 'node:fs';
 
 const config = loadValidConfig();
 
@@ -56,13 +63,26 @@ const preFetch = async (language: Language) => {
       const results = await readAllResults(language);
       cachedExercises[language] = await generateExercisesForSessionAsync(50, true, () => true, language, results);
       logger.info(`Saved exercises to cache ${new Date()}`);
-    } else {
-      logger.info(`Cache still has [${cachedExercises[language].length}] exercises - skipping refresh.`);
     }
   } catch (e) {
     logger.error('error refreshng cache', e);
   }
 };
+
+setInterval(() => {
+  [Language.German, Language.Portuguese].forEach((language) => {
+    readAllResults(language).then((results) => {
+      const progressAggregate = getProgressAggregate(results, generateAllPossibleExercises(language));
+      const date = DateTime.fromJSDate(new Date()).toISODate();
+      const progressDir = path.join(os.homedir(), 'progress');
+      writeFileSync(`${progressDir}/verbs.${date}`, createTable('Verbs', progressAggregate.words.VERB, results, language).render());
+      writeFileSync(`${progressDir}/nouns.${date}`, createTable('Nouns', progressAggregate.words.NOUN, results, language).render());
+      writeFileSync(`${progressDir}/adjectives.${date}`, createTable('Adjectives', progressAggregate.words.ADJECTIVE, results, language).render());
+      writeFileSync(`${progressDir}/others.${date}`, createTable('Others', progressAggregate.words.OTHER, results, language).render());
+    })
+  })
+
+},   15 * 60 * 1000)
 
 setInterval(() => {
   preFetchAggregate();
