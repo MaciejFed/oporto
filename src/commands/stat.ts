@@ -11,6 +11,7 @@ import { Table } from 'console-table-printer';
 import Output from '../io/output';
 import { terminal } from 'terminal-kit';
 import { preFetchAllResults } from '../client/client';
+import { DateTime } from 'luxon';
 
 type Tables = {
   tableVerbs: string;
@@ -19,13 +20,20 @@ type Tables = {
   tableOthers: string;
 };
 
+const withDateLastAttempted = (baseWord: string, results: Result[], doneLongestPadding: number) => {
+  const date = results.find((result) => result.exercise.getBaseWordAsString() === baseWord)!.date;
+  return `${baseWord.padEnd(doneLongestPadding)} [${DateTime.fromJSDate(date).monthShort}/${date.getDate()}]`;
+};
+
 const printAllTables = ({ tableVerbs, tableNouns, tableAdjectives, tableOthers }: Tables) => {
-  const spitAndPad = (table: string) => table.split('\n');
-  return spitAndPad(tableVerbs)
-    .map((line, index) => line.concat(spitAndPad(tableNouns)[index]))
-    .map((line, index) => line.concat(spitAndPad(tableAdjectives)[index]))
-    .map((line, index) => line.concat(spitAndPad(tableOthers)[index]))
-    .join('\n');
+  const spitAndPad = (table: string) => table.split('\n').map((line) => line.concat('    '));
+  return (
+    spitAndPad(tableVerbs)
+      .map((line, index) => line.concat(spitAndPad(tableNouns)[index]))
+      .map((line, index) => line.concat(spitAndPad(tableAdjectives)[index]))
+      // .map((line, index) => line.concat(spitAndPad(tableOthers)[index]))
+      .join('\n')
+  );
 };
 
 export const createTable = (
@@ -36,9 +44,9 @@ export const createTable = (
 ) => {
   const inProgressTotalMissing =
     IN_PROGRESS.baseWords.reduce((prev, curr) => prev + getAnswersMissingForBaseWord(curr, results, language), 0) * -1;
-  const doneHeader = `Done[${DONE.baseWords.length}]`;
-  const inProgressHeader = `In Progress[${IN_PROGRESS.baseWords.length}](${inProgressTotalMissing})`;
-  const neverDoneHeader = `NeverDone[${NEVER_DONE.baseWords.length}]`;
+  const doneHeader = `Done [${DONE.baseWords.length}]`;
+  const inProgressHeader = `In Progress [${IN_PROGRESS.baseWords.length}] (${inProgressTotalMissing})`;
+  const neverDoneHeader = `Never Done [${NEVER_DONE.baseWords.length}]`;
   const table = new Table({
     title,
     columns: [
@@ -53,10 +61,19 @@ export const createTable = (
 
     return indexA - indexB;
   };
+  const longestPadding = (arr: string[]) => arr.reduce((prev, curr) => (curr.length > prev ? curr.length : prev), 0);
   const numberWithPadding = (index: number) => `${index + 1}.`.padEnd(3);
-  const doneWords = DONE.baseWords.map((word) => word).sort(sortMostRecent);
+  const doneLongestPadding = longestPadding(DONE.baseWords);
+  const inProgressLongestPadding = longestPadding(IN_PROGRESS.baseWords);
+  const doneWords = DONE.baseWords
+    .map((word) => word)
+    .sort(sortMostRecent)
+    .map((word) => withDateLastAttempted(word, results, doneLongestPadding));
   const inProgressWords = IN_PROGRESS.baseWords
-    .map((word) => `${word} (${getAnswersMissingForBaseWord(word, results, language) * -1})`)
+    .map(
+      (word) =>
+        `${word.padEnd(inProgressLongestPadding)} (${getAnswersMissingForBaseWord(word, results, language) * -1})`
+    )
     .sort(sortMostRecent);
   const neverDoneWords = NEVER_DONE.baseWords.map((word) => word).sort(sortMostRecent);
   Array(20)
@@ -75,8 +92,8 @@ export const createTable = (
 export function displayStatistics(_displayProgress: boolean, language: Language) {
   clear();
   preFetchAllResults(language);
-  const results = getAllResults(language);
-  const progress = getProgressAggregate(results.reverse(), generateAllPossibleExercises(language));
+  const results = getAllResults(language).reverse();
+  const progress = getProgressAggregate(results, generateAllPossibleExercises(language));
   displayGenericWeeklyStatistics(getWeekdayStatistics(language), 0);
   terminal.nextLine(5);
   const tables = {
