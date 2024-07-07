@@ -27,6 +27,7 @@ import {
   IN_PROGRESS_LIMIT_MAP
 } from './types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 import { Language } from '../common/language';
+import { createTable } from '../commands/stat';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -174,39 +175,11 @@ function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Re
     });
 }
 
-function logCurrentWordsInProgress(progressAggregate: ProgressAggregate): void {
-  const { VERB, ADJECTIVE, NOUN, OTHER } = IN_PROGRESS_LIMIT_MAP;
-  const findMissingPoints = (word: string) => {
-    return progressAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
-  };
-  const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
-  const joinWithPointsMissing = (baseWords: string[]) => {
-    return baseWords.reduce(
-      (prev, curr) => ({
-        ...prev,
-        [curr]: findMissingPoints(curr)
-      }),
-      {}
-    );
-  };
-  logger.info(
-    'Current Words In Progress: VERBS:',
-    joinWithPointsMissing(progressAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB).sort(sortPointsMissing))
-  );
-  logger.info(
-    'Current Words In Progress: ADJECTIVES',
-    joinWithPointsMissing(
-      progressAggregate.words.ADJECTIVE.IN_PROGRESS.baseWords.slice(0, ADJECTIVE).sort(sortPointsMissing)
-    )
-  );
-  logger.info(
-    'Current Words In Progress: NOUNS:',
-    joinWithPointsMissing(progressAggregate.words.NOUN.IN_PROGRESS.baseWords.slice(0, NOUN).sort(sortPointsMissing))
-  );
-  logger.info(
-    'Current Words In Progress: OTHER:',
-    joinWithPointsMissing(progressAggregate.words.OTHER.IN_PROGRESS.baseWords.slice(0, OTHER).sort(sortPointsMissing))
-  );
+function logCurrentWordsInProgress(progressAggregate: ProgressAggregate, results: Result[], language: Language): void {
+  logger.info(createTable('Verbs', progressAggregate.words.VERB, results, language).render());
+  logger.info(createTable('Nouns', progressAggregate.words.NOUN, results, language).render());
+  logger.info(createTable('Adjective', progressAggregate.words.ADJECTIVE, results, language).render());
+  logger.info(createTable('Other', progressAggregate.words.OTHER, results, language).render());
 }
 
 function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: ExerciseProgress[]): void {
@@ -229,7 +202,7 @@ function getExercisesWithPriorities(
 ): ExerciseWithPriorites[] {
   const priorityCompilerTimes: Record<string, number> = {};
   const progressAggregate = getProgressAggregate(allResults, exercises);
-  logCurrentWordsInProgress(progressAggregate);
+  logCurrentWordsInProgress(progressAggregate, allResults, language);
 
   const x = exercisesWithoutWantedProgress
     .map((ex) => {

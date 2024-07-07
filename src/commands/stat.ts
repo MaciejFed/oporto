@@ -1,22 +1,44 @@
 import { logger } from '../common/logger';
 import { displayGenericWeeklyStatistics } from '../io/terminal/terminal-utils';
 import { getAllResults } from '../repository/result-repository';
-import { getAllUniqueWords, ProgressType } from '../service/progress/progress';
+import { getAnswersMissingForBaseWord, getAllUniqueWords, ProgressType } from '../service/progress/progress';
 import { getOverallProgres, getWeekdayProgress, getWeekdayStatistics, Result } from '../service/result';
 import { generateAllPossibleExercises, generateExercisesForSession } from '../exercise/generator';
 import clear from 'clear';
 import { Language } from '../common/language';
 import { getProgressAggregate, ProgressDetails } from '../service/progress/progress-aggregate';
 import { Table } from 'console-table-printer';
+import Output from '../io/output';
+import { terminal } from 'terminal-kit';
+import { preFetchAllResults } from '../client/client';
 
-const createTable = (
+type Tables = {
+  tableVerbs: string;
+  tableNouns: string;
+  tableAdjectives: string;
+  tableOthers: string;
+};
+
+const printAllTables = ({ tableVerbs, tableNouns, tableAdjectives, tableOthers }: Tables) => {
+  const spitAndPad = (table: string) => table.split('\n');
+  return spitAndPad(tableVerbs)
+    .map((line, index) => line.concat(spitAndPad(tableNouns)[index]))
+    .map((line, index) => line.concat(spitAndPad(tableAdjectives)[index]))
+    .map((line, index) => line.concat(spitAndPad(tableOthers)[index]))
+    .join('\n');
+};
+
+export const createTable = (
   title: string,
   { DONE, IN_PROGRESS, NEVER_DONE }: Record<ProgressType, ProgressDetails>,
-  results: Result[]
+  results: Result[],
+  language: Language
 ) => {
-  const doneHeader = `Done [${DONE.baseWords.length}]`;
-  const inProgressHeader = `In Progress [${IN_PROGRESS.baseWords.length}]`;
-  const neverDoneHeader = `Never Done [${NEVER_DONE.baseWords.length}]`;
+  const inProgressTotalMissing =
+    IN_PROGRESS.baseWords.reduce((prev, curr) => prev + getAnswersMissingForBaseWord(curr, results, language), 0) * -1;
+  const doneHeader = `Done[${DONE.baseWords.length}]`;
+  const inProgressHeader = `In Progress[${IN_PROGRESS.baseWords.length}](${inProgressTotalMissing})`;
+  const neverDoneHeader = `NeverDone[${NEVER_DONE.baseWords.length}]`;
   const table = new Table({
     title,
     columns: [
@@ -31,16 +53,19 @@ const createTable = (
 
     return indexA - indexB;
   };
+  const numberWithPadding = (index: number) => `${index + 1}.`.padEnd(3);
   const doneWords = DONE.baseWords.map((word) => word).sort(sortMostRecent);
-  const inProgressWords = IN_PROGRESS.baseWords.map((word) => word).sort(sortMostRecent);
+  const inProgressWords = IN_PROGRESS.baseWords
+    .map((word) => `${word} (${getAnswersMissingForBaseWord(word, results, language) * -1})`)
+    .sort(sortMostRecent);
   const neverDoneWords = NEVER_DONE.baseWords.map((word) => word).sort(sortMostRecent);
   Array(20)
     .fill(0)
     .forEach((_i, index) => {
       table.addRow({
-        [doneHeader]: doneWords[index] ? `${index + 1}. ${doneWords[index]}` : '',
-        [inProgressHeader]: inProgressWords[index] ? `${index + 1}. ${inProgressWords[index]}` : '',
-        [neverDoneHeader]: neverDoneWords[index] ? `${index + 1}. ${neverDoneWords[index]}` : ''
+        [doneHeader]: doneWords[index] ? `${numberWithPadding(index)} ${doneWords[index]}` : '',
+        [inProgressHeader]: inProgressWords[index] ? `${numberWithPadding(index)} ${inProgressWords[index]}` : '',
+        [neverDoneHeader]: neverDoneWords[index] ? `${numberWithPadding(index)} ${neverDoneWords[index]}` : ''
       });
     });
 
@@ -49,11 +74,16 @@ const createTable = (
 
 export function displayStatistics(_displayProgress: boolean, language: Language) {
   clear();
-  // displayGenericWeeklyStatistics(getWeekdayStatistics(language), 0);
+  preFetchAllResults(language);
   const results = getAllResults(language);
   const progress = getProgressAggregate(results.reverse(), generateAllPossibleExercises(language));
-  const tableNouns = createTable('Nouns', progress.words.NOUN, results);
-  const tableVerbs = createTable('Verbs', progress.words.VERB, results);
-  tableNouns.printTable();
-  tableVerbs.printTable();
+  displayGenericWeeklyStatistics(getWeekdayStatistics(language), 0);
+  terminal.nextLine(5);
+  const tables = {
+    tableVerbs: createTable('Verbs', progress.words.VERB, results, language).render(),
+    tableNouns: createTable('Nouns', progress.words.NOUN, results, language).render(),
+    tableAdjectives: createTable('Adjectives', progress.words.ADJECTIVE, results, language).render(),
+    tableOthers: createTable('Others', progress.words.OTHER, results, language).render()
+  };
+  console.log(printAllTables(tables));
 }

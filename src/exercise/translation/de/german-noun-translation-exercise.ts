@@ -56,7 +56,7 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.getWordWithGender());
 
   getBaseWordAsString(): string | undefined {
-    return this.noun.german.singular;
+    return this.getWordWithGender();
   }
 
   getBaseWordType(): BaseWordType | undefined {

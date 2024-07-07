@@ -32,6 +32,7 @@ export type ExerciseProgress = {
   correctAnswers: number;
   incorrectAnswers: number;
   ratio: number;
+  answersMissing: number;
   exerciseResults: Result[];
   progressType: ProgressType;
 };
@@ -80,6 +81,13 @@ const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: number) =>
   return ratio < 100 ? ProgressType.IN_PROGRESS : ProgressType.DONE;
 };
 
+export function getAnswersMissingForBaseWord(baseWord: string, results: Result[], language: Language): number {
+  return generateAllPossibleExercises(language)
+    .filter((exercise) => exercise.getBaseWordAsString() === baseWord)
+    .map((exercise) => getSingleExerciseProgress(results, exercise))
+    .reduce((prev, curr) => prev + curr.answersMissing, 0);
+}
+
 export function getSingleExerciseProgress(results: Result[], exercise: Exercise): ExerciseProgress {
   const exerciseResults = getAllResultsForExercise(results, exercise);
   const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
@@ -90,6 +98,10 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
     correctAnswers,
     incorrectAnswers,
     ratio,
+    answersMissing: Math.max(
+      0,
+      !correctAnswers && !incorrectAnswers ? 1 : incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO - correctAnswers
+    ),
     exerciseResults,
     progressType: mapRatioToProgress(correctAnswers, incorrectAnswers)
   };

@@ -435,7 +435,7 @@ export const db: Schema = {
         plural: 'Tische',
         gender: 'masculine'
       }
-    },
+    }
   ],
   verbs: [
     {
