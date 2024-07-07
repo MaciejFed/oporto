@@ -14,12 +14,15 @@ const createTable = (
   { DONE, IN_PROGRESS, NEVER_DONE }: Record<ProgressType, ProgressDetails>,
   results: Result[]
 ) => {
+  const doneHeader = `Done [${DONE.baseWords.length}]`;
+  const inProgressHeader = `In Progress [${IN_PROGRESS.baseWords.length}]`;
+  const neverDoneHeader = `Never Done [${NEVER_DONE.baseWords.length}]`;
   const table = new Table({
     title,
     columns: [
-      { name: 'Done', alignment: 'left', minLen: 10, color: 'green' },
-      { name: 'In Progress', alignment: 'left', minLen: 10 },
-      { name: 'Never Done', alignment: 'left', minLen: 10 }
+      { name: doneHeader, alignment: 'left', minLen: 10, color: 'green' },
+      { name: inProgressHeader, alignment: 'left', minLen: 10 },
+      { name: neverDoneHeader, alignment: 'left', minLen: 10 }
     ]
   });
   const sortMostRecent = (wordA: string, wordB: string) => {
@@ -35,9 +38,9 @@ const createTable = (
     .fill(0)
     .forEach((_i, index) => {
       table.addRow({
-        Done: doneWords[index] ? `${index + 1}. ${doneWords[index]}` : '',
-        'In Progress': inProgressWords[index] ? `${index + 1}. ${inProgressWords[index]}` : '',
-        'Never Done': neverDoneWords[index] ? `${index + 1}. ${neverDoneWords[index]}` : ''
+        [doneHeader]: doneWords[index] ? `${index + 1}. ${doneWords[index]}` : '',
+        [inProgressHeader]: inProgressWords[index] ? `${index + 1}. ${inProgressWords[index]}` : '',
+        [neverDoneHeader]: neverDoneWords[index] ? `${index + 1}. ${neverDoneWords[index]}` : ''
       });
     });
 

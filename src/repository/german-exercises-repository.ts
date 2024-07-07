@@ -427,7 +427,15 @@ export const db: Schema = {
         plural: 'Wochen',
         gender: 'feminine'
       }
-    }
+    },
+    {
+      english: 'table',
+      german: {
+        singular: 'Tisch',
+        plural: 'Tische',
+        gender: 'masculine'
+      }
+    },
   ],
   verbs: [
     {
