@@ -70,11 +70,11 @@ export const createTable = (
     .sort(sortMostRecent)
     .map((word) => withDateLastAttempted(word, results, doneLongestPadding));
   const inProgressWords = IN_PROGRESS.baseWords
+    .sort(sortMostRecent)
     .map(
       (word) =>
         `${word.padEnd(inProgressLongestPadding)} (${getAnswersMissingForBaseWord(word, results, language) * -1})`
-    )
-    .sort(sortMostRecent);
+    );
   const neverDoneWords = NEVER_DONE.baseWords.map((word) => word).sort(sortMostRecent);
   Array(20)
     .fill(0)

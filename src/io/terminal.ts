@@ -214,7 +214,7 @@ export class Terminal {
         // @ts-ignore
         printAllVerbConjugationsDE(this.exercise.verb);
       }
-      const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
+      const exerciseStatistics = getStatisticForExercise(allResults, this.exercise, this.language);
       if (exerciseStatistics) {
         animateExerciseSummary(exerciseStatistics);
       }

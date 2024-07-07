@@ -259,7 +259,8 @@ export async function animateExerciseSummary({
   correctAttempts,
   failedAttempts,
   lastTimeAttempted,
-  firstTimeAttempted
+  firstTimeAttempted,
+  baseWordAnswersMissing
 }: ExerciseStatistics) {
   const yIndex = 19;
   const animationTime = 1500;

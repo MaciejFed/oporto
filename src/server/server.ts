@@ -75,14 +75,25 @@ setInterval(() => {
       const progressAggregate = getProgressAggregate(results, generateAllPossibleExercises(language));
       const date = DateTime.fromJSDate(new Date()).toISODate();
       const progressDir = path.join(os.homedir(), 'progress');
-      writeFileSync(`${progressDir}/verbs.${date}`, createTable('Verbs', progressAggregate.words.VERB, results, language).render());
-      writeFileSync(`${progressDir}/nouns.${date}`, createTable('Nouns', progressAggregate.words.NOUN, results, language).render());
-      writeFileSync(`${progressDir}/adjectives.${date}`, createTable('Adjectives', progressAggregate.words.ADJECTIVE, results, language).render());
-      writeFileSync(`${progressDir}/others.${date}`, createTable('Others', progressAggregate.words.OTHER, results, language).render());
-    })
-  })
-
-},   15 * 60 * 1000)
+      writeFileSync(
+        `${progressDir}/verbs.${date}`,
+        createTable('Verbs', progressAggregate.words.VERB, results, language).render()
+      );
+      writeFileSync(
+        `${progressDir}/nouns.${date}`,
+        createTable('Nouns', progressAggregate.words.NOUN, results, language).render()
+      );
+      writeFileSync(
+        `${progressDir}/adjectives.${date}`,
+        createTable('Adjectives', progressAggregate.words.ADJECTIVE, results, language).render()
+      );
+      writeFileSync(
+        `${progressDir}/others.${date}`,
+        createTable('Others', progressAggregate.words.OTHER, results, language).render()
+      );
+    });
+  });
+}, 6 * 60 * 60 * 1000);
 
 setInterval(() => {
   preFetchAggregate();
