@@ -76,19 +76,19 @@ setInterval(() => {
       const date = DateTime.fromJSDate(new Date()).toISODate();
       const progressDir = path.join(os.homedir(), 'progress');
       writeFileSync(
-        `${progressDir}/verbs.${date}`,
+        `${progressDir}/${language}.verbs.${date}`,
         createTable('Verbs', progressAggregate.words.VERB, results, language).render()
       );
       writeFileSync(
-        `${progressDir}/nouns.${date}`,
+        `${progressDir}/${language}.nouns.${date}`,
         createTable('Nouns', progressAggregate.words.NOUN, results, language).render()
       );
       writeFileSync(
-        `${progressDir}/adjectives.${date}`,
+        `${progressDir}/${language}.adjectives.${date}`,
         createTable('Adjectives', progressAggregate.words.ADJECTIVE, results, language).render()
       );
       writeFileSync(
-        `${progressDir}/others.${date}`,
+        `${progressDir}/${language}.others.${date}`,
         createTable('Others', progressAggregate.words.OTHER, results, language).render()
       );
     });
