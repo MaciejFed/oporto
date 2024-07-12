@@ -70,7 +70,7 @@ export class GermanOtherTranslationExercise extends TranslationExercise implemen
   }
 
   equal = (other: GermanOtherTranslationExercise) =>
-    other.exerciseType === 'OtherTranslation' &&
+    other.exerciseType === 'GermanOtherTranslation' &&
     this.other.german === other.other.german &&
     this.other.english === other.other.english &&
     this.translationType === other.translationType;

@@ -17,7 +17,7 @@ import { AdjectiveTranslationExercise } from '../../exercise/translation/adjecti
 import { logger } from '../../common/logger';
 import { getProgressAggregate } from './progress-aggregate';
 import { Language } from '../../common/language';
-import { readAllDE } from '../../repository/german-exercises-repository';
+import { GenderWord, readAllDE } from '../../repository/german-exercises-repository';
 import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
 import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
 
@@ -173,8 +173,13 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
     verb.presentSimple.Ihr,
     verb.presentSimple.Sie
   ]);
+  const getWords = (word: string | GenderWord) =>
+    typeof word === 'string' ? [word] : [word.plural, word.neutrum, word.femininum, word.maskulinum];
   const others = readAllDE().others.map((other) => other.german);
-  const allWords = [nouns, verbs, others]
+  const conjugated = readAllDE()
+    .case.flatMap((caseWord) => [getWords(caseWord.german.nominative), getWords(caseWord.german.accusative)])
+    .flatMap((a) => a);
+  const allWords = [nouns, verbs, others, conjugated]
     .flatMap((w) => w)
     .filter((w) => w !== undefined)
     .map((w) => w!.toLowerCase())

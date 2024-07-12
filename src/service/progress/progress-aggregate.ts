@@ -11,7 +11,9 @@ export const progressExerciseTypes = [
   'VerbTranslation',
   'GermanVerbTranslation',
   'VerbExercise',
-  'GermanVerbExercise'
+  'GermanVerbExercise',
+  'GermanCaseExercise',
+  'GermanOtherTranslation'
 ] as const;
 
 type ExerciseTypeKey = (typeof progressExerciseTypes)[number];

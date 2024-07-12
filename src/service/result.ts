@@ -73,7 +73,7 @@ export function getStatisticForBaseWord(
   exercise: Exercise,
   language: Language
 ): ExerciseStatistics | undefined {
-  const allResultsForExercise = getAllResultsForBaseWord(allResults, exercise.getBaseWordAsString()!).sort(
+  const allResultsForExercise = getAllResultsForExercise(allResults, exercise).sort(
     (a, b) => b.date.getTime() - a.date.getTime()
   );
   if (allResultsForExercise.length === 0) {

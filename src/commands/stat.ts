@@ -30,8 +30,8 @@ const printAllTables = ({ tableVerbs, tableNouns, tableAdjectives, tableOthers }
   return (
     spitAndPad(tableVerbs)
       .map((line, index) => line.concat(spitAndPad(tableNouns)[index]))
-      .map((line, index) => line.concat(spitAndPad(tableAdjectives)[index]))
-      // .map((line, index) => line.concat(spitAndPad(tableOthers)[index]))
+      // .map((line, index) => line.concat(spitAndPad(tableAdjectives)[index]))
+      .map((line, index) => line.concat(spitAndPad(tableOthers)[index]))
       .join('\n')
   );
 };
