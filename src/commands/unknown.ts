@@ -18,13 +18,13 @@ function countAndSortWords(words: string[]): [string, number][] {
 
   sortedWordFrequency.sort((a, b) => b[1] - a[1]);
 
-  return sortedWordFrequency;
+  return sortedWordFrequency.splice(0, 1000);
 }
 
 async function findUnknownWords(language: Language) {
   let counter = 0;
   let unknownWords: string[] = [];
-  for (let i = 0; i < getAllUniqueWords(Language.Portuguese).length; i++) {
+  for (let i = 0; i < getAllUniqueWords(Language.German).length; i++) {
     unknownWords = unknownWords.concat(await getUnknownWords(counter++, language));
     console.log({
       counter,
@@ -37,4 +37,4 @@ async function findUnknownWords(language: Language) {
   console.log(x);
 }
 
-findUnknownWords(Language.Portuguese);
+findUnknownWords(Language.German);

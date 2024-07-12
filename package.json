@@ -10,6 +10,7 @@
     "start": "http-server progress",
     "start-server": "ts-node src/server/server",
     "examples": "ts-node src/commands/examples",
+    "known": "ts-node src/commands/known.ts",
     "unknown": "ts-node src/commands/unknown",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
@@ -22,6 +23,7 @@
     "stat": "ts-node src/cli.ts stat",
     "statdee": "ts-node src/cli.ts statde",
     "verify": "npm run lint && npm run format",
+    "foo": "ts-node src/commands/known.ts",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto && rm -rf ./build"

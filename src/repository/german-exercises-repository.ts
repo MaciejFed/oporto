@@ -29,9 +29,39 @@ export type GermanNoun = {
   };
 };
 
+export type GermanOther = {
+  english: string;
+  german: string;
+};
+
+export type GenderWord = {
+  maskulinum: string;
+  femininum: string;
+  neutrum: string;
+  plural?: string;
+};
+
+export const Genders = [];
+
+export enum GermanCase {
+  nominative = 'nominative',
+  accusative = 'accusative'
+}
+
+export type GermanGender = keyof GenderWord;
+
+export type GermanCaseWord = {
+  english: string;
+  german: {
+    [key in GermanCase]: GenderWord | string;
+  };
+};
+
 export type Schema = {
   nouns: GermanNoun[];
   verbs: GermanVerb[];
+  others: GermanOther[];
+  case: GermanCaseWord[];
 };
 
 export const db: Schema = {
@@ -676,6 +706,186 @@ export const db: Schema = {
         Wir: 'wissen',
         Ihr: 'wisst',
         Sie: 'wissen'
+      }
+    }
+  ],
+  others: [
+    {
+      german: 'nicht',
+      english: 'not'
+    },
+    {
+      german: 'und',
+      english: 'and'
+    },
+    {
+      german: 'was',
+      english: 'what'
+    },
+    {
+      german: 'mit',
+      english: 'with'
+    },
+    {
+      german: 'wie',
+      english: 'how'
+    },
+    {
+      german: 'auf',
+      english: 'on'
+    },
+    {
+      german: 'hier',
+      english: 'here'
+    },
+    {
+      german: 'für',
+      english: 'for'
+    },
+    {
+      german: 'dass',
+      english: 'that'
+    },
+    {
+      german: 'aber',
+      english: 'but'
+    },
+    {
+      german: 'von',
+      english: 'from'
+    },
+    {
+      german: 'wenn',
+      english: 'if'
+    },
+    {
+      german: 'noch',
+      english: 'still'
+    },
+    {
+      german: 'nur',
+      english: 'only'
+    },
+    {
+      german: 'jetzt',
+      english: 'now'
+    },
+    {
+      german: 'mal',
+      english: 'just'
+    }
+  ],
+  case: [
+    {
+      english: 'the',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'der',
+          femininum: 'die',
+          neutrum: 'das',
+          plural: 'die'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'den',
+          femininum: 'die',
+          neutrum: 'das',
+          plural: 'die'
+        }
+      }
+    },
+    {
+      english: 'a',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'ein',
+          femininum: 'eine',
+          neutrum: 'ein'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'einen',
+          femininum: 'eine',
+          neutrum: 'ein'
+        }
+      }
+    },
+    {
+      english: 'my',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'mein',
+          femininum: 'meine',
+          neutrum: 'mein',
+          plural: 'meine'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'meinen',
+          femininum: 'meine',
+          neutrum: 'mein',
+          plural: 'meine'
+        }
+      }
+    },
+    {
+      english: 'I',
+      german: {
+        [GermanCase.nominative]: 'ich',
+        [GermanCase.accusative]: 'mich'
+      }
+    },
+    {
+      english: 'you',
+      german: {
+        [GermanCase.nominative]: 'du',
+        [GermanCase.accusative]: 'dich'
+      }
+    },
+    {
+      english: 'he',
+      german: {
+        [GermanCase.nominative]: 'er',
+        [GermanCase.accusative]: 'ihn'
+      }
+    },
+    {
+      english: 'she',
+      german: {
+        [GermanCase.nominative]: 'sie',
+        [GermanCase.accusative]: 'sie'
+      }
+    },
+    {
+      english: 'it',
+      german: {
+        [GermanCase.nominative]: 'es',
+        [GermanCase.accusative]: 'es'
+      }
+    },
+    {
+      english: 'we',
+      german: {
+        [GermanCase.nominative]: 'wir',
+        [GermanCase.accusative]: 'uns'
+      }
+    },
+    {
+      english: 'you - plural',
+      german: {
+        [GermanCase.nominative]: 'ihr',
+        [GermanCase.accusative]: 'euch'
+      }
+    },
+    {
+      english: 'You - formal',
+      german: {
+        [GermanCase.nominative]: 'Sie',
+        [GermanCase.accusative]: 'Sie'
+      }
+    },
+    {
+      english: 'they',
+      german: {
+        [GermanCase.nominative]: 'sie',
+        [GermanCase.accusative]: 'sie'
       }
     }
   ]

@@ -173,7 +173,8 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
     verb.presentSimple.Ihr,
     verb.presentSimple.Sie
   ]);
-  const allWords = [nouns, verbs]
+  const others = readAllDE().others.map((other) => other.german);
+  const allWords = [nouns, verbs, others]
     .flatMap((w) => w)
     .filter((w) => w !== undefined)
     .map((w) => w!.toLowerCase())
@@ -249,7 +250,13 @@ export function getExerciseProgressMap(
     'FitInGap'
   ];
 
-  const exerciseTypesDe: ExerciseType[] = ['GermanVerbExercise', 'GermanNounTranslation', 'GermanVerbTranslation'];
+  const exerciseTypesDe: ExerciseType[] = [
+    'GermanVerbExercise',
+    'GermanNounTranslation',
+    'GermanVerbTranslation',
+    'GermanOtherTranslation',
+    'GermanCaseExercise'
+  ];
 
   const progressMap: Record<ExerciseType, ExerciseProgress[]> = {
     VerbExercise: [],
@@ -262,6 +269,8 @@ export function getExerciseProgressMap(
     VerbTranslation: [],
     SentenceTranslation: [],
     PhraseTranslation: [],
+    GermanOtherTranslation: [],
+    GermanCaseExercise: [],
     FitInGap: []
   };
 

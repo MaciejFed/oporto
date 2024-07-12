@@ -2,7 +2,7 @@ import { DateTimeExtended, isBeforeWeekday, isOnWeekDay, onlyDistinct } from '..
 import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
-import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
+import { getAllResults, getAllResultsForBaseWord, getAllResultsForExercise } from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { getAnswersMissingForBaseWord, getProgress } from './progress/progress';
 import { Language } from '../common/language';
@@ -68,12 +68,12 @@ export function convertToResult(
   };
 }
 
-export function getStatisticForExercise(
+export function getStatisticForBaseWord(
   allResults: Result[],
   exercise: Exercise,
   language: Language
 ): ExerciseStatistics | undefined {
-  const allResultsForExercise = getAllResultsForExercise(allResults, exercise).sort(
+  const allResultsForExercise = getAllResultsForBaseWord(allResults, exercise.getBaseWordAsString()!).sort(
     (a, b) => b.date.getTime() - a.date.getTime()
   );
   if (allResultsForExercise.length === 0) {

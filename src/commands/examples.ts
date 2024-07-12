@@ -17,7 +17,7 @@ import { enforceArrayLimit } from '../common/common';
 const MAX_FIND_EXAMPLES = 150_000;
 const MAX_SAVE_EXAMPLES = 40_000;
 
-const examplesPaths: Record<Language, { targetLanguagePath: string; translationPath: string }> = {
+export const examplesPaths: Record<Language, { targetLanguagePath: string; translationPath: string }> = {
   [Language.Portuguese]: {
     targetLanguagePath: PT_EXAMPLES_PATH,
     translationPath: PT_TRANSLATION_EXAMPLES_PATH
@@ -61,6 +61,6 @@ export async function findAllExamples(language: Language) {
   }
 }
 
-findAllExamples(Language.Portuguese).then(() => {
+findAllExamples(Language.German).then(() => {
   console.log('done');
 });

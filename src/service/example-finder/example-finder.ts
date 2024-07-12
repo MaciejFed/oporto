@@ -8,6 +8,8 @@ import { GermanVerbTranslationExercise } from '../../exercise/translation/de/ger
 import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
 import { Language } from '../../common/language';
 import { MovieExample } from '../../io/file';
+import { GermanOtherTranslationExercise } from '../../exercise/translation/de/german-other-translation-exercise';
+import { GermanCaseExercise } from '../../exercise/german-case-exercise';
 
 export function extractWordToFindFromExercise(exercise: Exercise): string | undefined {
   switch (exercise.exerciseType) {
@@ -27,6 +29,10 @@ export function extractWordToFindFromExercise(exercise: Exercise): string | unde
       return (exercise as NounTranslationExercise).noun.portuguese.word;
     case 'GermanNounTranslation':
       return (exercise as GermanNounTranslationExercise).noun.german.singular;
+    case 'GermanOtherTranslation':
+      return (exercise as GermanOtherTranslationExercise).other.german;
+    case 'GermanCaseExercise':
+      return (exercise as GermanCaseExercise).getCorrectAnswer();
     case 'VerbExercise':
     case 'GermanVerbExercise':
       return exercise.getCorrectAnswer();

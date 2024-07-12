@@ -37,7 +37,7 @@ import {
   printNewWordLearned
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
-import { getExerciseProgress, getStatisticForExercise } from '../service/result';
+import { getExerciseProgress, getStatisticForBaseWord } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { Language } from '../common/language';
@@ -166,16 +166,17 @@ export class Terminal {
               this.exampleSentence!.word,
               this.exampleSentence!.targetLanguage!
             );
-            sleep(1000).then(() => this.playAudio(true, 'example', 'normal'));
+            sleep(1000).then(() => {
+              this.playAudio(true, 'example', 'normal');
+              this.endOfExerciseMenu();
+            });
           });
+          if (!wasCorrect) {
+            this.exerciseRepetitionInProgress = true;
+            printExerciseRepeatBody();
+          }
         }
       );
-      if (wasCorrect) {
-        this.endOfExerciseMenu();
-      } else {
-        this.exerciseRepetitionInProgress = true;
-        printExerciseRepeatBody();
-      }
     });
   }
 
@@ -214,7 +215,7 @@ export class Terminal {
         // @ts-ignore
         printAllVerbConjugationsDE(this.exercise.verb);
       }
-      const exerciseStatistics = getStatisticForExercise(allResults, this.exercise, this.language);
+      const exerciseStatistics = getStatisticForBaseWord(allResults, this.exercise, this.language);
       if (exerciseStatistics) {
         animateExerciseSummary(exerciseStatistics);
       }
@@ -278,8 +279,7 @@ export class Terminal {
   }
 
   private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate, sync = true) {
-    const text =
-      type === 'answer' ? extractWordToFindFromExercise(this.exercise!) : this.exampleSentence?.targetLanguage;
+    const text = type === 'answer' ? this.exercise?.getRetryPrompt() : this.exampleSentence?.targetLanguage;
     if (download) {
       getAudio(this.language, text!, type, rate);
     }

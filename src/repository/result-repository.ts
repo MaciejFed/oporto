@@ -18,6 +18,8 @@ import { GermanNounTranslationExercise } from '../exercise/translation/de/german
 import { GermanVerbTranslationExercise } from '../exercise/translation/de/german-verb-translation-exercise';
 import { GermanVerbExercise } from '../exercise/german-verb-exercise';
 import { Language } from '../common/language';
+import { GermanOtherTranslationExercise } from '../exercise/translation/de/german-other-translation-exercise';
+import { GermanCaseExercise } from '../exercise/german-case-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -57,6 +59,21 @@ function createGermanVerbTranslationExercise(exerciseData: any) {
   assert(verbTranslationExercise.verb.presentSimple);
   assert(verbTranslationExercise.verb.english);
   return verbTranslationExercise;
+}
+
+function createGermanOtherTranslationExercise(exerciseData: any) {
+  const verbTranslationExercise = new GermanOtherTranslationExercise();
+  Object.assign(verbTranslationExercise, exerciseData);
+  assert(verbTranslationExercise.other.german);
+  return verbTranslationExercise;
+}
+
+function createGermanCaseExercise(exerciseData: any) {
+  // @ts-ignore
+  const germanCaseExercise = new GermanCaseExercise();
+  Object.assign(germanCaseExercise, exerciseData);
+  assert(germanCaseExercise.caseWord.german);
+  return germanCaseExercise;
 }
 
 function createAdjectiveTranslationExercise(exerciseData: any) {
@@ -115,7 +132,9 @@ export const exerciseFactory = {
   OtherTranslation: createOtherTranslationExercise,
   FitInGap: createFitInGapExercise,
   GermanNounTranslation: createGermanNounTranslationExercise,
-  GermanVerbTranslation: createGermanVerbTranslationExercise
+  GermanVerbTranslation: createGermanVerbTranslationExercise,
+  GermanOtherTranslation: createGermanOtherTranslationExercise,
+  GermanCaseExercise: createGermanCaseExercise
 };
 
 export function parseResults(results: Result[]): Result[] {
@@ -198,6 +217,12 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
 
 export function getAllResultsForExerciseType(results: Result[], exerciseType: ExerciseType): Result[] {
   return results.filter((result) => result.exercise.exerciseType === exerciseType);
+}
+
+export function getAllResultsForBaseWord(results: Result[], baseWord: string): Result[] {
+  return results.filter((result) => {
+    return result.exercise.getBaseWordAsString() === baseWord;
+  });
 }
 
 export function getAllResultsForExercise(

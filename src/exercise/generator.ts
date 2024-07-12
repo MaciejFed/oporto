@@ -15,10 +15,18 @@ import { fetchExercisesForSession } from '../client/client';
 import { Result } from '../service/result';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { Language } from '../common/language';
-import { GermanPerson, readAllDE } from '../repository/german-exercises-repository';
+import {
+  GenderWord,
+  GermanCase,
+  GermanGender,
+  GermanPerson,
+  readAllDE
+} from '../repository/german-exercises-repository';
 import { GermanNounTranslationExercise } from './translation/de/german-noun-translation-exercise';
 import { GermanVerbTranslationExercise } from './translation/de/german-verb-translation-exercise';
 import { GermanVerbExercise } from './german-verb-exercise';
+import { GermanOtherTranslationExercise } from './translation/de/german-other-translation-exercise';
+import { GermanCaseExercise } from './german-case-exercise';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -59,6 +67,28 @@ const GermanNounTranslationGenerator: ExerciseGenerator = () => {
   return readAllDE().nouns.flatMap((noun) =>
     translationTypes.map((translationType) => GermanNounTranslationExercise.new(noun, translationType))
   );
+};
+
+const GermanOtherTranslationGenerator: ExerciseGenerator = () => {
+  return readAllDE().others.flatMap((other) =>
+    translationTypes.map((translationType) => GermanOtherTranslationExercise.new(other, translationType))
+  );
+};
+
+const GermanCaseWordGenerator: ExerciseGenerator = () => {
+  const nonGenderWords = readAllDE().case.filter((caseWord) => typeof caseWord.german.nominative === 'string');
+  const genderWords = readAllDE().case.filter((caseWord) => typeof caseWord.german.nominative === 'object');
+
+  const exercises = Object.values(GermanCase)
+    .flatMap((gemanCase) => [
+      nonGenderWords.map((word) => GermanCaseExercise.new(word, gemanCase)),
+      ['maskulinum', 'femininum', 'neutrum', 'plural'].flatMap((gender) =>
+        genderWords.flatMap((word) => GermanCaseExercise.new(word, gemanCase, gender as any))
+      )
+    ])
+    .flatMap((e) => e);
+
+  return exercises;
 };
 
 const GermanVerbTranslationGenerator: ExerciseGenerator = () => {
@@ -121,9 +151,13 @@ const FitInGapGenerator: ExerciseGenerator = () => {
 export function generateAllPossibleExercises(language: Language): Exercise[] {
   switch (language) {
     case Language.German:
-      return [GermanVerbExerciseGenerator, GermanNounTranslationGenerator, GermanVerbTranslationGenerator].flatMap(
-        (generator) => generator()
-      );
+      return [
+        GermanVerbExerciseGenerator,
+        GermanNounTranslationGenerator,
+        GermanVerbTranslationGenerator,
+        GermanOtherTranslationGenerator,
+        GermanCaseWordGenerator
+      ].flatMap((generator) => generator());
     case Language.Portuguese:
     default:
       return [
