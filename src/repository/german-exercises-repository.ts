@@ -772,7 +772,7 @@ export const db: Schema = {
     },
     {
       german: 'mal',
-      english: 'just'
+      english: 'once'
     }
   ],
   case: [
