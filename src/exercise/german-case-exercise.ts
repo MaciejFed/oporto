@@ -60,7 +60,6 @@ export class GermanCaseExercise implements Exercise, Comparable {
 
   equal = (exercise: GermanCaseExercise) =>
     exercise.exerciseType === 'GermanCaseExercise' &&
-    JSON.stringify(this.caseWord.german) === JSON.stringify(exercise.caseWord.german) &&
     this.caseWord.english === exercise.caseWord.english &&
     this.gender === exercise.gender &&
     this.germanCase === exercise.germanCase;
