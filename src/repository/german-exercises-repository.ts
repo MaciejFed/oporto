@@ -484,14 +484,6 @@ export const db: Schema = {
         Wir: 'sind',
         Ihr: 'seid',
         Sie: 'sind'
-      },
-      pastPerfect: {
-        Ich: 'war',
-        Du: 'warst',
-        'Er/Sie/Es': 'war',
-        Wir: 'waren',
-        Ihr: 'wart',
-        Sie: 'waren'
       }
     },
     {
@@ -552,6 +544,14 @@ export const db: Schema = {
         Wir: 'sagen',
         Ihr: 'sagt',
         Sie: 'sagen'
+      },
+      pastPerfect: {
+        Ich: 'habe gesagt',
+        Du: 'hast gesagt',
+        'Er/Sie/Es': 'hat gesagt',
+        Wir: 'haben gesagt',
+        Ihr: 'habt gesagt',
+        Sie: 'haben gesagt'
       }
     },
     {
@@ -612,6 +612,14 @@ export const db: Schema = {
         Wir: 'sehen',
         Ihr: 'seht',
         Sie: 'sehen'
+      },
+      pastPerfect: {
+        Ich: 'habe gesehen',
+        Du: 'hast gesehen',
+        'Er/Sie/Es': 'hat gesehen',
+        Wir: 'haben gesehen',
+        Ihr: 'habt gesehen',
+        Sie: 'haben gesehen'
       }
     },
     {
@@ -720,6 +728,26 @@ export const db: Schema = {
         Wir: 'wissen',
         Ihr: 'wisst',
         Sie: 'wissen'
+      }
+    },
+    {
+      english: 'to believe',
+      infinitive: 'glauben',
+      presentSimple: {
+        Ich: 'glaube',
+        Du: 'glaubst',
+        'Er/Sie/Es': 'glaubt',
+        Wir: 'glauben',
+        Ihr: 'glaubt',
+        Sie: 'glauben'
+      },
+      pastPerfect: {
+        Ich: 'habe geglaubt',
+        Du: 'hast geglaubt',
+        'Er/Sie/Es': 'hat geglaubt',
+        Wir: 'haben geglaubt',
+        Ihr: 'habt geglaubt',
+        Sie: 'haben geglaubt'
       }
     }
   ],
