@@ -3,16 +3,35 @@ import figlet from 'figlet';
 import { formatDate, sleep } from '../../common/common';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
 import { ExerciseStatistics, Result, WeekdayStatistics } from '../../service/result';
-import Output, { Color, ColoredText } from '../output';
+import { Color, Output, ColoredText } from '../output';
 import { Person, Verb } from '../../repository/exercises-repository';
 import { StandardConjugation } from '../../service/verb/verb';
 import { clear } from 'console';
-import { GermanPersonWithInf, parseGermanVerb } from '../../service/conjugation/german-conjugation';
 import { GermanVerb } from '../../repository/german-exercises-repository';
 import { ProgressType } from '../../service/progress/progress';
+import { Language } from '../../common/language';
+import { DEVerbConjugation } from '../conjugation-printer/de-conjugation-printer';
+import { PTVerbConjugation } from '../conjugation-printer/pt-conjugation-printer';
+import { Exercise } from '../../exercise/exercise';
+import { DECaseConjugation } from '../conjugation-printer/de-case-conjugation-printer';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
+
+interface CreateColorArrayArg {
+  white?: number;
+  green?: number;
+  yellow?: number;
+  blue?: number;
+}
+
+export function createColorArray({ white, green, yellow, blue }: CreateColorArrayArg): Color[] {
+  return Array(white ?? 0)
+    .fill(Color.W)
+    .concat(Array(green ?? 0).fill(Color.G))
+    .concat(Array(yellow ?? 0).fill(Color.Y))
+    .concat(Array(blue ?? 0).fill(Color.B));
+}
 
 const AppLogo = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
 
@@ -22,33 +41,41 @@ const EXERCISE_REPEAT_BODY_MARGIN = EXERCISE_BODY_MARGIN + 3;
 const EXERCISE_MENU_MARGIN = EXERCISE_REPEAT_BODY_MARGIN + 1;
 
 export type AnswerInputType = 'keyboard' | 'voice';
+let output: Output;
+
+const getOutput = () => {
+  if (!output) {
+    output = new Output();
+  }
+  return output;
+};
 
 export function preExerciseClear() {
   clear();
-  Output.moveTo(0, 0, AppLogo);
+  getOutput().moveTo(0, 0, AppLogo);
 }
 
 export function printExerciseTranslation(exerciseTranslation: string | undefined) {
-  Output.moveTo(1, EXERCISE_TOP_MARGIN, exerciseTranslation);
+  getOutput().moveTo(1, EXERCISE_TOP_MARGIN, exerciseTranslation);
 }
 
 export function printExerciseDescription(exerciseDescription: string) {
-  Output.moveTo(1, EXERCISE_TOP_MARGIN + 2, exerciseDescription);
+  getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 2, exerciseDescription);
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
-  Output.moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix + answer + exerciseBodySuffix);
-  Output.moveCursor(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
+  getOutput().moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix + answer + exerciseBodySuffix);
+  getOutput().moveCursor(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
 }
 
 export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
-  Output.moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+  getOutput().moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
 }
 
 const repeatBodyPrefix = 'Repeat: ';
 
 export function printExerciseRepeatBody() {
-  Output.moveTo(1, EXERCISE_REPEAT_BODY_MARGIN, repeatBodyPrefix);
+  getOutput().moveTo(1, EXERCISE_REPEAT_BODY_MARGIN, repeatBodyPrefix);
 }
 
 export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: string, newKey: string) {
@@ -58,46 +85,46 @@ export function printExerciseRepeatAnswerKey(answer: string, correctAnswer: stri
     answer[newIndex] !== undefined &&
     answer[newIndex].toLowerCase() === (correctAnswer[newIndex] !== undefined && correctAnswer[newIndex].toLowerCase())
   ) {
-    Output.green();
+    getOutput().green();
   } else {
-    Output.red();
+    getOutput().red();
   }
-  Output.moveTo(1 + repeatBodyPrefix.length + answer.length - 1, EXERCISE_REPEAT_BODY_MARGIN, newKey);
-  Output.white();
+  getOutput().moveTo(1 + repeatBodyPrefix.length + answer.length - 1, EXERCISE_REPEAT_BODY_MARGIN, newKey);
+  getOutput().white();
 }
 
 export function printExerciseRepeatAnswer(answer: string, correctAnswer: string) {
-  Output.hideCursor();
-  Output.moveTo(1, EXERCISE_REPEAT_BODY_MARGIN, `${repeatBodyPrefix}`);
+  getOutput().hideCursor();
+  getOutput().moveTo(1, EXERCISE_REPEAT_BODY_MARGIN, `${repeatBodyPrefix}`);
   for (let i = 0; i < answer.length; i++) {
     if (
       (answer[i] !== undefined && answer[i].toLowerCase()) ===
       (correctAnswer[i] !== undefined && correctAnswer[i].toLowerCase())
     ) {
-      Output.green();
+      getOutput().green();
     } else {
-      Output.red();
+      getOutput().red();
     }
-    Output.moveTo(repeatBodyPrefix.length + i + 1, EXERCISE_REPEAT_BODY_MARGIN, answer[i]);
+    getOutput().moveTo(repeatBodyPrefix.length + i + 1, EXERCISE_REPEAT_BODY_MARGIN, answer[i]);
   }
-  Output.white();
-  Output.hideCursor(false);
+  getOutput().white();
+  getOutput().hideCursor(false);
 }
 
 export function printInBetweenMenu(printTranslation: boolean) {
-  Output.moveTo(1, EXERCISE_MENU_MARGIN, 'Press key to continue...');
-  Output.moveTo(1, EXERCISE_MENU_MARGIN + 1, 'r - repeat the answer');
+  getOutput().moveTo(1, EXERCISE_MENU_MARGIN, 'Press key to continue...');
+  getOutput().moveTo(1, EXERCISE_MENU_MARGIN + 1, 'r - repeat the answer');
   if (printTranslation) {
-    Output.moveTo(1, EXERCISE_MENU_MARGIN + 2, 't - print translation');
+    getOutput().moveTo(1, EXERCISE_MENU_MARGIN + 2, 't - print translation');
   }
 }
 
 export function printExampleSentence(wordStartIndex: number, exerciseWord: string, exampleSentence: string) {
   const examplePrefix = 'Example: ';
-  Output.bold();
-  Output.moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
-  Output.bold(false);
-  Output.moveToColored(
+  getOutput().bold();
+  getOutput().moveTo(1, EXERCISE_MENU_MARGIN + 4, examplePrefix);
+  getOutput().bold(false);
+  getOutput().moveToColored(
     1 + examplePrefix.length,
     EXERCISE_MENU_MARGIN + 4,
     new ColoredText(
@@ -110,20 +137,20 @@ export function printExampleSentence(wordStartIndex: number, exerciseWord: strin
 }
 
 export function logSaved(status: 'Saving example...' | 'Example saved.') {
-  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, Array(20).join(' '));
-  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, status);
+  getOutput().moveTo(1, EXERCISE_MENU_MARGIN + 5, Array(20).join(' '));
+  getOutput().moveTo(1, EXERCISE_MENU_MARGIN + 5, status);
 }
 
 export function printExampleTranslation(
   exampleTranslationPrefix: string | undefined,
   exampleTranslation: string | undefined
 ) {
-  Output.moveTo(
+  getOutput().moveTo(
     1,
     EXERCISE_MENU_MARGIN + 5,
     '                                                                          '
   );
-  Output.moveTo(1, EXERCISE_MENU_MARGIN + 5, `${exampleTranslationPrefix}  ${exampleTranslation}`);
+  getOutput().moveTo(1, EXERCISE_MENU_MARGIN + 5, `${exampleTranslationPrefix}  ${exampleTranslation}`);
 }
 
 type FeedbackType = 'CorrectAnswer' | 'ActualAnswer';
@@ -138,16 +165,16 @@ export function printWithFeedback(
 ) {
   const exerciseBodyPrefix = prefix ? prefix : '';
   const feedbackWord = answerType === 'CorrectAnswer' ? correctAnswer : answer;
-  Output.moveTo(x, y, exerciseBodyPrefix);
+  getOutput().moveTo(x, y, exerciseBodyPrefix);
   for (let i = 0; i < feedbackWord.length; i++) {
     if (answer[i] && correctAnswer[i] && answer[i].toLowerCase() === correctAnswer[i].toLowerCase()) {
-      Output.green();
+      getOutput().green();
     } else {
-      Output.red();
+      getOutput().red();
     }
-    Output.moveTo(x + exerciseBodyPrefix.length + i, y, feedbackWord[i]);
+    getOutput().moveTo(x + exerciseBodyPrefix.length + i, y, feedbackWord[i]);
   }
-  Output.white();
+  getOutput().white();
 }
 
 export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answer: string, correctAnswer: string) {
@@ -158,9 +185,9 @@ export function printAllAnswers(results: Result[]) {
   const HISTORY_X_MARGIN = 40;
   const HISTORY_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   const HISTORY_ANSWERS_LIMIT = 5;
-  Output.bold();
-  Output.moveTo(HISTORY_X_MARGIN, HISTORY_Y_MARGIN, 'Answers History:');
-  Output.bold(false);
+  getOutput().bold();
+  getOutput().moveTo(HISTORY_X_MARGIN, HISTORY_Y_MARGIN, 'Answers History:');
+  getOutput().bold(false);
   results.reverse().forEach(({ answer, exercise }, index) => {
     if (index < HISTORY_ANSWERS_LIMIT)
       printWithFeedback(
@@ -174,85 +201,36 @@ export function printAllAnswers(results: Result[]) {
   });
 }
 
-export function printAllVerbConjugationsDE({ infinitive, presentSimple, pastPerfect }: Verb | GermanVerb) {
+export function printAllVerbConjugations(exercise: Exercise, results: Result[]) {
   const CONJUGATION_X_MARGIN = 60;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
-  Output.bold();
-  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
-  Output.bold(false);
-  // Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
-  const longestConjugationSize = Object.keys(presentSimple).reduce((prev, curr) => {
-    // @ts-ignore
-    const currSize = presentSimple[curr].length;
-    return prev > currSize ? prev : currSize;
-  }, 0);
-
-  const parsedVerb = parseGermanVerb({ infinitive, presentSimple } as GermanVerb);
-  ['Inf'].concat(Object.keys(presentSimple)).forEach((person, index) => {
-    // @ts-ignore
-    const past = pastPerfect ? pastPerfect[person] : '';
-    const personText = person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`;
-    Output.moveToColored(
-      CONJUGATION_X_MARGIN,
-      CONJUGATION_Y_MARGIN + 2 + index,
-      parsedVerb[person.replace('/', '').replace('/', '') as GermanPersonWithInf]
-    );
-  });
-}
-
-export function printAllVerbConjugations({ verb: { infinitive, presentSimple, pastPerfect } }: StandardConjugation) {
-  const CONJUGATION_X_MARGIN = 60;
-  const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
-  // eslint-disable-next-line no-nested-ternary
-  const getStatusEmoji = (status?: string) => (status ? (status === ProgressType.DONE ? ' ✅' : ' ❌') : '');
-  Output.bold();
-  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, 'Cojugations:');
-  Output.bold(false);
-  Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 1, `Infinitive: [${infinitive}]`);
-  const longestConjugationSize = Object.values(Person).reduce((prev, curr) => {
-    const currSize = presentSimple![curr as Person].conjugation.length;
-    return prev > currSize ? prev : currSize;
-  }, 0);
-
-  Object.values(Person).forEach((person, index) => {
-    const present = presentSimple![person as Person];
-    const past = pastPerfect ? pastPerfect[person as Person] : { conjugation: '' };
-    const personText = (person.includes('/') ? `${person.substring(0, person.indexOf('/'))}:` : `${person}:`).padEnd(5);
-    Output.white();
-    Output.moveTo(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN + 2 + index, personText);
-    if (!present.isStandard) {
-      Output.yellow();
-    }
-    const text = ` ${presentSimple![person as Person].conjugation
-      .concat(getStatusEmoji(presentSimple![person as Person].status))
-      .padEnd(longestConjugationSize + 2)}`;
-    Output.moveTo(CONJUGATION_X_MARGIN + personText.length, CONJUGATION_Y_MARGIN + 2 + index, text);
-    Output.white();
-    Output.moveTo(CONJUGATION_X_MARGIN + personText.length + text.length, CONJUGATION_Y_MARGIN + 2 + index, '|');
-    // @ts-ignore
-    if (past && !past.isStandard) {
-      Output.yellow();
-    } else {
-      Output.white();
-    }
-    Output.moveTo(
-      CONJUGATION_X_MARGIN + personText.length + text.length + 1,
-      CONJUGATION_Y_MARGIN + 2 + index,
-      // @ts-ignore
-      past.conjugation.concat(getStatusEmoji(past.status))
-    );
-    Output.white();
-  });
+  let table: ColoredText[] = [];
+  switch (exercise.exerciseType) {
+    case 'GermanVerbExercise':
+    case 'GermanVerbTranslation':
+      table = new DEVerbConjugation(exercise.getBaseWord() as any, results).getTable();
+      break;
+    case 'VerbExercise':
+    case 'VerbTranslation':
+      table = new PTVerbConjugation(exercise.getBaseWord() as any, results).getTable();
+      break;
+    case 'GermanCaseExercise':
+      table = new DECaseConjugation(exercise.getBaseWord() as any, results).getTable();
+      break;
+    default:
+      return;
+  }
+  getOutput().moveToColoredRows(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, table);
 }
 
 export function printNewWordLearned(newWord: string) {
   const text = 'New word learnt! ';
-  Output.bold();
-  Output.moveTo(0, 19, text);
-  Output.green();
-  Output.moveTo(text.length + 1, 19, newWord);
-  Output.bold(false);
-  Output.white();
+  getOutput().bold();
+  getOutput().moveTo(0, 19, text);
+  getOutput().green();
+  getOutput().moveTo(text.length + 1, 19, newWord);
+  getOutput().bold(false);
+  getOutput().white();
 }
 
 export async function animateExerciseSummary({
@@ -265,9 +243,9 @@ export async function animateExerciseSummary({
   const yIndex = 19;
   const animationTime = 1500;
   const barWidth = 50;
-  // Output.moveTo(0, yIndex + 1, `First Time Attempted: ${formatDate(firstTimeAttempted)}`);
-  Output.moveTo(0, yIndex + 2, `Last Time Attempted:  ${formatDate(lastTimeAttempted)}`);
-  // Output.moveTo(0, yIndex + 2, `First Time Attempted: ${formatDate(firstTimeAttempted)}`);
+  // getOutput().moveTo(0, yIndex + 1, `First Time Attempted: ${formatDate(firstTimeAttempted)}`);
+  getOutput().moveTo(0, yIndex + 2, `Last Time Attempted:  ${formatDate(lastTimeAttempted)}`);
+  // getOutput().moveTo(0, yIndex + 2, `First Time Attempted: ${formatDate(firstTimeAttempted)}`);
   const totalValue = Math.max(failedAttempts * VALUE_WRONG_TO_CORRECT_RATIO, correctAttempts);
   for (let index = 1; index <= totalValue; index++) {
     const goodValue = index <= correctAttempts ? index : correctAttempts;
@@ -281,7 +259,7 @@ export async function animateExerciseSummary({
       { key: allLabel, value: totalValue, style: bg('blue'), barWidth: 1 },
       { key: correctWrongLabel, value: index, style: bg('red'), barWidth: 1 }
     ];
-    Output.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
+    getOutput().moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
     bulletData = [
       { key: allLabel, value: totalValue, style: bg('blue'), barWidth: 1 },
       {
@@ -291,7 +269,7 @@ export async function animateExerciseSummary({
         barWidth: 1
       }
     ];
-    Output.moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
+    getOutput().moveTo(0, yIndex + 4, bullet(bulletData, { style: '+', width: barWidth, barWidth: 1 }));
     await sleep(animationTime / totalValue);
   }
 }
@@ -302,7 +280,7 @@ export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatisti
   const yGap = Math.ceil(maxYValue / 24);
   const gapStyle = '-------';
   const gapStyleLength = gapStyle.length - 3;
-  Output.bold();
+  getOutput().bold();
   const graphData = weeklyStatistics
     .map((weeklyStatistic) => [
       ...weeklyStatistic.points.map((point) =>
@@ -324,7 +302,7 @@ export function displayGenericWeeklyStatistics(weeklyStatistics: WeekdayStatisti
       })
     )
   );
-  Output.moveCursor(0, margin);
+  getOutput().moveCursor(0, margin);
   console.log(
     scatter(graphData, {
       hAxis: ['+', gapStyle, '--->'],

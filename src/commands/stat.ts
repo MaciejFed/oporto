@@ -8,7 +8,6 @@ import clear from 'clear';
 import { Language } from '../common/language';
 import { getProgressAggregate, ProgressDetails } from '../service/progress/progress-aggregate';
 import { Table } from 'console-table-printer';
-import Output from '../io/output';
 import { terminal } from 'terminal-kit';
 import { preFetchAllResults } from '../client/client';
 import { DateTime } from 'luxon';

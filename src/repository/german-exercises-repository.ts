@@ -34,6 +34,13 @@ export type GermanOther = {
   german: string;
 };
 
+export enum GermanGender {
+  maskulinum = 'maskulinum',
+  femininum = 'femininum',
+  neutrum = 'neutrum',
+  plural = 'plural'
+}
+
 export type GenderWord = {
   maskulinum: string;
   femininum: string;
@@ -45,15 +52,14 @@ export const Genders = [];
 
 export enum GermanCase {
   nominative = 'nominative',
-  accusative = 'accusative'
+  accusative = 'accusative',
+  dative = 'dative'
 }
-
-export type GermanGender = keyof GenderWord;
 
 export type GermanCaseWord = {
   english: string;
   german: {
-    [key in GermanCase]: GenderWord | string;
+    [key in GermanCase]?: GenderWord | string;
   };
 };
 
@@ -478,6 +484,14 @@ export const db: Schema = {
         Wir: 'sind',
         Ihr: 'seid',
         Sie: 'sind'
+      },
+      pastPerfect: {
+        Ich: 'war',
+        Du: 'warst',
+        'Er/Sie/Es': 'war',
+        Wir: 'waren',
+        Ihr: 'wart',
+        Sie: 'waren'
       }
     },
     {
@@ -773,6 +787,74 @@ export const db: Schema = {
     {
       german: 'mal',
       english: 'once'
+    },
+    {
+      german: 'aus',
+      english: 'out of'
+    },
+    {
+      german: 'dann',
+      english: 'then'
+    },
+    {
+      german: 'doch',
+      english: 'though'
+    },
+    {
+      german: 'alles',
+      english: 'everything'
+    },
+    {
+      german: 'mehr',
+      english: 'more'
+    },
+    {
+      german: 'immer',
+      english: 'always'
+    },
+    {
+      german: 'man',
+      english: 'man'
+    },
+    {
+      german: 'gut',
+      english: 'good'
+    },
+    {
+      german: 'schon',
+      english: 'already'
+    },
+    {
+      german: 'als',
+      english: 'as'
+    },
+    {
+      german: 'nein',
+      english: 'no'
+    },
+    {
+      german: 'nichts',
+      english: 'nothing'
+    },
+    {
+      german: 'etwas',
+      english: 'something'
+    },
+    {
+      german: 'oder',
+      english: 'but'
+    },
+    {
+      german: 'warum',
+      english: 'why'
+    },
+    {
+      german: 'wieder',
+      english: 'again'
+    },
+    {
+      german: 'nach',
+      english: 'after'
     }
   ],
   case: [
@@ -790,6 +872,12 @@ export const db: Schema = {
           femininum: 'die',
           neutrum: 'das',
           plural: 'die'
+        },
+        [GermanCase.dative]: {
+          maskulinum: 'dem',
+          femininum: 'der',
+          neutrum: 'dem',
+          plural: 'den'
         }
       }
     },
@@ -826,24 +914,50 @@ export const db: Schema = {
       }
     },
     {
+      english: 'not any',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'kein',
+          femininum: 'keine',
+          neutrum: 'kein',
+          plural: 'keine'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'keinen',
+          femininum: 'keine',
+          neutrum: 'kein',
+          plural: 'kein'
+        },
+        [GermanCase.dative]: {
+          maskulinum: 'keinem',
+          femininum: 'keiner',
+          neutrum: 'keinem',
+          plural: 'keinen'
+        }
+      }
+    },
+    {
       english: 'I',
       german: {
         [GermanCase.nominative]: 'ich',
-        [GermanCase.accusative]: 'mich'
+        [GermanCase.accusative]: 'mich',
+        [GermanCase.dative]: 'mir'
       }
     },
     {
       english: 'you',
       german: {
         [GermanCase.nominative]: 'du',
-        [GermanCase.accusative]: 'dich'
+        [GermanCase.accusative]: 'dich',
+        [GermanCase.dative]: 'dir'
       }
     },
     {
       english: 'he',
       german: {
         [GermanCase.nominative]: 'er',
-        [GermanCase.accusative]: 'ihn'
+        [GermanCase.accusative]: 'ihn',
+        [GermanCase.dative]: 'ihm'
       }
     },
     {
@@ -878,14 +992,16 @@ export const db: Schema = {
       english: 'You - formal',
       german: {
         [GermanCase.nominative]: 'Sie',
-        [GermanCase.accusative]: 'Sie'
+        [GermanCase.accusative]: 'Sie',
+        [GermanCase.dative]: 'Ihnen'
       }
     },
     {
       english: 'they',
       german: {
         [GermanCase.nominative]: 'sie',
-        [GermanCase.accusative]: 'sie'
+        [GermanCase.accusative]: 'sie',
+        [GermanCase.dative]: 'ihnen'
       }
     }
   ]

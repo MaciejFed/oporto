@@ -30,7 +30,7 @@ export class GermanCaseExercise implements Exercise, Comparable {
   getDescription = () => `Base: ${this.caseWord.english}`;
 
   getCorrectAnswer = () => {
-    const word = this.caseWord.german[this.germanCase];
+    const word = this.caseWord.german[this.germanCase] || '';
     return this.getFinalWord(word);
   };
 
@@ -52,7 +52,7 @@ export class GermanCaseExercise implements Exercise, Comparable {
   }
 
   getBaseWordAsString(): string | undefined {
-    const word = this.getBaseWord().german.nominative;
+    const word = this.getBaseWord().german.nominative!;
     return this.getFinalWord(word);
   }
 

@@ -45,7 +45,7 @@ export async function getUnknownWords(index: number, language: Language): Promis
   const client = await getClient();
   try {
     const db = client.db(dbName);
-    const collection = db.collection(getExamplesCollectionName(language, 'top'));
+    const collection = db.collection(getExamplesCollectionName(language, 'total'));
     const found = (await collection.find().skip(index).limit(1).toArray()) as any[];
     // @ts-ignore
     return Object.values(found[0])[1].flatMap((line) => line.unknownWords);

@@ -1,6 +1,6 @@
 import { Language } from '../common/language';
 import { getUnknownWords } from '../server/db';
-import { getAllUniqueWords } from '../service/progress/progress';
+import { getAllUniqueWords, getAllUniqueWordsConjugated } from '../service/progress/progress';
 
 function countAndSortWords(words: string[]): [string, number][] {
   const wordFrequency = new Map<string, number>();
@@ -24,7 +24,7 @@ function countAndSortWords(words: string[]): [string, number][] {
 async function findUnknownWords(language: Language) {
   let counter = 0;
   let unknownWords: string[] = [];
-  for (let i = 0; i < getAllUniqueWords(Language.German).length; i++) {
+  for (let i = 0; i < 177; i++) {
     unknownWords = unknownWords.concat(await getUnknownWords(counter++, language));
     console.log({
       counter,

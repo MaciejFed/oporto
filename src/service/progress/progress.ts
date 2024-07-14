@@ -173,11 +173,18 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
     verb.presentSimple.Ihr,
     verb.presentSimple.Sie
   ]);
-  const getWords = (word: string | GenderWord) =>
-    typeof word === 'string' ? [word] : [word.plural, word.neutrum, word.femininum, word.maskulinum];
+  const getWords = (word: string | GenderWord | undefined) => {
+    if (!word) return [];
+    return typeof word === 'string' ? [word] : [word.plural, word.neutrum, word.femininum, word.maskulinum];
+  };
+
   const others = readAllDE().others.map((other) => other.german);
   const conjugated = readAllDE()
-    .case.flatMap((caseWord) => [getWords(caseWord.german.nominative), getWords(caseWord.german.accusative)])
+    .case.flatMap((caseWord) => [
+      getWords(caseWord.german.nominative),
+      getWords(caseWord.german.accusative),
+      getWords(caseWord.german.dative)
+    ])
     .flatMap((a) => a);
   const allWords = [nouns, verbs, others, conjugated]
     .flatMap((w) => w)

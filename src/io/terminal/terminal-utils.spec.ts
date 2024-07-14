@@ -1,7 +1,9 @@
 import { Other } from '../../repository/exercises-repository';
 import { OtherTranslationExercise } from '../../exercise/translation/other-translation-exercise';
 import { printExampleSentence, printWithFeedback } from './terminal-utils';
-import Output from './../output';
+import { Output } from '../output';
+
+const output = new Output();
 
 describe('Terminal Utils', () => {
   it('Should Not Print Any Red Letters On Correct Answer', () => {
@@ -14,10 +16,10 @@ describe('Terminal Utils', () => {
 
     printWithFeedback(0, 0, correctAnswer, correctAnswer, 'ActualAnswer');
 
-    const output = Output.getOutput().substring(0, correctAnswer.length);
-    const colorOutput = Output.getColorOutput().substring(0, correctAnswer.length);
+    const outputText = output.getOutput().substring(0, correctAnswer.length);
+    const colorOutput = output.getColorOutput().substring(0, correctAnswer.length);
 
-    expect(output).toEqual(correctAnswer);
+    expect(outputText).toEqual(correctAnswer);
     expect(colorOutput).toEqual(
       correctAnswer
         .split('')
@@ -38,10 +40,10 @@ describe('Terminal Utils', () => {
     const answerGiven = `${correctAnswer}${wrongPostfix}`;
     printWithFeedback(0, 0, answerGiven, correctAnswer, 'ActualAnswer');
 
-    const output = Output.getOutput().substring(0, answerGiven.length);
-    const colorOutput = Output.getColorOutput().substring(0, answerGiven.length);
+    const outputText = output.getOutput().substring(0, answerGiven.length);
+    const colorOutput = output.getColorOutput().substring(0, answerGiven.length);
 
-    expect(output).toEqual(answerGiven);
+    expect(outputText).toEqual(answerGiven);
     expect(colorOutput).toEqual(
       correctAnswer
         .split('')
@@ -65,10 +67,10 @@ describe('Terminal Utils', () => {
     const answerGiven = correctAnswer.substring(0, correctAnswer.length - 1);
     printWithFeedback(0, 0, answerGiven, correctAnswer, 'ActualAnswer');
 
-    const output = Output.getOutput().substring(0, answerGiven.length);
-    const colorOutput = Output.getColorOutput().substring(0, answerGiven.length);
+    const outputText = output.getOutput().substring(0, answerGiven.length);
+    const colorOutput = output.getColorOutput().substring(0, answerGiven.length);
 
-    expect(output).toEqual(answerGiven);
+    expect(outputText).toEqual(answerGiven);
     expect(colorOutput).toEqual(
       answerGiven
         .split('')
@@ -83,7 +85,8 @@ describe('Terminal Utils', () => {
 
     printExampleSentence(8, 'ver', exampleSentence);
 
-    const colorOutput = Output.getColorOutput()
+    const colorOutput = output
+      .getColorOutput()
       .split('')
       .filter((l) => l !== ' ' && l !== '\n')
       .join('');

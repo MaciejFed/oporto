@@ -85,7 +85,7 @@ const GermanCaseWordGenerator: ExerciseGenerator = () => {
       ['maskulinum', 'femininum', 'neutrum', 'plural'].flatMap((gender) =>
         genderWords.flatMap((word) => {
           // @ts-ignore
-          if (!word.german[gemanCase][gender]) return [];
+          if (!word.german[gemanCase] || !word.german[gemanCase][gender]) return [];
           // @ts-ignore
           return [GermanCaseExercise.new(word, gemanCase, gender)];
         })
