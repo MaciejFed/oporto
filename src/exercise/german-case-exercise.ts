@@ -53,7 +53,7 @@ export class GermanCaseExercise implements Exercise, Comparable {
 
   getBaseWordAsString(): string | undefined {
     const word = this.getBaseWord().german.nominative!;
-    return this.getFinalWord(word);
+    return this.getFinalWord(word, GermanGender.maskulinum);
   }
 
   getRetryPrompt = () => this.getCorrectAnswer();
@@ -64,9 +64,9 @@ export class GermanCaseExercise implements Exercise, Comparable {
     this.gender === exercise.gender &&
     this.germanCase === exercise.germanCase;
 
-  public getFinalWord(word: GenderWord | string): string {
+  public getFinalWord(word: GenderWord | string, gender: GermanGender = GermanGender.maskulinum): string {
     if (typeof word === 'string') return word;
-    const result = word[this.gender!];
+    const result = word[gender ?? this.gender!];
     if (!result) throw new Error(`Unexpected no word for [${JSON.stringify(this.caseWord, null, 4)}]`);
     return result;
   }
