@@ -49,9 +49,12 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
 
 export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
   return readAllDE().verbs.flatMap((verb) =>
-    Object.keys(GermanPerson).flatMap((person) =>
-      GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'presentSimple')
-    )
+    Object.keys(GermanPerson).flatMap((person) => [
+      ...[GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'presentSimple')],
+      ...(verb.pastPerfect
+        ? [GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'pastPerfect')]
+        : [])
+    ])
   );
 };
 
@@ -81,8 +84,7 @@ const GermanCaseWordGenerator: ExerciseGenerator = () => {
 
   const exercises = Object.values(GermanCase)
     .flatMap((gemanCase) => [
-      nonGenderWords.filter((word) => word.german[gemanCase])
-        .map((word) => GermanCaseExercise.new(word, gemanCase)),
+      nonGenderWords.filter((word) => word.german[gemanCase]).map((word) => GermanCaseExercise.new(word, gemanCase)),
       ['maskulinum', 'femininum', 'neutrum', 'plural'].flatMap((gender) =>
         genderWords.flatMap((word) => {
           // @ts-ignore

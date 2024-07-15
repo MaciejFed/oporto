@@ -67,7 +67,7 @@ export class DECaseConjugation extends VerbConjugation<GermanCaseWord> {
 
   getRowTitle(x: number): ColoredText {
     if (this.isNonGender()) return new ColoredText('');
-    return new ColoredText(`${Object.keys(this.data.german)[x]}: `);
+    return new ColoredText(`${Object.keys(Object.values(this.data.german)[0])[x]}: `);
   }
 
   isNonGender(): boolean {

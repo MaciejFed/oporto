@@ -870,7 +870,7 @@ export const db: Schema = {
     },
     {
       german: 'oder',
-      english: 'but'
+      english: 'or'
     },
     {
       german: 'warum',
