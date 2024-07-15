@@ -31,7 +31,7 @@ export class GermanCaseExercise implements Exercise, Comparable {
 
   getCorrectAnswer = () => {
     const word = this.caseWord.german[this.germanCase] || '';
-    return this.getFinalWord(word);
+    return this.getFinalWord(word, this.gender);
   };
 
   isAnswerCorrect(answer: string): boolean {
@@ -64,9 +64,9 @@ export class GermanCaseExercise implements Exercise, Comparable {
     this.gender === exercise.gender &&
     this.germanCase === exercise.germanCase;
 
-  public getFinalWord(word: GenderWord | string, gender: GermanGender = GermanGender.maskulinum): string {
+  public getFinalWord(word: GenderWord | string, gender?: GermanGender): string {
     if (typeof word === 'string') return word;
-    const result = word[gender ?? this.gender!];
+    const result = word[gender ?? GermanGender.maskulinum];
     if (!result) throw new Error(`Unexpected no word for [${JSON.stringify(this.caseWord, null, 4)}]`);
     return result;
   }
