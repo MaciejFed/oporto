@@ -471,6 +471,328 @@ export const db: Schema = {
         plural: 'Tische',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'factory',
+      german: {
+        singular: 'Fabrik',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'schnitzel',
+      german: {
+        singular: 'Schnitzel',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'soup',
+      german: {
+        singular: 'Suppe',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'piece',
+      german: {
+        singular: 'Stück',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'lemon',
+      german: {
+        singular: 'Zitrone',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'beef',
+      german: {
+        singular: 'Rind',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'tip',
+      german: {
+        singular: 'Trinkgeld',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'spoon',
+      german: {
+        singular: 'Löffel',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'knife',
+      german: {
+        singular: 'Messer',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'plate',
+      german: {
+        singular: 'Teller',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fork',
+      german: {
+        singular: 'Gabel',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'pot',
+      german: {
+        singular: 'Topf',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'glass',
+      german: {
+        singular: 'Glas',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'cup',
+      german: {
+        singular: 'Tasse',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'can',
+      german: {
+        singular: 'Kanne',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'bowl',
+      german: {
+        singular: 'Schüssel',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'pan',
+      german: {
+        singular: 'Pfanne',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'kind',
+      german: {
+        singular: 'Art',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'muesli',
+      german: {
+        singular: 'Müsli',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'fruit',
+      german: {
+        singular: 'Frucht',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'starter',
+      german: {
+        singular: 'Vorspeise',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'percent',
+      german: {
+        singular: 'Prozent',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'market',
+      german: {
+        singular: 'Markt',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'product',
+      german: {
+        singular: 'Produkt',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'environment',
+      german: {
+        singular: 'Umgebung',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'steak',
+      german: {
+        singular: 'Steak',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'alcohol',
+      german: {
+        singular: 'Alkohol',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'spoon',
+      german: {
+        singular: 'Löffel',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'knife',
+      german: {
+        singular: 'Messer',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'plate',
+      german: {
+        singular: 'Teller',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fork',
+      german: {
+        singular: 'Gabel',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'quartet',
+      german: {
+        singular: 'Quartett',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'pot',
+      german: {
+        singular: 'Topf',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'can',
+      german: {
+        singular: 'Kanne',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'bowl',
+      german: {
+        singular: 'Schüssel',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'pan',
+      german: {
+        singular: 'Pfanne',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'appetite',
+      german: {
+        singular: 'Appetit',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'diet',
+      german: {
+        singular: 'Diät',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'dessert',
+      german: {
+        singular: 'Nachspeise',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'honey',
+      german: {
+        singular: 'Honig',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'cup',
+      german: {
+        singular: 'Tasse',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'lunch',
+      german: {
+        singular: 'Mittagessen',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'canteen',
+      german: {
+        singular: 'Kantine',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'court',
+      german: {
+        singular: 'Gericht',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'habit',
+      german: {
+        singular: 'Gewohnheit',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'jamBE',
+      german: {
+        singular: 'Marmelade',
+        gender: 'feminine'
+      }
     }
   ],
   verbs: [
@@ -748,6 +1070,114 @@ export const db: Schema = {
         Wir: 'haben geglaubt',
         Ihr: 'habt geglaubt',
         Sie: 'haben geglaubt'
+      }
+    },
+    {
+      english: 'to roast',
+      infinitive: 'braten',
+      presentSimple: {
+        Ich: 'brate',
+        Du: 'brätst',
+        'Er/Sie/Es': 'brät',
+        Wir: 'braten',
+        Ihr: 'bratet',
+        Sie: 'braten'
+      }
+    },
+    {
+      english: 'to agree',
+      infinitive: 'stimmen',
+      presentSimple: {
+        Ich: 'stimme',
+        Du: 'stimmst',
+        'Er/Sie/Es': 'stimmt',
+        Wir: 'stimmen',
+        Ihr: 'stimmt',
+        Sie: 'stimmen'
+      }
+    },
+    {
+      english: 'to take over',
+      infinitive: 'übernehmen',
+      presentSimple: {
+        Ich: 'übernehme',
+        Du: 'übernimmst',
+        'Er/Sie/Es': 'übernimmt',
+        Wir: 'übernehmen',
+        Ihr: 'übernehmt',
+        Sie: 'übernehmen'
+      }
+    },
+    {
+      english: 'to smell',
+      infinitive: 'riechen',
+      presentSimple: {
+        Ich: 'rieche',
+        Du: 'riechst',
+        'Er/Sie/Es': 'riecht',
+        Wir: 'riechen',
+        Ihr: 'riecht',
+        Sie: 'riechen'
+      }
+    },
+    {
+      english: 'to take off',
+      infinitive: 'ausziehen',
+      presentSimple: {
+        Ich: 'ziehe aus',
+        Du: 'ziehst aus',
+        'Er/Sie/Es': 'zieht aus',
+        Wir: 'ziehen aus',
+        Ihr: 'zieht aus',
+        Sie: 'ziehen aus'
+      }
+    },
+    {
+      english: 'to surprise',
+      infinitive: 'überraschen',
+      presentSimple: {
+        Ich: 'überrasche',
+        Du: 'überraschst',
+        'Er/Sie/Es': 'überrascht',
+        Wir: 'überraschen',
+        Ihr: 'überrascht',
+        Sie: 'überraschen'
+      }
+    },
+    {
+      english: 'to guide',
+      infinitive: 'leiten',
+      presentSimple: {
+        Ich: 'leite',
+        Du: 'leitest',
+        'Er/Sie/Es': 'leitet',
+        Wir: 'leiten',
+        Ihr: 'leitet',
+        Sie: 'leiten'
+      }
+    },
+    {
+      english: 'to be against',
+      infinitive: 'gegen',
+      presentSimple: {
+        Ich: 'gege',
+        Du: 'gegst',
+        'Er/Sie/Es': 'gegt',
+        Wir: 'gegen',
+        Ihr: 'gegt',
+        Sie: 'gegen'
+      }
+    },
+    {
+      english: 'to plan',
+      infinitive: 'planen',
+      presentSimple: {
+        Ich: 'plane',
+        Du: 'planst',
+        'Er/Sie/Es': 'plant',
+        Wir: 'planen',
+        Ihr: 'plant',
+        Sie: 'planen'
       }
     }
   ],

@@ -17,7 +17,7 @@ const AUDIO_DIR = path.join(os.homedir(), 'audio');
 
 dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
 
-const getAudioPath = () => `${AUDIO_DIR}/${randomUUID()}.mp3`;;
+const getAudioPath = () => `${AUDIO_DIR}/${randomUUID()}.mp3`;
 
 const getVoiceForLanguage = async (language: Language, text: string) => {
   const audioPrev = await getPreviousAudioVoice(language, text);
@@ -27,7 +27,9 @@ const getVoiceForLanguage = async (language: Language, text: string) => {
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
     case Language.German:
       if (text.split(' ').length === 1) {
-        return getRandomElement(['A', 'B', 'C', 'F'].map((index) => `de-DE-Neural2-${index}`).concat('de-DE-Polyglot-1'));
+        return getRandomElement(
+          ['A', 'B', 'C', 'F'].map((index) => `de-DE-Neural2-${index}`).concat('de-DE-Polyglot-1')
+        );
       }
       return getRandomElement(['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer']);
     default:
@@ -40,14 +42,14 @@ const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.8 : 1);
 
 const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) => {
   const audioFilePath = getAudioPath();
-  const voice = await getVoiceForLanguage(language, text) as 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
+  const voice = (await getVoiceForLanguage(language, text)) as 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
 
   const openai = new OpenAI();
   const mp3 = await openai.audio.speech.create({
     model: 'tts-1-hd',
     voice,
     speed: getRateInNumber(rate),
-    input: text,
+    input: text
   });
   const buffer = Buffer.from(await mp3.arrayBuffer());
   await fs.promises.writeFile(audioFilePath, buffer);
@@ -87,7 +89,7 @@ const synthesize = async (language: Language, text: string, rate: Rate) => {
 
 export async function getAudioForText(language: Language, text: string, rate: Rate): Promise<Audio> {
   let audio = await getAudio(language, text, rate);
-  const synthesizeFn = (language === Language.German && text.split(' ').length > 1) ? synthesizeOpenAI : synthesize;
+  const synthesizeFn = language === Language.German && text.split(' ').length > 1 ? synthesizeOpenAI : synthesize;
   if (!audio) {
     logger.info(`Audio for [${language}] [${text}]. Doesn't exist. Creating...`);
     audio = await synthesizeFn(language, text, rate);
