@@ -1097,18 +1097,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to take over',
-      infinitive: 'übernehmen',
-      presentSimple: {
-        Ich: 'übernehme',
-        Du: 'übernimmst',
-        'Er/Sie/Es': 'übernimmt',
-        Wir: 'übernehmen',
-        Ihr: 'übernehmt',
-        Sie: 'übernehmen'
-      }
-    },
-    {
       english: 'to smell',
       infinitive: 'riechen',
       presentSimple: {
@@ -1154,18 +1142,6 @@ export const db: Schema = {
         Wir: 'leiten',
         Ihr: 'leitet',
         Sie: 'leiten'
-      }
-    },
-    {
-      english: 'to be against',
-      infinitive: 'gegen',
-      presentSimple: {
-        Ich: 'gege',
-        Du: 'gegst',
-        'Er/Sie/Es': 'gegt',
-        Wir: 'gegen',
-        Ihr: 'gegt',
-        Sie: 'gegen'
       }
     },
     {
