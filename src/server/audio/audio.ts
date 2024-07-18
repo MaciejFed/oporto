@@ -26,7 +26,7 @@ const getVoiceForLanguage = async (language: Language, text: string) => {
     case Language.Portuguese:
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
     case Language.German:
-      if (text.split(' ').length === 1) {
+      if (text.split(' ').length < 3) {
         return getRandomElement(
           ['A', 'B', 'C', 'F'].map((index) => `de-DE-Neural2-${index}`).concat('de-DE-Polyglot-1')
         );
@@ -89,7 +89,7 @@ const synthesize = async (language: Language, text: string, rate: Rate) => {
 
 export async function getAudioForText(language: Language, text: string, rate: Rate): Promise<Audio> {
   let audio = await getAudio(language, text, rate);
-  const synthesizeFn = language === Language.German && text.split(' ').length > 1 ? synthesizeOpenAI : synthesize;
+  const synthesizeFn = language === Language.German && text.split(' ').length > 2 ? synthesizeOpenAI : synthesize;
   if (!audio) {
     logger.info(`Audio for [${language}] [${text}]. Doesn't exist. Creating...`);
     audio = await synthesizeFn(language, text, rate);
