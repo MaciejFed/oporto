@@ -10,7 +10,6 @@ import { getProgressAggregate, ProgressAggregate } from '../service/progress/pro
 import { sortExercises } from '../priority/priority';
 import { Person, wordDatabase } from '../repository/exercises-repository';
 import { checkStandardConjugation } from '../service/verb/verb';
-import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
@@ -22,6 +21,7 @@ import { DateTime } from 'luxon';
 import path from 'path';
 import os from 'os';
 import { writeFileSync } from 'node:fs';
+import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
 
 const config = loadValidConfig();
 

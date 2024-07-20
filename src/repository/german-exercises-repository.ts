@@ -1109,7 +1109,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to take off',
+      english: 'to move out',
       infinitive: 'ausziehen',
       presentSimple: {
         Ich: 'ziehe aus',
@@ -1118,18 +1118,6 @@ export const db: Schema = {
         Wir: 'ziehen aus',
         Ihr: 'zieht aus',
         Sie: 'ziehen aus'
-      }
-    },
-    {
-      english: 'to surprise',
-      infinitive: 'überraschen',
-      presentSimple: {
-        Ich: 'überrasche',
-        Du: 'überraschst',
-        'Er/Sie/Es': 'überrascht',
-        Wir: 'überraschen',
-        Ihr: 'überrascht',
-        Sie: 'überraschen'
       }
     },
     {

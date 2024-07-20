@@ -22,12 +22,9 @@ import { logger } from '../common/logger';
 import { getRandomElement, removeRepetitionFromBlocks } from '../common/common';
 import performance from 'performance-now';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
-import {
-  exerciseBaseWordProgressLimit,
-  IN_PROGRESS_LIMIT_MAP
-} from './types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 import { Language } from '../common/language';
 import { createTable } from '../commands/stat';
+import { removeBaseWordLimit } from '../service/limit/base-word-limit';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -92,7 +89,6 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseDoneInLastHour,
   exerciseDoneCorrectly2TimesInRow,
   exerciseTypeInProgressLimit,
-  exerciseBaseWordProgressLimit,
   exerciseRandomness
 ];
 
@@ -204,7 +200,7 @@ function getExercisesWithPriorities(
   const progressAggregate = getProgressAggregate(allResults, exercises);
   logCurrentWordsInProgress(progressAggregate, allResults, language);
 
-  const x = exercisesWithoutWantedProgress
+  const x = removeBaseWordLimit(exercisesWithoutWantedProgress, progressAggregate)
     .map((ex) => {
       const combinedPriorities = priorityCompilers
         .flatMap((priorityCompiler) => {

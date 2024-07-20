@@ -102,7 +102,7 @@ export function removeRepetitionFromBlocks<T>(arr: T[], equalFn: (a: T, b: T) =>
     return block.some((element) => block.filter((e) => equalFn(element, e)).length > 1);
   };
 
-  return arr
+  const removeRepetition = (array: T[]) => array
     .reduce<T[][]>(
       (prev, curr) => {
         const firstElementWithoutRepetition = prev.findIndex(
@@ -114,8 +114,9 @@ export function removeRepetitionFromBlocks<T>(arr: T[], equalFn: (a: T, b: T) =>
         );
       },
       [[]]
-    )
-    .flatMap((a) => a);
+    ).flatMap((a) => a);
+
+  return removeRepetition(removeRepetition(removeRepetition(arr)));
 }
 
 export async function sleep(milliseconds: number) {
