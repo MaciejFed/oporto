@@ -35,5 +35,10 @@ export function removeBaseWordLimit(
     return  currentlyInProgressLimit[baseWordType].includes(baseWord);
   }
 
-  return exercises.filter(({ exercise }) => inLimit(exercise.getBaseWordAsString()!, exercise.getBaseWordType()!));
+  return exercises.filter(({ exercise }) => {
+    const baseWord = exercise.getBaseWordAsString();
+    const baseWordType = exercise.getBaseWordType();
+    if (baseWord && baseWordType) return inLimit(baseWord, baseWordType);
+    return true;
+  });
 }
