@@ -102,19 +102,21 @@ export function removeRepetitionFromBlocks<T>(arr: T[], equalFn: (a: T, b: T) =>
     return block.some((element) => block.filter((e) => equalFn(element, e)).length > 1);
   };
 
-  const removeRepetition = (array: T[]) => array
-    .reduce<T[][]>(
-      (prev, curr) => {
-        const firstElementWithoutRepetition = prev.findIndex(
-          (subArray) => !hasDuplicates([...subArray, curr]) && subArray.length < blockSize
-        );
-        if (firstElementWithoutRepetition === -1) return prev.concat([[curr]]);
-        return prev.map((subArray, index) =>
-          index === firstElementWithoutRepetition ? [...subArray, curr] : subArray
-        );
-      },
-      [[]]
-    ).flatMap((a) => a);
+  const removeRepetition = (array: T[]) =>
+    array
+      .reduce<T[][]>(
+        (prev, curr) => {
+          const firstElementWithoutRepetition = prev.findIndex(
+            (subArray) => !hasDuplicates([...subArray, curr]) && subArray.length < blockSize
+          );
+          if (firstElementWithoutRepetition === -1) return prev.concat([[curr]]);
+          return prev.map((subArray, index) =>
+            index === firstElementWithoutRepetition ? [...subArray, curr] : subArray
+          );
+        },
+        [[]]
+      )
+      .flatMap((a) => a);
 
   return removeRepetition(removeRepetition(removeRepetition(arr)));
 }

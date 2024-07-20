@@ -1143,6 +1143,86 @@ export const db: Schema = {
         Ihr: 'plant',
         Sie: 'planen'
       }
+    },
+    {
+      english: 'to lie ak',
+      infinitive: 'legen',
+      presentSimple: {
+        Ich: 'lege',
+        Du: 'legst',
+        'Er/Sie/Es': 'legt',
+        Wir: 'legen',
+        Ihr: 'legt',
+        Sie: 'legen'
+      },
+      pastPerfect: {
+        Ich: 'habe gelegt',
+        Du: 'hast gelegt',
+        'Er/Sie/Es': 'hat gelegt',
+        Wir: 'haben gelegt',
+        Ihr: 'habt gelegt',
+        Sie: 'haben gelegt'
+      }
+    },
+    {
+      english: 'to lie dat',
+      infinitive: 'liegen',
+      presentSimple: {
+        Ich: 'liege',
+        Du: 'liegst',
+        'Er/Sie/Es': 'liegt',
+        Wir: 'liegen',
+        Ihr: 'liegt',
+        Sie: 'liegen'
+      },
+      pastPerfect: {
+        Ich: 'habe gelegen',
+        Du: 'hast gelegen',
+        'Er/Sie/Es': 'hat gelegen',
+        Wir: 'haben gelegen',
+        Ihr: 'habt gelegen',
+        Sie: 'haben gelegen'
+      }
+    },
+    {
+      english: 'to hang',
+      infinitive: 'hängen',
+      presentSimple: {
+        Ich: 'hänge',
+        Du: 'hängst',
+        'Er/Sie/Es': 'hängt',
+        Wir: 'hängen',
+        Ihr: 'hängt',
+        Sie: 'hängen'
+      },
+      pastPerfect: {
+        Ich: 'habe gehängt',
+        Du: 'hast gehängt',
+        'Er/Sie/Es': 'hat gehängt',
+        Wir: 'haben gehängt',
+        Ihr: 'habt gehängt',
+        Sie: 'haben gehängt'
+      }
+    },
+    {
+      english: 'to put',
+      infinitive: 'stecken',
+      presentSimple: {
+        Ich: 'stecke',
+        Du: 'steckst',
+        'Er/Sie/Es': 'steckt',
+        Wir: 'stecken',
+        Ihr: 'steckt',
+        Sie: 'stecken'
+      },
+      pastPerfect: {
+        Ich: 'habe gesteckt',
+        Du: 'hast gesteckt',
+        'Er/Sie/Es': 'hat gesteckt',
+        Wir: 'haben gesteckt',
+        Ihr: 'habt gesteckt',
+        Sie: 'haben gesteckt'
+      }
     }
   ],
   others: [

@@ -23,6 +23,7 @@ const mockCommonModules = () => {
         red: () => {},
         white: () => {},
         bold: () => {},
+        blue: () => {},
         yellow: () => {}
       }
     };
@@ -89,7 +90,6 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
   const Input = require('../io/input').default;
   const SessionManager = require('../session/session-manager').default;
   const getAllResults = require('../repository/result-repository').getAllResults;
-  const Output = require('../io/output').default;
 
   const eventProcessor = new EventProcessor(Language.Portuguese);
   const terminal = new Terminal(eventProcessor, Language.Portuguese);
@@ -101,7 +101,6 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     eventProcessor,
     getAllResults,
     mockGenerateExercisesForSession,
-    SessionManager,
-    Output
+    SessionManager
   };
 };

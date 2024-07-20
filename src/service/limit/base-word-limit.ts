@@ -10,30 +10,32 @@ export const IN_PROGRESS_LIMIT_MAP: Record<BaseWordType, number> = {
   [BaseWordType.OTHER]: 10
 };
 
-
 export function removeBaseWordLimit(
   exercises: ExerciseProgress[],
   { words }: ProgressAggregate,
-  limit: Record<BaseWordType, number> = IN_PROGRESS_LIMIT_MAP,
-  ): ExerciseProgress[] {
+  limit: Record<BaseWordType, number> = IN_PROGRESS_LIMIT_MAP
+): ExerciseProgress[] {
   let currentlyInProgressLimit: Record<BaseWordType, string[]> = {
     [BaseWordType.NOUN]: words.NOUN.IN_PROGRESS.baseWords.slice(0, limit[BaseWordType.NOUN]),
     [BaseWordType.VERB]: words.VERB.IN_PROGRESS.baseWords.slice(0, limit[BaseWordType.VERB]),
-    [BaseWordType.ADJECTIVE] :words.ADJECTIVE.IN_PROGRESS.baseWords.slice(0, limit[BaseWordType.ADJECTIVE]),
-    [BaseWordType.OTHER]: words.OTHER.IN_PROGRESS.baseWords.slice(0, limit[BaseWordType.OTHER]),
-  }
+    [BaseWordType.ADJECTIVE]: words.ADJECTIVE.IN_PROGRESS.baseWords.slice(0, limit[BaseWordType.ADJECTIVE]),
+    [BaseWordType.OTHER]: words.OTHER.IN_PROGRESS.baseWords.slice(0, limit[BaseWordType.OTHER])
+  };
 
   const inLimit = (baseWord: string, baseWordType: BaseWordType) => {
-    if (currentlyInProgressLimit[baseWordType].length < limit[baseWordType] && !currentlyInProgressLimit[baseWordType].includes(baseWord)) {
+    if (
+      currentlyInProgressLimit[baseWordType].length < limit[baseWordType] &&
+      !currentlyInProgressLimit[baseWordType].includes(baseWord)
+    ) {
       logger.info(`Allowing [${baseWord}] base [${baseWordType}] is not within limit [${limit[baseWordType]}]`);
       currentlyInProgressLimit = {
         ...currentlyInProgressLimit,
-        [baseWordType]: currentlyInProgressLimit[baseWordType].concat(baseWord),
+        [baseWordType]: currentlyInProgressLimit[baseWordType].concat(baseWord)
       };
       return true;
     }
-    return  currentlyInProgressLimit[baseWordType].includes(baseWord);
-  }
+    return currentlyInProgressLimit[baseWordType].includes(baseWord);
+  };
 
   return exercises.filter(({ exercise }) => {
     const baseWord = exercise.getBaseWordAsString();

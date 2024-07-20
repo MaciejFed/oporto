@@ -10,25 +10,25 @@ const emptyProgressAggregate: ProgressAggregate = {
     [BaseWordType.VERB]: {
       [ProgressType.IN_PROGRESS]: {
         baseWords: [] as string[],
-        count: 0,
+        count: 0
       }
     },
     [BaseWordType.ADJECTIVE]: {
       [ProgressType.IN_PROGRESS]: {
         baseWords: [] as string[],
-        count: 0,
+        count: 0
       }
     },
     [BaseWordType.NOUN]: {
       [ProgressType.IN_PROGRESS]: {
         baseWords: [] as string[],
-        count: 0,
+        count: 0
       }
     },
     [BaseWordType.OTHER]: {
       [ProgressType.IN_PROGRESS]: {
         baseWords: [] as string[],
-        count: 0,
+        count: 0
       }
     }
   }
@@ -39,56 +39,60 @@ const emptyLimit: Record<BaseWordType, number> = {
   [BaseWordType.VERB]: 0,
   [BaseWordType.OTHER]: 0,
   [BaseWordType.ADJECTIVE]: 0
-}
+};
 
 const verbExercises = [
   { exercise: VerbExercise.new(wordDatabase.verb('abanar'), Person.Eu, 'presentSimple') },
   { exercise: VerbExercise.new(wordDatabase.verb('abrir'), Person.Eu, 'presentSimple') },
-  { exercise: VerbExercise.new(wordDatabase.verb('acabar'), Person.Eu, 'presentSimple') },
+  { exercise: VerbExercise.new(wordDatabase.verb('acabar'), Person.Eu, 'presentSimple') }
 ] as unknown as ExerciseProgress[];
 
-describe('Base Word Limit' ,() => {
+describe('Base Word Limit', () => {
   it('Should only leave exercises within limit', () => {
-
-    const exercises = removeBaseWordLimit(verbExercises, {
-      ...emptyProgressAggregate,
-      words: {
-        ...emptyProgressAggregate.words,
-        [BaseWordType.VERB]: {
-          [ProgressType.IN_PROGRESS]: {
-            baseWords: ['abanar', 'abrir', 'acabar'],
-            count: 3,
-          }
-        }
-      }
-      } as ProgressAggregate,
+    const exercises = removeBaseWordLimit(
+      verbExercises,
       {
-        ...emptyLimit,
-        [BaseWordType.VERB]: 2,
-      })
-
-    expect(exercises.length).toEqual(2);
-  })
-
-  it('Should include one exercise in limit', () => {
-
-    const exercises = removeBaseWordLimit(verbExercises, {
         ...emptyProgressAggregate,
         words: {
           ...emptyProgressAggregate.words,
           [BaseWordType.VERB]: {
             [ProgressType.IN_PROGRESS]: {
-              baseWords: ['abanar'],
-              count: 1,
+              baseWords: ['abanar', 'abrir', 'acabar'],
+              count: 3
             }
           }
         }
       } as ProgressAggregate,
       {
         ...emptyLimit,
-        [BaseWordType.VERB]: 2,
-      })
+        [BaseWordType.VERB]: 2
+      }
+    );
 
     expect(exercises.length).toEqual(2);
-  })
-})
+  });
+
+  it('Should include one exercise in limit', () => {
+    const exercises = removeBaseWordLimit(
+      verbExercises,
+      {
+        ...emptyProgressAggregate,
+        words: {
+          ...emptyProgressAggregate.words,
+          [BaseWordType.VERB]: {
+            [ProgressType.IN_PROGRESS]: {
+              baseWords: ['abanar'],
+              count: 1
+            }
+          }
+        }
+      } as ProgressAggregate,
+      {
+        ...emptyLimit,
+        [BaseWordType.VERB]: 2
+      }
+    );
+
+    expect(exercises.length).toEqual(2);
+  });
+});

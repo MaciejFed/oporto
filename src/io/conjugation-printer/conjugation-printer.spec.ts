@@ -30,12 +30,12 @@ describe('Conjugation Printer', () => {
       const nonException = printer.renderCell(1, 0);
 
       expect(exception).toEqual(
-        new ColoredText('Eu:      conheço     🟢', Array(19).fill(Color.Y).concat(Array(6).fill(Color.W)))
+        new ColoredText('conheço    +', Array(7).fill(Color.Y).concat(Array(4).fill(Color.W).concat(Color.G)))
       );
       expect(nonException).toEqual(
         new ColoredText(
-          'conheces    ❌',
-          Array(6).fill(Color.W).concat([Color.G, Color.G, Color.W, Color.W, Color.W, Color.W, Color.W])
+          'conheces   -',
+          Array(6).fill(Color.W).concat([Color.G, Color.G, Color.W, Color.W, Color.W, Color.R])
         )
       );
     });
@@ -48,11 +48,9 @@ describe('Conjugation Printer', () => {
       const exception = printer.renderCell(0, 0);
       const nonException = printer.renderCell(1, 0);
 
-      expect(exception).toEqual(
-        new ColoredText('ponho       ✅', Array(5).fill(Color.Y).concat(Array(8).fill(Color.W)))
-      );
+      expect(exception).toEqual(new ColoredText('ponho +', Array(5).fill(Color.Y).concat([Color.W, Color.G])));
       expect(nonException).toEqual(
-        new ColoredText('pões        ❌', Array(4).fill(Color.Y).concat(Array(9).fill(Color.W)))
+        new ColoredText('pões  -', Array(4).fill(Color.Y).concat([Color.W, Color.W, Color.R]))
       );
     });
 
@@ -93,10 +91,10 @@ describe('Conjugation Printer', () => {
       const nonException = printer.renderCell(0, 0);
 
       expect(nonException).toEqual(
-        new ColoredText('habe        ✅', Array(3).fill(Color.W).concat(Color.G).concat(Array(9).fill(Color.W)))
+        new ColoredText('habe  +', [Color.W, Color.W, Color.W, Color.G, Color.W, Color.W, Color.G])
       );
       expect(exception).toEqual(
-        new ColoredText('hast        ❌', Array(4).fill(Color.Y).concat(Array(9).fill(Color.W)))
+        new ColoredText('hast  -', [Color.Y, Color.Y, Color.Y, Color.Y, Color.W, Color.W, Color.R])
       );
     });
 
@@ -122,12 +120,8 @@ describe('Conjugation Printer', () => {
       const exception = printer.renderCell(1, 0);
       const nonException = printer.renderCell(0, 0);
 
-      expect(nonException).toEqual(
-        new ColoredText('habe        ✅', Array(3).fill(Color.W).concat(Color.G).concat(Array(9).fill(Color.W)))
-      );
-      expect(exception).toEqual(
-        new ColoredText('hast        ❌', Array(4).fill(Color.Y).concat(Array(9).fill(Color.W)))
-      );
+      expect(nonException).toEqual(new ColoredText('der ~', [Color.W, Color.W, Color.W, Color.W, Color.B]));
+      expect(exception).toEqual(new ColoredText('die ~', [Color.W, Color.W, Color.W, Color.W, Color.B]));
     });
 
     it('renders whole table', () => {

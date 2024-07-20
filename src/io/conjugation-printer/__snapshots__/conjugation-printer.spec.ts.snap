@@ -2,7 +2,7 @@
 
 exports[`Conjugation Printer German Case renders whole table 1`] = `
 "
-ich +|mich ~|                                                         
+ich +|mich ~|mir ~|                                                   
                                                                       
                                                                       
                                                                       
@@ -66,7 +66,7 @@ ich +|mich ~|
 
 exports[`Conjugation Printer German Case renders whole table 2`] = `
 "
-WWWWWWWWWWWWW                                                         
+WWWWWWWWWWWWWWWWWWW                                                   
                                                                       
                                                                       
                                                                       
@@ -130,12 +130,12 @@ WWWWWWWWWWWWW
 
 exports[`Conjugation Printer German Verb renders whole table 1`] = `
 "
-habe        🟢|             |                                         
-hast        🔴|             |                                         
-hat         🔵|             |                                         
-haben       🔵|             |                                         
-habt        🔵|             |                                         
-                                                                      
+Ich:     habe  +|  |                                                  
+Du:      hast  -|  |                                                  
+ErSieEs: hat   ~|  |                                                  
+Wir:     haben ~|  |                                                  
+Ihr:     habt  ~|  |                                                  
+Sie:     haben ~|  |                                                  
                                                                       
                                                                       
                                                                       
@@ -194,12 +194,12 @@ habt        🔵|             |
 
 exports[`Conjugation Printer German Verb renders whole table 2`] = `
 "
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-                                                                      
+WWWWWWWWWWWWWWWWWWWW                                                  
+WWWWWWWWWWWWWWWWWWWW                                                  
+WWWWWWWWWWWWWWWWWWWW                                                  
+WWWWWWWWWWWWWWWWWWWW                                                  
+WWWWWWWWWWWWWWWWWWWW                                                  
+WWWWWWWWWWWWWWWWWWWW                                                  
                                                                       
                                                                       
                                                                       
@@ -258,11 +258,11 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 
 exports[`Conjugation Printer Portuguese Verb renders whole table with past 1`] = `
 "
-falo        +|falei       ~|                                          
-falas       -|falaste     ~|                                          
-fala        ~|falou       ~|                                          
-falamos     ~|falámos     ~|                                          
-falam       ~|falaram     ~|                                          
+Eu:            falo    +|falei   ~|                                   
+Tu:            falas   -|falaste ~|                                   
+ElaEleVocê:    fala    ~|falou   ~|                                   
+Nós:           falamos ~|falámos ~|                                   
+ElesElasVosēs: falam   ~|falaram ~|                                   
                                                                       
                                                                       
                                                                       
@@ -322,11 +322,11 @@ falam       ~|falaram     ~|
 
 exports[`Conjugation Printer Portuguese Verb renders whole table with past 2`] = `
 "
-WWWWWWWWWWWWWWWWWWWWWWWWWWWW                                          
-WWWWWWWWWWWWWWWWWWWWWWWWWWWW                                          
-WWWWWWWWWWWWWWWWWWWWWWWWWWWW                                          
-WWWWWWWWWWWWWWWWWWWWWWWWWWWW                                          
-WWWWWWWWWWWWWWWWWWWWWWWWWWWW                                          
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
                                                                       
                                                                       
                                                                       
@@ -386,11 +386,11 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWW
 
 exports[`Conjugation Printer Portuguese Verb renders whole table without past 1`] = `
 "
-Eu:            conheço   +| |                                         
-Tu:            conheces  -| |                                         
-ElaEleVocê:    conhece   ~| |                                         
-Nós:           conhecemos~| |                                         
-ElesElasVosēs: conhecem  ~| |                                         
+Eu:            conheço    +|  |                                       
+Tu:            conheces   -|  |                                       
+ElaEleVocê:    conhece    ~|  |                                       
+Nós:           conhecemos ~|  |                                       
+ElesElasVosēs: conhecem   ~|  |                                       
                                                                       
                                                                       
                                                                       
@@ -450,11 +450,11 @@ ElesElasVosēs: conhecem  ~| |
 
 exports[`Conjugation Printer Portuguese Verb renders whole table without past 2`] = `
 "
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                         
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
                                                                       
                                                                       
                                                                       

@@ -18,7 +18,7 @@ export class ColoredText {
   public constructor(text = '', colors: Color[] = []) {
     // eslint-disable-next-line no-param-reassign,no-unused-expressions
     colors.length === 0 ? (colors = createColorArray({ white: text.length })) : colors;
-    if (text.length > colors.length) throw new Error('colors array lenght not equal to text lenght');
+    if (text.length > colors.length) throw new Error('colors array length not equal to text length');
     this.text = text;
     this.colors = colors;
   }

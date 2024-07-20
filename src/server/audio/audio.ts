@@ -26,15 +26,14 @@ const getVoiceForLanguage = async (language: Language, text: string) => {
     case Language.Portuguese:
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
     case Language.German:
-        return getRandomElement(
-          ['A', 'B', 'C', 'F'].map((index) => `de-DE-Neural2-${index}`));
+      return getRandomElement(['A', 'B', 'C', 'F'].map((index) => `de-DE-Neural2-${index}`));
     default:
       throw new Error(`Unknown language: [${language}]`);
   }
 };
 
 const getLocaleForLanguage = (language: Language) => (language === Language.Portuguese ? 'pt-PT' : 'de-DE');
-const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.8 : 1);
+const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.75 : 1);
 
 const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) => {
   const audioFilePath = getAudioPath();
