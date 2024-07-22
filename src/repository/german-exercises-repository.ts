@@ -1223,6 +1223,106 @@ export const db: Schema = {
         Ihr: 'habt gesteckt',
         Sie: 'haben gesteckt'
       }
+    },
+    {
+      english: 'to like',
+      infinitive: 'möchten',
+      presentSimple: {
+        Ich: 'mag',
+        Du: 'magst',
+        'Er/Sie/Es': 'mag',
+        Wir: 'mögen',
+        Ihr: 'mögt',
+        Sie: 'mögen'
+      },
+      pastPerfect: {
+        Ich: 'habe gemocht',
+        Du: 'hast gemocht',
+        'Er/Sie/Es': 'hat gemocht',
+        Wir: 'haben gemocht',
+        Ihr: 'habt gemocht',
+        Sie: 'haben gemocht'
+      }
+    },
+    {
+      english: 'to eat',
+      infinitive: 'essen',
+      presentSimple: {
+        Ich: 'esse',
+        Du: 'isst',
+        'Er/Sie/Es': 'isst',
+        Wir: 'essen',
+        Ihr: 'esst',
+        Sie: 'essen'
+      },
+      pastPerfect: {
+        Ich: 'habe gegessen',
+        Du: 'hast gegessen',
+        'Er/Sie/Es': 'hat gegessen',
+        Wir: 'haben gegessen',
+        Ihr: 'habt gegessen',
+        Sie: 'haben gegessen'
+      }
+    },
+    {
+      english: 'to pay',
+      infinitive: 'bezahlen',
+      presentSimple: {
+        Ich: 'bezahle',
+        Du: 'bezahlst',
+        'Er/Sie/Es': 'bezahlt',
+        Wir: 'bezahlen',
+        Ihr: 'bezahlt',
+        Sie: 'bezahlen'
+      },
+      pastPerfect: {
+        Ich: 'habe bezahlt',
+        Du: 'hast bezahlt',
+        'Er/Sie/Es': 'hat bezahlt',
+        Wir: 'haben bezahlt',
+        Ihr: 'habt bezahlt',
+        Sie: 'haben bezahlt'
+      }
+    },
+    {
+      english: 'to order',
+      infinitive: 'bestellen',
+      presentSimple: {
+        Ich: 'bestelle',
+        Du: 'bestellst',
+        'Er/Sie/Es': 'bestellt',
+        Wir: 'bestellen',
+        Ihr: 'bestellt',
+        Sie: 'bestellen'
+      },
+      pastPerfect: {
+        Ich: 'habe bestellt',
+        Du: 'hast bestellt',
+        'Er/Sie/Es': 'hat bestellt',
+        Wir: 'haben bestellt',
+        Ihr: 'habt bestellt',
+        Sie: 'haben bestellt'
+      }
+    },
+    {
+      english: 'to search',
+      infinitive: 'suchen',
+      presentSimple: {
+        Ich: 'suche',
+        Du: 'suchst',
+        'Er/Sie/Es': 'sucht',
+        Wir: 'suchen',
+        Ihr: 'sucht',
+        Sie: 'suchen'
+      },
+      pastPerfect: {
+        Ich: 'habe gesucht',
+        Du: 'hast gesucht',
+        'Er/Sie/Es': 'hat gesucht',
+        Wir: 'haben gesucht',
+        Ihr: 'habt gesucht',
+        Sie: 'haben gesucht'
+      }
     }
   ],
   others: [
@@ -1357,6 +1457,42 @@ export const db: Schema = {
     {
       german: 'nach',
       english: 'after'
+    },
+    {
+      german: 'wo',
+      english: 'where'
+    },
+    {
+      german: 'wer',
+      english: 'who'
+    },
+    {
+      german: 'bitte',
+      english: 'please'
+    },
+    {
+      german: 'oft',
+      english: 'often'
+    },
+    {
+      german: 'selten',
+      english: 'rarely'
+    },
+    {
+      german: 'vorher',
+      english: 'previously'
+    },
+    {
+      german: 'sogar',
+      english: 'even'
+    },
+    {
+      german: 'darf',
+      english: 'may'
+    },
+    {
+      german: 'dort',
+      english: 'there'
     }
   ],
   case: [
@@ -1435,6 +1571,29 @@ export const db: Schema = {
           femininum: 'keiner',
           neutrum: 'keinem',
           plural: 'keinen'
+        }
+      }
+    },
+    {
+      english: 'which',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'welcher',
+          femininum: 'welche',
+          neutrum: 'welches',
+          plural: 'welche'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'welchen',
+          femininum: 'welche',
+          neutrum: 'welches',
+          plural: 'welche'
+        },
+        [GermanCase.dative]: {
+          maskulinum: 'welchem',
+          femininum: 'welcher',
+          neutrum: 'welchem',
+          plural: 'welchen'
         }
       }
     },
