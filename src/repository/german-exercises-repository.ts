@@ -788,7 +788,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'jamBE',
+      english: 'jam',
       german: {
         singular: 'Marmelade',
         gender: 'feminine'
