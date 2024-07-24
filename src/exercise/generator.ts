@@ -166,6 +166,9 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
         GermanOtherTranslationGenerator,
         GermanCaseWordGenerator
       ].flatMap((generator) => generator());
+
+    case Language.Polish:
+      return [];
     case Language.Portuguese:
     default:
       return [

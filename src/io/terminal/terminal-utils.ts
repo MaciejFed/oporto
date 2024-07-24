@@ -223,7 +223,7 @@ export function printAllVerbConjugations(exercise: Exercise, results: Result[]) 
   getOutput().moveToColoredRows(CONJUGATION_X_MARGIN, CONJUGATION_Y_MARGIN, table);
 }
 
-export function printNewWordLearned(newWord: string) {
+export function printNewWordLearned(newWord: string, days: number) {
   const text = 'New word learnt! ';
   getOutput().bold();
   getOutput().moveTo(0, 19, text);
@@ -231,6 +231,7 @@ export function printNewWordLearned(newWord: string) {
   getOutput().moveTo(text.length + 1, 19, newWord);
   getOutput().bold(false);
   getOutput().white();
+  getOutput().moveTo(text.length + 2 + newWord.length, 19, `[${days} days]`);
 }
 
 export async function animateExerciseSummary({

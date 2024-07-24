@@ -23,6 +23,13 @@ program
   });
 
 program
+  .command('testpl')
+  .description('Start German Test session')
+  .action((str, options) => {
+    startTestSession(Language.German);
+  });
+
+program
   .command('speak')
   .description('Start speak session')
   .action((str, options) => {
@@ -51,6 +58,13 @@ program
   });
 
 program
+  .command('statpl')
+  .description('Show statistics PL')
+  .action((str, options) => {
+    displayStatistics(true, Language.German);
+  });
+
+program
   .command('progress')
   .description('Save progress')
   .action(() => {
@@ -62,6 +76,13 @@ program
   .description('Save German progress')
   .action(() => {
     saveProgress(Language.German);
+  });
+
+program
+  .command('progressde')
+  .description('Save Polish progress')
+  .action(() => {
+    saveProgress(Language.Polish);
   });
 
 program.parse();

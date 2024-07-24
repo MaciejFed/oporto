@@ -25,6 +25,7 @@ import { fetchExercisesForSession, getAudio, saveNewResult } from '../client/cli
 import { getSavedAudioPath } from '../server/configuration';
 import { getAllResults } from '../repository/result-repository';
 import { newWordsBetweenResults } from '../service/progress/progress';
+import { DateTime } from 'luxon';
 
 export class SessionManager implements AppEventListener {
   eventProcessor: EventProcessor;
@@ -101,7 +102,15 @@ export class SessionManager implements AppEventListener {
         this.language
       );
       if (newWords.length) {
-        this.eventProcessor.emit(NEW_WORD_LEARNED, newWords[0]);
+        const allResults = getAllResults(this.language)
+          .concat(result)
+          .filter((res) => res.exercise.getBaseWordAsString() === newWords[0]);
+        const firstAttempt = DateTime.fromJSDate(allResults[0].date);
+        const lastTimeAttempted = DateTime.fromJSDate(allResults[allResults.length - 1].date);
+        this.eventProcessor.emit(NEW_WORD_LEARNED, {
+          word: newWords[0],
+          time: Math.round(lastTimeAttempted.diff(firstAttempt, 'days').days)
+        });
       }
       saveNewResult(this.language, result);
       logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);

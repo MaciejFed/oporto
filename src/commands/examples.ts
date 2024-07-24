@@ -8,6 +8,8 @@ import fs from 'fs';
 import {
   DE_EXAMPLES_PATH,
   DE_TRANSLATION_EXAMPLES_PATH,
+  PL_EXAMPLES_PATH,
+  PL_TRANSLATION_EXAMPLES_PATH,
   PT_EXAMPLES_PATH,
   PT_TRANSLATION_EXAMPLES_PATH
 } from '../service/example-finder/example-finder.types';
@@ -25,6 +27,10 @@ export const examplesPaths: Record<Language, { targetLanguagePath: string; trans
   [Language.German]: {
     targetLanguagePath: DE_EXAMPLES_PATH,
     translationPath: DE_TRANSLATION_EXAMPLES_PATH
+  },
+  [Language.Polish]: {
+    targetLanguagePath: PL_EXAMPLES_PATH,
+    translationPath: PL_TRANSLATION_EXAMPLES_PATH
   }
 };
 

@@ -66,8 +66,10 @@ export class Terminal {
   exampleSentenceTranslation?: string | undefined;
   exampleSentenceTranslationApi?: string | undefined;
   language: Language;
+  exerciseCounter: number;
 
   constructor(eventProcessor: EventProcessor, language: Language) {
+    this.exerciseCounter = 0;
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exerciseInProgress = false;
@@ -159,8 +161,8 @@ export class Terminal {
   }
 
   private registerNewWordLearnedListener() {
-    this.eventProcessor.on(NEW_WORD_LEARNED, (newWord) => {
-      printNewWordLearned(newWord);
+    this.eventProcessor.on(NEW_WORD_LEARNED, ({ word, time }) => {
+      printNewWordLearned(word, time);
     });
   }
 
@@ -255,41 +257,54 @@ export class Terminal {
   }
 
   private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate, sync = true) {
-    const text = type === 'answer' ? this.exercise?.getRetryPrompt() : this.exampleSentence?.targetLanguage;
-    if (download) {
-      getAudio(this.language, text!, type, rate);
+    try {
+      const text = type === 'answer' ? this.exercise?.getRetryPrompt() : this.exampleSentence?.targetLanguage;
+      if (download) {
+        getAudio(this.language, text!, type, rate);
+      }
+      const syncFn = sync ? execSync : exec;
+      syncFn(`afplay ${getSavedAudioPath(type, rate)}`);
+    } catch (e: any) {
+      logger.error(e);
     }
-    const syncFn = sync ? execSync : exec;
-    syncFn(`afplay ${getSavedAudioPath(type, rate)}`);
   }
 
   private showExample(): Promise<void> {
     return new Promise<void>((resolve) => {
-      findExampleSentenceAndWord(
-        this.language,
-        this.exercise!,
-        ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
-          this.exampleSentence = {
-            english,
-            englishApi,
-            targetLanguage,
-            wordStartIndex,
-            word
-          };
-          this.exampleSentenceTranslation = english;
-          this.exampleSentenceTranslationApi = englishApi;
-          this.playAudio(true, 'example', 'slow');
-          printExampleSentence(
-            this.exampleSentence!.wordStartIndex,
-            this.exampleSentence!.word,
-            this.exampleSentence!.targetLanguage!
+      if (this.exerciseCounter++ % 3 !== 0) {
+        resolve();
+      } else {
+        try {
+          findExampleSentenceAndWord(
+            this.language,
+            this.exercise!,
+            ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
+              this.exampleSentence = {
+                english,
+                englishApi,
+                targetLanguage,
+                wordStartIndex,
+                word
+              };
+              this.exampleSentenceTranslation = english;
+              this.exampleSentenceTranslationApi = englishApi;
+              this.playAudio(true, 'example', 'slow');
+              printExampleSentence(
+                this.exampleSentence!.wordStartIndex,
+                this.exampleSentence!.word,
+                this.exampleSentence!.targetLanguage!
+              );
+              sleep(1000).then(() => {
+                this.playAudio(true, 'example', 'normal');
+                resolve();
+              });
+            }
           );
-          sleep(1000).then(() => {
-            this.playAudio(true, 'example', 'normal');
-            resolve();
-          });
+        } catch (error: any) {
+          logger.error(error);
+          resolve();
         }
-      );
+      }
     });
   }
 }
