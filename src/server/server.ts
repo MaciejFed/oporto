@@ -46,7 +46,8 @@ app.use((req, res, next) => {
 
 const cachedExercises: Record<Language, Exercise[]> = {
   [Language.Portuguese]: [],
-  [Language.German]: []
+  [Language.German]: [],
+  [Language.Polish]: []
 };
 let cachedAggregate: ProgressAggregate;
 
@@ -190,7 +191,14 @@ app.post('/:language/results/save', async (req: Request, res: Response) => {
 app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    res.send(cachedExercises[language].splice(0, 10));
+    let exercises = []
+    if (language === Language.German) {
+      const results = await readAllResults(language);
+      exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results); 
+    } else {
+      exercises = cachedExercises[language].splice(0, 10)
+    }
+    res.send(exercises);
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
