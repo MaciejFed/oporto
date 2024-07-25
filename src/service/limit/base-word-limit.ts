@@ -4,7 +4,7 @@ import { logger } from '../../common/logger';
 import { ExerciseProgress } from '../progress/progress';
 
 export const IN_PROGRESS_LIMIT_MAP: Record<BaseWordType, number> = {
-  [BaseWordType.NOUN]: 15,
+  [BaseWordType.NOUN]: 10,
   [BaseWordType.VERB]: 10,
   [BaseWordType.ADJECTIVE]: 8,
   [BaseWordType.OTHER]: 10
