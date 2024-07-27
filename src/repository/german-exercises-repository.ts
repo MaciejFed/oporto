@@ -1735,6 +1735,30 @@ export const db: Schema = {
     {
       german: 'dort',
       english: 'there'
+    },
+    {
+      german: 'bei',
+      english: 'at'
+    },
+    {
+      german: 'zuerst',
+      english: 'first'
+    },
+    {
+      german: 'früher',
+      english: 'earlier'
+    },
+    {
+      german: 'richtig',
+      english: 'correct'
+    },
+    {
+      german: 'weil',
+      english: 'because'
+    },
+    {
+      german: 'nie',
+      english: 'never'
     }
   ],
   case: [
