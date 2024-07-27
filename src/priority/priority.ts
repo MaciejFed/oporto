@@ -68,7 +68,7 @@ type ExerciseWithPriorites = {
 
 function getExerciseSubjectResults(allResults: Result[]): Record<string, Result[]> {
   return allResults.reduce<Record<string, Result[]>>((prev, curr) => {
-    const baseWordKey = curr.exercise.getBaseWordAsString() || JSON.stringify(curr.exercise.getBaseWord());
+    const baseWordKey = curr.exercise.getBaseWordAsString() || '_';
     const currentResults: Result[] = prev[baseWordKey] || [];
     currentResults.push(curr);
     prev[baseWordKey] = currentResults;
@@ -88,7 +88,7 @@ const priorityCompilers: PriorityCompiler[] = [
   exerciseDoneToday,
   exerciseDoneInLastHour,
   exerciseDoneCorrectly2TimesInRow,
-  exerciseTypeInProgressLimit,
+  // exerciseTypeInProgressLimit,
   exerciseRandomness
 ];
 
@@ -208,7 +208,7 @@ function getExercisesWithPriorities(
           const result = priorityCompiler(ex.exercise, {
             allExercises: exercises,
             allResults,
-            exerciseSubjectResults: exerciseSubjectResultMap[JSON.stringify(ex.exercise.getBaseWord())] || [],
+            exerciseSubjectResults: exerciseSubjectResultMap[ex.exercise.getBaseWordAsString() || '_'] || [],
             progressType: ex.progressType,
             exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
             exerciseResults: ex.exerciseResults,

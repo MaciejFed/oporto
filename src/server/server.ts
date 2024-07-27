@@ -162,11 +162,14 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
 
 app.get('/:language/priority', async (req: Request, res: Response) => {
   const language = getLanguage(req);
-  const exercises = generateAllPossibleExercises(language);
   const results = await readAllResults(language);
+  const exercises = await generateExercisesForSessionAsync(300, true, () => true, language, results);
   const { exercisesWithPriorities } = sortExercises(exercises, results, language);
-  exercisesWithPriorities.flatMap((ep) => ep.priorities);
-  res.send(exercisesWithPriorities);
+  const response = exercisesWithPriorities.map((ep) => ({
+    exercise: `[${ep.exercise.exerciseType}] [${ep.exercise.getBaseWordAsString()}]`,
+    value: `[${ep.priorityValueTotal}] ${ep.priorities.map((priority) => `${priority.priorityName} (${priority.priorityValue})`)}`
+  }))
+  res.send(response);
 });
 
 app.get('/:language/progress', async (req: Request, res: Response) => {
