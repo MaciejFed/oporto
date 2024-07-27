@@ -793,6 +793,104 @@ export const db: Schema = {
         singular: 'Marmelade',
         gender: 'feminine'
       }
+    },
+    {
+      english: 'arrival',
+      german: {
+        singular: 'Ankunft',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'reception',
+      german: {
+        singular: 'Rezeption',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'invoice',
+      german: {
+        singular: 'Rechnung',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'hotel',
+      german: {
+        singular: 'Hotel',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'reservation',
+      german: {
+        singular: 'Reservierung',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'telephone',
+      german: {
+        singular: 'Telefon',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'room',
+      german: {
+        singular: 'Zimmer',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'boss',
+      german: {
+        singular: 'Chef',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'colleague',
+      german: {
+        singular: 'Kollege',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'guest',
+      german: {
+        singular: 'Gast',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'meeting',
+      german: {
+        singular: 'Besprechung',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'emergency',
+      german: {
+        singular: 'Notfall',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'test',
+      german: {
+        singular: 'Test',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'luggage',
+      german: {
+        singular: 'Gepäck',
+        gender: 'none'
+      }
     }
   ],
   verbs: [
@@ -1322,6 +1420,150 @@ export const db: Schema = {
         Wir: 'haben gesucht',
         Ihr: 'habt gesucht',
         Sie: 'haben gesucht'
+      }
+    },
+    {
+      english: 'to note',
+      infinitive: 'notieren',
+      presentSimple: {
+        Ich: 'notiere',
+        Du: 'notierst',
+        'Er/Sie/Es': 'notiert',
+        Wir: 'notieren',
+        Ihr: 'notiert',
+        Sie: 'notieren'
+      }
+    },
+    {
+      english: 'to send',
+      infinitive: 'schicken',
+      presentSimple: {
+        Ich: 'schicke',
+        Du: 'schickst',
+        'Er/Sie/Es': 'schickt',
+        Wir: 'schicken',
+        Ihr: 'schickt',
+        Sie: 'schicken'
+      }
+    },
+    {
+      english: 'to mean',
+      infinitive: 'meinen',
+      presentSimple: {
+        Ich: 'meine',
+        Du: 'meinst',
+        'Er/Sie/Es': 'meint',
+        Wir: 'meinen',
+        Ihr: 'meint',
+        Sie: 'meinen'
+      }
+    },
+    {
+      english: 'to arrange',
+      infinitive: 'ordnen',
+      presentSimple: {
+        Ich: 'ordne',
+        Du: 'ordnest',
+        'Er/Sie/Es': 'ordnet',
+        Wir: 'ordnen',
+        Ihr: 'ordnet',
+        Sie: 'ordnen'
+      }
+    },
+    {
+      english: 'to leave',
+      infinitive: 'abreisen',
+      presentSimple: {
+        Ich: 'reise ab',
+        Du: 'reist ab',
+        'Er/Sie/Es': 'reist ab',
+        Wir: 'reisen ab',
+        Ihr: 'reist ab',
+        Sie: 'reisen ab'
+      }
+    },
+    {
+      english: 'to need',
+      infinitive: 'brauchen',
+      presentSimple: {
+        Ich: 'brauche',
+        Du: 'brauchst',
+        'Er/Sie/Es': 'braucht',
+        Wir: 'brauchen',
+        Ihr: 'braucht',
+        Sie: 'brauchen'
+      }
+    },
+    {
+      english: 'to hear',
+      infinitive: 'hören',
+      presentSimple: {
+        Ich: 'höre',
+        Du: 'hörst',
+        'Er/Sie/Es': 'hört',
+        Wir: 'hören',
+        Ihr: 'hört',
+        Sie: 'hören'
+      }
+    },
+    {
+      english: 'to call',
+      infinitive: 'anrufen',
+      presentSimple: {
+        Ich: 'rufe an',
+        Du: 'rufst an',
+        'Er/Sie/Es': 'ruft an',
+        Wir: 'rufen an',
+        Ihr: 'ruft an',
+        Sie: 'rufen an'
+      }
+    },
+    {
+      english: 'to get',
+      infinitive: 'bekommen',
+      presentSimple: {
+        Ich: 'bekomme',
+        Du: 'bekommst',
+        'Er/Sie/Es': 'bekommt',
+        Wir: 'bekommen',
+        Ihr: 'bekommt',
+        Sie: 'bekommen'
+      }
+    },
+    {
+      english: 'to notice',
+      infinitive: 'merken',
+      presentSimple: {
+        Ich: 'merke',
+        Du: 'merkst',
+        'Er/Sie/Es': 'merkt',
+        Wir: 'merken',
+        Ihr: 'merkt',
+        Sie: 'merken'
+      }
+    },
+    {
+      english: 'to tell',
+      infinitive: 'erzählen',
+      presentSimple: {
+        Ich: 'erzähle',
+        Du: 'erzählst',
+        'Er/Sie/Es': 'erzählt',
+        Wir: 'erzählen',
+        Ihr: 'erzählt',
+        Sie: 'erzählen'
+      }
+    },
+    {
+      english: 'to should',
+      infinitive: 'sollen',
+      presentSimple: {
+        Ich: 'soll',
+        Du: 'sollst',
+        'Er/Sie/Es': 'soll',
+        Wir: 'sollen',
+        Ihr: 'sollt',
+        Sie: 'sollen'
       }
     }
   ],
