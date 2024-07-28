@@ -35,7 +35,7 @@ import {
   printInBetweenMenu,
   printNewWordLearned
 } from './terminal/terminal-utils';
-import { Exercise } from '../exercise/exercise';
+import { BaseWordType, Exercise } from '../exercise/exercise';
 import { getExerciseProgress, getStatisticForBaseWord } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
@@ -271,7 +271,8 @@ export class Terminal {
 
   private showExample(): Promise<void> {
     return new Promise<void>((resolve) => {
-      if (this.exerciseCounter++ % 3 !== 0) {
+      // @ts-ignore
+      if (![BaseWordType.VERB, BaseWordType.OTHER].includes(this.exercise!.getBaseWordType()!)) {
         resolve();
       } else {
         try {
