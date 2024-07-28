@@ -53,6 +53,9 @@ export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
       ...[GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'presentSimple')],
       ...(verb.pastPerfect
         ? [GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'pastPerfect')]
+        : []),
+      ...(verb.präteritum
+        ? [GermanVerbExercise.new(verb, GermanPerson[person as keyof typeof GermanPerson], 'präteritum')]
         : [])
     ])
   );

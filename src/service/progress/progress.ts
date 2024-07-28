@@ -171,7 +171,21 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
     verb.presentSimple['Er/Sie/Es'],
     verb.presentSimple.Wir,
     verb.presentSimple.Ihr,
-    verb.presentSimple.Sie
+    verb.presentSimple.Sie,
+
+    ...(verb.pastPerfect ? verb.pastPerfect.Ich.split(' ') : []),
+    ...(verb.pastPerfect ? verb.pastPerfect.Du.split(' ') : []),
+    ...(verb.pastPerfect ? verb.pastPerfect['Er/Sie/Es'].split(' ') : []),
+    ...(verb.pastPerfect ? verb.pastPerfect.Wir.split(' ') : []),
+    ...(verb.pastPerfect ? verb.pastPerfect.Ihr.split(' ') : []),
+    ...(verb.pastPerfect ? verb.pastPerfect.Sie.split(' ') : []),
+
+    verb.präteritum?.Ich,
+    verb.präteritum?.Du,
+    verb.präteritum?.['Er/Sie/Es'],
+    verb.präteritum?.Wir,
+    verb.präteritum?.Ihr,
+    verb.präteritum?.Sie
   ]);
   const getWords = (word: string | GenderWord | undefined) => {
     if (!word) return [];
