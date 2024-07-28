@@ -18,6 +18,7 @@ export type GermanVerb = {
   infinitive: string;
   presentSimple: { [key in GermanPerson]: string };
   pastPerfect?: { [key in GermanPerson]: string };
+  präteritum?: { [key in GermanPerson]: string };
 };
 
 export type GermanNoun = {
@@ -904,6 +905,22 @@ export const db: Schema = {
         Wir: 'sind',
         Ihr: 'seid',
         Sie: 'sind'
+      },
+      pastPerfect: {
+        Ich: 'gewesen',
+        Du: 'gewesen',
+        'Er/Sie/Es': 'gewesen',
+        Wir: 'gewesen',
+        Ihr: 'gewesen',
+        Sie: 'gewesen'
+      },
+      präteritum: {
+        Ich: 'war',
+        Du: 'warst',
+        'Er/Sie/Es': 'war',
+        Wir: 'waren',
+        Ihr: 'wart',
+        Sie: 'waren'
       }
     },
     {
@@ -1759,6 +1776,90 @@ export const db: Schema = {
     {
       german: 'nie',
       english: 'never'
+    },
+    {
+      german: 'sich',
+      english: 'itself'
+    },
+    {
+      german: 'auch',
+      english: 'also'
+    },
+    {
+      german: 'also',
+      english: 'so'
+    },
+    {
+      german: 'vor',
+      english: 'before'
+    },
+    {
+      german: 'los',
+      english: 'come on'
+    },
+    {
+      german: 'sehr',
+      english: 'very'
+    },
+    {
+      german: 'alle',
+      english: 'all'
+    },
+    {
+      german: 'danke',
+      english: 'thank you'
+    },
+    {
+      german: 'zum',
+      english: 'for the'
+    },
+    {
+      german: 'vielleicht',
+      english: 'perhaps'
+    },
+    {
+      german: 'über',
+      english: 'above'
+    },
+    {
+      german: 'wirklich',
+      english: 'really'
+    },
+    {
+      german: 'hey',
+      english: 'hey'
+    },
+    {
+      german: 'viel',
+      english: 'much'
+    },
+    {
+      german: 'einfach',
+      english: 'simply'
+    },
+    {
+      german: 'damit',
+      english: 'with it'
+    },
+    {
+      german: 'heute',
+      english: 'today'
+    },
+    {
+      german: 'leid',
+      english: 'sorrow'
+    },
+    {
+      german: 'ganz',
+      english: 'whole'
+    },
+    {
+      german: 'bis',
+      english: 'until'
+    },
+    {
+      german: 'zurück',
+      english: 'back'
     }
   ],
   case: [
@@ -1797,6 +1898,11 @@ export const db: Schema = {
           maskulinum: 'einen',
           femininum: 'eine',
           neutrum: 'ein'
+        },
+        [GermanCase.dative]: {
+          maskulinum: 'einem',
+          femininum: 'einer',
+          neutrum: 'einem'
         }
       }
     },

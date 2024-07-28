@@ -5,16 +5,16 @@ import { GermanPerson, GermanVerb } from '../repository/german-exercises-reposit
 import { getRandomGermanVerb } from '../service/translation';
 import { getCorrectGermanVerbConjugation, getRandomGermanPerson } from '../service/verb/verb';
 
-export type VerbTime = 'presentSimple' | 'pastPerfect';
+export type GermanVerbTime = 'presentSimple' | 'pastPerfect' | 'präteritum';
 
-const verbTimePrintVersion = (verbTime: VerbTime) => {
+const verbTimePrintVersion = (verbTime: GermanVerbTime) => {
   if (verbTime === 'presentSimple') return 'Present Simple';
   return 'Past Perfect';
 };
 
 export class GermanVerbExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
-  verbTime: VerbTime;
+  verbTime: GermanVerbTime;
   verb: GermanVerb;
   person: GermanPerson;
 
@@ -25,7 +25,7 @@ export class GermanVerbExercise implements Exercise, Comparable {
     this.verbTime = 'presentSimple';
   }
 
-  static new(verb: GermanVerb, person: GermanPerson, verbTime: VerbTime): GermanVerbExercise {
+  static new(verb: GermanVerb, person: GermanPerson, verbTime: GermanVerbTime): GermanVerbExercise {
     const verbExercise = new GermanVerbExercise();
     verbExercise.verb = verb;
     verbExercise.person = person;

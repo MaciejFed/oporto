@@ -4,6 +4,7 @@ import { VerbExercise, VerbTime } from '../../exercise/verb-exercise';
 import { GermanPerson, GermanVerb, readAllDE } from '../../repository/german-exercises-repository';
 import { Result } from '../result';
 import { getSingleExerciseProgress } from '../progress/progress';
+import { GermanVerbTime } from '../../exercise/german-verb-exercise';
 
 export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
@@ -22,7 +23,11 @@ export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: 
   return verbExercise[verbTime]![person];
 };
 
-export const getCorrectGermanVerbConjugation = (verb: GermanVerb, person: GermanPerson, verbTime: VerbTime): string => {
+export const getCorrectGermanVerbConjugation = (
+  verb: GermanVerb,
+  person: GermanPerson,
+  verbTime: GermanVerbTime
+): string => {
   const verbExercise = readAllDE().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
   // @ts-ignore
   return verbExercise[verbTime][person];

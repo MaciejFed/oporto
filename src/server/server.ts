@@ -167,8 +167,10 @@ app.get('/:language/priority', async (req: Request, res: Response) => {
   const { exercisesWithPriorities } = sortExercises(exercises, results, language);
   const response = exercisesWithPriorities.map((ep) => ({
     exercise: `[${ep.exercise.exerciseType}] [${ep.exercise.getBaseWordAsString()}]`,
-    value: `[${ep.priorityValueTotal}] ${ep.priorities.map((priority) => `${priority.priorityName} (${priority.priorityValue})`)}`
-  }))
+    value: `[${ep.priorityValueTotal}] ${ep.priorities.map(
+      (priority) => `${priority.priorityName} (${priority.priorityValue})`
+    )}`
+  }));
   res.send(response);
 });
 
