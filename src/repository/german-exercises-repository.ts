@@ -1271,12 +1271,12 @@ export const db: Schema = {
         Sie: 'legen'
       },
       pastPerfect: {
-        Ich: 'habe gelegt',
-        Du: 'hast gelegt',
-        'Er/Sie/Es': 'hat gelegt',
-        Wir: 'haben gelegt',
-        Ihr: 'habt gelegt',
-        Sie: 'haben gelegt'
+        Ich: 'gelegt',
+        Du: 'gelegt',
+        'Er/Sie/Es': 'gelegt',
+        Wir: 'gelegt',
+        Ihr: 'gelegt',
+        Sie: 'gelegt'
       }
     },
     {
@@ -1291,12 +1291,12 @@ export const db: Schema = {
         Sie: 'liegen'
       },
       pastPerfect: {
-        Ich: 'habe gelegen',
-        Du: 'hast gelegen',
-        'Er/Sie/Es': 'hat gelegen',
-        Wir: 'haben gelegen',
-        Ihr: 'habt gelegen',
-        Sie: 'haben gelegen'
+        Ich: 'gelegen',
+        Du: 'gelegen',
+        'Er/Sie/Es': 'gelegen',
+        Wir: 'gelegen',
+        Ihr: 'gelegen',
+        Sie: 'gelegen'
       }
     },
     {
