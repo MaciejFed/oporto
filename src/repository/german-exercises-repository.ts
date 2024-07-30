@@ -983,12 +983,12 @@ export const db: Schema = {
         Sie: 'sagen'
       },
       pastPerfect: {
-        Ich: 'habe gesagt',
-        Du: 'hast gesagt',
-        'Er/Sie/Es': 'hat gesagt',
-        Wir: 'haben gesagt',
-        Ihr: 'habt gesagt',
-        Sie: 'haben gesagt'
+        Ich: 'gesagt',
+        Du: 'gesagt',
+        'Er/Sie/Es': 'gesagt',
+        Wir: 'gesagt',
+        Ihr: 'gesagt',
+        Sie: 'gesagt'
       }
     },
     {
@@ -1051,12 +1051,12 @@ export const db: Schema = {
         Sie: 'sehen'
       },
       pastPerfect: {
-        Ich: 'habe gesehen',
-        Du: 'hast gesehen',
-        'Er/Sie/Es': 'hat gesehen',
-        Wir: 'haben gesehen',
-        Ihr: 'habt gesehen',
-        Sie: 'haben gesehen'
+        Ich: 'gesehen',
+        Du: 'gesehen',
+        'Er/Sie/Es': 'gesehen',
+        Wir: 'gesehen',
+        Ihr: 'gesehen',
+        Sie: 'gesehen'
       }
     },
     {
@@ -1179,12 +1179,12 @@ export const db: Schema = {
         Sie: 'glauben'
       },
       pastPerfect: {
-        Ich: 'habe geglaubt',
-        Du: 'hast geglaubt',
-        'Er/Sie/Es': 'hat geglaubt',
-        Wir: 'haben geglaubt',
-        Ihr: 'habt geglaubt',
-        Sie: 'haben geglaubt'
+        Ich: 'geglaubt',
+        Du: 'geglaubt',
+        'Er/Sie/Es': 'geglaubt',
+        Wir: 'geglaubt',
+        Ihr: 'geglaubt',
+        Sie: 'geglaubt'
       }
     },
     {
@@ -1311,12 +1311,12 @@ export const db: Schema = {
         Sie: 'hängen'
       },
       pastPerfect: {
-        Ich: 'habe gehängt',
-        Du: 'hast gehängt',
-        'Er/Sie/Es': 'hat gehängt',
-        Wir: 'haben gehängt',
-        Ihr: 'habt gehängt',
-        Sie: 'haben gehängt'
+        Ich: 'gehängt',
+        Du: 'gehängt',
+        'Er/Sie/Es': 'gehängt',
+        Wir: 'gehängt',
+        Ihr: 'gehängt',
+        Sie: 'gehängt'
       }
     },
     {
@@ -1331,12 +1331,12 @@ export const db: Schema = {
         Sie: 'stecken'
       },
       pastPerfect: {
-        Ich: 'habe gesteckt',
-        Du: 'hast gesteckt',
-        'Er/Sie/Es': 'hat gesteckt',
-        Wir: 'haben gesteckt',
-        Ihr: 'habt gesteckt',
-        Sie: 'haben gesteckt'
+        Ich: 'gesteckt',
+        Du: 'gesteckt',
+        'Er/Sie/Es': 'gesteckt',
+        Wir: 'gesteckt',
+        Ihr: 'gesteckt',
+        Sie: 'gesteckt'
       }
     },
     {
@@ -1351,12 +1351,12 @@ export const db: Schema = {
         Sie: 'mögen'
       },
       pastPerfect: {
-        Ich: 'habe gemocht',
-        Du: 'hast gemocht',
-        'Er/Sie/Es': 'hat gemocht',
-        Wir: 'haben gemocht',
-        Ihr: 'habt gemocht',
-        Sie: 'haben gemocht'
+        Ich: 'gemocht',
+        Du: 'gemocht',
+        'Er/Sie/Es': 'gemocht',
+        Wir: 'gemocht',
+        Ihr: 'gemocht',
+        Sie: 'gemocht'
       }
     },
     {
@@ -1371,12 +1371,12 @@ export const db: Schema = {
         Sie: 'essen'
       },
       pastPerfect: {
-        Ich: 'habe gegessen',
-        Du: 'hast gegessen',
-        'Er/Sie/Es': 'hat gegessen',
-        Wir: 'haben gegessen',
-        Ihr: 'habt gegessen',
-        Sie: 'haben gegessen'
+        Ich: 'gegessen',
+        Du: 'gegessen',
+        'Er/Sie/Es': 'gegessen',
+        Wir: 'gegessen',
+        Ihr: 'gegessen',
+        Sie: 'gegessen'
       }
     },
     {
@@ -1391,12 +1391,12 @@ export const db: Schema = {
         Sie: 'bezahlen'
       },
       pastPerfect: {
-        Ich: 'habe bezahlt',
-        Du: 'hast bezahlt',
-        'Er/Sie/Es': 'hat bezahlt',
-        Wir: 'haben bezahlt',
-        Ihr: 'habt bezahlt',
-        Sie: 'haben bezahlt'
+        Ich: 'bezahlt',
+        Du: 'bezahlt',
+        'Er/Sie/Es': 'bezahlt',
+        Wir: 'bezahlt',
+        Ihr: 'bezahlt',
+        Sie: 'bezahlt'
       }
     },
     {
@@ -1411,12 +1411,12 @@ export const db: Schema = {
         Sie: 'bestellen'
       },
       pastPerfect: {
-        Ich: 'habe bestellt',
-        Du: 'hast bestellt',
-        'Er/Sie/Es': 'hat bestellt',
-        Wir: 'haben bestellt',
-        Ihr: 'habt bestellt',
-        Sie: 'haben bestellt'
+        Ich: 'bestellt',
+        Du: 'bestellt',
+        'Er/Sie/Es': 'bestellt',
+        Wir: 'bestellt',
+        Ihr: 'bestellt',
+        Sie: 'bestellt'
       }
     },
     {
@@ -1431,12 +1431,12 @@ export const db: Schema = {
         Sie: 'suchen'
       },
       pastPerfect: {
-        Ich: 'habe gesucht',
-        Du: 'hast gesucht',
-        'Er/Sie/Es': 'hat gesucht',
-        Wir: 'haben gesucht',
-        Ihr: 'habt gesucht',
-        Sie: 'haben gesucht'
+        Ich: 'gesucht',
+        Du: 'gesucht',
+        'Er/Sie/Es': 'gesucht',
+        Wir: 'gesucht',
+        Ihr: 'gesucht',
+        Sie: 'gesucht'
       }
     },
     {
