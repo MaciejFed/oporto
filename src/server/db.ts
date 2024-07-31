@@ -62,6 +62,21 @@ export async function getUnknownWords(index: number, language: Language): Promis
   }
 }
 
+export async function isExampleLineSavedAlready(word: string, language: Language): Promise<boolean> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(getExamplesCollectionName(language, 'top'));
+    const exampleNumber = await collection.countDocuments({
+      lineTargetLanguage: word
+    });
+
+    return exampleNumber > 0;
+  } finally {
+    await client.close();
+  }
+}
+
 export async function isExampleSavedAlready(word: string, language: Language): Promise<boolean> {
   const client = await getClient();
   try {

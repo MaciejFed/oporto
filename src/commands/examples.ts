@@ -16,7 +16,7 @@ import {
 import { isExampleSavedAlready, saveExamples } from '../server/db';
 import { enforceArrayLimit } from '../common/common';
 
-const MAX_FIND_EXAMPLES = 150_000;
+const MAX_FIND_EXAMPLES = 100_000;
 const MAX_SAVE_EXAMPLES = 40_000;
 
 export const examplesPaths: Record<Language, { targetLanguagePath: string; translationPath: string }> = {
@@ -48,7 +48,12 @@ export async function findAllExamples(language: Language) {
         continue;
       }
       console.time(`[${word}]`);
-      const { matchingLines, matchingLinesEn } = await findMatchingLines(ptReadStream, ptTranslationsReadStream, word);
+      const { matchingLines, matchingLinesEn } = await findMatchingLines(
+        ptReadStream,
+        ptTranslationsReadStream,
+        word,
+        100_000_000
+      );
       const examples = enforceArrayLimit(
         findWordExampleLines(
           enforceArrayLimit(matchingLines, MAX_FIND_EXAMPLES),

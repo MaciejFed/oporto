@@ -10,6 +10,10 @@ import { Language } from '../../common/language';
 import { MovieExample } from '../../io/file';
 import { GermanOtherTranslationExercise } from '../../exercise/translation/de/german-other-translation-exercise';
 import { GermanCaseExercise } from '../../exercise/german-case-exercise';
+import { PolishVerbExercise } from '../../exercise/polish-verb-exercise';
+import { PolishVerbTranslationExercise } from '../../exercise/translation/pl/polish-verb-translation-exercise';
+import { PolishOtherTranslationExercise } from '../../exercise/translation/pl/polish-other-translation-exercise';
+import { PolishNounTranslationExercise } from '../../exercise/translation/pl/polish-noun-translation-exercise';
 
 export function extractWordToFindFromExercise(exercise: Exercise): string | undefined {
   switch (exercise.exerciseType) {
@@ -31,10 +35,18 @@ export function extractWordToFindFromExercise(exercise: Exercise): string | unde
       return (exercise as GermanNounTranslationExercise).noun.german.singular;
     case 'GermanOtherTranslation':
       return (exercise as GermanOtherTranslationExercise).other.german;
+    case 'PolishVerbTranslation':
+      if ((exercise as PolishVerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
+      return (exercise as GermanVerbTranslationExercise).verb.infinitive;
+    case 'PolishOtherTranslation':
+      return (exercise as PolishOtherTranslationExercise).other.polish;
+    case 'PolishNounTranslation':
+      return (exercise as PolishNounTranslationExercise).noun.polish;
     case 'GermanCaseExercise':
       return (exercise as GermanCaseExercise).getCorrectAnswer();
     case 'VerbExercise':
     case 'GermanVerbExercise':
+    case 'PolishVerbExercise':
       return exercise.getCorrectAnswer();
     default:
       return undefined;

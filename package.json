@@ -19,6 +19,7 @@
     "voices": "ts-node src/commands/voices",
     "pt": "ts-node src/cli.ts test",
     "de": "ts-node src/cli.ts testde",
+    "pl": "ts-node src/cli.ts testpl",
     "progress": "ts-node src/cli.ts progress",
     "progressde": "ts-node src/cli.ts progressde",
     "stat": "ts-node src/cli.ts stat",

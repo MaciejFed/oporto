@@ -11,7 +11,7 @@ export interface WordExampleLine {
   wordRatio: number;
 }
 
-export const MIN_WORD_LENGTH = 3;
+export const MIN_WORD_LENGTH = 2;
 
 export const PT_EXAMPLES_PATH = path.join(os.homedir(), 'pt/pt.txt');
 export const PT_TRANSLATION_EXAMPLES_PATH = path.join(os.homedir(), 'pt/en.txt');

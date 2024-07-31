@@ -10,7 +10,7 @@ export class PolishOtherTranslationExercise extends TranslationExercise implemen
 
   constructor() {
     super();
-    this.exerciseType = 'GermanOtherTranslation';
+    this.exerciseType = 'PolishOtherTranslation';
     this.other = getRandomPolishOther();
   }
 

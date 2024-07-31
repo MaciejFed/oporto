@@ -303,6 +303,30 @@ export const db: Schema = {
       english: 'no'
     },
     {
+      polish: 'co',
+      english: 'what'
+    },
+    {
+      polish: 'kiedy',
+      english: 'when'
+    },
+    {
+      polish: 'kto',
+      english: 'who'
+    },
+    {
+      polish: 'jak',
+      english: 'how'
+    },
+    {
+      polish: 'nigdy',
+      english: 'never'
+    },
+    {
+      polish: 'zawsze',
+      english: 'always'
+    },
+    {
       polish: 'i',
       english: 'and'
     },
