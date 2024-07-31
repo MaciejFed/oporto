@@ -4,8 +4,10 @@ import { VerbExercise, VerbTime } from '../../exercise/verb-exercise';
 import { GermanPerson, GermanVerb, readAllDE } from '../../repository/german-exercises-repository';
 import { Result } from '../result';
 import { getSingleExerciseProgress } from '../progress/progress';
-import { GermanVerbTime } from '../../exercise/german-verb-exercise';
+import { GermanVerbExercise, GermanVerbTime } from '../../exercise/german-verb-exercise';
 import { PolishPerson, PolishVerb, readAllPL } from '../../repository/polish-exercises-repository';
+import { Language } from '../../common/language';
+import { PolishVerbExercise } from '../../exercise/polish-verb-exercise';
 
 export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
@@ -41,6 +43,19 @@ export const getCorrectGermanVerbConjugation = (
 export const getCorrectPolishVerbConjugation = (verb: PolishVerb, person: PolishPerson): string => {
   const verbExercise = readAllPL().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
   return verbExercise.presentSimple[person];
+};
+
+export const getVerbExerciseTypeForLanguage = (lanugage: Language) => {
+  switch (lanugage) {
+    case Language.Portuguese:
+      return VerbExercise;
+    case Language.German:
+      return GermanVerbExercise;
+    case Language.Polish:
+      return PolishVerbExercise;
+    default:
+      throw new Error('');
+  }
 };
 
 interface VerbDetails {

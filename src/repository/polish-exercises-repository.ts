@@ -3,10 +3,10 @@
 export enum PolishPerson {
   Ja = 'Ja',
   Ty = 'Ty',
-  OnOnaOno = 'On/Ona/Ono',
+  'On/Ona/Ono' = 'On/Ona/Ono',
   My = 'My',
   Wy = 'Wy',
-  OniOne = 'Oni/One'
+  'Oni/One' = 'Oni/One'
 }
 
 export type PolishVerb = {

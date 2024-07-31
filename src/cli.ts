@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import { saveProgress } from './commands/progress';
-import { startSpeakSession } from './commands/speaking';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
 import { Language } from './common/language';
@@ -27,13 +26,6 @@ program
   .description('Start German Test session')
   .action((str, options) => {
     startTestSession(Language.Polish);
-  });
-
-program
-  .command('speak')
-  .description('Start speak session')
-  .action((str, options) => {
-    startSpeakSession();
   });
 
 program

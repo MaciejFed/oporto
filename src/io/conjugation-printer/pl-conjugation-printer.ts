@@ -13,18 +13,18 @@ export const standardConjugations: Record<VerbEnding, Record<PolishPerson, strin
   ować: {
     [PolishPerson.Ja]: 'ę',
     [PolishPerson.Ty]: 'esz',
-    [PolishPerson.OnOnaOno]: 'esz',
+    [PolishPerson['On/Ona/Ono']]: 'esz',
     [PolishPerson.My]: 'esz',
     [PolishPerson.Wy]: 'ecie',
-    [PolishPerson.OniOne]: 'ą'
+    [PolishPerson['Oni/One']]: 'ą'
   },
   ić: {
     [PolishPerson.Ja]: 'ę',
     [PolishPerson.Ty]: 'isz',
-    [PolishPerson.OnOnaOno]: 'i',
+    [PolishPerson['On/Ona/Ono']]: 'i',
     [PolishPerson.My]: 'imy',
     [PolishPerson.Wy]: 'icie',
-    [PolishPerson.OniOne]: 'ą'
+    [PolishPerson['Oni/One']]: 'ą'
   }
 };
 
