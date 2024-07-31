@@ -295,6 +295,42 @@ export const db: Schema = {
   ],
   others: [
     {
+      polish: 'ja',
+      english: 'I'
+    },
+    {
+      polish: 'ty',
+      english: 'you - singular'
+    },
+    {
+      polish: 'on',
+      english: 'he'
+    },
+    {
+      polish: 'ona',
+      english: 'she'
+    },
+    {
+      polish: 'ono',
+      english: 'it'
+    },
+    {
+      polish: 'my',
+      english: 'we'
+    },
+    {
+      polish: 'wy',
+      english: 'you - plural'
+    },
+    {
+      polish: 'oni',
+      english: 'they - male'
+    },
+    {
+      polish: 'one',
+      english: 'they - female'
+    },
+    {
       polish: 'tak',
       english: 'yes'
     },
@@ -333,42 +369,6 @@ export const db: Schema = {
     {
       polish: 'albo',
       english: 'or'
-    },
-    {
-      polish: 'ja',
-      english: 'I'
-    },
-    {
-      polish: 'ty',
-      english: 'you - singular'
-    },
-    {
-      polish: 'on',
-      english: 'he'
-    },
-    {
-      polish: 'ona',
-      english: 'she'
-    },
-    {
-      polish: 'ono',
-      english: 'it'
-    },
-    {
-      polish: 'my',
-      english: 'we'
-    },
-    {
-      polish: 'wy',
-      english: 'you - plural'
-    },
-    {
-      polish: 'oni',
-      english: 'they - male'
-    },
-    {
-      polish: 'one',
-      english: 'they - female'
     },
     {
       polish: 'dobranoc',

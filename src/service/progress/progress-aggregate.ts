@@ -6,12 +6,16 @@ import { logger } from '../../common/logger';
 export const progressExerciseTypes = [
   'NounTranslation',
   'GermanNounTranslation',
+  'PolishNounTranslation',
   'OtherTranslation',
+  'PolishOtherTranslation',
   'AdjectiveTranslation',
   'VerbTranslation',
   'GermanVerbTranslation',
+  'PolishVerbTranslation',
   'VerbExercise',
   'GermanVerbExercise',
+  'PolishVerbExercise',
   'GermanCaseExercise',
   'GermanOtherTranslation'
 ] as const;
