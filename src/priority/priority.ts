@@ -16,10 +16,8 @@ import {
   getSingleExerciseProgress,
   ProgressType
 } from '../service/progress/progress';
-import { exerciseTypeInProgressLimit } from './types/exercise-type-in-progress-limit/exercise-type-in-progress-limit';
-import { exerciseSentenceUnknownWords } from './types/exercise-sentence-unknown-words/exercise-sentence-unknown-words';
 import { logger } from '../common/logger';
-import { getRandomElement, removeRepetitionFromBlocks } from '../common/common';
+import { removeRepetitionFromBlocks } from '../common/common';
 import performance from 'performance-now';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import { Language } from '../common/language';
@@ -81,7 +79,6 @@ const priorityCompilers: PriorityCompiler[] = [
   // exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
-  exerciseSentenceUnknownWords,
   exerciseVerbNeverTranslated,
   exerciseWrong,
   exerciseCorrect,

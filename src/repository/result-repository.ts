@@ -20,6 +20,10 @@ import { GermanVerbExercise } from '../exercise/german-verb-exercise';
 import { Language } from '../common/language';
 import { GermanOtherTranslationExercise } from '../exercise/translation/de/german-other-translation-exercise';
 import { GermanCaseExercise } from '../exercise/german-case-exercise';
+import { PolishVerbExercise } from '../exercise/polish-verb-exercise';
+import { PolishNounTranslationExercise } from '../exercise/translation/pl/polish-noun-translation-exercise';
+import { PolishVerbTranslationExercise } from '../exercise/translation/pl/polish-verb-translation-exercise';
+import { PolishOtherTranslationExercise } from '../exercise/translation/pl/polish-other-translation-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -31,6 +35,14 @@ function createVerbExercise(exerciseData: any) {
 
 function createGermanVerbExercise(exerciseData: any) {
   const verbExercise = new GermanVerbExercise();
+  Object.assign(verbExercise, exerciseData);
+  assert(verbExercise.verb);
+  assert(verbExercise.person);
+  return verbExercise;
+}
+
+function createPolishVerbExercise(exerciseData: any) {
+  const verbExercise = new PolishVerbExercise();
   Object.assign(verbExercise, exerciseData);
   assert(verbExercise.verb);
   assert(verbExercise.person);
@@ -65,6 +77,29 @@ function createGermanOtherTranslationExercise(exerciseData: any) {
   const verbTranslationExercise = new GermanOtherTranslationExercise();
   Object.assign(verbTranslationExercise, exerciseData);
   assert(verbTranslationExercise.other.german);
+  return verbTranslationExercise;
+}
+
+function createPolishNounTranslationExercise(exerciseData: any) {
+  const nounTranslationExercise = new PolishNounTranslationExercise();
+  Object.assign(nounTranslationExercise, exerciseData);
+  assert(nounTranslationExercise.noun.polish);
+  assert(nounTranslationExercise.noun.english);
+  return nounTranslationExercise;
+}
+
+function createPolishVerbTranslationExercise(exerciseData: any) {
+  const verbTranslationExercise = new PolishVerbTranslationExercise();
+  Object.assign(verbTranslationExercise, exerciseData);
+  assert(verbTranslationExercise.verb.presentSimple);
+  assert(verbTranslationExercise.verb.english);
+  return verbTranslationExercise;
+}
+
+function createPolishOtherTranslationExercise(exerciseData: any) {
+  const verbTranslationExercise = new PolishOtherTranslationExercise();
+  Object.assign(verbTranslationExercise, exerciseData);
+  assert(verbTranslationExercise.other.polish);
   return verbTranslationExercise;
 }
 
@@ -124,6 +159,7 @@ function createFitInGapExercise(exerciseData: any) {
 export const exerciseFactory = {
   VerbExercise: createVerbExercise,
   GermanVerbExercise: createGermanVerbExercise,
+  PolishVerbExercise: createPolishVerbExercise,
   NounTranslation: createNounTranslationExercise,
   AdjectiveTranslation: createAdjectiveTranslationExercise,
   VerbTranslation: createVerbTranslationExercise,
@@ -134,6 +170,9 @@ export const exerciseFactory = {
   GermanNounTranslation: createGermanNounTranslationExercise,
   GermanVerbTranslation: createGermanVerbTranslationExercise,
   GermanOtherTranslation: createGermanOtherTranslationExercise,
+  PolishNounTranslation: createPolishNounTranslationExercise,
+  PolishVerbTranslation: createPolishVerbTranslationExercise,
+  PolishOtherTranslation: createPolishOtherTranslationExercise,
   GermanCaseExercise: createGermanCaseExercise
 };
 

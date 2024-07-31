@@ -8,6 +8,13 @@ import {
   GermanVerb,
   readAllDE
 } from '../repository/german-exercises-repository';
+import {
+  PolishNoun,
+  PolishOther,
+  PolishPerson,
+  PolishVerb,
+  readAllPL
+} from '../repository/polish-exercises-repository';
 
 export const getRandomNoun: () => Noun = () => {
   return getRandomElement(readAll().nouns);
@@ -17,8 +24,16 @@ export const getRandomGermanNoun: () => GermanNoun = () => {
   return getRandomElement(readAllDE().nouns);
 };
 
+export const getRandomPolishNoun: () => PolishNoun = () => {
+  return getRandomElement(readAllPL().nouns);
+};
+
 export const getRandomGermanVerb: () => GermanVerb = () => {
   return getRandomElement(readAllDE().verbs);
+};
+
+export const getRandomPolishVerb: () => PolishVerb = () => {
+  return getRandomElement(readAllPL().verbs);
 };
 
 export const getRandomOther: () => Other = () => {
@@ -27,6 +42,10 @@ export const getRandomOther: () => Other = () => {
 
 export const getRandomGermanOther: () => GermanOther = () => {
   return getRandomElement(readAllDE().others);
+};
+
+export const getRandomPolishOther: () => PolishOther = () => {
+  return getRandomElement(readAllPL().others);
 };
 
 export const getRandomGermanCaseWord: () => GermanCaseWord = () => {

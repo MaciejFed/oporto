@@ -17,5 +17,5 @@ export const PT_EXAMPLES_PATH = path.join(os.homedir(), 'pt/pt.txt');
 export const PT_TRANSLATION_EXAMPLES_PATH = path.join(os.homedir(), 'pt/en.txt');
 export const DE_EXAMPLES_PATH = path.join(os.homedir(), 'de/de.txt');
 export const DE_TRANSLATION_EXAMPLES_PATH = path.join(os.homedir(), 'de/en.txt');
-export const PL_EXAMPLES_PATH = path.join(os.homedir(), 'pl/de.txt');
+export const PL_EXAMPLES_PATH = path.join(os.homedir(), 'pl/pl.txt');
 export const PL_TRANSLATION_EXAMPLES_PATH = path.join(os.homedir(), 'pl/en.txt');

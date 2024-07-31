@@ -1,14 +1,19 @@
 import { Comparable } from '../common/common';
 import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
 import { GermanCaseWord, GermanNoun, GermanOther, GermanVerb } from '../repository/german-exercises-repository';
+import { PolishOther, PolishVerb } from '../repository/polish-exercises-repository';
 export type ExerciseType =
   | 'VerbExercise'
   | 'GermanVerbExercise'
+  | 'PolishVerbExercise'
   | 'NounTranslation'
   | 'GermanNounTranslation'
+  | 'PolishNounTranslation'
   | 'GermanVerbTranslation'
+  | 'PolishVerbTranslation'
   | 'OtherTranslation'
   | 'GermanOtherTranslation'
+  | 'PolishOtherTranslation'
   | 'GermanCaseExercise'
   | 'AdjectiveTranslation'
   | 'VerbTranslation'
@@ -20,6 +25,9 @@ export const translationTypes: ExerciseType[] = [
   'NounTranslation',
   'GermanNounTranslation',
   'GermanVerbTranslation',
+  'PolishVerbTranslation',
+  'PolishNounTranslation',
+  'PolishOtherTranslation',
   'VerbTranslation',
   'OtherTranslation',
   'AdjectiveTranslation',
@@ -27,7 +35,17 @@ export const translationTypes: ExerciseType[] = [
   'SentenceTranslation'
 ];
 
-export type BaseWord = Noun | Adjective | Verb | Other | GermanNoun | GermanVerb | GermanOther | GermanCaseWord;
+export type BaseWord =
+  | Noun
+  | Adjective
+  | Verb
+  | Other
+  | GermanNoun
+  | GermanVerb
+  | GermanOther
+  | GermanCaseWord
+  | PolishVerb
+  | PolishOther;
 
 export enum BaseWordType {
   NOUN = 'NOUN',

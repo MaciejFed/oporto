@@ -26,7 +26,7 @@ program
   .command('testpl')
   .description('Start German Test session')
   .action((str, options) => {
-    startTestSession(Language.German);
+    startTestSession(Language.Polish);
   });
 
 program

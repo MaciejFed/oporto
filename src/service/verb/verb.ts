@@ -5,6 +5,7 @@ import { GermanPerson, GermanVerb, readAllDE } from '../../repository/german-exe
 import { Result } from '../result';
 import { getSingleExerciseProgress } from '../progress/progress';
 import { GermanVerbTime } from '../../exercise/german-verb-exercise';
+import { PolishPerson, PolishVerb, readAllPL } from '../../repository/polish-exercises-repository';
 
 export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
@@ -16,6 +17,10 @@ export const getRandomPerson: () => Person = () => {
 
 export const getRandomGermanPerson: () => GermanPerson = () => {
   return getRandomElement(Object.values(GermanPerson));
+};
+
+export const getRandomPolishPerson: () => PolishPerson = () => {
+  return getRandomElement(Object.values(PolishPerson));
 };
 
 export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: VerbTime): string => {
@@ -31,6 +36,11 @@ export const getCorrectGermanVerbConjugation = (
   const verbExercise = readAllDE().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
   // @ts-ignore
   return verbExercise[verbTime][person];
+};
+
+export const getCorrectPolishVerbConjugation = (verb: PolishVerb, person: PolishPerson): string => {
+  const verbExercise = readAllPL().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
+  return verbExercise.presentSimple[person];
 };
 
 interface VerbDetails {

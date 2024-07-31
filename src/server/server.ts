@@ -95,16 +95,16 @@ setInterval(() => {
     });
   });
 }, 6 * 60 * 60 * 1000);
-
-setInterval(() => {
-  preFetchAggregate();
-}, 10000000);
-
-setInterval(() => {
-  preFetch(Language.Portuguese).then(() => {
-    preFetch(Language.German);
-  });
-}, 90000);
+//
+// setInterval(() => {
+//   preFetchAggregate();
+// }, 10000000);
+//
+// setInterval(() => {
+//   preFetch(Language.Portuguese).then(() => {
+//     preFetch(Language.German);
+//   });
+// }, 90000);
 
 const getLanguage = (req: Request) => {
   switch (req.params.language.toLowerCase()) {
@@ -112,6 +112,8 @@ const getLanguage = (req: Request) => {
       return Language.Portuguese;
     case Language.German.toLowerCase():
       return Language.German;
+    case Language.Polish.toLowerCase():
+      return Language.Polish;
     default:
       throw new Error(`Unknown Language: [${req.params.language}]`);
   }
@@ -197,7 +199,7 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
     let exercises = [];
-    if (language === Language.German) {
+    if ([Language.Polish, Language.German].includes(language)) {
       const results = await readAllResults(language);
       exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results);
     } else {

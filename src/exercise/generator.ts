@@ -27,6 +27,11 @@ import { GermanVerbTranslationExercise } from './translation/de/german-verb-tran
 import { GermanVerbExercise } from './german-verb-exercise';
 import { GermanOtherTranslationExercise } from './translation/de/german-other-translation-exercise';
 import { GermanCaseExercise } from './german-case-exercise';
+import { PolishPerson, readAllPL } from '../repository/polish-exercises-repository';
+import { PolishVerbTranslationExercise } from './translation/pl/polish-verb-translation-exercise';
+import { PolishOtherTranslationExercise } from './translation/pl/polish-other-translation-exercise';
+import { PolishNounTranslationExercise } from './translation/pl/polish-noun-translation-exercise';
+import { PolishVerbExercise } from './polish-verb-exercise';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -61,6 +66,12 @@ export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
   );
 };
 
+export const PolishVerbExerciseGenerator: ExerciseGenerator = () => {
+  return readAllPL().verbs.flatMap((verb) =>
+    Object.keys(PolishPerson).flatMap((person) => [PolishVerbExercise.new(verb, person as any)])
+  );
+};
+
 const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toEnglish', 'toPortuguese'];
 
 const NounTranslationGenerator: ExerciseGenerator = () => {
@@ -75,9 +86,21 @@ const GermanNounTranslationGenerator: ExerciseGenerator = () => {
   );
 };
 
+const PolishNounTranslationGenerator: ExerciseGenerator = () => {
+  return readAllPL().nouns.flatMap((noun) =>
+    translationTypes.map((translationType) => PolishNounTranslationExercise.new(noun, translationType))
+  );
+};
+
 const GermanOtherTranslationGenerator: ExerciseGenerator = () => {
   return readAllDE().others.flatMap((other) =>
     translationTypes.map((translationType) => GermanOtherTranslationExercise.new(other, translationType))
+  );
+};
+
+const PolishOtherTranslationGenerator: ExerciseGenerator = () => {
+  return readAllPL().others.flatMap((other) =>
+    translationTypes.map((translationType) => PolishOtherTranslationExercise.new(other, translationType))
   );
 };
 
@@ -105,6 +128,12 @@ const GermanCaseWordGenerator: ExerciseGenerator = () => {
 const GermanVerbTranslationGenerator: ExerciseGenerator = () => {
   return readAllDE().verbs.flatMap((verb) =>
     translationTypes.map((translationType) => GermanVerbTranslationExercise.new(verb, translationType))
+  );
+};
+
+const PolishVerbTranslationGenerator: ExerciseGenerator = () => {
+  return readAllPL().verbs.flatMap((verb) =>
+    translationTypes.map((translationType) => PolishVerbTranslationExercise.new(verb, translationType))
   );
 };
 
@@ -171,7 +200,12 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
       ].flatMap((generator) => generator());
 
     case Language.Polish:
-      return [];
+      return [
+        PolishVerbExerciseGenerator,
+        PolishNounTranslationGenerator,
+        PolishVerbTranslationGenerator,
+        PolishOtherTranslationGenerator
+      ].flatMap((generator) => generator());
     case Language.Portuguese:
     default:
       return [
