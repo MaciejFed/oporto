@@ -19,8 +19,8 @@ const collectionNameMap: Record<Language, string> = {
 };
 
 const examplesCollectionNameMap: Record<Language, string> = {
-  [Language.Portuguese]: 'examplesPT',
-  [Language.German]: 'examplesDE',
+  [Language.Portuguese]: 'examples_pt',
+  [Language.German]: 'examples_de',
   [Language.Polish]: 'examplesPL'
 };
 
