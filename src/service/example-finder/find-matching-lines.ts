@@ -33,7 +33,7 @@ export async function findMatchingLines(
     const lineEn = lineEnResult.value;
 
     if (wordRegex.test(linePt) && linePt.length < MAX_LINE_LENGTH) {
-      if (!matchingLines.includes(linePt)) {
+      if (!(matchingLines[matchingLines.length - 1] === linePt)) {
         matchingLines.push(linePt);
         matchingLinesEn.push(lineEn);
       }

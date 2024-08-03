@@ -8,6 +8,9 @@ import { GermanVerbExercise, GermanVerbTime } from '../../exercise/german-verb-e
 import { PolishPerson, PolishVerb, readAllPL } from '../../repository/polish-exercises-repository';
 import { Language } from '../../common/language';
 import { PolishVerbExercise } from '../../exercise/polish-verb-exercise';
+import { VerbTranslationExercise } from '../../exercise/translation/verb-translation-exercise';
+import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
+import { PolishVerbTranslationExercise } from '../../exercise/translation/pl/polish-verb-translation-exercise';
 
 export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
@@ -48,11 +51,11 @@ export const getCorrectPolishVerbConjugation = (verb: PolishVerb, person: Polish
 export const getVerbExerciseTypeForLanguage = (lanugage: Language) => {
   switch (lanugage) {
     case Language.Portuguese:
-      return VerbExercise;
+      return VerbTranslationExercise;
     case Language.German:
-      return GermanVerbExercise;
+      return GermanVerbTranslationExercise;
     case Language.Polish:
-      return PolishVerbExercise;
+      return PolishVerbTranslationExercise;
     default:
       throw new Error('');
   }

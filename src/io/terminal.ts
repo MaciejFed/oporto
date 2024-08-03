@@ -49,7 +49,6 @@ import { getSavedAudioPath } from '../server/configuration';
 import { Rate } from '../server/audio/audio.types';
 
 export class Terminal {
-  eventProcessor: EventProcessor;
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
   exerciseTranslation: string | undefined;
@@ -65,23 +64,24 @@ export class Terminal {
 
   exampleSentenceTranslation?: string | undefined;
   exampleSentenceTranslationApi?: string | undefined;
-  language: Language;
   exerciseCounter: number;
 
-  constructor(eventProcessor: EventProcessor, language: Language) {
+  constructor(
+    private readonly eventProcessor: EventProcessor,
+    private readonly language: Language) {
     this.exerciseCounter = 0;
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exerciseInProgress = false;
-    this.exerciseRepetitionInProgress = true;
+    this.exerciseRepetitionInProgress = false;
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';
     this.answer = '';
     this.repetitionAnswer = '';
     this.correctAnswer = '';
-    clear();
     this.language = language;
     this.canGoNext = false;
+    clear();
   }
 
   private registerListeners() {
@@ -222,11 +222,11 @@ export class Terminal {
       case 't':
         printExerciseTranslation(this.exerciseTranslation);
         break;
-      case '1':
+      case '2':
         printExerciseTranslation(this.exerciseTranslation);
         printExampleTranslation('Movie:', this.exampleSentenceTranslation);
         break;
-      case '2':
+      case '1':
         printExerciseTranslation(this.exerciseTranslation);
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
@@ -249,10 +249,10 @@ export class Terminal {
         this.playAudio(false, 'answer', 'normal');
         break;
       default:
-        if (this.canGoNext) {
+        // if (this.canGoNext) {
           terminal.hideCursor(false);
           this.eventProcessor.emit(EXERCISE_NEXT);
-        }
+        // }
     }
   }
 

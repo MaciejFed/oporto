@@ -226,7 +226,7 @@ export const db: Schema = {
     },
     {
       english: 'soup',
-      polish: 'zuppa'
+      polish: 'zupa'
     },
     {
       english: 'water',

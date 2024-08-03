@@ -72,6 +72,10 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     };
   });
 
+  jest.mock('../commands/stat', () => ({
+    displayStatistics: () => {},
+  }))
+
   jest.mock('child_process', () => {
     const fileModuleActual = jest.requireActual('child_process');
     return {
@@ -84,6 +88,20 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
       }
     };
   });
+
+  jest.mock('../service/example-finder/example-finder', () => ({
+    findExampleSentenceAndWord: (_language: any,
+                                 _exercise: any,
+                                   callback: ({ wordStartIndex, word, targetLanguage, english, englishApi }: any) => void) => {
+      callback({
+        wordStartIndex: 0,
+        word: 'foo',
+        targetLanguage: 'Some Text',
+        english: 'Some Text',
+        englishApi:'Some Text',
+      })
+    }
+  }))
 
   const { EventProcessor } = require('../event/event-processor');
   const Terminal = require('../io/terminal').default;
