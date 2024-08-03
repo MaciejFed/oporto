@@ -16,17 +16,13 @@ import {
   getSingleExerciseProgress,
   ProgressType
 } from '../service/progress/progress';
-import { exerciseTypeInProgressLimit } from './types/exercise-type-in-progress-limit/exercise-type-in-progress-limit';
-import { exerciseSentenceUnknownWords } from './types/exercise-sentence-unknown-words/exercise-sentence-unknown-words';
 import { logger } from '../common/logger';
-import { getRandomElement, removeRepetitionFromBlocks } from '../common/common';
+import { removeRepetitionFromBlocks } from '../common/common';
 import performance from 'performance-now';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
-import {
-  exerciseBaseWordProgressLimit,
-  IN_PROGRESS_LIMIT_MAP
-} from './types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 import { Language } from '../common/language';
+import { createTable } from '../commands/stat';
+import { removeBaseWordLimit } from '../service/limit/base-word-limit';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -70,7 +66,7 @@ type ExerciseWithPriorites = {
 
 function getExerciseSubjectResults(allResults: Result[]): Record<string, Result[]> {
   return allResults.reduce<Record<string, Result[]>>((prev, curr) => {
-    const baseWordKey = curr.exercise.getBaseWordAsString() || JSON.stringify(curr.exercise.getBaseWord());
+    const baseWordKey = curr.exercise.getBaseWordAsString() || '_';
     const currentResults: Result[] = prev[baseWordKey] || [];
     currentResults.push(curr);
     prev[baseWordKey] = currentResults;
@@ -83,15 +79,13 @@ const priorityCompilers: PriorityCompiler[] = [
   // exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
-  exerciseSentenceUnknownWords,
   exerciseVerbNeverTranslated,
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
   exerciseDoneInLastHour,
   exerciseDoneCorrectly2TimesInRow,
-  exerciseTypeInProgressLimit,
-  exerciseBaseWordProgressLimit,
+  // exerciseTypeInProgressLimit,
   exerciseRandomness
 ];
 
@@ -136,9 +130,7 @@ export function sortExercises(
 
   logSortingTime(start);
 
-  const randomIndex = Math.floor(Math.random() * 10);
-  const randomExercise = getRandomElement(exercises);
-  const sortedExercises = insertRandomExercise(exercisesWithPriorities, randomIndex, randomExercise);
+  const sortedExercises = exercisesWithPriorities.map((e) => e.exercise);
 
   return {
     exercises: removeRepetitionFromBlocks(
@@ -176,39 +168,11 @@ function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Re
     });
 }
 
-function logCurrentWordsInProgress(progressAggregate: ProgressAggregate): void {
-  const { VERB, ADJECTIVE, NOUN, OTHER } = IN_PROGRESS_LIMIT_MAP;
-  const findMissingPoints = (word: string) => {
-    return progressAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
-  };
-  const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
-  const joinWithPointsMissing = (baseWords: string[]) => {
-    return baseWords.reduce(
-      (prev, curr) => ({
-        ...prev,
-        [curr]: findMissingPoints(curr)
-      }),
-      {}
-    );
-  };
-  logger.info(
-    'Current Words In Progress: VERBS:',
-    joinWithPointsMissing(progressAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB).sort(sortPointsMissing))
-  );
-  logger.info(
-    'Current Words In Progress: ADJECTIVES',
-    joinWithPointsMissing(
-      progressAggregate.words.ADJECTIVE.IN_PROGRESS.baseWords.slice(0, ADJECTIVE).sort(sortPointsMissing)
-    )
-  );
-  logger.info(
-    'Current Words In Progress: NOUNS:',
-    joinWithPointsMissing(progressAggregate.words.NOUN.IN_PROGRESS.baseWords.slice(0, NOUN).sort(sortPointsMissing))
-  );
-  logger.info(
-    'Current Words In Progress: OTHER:',
-    joinWithPointsMissing(progressAggregate.words.OTHER.IN_PROGRESS.baseWords.slice(0, OTHER).sort(sortPointsMissing))
-  );
+function logCurrentWordsInProgress(progressAggregate: ProgressAggregate, results: Result[], language: Language): void {
+  logger.info(createTable('Verbs', progressAggregate.words.VERB, results, language).render());
+  logger.info(createTable('Nouns', progressAggregate.words.NOUN, results, language).render());
+  logger.info(createTable('Adjective', progressAggregate.words.ADJECTIVE, results, language).render());
+  logger.info(createTable('Other', progressAggregate.words.OTHER, results, language).render());
 }
 
 function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: ExerciseProgress[]): void {
@@ -231,9 +195,9 @@ function getExercisesWithPriorities(
 ): ExerciseWithPriorites[] {
   const priorityCompilerTimes: Record<string, number> = {};
   const progressAggregate = getProgressAggregate(allResults, exercises);
-  logCurrentWordsInProgress(progressAggregate);
+  logCurrentWordsInProgress(progressAggregate, allResults, language);
 
-  const x = exercisesWithoutWantedProgress
+  const x = removeBaseWordLimit(exercisesWithoutWantedProgress, progressAggregate)
     .map((ex) => {
       const combinedPriorities = priorityCompilers
         .flatMap((priorityCompiler) => {
@@ -241,7 +205,7 @@ function getExercisesWithPriorities(
           const result = priorityCompiler(ex.exercise, {
             allExercises: exercises,
             allResults,
-            exerciseSubjectResults: exerciseSubjectResultMap[JSON.stringify(ex.exercise.getBaseWord())] || [],
+            exerciseSubjectResults: exerciseSubjectResultMap[ex.exercise.getBaseWordAsString() || '_'] || [],
             progressType: ex.progressType,
             exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
             exerciseResults: ex.exerciseResults,

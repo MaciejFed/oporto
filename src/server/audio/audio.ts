@@ -11,10 +11,13 @@ import util from 'util';
 import * as protos from '@google-cloud/text-to-speech/build/protos/protos';
 import { randomUUID } from 'node:crypto';
 import { Audio, Rate } from './audio.types';
+import OpenAI from 'openai';
 
 const AUDIO_DIR = path.join(os.homedir(), 'audio');
 
 dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
+
+const getAudioPath = () => `${AUDIO_DIR}/${randomUUID()}.mp3`;
 
 const getVoiceForLanguage = async (language: Language, text: string) => {
   const audioPrev = await getPreviousAudioVoice(language, text);
@@ -23,16 +26,38 @@ const getVoiceForLanguage = async (language: Language, text: string) => {
     case Language.Portuguese:
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
     case Language.German:
-      return getRandomElement(
-        ['A', 'B', 'C', 'D', 'F'].map((index) => `de-DE-Neural2-${index}`).concat('de-DE-Polyglot-1')
-      );
+      return getRandomElement(['A', 'B', 'C', 'F'].map((index) => `de-DE-Neural2-${index}`));
+    case Language.Polish:
+      return getRandomElement(['A', 'B', 'D', 'E'].map((index) => `pl-PL-Wavenet-${index}`));
     default:
       throw new Error(`Unknown language: [${language}]`);
   }
 };
 
 const getLocaleForLanguage = (language: Language) => (language === Language.Portuguese ? 'pt-PT' : 'de-DE');
-const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.75 : 1);
+const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.7 : 1);
+
+const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) => {
+  const audioFilePath = getAudioPath();
+  const voice = (await getVoiceForLanguage(language, text)) as 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
+
+  const openai = new OpenAI();
+  const mp3 = await openai.audio.speech.create({
+    model: 'tts-1-hd',
+    voice,
+    speed: getRateInNumber(rate),
+    input: text
+  });
+  const buffer = Buffer.from(await mp3.arrayBuffer());
+  await fs.promises.writeFile(audioFilePath, buffer);
+
+  return {
+    path: audioFilePath,
+    text,
+    voice,
+    rate
+  } as Audio;
+};
 
 const synthesize = async (language: Language, text: string, rate: Rate) => {
   const client = new textToSpeech.TextToSpeechClient();
@@ -43,7 +68,7 @@ const synthesize = async (language: Language, text: string, rate: Rate) => {
     audioConfig: { audioEncoding: 'MP3', speakingRate: getRateInNumber(rate) }
   };
 
-  const audioFilePath = `${AUDIO_DIR}/${randomUUID()}.mp3`;
+  const audioFilePath = getAudioPath();
 
   const [response] = await client.synthesizeSpeech(request);
   if (response.audioContent) {

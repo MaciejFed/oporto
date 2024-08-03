@@ -17,7 +17,35 @@ exports[`Progress Aggregate getProgressAggregate 1`] = `
         "count": 0,
       },
     },
+    "GermanCaseExercise": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
     "GermanNounTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "GermanOtherTranslation": {
       "DONE": {
         "baseWords": [],
         "count": 0,
@@ -74,6 +102,62 @@ exports[`Progress Aggregate getProgressAggregate 1`] = `
       },
     },
     "OtherTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "PolishNounTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "PolishOtherTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "PolishVerbExercise": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "PolishVerbTranslation": {
       "DONE": {
         "baseWords": [],
         "count": 0,
@@ -309,7 +393,35 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
         "count": 93,
       },
     },
+    "GermanCaseExercise": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
     "GermanNounTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "GermanOtherTranslation": {
       "DONE": {
         "baseWords": [],
         "count": 0,
@@ -1018,6 +1130,62 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "repente",
         ],
         "count": 126,
+      },
+    },
+    "PolishNounTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "PolishOtherTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "PolishVerbExercise": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
+    "PolishVerbTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
       },
     },
     "VerbExercise": {

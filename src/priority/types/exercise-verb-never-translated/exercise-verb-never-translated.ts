@@ -7,6 +7,8 @@ import { VerbTranslationExercise } from '../../../exercise/translation/verb-tran
 import { Language } from '../../../common/language';
 import { GermanVerbTranslationExercise } from '../../../exercise/translation/de/german-verb-translation-exercise';
 import { GermanVerbExercise } from '../../../exercise/german-verb-exercise';
+import { getVerbExerciseTypeForLanguage } from '../../../service/verb/verb';
+import { PolishVerbExercise } from '../../../exercise/polish-verb-exercise';
 
 export const VALUE_EXERCISE_VERB_NEVER_TRANSLATED = -500;
 
@@ -16,10 +18,14 @@ export function exerciseVerbNeverTranslated(
   exercise: Exercise,
   { exerciseSubjectResults, language }: ExerciseResultContext
 ): Priority[] {
-  if (!(exercise instanceof VerbExercise) && !(exercise instanceof GermanVerbExercise)) {
+  if (
+    !(exercise instanceof VerbExercise) &&
+    !(exercise instanceof GermanVerbExercise) &&
+    !(exercise instanceof PolishVerbExercise)
+  ) {
     return noPriority(exercise);
   }
-  const ExerciseType = language === Language.Portuguese ? VerbTranslationExercise : GermanVerbTranslationExercise;
+  const ExerciseType = getVerbExerciseTypeForLanguage(language);
   const progress = getSingleExerciseProgress(
     exerciseSubjectResults,
     // @ts-ignore

@@ -2,7 +2,8 @@ import { getRandomElement } from './common';
 
 export enum Language {
   Portuguese = 'Portuguese',
-  German = 'German'
+  German = 'German',
+  Polish = 'Polish'
 }
 
 export function getVoice(language: Language): string {

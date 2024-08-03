@@ -4,6 +4,13 @@ import { VerbExercise, VerbTime } from '../../exercise/verb-exercise';
 import { GermanPerson, GermanVerb, readAllDE } from '../../repository/german-exercises-repository';
 import { Result } from '../result';
 import { getSingleExerciseProgress } from '../progress/progress';
+import { GermanVerbExercise, GermanVerbTime } from '../../exercise/german-verb-exercise';
+import { PolishPerson, PolishVerb, readAllPL } from '../../repository/polish-exercises-repository';
+import { Language } from '../../common/language';
+import { PolishVerbExercise } from '../../exercise/polish-verb-exercise';
+import { VerbTranslationExercise } from '../../exercise/translation/verb-translation-exercise';
+import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
+import { PolishVerbTranslationExercise } from '../../exercise/translation/pl/polish-verb-translation-exercise';
 
 export const getRandomVerb: () => Verb = () => {
   return getRandomElement(readAll().verbs);
@@ -17,15 +24,41 @@ export const getRandomGermanPerson: () => GermanPerson = () => {
   return getRandomElement(Object.values(GermanPerson));
 };
 
+export const getRandomPolishPerson: () => PolishPerson = () => {
+  return getRandomElement(Object.values(PolishPerson));
+};
+
 export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: VerbTime): string => {
   const verbExercise = readAll().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
   return verbExercise[verbTime]![person];
 };
 
-export const getCorrectGermanVerbConjugation = (verb: GermanVerb, person: GermanPerson, verbTime: VerbTime): string => {
+export const getCorrectGermanVerbConjugation = (
+  verb: GermanVerb,
+  person: GermanPerson,
+  verbTime: GermanVerbTime
+): string => {
   const verbExercise = readAllDE().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
   // @ts-ignore
   return verbExercise[verbTime][person];
+};
+
+export const getCorrectPolishVerbConjugation = (verb: PolishVerb, person: PolishPerson): string => {
+  const verbExercise = readAllPL().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
+  return verbExercise.presentSimple[person];
+};
+
+export const getVerbExerciseTypeForLanguage = (lanugage: Language) => {
+  switch (lanugage) {
+    case Language.Portuguese:
+      return VerbTranslationExercise;
+    case Language.German:
+      return GermanVerbTranslationExercise;
+    case Language.Polish:
+      return PolishVerbTranslationExercise;
+    default:
+      throw new Error('');
+  }
 };
 
 interface VerbDetails {
@@ -181,7 +214,7 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive, allResu
                 isStandard: false,
                 conjugation: verbTense[person],
                 expectedConjugation,
-                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, 'presentSimple'))
+                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, tense))
                   .progressType
               }
             }
@@ -200,7 +233,7 @@ export function checkStandardConjugation(verbInfinitive: VerbInfinitive, allResu
                 isStandard: true,
                 conjugation: verbTense[person],
                 expectedConjugation,
-                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, 'pastPerfect'))
+                status: getSingleExerciseProgress(allResults, VerbExercise.new(verb, person as Person, tense))
                   .progressType
               }
             }

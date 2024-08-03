@@ -8,16 +8,18 @@ import fs from 'fs';
 import {
   DE_EXAMPLES_PATH,
   DE_TRANSLATION_EXAMPLES_PATH,
+  PL_EXAMPLES_PATH,
+  PL_TRANSLATION_EXAMPLES_PATH,
   PT_EXAMPLES_PATH,
   PT_TRANSLATION_EXAMPLES_PATH
 } from '../service/example-finder/example-finder.types';
 import { isExampleSavedAlready, saveExamples } from '../server/db';
 import { enforceArrayLimit } from '../common/common';
 
-const MAX_FIND_EXAMPLES = 150_000;
+const MAX_FIND_EXAMPLES = 100_000;
 const MAX_SAVE_EXAMPLES = 40_000;
 
-const examplesPaths: Record<Language, { targetLanguagePath: string; translationPath: string }> = {
+export const examplesPaths: Record<Language, { targetLanguagePath: string; translationPath: string }> = {
   [Language.Portuguese]: {
     targetLanguagePath: PT_EXAMPLES_PATH,
     translationPath: PT_TRANSLATION_EXAMPLES_PATH
@@ -25,12 +27,16 @@ const examplesPaths: Record<Language, { targetLanguagePath: string; translationP
   [Language.German]: {
     targetLanguagePath: DE_EXAMPLES_PATH,
     translationPath: DE_TRANSLATION_EXAMPLES_PATH
+  },
+  [Language.Polish]: {
+    targetLanguagePath: PL_EXAMPLES_PATH,
+    translationPath: PL_TRANSLATION_EXAMPLES_PATH
   }
 };
 
 export async function findAllExamples(language: Language) {
   const allKnownWords = getAllUniqueWordsConjugated(language);
-  const words = [...new Set(generateAllPossibleExercises(language).reverse().map(extractWordToFindFromExercise))];
+  const words = [...new Set(generateAllPossibleExercises(language).map(extractWordToFindFromExercise))];
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     console.log(`[${i}/${words.length}]`);
@@ -42,7 +48,12 @@ export async function findAllExamples(language: Language) {
         continue;
       }
       console.time(`[${word}]`);
-      const { matchingLines, matchingLinesEn } = await findMatchingLines(ptReadStream, ptTranslationsReadStream, word);
+      const { matchingLines, matchingLinesEn } = await findMatchingLines(
+        ptReadStream,
+        ptTranslationsReadStream,
+        word,
+        100_000_000
+      );
       const examples = enforceArrayLimit(
         findWordExampleLines(
           enforceArrayLimit(matchingLines, MAX_FIND_EXAMPLES),
@@ -61,6 +72,6 @@ export async function findAllExamples(language: Language) {
   }
 }
 
-findAllExamples(Language.Portuguese).then(() => {
+findAllExamples(Language.Polish).then(() => {
   console.log('done');
 });

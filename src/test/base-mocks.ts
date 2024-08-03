@@ -23,6 +23,7 @@ const mockCommonModules = () => {
         red: () => {},
         white: () => {},
         bold: () => {},
+        blue: () => {},
         yellow: () => {}
       }
     };
@@ -71,6 +72,10 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     };
   });
 
+  jest.mock('../commands/stat', () => ({
+    displayStatistics: () => {},
+  }))
+
   jest.mock('child_process', () => {
     const fileModuleActual = jest.requireActual('child_process');
     return {
@@ -84,12 +89,25 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     };
   });
 
+  jest.mock('../service/example-finder/example-finder', () => ({
+    findExampleSentenceAndWord: (_language: any,
+                                 _exercise: any,
+                                   callback: ({ wordStartIndex, word, targetLanguage, english, englishApi }: any) => void) => {
+      callback({
+        wordStartIndex: 0,
+        word: 'foo',
+        targetLanguage: 'Some Text',
+        english: 'Some Text',
+        englishApi:'Some Text',
+      })
+    }
+  }))
+
   const { EventProcessor } = require('../event/event-processor');
   const Terminal = require('../io/terminal').default;
   const Input = require('../io/input').default;
   const SessionManager = require('../session/session-manager').default;
   const getAllResults = require('../repository/result-repository').getAllResults;
-  const Output = require('../io/output').default;
 
   const eventProcessor = new EventProcessor(Language.Portuguese);
   const terminal = new Terminal(eventProcessor, Language.Portuguese);
@@ -101,7 +119,6 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     eventProcessor,
     getAllResults,
     mockGenerateExercisesForSession,
-    SessionManager,
-    Output
+    SessionManager
   };
 };

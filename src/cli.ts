@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import { saveProgress } from './commands/progress';
-import { startSpeakSession } from './commands/speaking';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
 import { Language } from './common/language';
@@ -23,10 +22,10 @@ program
   });
 
 program
-  .command('speak')
-  .description('Start speak session')
+  .command('testpl')
+  .description('Start German Test session')
   .action((str, options) => {
-    startSpeakSession();
+    startTestSession(Language.Polish);
   });
 
 program
@@ -44,6 +43,20 @@ program
   });
 
 program
+  .command('statde')
+  .description('Show statistics DE')
+  .action((str, options) => {
+    displayStatistics(true, Language.German);
+  });
+
+program
+  .command('statpl')
+  .description('Show statistics PL')
+  .action((str, options) => {
+    displayStatistics(true, Language.German);
+  });
+
+program
   .command('progress')
   .description('Save progress')
   .action(() => {
@@ -55,6 +68,13 @@ program
   .description('Save German progress')
   .action(() => {
     saveProgress(Language.German);
+  });
+
+program
+  .command('progressde')
+  .description('Save Polish progress')
+  .action(() => {
+    saveProgress(Language.Polish);
   });
 
 program.parse();

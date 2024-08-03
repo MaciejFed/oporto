@@ -10,11 +10,18 @@ import { getProgressAggregate, ProgressAggregate } from '../service/progress/pro
 import { sortExercises } from '../priority/priority';
 import { Person, wordDatabase } from '../repository/exercises-repository';
 import { checkStandardConjugation } from '../service/verb/verb';
-import { IN_PROGRESS_LIMIT_MAP } from '../priority/types/exercise-base-word-progress-limit/exercise-base-word-progress-limit';
 import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
 import { getAudioForText } from './audio/audio';
+import { createTable } from '../commands/stat';
+import { getAllResults } from '../repository/result-repository';
+import { DateTimeExtended } from '../common/common';
+import { DateTime } from 'luxon';
+import path from 'path';
+import os from 'os';
+import { writeFileSync } from 'node:fs';
+import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
 
 const config = loadValidConfig();
 
@@ -39,7 +46,8 @@ app.use((req, res, next) => {
 
 const cachedExercises: Record<Language, Exercise[]> = {
   [Language.Portuguese]: [],
-  [Language.German]: []
+  [Language.German]: [],
+  [Language.Polish]: []
 };
 let cachedAggregate: ProgressAggregate;
 
@@ -56,13 +64,37 @@ const preFetch = async (language: Language) => {
       const results = await readAllResults(language);
       cachedExercises[language] = await generateExercisesForSessionAsync(50, true, () => true, language, results);
       logger.info(`Saved exercises to cache ${new Date()}`);
-    } else {
-      logger.info(`Cache still has [${cachedExercises[language].length}] exercises - skipping refresh.`);
     }
   } catch (e) {
     logger.error('error refreshng cache', e);
   }
 };
+
+setInterval(() => {
+  [Language.German, Language.Portuguese].forEach((language) => {
+    readAllResults(language).then((results) => {
+      const progressAggregate = getProgressAggregate(results, generateAllPossibleExercises(language));
+      const date = DateTime.fromJSDate(new Date()).toISODate();
+      const progressDir = path.join(os.homedir(), 'progress');
+      writeFileSync(
+        `${progressDir}/${language}.verbs.${date}`,
+        createTable('Verbs', progressAggregate.words.VERB, results, language).render()
+      );
+      writeFileSync(
+        `${progressDir}/${language}.nouns.${date}`,
+        createTable('Nouns', progressAggregate.words.NOUN, results, language).render()
+      );
+      writeFileSync(
+        `${progressDir}/${language}.adjectives.${date}`,
+        createTable('Adjectives', progressAggregate.words.ADJECTIVE, results, language).render()
+      );
+      writeFileSync(
+        `${progressDir}/${language}.others.${date}`,
+        createTable('Others', progressAggregate.words.OTHER, results, language).render()
+      );
+    });
+  });
+}, 6 * 60 * 60 * 1000);
 
 setInterval(() => {
   preFetchAggregate();
@@ -80,6 +112,8 @@ const getLanguage = (req: Request) => {
       return Language.Portuguese;
     case Language.German.toLowerCase():
       return Language.German;
+    case Language.Polish.toLowerCase():
+      return Language.Polish;
     default:
       throw new Error(`Unknown Language: [${req.params.language}]`);
   }
@@ -130,11 +164,16 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
 
 app.get('/:language/priority', async (req: Request, res: Response) => {
   const language = getLanguage(req);
-  const exercises = generateAllPossibleExercises(language);
   const results = await readAllResults(language);
+  const exercises = await generateExercisesForSessionAsync(300, true, () => true, language, results);
   const { exercisesWithPriorities } = sortExercises(exercises, results, language);
-  exercisesWithPriorities.flatMap((ep) => ep.priorities);
-  res.send(exercisesWithPriorities);
+  const response = exercisesWithPriorities.map((ep) => ({
+    exercise: `[${ep.exercise.exerciseType}] [${ep.exercise.getBaseWordAsString()}]`,
+    value: `[${ep.priorityValueTotal}] ${ep.priorities.map(
+      (priority) => `${priority.priorityName} (${priority.priorityValue})`
+    )}`
+  }));
+  res.send(response);
 });
 
 app.get('/:language/progress', async (req: Request, res: Response) => {
@@ -159,7 +198,14 @@ app.post('/:language/results/save', async (req: Request, res: Response) => {
 app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    res.send(cachedExercises[language].splice(0, 10));
+    let exercises = [];
+    if ([Language.Polish, Language.German].includes(language)) {
+      const results = await readAllResults(language);
+      exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results);
+    } else {
+      exercises = cachedExercises[language].splice(0, 10);
+    }
+    res.send(exercises);
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }

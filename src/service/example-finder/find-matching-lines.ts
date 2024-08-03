@@ -8,7 +8,7 @@ export async function findMatchingLines(
   wordToFind: string,
   numberOfLinesToRead: number = Number.MAX_SAFE_INTEGER
 ) {
-  const wordRegex = new RegExp(`\\b${wordToFind}\\b`, 'i');
+  const wordRegex = new RegExp(`(^|\\s)${wordToFind}($|\\s)`, 'i');
   const readInterfaceTarget = readline.createInterface({
     input: targetInputStream
   });
@@ -33,8 +33,10 @@ export async function findMatchingLines(
     const lineEn = lineEnResult.value;
 
     if (wordRegex.test(linePt) && linePt.length < MAX_LINE_LENGTH) {
-      matchingLines.push(linePt);
-      matchingLinesEn.push(lineEn);
+      if (!(matchingLines[matchingLines.length - 1] === linePt)) {
+        matchingLines.push(linePt);
+        matchingLinesEn.push(lineEn);
+      }
     }
     linesRead++;
   }

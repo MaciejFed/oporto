@@ -2,9 +2,9 @@ import { DateTimeExtended, isBeforeWeekday, isOnWeekDay, onlyDistinct } from '..
 import { logger } from '../common/logger';
 import { Exercise } from '../exercise/exercise';
 import { AnswerInputType } from '../io/terminal/terminal-utils';
-import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
+import { getAllResults, getAllResultsForBaseWord, getAllResultsForExercise } from '../repository/result-repository';
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
-import { getProgress } from './progress/progress';
+import { getAnswersMissingForBaseWord, getProgress } from './progress/progress';
 import { Language } from '../common/language';
 
 type KeyMarker = {
@@ -42,6 +42,7 @@ export type ExerciseStatistics = {
   failedAttempts: number;
   lastTimeAttempted: Date;
   firstTimeAttempted: Date;
+  baseWordAnswersMissing: number;
 };
 
 export type Result = {
@@ -67,7 +68,11 @@ export function convertToResult(
   };
 }
 
-export function getStatisticForExercise(allResults: Result[], exercise: Exercise): ExerciseStatistics | undefined {
+export function getStatisticForBaseWord(
+  allResults: Result[],
+  exercise: Exercise,
+  language: Language
+): ExerciseStatistics | undefined {
   const allResultsForExercise = getAllResultsForExercise(allResults, exercise).sort(
     (a, b) => b.date.getTime() - a.date.getTime()
   );
@@ -76,13 +81,15 @@ export function getStatisticForExercise(allResults: Result[], exercise: Exercise
     return undefined;
   }
   const correctAttempts = allResultsForExercise.filter((r) => r.wasCorrect).length;
+  const baseWord = exercise.getBaseWordAsString();
 
   return {
     exercise,
     correctAttempts,
     failedAttempts: allResultsForExercise.length - correctAttempts,
     lastTimeAttempted: allResultsForExercise.length > 1 ? allResultsForExercise[1].date : allResultsForExercise[0].date,
-    firstTimeAttempted: allResultsForExercise[allResultsForExercise.length - 1].date
+    firstTimeAttempted: allResultsForExercise[allResultsForExercise.length - 1].date,
+    baseWordAnswersMissing: baseWord ? getAnswersMissingForBaseWord(baseWord, allResults, language) : 0
   };
 }
 

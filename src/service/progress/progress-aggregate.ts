@@ -6,12 +6,18 @@ import { logger } from '../../common/logger';
 export const progressExerciseTypes = [
   'NounTranslation',
   'GermanNounTranslation',
+  'PolishNounTranslation',
   'OtherTranslation',
+  'PolishOtherTranslation',
   'AdjectiveTranslation',
   'VerbTranslation',
   'GermanVerbTranslation',
+  'PolishVerbTranslation',
   'VerbExercise',
-  'GermanVerbExercise'
+  'GermanVerbExercise',
+  'PolishVerbExercise',
+  'GermanCaseExercise',
+  'GermanOtherTranslation'
 ] as const;
 
 type ExerciseTypeKey = (typeof progressExerciseTypes)[number];
@@ -23,7 +29,7 @@ type PointsMissing = {
   total: number;
 };
 
-type ProgressDetails = {
+export type ProgressDetails = {
   count: number;
   baseWords: string[];
 };

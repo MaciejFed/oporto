@@ -17,9 +17,10 @@ import { AdjectiveTranslationExercise } from '../../exercise/translation/adjecti
 import { logger } from '../../common/logger';
 import { getProgressAggregate } from './progress-aggregate';
 import { Language } from '../../common/language';
-import { readAllDE } from '../../repository/german-exercises-repository';
+import { GenderWord, readAllDE } from '../../repository/german-exercises-repository';
 import { GermanVerbTranslationExercise } from '../../exercise/translation/de/german-verb-translation-exercise';
 import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
+import { readAllPL } from '../../repository/polish-exercises-repository';
 
 export enum ProgressType {
   DONE = 'DONE',
@@ -32,6 +33,7 @@ export type ExerciseProgress = {
   correctAnswers: number;
   incorrectAnswers: number;
   ratio: number;
+  answersMissing: number;
   exerciseResults: Result[];
   progressType: ProgressType;
 };
@@ -40,6 +42,24 @@ export type Progress = {
   ratioRange: ProgressType & 'All';
   count: number;
 };
+
+export function newWordsBetweenResults(resultStart: Result[], resultEnd: Result[], language: Language): string[] {
+  const getAllDoneWords = (result: Result[]) => {
+    const exercises = generateAllPossibleExercises(language);
+    const {
+      words: { NOUN, VERB, ADJECTIVE, OTHER }
+    } = getProgressAggregate(result, exercises);
+
+    return NOUN.DONE.baseWords
+      .concat(VERB.DONE.baseWords)
+      .concat(ADJECTIVE.DONE.baseWords)
+      .concat(OTHER.DONE.baseWords);
+  };
+  const doneStart = getAllDoneWords(resultStart);
+  const doneEnd = getAllDoneWords(resultEnd);
+
+  return doneEnd.filter((word) => !doneStart.includes(word));
+}
 
 export function getGroupExerciseProgress(
   exercises: Exercise[],
@@ -62,6 +82,13 @@ const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: number) =>
   return ratio < 100 ? ProgressType.IN_PROGRESS : ProgressType.DONE;
 };
 
+export function getAnswersMissingForBaseWord(baseWord: string, results: Result[], language: Language): number {
+  return generateAllPossibleExercises(language)
+    .filter((exercise) => exercise.getBaseWordAsString() === baseWord)
+    .map((exercise) => getSingleExerciseProgress(results, exercise))
+    .reduce((prev, curr) => prev + curr.answersMissing, 0);
+}
+
 export function getSingleExerciseProgress(results: Result[], exercise: Exercise): ExerciseProgress {
   const exerciseResults = getAllResultsForExercise(results, exercise);
   const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
@@ -72,6 +99,10 @@ export function getSingleExerciseProgress(results: Result[], exercise: Exercise)
     correctAnswers,
     incorrectAnswers,
     ratio,
+    answersMissing: Math.max(
+      0,
+      !correctAnswers && !incorrectAnswers ? 1 : incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO - correctAnswers
+    ),
     exerciseResults,
     progressType: mapRatioToProgress(correctAnswers, incorrectAnswers)
   };
@@ -132,18 +163,66 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
       .sort();
 
     return [...new Set(allWords)];
+  } else if (language === Language.German) {
+    const nouns = readAllDE().nouns.flatMap((noun) => [noun.german.singular, noun.german.plural]);
+    const verbs = readAllDE().verbs.flatMap((verb) => [
+      verb.infinitive,
+      verb.presentSimple.Ich,
+      verb.presentSimple.Du,
+      verb.presentSimple['Er/Sie/Es'],
+      verb.presentSimple.Wir,
+      verb.presentSimple.Ihr,
+      verb.presentSimple.Sie,
+
+      ...(verb.pastPerfect ? verb.pastPerfect.Ich.split(' ') : []),
+      ...(verb.pastPerfect ? verb.pastPerfect.Du.split(' ') : []),
+      ...(verb.pastPerfect ? verb.pastPerfect['Er/Sie/Es'].split(' ') : []),
+      ...(verb.pastPerfect ? verb.pastPerfect.Wir.split(' ') : []),
+      ...(verb.pastPerfect ? verb.pastPerfect.Ihr.split(' ') : []),
+      ...(verb.pastPerfect ? verb.pastPerfect.Sie.split(' ') : []),
+
+      verb.präteritum?.Ich,
+      verb.präteritum?.Du,
+      verb.präteritum?.['Er/Sie/Es'],
+      verb.präteritum?.Wir,
+      verb.präteritum?.Ihr,
+      verb.präteritum?.Sie
+    ]);
+    const getWords = (word: string | GenderWord | undefined) => {
+      if (!word) return [];
+      return typeof word === 'string' ? [word] : [word.plural, word.neutrum, word.femininum, word.maskulinum];
+    };
+
+    const others = readAllDE().others.map((other) => other.german);
+    const conjugated = readAllDE()
+      .case.flatMap((caseWord) => [
+        getWords(caseWord.german.nominative),
+        getWords(caseWord.german.accusative),
+        getWords(caseWord.german.dative)
+      ])
+      .flatMap((a) => a);
+    const allWords = [nouns, verbs, others, conjugated]
+      .flatMap((w) => w)
+      .filter((w) => w !== undefined)
+      .map((w) => w!.toLowerCase())
+      .filter((word) => word)
+      .sort();
+
+    return [...new Set(allWords)];
   }
-  const nouns = readAllDE().nouns.flatMap((noun) => [noun.german.singular, noun.german.plural]);
-  const verbs = readAllDE().verbs.flatMap((verb) => [
+  const nouns = readAllPL().nouns.flatMap((noun) => [noun.polish]);
+  const verbs = readAllPL().verbs.flatMap((verb) => [
     verb.infinitive,
-    verb.presentSimple.Ich,
-    verb.presentSimple.Du,
-    verb.presentSimple['Er/Sie/Es'],
-    verb.presentSimple.Wir,
-    verb.presentSimple.Ihr,
-    verb.presentSimple.Sie
+    verb.presentSimple.Ja,
+    verb.presentSimple.Ty,
+    verb.presentSimple['On/Ona/Ono'],
+    verb.presentSimple.My,
+    verb.presentSimple.Wy,
+    verb.presentSimple['Oni/One']
   ]);
-  const allWords = [nouns, verbs]
+
+  const others = readAllPL().others.map((other) => other.polish);
+  const allWords = [nouns, verbs, others]
     .flatMap((w) => w)
     .filter((w) => w !== undefined)
     .map((w) => w!.toLowerCase())
@@ -167,9 +246,20 @@ export function getAllUniqueWords(language: Language): string[] {
       .sort();
 
     return [...new Set(allWords)];
+  } else if (language === Language.German) {
+    const nouns = readAllDE().nouns.map((noun) => noun.german.singular);
+    const verbs = readAllDE().verbs.map((verb) => verb.infinitive);
+
+    const allWords = [nouns, verbs]
+      .flatMap((w) => w)
+      .map((w) => w.toLowerCase())
+      .filter((word) => word)
+      .sort();
+
+    return [...new Set(allWords)];
   }
-  const nouns = readAllDE().nouns.map((noun) => noun.german.singular);
-  const verbs = readAllDE().verbs.map((verb) => verb.infinitive);
+  const nouns = readAllPL().nouns.map((noun) => noun.polish);
+  const verbs = readAllPL().verbs.map((verb) => verb.infinitive);
 
   const allWords = [nouns, verbs]
     .flatMap((w) => w)
@@ -179,30 +269,6 @@ export function getAllUniqueWords(language: Language): string[] {
 
   return [...new Set(allWords)];
 }
-
-export function getAllUniqueWordsAsExercises(language: Language): Exercise[] {
-  if (language === Language.Portuguese) {
-    const nounExercises = readAll().nouns.map((noun) => NounTranslationExercise.new(noun, 'toPortuguese'));
-    const verbExercises = readAll().verbs.map((verb) => VerbTranslationExercise.new(verb, 'toPortuguese'));
-    const otherExercises = readAll().others.map((other) => OtherTranslationExercise.new(other, 'toPortuguese'));
-    const adjectivesExercises = readAll().adjectives.map((adjective) =>
-      AdjectiveTranslationExercise.new(adjective, 'toPortuguese', 'masculine', 'singular')
-    );
-
-    return [...nounExercises, ...verbExercises, ...otherExercises, ...adjectivesExercises];
-  }
-  const nounExercises = readAllDE().nouns.map((noun) => GermanNounTranslationExercise.new(noun, 'toPortuguese'));
-  const verbExercises = readAllDE().verbs.map((verb) => GermanVerbTranslationExercise.new(verb, 'toPortuguese'));
-
-  return [...nounExercises, ...verbExercises];
-}
-
-type ProgressOnDay = {
-  day: string;
-  wordCount: number;
-  newWords: string[];
-  lostWords: string[];
-};
 
 export function getExerciseProgressMap(
   results: Result[],
@@ -219,26 +285,52 @@ export function getExerciseProgressMap(
     'FitInGap'
   ];
 
-  const exerciseTypesDe: ExerciseType[] = ['GermanVerbExercise', 'GermanNounTranslation', 'GermanVerbTranslation'];
+  const exerciseTypesDe: ExerciseType[] = [
+    'GermanVerbExercise',
+    'GermanNounTranslation',
+    'GermanVerbTranslation',
+    'GermanOtherTranslation',
+    'GermanCaseExercise'
+  ];
+
+  const exerciseTypesPl: ExerciseType[] = [
+    'PolishVerbExercise',
+    'PolishNounTranslation',
+    'PolishVerbTranslation',
+    'PolishOtherTranslation'
+  ];
 
   const progressMap: Record<ExerciseType, ExerciseProgress[]> = {
     VerbExercise: [],
     GermanVerbExercise: [],
     GermanNounTranslation: [],
     GermanVerbTranslation: [],
+    PolishVerbExercise: [],
+    PolishNounTranslation: [],
+    PolishVerbTranslation: [],
     NounTranslation: [],
     OtherTranslation: [],
     AdjectiveTranslation: [],
     VerbTranslation: [],
     SentenceTranslation: [],
     PhraseTranslation: [],
+    GermanOtherTranslation: [],
+    PolishOtherTranslation: [],
+    GermanCaseExercise: [],
     FitInGap: []
   };
 
   let filteredResults = results;
   const allExercises = generateAllPossibleExercises(language);
 
-  for (const exerciseType of language === Language.Portuguese ? exerciseTypesPt : exerciseTypesDe) {
+  const exercisesTypes =
+    // eslint-disable-next-line no-nested-ternary
+    language === Language.Portuguese
+      ? exerciseTypesPt
+      : language === Language.German
+      ? exerciseTypesDe
+      : exerciseTypesPl;
+  for (const exerciseType of exercisesTypes) {
     const exerciseProgress = getGroupExerciseProgress(allExercises, filteredResults, exerciseType);
     progressMap[exerciseType] = exerciseProgress;
 

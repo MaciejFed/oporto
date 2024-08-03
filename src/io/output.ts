@@ -1,6 +1,7 @@
 import { terminal } from 'terminal-kit';
 import clear from 'clear';
 import { AppEventListener } from '../event/event-listener';
+import { createColorArray } from './terminal/terminal-utils';
 
 export enum Color {
   B = 'B',
@@ -14,14 +15,31 @@ export class ColoredText {
   public text: string;
   public colors: Color[];
 
-  public constructor(text: string, colors: Color[]) {
-    if (text.length > colors.length) throw new Error('colors array lenght not equal to text lenght');
+  public constructor(text = '', colors: Color[] = []) {
+    // eslint-disable-next-line no-param-reassign,no-unused-expressions
+    colors.length === 0 ? (colors = createColorArray({ white: text.length })) : colors;
+    if (text.length > colors.length) throw new Error('colors array length not equal to text length');
     this.text = text;
     this.colors = colors;
   }
+
+  concat(coloredText: ColoredText): ColoredText {
+    this.text = this.text.concat(coloredText.text);
+    this.colors = this.colors.concat(coloredText.colors);
+    return this;
+  }
+
+  padEnd(pad: number): ColoredText {
+    if (pad < this.text.length) return this;
+    const diff = pad - this.text.length;
+    this.text = this.text.padEnd(pad);
+    this.colors = this.colors.concat(Array(diff).fill(Color.W));
+
+    return this;
+  }
 }
 
-class Output implements AppEventListener {
+export class Output implements AppEventListener {
   private outputTable: string[][] = [];
   private colorTable: string[][] = [];
   private textColor: Color;
@@ -48,6 +66,12 @@ class Output implements AppEventListener {
       this.moveTo(x + index, y, char);
     });
     this.white();
+  }
+
+  public moveToColoredRows(x: number, y: number, coloredText: ColoredText[]) {
+    coloredText.forEach((line, index) => {
+      this.moveToColored(x, y + index, line);
+    });
   }
 
   public moveTo(x: number, y: number, text: string | undefined) {
@@ -134,5 +158,3 @@ class Output implements AppEventListener {
 
   public registerListeners(): void {}
 }
-
-export default new Output();

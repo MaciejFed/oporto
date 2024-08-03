@@ -5,40 +5,41 @@ import { terminal } from 'terminal-kit';
 import { EventProcessor } from '../event/event-processor';
 import { logger } from '../common/logger';
 import {
+  ANSWER_CHECKED,
   APP_STARTED,
-  EXERCISE_DESCRIPTION_PRINTED,
   EXERCISE_BODY_PRINTED,
   EXERCISE_BODY_PRINTED_BODY,
-  KEY_PRESSED,
-  ANSWER_CHECKED,
+  EXERCISE_DESCRIPTION_PRINTED,
   EXERCISE_NEXT,
-  EXERCISE_STARTED
+  EXERCISE_STARTED,
+  KEY_PRESSED,
+  NEW_WORD_LEARNED
 } from '../event/events';
 import {
   animateExerciseSummary,
   displayGenericWeeklyStatistics,
+  logSaved,
   preExerciseClear,
   printAllAnswers,
+  printAllVerbConjugations,
+  printExampleSentence,
+  printExampleTranslation,
   printExerciseBody,
   printExerciseBodyWithCorrection,
   printExerciseDescription,
-  printExerciseTranslation,
   printExerciseFeedback,
   printExerciseRepeatAnswer,
   printExerciseRepeatAnswerKey,
   printExerciseRepeatBody,
+  printExerciseTranslation,
   printInBetweenMenu,
-  printExampleSentence,
-  printAllVerbConjugations,
-  printExampleTranslation,
-  printAllVerbConjugationsDE,
-  logSaved
+  printNewWordLearned
 } from './terminal/terminal-utils';
-import { Exercise } from '../exercise/exercise';
-import { getExerciseProgress, getStatisticForExercise } from '../service/result';
+import { BaseWordType, Exercise } from '../exercise/exercise';
+import { getExerciseProgress, getStatisticForBaseWord } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
 import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
-import { getVoice, Language } from '../common/language';
+import { Language } from '../common/language';
 import { VerbExercise } from '../exercise/verb-exercise';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { sleep } from '../common/common';
@@ -48,7 +49,6 @@ import { getSavedAudioPath } from '../server/configuration';
 import { Rate } from '../server/audio/audio.types';
 
 export class Terminal {
-  eventProcessor: EventProcessor;
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
   exerciseTranslation: string | undefined;
@@ -60,23 +60,28 @@ export class Terminal {
   exercise?: Exercise;
   exampleSentence: MovieExample | undefined;
   exampleSentenceFull?: string | undefined;
+  canGoNext: boolean;
 
   exampleSentenceTranslation?: string | undefined;
   exampleSentenceTranslationApi?: string | undefined;
-  language: Language;
+  exerciseCounter: number;
 
-  constructor(eventProcessor: EventProcessor, language: Language) {
+  constructor(
+    private readonly eventProcessor: EventProcessor,
+    private readonly language: Language) {
+    this.exerciseCounter = 0;
     this.eventProcessor = eventProcessor;
     this.registerListeners();
     this.exerciseInProgress = false;
-    this.exerciseRepetitionInProgress = true;
+    this.exerciseRepetitionInProgress = false;
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';
     this.answer = '';
     this.repetitionAnswer = '';
     this.correctAnswer = '';
-    clear();
     this.language = language;
+    this.canGoNext = false;
+    clear();
   }
 
   private registerListeners() {
@@ -86,6 +91,7 @@ export class Terminal {
     this.registerOnKeyPressedEventListener();
     this.registerOnExerciseStartedEventListener();
     this.registerOnAnswerCheckedEventListener();
+    this.registerNewWordLearnedListener();
   }
 
   private registerOnAppStartedEventListener() {
@@ -126,6 +132,7 @@ export class Terminal {
 
   private registerOnExerciseStartedEventListener() {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
+      this.canGoNext = false;
       this.exerciseInProgress = true;
       this.answer = '';
       this.repetitionAnswer = '';
@@ -142,37 +149,20 @@ export class Terminal {
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
-      this.playAudio(true, 'answer', 'normal', false);
-      findExampleSentenceAndWord(
-        this.language,
-        exercise,
-        ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
-          this.exampleSentence = {
-            english,
-            englishApi,
-            targetLanguage,
-            wordStartIndex,
-            word
-          };
-          sleep(2_000).then(() => {
-            this.exampleSentenceTranslation = english;
-            this.exampleSentenceTranslationApi = englishApi;
-            this.playAudio(true, 'example', 'slow');
-            printExampleSentence(
-              this.exampleSentence!.wordStartIndex,
-              this.exampleSentence!.word,
-              this.exampleSentence!.targetLanguage!
-            );
-            sleep(1000).then(() => this.playAudio(true, 'example', 'normal'));
-          });
-        }
-      );
-      if (wasCorrect) {
-        this.endOfExerciseMenu();
-      } else {
+      if (!wasCorrect) {
         this.exerciseRepetitionInProgress = true;
+        this.playAudio(true, 'answer', 'normal', false);
         printExerciseRepeatBody();
+      } else {
+        this.playAudio(true, 'answer', 'normal', true);
+        this.showExample().then(() => this.endOfExerciseMenu());
       }
+    });
+  }
+
+  private registerNewWordLearnedListener() {
+    this.eventProcessor.on(NEW_WORD_LEARNED, ({ word, time }) => {
+      printNewWordLearned(word, time);
     });
   }
 
@@ -197,19 +187,13 @@ export class Terminal {
     if (this.exercise) {
       const allResults = getAllResults(this.language);
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
-      // Broken
-      if (['VerbExercise', 'VerbTranslation'].includes(this.exercise.exerciseType)) {
-        const conjugation = checkStandardConjugation((this.exercise as VerbExercise).verb.infinitive, allResults);
-        printAllVerbConjugations(conjugation);
-      } else if (['GermanVerbExercise', 'GermanVerbTranslation'].includes(this.exercise.exerciseType)) {
-        // @ts-ignore
-        printAllVerbConjugationsDE(this.exercise.verb);
-      }
-      const exerciseStatistics = getStatisticForExercise(allResults, this.exercise);
+      printAllVerbConjugations(this.exercise, allResults);
+      const exerciseStatistics = getStatisticForBaseWord(allResults, this.exercise, this.language);
       if (exerciseStatistics) {
         animateExerciseSummary(exerciseStatistics);
       }
       displayGenericWeeklyStatistics(getExerciseProgress(allResults, this.exercise), 30);
+      this.canGoNext = true;
     }
   }
 
@@ -227,7 +211,9 @@ export class Terminal {
     }
     printExerciseRepeatAnswerKey(this.repetitionAnswer, this.correctAnswer, key);
     if (this.correctAnswer.toLowerCase() === this.repetitionAnswer.toLowerCase()) {
-      this.endOfExerciseMenu();
+      this.exerciseRepetitionInProgress = false;
+      terminal.hideCursor();
+      this.showExample().then(() => this.endOfExerciseMenu());
     }
   }
 
@@ -236,11 +222,11 @@ export class Terminal {
       case 't':
         printExerciseTranslation(this.exerciseTranslation);
         break;
-      case '1':
+      case '2':
         printExerciseTranslation(this.exerciseTranslation);
         printExampleTranslation('Movie:', this.exampleSentenceTranslation);
         break;
-      case '2':
+      case '1':
         printExerciseTranslation(this.exerciseTranslation);
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
         break;
@@ -263,19 +249,64 @@ export class Terminal {
         this.playAudio(false, 'answer', 'normal');
         break;
       default:
-        terminal.hideCursor(false);
-        this.eventProcessor.emit(EXERCISE_NEXT);
+        // if (this.canGoNext) {
+          terminal.hideCursor(false);
+          this.eventProcessor.emit(EXERCISE_NEXT);
+        // }
     }
   }
 
   private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate, sync = true) {
-    const text =
-      type === 'answer' ? extractWordToFindFromExercise(this.exercise!) : this.exampleSentence?.targetLanguage;
-    if (download) {
-      getAudio(this.language, text!, type, rate);
+    try {
+      const text = type === 'answer' ? this.exercise?.getRetryPrompt() : this.exampleSentence?.targetLanguage;
+      if (download) {
+        getAudio(this.language, text!, type, rate);
+      }
+      const syncFn = sync ? execSync : exec;
+      syncFn(`afplay ${getSavedAudioPath(type, rate)}`);
+    } catch (e: any) {
+      logger.error(e);
     }
-    const syncFn = sync ? execSync : exec;
-    syncFn(`afplay ${getSavedAudioPath(type, rate)}`);
+  }
+
+  private showExample(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      // @ts-ignore
+      if (![BaseWordType.VERB, BaseWordType.OTHER].includes(this.exercise!.getBaseWordType()!)) {
+        resolve();
+      } else {
+        try {
+          findExampleSentenceAndWord(
+            this.language,
+            this.exercise!,
+            ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
+              this.exampleSentence = {
+                english,
+                englishApi,
+                targetLanguage,
+                wordStartIndex,
+                word
+              };
+              this.exampleSentenceTranslation = english;
+              this.exampleSentenceTranslationApi = englishApi;
+              this.playAudio(true, 'example', 'slow');
+              printExampleSentence(
+                this.exampleSentence!.wordStartIndex,
+                this.exampleSentence!.word,
+                this.exampleSentence!.targetLanguage!
+              );
+              sleep(1000).then(() => {
+                this.playAudio(true, 'example', 'normal');
+                resolve();
+              });
+            }
+          );
+        } catch (error: any) {
+          logger.error(error);
+          resolve();
+        }
+      }
+    });
   }
 }
 

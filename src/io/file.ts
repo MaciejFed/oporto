@@ -2,7 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
-const chartDataJsonPath = path.join(os.homedir(), 'mdev/oporto/progress/data.json');
+const chartDataJsonPath = path.join(os.homedir(), 'dev/oporto/progress/data.json');
 
 export interface MovieExample {
   word: string;
