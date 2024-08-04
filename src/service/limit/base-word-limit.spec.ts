@@ -4,6 +4,7 @@ import { removeBaseWordLimit } from './base-word-limit';
 import { ExerciseProgress, ProgressType } from '../progress/progress';
 import { BaseWordType } from '../../exercise/exercise';
 import { ProgressAggregate } from '../progress/progress-aggregate';
+import { Language } from '../../common/language';
 
 const emptyProgressAggregate: ProgressAggregate = {
   words: {
@@ -41,6 +42,12 @@ const emptyLimit: Record<BaseWordType, number> = {
   [BaseWordType.ADJECTIVE]: 0
 };
 
+const toLimitMap = (limit: Record<BaseWordType, number>) => ({
+  [Language.Portuguese]: limit,
+  [Language.Polish]: limit,
+  [Language.German]: limit
+});
+
 const verbExercises = [
   { exercise: VerbExercise.new(wordDatabase.verb('abanar'), Person.Eu, 'presentSimple') },
   { exercise: VerbExercise.new(wordDatabase.verb('abrir'), Person.Eu, 'presentSimple') },
@@ -50,6 +57,7 @@ const verbExercises = [
 describe('Base Word Limit', () => {
   it('Should only leave exercises within limit', () => {
     const exercises = removeBaseWordLimit(
+      Language.Portuguese,
       verbExercises,
       {
         ...emptyProgressAggregate,
@@ -63,10 +71,10 @@ describe('Base Word Limit', () => {
           }
         }
       } as ProgressAggregate,
-      {
+      toLimitMap({
         ...emptyLimit,
         [BaseWordType.VERB]: 2
-      }
+      })
     );
 
     expect(exercises.length).toEqual(2);
@@ -74,6 +82,7 @@ describe('Base Word Limit', () => {
 
   it('Should include one exercise in limit', () => {
     const exercises = removeBaseWordLimit(
+      Language.Portuguese,
       verbExercises,
       {
         ...emptyProgressAggregate,
@@ -87,10 +96,10 @@ describe('Base Word Limit', () => {
           }
         }
       } as ProgressAggregate,
-      {
+      toLimitMap({
         ...emptyLimit,
         [BaseWordType.VERB]: 2
-      }
+      })
     );
 
     expect(exercises.length).toEqual(2);

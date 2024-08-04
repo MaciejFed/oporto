@@ -11,20 +11,20 @@ const standardVerbEndings: VerbEnding[] = ['ować', 'ić'];
 
 export const standardConjugations: Record<VerbEnding, Record<PolishPerson, string>> = {
   ować: {
-    [PolishPerson.Ja]: 'ę',
-    [PolishPerson.Ty]: 'esz',
-    [PolishPerson['On/Ona/Ono']]: 'esz',
-    [PolishPerson.My]: 'esz',
-    [PolishPerson.Wy]: 'ecie',
-    [PolishPerson['Oni/One']]: 'ą'
+    [PolishPerson.Ja]: 'uję',
+    [PolishPerson.Ty]: 'ujesz',
+    [PolishPerson['On/Ona/Ono']]: 'ujesz',
+    [PolishPerson.My]: 'ujemy',
+    [PolishPerson.Wy]: 'ujecie',
+    [PolishPerson['Oni/One']]: 'ują'
   },
   ić: {
-    [PolishPerson.Ja]: 'ę',
+    [PolishPerson.Ja]: 'ię',
     [PolishPerson.Ty]: 'isz',
     [PolishPerson['On/Ona/Ono']]: 'i',
     [PolishPerson.My]: 'imy',
     [PolishPerson.Wy]: 'icie',
-    [PolishPerson['Oni/One']]: 'ą'
+    [PolishPerson['Oni/One']]: 'ią'
   }
 };
 

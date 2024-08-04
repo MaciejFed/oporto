@@ -129,7 +129,7 @@ app.get('/learn/verb', async (_req: Request, res: Response) => {
   if (!cachedAggregate) {
     await preFetchAggregate();
   }
-  const { VERB } = IN_PROGRESS_LIMIT_MAP;
+  const { VERB } = IN_PROGRESS_LIMIT_MAP.Portuguese;
   const findMissingPoints = (word: string) => {
     return cachedAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
   };

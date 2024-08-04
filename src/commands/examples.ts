@@ -13,7 +13,7 @@ import {
   PT_EXAMPLES_PATH,
   PT_TRANSLATION_EXAMPLES_PATH
 } from '../service/example-finder/example-finder.types';
-import { isExampleSavedAlready, saveExamples } from '../server/db';
+import { getExamplesSaved, isExampleSavedAlready, saveExamples } from '../server/db';
 import { enforceArrayLimit } from '../common/common';
 
 const MAX_FIND_EXAMPLES = 100_000;
@@ -37,13 +37,14 @@ export const examplesPaths: Record<Language, { targetLanguagePath: string; trans
 export async function findAllExamples(language: Language) {
   const allKnownWords = getAllUniqueWordsConjugated(language);
   const words = [...new Set(generateAllPossibleExercises(language).map(extractWordToFindFromExercise))];
+  const savedWords = await getExamplesSaved(language);
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     console.log(`[${i}/${words.length}]`);
     const ptReadStream = fs.createReadStream(examplesPaths[language].targetLanguagePath);
     const ptTranslationsReadStream = fs.createReadStream(examplesPaths[language].translationPath);
     if (word) {
-      if (await isExampleSavedAlready(word, language)) {
+      if (savedWords.includes(word)) {
         console.log(`[${word}] already saved. Skipping...`);
         continue;
       }
@@ -52,7 +53,7 @@ export async function findAllExamples(language: Language) {
         ptReadStream,
         ptTranslationsReadStream,
         word,
-        100_000_000
+        25_000_000
       );
       const examples = enforceArrayLimit(
         findWordExampleLines(

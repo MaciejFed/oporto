@@ -127,6 +127,20 @@ export async function getExamples(word: string, language: Language): Promise<Wor
   }
 }
 
+export async function getExamplesSaved(language: Language): Promise<string[]> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
+
+    const examples = await collectionTop.find({}).limit(2_000).toArray();
+
+    return examples ? examples.map((doc) => Object.keys(doc)[1]) : [];
+  } finally {
+    await client.close();
+  }
+}
+
 export async function saveExamples(
   word: string,
   wordExampleLines: WordExampleLine[],

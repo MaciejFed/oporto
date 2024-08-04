@@ -197,7 +197,7 @@ function getExercisesWithPriorities(
   const progressAggregate = getProgressAggregate(allResults, exercises);
   logCurrentWordsInProgress(progressAggregate, allResults, language);
 
-  const x = removeBaseWordLimit(exercisesWithoutWantedProgress, progressAggregate)
+  const x = removeBaseWordLimit(language, exercisesWithoutWantedProgress, progressAggregate)
     .map((ex) => {
       const combinedPriorities = priorityCompilers
         .flatMap((priorityCompiler) => {

@@ -17,10 +17,10 @@ export interface Configuration {
 
 export const loadValidConfig: () => Configuration = () => {
   const assertNonEmpty = (value: string | undefined, name: string) => {
-    if (!value) {
-      throw new Error(`[${name}] is empty!`);
-    }
-    return value;
+    // if (!value) {
+    //   throw new Error(`[${name}] is empty!`);
+    // }
+    return value || '';
   };
 
   return {

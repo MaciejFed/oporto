@@ -197,8 +197,8 @@ export const db: Schema = {
       polish: 'śniadanie'
     },
     {
-      english: 'dzień',
-      polish: 'day'
+      english: 'day',
+      polish: 'dzień'
     },
     {
       english: 'night',

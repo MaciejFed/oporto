@@ -190,7 +190,6 @@ export class Terminal {
 
   private endOfExerciseMenu() {
     terminal.hideCursor();
-    printInBetweenMenu(this.exerciseTranslation !== undefined && this.exerciseTranslation.length > 0);
     if (this.exercise) {
       const allResults = getAllResults(this.language);
       printAllAnswers(getAllResultsForExercise(allResults, this.exercise));
