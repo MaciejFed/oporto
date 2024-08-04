@@ -75,7 +75,7 @@ export const db: Schema = {
       }
     },
     {
-      infinitive: 'mówic',
+      infinitive: 'mówić',
       english: 'to speak',
       presentSimple: {
         Ja: 'mówię',
