@@ -5,4 +5,5 @@ export interface Audio {
   path: string;
   voice: string;
   rate: Rate;
+  api: 'google' | 'openai';
 }
