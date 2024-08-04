@@ -54,6 +54,7 @@ enum Phase {
   FIRST_RESPONSE = 'FIRST_RESPONSE',
   REPETITION = 'REPETITION',
   REPETITION_RESPONSE = 'REPETITION_RESPONSE',
+  EXAMPLE = 'EXAMPLE',
   MENU = 'MENU'
 }
 
@@ -155,13 +156,11 @@ export class Terminal {
       this.repetitionAnswer = '';
       if (!wasCorrect) {
         this.phase = Phase.REPETITION;
-        this.playAudio(true, 'answer', 'normal', false);
         printExerciseRepeatBody();
       } else {
-        this.phase = Phase.MENU;
-        this.playAudio(true, 'answer', 'normal', true);
-        this.endOfExerciseMenu();
+        this.phase = Phase.EXAMPLE;
       }
+      this.playAudio( 'answer', 'normal', 'google', false);
     });
   }
 
@@ -231,16 +230,30 @@ export class Terminal {
       case 't':
         printExerciseTranslation(this.exerciseTranslation);
         break;
-      case '2':
-        printExerciseTranslation(this.exerciseTranslation);
-        printExampleTranslation('Movie:', this.exampleSentenceTranslation);
+      case 'r':
+        this.playAudio('answer', 'normal', 'google', false);
         break;
-      case '1':
+      default:
+        terminal.hideCursor(false);
+        this.eventProcessor.emit(EXERCISE_NEXT);
+    }
+  }
+
+
+  private async onExampleMenu(key: string) {
+    switch (key) {
+      case 'a':
+        this.playAudio('example', 'normal', 'google', false);
+        break;
+      case 's':
+        this.playAudio('example', 'slow', 'google', false);
+        break;
+      case 'd':
+        this.playAudio('example', 'normal', 'openai', false);
+        break;
+      case 't':
         printExerciseTranslation(this.exerciseTranslation);
         printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
-        break;
-      case 'a':
-        this.playAudio(false, 'example', 'normal');
         break;
       case 'l':
         logSaved('Saving example...');
@@ -254,25 +267,22 @@ export class Terminal {
           this.exampleSentence!.targetLanguage!
         );
         break;
-      case 'r':
-        this.playAudio(false, 'answer', 'normal');
+      case 'n':
+        this.phase = Phase.MENU;
+        this.endOfExerciseMenu();
         break;
       default:
-        // if (this.canGoNext) {
-        terminal.hideCursor(false);
-        this.eventProcessor.emit(EXERCISE_NEXT);
-      // }
+        break
     }
   }
 
-  private playAudio(download: boolean, type: 'answer' | 'example', rate: Rate, sync = true) {
+  private playAudio(type: 'answer' | 'example', rate: Rate, api: 'google' | 'openai', sync = true) {
     try {
       const text = type === 'answer' ? this.exercise?.getRetryPrompt() : this.exampleSentence?.targetLanguage;
-      if (download) {
-        getAudio(this.language, text!, type, rate);
-      }
+      getAudio(this.language, text!, api, rate);
+
       const syncFn = sync ? execSync : exec;
-      syncFn(`afplay ${getSavedAudioPath(type, rate)}`);
+      syncFn(`afplay ${getSavedAudioPath()}`);
     } catch (e: any) {
       logger.error(e);
     }

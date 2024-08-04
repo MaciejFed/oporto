@@ -34,15 +34,16 @@ export const fetchAllResultsSync = (language: Language): Result[] => {
   return JSON.parse(results);
 };
 
-export const getAudio = (language: Language, text: string, type: 'example' | 'answer', rate: Rate) => {
-  const outputPath = getSavedAudioPath(type, rate);
+export const getAudio = (language: Language, text: string, api: 'google' | 'openai', rate: Rate) => {
+  const outputPath = getSavedAudioPath();
   const command = `curl -s --location '${apiURL}/${language}/audio' \
     --header 'Authorization: Bearer ${apiKey}' \
     --header 'Content-Type: application/json' \
     -o ${outputPath} \
     --data '{
         "text": "${text}",
-        "rate": "${rate}"
+        "rate": "${rate}",
+        "api": "${api}",
     }'`;
   execSync(command);
 };

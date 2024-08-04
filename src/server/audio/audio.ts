@@ -19,9 +19,10 @@ dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
 
 const getAudioPath = () => `${AUDIO_DIR}/${randomUUID()}.mp3`;
 
-const getVoiceForLanguage = async (language: Language, text: string) => {
-  const audioPrev = await getPreviousAudioVoice(language, text);
+const getVoiceForLanguage = async (language: Language, text: string, api: 'google' | 'openai') => {
+  const audioPrev = await getPreviousAudioVoice(language, text, api);
   if (audioPrev) return audioPrev;
+  if (api === 'openai') return 'alloy';
   switch (language) {
     case Language.Portuguese:
       return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
@@ -39,7 +40,7 @@ const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.7 : 1);
 
 const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) => {
   const audioFilePath = getAudioPath();
-  const voice = (await getVoiceForLanguage(language, text)) as 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
+  const voice = (await getVoiceForLanguage(language, text, 'openai')) as 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
 
   const openai = new OpenAI();
   const mp3 = await openai.audio.speech.create({
@@ -59,9 +60,10 @@ const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) =>
   } as Audio;
 };
 
-const synthesize = async (language: Language, text: string, rate: Rate) => {
+const synthesize = async (language: Language, text: string, rate: Rate, api: 'google' | 'openai') => {
   const client = new textToSpeech.TextToSpeechClient();
-  const voice = await getVoiceForLanguage(language, text);
+  const voice = await getVoiceForLanguage(language, text,  api);
+  if (api === 'openai') return synthesizeOpenAI(language, text, rate);
   const request: protos.google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
     input: { text: text },
     voice: { languageCode: getLocaleForLanguage(language), name: voice },
@@ -84,11 +86,11 @@ const synthesize = async (language: Language, text: string, rate: Rate) => {
   throw new Error(`Could not create audio for [${language}][${text}]`);
 };
 
-export async function getAudioForText(language: Language, text: string, rate: Rate): Promise<Audio> {
-  let audio = await getAudio(language, text, rate);
+export async function getAudioForText(language: Language, text: string, rate: Rate, api: 'google' | 'openai'): Promise<Audio> {
+  let audio = await getAudio(language, text, rate, api);
   if (!audio) {
     logger.info(`Audio for [${language}] [${text}]. Doesn't exist. Creating...`);
-    audio = await synthesize(language, text, rate);
+    audio = await synthesize(language, text, rate, api);
     await saveAudio(language, audio);
   }
   return audio;

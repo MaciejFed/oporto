@@ -157,8 +157,8 @@ export class SessionManager implements AppEventListener {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
 
-      getAudio(this.language, correctAnswer, 'answer', 'normal');
-      execSync(`afplay ${getSavedAudioPath('answer', 'normal')}`);
+      getAudio(this.language, correctAnswer, 'google', 'normal');
+      execSync(`afplay ${getSavedAudioPath()}`);
     }
   }
 }
