@@ -40,7 +40,13 @@ const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.7 : 1);
 
 const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) => {
   const audioFilePath = getAudioPath();
-  const voice = (await getVoiceForLanguage(language, text, 'openai')) as 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
+  const voice = (await getVoiceForLanguage(language, text, 'openai')) as
+    | 'alloy'
+    | 'echo'
+    | 'fable'
+    | 'onyx'
+    | 'nova'
+    | 'shimmer';
 
   const openai = new OpenAI();
   const mp3 = await openai.audio.speech.create({
@@ -62,7 +68,7 @@ const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) =>
 
 const synthesize = async (language: Language, text: string, rate: Rate, api: 'google' | 'openai') => {
   const client = new textToSpeech.TextToSpeechClient();
-  const voice = await getVoiceForLanguage(language, text,  api);
+  const voice = await getVoiceForLanguage(language, text, api);
   if (api === 'openai') return synthesizeOpenAI(language, text, rate);
   const request: protos.google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
     input: { text: text },
@@ -86,7 +92,12 @@ const synthesize = async (language: Language, text: string, rate: Rate, api: 'go
   throw new Error(`Could not create audio for [${language}][${text}]`);
 };
 
-export async function getAudioForText(language: Language, text: string, rate: Rate, api: 'google' | 'openai'): Promise<Audio> {
+export async function getAudioForText(
+  language: Language,
+  text: string,
+  rate: Rate,
+  api: 'google' | 'openai'
+): Promise<Audio> {
   let audio = await getAudio(language, text, rate, api);
   if (!audio) {
     logger.info(`Audio for [${language}] [${text}]. Doesn't exist. Creating...`);

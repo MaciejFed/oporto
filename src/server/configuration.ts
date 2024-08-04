@@ -4,8 +4,7 @@ import dotenv from 'dotenv';
 import { Rate } from './audio/audio.types';
 dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
 
-export const getSavedAudioPath = () =>
-  path.join(os.homedir(), 'audio.mp3');
+export const getSavedAudioPath = () => path.join(os.homedir(), 'audio.mp3');
 
 export interface Configuration {
   apiKey: string;

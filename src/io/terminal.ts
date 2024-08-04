@@ -128,6 +128,9 @@ export class Terminal {
         case Phase.REPETITION:
           this.onKeyExerciseRepetitionInProgress(key);
           break;
+        case Phase.EXAMPLE:
+          this.onExampleMenu(key);
+          break;
         case Phase.MENU:
           this.onKeyMenu(key);
           break;
@@ -158,9 +161,10 @@ export class Terminal {
         this.phase = Phase.REPETITION;
         printExerciseRepeatBody();
       } else {
+        this.fetchExample();
         this.phase = Phase.EXAMPLE;
       }
-      this.playAudio( 'answer', 'normal', 'google', false);
+      this.playAudio('answer', 'normal', 'google', false);
     });
   }
 
@@ -239,7 +243,6 @@ export class Terminal {
     }
   }
 
-
   private async onExampleMenu(key: string) {
     switch (key) {
       case 'a':
@@ -268,24 +271,44 @@ export class Terminal {
         );
         break;
       case 'n':
+      case ' ':
         this.phase = Phase.MENU;
         this.endOfExerciseMenu();
         break;
       default:
-        break
+        break;
     }
   }
 
-  private playAudio(type: 'answer' | 'example', rate: Rate, api: 'google' | 'openai', sync = true) {
+  private async playAudio(type: 'answer' | 'example', rate: Rate, api: 'google' | 'openai', sync = true) {
     try {
       const text = type === 'answer' ? this.exercise?.getRetryPrompt() : this.exampleSentence?.targetLanguage;
       getAudio(this.language, text!, api, rate);
 
       const syncFn = sync ? execSync : exec;
-      syncFn(`afplay ${getSavedAudioPath()}`);
+      const volumeParam = api === 'openai' ? '-v 2' : '';
+      syncFn(`afplay ${volumeParam} ${getSavedAudioPath()}`);
     } catch (e: any) {
       logger.error(e);
     }
+  }
+
+  private fetchExample(): void {
+    findExampleSentenceAndWord(
+      this.language,
+      this.exercise!,
+      ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
+        this.exampleSentence = {
+          english,
+          englishApi,
+          targetLanguage,
+          wordStartIndex,
+          word
+        };
+        this.exampleSentenceTranslation = english;
+        this.exampleSentenceTranslationApi = englishApi;
+      }
+    );
   }
 }
 

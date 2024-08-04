@@ -188,7 +188,7 @@ export async function getPreviousAudioVoice(language: Language, text: string, ap
     const collection = db.collection(audiosCollectionNameMap[language]);
     const audio = await collection.findOne<Audio>({
       text,
-      api,
+      api
     });
     if (audio) {
       return audio.voice;
@@ -199,7 +199,12 @@ export async function getPreviousAudioVoice(language: Language, text: string, ap
   }
 }
 
-export async function getAudio(language: Language, text: string, rate: Rate, api: 'google' | 'openai',): Promise<Audio | null> {
+export async function getAudio(
+  language: Language,
+  text: string,
+  rate: Rate,
+  api: 'google' | 'openai'
+): Promise<Audio | null> {
   const client = await getClient();
   try {
     const db = client.db(dbName);

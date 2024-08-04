@@ -43,7 +43,7 @@ export const getAudio = (language: Language, text: string, api: 'google' | 'open
     --data '{
         "text": "${text}",
         "rate": "${rate}",
-        "api": "${api}",
+        "api": "${api}"
     }'`;
   execSync(command);
 };
