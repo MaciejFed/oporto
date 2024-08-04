@@ -37,8 +37,8 @@ export function createColorArray({ white, green, yellow, blue }: CreateColorArra
 const AppLogo = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
 
 const EXERCISE_TOP_MARGIN = 6;
-const EXERCISE_BODY_MARGIN = EXERCISE_TOP_MARGIN + 3;
-const EXERCISE_REPEAT_BODY_MARGIN = EXERCISE_BODY_MARGIN + 3;
+export const EXERCISE_BODY_MARGIN = EXERCISE_TOP_MARGIN + 3;
+export const EXERCISE_REPEAT_BODY_MARGIN = EXERCISE_BODY_MARGIN + 3;
 const EXERCISE_MENU_MARGIN = EXERCISE_REPEAT_BODY_MARGIN + 1;
 
 export type AnswerInputType = 'keyboard' | 'voice';

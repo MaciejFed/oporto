@@ -18,6 +18,8 @@ import {
 import {
   animateExerciseSummary,
   displayGenericWeeklyStatistics,
+  EXERCISE_BODY_MARGIN,
+  EXERCISE_REPEAT_BODY_MARGIN,
   logSaved,
   preExerciseClear,
   printAllAnswers,
@@ -48,6 +50,13 @@ import { getAudio, saveFavoriteExample } from '../client/client';
 import { getSavedAudioPath } from '../server/configuration';
 import { Rate } from '../server/audio/audio.types';
 
+enum Phase {
+  FIRST_RESPONSE = 'FIRST_RESPONSE',
+  REPETITION = 'REPETITION',
+  REPETITION_RESPONSE = 'REPETITION_RESPONSE',
+  MENU = 'MENU'
+}
+
 export class Terminal {
   exerciseBodyPrefix: string;
   exerciseBodySuffix: string;
@@ -55,25 +64,16 @@ export class Terminal {
   answer: string;
   repetitionAnswer: string;
   correctAnswer: string;
-  exerciseInProgress: boolean;
-  exerciseRepetitionInProgress: boolean;
   exercise?: Exercise;
   exampleSentence: MovieExample | undefined;
   exampleSentenceFull?: string | undefined;
   canGoNext: boolean;
-
   exampleSentenceTranslation?: string | undefined;
   exampleSentenceTranslationApi?: string | undefined;
-  exerciseCounter: number;
+  phase: Phase;
 
-  constructor(
-    private readonly eventProcessor: EventProcessor,
-    private readonly language: Language) {
-    this.exerciseCounter = 0;
-    this.eventProcessor = eventProcessor;
+  constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language) {
     this.registerListeners();
-    this.exerciseInProgress = false;
-    this.exerciseRepetitionInProgress = false;
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';
     this.answer = '';
@@ -81,6 +81,7 @@ export class Terminal {
     this.correctAnswer = '';
     this.language = language;
     this.canGoNext = false;
+    this.phase = Phase.FIRST_RESPONSE;
     clear();
   }
 
@@ -118,24 +119,26 @@ export class Terminal {
 
   private registerOnKeyPressedEventListener() {
     this.eventProcessor.on(KEY_PRESSED, (key) => {
-      let onKeyAction;
-      if (this.exerciseInProgress) {
-        onKeyAction = this.onKeyExerciseInProgress.bind(this);
-      } else if (this.exerciseRepetitionInProgress) {
-        onKeyAction = this.onKeyExerciseRepetitionInProgress.bind(this);
-      } else {
-        onKeyAction = this.onKeyMenu.bind(this);
+      switch (this.phase) {
+        case Phase.FIRST_RESPONSE:
+        case Phase.REPETITION_RESPONSE:
+          this.onKeyExerciseInProgress(key);
+          break;
+        case Phase.REPETITION:
+          this.onKeyExerciseRepetitionInProgress(key);
+          break;
+        case Phase.MENU:
+          this.onKeyMenu(key);
+          break;
+        default:
       }
-      onKeyAction(key);
     });
   }
 
   private registerOnExerciseStartedEventListener() {
     this.eventProcessor.on(EXERCISE_STARTED, () => {
+      this.phase = Phase.FIRST_RESPONSE;
       this.canGoNext = false;
-      this.exerciseInProgress = true;
-      this.answer = '';
-      this.repetitionAnswer = '';
       this.exampleSentenceFull = undefined;
       clear();
       preExerciseClear();
@@ -145,17 +148,19 @@ export class Terminal {
   private registerOnAnswerCheckedEventListener() {
     this.eventProcessor.on(ANSWER_CHECKED, ({ wasCorrect, correctAnswer, answerInputType, exercise }) => {
       this.exercise = exercise;
-      this.exerciseInProgress = false;
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
       printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
+      this.answer = '';
+      this.repetitionAnswer = '';
       if (!wasCorrect) {
-        this.exerciseRepetitionInProgress = true;
+        this.phase = Phase.REPETITION;
         this.playAudio(true, 'answer', 'normal', false);
         printExerciseRepeatBody();
       } else {
+        this.phase = Phase.MENU;
         this.playAudio(true, 'answer', 'normal', true);
-        this.showExample().then(() => this.endOfExerciseMenu());
+        this.endOfExerciseMenu();
       }
     });
   }
@@ -181,7 +186,6 @@ export class Terminal {
   }
 
   private endOfExerciseMenu() {
-    this.exerciseRepetitionInProgress = false;
     terminal.hideCursor();
     printInBetweenMenu(this.exerciseTranslation !== undefined && this.exerciseTranslation.length > 0);
     if (this.exercise) {
@@ -211,9 +215,14 @@ export class Terminal {
     }
     printExerciseRepeatAnswerKey(this.repetitionAnswer, this.correctAnswer, key);
     if (this.correctAnswer.toLowerCase() === this.repetitionAnswer.toLowerCase()) {
-      this.exerciseRepetitionInProgress = false;
+      this.phase = Phase.REPETITION_RESPONSE;
+      terminal.moveTo(0, EXERCISE_REPEAT_BODY_MARGIN);
+      clearLine(process.stdout, 0);
+      terminal.moveTo(0, EXERCISE_BODY_MARGIN);
+      clearLine(process.stdout, 0);
+      terminal.moveTo(0, EXERCISE_BODY_MARGIN + 1);
+      clearLine(process.stdout, 0);
       terminal.hideCursor();
-      this.showExample().then(() => this.endOfExerciseMenu());
     }
   }
 
@@ -250,9 +259,9 @@ export class Terminal {
         break;
       default:
         // if (this.canGoNext) {
-          terminal.hideCursor(false);
-          this.eventProcessor.emit(EXERCISE_NEXT);
-        // }
+        terminal.hideCursor(false);
+        this.eventProcessor.emit(EXERCISE_NEXT);
+      // }
     }
   }
 
@@ -267,46 +276,6 @@ export class Terminal {
     } catch (e: any) {
       logger.error(e);
     }
-  }
-
-  private showExample(): Promise<void> {
-    return new Promise<void>((resolve) => {
-      // @ts-ignore
-      if (![BaseWordType.VERB, BaseWordType.OTHER].includes(this.exercise!.getBaseWordType()!)) {
-        resolve();
-      } else {
-        try {
-          findExampleSentenceAndWord(
-            this.language,
-            this.exercise!,
-            ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
-              this.exampleSentence = {
-                english,
-                englishApi,
-                targetLanguage,
-                wordStartIndex,
-                word
-              };
-              this.exampleSentenceTranslation = english;
-              this.exampleSentenceTranslationApi = englishApi;
-              this.playAudio(true, 'example', 'slow');
-              printExampleSentence(
-                this.exampleSentence!.wordStartIndex,
-                this.exampleSentence!.word,
-                this.exampleSentence!.targetLanguage!
-              );
-              sleep(1000).then(() => {
-                this.playAudio(true, 'example', 'normal');
-                resolve();
-              });
-            }
-          );
-        } catch (error: any) {
-          logger.error(error);
-          resolve();
-        }
-      }
-    });
   }
 }
 

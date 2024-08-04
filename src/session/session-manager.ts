@@ -35,6 +35,7 @@ export class SessionManager implements AppEventListener {
   exerciseInProgress: boolean;
   hearingLoop?: NodeJS.Timer;
   language: Language;
+  lastResult?: Result;
 
   constructor(eventProcessor: EventProcessor, language: Language) {
     this.eventProcessor = eventProcessor;
@@ -88,12 +89,8 @@ export class SessionManager implements AppEventListener {
 
   private registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITTED, (answerInputType: AnswerInputType) => {
-      if (!this.exerciseInProgress) {
-        return;
-      }
-      this.exerciseInProgress = false;
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
-      this.answer = this.answer.trim();
+      this.answer = !this.exerciseInProgress ? this.answer.trim().substring(correctAnswer?.length) : this.answer.trim();
       const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
       const result = convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType);
       const newWords = newWordsBetweenResults(
@@ -112,7 +109,10 @@ export class SessionManager implements AppEventListener {
           time: Math.round(lastTimeAttempted.diff(firstAttempt, 'days').days)
         });
       }
-      saveNewResult(this.language, result);
+      if (!this.lastResult || !this.lastResult.exercise.equal(result.exercise)) {
+        saveNewResult(this.language, result);
+        this.lastResult = result;
+      }
       logger.debug(`Answer: "${this.answer}", correctAnswer: "${correctAnswer}" `);
       this.eventProcessor.emit(ANSWER_CHECKED, {
         wasCorrect,
@@ -121,6 +121,7 @@ export class SessionManager implements AppEventListener {
         exercise: this.currentExercise
       });
       this.resetAnswer();
+      this.exerciseInProgress = false;
     });
   }
 
@@ -131,6 +132,7 @@ export class SessionManager implements AppEventListener {
         this.eventProcessor.emit(EXERCISE_STARTED);
       } else {
         process.stdin.removeAllListeners();
+
         this.eventProcessor.emit(APP_FINISHED);
       }
     });
