@@ -63,7 +63,7 @@ export async function getKnownPercentage(language: Language): Promise<number> {
         unknownWords.push(word);
       }
 
-      if (counter++ % 10000 === 0) {
+      if (counter++ % 1000000 === 0) {
         console.log(`Result: [${(known / (known + unKnown)) * 100}%]`);
       }
     });
@@ -72,6 +72,8 @@ export async function getKnownPercentage(language: Language): Promise<number> {
   readInterfaceTarget.close();
 
   const result = countAndSortWords(unknownWords, allWords);
+
+  unknownWords.length = 0;
 
   return (known / (known + unKnown)) * 100;
 }

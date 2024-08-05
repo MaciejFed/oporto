@@ -26,6 +26,7 @@
     "statdee": "ts-node src/cli.ts statde",
     "verify": "npm run lint && npm run format",
     "foo": "ts-node src/commands/known.ts",
+    "unknown": "ts-node src/commands/unknown.ts",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto && rm -rf ./build"

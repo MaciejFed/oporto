@@ -7,17 +7,24 @@ import { TranslationExercise, TranslationType } from '../translation-exercise';
 export class GermanNounTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
   noun: GermanNoun;
+  number?: 'singular' | 'plural';
 
   constructor() {
     super();
     this.exerciseType = 'GermanNounTranslation';
     this.noun = getRandomGermanNoun();
+    this.number = 'singular';
   }
 
-  static new(noun: GermanNoun, translationType: TranslationType): GermanNounTranslationExercise {
+  static new(
+    noun: GermanNoun,
+    translationType: TranslationType,
+    number?: 'singular' | 'plural'
+  ): GermanNounTranslationExercise {
     const nounExercise = new GermanNounTranslationExercise();
     nounExercise.noun = noun;
     nounExercise.translationType = translationType;
+    nounExercise.number = number;
 
     return nounExercise;
   }
@@ -28,7 +35,7 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
   }
 
   getBodyPrefix(): string {
-    return this.isTranslationToPortuguese() ? 'German: ' : 'English: ';
+    return this.isTranslationToPortuguese() ? `German [${this.getNumber()}]: ` : 'English: ';
   }
 
   getBodySuffix = () => '';
@@ -63,15 +70,21 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
     return BaseWordType.NOUN;
   }
 
+  getNumber(): 'singular' | 'plural' {
+    return this.number || 'singular';
+  }
+
   equal = (other: GermanNounTranslationExercise) =>
     other.exerciseType === 'GermanNounTranslation' &&
     this.noun.german.singular === other.noun.german.singular &&
     this.noun.german.plural === other.noun.german.plural &&
     this.noun.german.gender === other.noun.german.gender &&
     this.noun.english === other.noun.english &&
+    this.getNumber() === other.getNumber() &&
     this.translationType === other.translationType;
 
   getWordWithGender() {
+    if (this.getNumber() === 'plural') return `Die ${this.noun.german.plural}`;
     switch (this.noun.german.gender) {
       case 'masculine':
         return `Der ${this.noun.german.singular}`;

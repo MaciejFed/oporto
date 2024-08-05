@@ -82,7 +82,10 @@ const NounTranslationGenerator: ExerciseGenerator = () => {
 
 const GermanNounTranslationGenerator: ExerciseGenerator = () => {
   return readAllDE().nouns.flatMap((noun) =>
-    translationTypes.map((translationType) => GermanNounTranslationExercise.new(noun, translationType))
+    translationTypes.flatMap((translationType) => [
+      ...[GermanNounTranslationExercise.new(noun, translationType, 'singular')],
+      ...(noun.german.plural ? [GermanNounTranslationExercise.new(noun, translationType, 'plural')] : [])
+    ])
   );
 };
 

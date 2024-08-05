@@ -63,7 +63,7 @@ const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) =>
     text,
     voice,
     rate,
-    api: 'openai',
+    api: 'openai'
   } as Audio;
 };
 
@@ -88,7 +88,7 @@ const synthesize = async (language: Language, text: string, rate: Rate, api: 'go
       text,
       voice,
       rate,
-      api,
+      api
     } as Audio;
   }
   throw new Error(`Could not create audio for [${language}][${text}]`);
