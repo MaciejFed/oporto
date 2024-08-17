@@ -5,7 +5,7 @@ import { Language } from '../../common/language';
 import { Output } from '../../io/output';
 
 const runExerciseSnapshotTest = (exercises: any[]) => {
-  const { mockGenerateExercisesForSession, eventProcessor, SessionManager } = withBaseMocks(true);
+  const { mockGenerateExercisesForSession, eventProcessor } = withBaseMocks(true);
 
   const answers = exercises.map((exercise) => exercise.getCorrectAnswer()).reverse();
 
@@ -13,7 +13,6 @@ const runExerciseSnapshotTest = (exercises: any[]) => {
     return exercises;
   });
 
-  const sessionManager = new SessionManager(eventProcessor, Language.Portuguese);
   eventProcessor.emit('APP_STARTED');
 
   const outputs = answers.map((answer) => {

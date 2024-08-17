@@ -47,23 +47,25 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
   getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
-      return `English: ${this.noun.english}`;
+      return `English: ${this.english()}`;
     }
     return `Portuguese: ${this.getWordWithGender()}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
+  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.english() : undefined);
 
-  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.noun.english);
+  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.english());
 
   isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
+  english = () => `${this.noun.english}${this.number === 'plural' ? 's' : ''}`;
+
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.getWordWithGender());
 
   getBaseWordAsString(): string | undefined {
-    return this.getWordWithGender();
+    return this.getWordWithGender(false);
   }
 
   getBaseWordType(): BaseWordType | undefined {
@@ -83,8 +85,8 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
     this.getNumber() === other.getNumber() &&
     this.translationType === other.translationType;
 
-  getWordWithGender() {
-    if (this.getNumber() === 'plural') return `Die ${this.noun.german.plural}`;
+  getWordWithGender(withPlural = true) {
+    if (withPlural && this.getNumber() === 'plural') return `Die ${this.noun.german.plural}`;
     switch (this.noun.german.gender) {
       case 'masculine':
         return `Der ${this.noun.german.singular}`;

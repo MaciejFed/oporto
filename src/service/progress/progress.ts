@@ -89,6 +89,25 @@ export function getAnswersMissingForBaseWord(baseWord: string, results: Result[]
     .reduce((prev, curr) => prev + curr.answersMissing, 0);
 }
 
+export function getBaseWordProgress(results: Result[], exercise: Exercise): ExerciseProgress {
+  const exerciseResults = results;
+  const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
+  const incorrectAnswers = exerciseResults.length - correctAnswers;
+  const ratio = getRatio(correctAnswers, incorrectAnswers);
+  return {
+    exercise,
+    correctAnswers,
+    incorrectAnswers,
+    ratio,
+    answersMissing: Math.max(
+      0,
+      !correctAnswers && !incorrectAnswers ? 1 : incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO - correctAnswers
+    ),
+    exerciseResults,
+    progressType: mapRatioToProgress(correctAnswers, incorrectAnswers)
+  };
+}
+
 export function getSingleExerciseProgress(results: Result[], exercise: Exercise): ExerciseProgress {
   const exerciseResults = getAllResultsForExercise(results, exercise);
   const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;

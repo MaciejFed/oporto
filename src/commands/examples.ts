@@ -53,7 +53,7 @@ export async function findAllExamples(language: Language) {
         ptReadStream,
         ptTranslationsReadStream,
         word,
-        25_000_000
+        50_000_000
       );
       const examples = enforceArrayLimit(
         findWordExampleLines(

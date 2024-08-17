@@ -15,6 +15,7 @@ import { PTVerbConjugation } from '../conjugation-printer/pt-conjugation-printer
 import { Exercise } from '../../exercise/exercise';
 import { DECaseConjugation } from '../conjugation-printer/de-case-conjugation-printer';
 import { PLVerbConjugation } from '../conjugation-printer/pl-conjugation-printer';
+import { DENounConjugation } from '../conjugation-printer/de-noun-conjugation-printer';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -221,6 +222,9 @@ export function printAllVerbConjugations(exercise: Exercise, results: Result[]) 
       break;
     case 'GermanCaseExercise':
       table = new DECaseConjugation(exercise.getBaseWord() as any, results).getTable();
+      break;
+    case 'GermanNounTranslation':
+      table = new DENounConjugation(exercise.getBaseWord() as any, results).getTable();
       break;
     default:
       return;

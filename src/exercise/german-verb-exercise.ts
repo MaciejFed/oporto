@@ -8,8 +8,16 @@ import { getCorrectGermanVerbConjugation, getRandomGermanPerson } from '../servi
 export type GermanVerbTime = 'presentSimple' | 'pastPerfect' | 'präteritum';
 
 const verbTimePrintVersion = (verbTime: GermanVerbTime) => {
-  if (verbTime === 'presentSimple') return 'Present Simple';
-  return 'Past Perfect';
+  switch (verbTime) {
+    case 'presentSimple':
+      return 'Present Simple';
+    case 'pastPerfect':
+      return 'Past Perfect';
+    case 'präteritum':
+      return 'Präteritum';
+    default:
+      return '';
+  }
 };
 
 export class GermanVerbExercise implements Exercise, Comparable {

@@ -108,7 +108,6 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
   const { EventProcessor } = require('../event/event-processor');
   const Terminal = require('../io/terminal').default;
   const Input = require('../io/input').default;
-  const SessionManager = require('../session/session-manager').default;
   const getAllResults = require('../repository/result-repository').getAllResults;
 
   const eventProcessor = new EventProcessor(Language.Portuguese);
@@ -120,7 +119,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     sayCommands,
     eventProcessor,
     getAllResults,
-    mockGenerateExercisesForSession,
-    SessionManager
+    Terminal,
+    mockGenerateExercisesForSession
   };
 };

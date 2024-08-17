@@ -2,8 +2,8 @@ import { simulateContinueButton, simulateTyping } from './util';
 import { withBaseMocks } from './base-mocks';
 import { Language } from '../common/language';
 
-const doExercise = (sessionManager: any, correctly: boolean) => {
-  const correctAnswer = sessionManager.currentExercise?.getCorrectAnswer() || '';
+const doExercise = (terminal: any, correctly: boolean) => {
+  const correctAnswer = terminal.currentExercise?.getCorrectAnswer() || '';
   if (correctly) {
     simulateTyping(correctAnswer, true);
   } else {
@@ -11,7 +11,7 @@ const doExercise = (sessionManager: any, correctly: boolean) => {
     simulateTyping(correctAnswer);
   }
 
-  const exercise = sessionManager.currentExercise;
+  const exercise = terminal.currentExercise;
 
   simulateContinueButton();
 
@@ -21,8 +21,8 @@ const doExercise = (sessionManager: any, correctly: boolean) => {
 describe('IT', () => {
   const EXERCISES_PER_SESSION = 3;
 
-  const { mockExit, eventProcessor, getAllResults, SessionManager } = withBaseMocks();
-  const sessionManager = new SessionManager(eventProcessor, Language.Portuguese);
+  const { mockExit, eventProcessor, getAllResults, Terminal } = withBaseMocks();
+  const terminal = new Terminal(eventProcessor, Language.Portuguese);
 
   afterEach(() => {
     process.stdin.removeAllListeners();
@@ -35,9 +35,9 @@ describe('IT', () => {
   it('Full Integration Path', () => {
     eventProcessor.emit('APP_STARTED');
 
-    const firstExercise = doExercise(sessionManager, true);
-    const secondExercise = doExercise(sessionManager, false);
-    const thirdExercise = doExercise(sessionManager, true);
+    const firstExercise = doExercise(terminal, true);
+    const secondExercise = doExercise(terminal, false);
+    const thirdExercise = doExercise(terminal, true);
 
     const results = getAllResults();
 

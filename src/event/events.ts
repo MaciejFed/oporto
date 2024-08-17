@@ -2,6 +2,7 @@ export const APP_STARTED = 'APP_STARTED';
 export const APP_FINISHED = 'APP_FINISHED';
 export const KEY_PRESSED = 'KEY_PRESSED';
 export const ANSWER_SUBMITTED = 'ANSWER_SUBMITTED';
+export const ANSWER_UPDATED = 'ANSWER_UPDATED';
 export const ANSWER_CHECKED = 'ANSWER_CHECKED';
 export const NEW_WORD_LEARNED = 'NEW_WORD_LEARNED';
 export const EXERCISE_STARTED = 'EXERCISE_STARTED';
@@ -21,6 +22,7 @@ export type APP_EVENT =
   | typeof APP_STARTED
   | typeof KEY_PRESSED
   | typeof ANSWER_SUBMITTED
+  | typeof ANSWER_UPDATED
   | typeof ANSWER_CHECKED
   | typeof EXERCISE_STARTED
   | typeof EXERCISE_NEXT
