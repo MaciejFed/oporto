@@ -1,13 +1,14 @@
 import { Comparable } from '../common/common';
 import { FitIn } from '../repository/exercises-repository';
 import { getRandomFitInExercise } from '../service/fit-in';
-import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 
-export class FitInGapExercise implements Exercise, Comparable {
+export class FitInGapExercise extends BaseExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
   fitIn: FitIn;
 
   constructor() {
+    super();
     this.exerciseType = 'FitInGap';
     this.fitIn = getRandomFitInExercise();
   }

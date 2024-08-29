@@ -66,7 +66,11 @@ export function printExerciseDescription(exerciseDescription: string) {
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
-  getOutput().moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix + answer + exerciseBodySuffix);
+  getOutput().moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix);
+  getOutput().bold(true);
+  getOutput().moveTo(1 + exerciseBodyPrefix.length, EXERCISE_BODY_MARGIN, answer);
+  getOutput().bold(false);
+  getOutput().moveTo(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN , ` ${exerciseBodySuffix}`);
   getOutput().moveCursor(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
 }
 

@@ -1,6 +1,6 @@
 import { Comparable } from '../common/common';
 
-import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 import { GermanPerson, GermanVerb } from '../repository/german-exercises-repository';
 import { getRandomGermanVerb } from '../service/translation';
 import { getCorrectGermanVerbConjugation, getRandomGermanPerson } from '../service/verb/verb';
@@ -20,13 +20,14 @@ const verbTimePrintVersion = (verbTime: GermanVerbTime) => {
   }
 };
 
-export class GermanVerbExercise implements Exercise, Comparable {
+export class GermanVerbExercise extends BaseExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
   verbTime: GermanVerbTime;
   verb: GermanVerb;
   person: GermanPerson;
 
   constructor() {
+    super();
     this.exerciseType = 'GermanVerbExercise';
     this.verb = getRandomGermanVerb();
     this.person = getRandomGermanPerson();

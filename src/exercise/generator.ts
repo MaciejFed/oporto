@@ -11,7 +11,7 @@ import { OtherTranslationExercise } from './translation/other-translation-exerci
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
 import { exerciseFactory, getAllResults, getAllResultsAsync, parseResults } from '../repository/result-repository';
-import { fetchExercisesForSession } from '../client/client';
+import { fetchExercisesForSession, fetchMovieExample } from '../client/client';
 import { Result } from '../service/result';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { Language } from '../common/language';
@@ -32,6 +32,7 @@ import { PolishVerbTranslationExercise } from './translation/pl/polish-verb-tran
 import { PolishOtherTranslationExercise } from './translation/pl/polish-other-translation-exercise';
 import { PolishNounTranslationExercise } from './translation/pl/polish-noun-translation-exercise';
 import { PolishVerbExercise } from './polish-verb-exercise';
+import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -234,7 +235,16 @@ export async function generateExercisesForSessionAsync(
   const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
   const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
 
-  return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
+  const finalExercises = exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
+
+  return await Promise.all(finalExercises.map(async (exercise) => {
+    const wordToFind = extractWordToFindFromExercise(exercise);
+    const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
+    if (example) {
+      exercise.addMovieExample(example);
+    }
+    return exercise;
+  }))
 }
 
 export function getExercisesForSession(language: Language): Exercise[] {

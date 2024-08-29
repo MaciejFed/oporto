@@ -7,7 +7,6 @@ import { logger } from '../common/logger';
 import {
   ANSWER_CHECKED,
   ANSWER_SUBMITTED,
-  ANSWER_UPDATED,
   APP_FINISHED,
   APP_STARTED,
   EXERCISE_BODY_PRINTED,
@@ -39,18 +38,13 @@ import {
   printExerciseRepeatAnswerKey,
   printExerciseRepeatBody,
   printExerciseTranslation,
-  printInBetweenMenu,
   printNewWordLearned
 } from './terminal/terminal-utils';
-import { BaseWordType, Exercise } from '../exercise/exercise';
+import { Exercise } from '../exercise/exercise';
 import { convertToResult, getExerciseProgress, getStatisticForBaseWord } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
+import { findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { Language } from '../common/language';
-import { VerbExercise } from '../exercise/verb-exercise';
-import { checkStandardConjugation } from '../service/verb/verb';
-import { sleep } from '../common/common';
-import { MovieExample } from './file';
 import { getAudio, saveFavoriteExample, saveNewResult } from '../client/client';
 import { getSavedAudioPath } from '../server/configuration';
 import { Rate } from '../server/audio/audio.types';
@@ -76,7 +70,6 @@ export class Terminal {
   repetitionAnswer: string;
   correctAnswer: string;
   currentExercise: Exercise;
-  exampleSentence: MovieExample | undefined;
   exampleSentenceFull?: string | undefined;
   canGoNext: boolean;
   exampleSentenceTranslation?: string | undefined;
@@ -106,7 +99,6 @@ export class Terminal {
     this.registerOnExerciseStartedEventListener();
     this.registerOnAnswerCheckedEventListener();
     this.registerNewWordLearnedListener();
-    this.registerOnAnswerUpdated();
     this.registerAppStartedEventListener();
     this.registerExerciseStartedEventListener();
     this.registerAnswerSubmittedEventListener();
@@ -132,7 +124,10 @@ export class Terminal {
       this.exerciseBodyPrefix = body.exerciseBodyPrefix;
       this.exerciseBodySuffix = body.exerciseBodySuffix;
       this.exerciseTranslation = body.exerciseTranslation;
-      printExerciseBody(this.exerciseBodyPrefix, this.answer, this.exerciseBodySuffix);
+      printExerciseBody(
+        `${this.exerciseBodyPrefix} ${this.currentExercise.getMovieExamplePrefix()}`,
+        this.answer,
+        this.currentExercise.getMovieExampleSuffix())
     });
   }
 
@@ -178,7 +173,6 @@ export class Terminal {
         this.phase = Phase.REPETITION;
         printExerciseRepeatBody();
       } else {
-        this.fetchExample();
         this.phase = Phase.EXAMPLE;
       }
       this.playAudio('answer', 'normal', 'google', false);
@@ -188,16 +182,6 @@ export class Terminal {
   private registerNewWordLearnedListener() {
     this.eventProcessor.on(NEW_WORD_LEARNED, ({ word, time }) => {
       printNewWordLearned(word, time);
-    });
-  }
-
-  private registerOnAnswerUpdated() {
-    this.eventProcessor.on(ANSWER_UPDATED, (answer: string) => {
-      if (this.answer.length > answer.length) {
-        clearLine(process.stdout, 0);
-      }
-      this.answer = answer;
-      printExerciseBody(this.exerciseBodyPrefix, this.answer, this.exerciseBodySuffix);
     });
   }
 
@@ -212,7 +196,10 @@ export class Terminal {
       }
       this.answer = this.answer + key;
     }
-    printExerciseBody(this.exerciseBodyPrefix, this.answer, this.exerciseBodySuffix);
+    printExerciseBody(
+      `${this.exerciseBodyPrefix} ${this.currentExercise.getMovieExamplePrefix()}`,
+      this.answer,
+      this.currentExercise.getMovieExampleSuffix())
   }
 
   private endOfExerciseMenu() {
@@ -286,15 +273,20 @@ export class Terminal {
         break;
       case 'l':
         logSaved('Saving example...');
-        await saveFavoriteExample(this.language, this.exampleSentence!);
+        await saveFavoriteExample(this.language, this.currentExercise.getMovieExample()!);
         logSaved('Example saved.');
         break;
       case 'e':
-        printExampleSentence(
-          this.exampleSentence!.wordStartIndex,
-          this.exampleSentence!.word,
-          this.exampleSentence!.targetLanguage!
-        );
+        // eslint-disable-next-line no-case-declarations
+        const movieExample = this.currentExercise.getMovieExample();
+        if (movieExample) {
+          printExampleSentence(
+            movieExample.wordStartIndex,
+            movieExample.word,
+            movieExample.targetLanguage!
+          );
+        }
+
         break;
       case 'n':
       case ' ':
@@ -308,7 +300,7 @@ export class Terminal {
 
   private async playAudio(type: 'answer' | 'example', rate: Rate, api: 'google' | 'openai', sync = true) {
     try {
-      const text = type === 'answer' ? this.currentExercise?.getRetryPrompt() : this.exampleSentence?.targetLanguage;
+      const text = type === 'answer' ? this.currentExercise?.getRetryPrompt() : this.currentExercise.getMovieExample()?.targetLanguage;
       getAudio(this.language, text!, api, rate);
 
       const syncFn = sync ? execSync : exec;
@@ -319,23 +311,6 @@ export class Terminal {
     }
   }
 
-  private fetchExample(): void {
-    findExampleSentenceAndWord(
-      this.language,
-      this.currentExercise!,
-      ({ wordStartIndex, word, targetLanguage, english, englishApi }) => {
-        this.exampleSentence = {
-          english,
-          englishApi,
-          targetLanguage,
-          wordStartIndex,
-          word
-        };
-        this.exampleSentenceTranslation = english;
-        this.exampleSentenceTranslationApi = englishApi;
-      }
-    );
-  }
 
   private resetAnswer() {
     logger.debug('Resting answer...');

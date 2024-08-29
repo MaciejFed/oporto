@@ -1,16 +1,17 @@
 import { Comparable } from '../common/common';
 
-import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 import { getRandomPolishVerb } from '../service/translation';
 import { getCorrectPolishVerbConjugation, getRandomPolishPerson } from '../service/verb/verb';
 import { PolishPerson, PolishVerb } from '../repository/polish-exercises-repository';
 
-export class PolishVerbExercise implements Exercise, Comparable {
+export class PolishVerbExercise extends BaseExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
   verb: PolishVerb;
   person: PolishPerson;
 
   constructor() {
+    super();
     this.exerciseType = 'PolishVerbExercise';
     this.verb = getRandomPolishVerb();
     this.person = getRandomPolishPerson();

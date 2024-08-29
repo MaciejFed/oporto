@@ -1,16 +1,17 @@
 import { Comparable } from '../common/common';
-import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 import { GenderWord, GermanCase, GermanCaseWord, GermanGender } from '../repository/german-exercises-repository';
 
 const safe = (word?: string) => (word ? `[${word}]` : '');
 
-export class GermanCaseExercise implements Exercise, Comparable {
+export class GermanCaseExercise extends BaseExercise implements Exercise, Comparable {
   public exerciseType: ExerciseType;
   public caseWord: GermanCaseWord;
   public germanCase: GermanCase;
   public gender?: GermanGender;
 
   public constructor(caseWord: GermanCaseWord, germanCase: GermanCase, gender?: GermanGender) {
+    super();
     this.exerciseType = 'GermanCaseExercise';
     this.caseWord = caseWord;
     this.germanCase = germanCase;
