@@ -101,7 +101,7 @@ export abstract class BaseExercise implements Exercise {
 
   getMovieExamplePrefix(): string {
     if (!this.movieExample || !this.supportsMovieExampleAnswer()) return '';
-    return `"${this.movieExample.targetLanguage.substring(0, this.movieExample.wordStartIndex)}`;
+    return ` "${this.movieExample.targetLanguage.substring(0, this.movieExample.wordStartIndex)}`;
   }
 
   getMovieExampleSuffix(): string {

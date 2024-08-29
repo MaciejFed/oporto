@@ -235,7 +235,7 @@ export async function generateExercisesForSessionAsync(
   const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
   const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
 
-  return  exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
+  return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
 
 export function getExercisesForSession(language: Language): Exercise[] {

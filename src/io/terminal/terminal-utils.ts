@@ -58,7 +58,7 @@ export function preExerciseClear() {
 }
 
 export function printExerciseTranslation(exerciseTranslation: string | undefined) {
-  getOutput().moveTo(1, EXERCISE_TOP_MARGIN, exerciseTranslation);
+  getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 1, `Translation: ${exerciseTranslation}`);
 }
 
 export function printExerciseDescription(exerciseDescription: string) {
@@ -188,7 +188,7 @@ export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answ
 }
 
 export function printAllAnswers(results: Result[]) {
-  const HISTORY_X_MARGIN = 40;
+  const HISTORY_X_MARGIN = 60;
   const HISTORY_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   const HISTORY_ANSWERS_LIMIT = 5;
   getOutput().bold();
@@ -208,7 +208,7 @@ export function printAllAnswers(results: Result[]) {
 }
 
 export function printAllVerbConjugations(exercise: Exercise, results: Result[]) {
-  const CONJUGATION_X_MARGIN = 60;
+  const CONJUGATION_X_MARGIN = 80;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   let table: ColoredText[] = [];
   switch (exercise.exerciseType) {

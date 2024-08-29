@@ -73,6 +73,6 @@ export async function findAllExamples(language: Language) {
   }
 }
 
-findAllExamples(Language.German).then(() => {
+findAllExamples(Language.Polish).then(() => {
   console.log('done');
 });

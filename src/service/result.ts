@@ -60,7 +60,11 @@ export function convertToResult(
   answerInputType: AnswerInputType
 ): Result {
   return {
-    exercise: exercise,
+    exercise: {
+      ...exercise,
+      // @ts-ignore
+      movieExample: undefined
+    },
     answer: answer,
     answerInputType,
     wasCorrect: wasCorrect,

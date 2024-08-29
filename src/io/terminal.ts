@@ -72,18 +72,17 @@ export class Terminal {
   currentExercise: Exercise;
   exampleSentenceFull?: string | undefined;
   canGoNext: boolean;
-  exampleSentenceTranslationApi?: string | undefined;
   phase: Phase;
 
   constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language) {
     this.registerListeners();
     this.exercises = getExercisesForSession(language);
     this.exercises.forEach(async (exercise) => {
-        const wordToFind = extractWordToFindFromExercise(exercise);
-        const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
-        if (example) {
-          exercise.addMovieExample(example);
-        }
+      const wordToFind = extractWordToFindFromExercise(exercise);
+      const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
+      if (example) {
+        exercise.addMovieExample(example);
+      }
     });
 
     this.currentExercise = this.exercises[0];
@@ -175,7 +174,11 @@ export class Terminal {
       this.currentExercise = exercise;
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, answerInputType);
-      printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
+      printExerciseBodyWithCorrection(
+        `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
+        this.answer,
+        correctAnswer
+      );
       this.repetitionAnswer = '';
       if (!wasCorrect) {
         this.phase = Phase.REPETITION;
@@ -205,7 +208,7 @@ export class Terminal {
       this.answer = this.answer + key;
     }
     printExerciseBody(
-      `${this.exerciseBodyPrefix} ${this.currentExercise.getMovieExamplePrefix()}`,
+      `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
       this.answer,
       this.currentExercise.getMovieExampleSuffix()
     );
@@ -278,7 +281,7 @@ export class Terminal {
         break;
       case 't':
         printExerciseTranslation(this.exerciseTranslation);
-        printExampleTranslation('Api:  ', this.exampleSentenceTranslationApi);
+        printExampleTranslation('Api:  ', this.currentExercise.getMovieExample()?.englishApi);
         break;
       case 'l':
         logSaved('Saving example...');

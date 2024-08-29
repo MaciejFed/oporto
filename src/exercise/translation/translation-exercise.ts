@@ -35,7 +35,7 @@ export abstract class TranslationExercise extends BaseExercise implements Exerci
   }
 
   supportsMovieExampleAnswer(): boolean {
-    return !this.isTranslationToPortuguese();
+    return this.isTranslationToPortuguese();
   }
 
   abstract exerciseType: ExerciseType;
