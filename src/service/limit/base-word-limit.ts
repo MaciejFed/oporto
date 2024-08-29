@@ -23,7 +23,7 @@ export const IN_PROGRESS_LIMIT_MAP: LimitMap = {
     [BaseWordType.NOUN]: 5,
     [BaseWordType.VERB]: 2,
     [BaseWordType.ADJECTIVE]: 8,
-    [BaseWordType.OTHER]: 3
+    [BaseWordType.OTHER]: 5
   }
 };
 
