@@ -95,16 +95,16 @@ setInterval(() => {
     });
   });
 }, 6 * 60 * 60 * 1000);
-
-setInterval(() => {
-  preFetchAggregate();
-}, 10000000);
-
-setInterval(() => {
-  preFetch(Language.Portuguese).then(() => {
-    preFetch(Language.German);
-  });
-}, 90000);
+//
+// setInterval(() => {
+//   preFetchAggregate();
+// }, 10000000);
+//
+// setInterval(() => {
+//   preFetch(Language.Portuguese).then(() => {
+//     preFetch(Language.German);
+//   });
+// }, 90000);
 
 const getLanguage = (req: Request) => {
   switch (req.params.language.toLowerCase()) {
