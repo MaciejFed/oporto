@@ -45,7 +45,7 @@ export class PolishNounTranslationExercise extends TranslationExercise implement
     return `Polish: ${this.noun.polish}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
+  getTranslation = () => this.noun.polish;
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.noun.polish : this.noun.english);
 

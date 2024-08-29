@@ -25,7 +25,7 @@ export class PolishVerbExercise extends BaseExercise implements Exercise, Compar
     return verbExercise;
   }
 
-  getTranslation = () => undefined;
+  getTranslation = () => this.verb.infinitive;
 
   getBodyPrefix = () => `${this.person}: `;
 

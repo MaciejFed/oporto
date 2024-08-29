@@ -172,6 +172,7 @@ export function printWithFeedback(
   const exerciseBodyPrefix = prefix ? prefix : '';
   const feedbackWord = answerType === 'CorrectAnswer' ? correctAnswer : answer;
   getOutput().moveTo(x, y, exerciseBodyPrefix);
+  getOutput().bold(true);
   for (let i = 0; i < feedbackWord.length; i++) {
     if (answer[i] && correctAnswer[i] && answer[i].toLowerCase() === correctAnswer[i].toLowerCase()) {
       getOutput().green();
@@ -180,6 +181,7 @@ export function printWithFeedback(
     }
     getOutput().moveTo(x + exerciseBodyPrefix.length + i, y, feedbackWord[i]);
   }
+  getOutput().bold(false);
   getOutput().white();
 }
 

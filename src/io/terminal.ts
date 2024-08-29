@@ -186,7 +186,12 @@ export class Terminal {
       } else {
         this.phase = Phase.EXAMPLE;
       }
-      this.playAudio('answer', 'normal', 'google', false);
+      this.playAudio('answer', 'normal', 'google', true);
+      const movieExample = this.currentExercise.getMovieExample();
+      if (movieExample) {
+        printExampleSentence(movieExample.wordStartIndex, movieExample.word, movieExample.targetLanguage!);
+      }
+      this.playAudio('example', 'normal', 'google', false);
     });
   }
 
@@ -257,7 +262,8 @@ export class Terminal {
   private async onKeyMenu(key: string) {
     switch (key) {
       case 't':
-        printExerciseTranslation(this.exerciseTranslation);
+        printExerciseTranslation(this.currentExercise?.getTranslation());
+        printExampleTranslation('Api:  ', this.currentExercise.getMovieExample()?.englishApi);
         break;
       case 'r':
         this.playAudio('answer', 'normal', 'google', false);
@@ -280,7 +286,7 @@ export class Terminal {
         this.playAudio('example', 'normal', 'openai', false);
         break;
       case 't':
-        printExerciseTranslation(this.exerciseTranslation);
+        printExerciseTranslation(this.currentExercise?.getTranslation());
         printExampleTranslation('Api:  ', this.currentExercise.getMovieExample()?.englishApi);
         break;
       case 'l':
@@ -371,7 +377,7 @@ export class Terminal {
       if (newWords.length) {
         const allResults = getAllResults(this.language)
           .concat(result)
-          .filter((res) => res.exercise.getBaseWordAsString() === newWords[0]);
+          .filter((res) => res.exercise.getBaseWordAsString && res.exercise.getBaseWordAsString() === newWords[0]);
         const firstAttempt = DateTime.fromJSDate(allResults[0].date);
         const lastTimeAttempted = DateTime.fromJSDate(allResults[allResults.length - 1].date);
         this.eventProcessor.emit(NEW_WORD_LEARNED, {

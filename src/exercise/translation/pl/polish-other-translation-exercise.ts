@@ -41,7 +41,7 @@ export class PolishOtherTranslationExercise extends TranslationExercise implemen
     return `German: ${this.other.polish}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.other.english : undefined);
+  getTranslation = () => this.other.polish;
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.other.polish : this.other.english);
 
