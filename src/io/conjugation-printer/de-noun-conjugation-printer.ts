@@ -2,9 +2,7 @@ import { Result } from '../../service/result';
 import { ColoredText } from '../output';
 import { Exercise } from '../../exercise/exercise';
 import { VerbConjugation } from './conjugation-printer';
-import {
-  GermanNoun,
-} from '../../repository/german-exercises-repository';
+import { GermanNoun } from '../../repository/german-exercises-repository';
 import { GermanNounTranslationExercise } from '../../exercise/translation/de/german-noun-translation-exercise';
 
 export class DENounConjugation extends VerbConjugation<GermanNoun> {

@@ -64,11 +64,11 @@ export interface ExerciseContent {
   getBaseWord(): BaseWord | undefined;
   getBaseWordType(): BaseWordType | undefined;
   getBaseWordAsString(): string | undefined;
-  addMovieExample(movieExample: MovieExample): void
-  getMovieExample(): MovieExample | undefined
-  getMovieExamplePrefix(): string
-  getMovieExampleSuffix(): string
-  supportsMovieExampleAnswer(): boolean
+  addMovieExample(movieExample: MovieExample): void;
+  getMovieExample(): MovieExample | undefined;
+  getMovieExamplePrefix(): string;
+  getMovieExampleSuffix(): string;
+  supportsMovieExampleAnswer(): boolean;
 }
 
 export interface ExerciseBehavior {
@@ -101,12 +101,13 @@ export abstract class BaseExercise implements Exercise {
 
   getMovieExamplePrefix(): string {
     if (!this.movieExample || !this.supportsMovieExampleAnswer()) return '';
-    return `"${this.movieExample.targetLanguage.substring(0, this.movieExample.wordStartIndex)}`
+    return `"${this.movieExample.targetLanguage.substring(0, this.movieExample.wordStartIndex)}`;
   }
 
   getMovieExampleSuffix(): string {
     if (!this.movieExample || !this.supportsMovieExampleAnswer()) return '';
-    return `${this.movieExample.targetLanguage.substring(this.movieExample.wordStartIndex + this.movieExample.word.length + 1)}`;
+    return `${this.movieExample.targetLanguage.substring(
+      this.movieExample.wordStartIndex + this.movieExample.word.length + 1
+    )}`;
   }
-
 }

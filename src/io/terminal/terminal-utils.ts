@@ -70,7 +70,7 @@ export function printExerciseBody(exerciseBodyPrefix: string, answer: string, ex
   getOutput().bold(true);
   getOutput().moveTo(1 + exerciseBodyPrefix.length, EXERCISE_BODY_MARGIN, answer);
   getOutput().bold(false);
-  getOutput().moveTo(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN , ` ${exerciseBodySuffix}`);
+  getOutput().moveTo(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN, ` ${exerciseBodySuffix}`);
   getOutput().moveCursor(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
 }
 

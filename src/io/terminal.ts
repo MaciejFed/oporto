@@ -127,7 +127,8 @@ export class Terminal {
       printExerciseBody(
         `${this.exerciseBodyPrefix} ${this.currentExercise.getMovieExamplePrefix()}`,
         this.answer,
-        this.currentExercise.getMovieExampleSuffix())
+        this.currentExercise.getMovieExampleSuffix()
+      );
     });
   }
 
@@ -199,7 +200,8 @@ export class Terminal {
     printExerciseBody(
       `${this.exerciseBodyPrefix} ${this.currentExercise.getMovieExamplePrefix()}`,
       this.answer,
-      this.currentExercise.getMovieExampleSuffix())
+      this.currentExercise.getMovieExampleSuffix()
+    );
   }
 
   private endOfExerciseMenu() {
@@ -280,11 +282,7 @@ export class Terminal {
         // eslint-disable-next-line no-case-declarations
         const movieExample = this.currentExercise.getMovieExample();
         if (movieExample) {
-          printExampleSentence(
-            movieExample.wordStartIndex,
-            movieExample.word,
-            movieExample.targetLanguage!
-          );
+          printExampleSentence(movieExample.wordStartIndex, movieExample.word, movieExample.targetLanguage!);
         }
 
         break;
@@ -300,7 +298,10 @@ export class Terminal {
 
   private async playAudio(type: 'answer' | 'example', rate: Rate, api: 'google' | 'openai', sync = true) {
     try {
-      const text = type === 'answer' ? this.currentExercise?.getRetryPrompt() : this.currentExercise.getMovieExample()?.targetLanguage;
+      const text =
+        type === 'answer'
+          ? this.currentExercise?.getRetryPrompt()
+          : this.currentExercise.getMovieExample()?.targetLanguage;
       getAudio(this.language, text!, api, rate);
 
       const syncFn = sync ? execSync : exec;
@@ -310,7 +311,6 @@ export class Terminal {
       logger.error(e);
     }
   }
-
 
   private resetAnswer() {
     logger.debug('Resting answer...');
