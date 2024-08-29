@@ -43,9 +43,9 @@ import {
 import { Exercise } from '../exercise/exercise';
 import { convertToResult, getExerciseProgress, getStatisticForBaseWord } from '../service/result';
 import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
-import { findExampleSentenceAndWord } from '../service/example-finder/example-finder';
+import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { Language } from '../common/language';
-import { getAudio, saveFavoriteExample, saveNewResult } from '../client/client';
+import { fetchMovieExample, getAudio, saveFavoriteExample, saveNewResult } from '../client/client';
 import { getSavedAudioPath } from '../server/configuration';
 import { Rate } from '../server/audio/audio.types';
 import { getExercisesForSession } from '../exercise/generator';
@@ -72,13 +72,20 @@ export class Terminal {
   currentExercise: Exercise;
   exampleSentenceFull?: string | undefined;
   canGoNext: boolean;
-  exampleSentenceTranslation?: string | undefined;
   exampleSentenceTranslationApi?: string | undefined;
   phase: Phase;
 
   constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language) {
     this.registerListeners();
     this.exercises = getExercisesForSession(language);
+    this.exercises.forEach(async (exercise) => {
+        const wordToFind = extractWordToFindFromExercise(exercise);
+        const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
+        if (example) {
+          exercise.addMovieExample(example);
+        }
+    });
+
     this.currentExercise = this.exercises[0];
     this.exerciseBodyPrefix = '';
     this.exerciseBodySuffix = '';

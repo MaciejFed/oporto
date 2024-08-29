@@ -235,18 +235,7 @@ export async function generateExercisesForSessionAsync(
   const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
   const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
 
-  const finalExercises = exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
-
-  return await Promise.all(
-    finalExercises.map(async (exercise) => {
-      const wordToFind = extractWordToFindFromExercise(exercise);
-      const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
-      if (example) {
-        exercise.addMovieExample(example);
-      }
-      return exercise;
-    })
-  );
+  return  exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
 
 export function getExercisesForSession(language: Language): Exercise[] {
