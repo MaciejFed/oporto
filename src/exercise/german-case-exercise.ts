@@ -22,7 +22,7 @@ export class GermanCaseExercise extends BaseExercise implements Exercise, Compar
     return new GermanCaseExercise(caseWord, germanCase, gender);
   }
 
-  getTranslation = () => undefined;
+  getTranslation = () => this.caseWord.english;
 
   getBodyPrefix = () => `[${this.germanCase}]${safe(this.gender)}: `;
 

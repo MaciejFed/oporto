@@ -43,7 +43,7 @@ export class VerbTranslationExercise extends TranslationExercise implements Comp
     return `Portuguese: ${this.verb.infinitive}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.verb.english : undefined);
+  getTranslation = () => this.verb.english;
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.verb.infinitive : this.verb.english);
 

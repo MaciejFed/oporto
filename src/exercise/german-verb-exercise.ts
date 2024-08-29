@@ -43,7 +43,7 @@ export class GermanVerbExercise extends BaseExercise implements Exercise, Compar
     return verbExercise;
   }
 
-  getTranslation = () => undefined;
+  getTranslation = () => this.verb.english;
 
   getBodyPrefix = () => `[${verbTimePrintVersion(this.verbTime)}] ${this.person}: `;
 
