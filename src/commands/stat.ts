@@ -41,7 +41,10 @@ export const createTable = (
   results: Result[],
   language: Language
 ) => {
-  const { DONE, IN_PROGRESS, NEVER_DONE } = structuredClone(progress);
+  const { DONE, IN_PROGRESS, NEVER_DONE } = JSON.parse(JSON.stringify(progress)) as Record<
+    ProgressType,
+    ProgressDetails
+  >;
 
   const inProgressTotalMissing =
     IN_PROGRESS.baseWords.reduce((prev, curr) => prev + getAnswersMissingForBaseWord(curr, results, language), 0) * -1;

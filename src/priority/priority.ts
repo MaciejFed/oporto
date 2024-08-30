@@ -18,7 +18,7 @@ import {
 } from '../service/progress/progress';
 import { logger } from '../common/logger';
 import { removeRepetitionFromBlocks } from '../common/common';
-import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
+import { getProgressAggregate, ProgressAggregate, progressExerciseTypes } from '../service/progress/progress-aggregate';
 import { Language } from '../common/language';
 import { createTable } from '../commands/stat';
 import { removeBaseWordLimit } from '../service/limit/base-word-limit';
@@ -110,7 +110,6 @@ export function sortExercises(
 
   logFilteredExercises(exercises, exercisesWithoutWantedProgress);
 
-  console.time('exercisesWithPriorities');
   const exercisesWithPriorities = getExercisesWithPriorities(
     exercisesWithoutWantedProgress,
     exercises,
@@ -118,11 +117,10 @@ export function sortExercises(
     exerciseSubjectResultMap,
     language
   );
-  console.timeEnd('exercisesWithPriorities');
 
   const sortedExercises = exercisesWithPriorities.map((e) => e.exercise);
 
-  return {
+  const resultFinal = {
     exercises: removeRepetitionFromBlocks(
       sortedExercises,
       (a, b) => a.getBaseWordAsString() === b.getBaseWordAsString(),
@@ -130,18 +128,23 @@ export function sortExercises(
     ),
     exercisesWithPriorities
   };
+  return resultFinal;
 }
 
 function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Result[]): ExerciseProgress[] {
+  const resultMap = allResults.reduce((prev, curr) => {
+    const already = prev[curr.exercise.toString()];
+    prev[curr.exercise.toString()] = already ? already.concat(curr) : [curr];
+    return prev;
+  }, {} as Record<string, Result[]>);
   return exercises
-    .map((ex) => getSingleExerciseProgress(allResults, ex))
+    .map((ex) => getSingleExerciseProgress(resultMap[ex.toString()] ?? [], ex))
     .filter((ex) => {
       return ex.progressType !== ProgressType.DONE;
     });
 }
 
 function logCurrentWordsInProgress(progressAggregate: ProgressAggregate, results: Result[], language: Language): void {
-  const clone = structuredClone(progressAggregate);
   logger.info(createTable('Verbs', progressAggregate.words.VERB, results, language).render());
   logger.info(createTable('Nouns', progressAggregate.words.NOUN, results, language).render());
   logger.info(createTable('Adjective', progressAggregate.words.ADJECTIVE, results, language).render());
@@ -165,10 +168,10 @@ function getExercisesWithPriorities(
   exerciseSubjectResultMap: Record<string, Result[]>,
   language: Language
 ): ExerciseWithPriorites[] {
+  console.time('main');
   const progressAggregate = getProgressAggregate(allResults, exercises);
 
   const inLimit = removeBaseWordLimit(language, exercisesWithoutWantedProgress, progressAggregate);
-
   const x = inLimit.map((ex) => {
     const combinedPriorities = priorityCompilers
       .flatMap((priorityCompiler) => {

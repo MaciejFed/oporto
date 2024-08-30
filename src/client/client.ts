@@ -12,7 +12,7 @@ const execAsync = util.promisify(exec);
 const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
 
 let resultsCached: Result[] = [];
-const MAX_BUFFER = 10 * 1024 * 1024;
+const MAX_BUFFER = 100 * 1024 * 1024;
 
 const fetchResults = (language: Language) =>
   `curl -s --location --request GET ${apiURL}/${language}/results --header "Authorization: Bearer ${apiKey}"`;
