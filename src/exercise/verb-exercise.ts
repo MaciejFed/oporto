@@ -33,6 +33,10 @@ export class VerbExercise extends BaseExercise implements Exercise, Comparable {
     return verbExercise;
   }
 
+  toString(): string {
+    return `${this.exerciseType}_${this.getBaseWordAsString()}_${this.person}`;
+  }
+
   getTranslation = () => undefined;
 
   getBodyPrefix = () => `[${vertTimePrintVersion(this.verbTime)}] ${this.person}: `;
@@ -46,10 +50,6 @@ export class VerbExercise extends BaseExercise implements Exercise, Comparable {
   isAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
-  }
-
-  getMinAnswerCount(): number {
-    return 2;
   }
 
   getBaseWord() {

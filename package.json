@@ -57,7 +57,6 @@
     "mongodb": "^6.3.0",
     "openai": "^4.52.7",
     "path": "^0.12.7",
-    "performance-now": "^2.1.0",
     "terminal-kit": "^2.4.0",
     "winston": "^3.8.0"
   },

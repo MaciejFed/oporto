@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import { Language } from '../common/language';
+import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 
 const testExercises =
   '[{"translationType":"toEnglish","exerciseType":"AdjectiveTranslation","adjective":{"english":"bitter","masculine":{"singular":"amargo","plural":"amargos"},"feminine":{"singular":"amarga","plural":"amargas"}},"gender":"masculine","number":"singular"},' +
@@ -102,7 +103,8 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
         english: 'Some Text',
         englishApi: 'Some Text'
       });
-    }
+    },
+    extractWordToFindFromExercise: () => 'dummy'
   }));
 
   const { EventProcessor } = require('../event/event-processor');

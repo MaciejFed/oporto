@@ -40,10 +40,6 @@ export class GermanCaseExercise extends BaseExercise implements Exercise, Compar
     return correctAnswer.toLowerCase() === answer.toLowerCase();
   }
 
-  getMinAnswerCount(): number {
-    return 2;
-  }
-
   getBaseWord() {
     return this.caseWord;
   }

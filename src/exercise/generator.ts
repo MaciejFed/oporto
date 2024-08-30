@@ -193,26 +193,28 @@ const FitInGapGenerator: ExerciseGenerator = () => {
 };
 
 export function generateAllPossibleExercises(language: Language): Exercise[] {
+  let exercises: Exercise[];
   switch (language) {
     case Language.German:
-      return [
+      exercises = [
         GermanVerbExerciseGenerator,
         GermanNounTranslationGenerator,
         GermanVerbTranslationGenerator,
         GermanOtherTranslationGenerator,
         GermanCaseWordGenerator
       ].flatMap((generator) => generator());
-
+      break;
     case Language.Polish:
-      return [
+      exercises = [
         PolishVerbExerciseGenerator,
         PolishNounTranslationGenerator,
         PolishVerbTranslationGenerator,
         PolishOtherTranslationGenerator
       ].flatMap((generator) => generator());
+      break;
     case Language.Portuguese:
     default:
-      return [
+      exercises = [
         VerbExerciseGenerator,
         NounTranslationGenerator,
         VerbTranslationGenerator,
@@ -221,7 +223,12 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
         AdjectiveTranslationGenerator,
         FitInGapGenerator
       ].flatMap((generator) => generator());
+      break;
   }
+  exercises.forEach((ex) => {
+    ex.name = ex.toString();
+  });
+  return exercises;
 }
 
 export async function generateExercisesForSessionAsync(

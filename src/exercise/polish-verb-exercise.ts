@@ -40,10 +40,6 @@ export class PolishVerbExercise extends BaseExercise implements Exercise, Compar
     return correctConjugation.toLowerCase() === answer.toLowerCase();
   }
 
-  getMinAnswerCount(): number {
-    return 2;
-  }
-
   getBaseWord() {
     return this.verb;
   }

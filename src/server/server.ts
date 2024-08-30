@@ -198,13 +198,8 @@ app.post('/:language/results/save', async (req: Request, res: Response) => {
 app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    let exercises = [];
-    if ([Language.Polish, Language.German].includes(language)) {
-      const results = await readAllResults(language);
-      exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results);
-    } else {
-      exercises = cachedExercises[language].splice(0, 10);
-    }
+    const results = await readAllResults(language);
+    const exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results);
     res.send(exercises);
   } catch (e) {
     logger.error('Error generating exercises', 3);

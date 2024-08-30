@@ -57,6 +57,7 @@ export enum BaseWordType {
 
 export interface ExerciseContent {
   exerciseType: ExerciseType;
+  name: string;
   getBodyPrefix(): string;
   getBodySuffix(): string;
   getDescription(): string;
@@ -69,6 +70,7 @@ export interface ExerciseContent {
   getMovieExamplePrefix(): string;
   getMovieExampleSuffix(): string;
   supportsMovieExampleAnswer(): boolean;
+  toString(): string;
 }
 
 export interface ExerciseBehavior {
@@ -77,15 +79,16 @@ export interface ExerciseBehavior {
   getRetryPrompt(): string;
 }
 
-export interface ExerciseProgress {
-  getMinAnswerCount(): number;
-}
+export interface Exercise extends ExerciseContent, ExerciseBehavior, Comparable {}
 
-export interface Exercise extends ExerciseContent, ExerciseBehavior, ExerciseProgress, Comparable {}
-
-// @ts-ignore
 export abstract class BaseExercise implements Exercise {
   public movieExample: MovieExample | undefined;
+  public name = '';
+  abstract exerciseType: ExerciseType;
+
+  toString(): string {
+    return `${this.exerciseType}_${this.getBaseWordAsString()}`;
+  }
 
   supportsMovieExampleAnswer(): boolean {
     return true;
@@ -110,4 +113,16 @@ export abstract class BaseExercise implements Exercise {
       this.movieExample.wordStartIndex + this.movieExample.word.length + 1
     )}`;
   }
+
+  abstract getBaseWordAsString(): string | undefined;
+  abstract isAnswerCorrect(answer: string): boolean;
+  abstract equal(other: Comparable): boolean;
+  abstract getCorrectAnswer(): string;
+  abstract getBodyPrefix(): string;
+  abstract getBodySuffix(): string;
+  abstract getDescription(): string;
+  abstract getTranslation(): string | undefined;
+  abstract getRetryPrompt(): string;
+  abstract getBaseWord(): BaseWord | undefined;
+  abstract getBaseWordType(): BaseWordType | undefined;
 }

@@ -37,10 +37,12 @@ const printAllTables = ({ tableVerbs, tableNouns, tableAdjectives, tableOthers }
 
 export const createTable = (
   title: string,
-  { DONE, IN_PROGRESS, NEVER_DONE }: Record<ProgressType, ProgressDetails>,
+  progress: Record<ProgressType, ProgressDetails>,
   results: Result[],
   language: Language
 ) => {
+  const { DONE, IN_PROGRESS, NEVER_DONE } = structuredClone(progress);
+
   const inProgressTotalMissing =
     IN_PROGRESS.baseWords.reduce((prev, curr) => prev + getAnswersMissingForBaseWord(curr, results, language), 0) * -1;
   const doneHeader = `Done [${DONE.baseWords.length}]`;

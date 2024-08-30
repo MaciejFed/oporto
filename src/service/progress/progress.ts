@@ -70,13 +70,13 @@ export function getGroupExerciseProgress(
   return exercisesOfType.map((exerciseOfType) => getSingleExerciseProgress(results, exerciseOfType as Exercise));
 }
 
-const getRatio = (correctAnswers: number, incorrectAnswers: number) => {
+export const getRatio = (correctAnswers: number, incorrectAnswers: number) => {
   if (!correctAnswers && !incorrectAnswers) return 0;
   if (!incorrectAnswers) return 100;
   return Math.floor(correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
 };
 
-const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: number) => {
+export const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: number) => {
   if (!correctAnswers && !incorrectAnswers) return ProgressType.NEVER_DONE;
   const ratio = getRatio(correctAnswers, incorrectAnswers);
   return ratio < 100 ? ProgressType.IN_PROGRESS : ProgressType.DONE;
@@ -354,7 +354,7 @@ export function getExerciseProgressMap(
     progressMap[exerciseType] = exerciseProgress;
 
     filteredResults = filteredResults.filter((result) => {
-      return !exerciseProgress.some((progress) => progress.exercise === result.exercise);
+      return !exerciseProgress.some((progress) => progress.exercise.equal(result.exercise));
     });
   }
 

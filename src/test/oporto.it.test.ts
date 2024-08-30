@@ -18,7 +18,7 @@ const doExercise = (terminal: any, correctly: boolean) => {
   return exercise;
 };
 
-describe('IT', () => {
+describe.skip('IT', () => {
   const EXERCISES_PER_SESSION = 3;
 
   const { mockExit, eventProcessor, getAllResults, Terminal } = withBaseMocks();

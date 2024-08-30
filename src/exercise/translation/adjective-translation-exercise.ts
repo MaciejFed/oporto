@@ -64,10 +64,6 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
   getRetryPrompt = () =>
     this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.adjective[this.gender][this.number];
 
-  getMinAnswerCount(): number {
-    return 2;
-  }
-
   getBaseWord() {
     return this.adjective;
   }

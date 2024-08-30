@@ -18,6 +18,10 @@ export abstract class TranslationExercise extends BaseExercise implements Exerci
     }
   }
 
+  toString(): string {
+    return `${this.exerciseType}_${this.getBaseWordAsString()}_${this.translationType}`;
+  }
+
   public abstract isTranslationSubjectEqual(translationSubject: Exercise): boolean;
 
   public isTranslationToPortuguese(): boolean {
@@ -26,12 +30,6 @@ export abstract class TranslationExercise extends BaseExercise implements Exerci
 
   public isTranslationToPortugueseFromHearing(): boolean {
     return this.translationType === 'toPortugueseFromHearing';
-  }
-
-  getMinAnswerCount(): number {
-    if (this.translationType === 'toEnglish') return 2;
-    else if (this.translationType === 'toPortugueseFromHearing') return 3;
-    return 5;
   }
 
   supportsMovieExampleAnswer(): boolean {

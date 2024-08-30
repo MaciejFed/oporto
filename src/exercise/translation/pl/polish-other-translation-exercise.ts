@@ -49,12 +49,6 @@ export class PolishOtherTranslationExercise extends TranslationExercise implemen
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
-  getMinAnswerCount(): number {
-    if (this.translationType === 'toEnglish') return 2;
-    else if (this.translationType === 'toPortugueseFromHearing') return 3;
-    return 10;
-  }
-
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.other.polish);
 
   getBaseWord() {

@@ -185,6 +185,9 @@ export function parseResults(results: Result[]): Result[] {
     if (createExercise) {
       result.date = new Date(result.date);
       result.exercise = createExercise(exerciseData);
+      result.exercise.name = result.exercise.toString();
+    } else {
+      console.log('error');
     }
     return result;
   });

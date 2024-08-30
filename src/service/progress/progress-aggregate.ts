@@ -1,7 +1,8 @@
-import { ExerciseProgress, getSingleExerciseProgress, ProgressType } from './progress';
+import { ExerciseProgress, getRatio, getSingleExerciseProgress, mapRatioToProgress, ProgressType } from './progress';
 import { Result } from '../result';
 import { BaseWordType, Exercise } from '../../exercise/exercise';
 import { logger } from '../../common/logger';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
 
 export const progressExerciseTypes = [
   'NounTranslation',
@@ -47,6 +48,17 @@ export type ProgressAggregate = {
   exercises: ExerciseProgressAggregate;
   words: WordProgressAggregate;
 };
+
+const emptyExerciseProgress = (exercise: Exercise) =>
+  ({
+    exercise,
+    correctAnswers: 0,
+    incorrectAnswers: 0,
+    ratio: 0,
+    answersMissing: 0,
+    exerciseResults: [],
+    progressType: ProgressType.NEVER_DONE
+  } as ExerciseProgress);
 
 const emptyProgressAggregate = () =>
   progressExerciseTypes.reduce(
@@ -100,8 +112,18 @@ export function getProgressAggregate(results: Result[], exercises: Exercise[]): 
   const exercisesFiltered = exercises.filter((exercise) =>
     progressExerciseTypes.includes(exercise.exerciseType as ExerciseTypeKey)
   );
+
+  const someMap2 = results.reduce((prev, curr) => {
+    const already = prev[curr.exercise.toString()];
+    if (!progressExerciseTypes.includes(curr.exercise.exerciseType as ExerciseTypeKey)) {
+      return prev;
+    }
+    prev[curr.exercise.toString()] = already ? already.concat(curr) : [curr];
+    return prev;
+  }, {} as Record<string, Result[]>);
+
   const exercisesProgress = exercisesFiltered
-    .map((exercise) => getSingleExerciseProgress(results, exercise))
+    .map((exercise) => getSingleExerciseProgress(someMap2[exercise.toString()] ?? [], exercise))
     .sort((a, b) => a.ratio - b.ratio);
 
   const addProgress = (

@@ -23,10 +23,6 @@ export class FitInGapExercise extends BaseExercise implements Exercise, Comparab
 
   getCorrectAnswer = () => this.fitIn.answer;
 
-  getMinAnswerCount(): number {
-    return 3;
-  }
-
   getBaseWordType(): BaseWordType | undefined {
     return undefined;
   }
@@ -39,7 +35,7 @@ export class FitInGapExercise extends BaseExercise implements Exercise, Comparab
 
   getBaseWord = () => undefined;
 
-  getBaseWordAsString = () => undefined;
+  getBaseWordAsString = () => this.fitIn.suffix;
 
   equal = (exercise: FitInGapExercise) =>
     exercise.exerciseType === 'FitInGap' && JSON.stringify(this.fitIn) === JSON.stringify(exercise.fitIn);
