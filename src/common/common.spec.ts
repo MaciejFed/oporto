@@ -53,6 +53,16 @@ describe('Common', () => {
       expect(word.toLowerCase()).toEqual(wordToFind.toLowerCase());
       expect(index).toEqual(0);
     });
+
+    it('double word', () => {
+      const sentencePt = 'Ainda bem que já não sentes a necessidade de fazer';
+      const wordToFind = 'a necessidade';
+      const index = findWordStartIndex(sentencePt, wordToFind);
+      const word = sentencePt.substring(index, index + wordToFind.length);
+
+      expect(word.toLowerCase()).toEqual(wordToFind.toLowerCase());
+      expect(index).toEqual(28);
+    });
   });
 
   describe('removeRepetitionFromBlocks', () => {

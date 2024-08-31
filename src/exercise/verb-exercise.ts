@@ -37,7 +37,7 @@ export class VerbExercise extends BaseExercise implements Exercise, Comparable {
     return `${this.exerciseType}_${this.getBaseWordAsString()}_${this.person}`;
   }
 
-  getTranslation = () => undefined;
+  getTranslation = () => this.verb.english;
 
   getBodyPrefix = () => `[${vertTimePrintVersion(this.verbTime)}] ${this.person}: `;
 

@@ -26,10 +26,7 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     if (!(translationExercise instanceof NounTranslationExercise)) return false;
     return this.noun.portuguese.word === translationExercise.noun.portuguese.word;
   }
-
-  supportsMovieExampleAnswer(): boolean {
-    return false;
-  }
+  // Ranodm verb order exercises
 
   getBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';

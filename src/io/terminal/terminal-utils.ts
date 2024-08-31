@@ -67,7 +67,9 @@ export function printExerciseDescription(exerciseDescription: string) {
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
   const answerFinal =
-    exerciseBodySuffix.length > 0 && answer.length < 2 ? answer.padStart(2, '_').padEnd(3, '_') : answer;
+    (exerciseBodySuffix.length > 0 || exerciseBodyPrefix.length > 20) && answer.length < 2
+      ? answer.padStart(2, '_').padEnd(3, '_')
+      : answer;
   getOutput().moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix);
   getOutput().bold(true);
   getOutput().moveTo(1 + exerciseBodyPrefix.length, EXERCISE_BODY_MARGIN, answerFinal);

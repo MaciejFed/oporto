@@ -242,16 +242,6 @@ export class Terminal {
       this.repetitionAnswer = this.repetitionAnswer + key;
     }
     printExerciseRepeatAnswerKey(this.repetitionAnswer, this.correctAnswer, key);
-    if (this.correctAnswer.toLowerCase() === this.repetitionAnswer.toLowerCase()) {
-      this.phase = Phase.REPETITION_RESPONSE;
-      terminal.moveTo(0, EXERCISE_REPEAT_BODY_MARGIN);
-      clearLine(process.stdout, 0);
-      terminal.moveTo(0, EXERCISE_BODY_MARGIN);
-      clearLine(process.stdout, 0);
-      terminal.moveTo(0, EXERCISE_BODY_MARGIN + 1);
-      clearLine(process.stdout, 0);
-      terminal.hideCursor();
-    }
   }
 
   private async onKeyMenu(key: string) {
@@ -360,10 +350,24 @@ export class Terminal {
 
   private registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITTED, (answerInputType: AnswerInputType) => {
+      if (this.phase === Phase.REPETITION) {
+        if (this.correctAnswer.toLowerCase() === this.repetitionAnswer.toLowerCase()) {
+          this.phase = Phase.REPETITION_RESPONSE;
+          terminal.moveTo(0, EXERCISE_REPEAT_BODY_MARGIN);
+          clearLine(process.stdout, 0);
+          terminal.moveTo(0, EXERCISE_BODY_MARGIN);
+          clearLine(process.stdout, 0);
+          terminal.moveTo(0, EXERCISE_BODY_MARGIN + 1);
+          clearLine(process.stdout, 0);
+          terminal.hideCursor();
+        }
+        return;
+      }
+
       if (this.answer.trim().length === 0) return;
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
-      const result = convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType);
+      const result = parseResults([convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType)])[0];
       const newWords = newWordsBetweenResults(
         getAllResults(this.language),
         getAllResults(this.language).concat(result),
@@ -372,7 +376,7 @@ export class Terminal {
       if (newWords.length) {
         const allResults = parseResults(getAllResults(this.language))
           .concat(result)
-          .filter((res) => res.exercise.getBaseWordAsString && res.exercise.getBaseWordAsString() === newWords[0]);
+          .filter((res) => res.exercise.getBaseWordAsString() === newWords[0]);
         const firstAttempt = DateTime.fromJSDate(allResults[0].date);
         const lastTimeAttempted = DateTime.fromJSDate(allResults[allResults.length - 1].date);
         this.eventProcessor.emit(NEW_WORD_LEARNED, {

@@ -39,7 +39,7 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
   }
 
   getBodyPrefix(): string {
-    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
+    return this.isTranslationToPortuguese() ? `Portuguese: ${this.getBodySuffix()}` : 'English: ';
   }
 
   getBodySuffix = () => ` [${this.gender}, ${this.number}]`;

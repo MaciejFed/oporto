@@ -40,7 +40,8 @@ export async function findAllExamples(language: Language) {
   const allKnownWords = getAllUniqueWordsConjugated(language);
   const savedWords = await getExamplesSaved(language);
   const words = [...new Set(generateAllPossibleExercises(language).map(extractWordToFindFromExercise))]
-    .filter((word) => !savedWords.includes(word || '')).reverse();
+    .filter((word) => !savedWords.includes(word || ''))
+    .reverse();
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     console.log(`[${i}/${words.length}]`);
