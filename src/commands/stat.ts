@@ -25,7 +25,7 @@ const withDateLastAttempted = (baseWord: string, results: Result[], doneLongestP
 };
 
 const printAllTables = ({ tableVerbs, tableNouns, tableAdjectives, tableOthers }: Tables) => {
-  const spitAndPad = (table: string) => table.split('\n').map((line) => line.concat('    '));
+  const spitAndPad = (table: string) => table.split('\n').map((line) => line.concat(' '));
   return (
     spitAndPad(tableVerbs)
       .map((line, index) => line.concat(spitAndPad(tableNouns)[index]))

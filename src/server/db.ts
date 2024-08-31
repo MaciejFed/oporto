@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { loadValidConfig } from './configuration';
@@ -176,6 +176,22 @@ export async function saveNewResult(newResult: Result, language: Language): Prom
     logger.info(`Insered new result=[${insertedResult.insertedId}]`);
 
     return insertedResult.insertedId.toString();
+  } finally {
+    await client.close();
+  }
+}
+
+export async function deleteResult(id: string): Promise<void> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(collectionNameMap[Language.Portuguese]);
+
+    const deleteRes = await collection.deleteOne({
+      _id: new ObjectId(id)
+    });
+    const deleted = deleteRes.deletedCount;
+    console.log(deleted);
   } finally {
     await client.close();
   }

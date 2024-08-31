@@ -42,7 +42,7 @@ import {
 } from './terminal/terminal-utils';
 import { Exercise } from '../exercise/exercise';
 import { convertToResult, getExerciseProgress, getStatisticForBaseWord } from '../service/result';
-import { getAllResults, getAllResultsForExercise } from '../repository/result-repository';
+import { getAllResults, getAllResultsForExercise, parseResults } from '../repository/result-repository';
 import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { Language } from '../common/language';
 import { fetchMovieExample, getAudio, saveFavoriteExample, saveNewResult } from '../client/client';
@@ -186,12 +186,7 @@ export class Terminal {
       } else {
         this.phase = Phase.EXAMPLE;
       }
-      this.playAudio('answer', 'normal', 'google', true);
-      const movieExample = this.currentExercise.getMovieExample();
-      if (movieExample) {
-        printExampleSentence(movieExample.wordStartIndex, movieExample.word, movieExample.targetLanguage!);
-      }
-      this.playAudio('example', 'normal', 'google', false);
+      this.playAudio('answer', 'normal', 'google', false);
     });
   }
 
@@ -269,7 +264,6 @@ export class Terminal {
         this.playAudio('answer', 'normal', 'google', false);
         break;
       default:
-        terminal.hideCursor(false);
         this.eventProcessor.emit(EXERCISE_NEXT);
     }
   }
@@ -366,6 +360,7 @@ export class Terminal {
 
   private registerAnswerSubmittedEventListener() {
     this.eventProcessor.on(ANSWER_SUBMITTED, (answerInputType: AnswerInputType) => {
+      if (this.answer.trim().length === 0) return;
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
       const result = convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType);
@@ -375,7 +370,7 @@ export class Terminal {
         this.language
       );
       if (newWords.length) {
-        const allResults = getAllResults(this.language)
+        const allResults = parseResults(getAllResults(this.language))
           .concat(result)
           .filter((res) => res.exercise.getBaseWordAsString && res.exercise.getBaseWordAsString() === newWords[0]);
         const firstAttempt = DateTime.fromJSDate(allResults[0].date);

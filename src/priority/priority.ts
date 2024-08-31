@@ -20,7 +20,6 @@ import { logger } from '../common/logger';
 import { removeRepetitionFromBlocks } from '../common/common';
 import { getProgressAggregate, ProgressAggregate, progressExerciseTypes } from '../service/progress/progress-aggregate';
 import { Language } from '../common/language';
-import { createTable } from '../commands/stat';
 import { removeBaseWordLimit } from '../service/limit/base-word-limit';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
@@ -142,13 +141,6 @@ function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Re
     .filter((ex) => {
       return ex.progressType !== ProgressType.DONE;
     });
-}
-
-function logCurrentWordsInProgress(progressAggregate: ProgressAggregate, results: Result[], language: Language): void {
-  logger.info(createTable('Verbs', progressAggregate.words.VERB, results, language).render());
-  logger.info(createTable('Nouns', progressAggregate.words.NOUN, results, language).render());
-  logger.info(createTable('Adjective', progressAggregate.words.ADJECTIVE, results, language).render());
-  logger.info(createTable('Other', progressAggregate.words.OTHER, results, language).render());
 }
 
 function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: ExerciseProgress[]): void {

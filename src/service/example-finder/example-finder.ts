@@ -30,6 +30,7 @@ export function extractWordToFindFromExercise(exercise: Exercise): string | unde
       if ((exercise as GermanVerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as GermanVerbTranslationExercise).verb.infinitive;
     case 'NounTranslation':
+      if ((exercise as NounTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as NounTranslationExercise).noun.portuguese.word;
     case 'GermanNounTranslation':
       return (exercise as GermanNounTranslationExercise).noun.german.singular;

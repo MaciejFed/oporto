@@ -15,6 +15,8 @@ import {
 } from '../service/example-finder/example-finder.types';
 import { getExamplesSaved, isExampleSavedAlready, saveExamples } from '../server/db';
 import { enforceArrayLimit } from '../common/common';
+import { getProgressAggregate } from '../service/progress/progress-aggregate';
+import { getAllResults } from '../repository/result-repository';
 
 const MAX_FIND_EXAMPLES = 100_000;
 const MAX_SAVE_EXAMPLES = 40_000;
@@ -36,8 +38,9 @@ export const examplesPaths: Record<Language, { targetLanguagePath: string; trans
 
 export async function findAllExamples(language: Language) {
   const allKnownWords = getAllUniqueWordsConjugated(language);
-  const words = [...new Set(generateAllPossibleExercises(language).map(extractWordToFindFromExercise))];
   const savedWords = await getExamplesSaved(language);
+  const words = [...new Set(generateAllPossibleExercises(language).map(extractWordToFindFromExercise))]
+    .filter((word) => !savedWords.includes(word || '')).reverse();
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     console.log(`[${i}/${words.length}]`);
@@ -73,6 +76,6 @@ export async function findAllExamples(language: Language) {
   }
 }
 
-findAllExamples(Language.Polish).then(() => {
+findAllExamples(Language.Portuguese).then(() => {
   console.log('done');
 });

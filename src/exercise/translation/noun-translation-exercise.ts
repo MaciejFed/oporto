@@ -27,6 +27,10 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     return this.noun.portuguese.word === translationExercise.noun.portuguese.word;
   }
 
+  supportsMovieExampleAnswer(): boolean {
+    return false;
+  }
+
   getBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
   }

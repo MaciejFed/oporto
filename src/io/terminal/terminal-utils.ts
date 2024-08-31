@@ -66,12 +66,18 @@ export function printExerciseDescription(exerciseDescription: string) {
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
+  const answerFinal =
+    exerciseBodySuffix.length > 0 && answer.length < 2 ? answer.padStart(2, '_').padEnd(3, '_') : answer;
   getOutput().moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix);
   getOutput().bold(true);
-  getOutput().moveTo(1 + exerciseBodyPrefix.length, EXERCISE_BODY_MARGIN, answer);
+  getOutput().moveTo(1 + exerciseBodyPrefix.length, EXERCISE_BODY_MARGIN, answerFinal);
   getOutput().bold(false);
-  getOutput().moveTo(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN, ` ${exerciseBodySuffix}`);
-  getOutput().moveCursor(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
+  getOutput().moveTo(
+    1 + exerciseBodyPrefix.length + answerFinal.length,
+    EXERCISE_BODY_MARGIN,
+    ` ${exerciseBodySuffix}`
+  );
+  getOutput().moveCursor(1 + exerciseBodyPrefix.length + answerFinal.length, EXERCISE_BODY_MARGIN);
 }
 
 export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
@@ -114,7 +120,7 @@ export function printExerciseRepeatAnswer(answer: string, correctAnswer: string)
     getOutput().moveTo(repeatBodyPrefix.length + i + 1, EXERCISE_REPEAT_BODY_MARGIN, answer[i]);
   }
   getOutput().white();
-  getOutput().hideCursor(false);
+  getOutput().hideCursor();
 }
 
 export function printInBetweenMenu(printTranslation: boolean) {
