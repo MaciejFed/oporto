@@ -82,8 +82,8 @@ export const priorityCompilers: PriorityCompiler[] = [
   exerciseCorrect,
   exerciseDoneToday,
   exerciseDoneInLastHour,
-  exerciseDoneCorrectly2TimesInRow
-  // exerciseRandomness
+  exerciseDoneCorrectly2TimesInRow,
+  exerciseRandomness
 ];
 
 export interface ExerciseResultContext {
