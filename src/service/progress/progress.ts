@@ -164,9 +164,21 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
       verb.pastPerfect?.Tu,
       verb.pastPerfect?.['Ela/Ele/Você'],
       verb.pastPerfect?.Nós,
-      verb.pastPerfect?.['Eles/Elas/Vocēs']
+      verb.pastPerfect?.['Eles/Elas/Vocēs'],
+      verb.imperfect?.Eu,
+      verb.imperfect?.Tu,
+      verb.imperfect?.['Ela/Ele/Você'],
+      verb.imperfect?.Nós,
+      verb.imperfect?.['Eles/Elas/Vocēs']
     ]);
     const others = readAll().others.map((other) => other.portuguese);
+    const othersWithGender = readAll().othersWithGender.flatMap((other) => [
+      other.portuguese.singular.feminine,
+      other.portuguese.singular.masculine,
+      other.portuguese.plural.feminine,
+      other.portuguese.plural.feminine,
+      other.portuguese.base
+    ]);
     const adjectives = readAll().adjectives.flatMap((adjective) => [
       adjective.masculine.singular,
       adjective.masculine.plural,
@@ -174,7 +186,7 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
       adjective.feminine.plural
     ]);
 
-    const allWords = [nouns, verbs, others, adjectives]
+    const allWords = [nouns, verbs, others, othersWithGender, adjectives]
       .flatMap((w) => w)
       .filter((w) => w !== undefined)
       .map((w) => w!.toLowerCase())
@@ -329,6 +341,7 @@ export function getExerciseProgressMap(
     PolishVerbTranslation: [],
     NounTranslation: [],
     OtherTranslation: [],
+    OtherWithGenderTranslation: [],
     AdjectiveTranslation: [],
     VerbTranslation: [],
     SentenceTranslation: [],

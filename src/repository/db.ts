@@ -18,6 +18,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'foi',
         Nós: 'fomos',
         'Eles/Elas/Vocēs': 'foram'
+      },
+      imperfect: {
+        Eu: 'era',
+        Tu: 'eras',
+        'Ela/Ele/Você': 'era',
+        Nós: 'éramos',
+        'Eles/Elas/Vocēs': 'eram'
       }
     },
     {
@@ -36,6 +43,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'esteve',
         Nós: 'estivemos',
         'Eles/Elas/Vocēs': 'estiveram'
+      },
+      imperfect: {
+        Eu: 'estava',
+        Tu: 'estavas',
+        'Ela/Ele/Você': 'estava',
+        Nós: 'estávamos',
+        'Eles/Elas/Vocēs': 'estavam'
       }
     },
     {
@@ -2975,6 +2989,24 @@ export const db: Schema = {
         'Ela/Ele/Você': 'puxou',
         Nós: 'puxámos',
         'Eles/Elas/Vocēs': 'puxaram'
+      }
+    },
+    {
+      english: 'be',
+      infinitive: 'haver',
+      presentSimple: {
+        Eu: 'hei',
+        Tu: 'hás',
+        'Ela/Ele/Você': 'há',
+        Nós: 'havemos',
+        'Eles/Elas/Vocēs': 'hão'
+      },
+      pastPerfect: {
+        Eu: 'havia',
+        Tu: 'havias',
+        'Ela/Ele/Você': 'havia',
+        Nós: 'havíamos',
+        'Eles/Elas/Vocēs': 'haviam'
       }
     }
   ],
@@ -6951,6 +6983,34 @@ export const db: Schema = {
   ],
   others: [
     {
+      portuguese: 'pois',
+      english: 'so then'
+    },
+    {
+      portuguese: 'que',
+      english: 'what'
+    },
+    {
+      english: 'but',
+      portuguese: 'mas'
+    },
+    {
+      english: 'yes',
+      portuguese: 'sim'
+    },
+    {
+      english: 'no',
+      portuguese: 'não'
+    },
+    {
+      english: 'me',
+      portuguese: 'me'
+    },
+    {
+      english: 'only',
+      portuguese: 'só'
+    },
+    {
       english: 'under',
       portuguese: 'debaixo'
     },
@@ -7143,22 +7203,6 @@ export const db: Schema = {
       portuguese: 'nos'
     },
     {
-      english: 'mine - feminine',
-      portuguese: 'minha'
-    },
-    {
-      english: 'mine - masculine',
-      portuguese: 'meu'
-    },
-    {
-      english: 'yours - feminine',
-      portuguese: 'tuas'
-    },
-    {
-      english: 'yours - masculine',
-      portuguese: 'teus'
-    },
-    {
       english: 'January',
       portuguese: 'Janeiro'
     },
@@ -7237,10 +7281,6 @@ export const db: Schema = {
     {
       english: 'until',
       portuguese: 'até'
-    },
-    {
-      english: 'no',
-      portuguese: 'não'
     },
     {
       english: 'everything',
@@ -7454,6 +7494,153 @@ export const db: Schema = {
     {
       portuguese: 'repente',
       english: 'suddenly'
+    },
+    {
+      portuguese: 'porque',
+      english: 'why'
+    },
+    {
+      portuguese: 'você',
+      english: 'you - formal'
+    }
+  ],
+  othersWithGender: [
+    {
+      english: 'of',
+      portuguese: {
+        base: 'de',
+        singular: {
+          feminine: 'da',
+          masculine: 'do'
+        },
+        plural: {
+          feminine: 'das',
+          masculine: 'dos'
+        }
+      }
+    },
+    {
+      english: 'through',
+      portuguese: {
+        base: 'por',
+        singular: {
+          feminine: 'pela',
+          masculine: 'pelo'
+        },
+        plural: {
+          feminine: 'pelas',
+          masculine: 'pelos'
+        }
+      }
+    },
+    {
+      portuguese: {
+        singular: {
+          feminine: 'a',
+          masculine: 'o'
+        },
+        plural: {
+          feminine: 'as',
+          masculine: 'os'
+        }
+      },
+      english: 'the'
+    },
+    {
+      english: 'in',
+      portuguese: {
+        base: 'em',
+        singular: {
+          feminine: 'na',
+          masculine: 'no'
+        },
+        plural: {
+          feminine: 'nas',
+          masculine: 'nos'
+        }
+      }
+    },
+    {
+      english: 'that - close to speaker',
+      portuguese: {
+        base: 'isto',
+        singular: {
+          feminine: 'esta',
+          masculine: 'este'
+        },
+        plural: {
+          feminine: 'estas',
+          masculine: 'estes'
+        }
+      }
+    },
+    {
+      english: 'that - close to listener',
+      portuguese: {
+        base: 'isso',
+        singular: {
+          feminine: 'essa',
+          masculine: 'esse'
+        },
+        plural: {
+          feminine: 'essas',
+          masculine: 'esses'
+        }
+      }
+    },
+    {
+      english: 'that - far for both',
+      portuguese: {
+        base: 'aquilo',
+        singular: {
+          feminine: 'aquela',
+          masculine: 'aquelo'
+        },
+        plural: {
+          feminine: 'aquelas',
+          masculine: 'aquelos'
+        }
+      }
+    },
+    {
+      portuguese: {
+        singular: {
+          masculine: 'seu',
+          feminine: 'sua'
+        },
+        plural: {
+          masculine: 'seus',
+          feminine: 'suas'
+        }
+      },
+      english: 'we'
+    },
+    {
+      english: 'to - short',
+      portuguese: {
+        base: 'a',
+        singular: {
+          feminine: 'á',
+          masculine: 'ao'
+        },
+        plural: {
+          feminine: 'ás',
+          masculine: 'aos'
+        }
+      }
+    },
+    {
+      portuguese: {
+        singular: {
+          masculine: 'teu',
+          feminine: 'tua'
+        },
+        plural: {
+          masculine: 'teus',
+          feminine: 'tuas'
+        }
+      },
+      english: 'yours - informal'
     }
   ],
   adjectives: [

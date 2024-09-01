@@ -858,6 +858,7 @@ exports[`Progress Aggregate PT 1`] = `
     "OtherTranslation": {
       "DONE": {
         "baseWords": [
+          "não",
           "debaixo",
           "trás",
           "atrás",
@@ -906,10 +907,6 @@ exports[`Progress Aggregate PT 1`] = `
           "ele",
           "eles",
           "nos",
-          "minha",
-          "meu",
-          "tuas",
-          "teus",
           "Janeiro",
           "Fevereiro",
           "Março",
@@ -930,7 +927,6 @@ exports[`Progress Aggregate PT 1`] = `
           "com",
           "aqui",
           "até",
-          "não",
           "tudo",
           "verdade",
           "sobre",
@@ -984,7 +980,7 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 125,
+        "count": 121,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -1011,8 +1007,17 @@ exports[`Progress Aggregate PT 1`] = `
         "count": 19,
       },
       "NEVER_DONE": {
-        "baseWords": [],
-        "count": 0,
+        "baseWords": [
+          "pois",
+          "que",
+          "mas",
+          "sim",
+          "me",
+          "só",
+          "porque",
+          "você",
+        ],
+        "count": 8,
       },
     },
     "PolishNounTranslation": {
@@ -1210,6 +1215,7 @@ exports[`Progress Aggregate PT 1`] = `
           "convencer",
           "coçar",
           "piscar",
+          "haver",
           "corrigir",
           "passear",
           "aplicar",
@@ -1219,8 +1225,10 @@ exports[`Progress Aggregate PT 1`] = `
           "explicar",
           "negar",
           "prover",
+          "ser",
+          "estar",
         ],
-        "count": 34,
+        "count": 37,
       },
     },
     "VerbTranslation": {
@@ -1476,8 +1484,9 @@ exports[`Progress Aggregate PT 1`] = `
       "NEVER_DONE": {
         "baseWords": [
           "acertar",
+          "haver",
         ],
-        "count": 1,
+        "count": 2,
       },
     },
   },
@@ -3433,6 +3442,7 @@ exports[`Progress Aggregate PT 1`] = `
     "OTHER": {
       "DONE": {
         "baseWords": [
+          "não",
           "debaixo",
           "trás",
           "atrás",
@@ -3478,10 +3488,6 @@ exports[`Progress Aggregate PT 1`] = `
           "ele",
           "eles",
           "nos",
-          "minha",
-          "meu",
-          "tuas",
-          "teus",
           "Janeiro",
           "Fevereiro",
           "Março",
@@ -3500,7 +3506,6 @@ exports[`Progress Aggregate PT 1`] = `
           "com",
           "aqui",
           "até",
-          "não",
           "tudo",
           "verdade",
           "sobre",
@@ -3540,7 +3545,7 @@ exports[`Progress Aggregate PT 1`] = `
           "direita",
           "assim",
         ],
-        "count": 106,
+        "count": 102,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3567,15 +3572,22 @@ exports[`Progress Aggregate PT 1`] = `
         "count": 19,
       },
       "NEVER_DONE": {
-        "baseWords": [],
-        "count": 0,
+        "baseWords": [
+          "pois",
+          "que",
+          "mas",
+          "sim",
+          "me",
+          "só",
+          "porque",
+          "você",
+        ],
+        "count": 8,
       },
     },
     "VERB": {
       "DONE": {
         "baseWords": [
-          "ser",
-          "estar",
           "ir",
           "ter",
           "querer",
@@ -3667,10 +3679,12 @@ exports[`Progress Aggregate PT 1`] = `
           "mexer",
           "puxar",
         ],
-        "count": 92,
+        "count": 90,
       },
       "IN_PROGRESS": {
         "baseWords": [
+          "ser",
+          "estar",
           "poder",
           "chamar-se",
           "apresentar-se",
@@ -3762,11 +3776,13 @@ exports[`Progress Aggregate PT 1`] = `
           "atirar",
           "acertar",
         ],
-        "count": 90,
+        "count": 92,
       },
       "NEVER_DONE": {
-        "baseWords": [],
-        "count": 0,
+        "baseWords": [
+          "haver",
+        ],
+        "count": 1,
       },
     },
   },

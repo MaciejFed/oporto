@@ -16,6 +16,7 @@ import { Exercise } from '../../exercise/exercise';
 import { DECaseConjugation } from '../conjugation-printer/de-case-conjugation-printer';
 import { PLVerbConjugation } from '../conjugation-printer/pl-conjugation-printer';
 import { DENounConjugation } from '../conjugation-printer/de-noun-conjugation-printer';
+import { PtAdjectiveConjugationPrinter } from '../conjugation-printer/pt-adjective-conjugation-printer';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -229,6 +230,9 @@ export function printAllVerbConjugations(exercise: Exercise, results: Result[]) 
     case 'VerbExercise':
     case 'VerbTranslation':
       table = new PTVerbConjugation(exercise.getBaseWord() as any, results).getTable();
+      break;
+    case 'AdjectiveTranslation':
+      table = new PtAdjectiveConjugationPrinter(exercise.getBaseWord() as any, results).getTable();
       break;
     case 'PolishVerbExercise':
     case 'PolishVerbTranslation':

@@ -133,7 +133,7 @@ export async function getExamplesSaved(language: Language): Promise<string[]> {
     const db = client.db(dbName);
     const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
 
-    const examples = await collectionTop.find({}).limit(2_000).toArray();
+    const examples = await collectionTop.find({}).limit(20_000).toArray();
 
     return examples ? examples.map((doc) => Object.keys(doc)[1]) : [];
   } finally {

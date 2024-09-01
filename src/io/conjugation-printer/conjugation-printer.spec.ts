@@ -1,4 +1,4 @@
-import { Person, Verb, wordDatabase } from '../../repository/exercises-repository';
+import { Person, readAll, Verb, wordDatabase } from '../../repository/exercises-repository';
 import { Color, ColoredText, Output } from '../output';
 import { generateResultForExercise } from '../../priority/priority.util';
 import { VerbExercise } from '../../exercise/verb-exercise';
@@ -8,6 +8,7 @@ import { GermanVerbExercise } from '../../exercise/german-verb-exercise';
 import { DEVerbConjugation } from './de-conjugation-printer';
 import { DECaseConjugation } from './de-case-conjugation-printer';
 import { GermanCaseExercise } from '../../exercise/german-case-exercise';
+import { PtAdjectiveConjugationPrinter } from './pt-adjective-conjugation-printer';
 
 const generateResults = (verb: Verb) => [
   ...generateResultForExercise(VerbExercise.new(verb, Person.Eu, 'presentSimple'), true, 'keyboard', 1),
@@ -71,6 +72,20 @@ describe('Conjugation Printer', () => {
       const verb = wordDatabase.verb('falar');
       const results = generateResults(verb);
       const printer = new PTVerbConjugation(verb, results);
+
+      const table = printer.getTable();
+      const output = new Output();
+      output.moveToColoredRows(0, 0, table);
+
+      expect('\n'.concat(output.getOutput())).toMatchSnapshot();
+      expect('\n'.concat(output.getColorOutput())).toMatchSnapshot();
+    });
+  });
+
+  describe('Portuguese Adjective', () => {
+    it('renders table', () => {
+      const adjective = readAll().adjectives[0];
+      const printer = new PtAdjectiveConjugationPrinter(adjective, []);
 
       const table = printer.getTable();
       const output = new Output();

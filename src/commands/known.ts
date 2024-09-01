@@ -78,4 +78,4 @@ export async function getKnownPercentage(language: Language): Promise<number> {
   return (known / (known + unKnown)) * 100;
 }
 
-getKnownPercentage(Language.German).then((res) => console.log(res));
+getKnownPercentage(Language.Portuguese).then((res) => console.log(res));

@@ -33,6 +33,7 @@ import { PolishOtherTranslationExercise } from './translation/pl/polish-other-tr
 import { PolishNounTranslationExercise } from './translation/pl/polish-noun-translation-exercise';
 import { PolishVerbExercise } from './polish-verb-exercise';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
+import { OtherGenderTranslationExercise } from './translation/other-gender-translation-exercise';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -50,7 +51,15 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
         VerbExercise.new(verb, Person[person as keyof typeof Person], 'pastPerfect')
       )
     );
-  return pastPerfectVerbs.concat(presentSimpleVerbs);
+
+  const imperfectVerbs = verbsNonStandard
+    .filter((verb) => verb.imperfect)
+    .flatMap((verb) =>
+      Object.keys(Person).flatMap((person) =>
+        VerbExercise.new(verb, Person[person as keyof typeof Person], 'imperfect')
+      )
+    );
+  return pastPerfectVerbs.concat(presentSimpleVerbs).concat(imperfectVerbs);
 };
 
 export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
@@ -167,6 +176,22 @@ const OtherTranslationGenerator: ExerciseGenerator = () => {
   );
 };
 
+const OtherWithGenderTranslationGenerator: ExerciseGenerator = () => {
+  return readAll().othersWithGender.flatMap((other) =>
+    translationTypes.flatMap((translationType) => {
+      if (translationType === 'toPortuguese') {
+        return [
+          OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular'),
+          OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'plural'),
+          OtherGenderTranslationExercise.new(other, translationType, 'feminine', 'singular'),
+          OtherGenderTranslationExercise.new(other, translationType, 'feminine', 'plural')
+        ];
+      }
+      return [OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular')];
+    })
+  );
+};
+
 const AdjectiveTranslationGenerator: ExerciseGenerator = () => {
   return readAll().adjectives.flatMap((noun) =>
     translationTypes.flatMap((translationType) => {
@@ -219,6 +244,7 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
         NounTranslationGenerator,
         VerbTranslationGenerator,
         PhraseTranslationGenerator,
+        OtherWithGenderTranslationGenerator,
         OtherTranslationGenerator,
         AdjectiveTranslationGenerator,
         FitInGapGenerator

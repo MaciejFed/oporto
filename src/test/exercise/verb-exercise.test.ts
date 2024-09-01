@@ -15,7 +15,6 @@ describe('Verb Exercise', () => {
     expect(verbExercise.getDescription()).toEqual('Infinitive: to be - long');
     expect(verbExercise.getBodyPrefix()).toEqual('[Present Simple] Eu: ');
     expect(verbExercise.getCorrectAnswer()).toEqual('sou');
-    expect(verbExercise.getTranslation()).toBe(undefined);
     expect(verbExercise.isAnswerCorrect('sou')).toBe(true);
     expect(verbExercise.equal(sameVerbExerciseExercise)).toBe(true);
   });

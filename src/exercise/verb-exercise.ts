@@ -3,10 +3,11 @@ import { Person, Verb } from '../repository/exercises-repository';
 import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb } from '../service/verb/verb';
 import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 
-export type VerbTime = 'presentSimple' | 'pastPerfect';
+export type VerbTime = 'presentSimple' | 'pastPerfect' | 'imperfect';
 
 const vertTimePrintVersion = (verbTime: VerbTime) => {
   if (verbTime === 'presentSimple') return 'Present Simple';
+  if (verbTime === 'imperfect') return 'Imperfect';
   return 'Past Perfect';
 };
 

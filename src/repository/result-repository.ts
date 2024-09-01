@@ -24,6 +24,7 @@ import { PolishVerbExercise } from '../exercise/polish-verb-exercise';
 import { PolishNounTranslationExercise } from '../exercise/translation/pl/polish-noun-translation-exercise';
 import { PolishVerbTranslationExercise } from '../exercise/translation/pl/polish-verb-translation-exercise';
 import { PolishOtherTranslationExercise } from '../exercise/translation/pl/polish-other-translation-exercise';
+import { OtherGenderTranslationExercise } from '../exercise/translation/other-gender-translation-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -149,6 +150,13 @@ function createOtherTranslationExercise(exerciseData: any) {
   return otherTranslationExercise;
 }
 
+function createOtherWithGenderTranslationExercise(exerciseData: any) {
+  const otherTranslationExercise = new OtherGenderTranslationExercise();
+  Object.assign(otherTranslationExercise, exerciseData);
+  assert(otherTranslationExercise.other);
+  return otherTranslationExercise;
+}
+
 function createFitInGapExercise(exerciseData: any) {
   const fitInGapExercise = new FitInGapExercise();
   Object.assign(fitInGapExercise, exerciseData);
@@ -166,6 +174,7 @@ export const exerciseFactory = {
   SentenceTranslation: createSentenceTranslationExercise,
   PhraseTranslation: createPhraseTranslationExercise,
   OtherTranslation: createOtherTranslationExercise,
+  OtherWithGenderTranslation: createOtherWithGenderTranslationExercise,
   FitInGap: createFitInGapExercise,
   GermanNounTranslation: createGermanNounTranslationExercise,
   GermanVerbTranslation: createGermanVerbTranslationExercise,

@@ -16,13 +16,17 @@ export type Verb = {
   infinitive: VerbInfinitive;
   presentSimple: { [key in Person]: string };
   pastPerfect?: { [key in Person]: string };
+  imperfect?: { [key in Person]: string };
 };
 
 export type WordTypes = Noun | Verb | Other | Adjective;
 
 type NounGender = 'masculine' | 'feminine' | 'none';
+export type AdjectiveGender = 'masculine' | 'feminine';
 
 type SentenceType = 'question' | 'statement';
+
+export type AdjectiveNumber = 'singular' | 'plural';
 
 type PortugueseNoun = {
   word: string;
@@ -59,15 +63,30 @@ export type Phrase = {
   portuguese: string;
 };
 
+export type GenderWord = {
+  feminine: string;
+  masculine: string;
+};
+
 export type Other = {
   english: string;
   portuguese: string;
+};
+
+export type OtherWithGender = {
+  english: string;
+  portuguese: {
+    base?: string;
+    singular: GenderWord;
+    plural: GenderWord;
+  };
 };
 
 export type Schema = {
   verbs: Verb[];
   nouns: Noun[];
   others: Other[];
+  othersWithGender: OtherWithGender[];
   adjectives: Adjective[];
   sentences: Sentence[];
   phrases: Phrase[];
@@ -263,7 +282,8 @@ const verbs = [
   'mexer',
   'atirar',
   'acertar',
-  'puxar'
+  'puxar',
+  'haver'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

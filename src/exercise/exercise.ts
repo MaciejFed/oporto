@@ -1,5 +1,5 @@
 import { Comparable } from '../common/common';
-import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
+import { Adjective, Noun, Other, OtherWithGender, Verb } from '../repository/exercises-repository';
 import { GermanCaseWord, GermanNoun, GermanOther, GermanVerb } from '../repository/german-exercises-repository';
 import { PolishOther, PolishVerb } from '../repository/polish-exercises-repository';
 import { MovieExample } from '../io/file';
@@ -20,6 +20,7 @@ export type ExerciseType =
   | 'VerbTranslation'
   | 'SentenceTranslation'
   | 'PhraseTranslation'
+  | 'OtherWithGenderTranslation'
   | 'FitInGap';
 
 export const translationTypes: ExerciseType[] = [
@@ -41,6 +42,7 @@ export type BaseWord =
   | Adjective
   | Verb
   | Other
+  | OtherWithGender
   | GermanNoun
   | GermanVerb
   | GermanOther
