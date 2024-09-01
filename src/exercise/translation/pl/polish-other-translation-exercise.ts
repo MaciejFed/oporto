@@ -38,7 +38,7 @@ export class PolishOtherTranslationExercise extends TranslationExercise implemen
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.other.english}`;
     }
-    return `German: ${this.other.polish}`;
+    return `Polish: ${this.other.polish}`;
   };
 
   getTranslation = () => this.other.english;

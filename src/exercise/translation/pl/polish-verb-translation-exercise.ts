@@ -41,7 +41,7 @@ export class PolishVerbTranslationExercise extends TranslationExercise implement
     return `Polish: ${this.verb.infinitive}`;
   };
 
-  getTranslation = () => this.verb.infinitive;
+  getTranslation = () => this.verb.english;
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.verb.infinitive : this.verb.english);
 
