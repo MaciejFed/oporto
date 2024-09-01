@@ -13,7 +13,7 @@ export function startTestSession(language: Language) {
   const terminal = new Terminal(eventProcessor, language);
   const input = new Input(eventProcessor);
 
-  sleep(500).then(() => {
+  sleep(2000).then(() => {
     eventProcessor.emit(APP_STARTED);
   });
 }

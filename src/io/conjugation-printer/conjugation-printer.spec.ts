@@ -80,6 +80,19 @@ describe('Conjugation Printer', () => {
       expect('\n'.concat(output.getOutput())).toMatchSnapshot();
       expect('\n'.concat(output.getColorOutput())).toMatchSnapshot();
     });
+
+    it('renders whole table with imperfect', () => {
+      const verb = wordDatabase.verb('estar');
+      const results = generateResults(verb);
+      const printer = new PTVerbConjugation(verb, results);
+
+      const table = printer.getTable();
+      const output = new Output();
+      output.moveToColoredRows(0, 0, table);
+
+      expect('\n'.concat(output.getOutput())).toMatchSnapshot();
+      expect('\n'.concat(output.getColorOutput())).toMatchSnapshot();
+    });
   });
 
   describe('Portuguese Adjective', () => {

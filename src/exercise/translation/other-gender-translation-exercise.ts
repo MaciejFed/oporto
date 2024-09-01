@@ -46,7 +46,7 @@ export class OtherGenderTranslationExercise extends TranslationExercise implemen
     return this.isTranslationToPortuguese() ? `Portuguese: ${this.getBodySuffix()}` : 'English: ';
   }
 
-  getBodySuffix = () => ` [${this.gender}, ${this.number}]`;
+  getBodySuffix = () => ` [${this.gender}, ${this.number}] `;
 
   getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';

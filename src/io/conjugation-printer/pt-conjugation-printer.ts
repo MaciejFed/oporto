@@ -108,7 +108,7 @@ export class PTVerbConjugation extends VerbConjugation<Verb> {
 
   getTableSize(): { x: number; y: number } {
     return {
-      y: 2,
+      y: 3,
       x: Object.values(this.data.presentSimple).length
     };
   }

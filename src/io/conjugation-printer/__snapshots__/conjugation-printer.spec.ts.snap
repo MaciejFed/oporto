@@ -384,13 +384,141 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWW
                                                                       "
 `;
 
+exports[`Conjugation Printer Portuguese Verb renders whole table with imperfect 1`] = `
+"
+Eu:            estou   +|estive    ~|estava    ~|                     
+Tu:            estás   -|estiveste ~|estavas   ~|                     
+ElaEleVocê:    está    ~|esteve    ~|estava    ~|                     
+Nós:           estamos ~|estivemos ~|estávamos ~|                     
+ElesElasVosēs: estão   ~|estiveram ~|estavam   ~|                     
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;
+
+exports[`Conjugation Printer Portuguese Verb renders whole table with imperfect 2`] = `
+"
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                     
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                     
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                     
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                     
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                     
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      "
+`;
+
 exports[`Conjugation Printer Portuguese Verb renders whole table with past 1`] = `
 "
-Eu:            falo    +|falei   ~|                                   
-Tu:            falas   -|falaste ~|                                   
-ElaEleVocê:    fala    ~|falou   ~|                                   
-Nós:           falamos ~|falámos ~|                                   
-ElesElasVosēs: falam   ~|falaram ~|                                   
+Eu:            falo    +|falei   ~|  |                                
+Tu:            falas   -|falaste ~|  |                                
+ElaEleVocê:    fala    ~|falou   ~|  |                                
+Nós:           falamos ~|falámos ~|  |                                
+ElesElasVosēs: falam   ~|falaram ~|  |                                
                                                                       
                                                                       
                                                                       
@@ -450,11 +578,11 @@ ElesElasVosēs: falam   ~|falaram ~|
 
 exports[`Conjugation Printer Portuguese Verb renders whole table with past 2`] = `
 "
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                   
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                
                                                                       
                                                                       
                                                                       
@@ -514,11 +642,11 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 
 exports[`Conjugation Printer Portuguese Verb renders whole table without past 1`] = `
 "
-Eu:            conheço    +|  |                                       
-Tu:            conheces   -|  |                                       
-ElaEleVocê:    conhece    ~|  |                                       
-Nós:           conhecemos ~|  |                                       
-ElesElasVosēs: conhecem   ~|  |                                       
+Eu:            conheço    +|  |  |                                    
+Tu:            conheces   -|  |  |                                    
+ElaEleVocê:    conhece    ~|  |  |                                    
+Nós:           conhecemos ~|  |  |                                    
+ElesElasVosēs: conhecem   ~|  |  |                                    
                                                                       
                                                                       
                                                                       
@@ -578,11 +706,11 @@ ElesElasVosēs: conhecem   ~|  |
 
 exports[`Conjugation Printer Portuguese Verb renders whole table without past 2`] = `
 "
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                       
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                    
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                    
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                    
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                    
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                    
                                                                       
                                                                       
                                                                       
