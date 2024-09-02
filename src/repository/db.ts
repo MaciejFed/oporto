@@ -7561,7 +7561,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'that - close to speaker',
+      english: 'this',
       portuguese: {
         base: 'isto',
         singular: {
