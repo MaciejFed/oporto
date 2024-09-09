@@ -3,7 +3,7 @@ import { Exercise } from '../../../exercise/exercise';
 import { ExerciseResultContext, Priority } from '../../priority';
 
 export function exerciseRandomness(exercise: Exercise, { language }: ExerciseResultContext): Priority[] {
-  const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = language === Language.Portuguese ? 200 : 25;
+  const VALUE_EXERCISE_RANDOMNESS_UP_LIMIT = language === Language.Portuguese ? 100 : 25;
 
   return [
     {

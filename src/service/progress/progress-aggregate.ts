@@ -2,13 +2,13 @@ import { ExerciseProgress, getRatio, getSingleExerciseProgress, mapRatioToProgre
 import { Result } from '../result';
 import { BaseWordType, Exercise } from '../../exercise/exercise';
 import { logger } from '../../common/logger';
-import { VALUE_WRONG_TO_CORRECT_RATIO } from '../../priority/priority';
 
 export const progressExerciseTypes = [
   'NounTranslation',
   'GermanNounTranslation',
   'PolishNounTranslation',
   'OtherTranslation',
+  'OtherWithGenderTranslation',
   'PolishOtherTranslation',
   'AdjectiveTranslation',
   'VerbTranslation',

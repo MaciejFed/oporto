@@ -115,6 +115,20 @@ exports[`Progress Aggregate getProgressAggregate 1`] = `
         "count": 0,
       },
     },
+    "OtherWithGenderTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+    },
     "PolishNounTranslation": {
       "DONE": {
         "baseWords": [],
@@ -1136,6 +1150,31 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
         "count": 130,
       },
     },
+    "OtherWithGenderTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [
+          "do",
+          "pelo",
+          "o",
+          "no",
+          "este",
+          "esse",
+          "aquelo",
+          "seu",
+          "ao",
+          "teu",
+        ],
+        "count": 10,
+      },
+    },
     "PolishNounTranslation": {
       "DONE": {
         "baseWords": [],
@@ -2133,6 +2172,16 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
       },
       "NEVER_DONE": {
         "baseWords": [
+          "do",
+          "pelo",
+          "o",
+          "no",
+          "este",
+          "esse",
+          "aquelo",
+          "seu",
+          "ao",
+          "teu",
           "pois",
           "que",
           "mas",
@@ -2145,7 +2194,6 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "atrás",
           "ao lado de",
           "em cima de",
-          "no",
           "entre",
           "antes",
           "depois",
@@ -2263,7 +2311,7 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "porque",
           "você",
         ],
-        "count": 129,
+        "count": 138,
       },
     },
     "VERB": {

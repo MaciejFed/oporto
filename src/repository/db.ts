@@ -7613,7 +7613,7 @@ export const db: Schema = {
           feminine: 'suas'
         }
       },
-      english: 'we'
+      english: 'your'
     },
     {
       english: 'to - short',

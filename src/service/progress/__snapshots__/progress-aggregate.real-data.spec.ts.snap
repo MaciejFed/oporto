@@ -1020,6 +1020,31 @@ exports[`Progress Aggregate PT 1`] = `
         "count": 8,
       },
     },
+    "OtherWithGenderTranslation": {
+      "DONE": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "IN_PROGRESS": {
+        "baseWords": [],
+        "count": 0,
+      },
+      "NEVER_DONE": {
+        "baseWords": [
+          "do",
+          "pelo",
+          "o",
+          "no",
+          "este",
+          "esse",
+          "aquelo",
+          "seu",
+          "ao",
+          "teu",
+        ],
+        "count": 10,
+      },
+    },
     "PolishNounTranslation": {
       "DONE": {
         "baseWords": [],
@@ -3448,7 +3473,6 @@ exports[`Progress Aggregate PT 1`] = `
           "atrás",
           "ao lado de",
           "em cima de",
-          "no",
           "entre",
           "antes",
           "depois",
@@ -3545,10 +3569,11 @@ exports[`Progress Aggregate PT 1`] = `
           "direita",
           "assim",
         ],
-        "count": 102,
+        "count": 101,
       },
       "IN_PROGRESS": {
         "baseWords": [
+          "no",
           "ninguém",
           "meio",
           "Maio",
@@ -3569,10 +3594,19 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 19,
+        "count": 20,
       },
       "NEVER_DONE": {
         "baseWords": [
+          "do",
+          "pelo",
+          "o",
+          "este",
+          "esse",
+          "aquelo",
+          "seu",
+          "ao",
+          "teu",
           "pois",
           "que",
           "mas",
@@ -3582,7 +3616,7 @@ exports[`Progress Aggregate PT 1`] = `
           "porque",
           "você",
         ],
-        "count": 8,
+        "count": 17,
       },
     },
     "VERB": {
