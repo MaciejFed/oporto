@@ -727,7 +727,6 @@ exports[`Progress Aggregate PT 1`] = `
           "gênero",
           "graça",
           "guerra",
-          "guias",
           "hábito",
           "herói",
           "índice",
@@ -790,7 +789,7 @@ exports[`Progress Aggregate PT 1`] = `
           "vantagem",
           "versão",
         ],
-        "count": 94,
+        "count": 93,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -807,7 +806,6 @@ exports[`Progress Aggregate PT 1`] = `
           "gênero",
           "gráfico",
           "guerra",
-          "guias",
           "hábito",
           "herói",
           "índice",
@@ -852,7 +850,7 @@ exports[`Progress Aggregate PT 1`] = `
           "teatro",
           "vantagem",
         ],
-        "count": 57,
+        "count": 56,
       },
     },
     "OtherTranslation": {
@@ -1938,12 +1936,6 @@ exports[`Progress Aggregate PT 1`] = `
     },
     {
       "baseWord": "gênero",
-      "incorrectAnswers": 4,
-      "pointsMissing": -4,
-      "total": 296,
-    },
-    {
-      "baseWord": "guias",
       "incorrectAnswers": 4,
       "pointsMissing": -4,
       "total": 296,
@@ -3389,7 +3381,6 @@ exports[`Progress Aggregate PT 1`] = `
           "graça",
           "gráfico",
           "guerra",
-          "guias",
           "hábito",
           "herói",
           "índice",
@@ -3455,7 +3446,7 @@ exports[`Progress Aggregate PT 1`] = `
           "vantagem",
           "versão",
         ],
-        "count": 99,
+        "count": 98,
       },
       "NEVER_DONE": {
         "baseWords": [

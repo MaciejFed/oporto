@@ -923,7 +923,6 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "graça",
           "gráfico",
           "guerra",
-          "guias",
           "hábito",
           "herói",
           "hospital",
@@ -1002,7 +1001,7 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "vantagem",
           "versão",
         ],
-        "count": 513,
+        "count": 512,
       },
     },
     "OtherTranslation": {
@@ -2087,7 +2086,6 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "graça",
           "gráfico",
           "guerra",
-          "guias",
           "hábito",
           "herói",
           "hospital",
@@ -2166,7 +2164,7 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "vantagem",
           "versão",
         ],
-        "count": 513,
+        "count": 512,
       },
     },
     "OTHER": {

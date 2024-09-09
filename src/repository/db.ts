@@ -6358,14 +6358,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'guid',
-      portuguese: {
-        word: 'guias',
-        plural: 'guia',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'habit',
       portuguese: {
         word: 'hábito',
@@ -7708,15 +7700,15 @@ export const db: Schema = {
     },
     {
       english: 'another',
-     portuguese: {
-       singular: {
-         masculine: 'outro',
-         feminine: 'outra'
-       },
-       plural: {
-         masculine: 'outros',
-         feminine: 'outras'
-       }
+      portuguese: {
+        singular: {
+          masculine: 'outro',
+          feminine: 'outra'
+        },
+        plural: {
+          masculine: 'outros',
+          feminine: 'outras'
+        }
       }
     }
   ],
