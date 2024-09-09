@@ -34,6 +34,7 @@ import { PolishNounTranslationExercise } from './translation/pl/polish-noun-tran
 import { PolishVerbExercise } from './polish-verb-exercise';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 import { OtherGenderTranslationExercise } from './translation/other-gender-translation-exercise';
+import { exerciseRandomness } from '../priority/types/exercise-randomness/exercise-randomness';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -266,7 +267,7 @@ export async function generateExercisesForSessionAsync(
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
   const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
-  const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
+  const exercisesFinal = sort ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
@@ -289,7 +290,7 @@ export function generateExercisesForSession(
 ): Exercise[] {
   const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
   const allResults = getAllResults(language);
-  const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
+  const exercisesFinal = sort ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }

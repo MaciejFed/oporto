@@ -99,7 +99,8 @@ type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResu
 export function sortExercises(
   exercises: Exercise[],
   allResults: Result[],
-  language: Language
+  language: Language,
+  additionalPriorityCompiles: PriorityCompiler[] = []
 ): {
   exercises: Exercise[];
   exercisesWithPriorities: ExerciseWithPriorites[];
@@ -114,7 +115,8 @@ export function sortExercises(
     exercises,
     allResults,
     exerciseSubjectResultMap,
-    language
+    language,
+    additionalPriorityCompiles
   );
 
   const sortedExercises = exercisesWithPriorities.map((e) => e.exercise);
@@ -158,14 +160,15 @@ function getExercisesWithPriorities(
   exercises: Exercise[],
   allResults: Result[],
   exerciseSubjectResultMap: Record<string, Result[]>,
-  language: Language
+  language: Language,
+  additionalPriorityCompiles: PriorityCompiler[] = []
 ): ExerciseWithPriorites[] {
   console.time('main');
   const progressAggregate = getProgressAggregate(allResults, exercises);
 
   const inLimit = removeBaseWordLimit(language, exercisesWithoutWantedProgress, progressAggregate);
   const x = inLimit.map((ex) => {
-    const combinedPriorities = priorityCompilers
+    const combinedPriorities = priorityCompilers.concat(additionalPriorityCompiles)
       .flatMap((priorityCompiler) => {
         const result = priorityCompiler(ex.exercise, {
           allExercises: exercises,
