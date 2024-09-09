@@ -175,7 +175,7 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
     const othersWithGender = readAll().othersWithGender.flatMap((other) => [
       other.portuguese.singular.feminine,
       other.portuguese.singular.masculine,
-      other.portuguese.plural.feminine,
+      other.portuguese.plural.masculine,
       other.portuguese.plural.feminine,
       other.portuguese.base
     ]);

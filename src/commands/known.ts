@@ -45,7 +45,7 @@ export async function getKnownPercentage(language: Language): Promise<number> {
   while (true) {
     const linePtResult = await readInterfacePtIterator.next();
 
-    if (linePtResult.done) break;
+    if (linePtResult.done || counter > 20000000) break;
 
     const linePt = linePtResult.value;
 

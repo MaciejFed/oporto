@@ -1299,24 +1299,24 @@ export const db: Schema = {
         'Eles/Elas/Vocēs': 'concentraram'
       }
     },
-    {
-      english: 'to build',
-      infinitive: 'construir',
-      presentSimple: {
-        Eu: 'construo',
-        Tu: 'constróis',
-        'Ela/Ele/Você': 'constrói',
-        Nós: 'construímos',
-        'Eles/Elas/Vocēs': 'constroem'
-      },
-      pastPerfect: {
-        Eu: 'construí',
-        Tu: 'construíste',
-        'Ela/Ele/Você': 'construiu',
-        Nós: 'construímos',
-        'Eles/Elas/Vocēs': 'construíram'
-      }
-    },
+    // {
+    //   english: 'to build',
+    //   infinitive: 'construir',
+    //   presentSimple: {
+    //     Eu: 'construo',
+    //     Tu: 'constróis',
+    //     'Ela/Ele/Você': 'constrói',
+    //     Nós: 'construímos',
+    //     'Eles/Elas/Vocēs': 'constroem'
+    //   },
+    //   pastPerfect: {
+    //     Eu: 'construí',
+    //     Tu: 'construíste',
+    //     'Ela/Ele/Você': 'construiu',
+    //     Nós: 'construímos',
+    //     'Eles/Elas/Vocēs': 'construíram'
+    //   }
+    // },
     {
       english: 'to continue',
       infinitive: 'continuar',
@@ -3880,6 +3880,7 @@ export const db: Schema = {
       english: 'thing',
       portuguese: {
         word: 'coisa',
+        plural: 'coisas',
         gender: 'feminine'
       }
     },
@@ -6999,8 +7000,16 @@ export const db: Schema = {
       portuguese: 'sim'
     },
     {
+      english: 'yes',
+      portuguese: 'si'
+    },
+    {
       english: 'no',
       portuguese: 'não'
+    },
+    {
+      english: 'bye',
+      portuguese: 'adeus'
     },
     {
       english: 'me',
@@ -7081,10 +7090,6 @@ export const db: Schema = {
     {
       english: 'everybody',
       portuguese: 'toda a gente'
-    },
-    {
-      english: 'another',
-      portuguese: 'outro'
     },
     {
       english: 'next',
@@ -7502,6 +7507,26 @@ export const db: Schema = {
     {
       portuguese: 'você',
       english: 'you - formal'
+    },
+    {
+      portuguese: 'sr',
+      english: 'sr'
+    },
+    {
+      portuguese: 'senhor',
+      english: 'sir'
+    },
+    {
+      portuguese: 'sem',
+      english: 'without'
+    },
+    {
+      portuguese: 'olá',
+      english: 'hello'
+    },
+    {
+      portuguese: 'embora',
+      english: 'although'
     }
   ],
   othersWithGender: [
@@ -7547,6 +7572,19 @@ export const db: Schema = {
       english: 'the'
     },
     {
+      portuguese: {
+        singular: {
+          feminine: 'uma',
+          masculine: 'um'
+        },
+        plural: {
+          feminine: 'umas',
+          masculine: 'uns'
+        }
+      },
+      english: 'a'
+    },
+    {
       english: 'in',
       portuguese: {
         base: 'em',
@@ -7571,6 +7609,32 @@ export const db: Schema = {
         plural: {
           feminine: 'estas',
           masculine: 'estes'
+        }
+      }
+    },
+    {
+      english: 'mine',
+      portuguese: {
+        singular: {
+          feminine: 'minha',
+          masculine: 'meu'
+        },
+        plural: {
+          feminine: 'minha',
+          masculine: 'meus'
+        }
+      }
+    },
+    {
+      english: 'thank you',
+      portuguese: {
+        singular: {
+          feminine: 'obrigada',
+          masculine: 'obrigado'
+        },
+        plural: {
+          feminine: 'obrigadas',
+          masculine: 'obrigados'
         }
       }
     },
@@ -7641,6 +7705,19 @@ export const db: Schema = {
         }
       },
       english: 'yours - informal'
+    },
+    {
+      english: 'another',
+     portuguese: {
+       singular: {
+         masculine: 'outro',
+         feminine: 'outra'
+       },
+       plural: {
+         masculine: 'outros',
+         feminine: 'outras'
+       }
+      }
     }
   ],
   adjectives: [
