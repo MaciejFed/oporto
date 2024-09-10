@@ -232,7 +232,7 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
       break;
     case Language.Polish:
       exercises = [
-        PolishVerbExerciseGenerator,
+        // PolishVerbExerciseGenerator,
         PolishNounTranslationGenerator,
         PolishVerbTranslationGenerator,
         PolishOtherTranslationGenerator
@@ -267,7 +267,9 @@ export async function generateExercisesForSessionAsync(
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
   const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
-  const exercisesFinal = sort ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises : exercises;
+  const exercisesFinal = sort
+    ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises
+    : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
@@ -290,7 +292,9 @@ export function generateExercisesForSession(
 ): Exercise[] {
   const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
   const allResults = getAllResults(language);
-  const exercisesFinal = sort ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises : exercises;
+  const exercisesFinal = sort
+    ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises
+    : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }

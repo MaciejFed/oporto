@@ -9,13 +9,7 @@ import { exerciseDoneInLastHour } from './types/exercise-done-in-last-hour/exerc
 import { exerciseTranslationNeverDoneToEnglish } from './types/exercise-translation-never-done-to-english/exercise-translation-never-done-to-english';
 import { exerciseTranslationNeverDoneFromHearing } from './types/exercise-translation-never-done-from-hearing/exercise-translation-never-done-from-hearing';
 import { exerciseDoneCorrectly2TimesInRow } from './types/exercise-done-correctly-2-times-in-row/exercise-done-correctly-2-times-in-row';
-import { exerciseRandomness } from './types/exercise-randomness/exercise-randomness';
-import {
-  ExerciseProgress,
-  getExerciseProgressMap,
-  getSingleExerciseProgress,
-  ProgressType
-} from '../service/progress/progress';
+import { ExerciseProgress, getSingleExerciseProgress, ProgressType } from '../service/progress/progress';
 import { logger } from '../common/logger';
 import { removeRepetitionFromBlocks } from '../common/common';
 import { getProgressAggregate, ProgressAggregate, progressExerciseTypes } from '../service/progress/progress-aggregate';
@@ -74,7 +68,6 @@ function getExerciseSubjectResults(allResults: Result[]): Record<string, Result[
 
 export const priorityCompilers: PriorityCompiler[] = [
   exerciseNeverDone,
-  // exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
   exerciseVerbNeverTranslated,
@@ -83,7 +76,6 @@ export const priorityCompilers: PriorityCompiler[] = [
   exerciseDoneToday,
   exerciseDoneInLastHour,
   exerciseDoneCorrectly2TimesInRow
-  // exerciseRandomness
 ];
 
 export interface ExerciseResultContext {
@@ -168,7 +160,8 @@ function getExercisesWithPriorities(
 
   const inLimit = removeBaseWordLimit(language, exercisesWithoutWantedProgress, progressAggregate);
   const x = inLimit.map((ex) => {
-    const combinedPriorities = priorityCompilers.concat(additionalPriorityCompiles)
+    const combinedPriorities = priorityCompilers
+      .concat(additionalPriorityCompiles)
       .flatMap((priorityCompiler) => {
         const result = priorityCompiler(ex.exercise, {
           allExercises: exercises,
