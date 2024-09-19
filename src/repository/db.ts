@@ -7612,7 +7612,7 @@ export const db: Schema = {
           masculine: 'meu'
         },
         plural: {
-          feminine: 'minha',
+          feminine: 'minhas',
           masculine: 'meus'
         }
       }
