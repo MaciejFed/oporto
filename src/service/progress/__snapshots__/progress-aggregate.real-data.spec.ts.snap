@@ -88,14 +88,13 @@ exports[`Progress Aggregate PT 1`] = `
           "chateado",
           "colorido",
           "decorado",
-          "ligada",
           "iluminado",
           "peludo",
           "pensativo",
           "ético",
           "preso",
         ],
-        "count": 88,
+        "count": 87,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -111,12 +110,11 @@ exports[`Progress Aggregate PT 1`] = `
           "saboroso",
           "tonto",
           "maldito",
-          "ligada",
           "iluminado",
           "peludo",
           "desapontado",
         ],
-        "count": 16,
+        "count": 15,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -133,7 +131,7 @@ exports[`Progress Aggregate PT 1`] = `
           "chateado",
           "colorido",
           "decorado",
-          "ligada",
+          "ligado",
           "iluminado",
           "peludo",
           "pensativo",
@@ -2805,12 +2803,6 @@ exports[`Progress Aggregate PT 1`] = `
       "total": 25,
     },
     {
-      "baseWord": "ligada",
-      "incorrectAnswers": 1,
-      "pointsMissing": 0,
-      "total": 25,
-    },
-    {
       "baseWord": "iluminado",
       "incorrectAnswers": 1,
       "pointsMissing": -1,
@@ -2912,7 +2904,6 @@ exports[`Progress Aggregate PT 1`] = `
           "chateado",
           "colorido",
           "decorado",
-          "ligada",
           "iluminado",
           "peludo",
           "pensativo",
@@ -2920,11 +2911,13 @@ exports[`Progress Aggregate PT 1`] = `
           "desapontado",
           "preso",
         ],
-        "count": 25,
+        "count": 24,
       },
       "NEVER_DONE": {
-        "baseWords": [],
-        "count": 0,
+        "baseWords": [
+          "ligado",
+        ],
+        "count": 1,
       },
     },
     "NOUN": {
