@@ -8683,12 +8683,12 @@ export const db: Schema = {
     {
       english: 'connected',
       masculine: {
-        singular: 'ligada',
-        plural: 'ligada'
+        singular: 'ligado',
+        plural: 'ligados'
       },
       feminine: {
         singular: 'ligada',
-        plural: 'ligada'
+        plural: 'ligadas'
       }
     },
     {
