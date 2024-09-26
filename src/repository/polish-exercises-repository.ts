@@ -295,6 +295,30 @@ export const db: Schema = {
   ],
   others: [
     {
+      polish: 'proszę',
+      english: 'please'
+    },
+    {
+      polish: 'miło poznać',
+      english: 'nice to meet you'
+    },
+    {
+      polish: 'pyszne',
+      english: 'delicious',
+    },
+    {
+      polish: 'bardzo',
+      english: 'very',
+    },
+    {
+      polish: 'smacznego',
+      english: 'enjoy your meal'
+    },
+    {
+      polish: 'miło widzieć',
+      english: 'nice to see you'
+    },
+    {
       polish: 'ja',
       english: 'I'
     },
