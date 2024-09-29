@@ -283,7 +283,10 @@ const verbs = [
   'atirar',
   'acertar',
   'puxar',
-  'haver'
+  'haver',
+  'vir',
+  'parecer',
+  'dever'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

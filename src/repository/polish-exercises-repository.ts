@@ -304,11 +304,11 @@ export const db: Schema = {
     },
     {
       polish: 'pyszne',
-      english: 'delicious',
+      english: 'delicious'
     },
     {
       polish: 'bardzo',
-      english: 'very',
+      english: 'very'
     },
     {
       polish: 'smacznego',

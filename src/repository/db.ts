@@ -86,6 +86,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'teve',
         Nós: 'tivemos',
         'Eles/Elas/Vocēs': 'tiveram'
+      },
+      imperfect: {
+        Eu: 'tinha',
+        Tu: 'tinhas',
+        'Ela/Ele/Você': 'tinha',
+        Nós: 'tínhamos',
+        'Eles/Elas/Vocēs': 'tinham'
       }
     },
     {
@@ -104,6 +111,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'quis',
         Nós: 'quisemos',
         'Eles/Elas/Vocēs': 'quiseram'
+      },
+      imperfect: {
+        Eu: 'queria',
+        Tu: 'querias',
+        'Ela/Ele/Você': 'queria',
+        Nós: 'queríamos',
+        'Eles/Elas/Vocēs': 'queriam'
       }
     },
     {
@@ -1822,6 +1836,31 @@ export const db: Schema = {
       }
     },
     {
+      english: 'to come',
+      infinitive: 'vir',
+      presentSimple: {
+        Eu: 'venho',
+        Tu: 'vens',
+        'Ela/Ele/Você': 'vem',
+        Nós: 'vimos',
+        'Eles/Elas/Vocēs': 'vêm'
+      },
+      pastPerfect: {
+        Eu: 'vim',
+        Tu: 'vieste',
+        'Ela/Ele/Você': 'veio',
+        Nós: 'viemos',
+        'Eles/Elas/Vocēs': 'vieram'
+      },
+      imperfect: {
+        Eu: 'vinha',
+        Tu: 'vinhas',
+        'Ela/Ele/Você': 'vinha',
+        Nós: 'vínhamos',
+        'Eles/Elas/Vocēs': 'vinham'
+      }
+    },
+    {
       english: 'to serve',
       infinitive: 'servir',
       presentSimple: {
@@ -3008,7 +3047,57 @@ export const db: Schema = {
         Nós: 'havíamos',
         'Eles/Elas/Vocēs': 'haviam'
       }
-    }
+    },
+    {
+      english: 'should',
+      infinitive: 'dever',
+      presentSimple: {
+        Eu: 'devo',
+        Tu: 'deves',
+        'Ela/Ele/Você': 'deve',
+        Nós: 'devemos',
+        'Eles/Elas/Vocēs': 'devem'
+      },
+      pastPerfect: {
+        Eu: 'devi',
+        Tu: 'deveste',
+        'Ela/Ele/Você': 'deveu',
+        Nós: 'devemos',
+        'Eles/Elas/Vocēs': 'deveram'
+      },
+      imperfect: {
+        Eu: 'devia',
+        Tu: 'devias',
+        'Ela/Ele/Você': 'devia',
+        Nós: 'devíamos',
+        'Eles/Elas/Vocēs': 'deviam'
+      }
+    },
+    {
+      english: 'to seem',
+      infinitive: 'parecer',
+      presentSimple: {
+        Eu: 'pareço',
+        Tu: 'pareces',
+        'Ela/Ele/Você': 'parece',
+        Nós: 'parecemos',
+        'Eles/Elas/Vocēs': 'parecem'
+      },
+      pastPerfect: {
+        Eu: 'pareci',
+        Tu: 'pareceste',
+        'Ela/Ele/Você': 'pareceu',
+        Nós: 'parecemos',
+        'Eles/Elas/Vocēs': 'pareceram'
+      },
+      imperfect: {
+        Eu: 'parecia',
+        Tu: 'parecias',
+        'Ela/Ele/Você': 'parecia',
+        Nós: 'parecíamos',
+        'Eles/Elas/Vocēs': 'pareciam'
+      }
+    },
   ],
   nouns: [
     {
@@ -7292,10 +7381,6 @@ export const db: Schema = {
       portuguese: 'sobre'
     },
     {
-      english: 'all',
-      portuguese: 'todo'
-    },
-    {
       english: 'that',
       portuguese: 'essa'
     },
@@ -7519,7 +7604,82 @@ export const db: Schema = {
     {
       portuguese: 'embora',
       english: 'although'
-    }
+    },
+    {
+      portuguese: 'te',
+      english: 'you informal - object pronoun'
+    },
+    {
+      portuguese: 'qualquer',
+      english: 'any'
+    },
+    {
+      portuguese: 'num',
+      english: 'in a'
+    },
+    {
+      portuguese: 'nem',
+      english: 'nor'
+    },
+    {
+      portuguese: 'ti',
+      english: 'you informal - prepositional pronoun'
+    },
+    {
+      portuguese: 'tão',
+      english: 'so'
+    },
+    {
+      portuguese: 'vós',
+      english: 'you plural'
+    },
+    {
+      portuguese: 'mim',
+      english: 'me - prepositional pronoun'
+    },
+    {
+      portuguese: 'vocês',
+      english: 'tou plural formal'
+    },
+    {
+      portuguese: 'seja',
+      english: 'may it be'
+    },
+    {
+      portuguese: 'nos',
+      english: 'we - object pronoun'
+    },
+    {
+      portuguese: 'nós',
+      english: 'we'
+    },
+    {
+      portuguese: 'algo',
+      english: 'something'
+    },
+    {
+      portuguese: 'vá',
+      english: 'go formal'
+    },
+    {
+      portuguese: 'vos',
+      english: 'you formal - object pronoun'
+    },{
+      portuguese: 'às',
+      english: 'to the'
+    },{
+      portuguese: 'qual',
+      english: 'which'
+    },{
+      portuguese: 'será',
+      english: 'will be'
+    },{
+      portuguese: 'cá',
+      english: 'here'
+    },{
+      portuguese: 'aí',
+      english: 'there'
+    },
   ],
   othersWithGender: [
     {
@@ -7650,11 +7810,11 @@ export const db: Schema = {
         base: 'aquilo',
         singular: {
           feminine: 'aquela',
-          masculine: 'aquelo'
+          masculine: 'aquele'
         },
         plural: {
           feminine: 'aquelas',
-          masculine: 'aquelos'
+          masculine: 'aqueles'
         }
       }
     },
@@ -7708,6 +7868,58 @@ export const db: Schema = {
         plural: {
           masculine: 'outros',
           feminine: 'outras'
+        }
+      }
+    },
+    {
+      english: 'to them indirect',
+      portuguese: {
+        singular: {
+          masculine: 'lhe',
+          feminine: 'lhe'
+        },
+        plural: {
+          masculine: 'lhes',
+          feminine: 'lhes'
+        }
+      }
+    },
+    {
+      english: 'all',
+      portuguese: {
+        singular: {
+          masculine: 'todo',
+          feminine: 'toda'
+        },
+        plural: {
+          masculine: 'todos',
+          feminine: 'todas'
+        }
+      }
+    },
+    {
+      english: 'our',
+      portuguese: {
+        singular: {
+          masculine: 'nosso',
+          feminine: 'nossa'
+        },
+        plural: {
+          masculine: 'nossos',
+          feminine: 'nossas'
+        }
+      }
+    },
+    {
+      english: 'some',
+      portuguese: {
+        singular: {
+          masculine: 'algum',
+          feminine: 'alguma'
+        },
+        plural: {
+          masculine: 'alguns',
+          feminine: 'algumas'
         }
       }
     }
