@@ -24,13 +24,21 @@ const today = new Date();
 export function exerciseDoneToday(exercise: Exercise, { exerciseSubjectResults }: ExerciseResultContext): Priority[] {
   const resultsToday = exerciseSubjectResults.filter((result) => areSameCalendarDay(result.date, today));
   if (resultsToday.length > 0) {
-    return [
+    const result: Priority =
       {
         exercise: exercise,
         priorityName: 'EXERCISE_DONE_TODAY',
         priorityValue: valueDoneToday(resultsToday.length)
-      }
-    ];
+      };
+    if (exercise.exerciseType === 'VerbExercise') {
+      return [{
+        exercise,
+        priorityName: 'EXERCISE_DONE_TODAY',
+        priorityValue: result.priorityValue / 4
+      }]
+    }
+    return [result];
   }
+
   return noPriority(exercise);
 }
