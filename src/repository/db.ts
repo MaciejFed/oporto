@@ -3097,7 +3097,7 @@ export const db: Schema = {
         Nós: 'parecíamos',
         'Eles/Elas/Vocēs': 'pareciam'
       }
-    },
+    }
   ],
   nouns: [
     {
@@ -7664,22 +7664,27 @@ export const db: Schema = {
     {
       portuguese: 'vos',
       english: 'you formal - object pronoun'
-    },{
+    },
+    {
       portuguese: 'às',
       english: 'to the'
-    },{
+    },
+    {
       portuguese: 'qual',
       english: 'which'
-    },{
+    },
+    {
       portuguese: 'será',
       english: 'will be'
-    },{
+    },
+    {
       portuguese: 'cá',
       english: 'here'
-    },{
+    },
+    {
       portuguese: 'aí',
       english: 'there'
-    },
+    }
   ],
   othersWithGender: [
     {
