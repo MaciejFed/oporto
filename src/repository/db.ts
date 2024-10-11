@@ -1844,21 +1844,21 @@ export const db: Schema = {
         'Ela/Ele/Você': 'vem',
         Nós: 'vimos',
         'Eles/Elas/Vocēs': 'vêm'
+      },
+      pastPerfect: {
+        Eu: 'vim',
+        Tu: 'vieste',
+        'Ela/Ele/Você': 'veio',
+        Nós: 'viemos',
+        'Eles/Elas/Vocēs': 'vieram'
+      },
+      imperfect: {
+        Eu: 'vinha',
+        Tu: 'vinhas',
+        'Ela/Ele/Você': 'vinha',
+        Nós: 'vínhamos',
+        'Eles/Elas/Vocēs': 'vinham'
       }
-      // pastPerfect: {
-      //   Eu: 'vim',
-      //   Tu: 'vieste',
-      //   'Ela/Ele/Você': 'veio',
-      //   Nós: 'viemos',
-      //   'Eles/Elas/Vocēs': 'vieram'
-      // },
-      // imperfect: {
-      //   Eu: 'vinha',
-      //   Tu: 'vinhas',
-      //   'Ela/Ele/Você': 'vinha',
-      //   Nós: 'vínhamos',
-      //   'Eles/Elas/Vocēs': 'vinham'
-      // }
     },
     {
       english: 'to serve',

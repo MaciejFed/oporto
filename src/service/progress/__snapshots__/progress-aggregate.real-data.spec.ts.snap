@@ -1248,6 +1248,7 @@ exports[`Progress Aggregate PT 1`] = `
           "dormir",
           "sair",
           "seguir",
+          "vir",
           "sugerir",
           "trazer",
           "transformar-se",
@@ -1277,7 +1278,6 @@ exports[`Progress Aggregate PT 1`] = `
           "dançar",
           "explicar",
           "negar",
-          "vir",
           "prover",
           "ser",
           "estar",
@@ -3859,9 +3859,9 @@ exports[`Progress Aggregate PT 1`] = `
       },
       "NEVER_DONE": {
         "baseWords": [
+          "vir",
           "haver",
           "parecer",
-          "vir",
           "dever",
         ],
         "count": 4,
