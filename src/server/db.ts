@@ -181,17 +181,27 @@ export async function saveNewResult(newResult: Result, language: Language): Prom
   }
 }
 
-export async function deleteResult(id: string): Promise<void> {
+
+export async function deleteResult(): Promise<void> {
   const client = await getClient();
   try {
     const db = client.db(dbName);
     const collection = db.collection(collectionNameMap[Language.Portuguese]);
+    const results= parseResults(await collection.find<Result>({}).toArray());
+    const toDelete = results.filter((result) => {
+      if (!(result.exercise.getBaseWord())) return false;
+      const english = (result.exercise.getBaseWord() as any).english;
+      return (english && english.toLowerCase().includes('pronoun') && !result.wasCorrect)
+    })
 
-    const deleteRes = await collection.deleteOne({
-      _id: new ObjectId(id)
-    });
-    const deleted = deleteRes.deletedCount;
-    console.log(deleted);
+    for (const result of toDelete) {
+      const deleteRes = await collection.deleteOne({
+        _id: (result as any)._id
+      });
+      const deleted = deleteRes.deletedCount;
+      console.log(deleted);
+    }
+
   } finally {
     await client.close();
   }
