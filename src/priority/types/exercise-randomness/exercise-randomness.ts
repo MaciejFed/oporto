@@ -11,6 +11,5 @@ export function exerciseRandomness(exercise: Exercise, { language }: ExerciseRes
       priorityName: 'EXERCISE_RANDOMNESS',
       priorityValue: Math.floor(Math.random() * VALUE_EXERCISE_RANDOMNESS_UP_LIMIT)
     }
-  ]
-    ;
+  ];
 }

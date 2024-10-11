@@ -4,7 +4,7 @@ import { findWordStartIndex, getRandomElement } from '../../common/common';
 import { translateToEnglish } from '../../client/client';
 
 const MAX_LENGTH = 5;
-const MAX_LINE_LENGTH = 40;
+const MAX_LINE_LENGTH = 35;
 
 export async function selectMovieExample(
   exampleLines: WordExampleLine[],

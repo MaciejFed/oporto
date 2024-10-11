@@ -1844,7 +1844,7 @@ export const db: Schema = {
         'Ela/Ele/Você': 'vem',
         Nós: 'vimos',
         'Eles/Elas/Vocēs': 'vêm'
-      },
+      }
       // pastPerfect: {
       //   Eu: 'vim',
       //   Tu: 'vieste',

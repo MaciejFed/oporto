@@ -3,7 +3,6 @@ import { ExerciseResultContext, noPriority, Priority } from '../../priority';
 
 const now = new Date();
 
-
 export function exerciseDoneInLastHour(
   exercise: Exercise,
   { exerciseSubjectResults }: ExerciseResultContext
@@ -26,11 +25,13 @@ export function exerciseDoneInLastHour(
       )
     ];
     if (exercise.exerciseType === 'VerbExercise') {
-      return [{
-        exercise,
-        priorityName: 'EXERCISE_DONE_IN_LAST_HOUR',
-        priorityValue: result[0].priorityValue / 4
-      }]
+      return [
+        {
+          exercise,
+          priorityName: 'EXERCISE_DONE_IN_LAST_HOUR',
+          priorityValue: result[0].priorityValue / 4
+        }
+      ];
     }
     return result;
   }
