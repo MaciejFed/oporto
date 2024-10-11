@@ -15,6 +15,7 @@ import { removeRepetitionFromBlocks } from '../common/common';
 import { getProgressAggregate, ProgressAggregate, progressExerciseTypes } from '../service/progress/progress-aggregate';
 import { Language } from '../common/language';
 import { removeBaseWordLimit } from '../service/limit/base-word-limit';
+import { exerciseVerbTenseOrder } from './types/exercise-verb-tense-order/exercise-verb-tense-order';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -36,6 +37,7 @@ export type PriorityName =
   | 'EXERCISE_BASE_WORD_ABOVE_IN_PROGRESS_LIMIT'
   | 'EXERCISE_TYPE_BELLOW_PROGRESS_LIMIT'
   | 'EXERCISE_VERB_NEVER_TRANSLATED'
+  | 'EXERCISE_VERB_TENSE_ORDER'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_MAX_PROGRESS_DONE'
   | 'EXERCISE_LEVEL'
@@ -71,6 +73,7 @@ export const priorityCompilers: PriorityCompiler[] = [
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
   exerciseVerbNeverTranslated,
+  exerciseVerbTenseOrder,
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
