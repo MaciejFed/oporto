@@ -38,7 +38,16 @@ export abstract class VerbConjugation<W extends BaseWord> implements Conjugation
   }
 
   getTenseForY(y: number): Tense {
-    return y === 0 ? 'presentSimple' : 'pastPerfect';
+    switch (y) {
+      case 0:
+        return 'presentSimple';
+      case 1:
+        return 'pastPerfect';
+      case 2:
+        return 'imperfect';
+      default:
+        throw new Error(`Unexpected column [${y}]`);
+    }
   }
 
   getCell(x: number, y: number): string | undefined {
@@ -77,4 +86,4 @@ export abstract class VerbConjugation<W extends BaseWord> implements Conjugation
 
   abstract getRowTitles(): string[];
 }
-type Tense = 'presentSimple' | 'pastPerfect';
+type Tense = 'presentSimple' | 'pastPerfect' | 'imperfect';

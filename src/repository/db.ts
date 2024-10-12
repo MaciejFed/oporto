@@ -2170,7 +2170,7 @@ export const db: Schema = {
       english: 'to hear',
       infinitive: 'ouvir',
       presentSimple: {
-        Eu: 'ouço/oiço',
+        Eu: 'ouço',
         Tu: 'ouves',
         'Ela/Ele/Você': 'ouve',
         Nós: 'ouvimos',

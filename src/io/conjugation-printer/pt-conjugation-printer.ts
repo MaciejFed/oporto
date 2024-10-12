@@ -1,7 +1,7 @@
 import { Person, Verb } from '../../repository/exercises-repository';
 import { Result } from '../../service/result';
 import { ColoredText } from '../output';
-import { VerbExercise } from '../../exercise/verb-exercise';
+import { VerbExercise, VerbTime } from '../../exercise/verb-exercise';
 import { BaseWord, Exercise } from '../../exercise/exercise';
 import { VerbConjugation } from './conjugation-printer';
 import { createColorArray } from '../terminal/terminal-utils';
@@ -10,9 +10,7 @@ import { GermanPerson } from '../../repository/german-exercises-repository';
 type VerbEnding = 'ar' | 'er' | 'ir';
 const standardVerbEndings: VerbEnding[] = ['ar', 'er', 'ir'];
 
-type Tense = 'presentSimple' | 'pastPerfect';
-
-export const standardConjugations: Record<Tense, Record<VerbEnding, Record<Person, string>>> = {
+export const standardConjugations: Record<VerbTime, Record<VerbEnding, Record<Person, string>>> = {
   presentSimple: {
     ar: {
       [Person.Eu]: 'o',
@@ -57,6 +55,29 @@ export const standardConjugations: Record<Tense, Record<VerbEnding, Record<Perso
       [Person.ElaEleVocê]: 'iu',
       [Person.Nós]: 'imos',
       [Person.ElesElasVosēs]: 'iram'
+    }
+  },
+  imperfect: {
+    ar: {
+      [Person.Eu]: 'va',
+      [Person.Tu]: 'vas',
+      [Person.ElaEleVocê]: 'va',
+      [Person.Nós]: 'vamos',
+      [Person.ElesElasVosēs]: 'vam'
+    },
+    er: {
+      [Person.Eu]: 'va',
+      [Person.Tu]: 'vas',
+      [Person.ElaEleVocê]: 'va',
+      [Person.Nós]: 'vamos',
+      [Person.ElesElasVosēs]: 'vam'
+    },
+    ir: {
+      [Person.Eu]: 'va',
+      [Person.Tu]: 'vas',
+      [Person.ElaEleVocê]: 'va',
+      [Person.Nós]: 'vamos',
+      [Person.ElesElasVosēs]: 'vam'
     }
   }
 };
