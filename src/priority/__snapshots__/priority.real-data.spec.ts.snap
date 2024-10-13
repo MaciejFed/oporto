@@ -5729,6 +5729,13 @@ exports[`Priority PT 1`] = `
       "person": "Ela/Ele/Você",
       "verb": {
         "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
         "infinitive": "poder",
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -6121,6 +6128,13 @@ exports[`Priority PT 1`] = `
       "person": "Eles/Elas/Vocēs",
       "verb": {
         "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
         "infinitive": "poder",
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -6147,34 +6161,6 @@ exports[`Priority PT 1`] = `
       {
         "priorityName": "EXERCISE_CORRECT",
         "priorityValue": -190,
-      },
-    ],
-    "priorityValueTotal": 50,
-  },
-  {
-    "exercise": OtherTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "OtherTranslation",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherTranslation_apenas_toEnglish",
-      "other": {
-        "english": "just",
-        "portuguese": "apenas",
-      },
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 480,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -430,
       },
     ],
     "priorityValueTotal": 50,
@@ -6376,50 +6362,6 @@ exports[`Priority PT 1`] = `
         },
       },
       "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 60,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -30,
-      },
-    ],
-    "priorityValueTotal": 30,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pegar_Eu",
-      "person": "Eu",
-      "verb": {
-        "english": "to hold",
-        "infinitive": "pegar",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pegou",
-          "Eles/Elas/Vocēs": "pegaram",
-          "Eu": "peguei",
-          "Nós": "pegámos",
-          "Tu": "pegaste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "pega",
-          "Eles/Elas/Vocēs": "pegam",
-          "Eu": "pego",
-          "Nós": "pegamos",
-          "Tu": "pegas",
-        },
-      },
-      "verbTime": "presentSimple",
     },
     "priorities": [
       {
@@ -6913,6 +6855,241 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
+      "name": "VerbExercise_ir_Eu",
+      "person": "Eu",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ir_Tu",
+      "person": "Tu",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ir_Ela/Ele/Você",
+      "person": "Ela/Ele/Você",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ir_Nós",
+      "person": "Nós",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ir_Eles/Elas/Vocēs",
+      "person": "Eles/Elas/Vocēs",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
       "name": "VerbExercise_ter_Eu",
       "person": "Eu",
       "verb": {
@@ -7374,6 +7551,241 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 25,
   },
   {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_saber_Eu",
+      "person": "Eu",
+      "verb": {
+        "english": "to know",
+        "imperfect": {
+          "Ela/Ele/Você": "sabia",
+          "Eles/Elas/Vocēs": "sabiam",
+          "Eu": "sabia",
+          "Nós": "sabíamos",
+          "Tu": "sabias",
+        },
+        "infinitive": "saber",
+        "pastPerfect": {
+          "Ela/Ele/Você": "soube",
+          "Eles/Elas/Vocēs": "souberam",
+          "Eu": "soube",
+          "Nós": "soubemos",
+          "Tu": "soubeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "sabe",
+          "Eles/Elas/Vocēs": "sabem",
+          "Eu": "sei",
+          "Nós": "sabemos",
+          "Tu": "sabes",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_saber_Tu",
+      "person": "Tu",
+      "verb": {
+        "english": "to know",
+        "imperfect": {
+          "Ela/Ele/Você": "sabia",
+          "Eles/Elas/Vocēs": "sabiam",
+          "Eu": "sabia",
+          "Nós": "sabíamos",
+          "Tu": "sabias",
+        },
+        "infinitive": "saber",
+        "pastPerfect": {
+          "Ela/Ele/Você": "soube",
+          "Eles/Elas/Vocēs": "souberam",
+          "Eu": "soube",
+          "Nós": "soubemos",
+          "Tu": "soubeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "sabe",
+          "Eles/Elas/Vocēs": "sabem",
+          "Eu": "sei",
+          "Nós": "sabemos",
+          "Tu": "sabes",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_saber_Ela/Ele/Você",
+      "person": "Ela/Ele/Você",
+      "verb": {
+        "english": "to know",
+        "imperfect": {
+          "Ela/Ele/Você": "sabia",
+          "Eles/Elas/Vocēs": "sabiam",
+          "Eu": "sabia",
+          "Nós": "sabíamos",
+          "Tu": "sabias",
+        },
+        "infinitive": "saber",
+        "pastPerfect": {
+          "Ela/Ele/Você": "soube",
+          "Eles/Elas/Vocēs": "souberam",
+          "Eu": "soube",
+          "Nós": "soubemos",
+          "Tu": "soubeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "sabe",
+          "Eles/Elas/Vocēs": "sabem",
+          "Eu": "sei",
+          "Nós": "sabemos",
+          "Tu": "sabes",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_saber_Nós",
+      "person": "Nós",
+      "verb": {
+        "english": "to know",
+        "imperfect": {
+          "Ela/Ele/Você": "sabia",
+          "Eles/Elas/Vocēs": "sabiam",
+          "Eu": "sabia",
+          "Nós": "sabíamos",
+          "Tu": "sabias",
+        },
+        "infinitive": "saber",
+        "pastPerfect": {
+          "Ela/Ele/Você": "soube",
+          "Eles/Elas/Vocēs": "souberam",
+          "Eu": "soube",
+          "Nós": "soubemos",
+          "Tu": "soubeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "sabe",
+          "Eles/Elas/Vocēs": "sabem",
+          "Eu": "sei",
+          "Nós": "sabemos",
+          "Tu": "sabes",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_saber_Eles/Elas/Vocēs",
+      "person": "Eles/Elas/Vocēs",
+      "verb": {
+        "english": "to know",
+        "imperfect": {
+          "Ela/Ele/Você": "sabia",
+          "Eles/Elas/Vocēs": "sabiam",
+          "Eu": "sabia",
+          "Nós": "sabíamos",
+          "Tu": "sabias",
+        },
+        "infinitive": "saber",
+        "pastPerfect": {
+          "Ela/Ele/Você": "soube",
+          "Eles/Elas/Vocēs": "souberam",
+          "Eu": "soube",
+          "Nós": "soubemos",
+          "Tu": "soubeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "sabe",
+          "Eles/Elas/Vocēs": "sabem",
+          "Eu": "sei",
+          "Nós": "sabemos",
+          "Tu": "sabes",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
     "exercise": OtherGenderTranslationExercise {
       "base": false,
       "equal": [Function],
@@ -7433,6 +7845,42 @@ exports[`Priority PT 1`] = `
           "singular": {
             "feminine": "na",
             "masculine": "no",
+          },
+        },
+      },
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_primeiro_toPortugueseFromHearing",
+      "number": "singular",
+      "other": {
+        "english": "first",
+        "portuguese": {
+          "plural": {
+            "feminine": "primeiras",
+            "masculine": "primeiros",
+          },
+          "singular": {
+            "feminine": "primeira",
+            "masculine": "primeiro",
           },
         },
       },
@@ -7763,6 +8211,13 @@ exports[`Priority PT 1`] = `
       "person": "Eu",
       "verb": {
         "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
         "infinitive": "poder",
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -7807,6 +8262,13 @@ exports[`Priority PT 1`] = `
       "person": "Tu",
       "verb": {
         "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
         "infinitive": "poder",
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -7833,50 +8295,6 @@ exports[`Priority PT 1`] = `
       {
         "priorityName": "EXERCISE_CORRECT",
         "priorityValue": -40,
-      },
-    ],
-    "priorityValueTotal": 20,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_tocar_Ela/Ele/Você",
-      "person": "Ela/Ele/Você",
-      "verb": {
-        "english": "to play instrument",
-        "infinitive": "tocar",
-        "pastPerfect": {
-          "Ela/Ele/Você": "tocou",
-          "Eles/Elas/Vocēs": "tocaram",
-          "Eu": "toquei",
-          "Nós": "tocámos",
-          "Tu": "tocaste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "toca",
-          "Eles/Elas/Vocēs": "tocam",
-          "Eu": "toco",
-          "Nós": "tocamos",
-          "Tu": "tocas",
-        },
-      },
-      "verbTime": "presentSimple",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 30,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -10,
       },
     ],
     "priorityValueTotal": 20,
@@ -8353,52 +8771,44 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": -475,
   },
   {
-    "exercise": VerbExercise {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
       "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
       "getBodySuffix": [Function],
       "getCorrectAnswer": [Function],
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "VerbExercise_tocar_Eu",
-      "person": "Eu",
-      "verb": {
-        "english": "to play instrument",
-        "infinitive": "tocar",
-        "pastPerfect": {
-          "Ela/Ele/Você": "tocou",
-          "Eles/Elas/Vocēs": "tocaram",
-          "Eu": "toquei",
-          "Nós": "tocámos",
-          "Tu": "tocaste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "toca",
-          "Eles/Elas/Vocēs": "tocam",
-          "Eu": "toco",
-          "Nós": "tocamos",
-          "Tu": "tocas",
+      "name": "OtherWithGenderTranslation_primeiro_toEnglish",
+      "number": "singular",
+      "other": {
+        "english": "first",
+        "portuguese": {
+          "plural": {
+            "feminine": "primeiras",
+            "masculine": "primeiros",
+          },
+          "singular": {
+            "feminine": "primeira",
+            "masculine": "primeiro",
+          },
         },
       },
-      "verbTime": "pastPerfect",
+      "translationType": "toEnglish",
     },
     "priorities": [
       {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
       },
       {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 300,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -120,
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
       },
     ],
-    "priorityValueTotal": -820,
+    "priorityValueTotal": -475,
   },
   {
     "exercise": VerbExercise {
@@ -8540,54 +8950,6 @@ exports[`Priority PT 1`] = `
       {
         "priorityName": "EXERCISE_CORRECT",
         "priorityValue": -100,
-      },
-    ],
-    "priorityValueTotal": -950,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pegar_Eu",
-      "person": "Eu",
-      "verb": {
-        "english": "to hold",
-        "infinitive": "pegar",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pegou",
-          "Eles/Elas/Vocēs": "pegaram",
-          "Eu": "peguei",
-          "Nós": "pegámos",
-          "Tu": "pegaste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "pega",
-          "Eles/Elas/Vocēs": "pegam",
-          "Eu": "pego",
-          "Nós": "pegamos",
-          "Tu": "pegas",
-        },
-      },
-      "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 330,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -280,
       },
     ],
     "priorityValueTotal": -950,
@@ -8768,655 +9130,42 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "VerbExercise_tocar_Ela/Ele/Você",
-      "person": "Ela/Ele/Você",
+      "name": "VerbExercise_poder_Eu",
+      "person": "Eu",
       "verb": {
-        "english": "to play instrument",
-        "infinitive": "tocar",
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
         "pastPerfect": {
-          "Ela/Ele/Você": "tocou",
-          "Eles/Elas/Vocēs": "tocaram",
-          "Eu": "toquei",
-          "Nós": "tocámos",
-          "Tu": "tocaste",
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
         },
         "presentSimple": {
-          "Ela/Ele/Você": "toca",
-          "Eles/Elas/Vocēs": "tocam",
-          "Eu": "toco",
-          "Nós": "tocamos",
-          "Tu": "tocas",
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
         },
       },
-      "verbTime": "pastPerfect",
+      "verbTime": "imperfect",
     },
     "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
       {
         "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 30,
-      },
-    ],
-    "priorityValueTotal": -970,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_um_toPortuguese",
-      "number": "singular",
-      "other": {
-        "english": "a",
-        "portuguese": {
-          "plural": {
-            "feminine": "umas",
-            "masculine": "uns",
-          },
-          "singular": {
-            "feminine": "uma",
-            "masculine": "um",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_um_toPortuguese",
-      "number": "plural",
-      "other": {
-        "english": "a",
-        "portuguese": {
-          "plural": {
-            "feminine": "umas",
-            "masculine": "uns",
-          },
-          "singular": {
-            "feminine": "uma",
-            "masculine": "um",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_um_toPortuguese",
-      "number": "singular",
-      "other": {
-        "english": "a",
-        "portuguese": {
-          "plural": {
-            "feminine": "umas",
-            "masculine": "uns",
-          },
-          "singular": {
-            "feminine": "uma",
-            "masculine": "um",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_um_toPortuguese",
-      "number": "plural",
-      "other": {
-        "english": "a",
-        "portuguese": {
-          "plural": {
-            "feminine": "umas",
-            "masculine": "uns",
-          },
-          "singular": {
-            "feminine": "uma",
-            "masculine": "um",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_no_toPortuguese",
-      "number": "singular",
-      "other": {
-        "english": "in",
-        "portuguese": {
-          "base": "em",
-          "plural": {
-            "feminine": "nas",
-            "masculine": "nos",
-          },
-          "singular": {
-            "feminine": "na",
-            "masculine": "no",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_no_toPortuguese",
-      "number": "plural",
-      "other": {
-        "english": "in",
-        "portuguese": {
-          "base": "em",
-          "plural": {
-            "feminine": "nas",
-            "masculine": "nos",
-          },
-          "singular": {
-            "feminine": "na",
-            "masculine": "no",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_no_toPortuguese",
-      "number": "singular",
-      "other": {
-        "english": "in",
-        "portuguese": {
-          "base": "em",
-          "plural": {
-            "feminine": "nas",
-            "masculine": "nos",
-          },
-          "singular": {
-            "feminine": "na",
-            "masculine": "no",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": OtherGenderTranslationExercise {
-      "base": false,
-      "equal": [Function],
-      "exerciseType": "OtherWithGenderTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherWithGenderTranslation_no_toPortuguese",
-      "number": "plural",
-      "other": {
-        "english": "in",
-        "portuguese": {
-          "base": "em",
-          "plural": {
-            "feminine": "nas",
-            "masculine": "nos",
-          },
-          "singular": {
-            "feminine": "na",
-            "masculine": "no",
-          },
-        },
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "courageous",
-        "feminine": {
-          "plural": "corajosas",
-          "singular": "corajosa",
-        },
-        "masculine": {
-          "plural": "corajosos",
-          "singular": "corajoso",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_corajoso_toPortuguese",
-      "number": "singular",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "courageous",
-        "feminine": {
-          "plural": "corajosas",
-          "singular": "corajosa",
-        },
-        "masculine": {
-          "plural": "corajosos",
-          "singular": "corajoso",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_corajoso_toPortuguese",
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "courageous",
-        "feminine": {
-          "plural": "corajosas",
-          "singular": "corajosa",
-        },
-        "masculine": {
-          "plural": "corajosos",
-          "singular": "corajoso",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_corajoso_toPortuguese",
-      "number": "singular",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "courageous",
-        "feminine": {
-          "plural": "corajosas",
-          "singular": "corajosa",
-        },
-        "masculine": {
-          "plural": "corajosos",
-          "singular": "corajoso",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_corajoso_toPortuguese",
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "irritated",
-        "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
-        },
-        "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
-      "number": "singular",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "irritated",
-        "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
-        },
-        "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "irritated",
-        "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
-        },
-        "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
-      "number": "singular",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
-        "priorityValue": -1000,
-      },
-    ],
-    "priorityValueTotal": -975,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "irritated",
-        "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
-        },
-        "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-      {
-        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
         "priorityValue": -1000,
       },
     ],
@@ -9432,91 +9181,46 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "VerbExercise_tocar_Nós",
-      "person": "Nós",
-      "verb": {
-        "english": "to play instrument",
-        "infinitive": "tocar",
-        "pastPerfect": {
-          "Ela/Ele/Você": "tocou",
-          "Eles/Elas/Vocēs": "tocaram",
-          "Eu": "toquei",
-          "Nós": "tocámos",
-          "Tu": "tocaste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "toca",
-          "Eles/Elas/Vocēs": "tocam",
-          "Eu": "toco",
-          "Nós": "tocamos",
-          "Tu": "tocas",
-        },
-      },
-      "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 30,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -10,
-      },
-    ],
-    "priorityValueTotal": -980,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pegar_Tu",
+      "name": "VerbExercise_poder_Tu",
       "person": "Tu",
       "verb": {
-        "english": "to hold",
-        "infinitive": "pegar",
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
         "pastPerfect": {
-          "Ela/Ele/Você": "pegou",
-          "Eles/Elas/Vocēs": "pegaram",
-          "Eu": "peguei",
-          "Nós": "pegámos",
-          "Tu": "pegaste",
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
         },
         "presentSimple": {
-          "Ela/Ele/Você": "pega",
-          "Eles/Elas/Vocēs": "pegam",
-          "Eu": "pego",
-          "Nós": "pegamos",
-          "Tu": "pegas",
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
         },
       },
-      "verbTime": "pastPerfect",
+      "verbTime": "imperfect",
     },
     "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
       {
         "priorityName": "EXERCISE_VERB_TENSE_ORDER",
         "priorityValue": -1000,
       },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 30,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -20,
-      },
     ],
-    "priorityValueTotal": -990,
+    "priorityValueTotal": -975,
   },
   {
     "exercise": VerbExercise {
@@ -9528,43 +9232,46 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "VerbExercise_pegar_Ela/Ele/Você",
+      "name": "VerbExercise_poder_Ela/Ele/Você",
       "person": "Ela/Ele/Você",
       "verb": {
-        "english": "to hold",
-        "infinitive": "pegar",
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
         "pastPerfect": {
-          "Ela/Ele/Você": "pegou",
-          "Eles/Elas/Vocēs": "pegaram",
-          "Eu": "peguei",
-          "Nós": "pegámos",
-          "Tu": "pegaste",
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
         },
         "presentSimple": {
-          "Ela/Ele/Você": "pega",
-          "Eles/Elas/Vocēs": "pegam",
-          "Eu": "pego",
-          "Nós": "pegamos",
-          "Tu": "pegas",
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
         },
       },
-      "verbTime": "pastPerfect",
+      "verbTime": "imperfect",
     },
     "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
       {
         "priorityName": "EXERCISE_VERB_TENSE_ORDER",
         "priorityValue": -1000,
       },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 60,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -50,
-      },
     ],
-    "priorityValueTotal": -990,
+    "priorityValueTotal": -975,
   },
   {
     "exercise": VerbExercise {
@@ -9576,43 +9283,877 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "VerbExercise_pegar_Eles/Elas/Vocēs",
-      "person": "Eles/Elas/Vocēs",
+      "name": "VerbExercise_poder_Nós",
+      "person": "Nós",
       "verb": {
-        "english": "to hold",
-        "infinitive": "pegar",
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
         "pastPerfect": {
-          "Ela/Ele/Você": "pegou",
-          "Eles/Elas/Vocēs": "pegaram",
-          "Eu": "peguei",
-          "Nós": "pegámos",
-          "Tu": "pegaste",
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
         },
         "presentSimple": {
-          "Ela/Ele/Você": "pega",
-          "Eles/Elas/Vocēs": "pegam",
-          "Eu": "pego",
-          "Nós": "pegamos",
-          "Tu": "pegas",
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
         },
       },
-      "verbTime": "pastPerfect",
+      "verbTime": "imperfect",
     },
     "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
       {
         "priorityName": "EXERCISE_VERB_TENSE_ORDER",
         "priorityValue": -1000,
       },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_poder_Eles/Elas/Vocēs",
+      "person": "Eles/Elas/Vocēs",
+      "verb": {
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
+        "pastPerfect": {
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
       {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 30,
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
       },
       {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -20,
+        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
+        "priorityValue": -1000,
       },
     ],
-    "priorityValueTotal": -990,
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_um_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "a",
+        "portuguese": {
+          "plural": {
+            "feminine": "umas",
+            "masculine": "uns",
+          },
+          "singular": {
+            "feminine": "uma",
+            "masculine": "um",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_um_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "a",
+        "portuguese": {
+          "plural": {
+            "feminine": "umas",
+            "masculine": "uns",
+          },
+          "singular": {
+            "feminine": "uma",
+            "masculine": "um",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_um_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "a",
+        "portuguese": {
+          "plural": {
+            "feminine": "umas",
+            "masculine": "uns",
+          },
+          "singular": {
+            "feminine": "uma",
+            "masculine": "um",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_um_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "a",
+        "portuguese": {
+          "plural": {
+            "feminine": "umas",
+            "masculine": "uns",
+          },
+          "singular": {
+            "feminine": "uma",
+            "masculine": "um",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_no_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "in",
+        "portuguese": {
+          "base": "em",
+          "plural": {
+            "feminine": "nas",
+            "masculine": "nos",
+          },
+          "singular": {
+            "feminine": "na",
+            "masculine": "no",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_no_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "in",
+        "portuguese": {
+          "base": "em",
+          "plural": {
+            "feminine": "nas",
+            "masculine": "nos",
+          },
+          "singular": {
+            "feminine": "na",
+            "masculine": "no",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_no_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "in",
+        "portuguese": {
+          "base": "em",
+          "plural": {
+            "feminine": "nas",
+            "masculine": "nos",
+          },
+          "singular": {
+            "feminine": "na",
+            "masculine": "no",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_no_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "in",
+        "portuguese": {
+          "base": "em",
+          "plural": {
+            "feminine": "nas",
+            "masculine": "nos",
+          },
+          "singular": {
+            "feminine": "na",
+            "masculine": "no",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_primeiro_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "first",
+        "portuguese": {
+          "plural": {
+            "feminine": "primeiras",
+            "masculine": "primeiros",
+          },
+          "singular": {
+            "feminine": "primeira",
+            "masculine": "primeiro",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_primeiro_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "first",
+        "portuguese": {
+          "plural": {
+            "feminine": "primeiras",
+            "masculine": "primeiros",
+          },
+          "singular": {
+            "feminine": "primeira",
+            "masculine": "primeiro",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_primeiro_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "first",
+        "portuguese": {
+          "plural": {
+            "feminine": "primeiras",
+            "masculine": "primeiros",
+          },
+          "singular": {
+            "feminine": "primeira",
+            "masculine": "primeiro",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_primeiro_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "first",
+        "portuguese": {
+          "plural": {
+            "feminine": "primeiras",
+            "masculine": "primeiros",
+          },
+          "singular": {
+            "feminine": "primeira",
+            "masculine": "primeiro",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "courageous",
+        "feminine": {
+          "plural": "corajosas",
+          "singular": "corajosa",
+        },
+        "masculine": {
+          "plural": "corajosos",
+          "singular": "corajoso",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_corajoso_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "courageous",
+        "feminine": {
+          "plural": "corajosas",
+          "singular": "corajosa",
+        },
+        "masculine": {
+          "plural": "corajosos",
+          "singular": "corajoso",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_corajoso_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "courageous",
+        "feminine": {
+          "plural": "corajosas",
+          "singular": "corajosa",
+        },
+        "masculine": {
+          "plural": "corajosos",
+          "singular": "corajoso",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_corajoso_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "courageous",
+        "feminine": {
+          "plural": "corajosas",
+          "singular": "corajosa",
+        },
+        "masculine": {
+          "plural": "corajosos",
+          "singular": "corajoso",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_corajoso_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "irritated",
+        "feminine": {
+          "plural": "irritadas",
+          "singular": "irritada",
+        },
+        "masculine": {
+          "plural": "irritados",
+          "singular": "irritado",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "irritated",
+        "feminine": {
+          "plural": "irritadas",
+          "singular": "irritada",
+        },
+        "masculine": {
+          "plural": "irritados",
+          "singular": "irritado",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "irritated",
+        "feminine": {
+          "plural": "irritadas",
+          "singular": "irritada",
+        },
+        "masculine": {
+          "plural": "irritados",
+          "singular": "irritado",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "irritated",
+        "feminine": {
+          "plural": "irritadas",
+          "singular": "irritada",
+        },
+        "masculine": {
+          "plural": "irritados",
+          "singular": "irritado",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
   },
 ]
 `;

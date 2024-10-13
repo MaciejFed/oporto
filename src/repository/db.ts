@@ -68,6 +68,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'foi',
         Nós: 'fomos',
         'Eles/Elas/Vocēs': 'foram'
+      },
+      imperfect: {
+        Eu: 'ia',
+        Tu: 'ias',
+        'Ela/Ele/Você': 'ia',
+        Nós: 'íamos',
+        'Eles/Elas/Vocēs': 'iam'
       }
     },
     {
@@ -172,6 +179,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'soube',
         Nós: 'soubemos',
         'Eles/Elas/Vocēs': 'souberam'
+      },
+      imperfect: {
+        Eu: 'sabia',
+        Tu: 'sabias',
+        'Ela/Ele/Você': 'sabia',
+        Nós: 'sabíamos',
+        'Eles/Elas/Vocēs': 'sabiam'
       }
     },
     {
@@ -226,6 +240,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'pôde',
         Nós: 'pudemos',
         'Eles/Elas/Vocēs': 'puderam'
+      },
+      imperfect: {
+        Eu: 'podia',
+        Tu: 'podias',
+        'Ela/Ele/Você': 'podia',
+        Nós: 'podíamos',
+        'Eles/Elas/Vocēs': 'podiam'
       }
     },
     {
@@ -7025,6 +7046,14 @@ export const db: Schema = {
         plural: 'versões',
         gender: 'feminine'
       }
+    },
+    {
+      english: 'man',
+      portuguese: {
+        word: 'homen',
+        plural: 'homens',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -7578,10 +7607,6 @@ export const db: Schema = {
       english: 'any'
     },
     {
-      portuguese: 'num',
-      english: 'in a'
-    },
-    {
       portuguese: 'nem',
       english: 'nor'
     },
@@ -7648,6 +7673,54 @@ export const db: Schema = {
     {
       portuguese: 'aí',
       english: 'there'
+    },
+    {
+      portuguese: 'duas',
+      english: 'two female'
+    },
+    {
+      portuguese: 'menos',
+      english: 'less'
+    },
+    {
+      portuguese: 'tal',
+      english: 'such'
+    },
+    {
+      portuguese: 'tenha',
+      english: 'have a'
+    },
+    {
+      portuguese: 'seria',
+      english: 'would be'
+    },
+    {
+      portuguese: 'contra',
+      english: 'against'
+    },
+    {
+      portuguese: 'fosse',
+      english: 'were'
+    },
+    {
+      portuguese: 'sido',
+      english: 'has been'
+    },
+    {
+      portuguese: 'cada',
+      english: 'each'
+    },
+    {
+      portuguese: 'enquanto',
+      english: 'while'
+    },
+    {
+      portuguese: 'certeza',
+      english: 'certainty'
+    },
+    {
+      portuguese: 'daqui',
+      english: 'from here'
     }
   ],
   othersWithGender: [
@@ -7716,6 +7789,20 @@ export const db: Schema = {
         plural: {
           feminine: 'nas',
           masculine: 'nos'
+        }
+      }
+    },
+    {
+      english: 'in a',
+      portuguese: {
+        base: 'em',
+        singular: {
+          feminine: 'numa',
+          masculine: 'num'
+        },
+        plural: {
+          feminine: 'numa',
+          masculine: 'num'
         }
       }
     },
@@ -7889,6 +7976,71 @@ export const db: Schema = {
         plural: {
           masculine: 'alguns',
           feminine: 'algumas'
+        }
+      }
+    },
+    {
+      english: 'de + esta',
+      portuguese: {
+        singular: {
+          masculine: 'deste',
+          feminine: 'desta'
+        },
+        plural: {
+          masculine: 'destes',
+          feminine: 'destas'
+        }
+      }
+    },
+    {
+      english: 'first',
+      portuguese: {
+        singular: {
+          masculine: 'primeiro',
+          feminine: 'primeira'
+        },
+        plural: {
+          masculine: 'primeiros',
+          feminine: 'primeiras'
+        }
+      }
+    },
+    {
+      english: 'em + este',
+      portuguese: {
+        singular: {
+          masculine: 'neste',
+          feminine: 'nesta'
+        },
+        plural: {
+          masculine: 'nestes',
+          feminine: 'nestas'
+        }
+      }
+    },
+    {
+      english: 'so much',
+      portuguese: {
+        singular: {
+          masculine: 'tanto',
+          feminine: 'tanta'
+        },
+        plural: {
+          masculine: 'tantos',
+          feminine: 'tantas'
+        }
+      }
+    },
+    {
+      english: 'of someone',
+      portuguese: {
+        singular: {
+          masculine: 'dele',
+          feminine: 'dela'
+        },
+        plural: {
+          masculine: 'deles',
+          feminine: 'delas'
         }
       }
     }
