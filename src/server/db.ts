@@ -19,7 +19,7 @@ const collectionNameMap: Record<Language, string> = {
 };
 
 const examplesCollectionNameMap: Record<Language, string> = {
-  [Language.Portuguese]: 'examples_pt',
+  [Language.Portuguese]: 'examples_pt_v2',
   [Language.German]: 'examples_de',
   [Language.Polish]: 'examplesPL'
 };
@@ -116,7 +116,7 @@ export async function getExamples(word: string, language: Language): Promise<Wor
   const client = await getClient();
   try {
     const db = client.db(dbName);
-    const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'total'));
 
     const examples = await collectionTop.findOne({
       [word]: { $exists: true }
