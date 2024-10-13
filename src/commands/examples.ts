@@ -46,8 +46,7 @@ export async function findAllExamples(language: Language) {
         .filter((exercise) => getSingleExerciseProgress(result, exercise).progressType !== ProgressType.DONE)
         .map(extractWordToFindFromExercise)
     )
-  ]
-    .filter((word) => !savedWords.includes(word || ''))
+  ].filter((word) => !savedWords.includes(word || ''));
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     console.log(`[${i}/${words.length}]`);
