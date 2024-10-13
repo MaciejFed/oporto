@@ -10,7 +10,7 @@ describe('Verb Service', () => {
     const standardConjugations = verbs.filter((verb) => checkStandardConjugation(verb, []).isStandard);
     const nonStandardConjugations = verbs.filter((verb) => !checkStandardConjugation(verb, []).isStandard);
     expect(standardConjugations.length).toEqual(118);
-    expect(nonStandardConjugations.length).toEqual(67);
+    expect(nonStandardConjugations.length).toEqual(65);
   });
 
   it('checks the status', () => {

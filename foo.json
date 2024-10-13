@@ -1,0 +1,23 @@
+{
+  "wissen": [
+    {
+      "knownWords": [
+        "wissen",
+        "zeit"
+      ]
+    },
+    {
+      "knownWords": [
+        "foo"
+      ]
+    }
+  ],
+  "sein": [
+    {
+      "knownWords": [
+        "ist",
+        "kommt"
+      ]
+    }
+  ]
+}

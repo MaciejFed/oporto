@@ -2095,24 +2095,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to provide',
-      infinitive: 'prover',
-      presentSimple: {
-        Eu: 'provejo',
-        Tu: 'provês',
-        'Ela/Ele/Você': 'provê',
-        Nós: 'provemos',
-        'Eles/Elas/Vocēs': 'provêem'
-      },
-      pastPerfect: {
-        Eu: 'provi',
-        Tu: 'proveste',
-        'Ela/Ele/Você': 'proveu',
-        Nós: 'provemos',
-        'Eles/Elas/Vocēs': 'proveram'
-      }
-    },
-    {
       english: 'to break up',
       infinitive: 'romper',
       presentSimple: {
@@ -2848,24 +2830,6 @@ export const db: Schema = {
         'Ela/Ele/Você': 'convenceu',
         Nós: 'convencemos',
         'Eles/Elas/Vocēs': 'convenceram'
-      }
-    },
-    {
-      english: 'to scratch',
-      infinitive: 'coçar',
-      presentSimple: {
-        Eu: 'coço',
-        Tu: 'coças',
-        'Ela/Ele/Você': 'coça',
-        Nós: 'coçamos',
-        'Eles/Elas/Vocēs': 'coçam'
-      },
-      pastPerfect: {
-        Eu: 'cocei',
-        Tu: 'coçaste',
-        'Ela/Ele/Você': 'coçou',
-        Nós: 'coçámos',
-        'Eles/Elas/Vocēs': 'coçaram'
       }
     },
     {

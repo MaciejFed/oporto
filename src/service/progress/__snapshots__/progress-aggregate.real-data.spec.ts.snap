@@ -1155,7 +1155,6 @@ exports[`Progress Aggregate PT 1`] = `
           "servir",
           "transformar-se",
           "significar",
-          "prover",
           "ouvir",
           "pedir",
           "brincar",
@@ -1189,7 +1188,7 @@ exports[`Progress Aggregate PT 1`] = `
           "subir",
           "convencer",
         ],
-        "count": 55,
+        "count": 54,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -1217,7 +1216,6 @@ exports[`Progress Aggregate PT 1`] = `
           "trazer",
           "transformar-se",
           "significar",
-          "prover",
           "permanecer",
           "obter",
           "brincar",
@@ -1239,7 +1237,7 @@ exports[`Progress Aggregate PT 1`] = `
           "oferecer",
           "rir",
         ],
-        "count": 45,
+        "count": 44,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -1266,7 +1264,6 @@ exports[`Progress Aggregate PT 1`] = `
           "adormecer",
           "fugir",
           "convencer",
-          "coçar",
           "piscar",
           "haver",
           "parecer",
@@ -1278,13 +1275,12 @@ exports[`Progress Aggregate PT 1`] = `
           "dançar",
           "explicar",
           "negar",
-          "prover",
           "ser",
           "estar",
           "ter",
           "querer",
         ],
-        "count": 40,
+        "count": 38,
       },
     },
     "VerbTranslation": {
@@ -1419,7 +1415,6 @@ exports[`Progress Aggregate PT 1`] = `
           "significar",
           "salvar",
           "sarar",
-          "prover",
           "romper",
           "permanecer",
           "precisar",
@@ -1460,7 +1455,6 @@ exports[`Progress Aggregate PT 1`] = `
           "defender",
           "fugir",
           "convencer",
-          "coçar",
           "bater",
           "piscar",
           "deixar",
@@ -1470,7 +1464,7 @@ exports[`Progress Aggregate PT 1`] = `
           "atirar",
           "puxar",
         ],
-        "count": 179,
+        "count": 177,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -1503,7 +1497,6 @@ exports[`Progress Aggregate PT 1`] = `
           "segurar",
           "salvar",
           "sarar",
-          "prover",
           "romper",
           "permanecer",
           "precisar",
@@ -1527,13 +1520,12 @@ exports[`Progress Aggregate PT 1`] = `
           "adormecer",
           "acordar",
           "convencer",
-          "coçar",
           "bater",
           "avistar",
           "atirar",
           "acertar",
         ],
-        "count": 58,
+        "count": 56,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -2035,12 +2027,6 @@ exports[`Progress Aggregate PT 1`] = `
       "total": 284,
     },
     {
-      "baseWord": "prover",
-      "incorrectAnswers": 11,
-      "pointsMissing": 8,
-      "total": 283,
-    },
-    {
       "baseWord": "sair",
       "incorrectAnswers": 11,
       "pointsMissing": -4,
@@ -2255,12 +2241,6 @@ exports[`Progress Aggregate PT 1`] = `
       "incorrectAnswers": 7,
       "pointsMissing": 1,
       "total": 176,
-    },
-    {
-      "baseWord": "coçar",
-      "incorrectAnswers": 7,
-      "pointsMissing": -2,
-      "total": 173,
     },
     {
       "baseWord": "soltar",
@@ -3790,7 +3770,6 @@ exports[`Progress Aggregate PT 1`] = `
           "trazer",
           "transformar-se",
           "significar",
-          "prover",
           "permanecer",
           "ouvir",
           "pedir",
@@ -3804,7 +3783,6 @@ exports[`Progress Aggregate PT 1`] = `
           "adormecer",
           "fugir",
           "convencer",
-          "coçar",
           "piscar",
           "esquecer",
           "vestir",
@@ -3855,7 +3833,7 @@ exports[`Progress Aggregate PT 1`] = `
           "atirar",
           "acertar",
         ],
-        "count": 93,
+        "count": 91,
       },
       "NEVER_DONE": {
         "baseWords": [
