@@ -37,6 +37,10 @@ export async function getKnownPercentage(language: Language): Promise<number> {
   let known = 0;
   let unKnown = 0;
   let counter = 0;
+  const pairCounts: { [name: string]: number} = {};
+  const thirdsCounts: { [name: string]: number} = {};
+  const forthCounts: { [name: string]: number} = {};
+  const sixCounts: { [name: string]: number} = {};
 
   const readInterfaceTarget = readline.createInterface({
     input: fs.createReadStream(examplesPaths[language].targetLanguagePath)
@@ -79,6 +83,18 @@ export async function getKnownPercentage(language: Language): Promise<number> {
         console.log(`Result: [${(known / (known + unKnown)) * 100}%]`);
       }
     });
+    if (sentenceWords.length > 4) {
+      for (let i = 0; i < sentenceWords.length - 3; i++) {
+        const pair = `[${sentenceWords[i]} ${sentenceWords[i + 1]}]`;
+        const third = `[${sentenceWords[i]} ${sentenceWords[i + 1]} ${sentenceWords[i + 2]}]`;
+        const forth = `[${sentenceWords[i]} ${sentenceWords[i + 1]} ${sentenceWords[i + 2]} ${sentenceWords[i + 3]}]`;
+        const six = `[${sentenceWords[i]} ${sentenceWords[i + 1]} ${sentenceWords[i + 2]} ${sentenceWords[i + 3]} ${sentenceWords[i + 4]} ${sentenceWords[i + 5]}]`;
+        pairCounts[pair] = (pairCounts[pair] || 0) + 1;
+        thirdsCounts[third] = (thirdsCounts[third] || 0) + 1;
+        forthCounts[forth] = (forthCounts[forth] || 0) + 1;
+        sixCounts[forth] = (sixCounts[six] || 0) + 1;
+      }
+    }
   }
 
   readInterfaceTarget.close();
@@ -110,7 +126,20 @@ export async function getKnownPercentage(language: Language): Promise<number> {
     cutNumber(sumUntil(index, unknowns as any))
   ]);
 
+  const sortedPairCounts = Object.entries(pairCounts)
+    .sort((a, b) => b[1] - a[1]);
+  const sortedThirdCounts = Object.entries(thirdsCounts)
+    .sort((a, b) => b[1] - a[1])
+  const sortedForthCounts = Object.entries(forthCounts)
+    .sort((a, b) => b[1] - a[1])
+
   unknownWords.length = 0;
+  sortedPairCounts.length = 100;
+  thirdsCounts.length = 100;
+  forthCounts.length = 100;
+  console.log(sortedPairCounts)
+  console.log(sortedThirdCounts)
+  console.log(sortedForthCounts)
 
   return (known / (known + unKnown)) * 100;
 }

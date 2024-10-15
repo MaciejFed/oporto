@@ -5679,43 +5679,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 150,
   },
   {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "irritated",
-        "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
-        },
-        "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "masculine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortugueseFromHearing",
-      "number": "singular",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 150,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -10,
-      },
-    ],
-    "priorityValueTotal": 140,
-  },
-  {
     "exercise": VerbExercise {
       "equal": [Function],
       "exerciseType": "VerbExercise",
@@ -6290,43 +6253,6 @@ exports[`Priority PT 1`] = `
       {
         "priorityName": "EXERCISE_CORRECT",
         "priorityValue": -290,
-      },
-    ],
-    "priorityValueTotal": 40,
-  },
-  {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "green",
-        "feminine": {
-          "plural": "verdes",
-          "singular": "verde",
-        },
-        "masculine": {
-          "plural": "verdes",
-          "singular": "verde",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_verde_toPortuguese",
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 60,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -20,
       },
     ],
     "priorityValueTotal": 40,
@@ -8167,14 +8093,14 @@ exports[`Priority PT 1`] = `
   {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
-        "english": "irritated",
+        "english": "last",
         "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
+          "plural": "últimas",
+          "singular": "última",
         },
         "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
+          "plural": "últimos",
+          "singular": "último",
         },
       },
       "equal": [Function],
@@ -8185,9 +8111,42 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toEnglish",
+      "name": "AdjectiveTranslation_último_toPortugueseFromHearing",
       "number": "singular",
-      "translationType": "toEnglish",
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "same",
+        "feminine": {
+          "plural": "mesmas",
+          "singular": "mesma",
+        },
+        "masculine": {
+          "plural": "mesmos",
+          "singular": "mesmo",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_mesmo_toPortugueseFromHearing",
+      "number": "singular",
+      "translationType": "toPortugueseFromHearing",
     },
     "priorities": [
       {
@@ -8796,6 +8755,80 @@ exports[`Priority PT 1`] = `
           },
         },
       },
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "last",
+        "feminine": {
+          "plural": "últimas",
+          "singular": "última",
+        },
+        "masculine": {
+          "plural": "últimos",
+          "singular": "último",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_último_toEnglish",
+      "number": "singular",
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "same",
+        "feminine": {
+          "plural": "mesmas",
+          "singular": "mesma",
+        },
+        "masculine": {
+          "plural": "mesmos",
+          "singular": "mesmo",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_mesmo_toEnglish",
+      "number": "singular",
       "translationType": "toEnglish",
     },
     "priorities": [
@@ -10010,14 +10043,14 @@ exports[`Priority PT 1`] = `
   {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
-        "english": "irritated",
+        "english": "last",
         "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
+          "plural": "últimas",
+          "singular": "última",
         },
         "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
+          "plural": "últimos",
+          "singular": "último",
         },
       },
       "equal": [Function],
@@ -10028,7 +10061,7 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "name": "AdjectiveTranslation_último_toPortuguese",
       "number": "singular",
       "translationType": "toPortuguese",
     },
@@ -10047,14 +10080,14 @@ exports[`Priority PT 1`] = `
   {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
-        "english": "irritated",
+        "english": "last",
         "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
+          "plural": "últimas",
+          "singular": "última",
         },
         "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
+          "plural": "últimos",
+          "singular": "último",
         },
       },
       "equal": [Function],
@@ -10065,7 +10098,7 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "name": "AdjectiveTranslation_último_toPortuguese",
       "number": "plural",
       "translationType": "toPortuguese",
     },
@@ -10084,14 +10117,14 @@ exports[`Priority PT 1`] = `
   {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
-        "english": "irritated",
+        "english": "last",
         "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
+          "plural": "últimas",
+          "singular": "última",
         },
         "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
+          "plural": "últimos",
+          "singular": "último",
         },
       },
       "equal": [Function],
@@ -10102,7 +10135,7 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "name": "AdjectiveTranslation_último_toPortuguese",
       "number": "singular",
       "translationType": "toPortuguese",
     },
@@ -10121,14 +10154,14 @@ exports[`Priority PT 1`] = `
   {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
-        "english": "irritated",
+        "english": "last",
         "feminine": {
-          "plural": "irritadas",
-          "singular": "irritada",
+          "plural": "últimas",
+          "singular": "última",
         },
         "masculine": {
-          "plural": "irritados",
-          "singular": "irritado",
+          "plural": "últimos",
+          "singular": "último",
         },
       },
       "equal": [Function],
@@ -10139,7 +10172,155 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "AdjectiveTranslation_irritado_toPortuguese",
+      "name": "AdjectiveTranslation_último_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "same",
+        "feminine": {
+          "plural": "mesmas",
+          "singular": "mesma",
+        },
+        "masculine": {
+          "plural": "mesmos",
+          "singular": "mesmo",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_mesmo_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "same",
+        "feminine": {
+          "plural": "mesmas",
+          "singular": "mesma",
+        },
+        "masculine": {
+          "plural": "mesmos",
+          "singular": "mesmo",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_mesmo_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "same",
+        "feminine": {
+          "plural": "mesmas",
+          "singular": "mesma",
+        },
+        "masculine": {
+          "plural": "mesmos",
+          "singular": "mesmo",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_mesmo_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "same",
+        "feminine": {
+          "plural": "mesmas",
+          "singular": "mesma",
+        },
+        "masculine": {
+          "plural": "mesmos",
+          "singular": "mesmo",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_mesmo_toPortuguese",
       "number": "plural",
       "translationType": "toPortuguese",
     },

@@ -3947,6 +3947,7 @@ export const db: Schema = {
       english: 'turn',
       portuguese: {
         word: 'vez',
+        plural: 'vezes',
         gender: 'feminine'
       }
     },
@@ -5220,6 +5221,14 @@ export const db: Schema = {
         word: 'caneta',
         plural: 'canetas',
         gender: 'feminine'
+      }
+    },
+    {
+      english: 'pencil',
+      portuguese: {
+        word: 'lápis',
+        plural: 'lápis',
+        gender: 'masculine'
       }
     },
     {
@@ -7054,6 +7063,99 @@ export const db: Schema = {
         plural: 'homens',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'folks',
+      portuguese: {
+        word: 'gente',
+        plural: 'gentes',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'capitan',
+      portuguese: {
+        word: 'capitão',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'manner',
+      portuguese: {
+        word: 'maneira',
+        plural: 'maneiras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'blanket',
+      portuguese: {
+        word: 'manta',
+        plural: 'mantas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'ladder',
+      portuguese: {
+        word: 'escadote',
+        plural: 'escadote',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'ceiling',
+      portuguese: {
+        word: 'teto',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'armchair',
+      portuguese: {
+        word: 'cadeirão',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'hourglass',
+      portuguese: {
+        word: 'ampulheta',
+        plural: 'ampulhetas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'handle',
+      portuguese: {
+        word: 'puxador',
+        plural: 'puxadores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'steam',
+      portuguese: {
+        word: 'vapor',
+        plural: 'vapores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'tiles',
+      portuguese: {
+        word: 'azulejo',
+        plural: 'azulejos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'pleasure',
+      portuguese: {
+        word: 'prazer',
+        plural: 'prazeres',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -7417,10 +7519,7 @@ export const db: Schema = {
       portuguese: 'mais',
       english: 'more'
     },
-    {
-      portuguese: 'muito',
-      english: 'very'
-    },
+
     {
       portuguese: 'novamente',
       english: 'again'
@@ -7721,6 +7820,22 @@ export const db: Schema = {
     {
       portuguese: 'daqui',
       english: 'from here'
+    },
+    {
+      portuguese: 'mal',
+      english: 'badly'
+    },
+    {
+      portuguese: 'além',
+      english: 'in addition'
+    },
+    {
+      portuguese: 'cima',
+      english: 'top'
+    },
+    {
+      portuguese: 'polícia',
+      english: 'police'
     }
   ],
   othersWithGender: [
@@ -8041,6 +8156,32 @@ export const db: Schema = {
         plural: {
           masculine: 'deles',
           feminine: 'delas'
+        }
+      }
+    },
+    {
+      english: 'your formal',
+      portuguese: {
+        singular: {
+          masculine: 'vosso',
+          feminine: 'vossa'
+        },
+        plural: {
+          masculine: 'vossos',
+          feminine: 'vossas'
+        }
+      }
+    },
+    {
+      english: 'many',
+      portuguese: {
+        singular: {
+          masculine: 'muito',
+          feminine: 'muita'
+        },
+        plural: {
+          masculine: 'muitos',
+          feminine: 'muitas'
         }
       }
     }
@@ -9088,6 +9229,28 @@ export const db: Schema = {
       feminine: {
         singular: 'presa',
         plural: 'presas'
+      }
+    },
+    {
+      english: 'last',
+      masculine: {
+        singular: 'último',
+        plural: 'últimos'
+      },
+      feminine: {
+        singular: 'última',
+        plural: 'últimas'
+      }
+    },
+    {
+      english: 'same',
+      masculine: {
+        singular: 'mesmo',
+        plural: 'mesmos'
+      },
+      feminine: {
+        singular: 'mesma',
+        plural: 'mesmas'
       }
     }
   ],
