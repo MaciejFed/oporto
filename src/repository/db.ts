@@ -7156,6 +7156,14 @@ export const db: Schema = {
         plural: 'prazeres',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'agreement',
+      portuguese: {
+        word: 'acordo',
+        plural: 'acordos',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -7510,10 +7518,6 @@ export const db: Schema = {
     {
       english: 'out',
       portuguese: 'fora'
-    },
-    {
-      portuguese: 'mesmo',
-      english: 'even'
     },
     {
       portuguese: 'mais',

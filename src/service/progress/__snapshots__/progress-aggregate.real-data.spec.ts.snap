@@ -863,8 +863,9 @@ exports[`Progress Aggregate PT 1`] = `
           "vapor",
           "azulejo",
           "prazer",
+          "acordo",
         ],
-        "count": 71,
+        "count": 72,
       },
     },
     "OtherTranslation": {
@@ -950,7 +951,6 @@ exports[`Progress Aggregate PT 1`] = `
           "demais",
           "depressa",
           "fora",
-          "mesmo",
           "mais",
           "novamente",
           "pacientemente",
@@ -989,7 +989,7 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 118,
+        "count": 117,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -2938,7 +2938,6 @@ exports[`Progress Aggregate PT 1`] = `
       "IN_PROGRESS": {
         "baseWords": [
           "último",
-          "mesmo",
           "raso",
           "cego",
           "corajoso",
@@ -2964,13 +2963,14 @@ exports[`Progress Aggregate PT 1`] = `
           "desapontado",
           "preso",
         ],
-        "count": 26,
+        "count": 25,
       },
       "NEVER_DONE": {
         "baseWords": [
           "ligado",
+          "mesmo",
         ],
-        "count": 1,
+        "count": 2,
       },
     },
     "NOUN": {
@@ -3511,8 +3511,9 @@ exports[`Progress Aggregate PT 1`] = `
           "vapor",
           "azulejo",
           "prazer",
+          "acordo",
         ],
-        "count": 16,
+        "count": 17,
       },
     },
     "OTHER": {
