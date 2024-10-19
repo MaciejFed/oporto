@@ -3184,7 +3184,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to look for',
+      english: 'to look for a thing',
       infinitive: 'buscar',
       presentSimple: {
         Eu: 'busco',
@@ -3254,7 +3254,7 @@ export const db: Schema = {
         Nós: 'perdemos',
         'Eles/Elas/Vocēs': 'perderam'
       }
-    },//pesquisar lambão
+    }, // pesquisar lambão
     {
       english: 'to look for',
       infinitive: 'procurar',
