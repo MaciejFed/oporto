@@ -17,6 +17,10 @@ export type Verb = {
   presentSimple: { [key in Person]: string };
   pastPerfect?: { [key in Person]: string };
   imperfect?: { [key in Person]: string };
+  otherForms?: {
+    portuguese: string;
+    english: string;
+  }[];
 };
 
 export type WordTypes = Noun | Verb | Other | Adjective;
@@ -286,7 +290,12 @@ const verbs = [
   'haver',
   'vir',
   'parecer',
-  'dever'
+  'dever',
+  'buscar',
+  'matar',
+  'tirar',
+  'perder',
+  'procurar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

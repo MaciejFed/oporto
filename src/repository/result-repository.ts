@@ -25,6 +25,7 @@ import { PolishNounTranslationExercise } from '../exercise/translation/pl/polish
 import { PolishVerbTranslationExercise } from '../exercise/translation/pl/polish-verb-translation-exercise';
 import { PolishOtherTranslationExercise } from '../exercise/translation/pl/polish-other-translation-exercise';
 import { OtherGenderTranslationExercise } from '../exercise/translation/other-gender-translation-exercise';
+import { VerbOtherFormTranslationExercise } from '../exercise/translation/verb-other-form-translation-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -129,6 +130,14 @@ function createVerbTranslationExercise(exerciseData: any) {
   return verbTranslationExercise;
 }
 
+function createVerbOtherFormTranslationExercise(exerciseData: any) {
+  const verbOtherFormTranslationExercise = new VerbOtherFormTranslationExercise();
+  Object.assign(verbOtherFormTranslationExercise, exerciseData);
+  assert(verbOtherFormTranslationExercise.verb);
+  assert(verbOtherFormTranslationExercise.translationType);
+  return verbOtherFormTranslationExercise;
+}
+
 function createSentenceTranslationExercise(exerciseData: any) {
   const sentenceTranslationExercise = new SentenceTranslationExercise();
   Object.assign(sentenceTranslationExercise, exerciseData);
@@ -171,6 +180,7 @@ export const exerciseFactory = {
   NounTranslation: createNounTranslationExercise,
   AdjectiveTranslation: createAdjectiveTranslationExercise,
   VerbTranslation: createVerbTranslationExercise,
+  VerbOtherFormTranslation: createVerbOtherFormTranslationExercise,
   SentenceTranslation: createSentenceTranslationExercise,
   PhraseTranslation: createPhraseTranslationExercise,
   OtherTranslation: createOtherTranslationExercise,

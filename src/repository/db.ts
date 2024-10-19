@@ -50,7 +50,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'estava',
         Nós: 'estávamos',
         'Eles/Elas/Vocēs': 'estavam'
-      }
+      },
+      otherForms: [
+        {
+          portuguese: 'esteja',
+          english: 'is'
+        }
+      ]
     },
     {
       english: 'to go',
@@ -75,7 +81,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'ia',
         Nós: 'íamos',
         'Eles/Elas/Vocēs': 'iam'
-      }
+      },
+      otherForms: [
+        {
+          portuguese: 'irá',
+          english: 'will go'
+        }
+      ]
     },
     {
       english: 'to have',
@@ -100,7 +112,21 @@ export const db: Schema = {
         'Ela/Ele/Você': 'tinha',
         Nós: 'tínhamos',
         'Eles/Elas/Vocēs': 'tinham'
-      }
+      },
+      otherForms: [
+        {
+          english: 'teria',
+          portuguese: 'would have'
+        },
+        {
+          english: 'tivesse',
+          portuguese: 'if I had'
+        },
+        {
+          english: 'terá',
+          portuguese: 'will have'
+        }
+      ]
     },
     {
       english: 'to want',
@@ -161,7 +187,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'fez',
         Nós: 'fizemos',
         'Eles/Elas/Vocēs': 'fizeram'
-      }
+      },
+      otherForms: [
+        {
+          portuguese: 'faça',
+          english: 'do'
+        }
+      ]
     },
     {
       english: 'to know',
@@ -222,7 +254,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'disse',
         Nós: 'dissemos',
         'Eles/Elas/Vocēs': 'disseram'
-      }
+      },
+      otherForms: [
+        {
+          english: 'say',
+          portuguese: 'diga'
+        }
+      ]
     },
     {
       english: 'can',
@@ -247,7 +285,17 @@ export const db: Schema = {
         'Ela/Ele/Você': 'podia',
         Nós: 'podíamos',
         'Eles/Elas/Vocēs': 'podiam'
-      }
+      },
+      otherForms: [
+        {
+          english: 'could',
+          portuguese: 'poderia'
+        },
+        {
+          english: 'if I can',
+          portuguese: 'possa'
+        }
+      ]
     },
     {
       english: 'to speak',
@@ -690,7 +738,27 @@ export const db: Schema = {
         'Ela/Ele/Você': 'fica',
         Nós: 'ficamos',
         'Eles/Elas/Vocēs': 'ficam'
-      }
+      },
+      pastPerfect: {
+        Eu: 'fiquei',
+        Tu: 'ficaste',
+        'Ela/Ele/Você': 'ficou',
+        Nós: 'ficámos',
+        'Eles/Elas/Vocēs': 'ficaram'
+      },
+      imperfect: {
+        Eu: 'ficava',
+        Tu: 'ficavas',
+        'Ela/Ele/Você': 'ficava',
+        Nós: 'ficávamos',
+        'Eles/Elas/Vocēs': 'ficavam'
+      },
+      otherForms: [
+        {
+          english: 'stay',
+          portuguese: 'fique'
+        }
+      ]
     },
     {
       english: 'to get up',
@@ -745,7 +813,27 @@ export const db: Schema = {
         'Ela/Ele/Você': 'gosta',
         Nós: 'gostamos',
         'Eles/Elas/Vocēs': 'gostam'
-      }
+      },
+      pastPerfect: {
+        Eu: 'gostei',
+        Tu: 'gostaste',
+        'Ela/Ele/Você': 'gostou',
+        Nós: 'gostámos',
+        'Eles/Elas/Vocēs': 'gostaram'
+      },
+      imperfect: {
+        Eu: 'gostava',
+        Tu: 'gostavas',
+        'Ela/Ele/Você': 'gostava',
+        Nós: 'gostávamos',
+        'Eles/Elas/Vocēs': 'gostavam'
+      },
+      otherForms: [
+        {
+          english: 'would like to',
+          portuguese: 'gostaria'
+        }
+      ]
     },
     {
       english: 'to start',
@@ -1879,7 +1967,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'vinha',
         Nós: 'vínhamos',
         'Eles/Elas/Vocēs': 'vinham'
-      }
+      },
+      otherForms: [
+        {
+          english: 'come',
+          portuguese: 'venha'
+        }
+      ]
     },
     {
       english: 'to serve',
@@ -2905,7 +2999,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'deixou',
         Nós: 'deixámos',
         'Eles/Elas/Vocēs': 'deixaram'
-      }
+      },
+      otherForms: [
+        {
+          portuguese: 'deixe',
+          english: 'give me'
+        }
+      ]
     },
     {
       english: 'to catch sight of',
@@ -3081,6 +3181,103 @@ export const db: Schema = {
         'Ela/Ele/Você': 'parecia',
         Nós: 'parecíamos',
         'Eles/Elas/Vocēs': 'pareciam'
+      }
+    },
+    {
+      english: 'to look for',
+      infinitive: 'buscar',
+      presentSimple: {
+        Eu: 'busco',
+        Tu: 'buscas',
+        'Ela/Ele/Você': 'busca',
+        Nós: 'buscamos',
+        'Eles/Elas/Vocēs': 'buscam'
+      },
+      pastPerfect: {
+        Eu: 'busquei',
+        Tu: 'buscaste',
+        'Ela/Ele/Você': 'buscou',
+        Nós: 'buscámos',
+        'Eles/Elas/Vocēs': 'buscaram'
+      }
+    },
+    {
+      english: 'to kill',
+      infinitive: 'matar',
+      presentSimple: {
+        Eu: 'mato',
+        Tu: 'matas',
+        'Ela/Ele/Você': 'mata',
+        Nós: 'matamos',
+        'Eles/Elas/Vocēs': 'matam'
+      },
+      pastPerfect: {
+        Eu: 'matei',
+        Tu: 'mataste',
+        'Ela/Ele/Você': 'matou',
+        Nós: 'matámos',
+        'Eles/Elas/Vocēs': 'mataram'
+      }
+    },
+    {
+      english: 'to take',
+      infinitive: 'tirar',
+      presentSimple: {
+        Eu: 'tiro',
+        Tu: 'tiras',
+        'Ela/Ele/Você': 'tira',
+        Nós: 'tiramos',
+        'Eles/Elas/Vocēs': 'tiram'
+      },
+      pastPerfect: {
+        Eu: 'tirei',
+        Tu: 'tiraste',
+        'Ela/Ele/Você': 'tirou',
+        Nós: 'tirámos',
+        'Eles/Elas/Vocēs': 'tiraram'
+      }
+    },
+    {
+      english: 'to lose',
+      infinitive: 'perder',
+      presentSimple: {
+        Eu: 'perco',
+        Tu: 'perdes',
+        'Ela/Ele/Você': 'perde',
+        Nós: 'perdemos',
+        'Eles/Elas/Vocēs': 'perdem'
+      },
+      pastPerfect: {
+        Eu: 'perdi',
+        Tu: 'perdeste',
+        'Ela/Ele/Você': 'perdeu',
+        Nós: 'perdemos',
+        'Eles/Elas/Vocēs': 'perderam'
+      }
+    },
+    {
+      english: 'to lose',
+      infinitive: 'procurar',
+      presentSimple: {
+        Eu: 'procuro',
+        Tu: 'procuras',
+        'Ela/Ele/Você': 'procura',
+        Nós: 'procuramos',
+        'Eles/Elas/Vocēs': 'procuram'
+      },
+      pastPerfect: {
+        Eu: 'procurei',
+        Tu: 'procuraste',
+        'Ela/Ele/Você': 'procurou',
+        Nós: 'procurastes',
+        'Eles/Elas/Vocēs': 'procuraram'
+      },
+      imperfect: {
+        Eu: 'procurava',
+        Tu: 'procuravas',
+        'Ela/Ele/Você': 'procurava',
+        Nós: 'procurávamos',
+        'Eles/Elas/Vocēs': 'procuravam'
       }
     }
   ],
@@ -3335,6 +3532,7 @@ export const db: Schema = {
       english: 'women',
       portuguese: {
         word: 'mulher',
+        plural: 'mulheres',
         gender: 'feminine'
       }
     },
@@ -7164,6 +7362,46 @@ export const db: Schema = {
         plural: 'acordos',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'girl',
+      portuguese: {
+        word: 'menina',
+        plural: 'meninas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'ship',
+      portuguese: {
+        word: 'nave',
+        plural: 'naves',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'favor',
+      portuguese: {
+        word: 'favor',
+        plural: 'favores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'husband',
+      portuguese: {
+        word: 'marido',
+        plural: 'maridos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'uncle',
+      portuguese: {
+        word: 'tio',
+        plural: 'tios',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -7318,10 +7556,6 @@ export const db: Schema = {
     {
       english: 'Sunday',
       portuguese: 'domingo'
-    },
-    {
-      english: 'only',
-      portuguese: 'único'
     },
     {
       english: 'every',
@@ -7840,6 +8074,38 @@ export const db: Schema = {
     {
       portuguese: 'polícia',
       english: 'police'
+    },
+    {
+      portuguese: 'mil',
+      english: 'thousand'
+    },
+    {
+      portuguese: 'miss',
+      english: 'miss'
+    },
+    {
+      portuguese: 'comigo',
+      english: 'with me'
+    },
+    {
+      portuguese: 'contigo',
+      english: 'with you'
+    },
+    {
+      portuguese: 'pena',
+      english: 'pity'
+    },
+    {
+      portuguese: 'raio',
+      english: 'radius'
+    },
+    {
+      portuguese: 'sequer',
+      english: 'not even'
+    },
+    {
+      portuguese: 'sob',
+      english: 'under'
     }
   ],
   othersWithGender: [
@@ -8186,6 +8452,45 @@ export const db: Schema = {
         plural: {
           masculine: 'muitos',
           feminine: 'muitas'
+        }
+      }
+    },
+    {
+      english: 'only',
+      portuguese: {
+        singular: {
+          masculine: 'único',
+          feminine: 'única'
+        },
+        plural: {
+          masculine: 'únicos',
+          feminine: 'únicas'
+        }
+      }
+    },
+    {
+      english: 'not any',
+      portuguese: {
+        singular: {
+          masculine: 'nenhum',
+          feminine: 'nenhuma'
+        },
+        plural: {
+          masculine: 'nenhuns',
+          feminine: 'nenhumas'
+        }
+      }
+    },
+    {
+      english: 'too much',
+      portuguese: {
+        singular: {
+          masculine: 'demasiado',
+          feminine: 'demasiada'
+        },
+        plural: {
+          masculine: 'demasiados',
+          feminine: 'demasiadas'
         }
       }
     }
@@ -9255,6 +9560,50 @@ export const db: Schema = {
       feminine: {
         singular: 'mesma',
         plural: 'mesmas'
+      }
+    },
+    {
+      english: 'done',
+      masculine: {
+        singular: 'feito',
+        plural: 'feitos'
+      },
+      feminine: {
+        singular: 'feita',
+        plural: 'feitas'
+      }
+    },
+    {
+      english: 'bigger',
+      masculine: {
+        singular: 'maior',
+        plural: 'maiores'
+      },
+      feminine: {
+        singular: 'maior',
+        plural: 'maiores'
+      }
+    },
+    {
+      english: 'enough',
+      masculine: {
+        singular: 'bastante',
+        plural: 'bastantes'
+      },
+      feminine: {
+        singular: 'bastante',
+        plural: 'bastantes'
+      }
+    },
+    {
+      english: 'difficult',
+      masculine: {
+        singular: 'difícil',
+        plural: 'difíceis'
+      },
+      feminine: {
+        singular: 'difícil',
+        plural: 'difíceis'
       }
     }
   ],

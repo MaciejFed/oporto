@@ -153,6 +153,9 @@ export function getProgress(results: Result[], language: Language): Progress[] {
 export function getAllUniqueWordsConjugated(language: Language): string[] {
   if (language === Language.Portuguese) {
     const nouns = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural]);
+    const otherFormVerbs = readAll()
+      .verbs.filter((verb) => verb.otherForms)
+      .flatMap((verb) => verb.otherForms?.map((v) => v.portuguese));
     const verbs = readAll().verbs.flatMap((verb) => [
       verb.infinitive,
       verb.presentSimple.Eu,
@@ -186,7 +189,7 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
       adjective.feminine.plural
     ]);
 
-    const allWords = [nouns, verbs, others, othersWithGender, adjectives]
+    const allWords = [nouns, verbs, otherFormVerbs, others, othersWithGender, adjectives]
       .flatMap((w) => w)
       .filter((w) => w !== undefined)
       .map((w) => w!.toLowerCase())
@@ -308,6 +311,7 @@ export function getExerciseProgressMap(
   const mapGeneratingStartTime = Date.now();
   const exerciseTypesPt: ExerciseType[] = [
     'VerbExercise',
+    'VerbOtherFormTranslation',
     'SentenceTranslation',
     'NounTranslation',
     'OtherTranslation',
@@ -344,6 +348,7 @@ export function getExerciseProgressMap(
     OtherWithGenderTranslation: [],
     AdjectiveTranslation: [],
     VerbTranslation: [],
+    VerbOtherFormTranslation: [],
     SentenceTranslation: [],
     PhraseTranslation: [],
     GermanOtherTranslation: [],

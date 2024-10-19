@@ -18,6 +18,7 @@ export type ExerciseType =
   | 'GermanCaseExercise'
   | 'AdjectiveTranslation'
   | 'VerbTranslation'
+  | 'VerbOtherFormTranslation'
   | 'SentenceTranslation'
   | 'PhraseTranslation'
   | 'OtherWithGenderTranslation'
@@ -31,6 +32,7 @@ export const translationTypes: ExerciseType[] = [
   'PolishNounTranslation',
   'PolishOtherTranslation',
   'VerbTranslation',
+  'VerbOtherFormTranslation',
   'OtherTranslation',
   'AdjectiveTranslation',
   'PhraseTranslation',

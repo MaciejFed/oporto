@@ -5644,50 +5644,6 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Eles/Elas/Vocēs",
-      "person": "Eles/Elas/Vocēs",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "presentSimple",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 330,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -180,
-      },
-    ],
-    "priorityValueTotal": 150,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
       "name": "VerbExercise_poder_Ela/Ele/Você",
       "person": "Ela/Ele/Você",
       "verb": {
@@ -5700,6 +5656,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -5758,50 +5724,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 130,
   },
   {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Tu",
-      "person": "Tu",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "presentSimple",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 180,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -70,
-      },
-    ],
-    "priorityValueTotal": 110,
-  },
-  {
     "exercise": NounTranslationExercise {
       "equal": [Function],
       "exerciseType": "NounTranslation",
@@ -5832,50 +5754,6 @@ exports[`Priority PT 1`] = `
       },
     ],
     "priorityValueTotal": 110,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Nós",
-      "person": "Nós",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "presentSimple",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 180,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -80,
-      },
-    ],
-    "priorityValueTotal": 100,
   },
   {
     "exercise": OtherTranslationExercise {
@@ -6099,6 +5977,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -6230,34 +6118,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 40,
   },
   {
-    "exercise": OtherTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "OtherTranslation",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherTranslation_ainda_toEnglish",
-      "other": {
-        "english": "still",
-        "portuguese": "ainda",
-      },
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 330,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -290,
-      },
-    ],
-    "priorityValueTotal": 40,
-  },
-  {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
         "english": "green",
@@ -6337,6 +6197,271 @@ exports[`Priority PT 1`] = `
       },
     ],
     "priorityValueTotal": 30,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Eu",
+      "person": "Eu",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "pastPerfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Tu",
+      "person": "Tu",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "pastPerfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Ela/Ele/Você",
+      "person": "Ela/Ele/Você",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "pastPerfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Nós",
+      "person": "Nós",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "pastPerfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Eles/Elas/Vocēs",
+      "person": "Eles/Elas/Vocēs",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "pastPerfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
   },
   {
     "exercise": VerbExercise {
@@ -6595,6 +6720,12 @@ exports[`Priority PT 1`] = `
           "Tu": "estavas",
         },
         "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
           "Eles/Elas/Vocēs": "estiveram",
@@ -6642,6 +6773,12 @@ exports[`Priority PT 1`] = `
           "Tu": "estavas",
         },
         "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
           "Eles/Elas/Vocēs": "estiveram",
@@ -6689,6 +6826,12 @@ exports[`Priority PT 1`] = `
           "Tu": "estavas",
         },
         "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
           "Eles/Elas/Vocēs": "estiveram",
@@ -6736,6 +6879,12 @@ exports[`Priority PT 1`] = `
           "Tu": "estavas",
         },
         "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
           "Eles/Elas/Vocēs": "estiveram",
@@ -6783,6 +6932,12 @@ exports[`Priority PT 1`] = `
           "Tu": "estavas",
         },
         "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
           "Eles/Elas/Vocēs": "estiveram",
@@ -6830,6 +6985,12 @@ exports[`Priority PT 1`] = `
           "Tu": "ias",
         },
         "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "foi",
           "Eles/Elas/Vocēs": "foram",
@@ -6877,6 +7038,12 @@ exports[`Priority PT 1`] = `
           "Tu": "ias",
         },
         "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "foi",
           "Eles/Elas/Vocēs": "foram",
@@ -6924,6 +7091,12 @@ exports[`Priority PT 1`] = `
           "Tu": "ias",
         },
         "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "foi",
           "Eles/Elas/Vocēs": "foram",
@@ -6971,6 +7144,12 @@ exports[`Priority PT 1`] = `
           "Tu": "ias",
         },
         "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "foi",
           "Eles/Elas/Vocēs": "foram",
@@ -7018,6 +7197,12 @@ exports[`Priority PT 1`] = `
           "Tu": "ias",
         },
         "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "foi",
           "Eles/Elas/Vocēs": "foram",
@@ -7065,6 +7250,20 @@ exports[`Priority PT 1`] = `
           "Tu": "tinhas",
         },
         "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "teve",
           "Eles/Elas/Vocēs": "tiveram",
@@ -7112,6 +7311,20 @@ exports[`Priority PT 1`] = `
           "Tu": "tinhas",
         },
         "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "teve",
           "Eles/Elas/Vocēs": "tiveram",
@@ -7159,6 +7372,20 @@ exports[`Priority PT 1`] = `
           "Tu": "tinhas",
         },
         "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "teve",
           "Eles/Elas/Vocēs": "tiveram",
@@ -7206,6 +7433,20 @@ exports[`Priority PT 1`] = `
           "Tu": "tinhas",
         },
         "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "teve",
           "Eles/Elas/Vocēs": "tiveram",
@@ -7253,6 +7494,20 @@ exports[`Priority PT 1`] = `
           "Tu": "tinhas",
         },
         "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "teve",
           "Eles/Elas/Vocēs": "tiveram",
@@ -7749,6 +8004,454 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 25,
   },
   {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_estar_toPortugueseFromHearing",
+      "number": 0,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "to be - moment",
+        "imperfect": {
+          "Ela/Ele/Você": "estava",
+          "Eles/Elas/Vocēs": "estavam",
+          "Eu": "estava",
+          "Nós": "estávamos",
+          "Tu": "estavas",
+        },
+        "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "esteve",
+          "Eles/Elas/Vocēs": "estiveram",
+          "Eu": "estive",
+          "Nós": "estivemos",
+          "Tu": "estiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "está",
+          "Eles/Elas/Vocēs": "estão",
+          "Eu": "estou",
+          "Nós": "estamos",
+          "Tu": "estás",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ir_toPortugueseFromHearing",
+      "number": 0,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toPortugueseFromHearing",
+      "number": 0,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toPortugueseFromHearing",
+      "number": 1,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toPortugueseFromHearing",
+      "number": 2,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_poder_toPortugueseFromHearing",
+      "number": 0,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_poder_toPortugueseFromHearing",
+      "number": 1,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ficar_toPortugueseFromHearing",
+      "number": 0,
+      "translationType": "toPortugueseFromHearing",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
     "exercise": OtherGenderTranslationExercise {
       "base": false,
       "equal": [Function],
@@ -7844,6 +8547,42 @@ exports[`Priority PT 1`] = `
           "singular": {
             "feminine": "primeira",
             "masculine": "primeiro",
+          },
+        },
+      },
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_nenhum_toPortugueseFromHearing",
+      "number": "singular",
+      "other": {
+        "english": "not any",
+        "portuguese": {
+          "plural": {
+            "feminine": "nenhumas",
+            "masculine": "nenhuns",
+          },
+          "singular": {
+            "feminine": "nenhuma",
+            "masculine": "nenhum",
           },
         },
       },
@@ -8182,6 +8921,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -8233,6 +8982,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -8545,50 +9304,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 10,
   },
   {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Eu",
-      "person": "Eu",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "presentSimple",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 150,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -140,
-      },
-    ],
-    "priorityValueTotal": 10,
-  },
-  {
     "exercise": NounTranslationExercise {
       "equal": [Function],
       "exerciseType": "NounTranslation",
@@ -8651,6 +9366,486 @@ exports[`Priority PT 1`] = `
       },
     ],
     "priorityValueTotal": 10,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_estar_toEnglish",
+      "number": 0,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "to be - moment",
+        "imperfect": {
+          "Ela/Ele/Você": "estava",
+          "Eles/Elas/Vocēs": "estavam",
+          "Eu": "estava",
+          "Nós": "estávamos",
+          "Tu": "estavas",
+        },
+        "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "esteve",
+          "Eles/Elas/Vocēs": "estiveram",
+          "Eu": "estive",
+          "Nós": "estivemos",
+          "Tu": "estiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "está",
+          "Eles/Elas/Vocēs": "estão",
+          "Eu": "estou",
+          "Nós": "estamos",
+          "Tu": "estás",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ir_toEnglish",
+      "number": 0,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toEnglish",
+      "number": 0,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toEnglish",
+      "number": 1,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toEnglish",
+      "number": 2,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_poder_toEnglish",
+      "number": 0,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_poder_toEnglish",
+      "number": 1,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ficar_toEnglish",
+      "number": 0,
+      "translationType": "toEnglish",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
   },
   {
     "exercise": OtherGenderTranslationExercise {
@@ -8774,6 +9969,46 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": -475,
   },
   {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_nenhum_toEnglish",
+      "number": "singular",
+      "other": {
+        "english": "not any",
+        "portuguese": {
+          "plural": {
+            "feminine": "nenhumas",
+            "masculine": "nenhuns",
+          },
+          "singular": {
+            "feminine": "nenhuma",
+            "masculine": "nenhum",
+          },
+        },
+      },
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
         "english": "last",
@@ -8809,150 +10044,6 @@ exports[`Priority PT 1`] = `
       },
     ],
     "priorityValueTotal": -475,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Ela/Ele/Você",
-      "person": "Ela/Ele/Você",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 360,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -230,
-      },
-    ],
-    "priorityValueTotal": -870,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Eu",
-      "person": "Eu",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 90,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -30,
-      },
-    ],
-    "priorityValueTotal": -940,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Tu",
-      "person": "Tu",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 150,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -100,
-      },
-    ],
-    "priorityValueTotal": -950,
   },
   {
     "exercise": PhraseTranslationExercise {
@@ -9034,102 +10125,6 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Nós",
-      "person": "Nós",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 120,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -90,
-      },
-    ],
-    "priorityValueTotal": -970,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "VerbExercise_pôr_Eles/Elas/Vocēs",
-      "person": "Eles/Elas/Vocēs",
-      "verb": {
-        "english": "to put",
-        "infinitive": "pôr",
-        "pastPerfect": {
-          "Ela/Ele/Você": "pôs",
-          "Eles/Elas/Vocēs": "puseram",
-          "Eu": "pus",
-          "Nós": "pusemos",
-          "Tu": "puseste",
-        },
-        "presentSimple": {
-          "Ela/Ele/Você": "põe",
-          "Eles/Elas/Vocēs": "põem",
-          "Eu": "ponho",
-          "Nós": "pomos",
-          "Tu": "pões",
-        },
-      },
-      "verbTime": "pastPerfect",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
-        "priorityValue": -1000,
-      },
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 150,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -120,
-      },
-    ],
-    "priorityValueTotal": -970,
-  },
-  {
-    "exercise": VerbExercise {
-      "equal": [Function],
-      "exerciseType": "VerbExercise",
-      "getBodyPrefix": [Function],
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
       "name": "VerbExercise_poder_Eu",
       "person": "Eu",
       "verb": {
@@ -9142,6 +10137,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -9193,6 +10198,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -9244,6 +10259,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -9295,6 +10320,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -9346,6 +10381,16 @@ exports[`Priority PT 1`] = `
           "Tu": "podias",
         },
         "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
           "Eles/Elas/Vocēs": "puderam",
@@ -9376,6 +10421,771 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": -975,
   },
   {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Eu",
+      "person": "Eu",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Tu",
+      "person": "Tu",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Ela/Ele/Você",
+      "person": "Ela/Ele/Você",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Nós",
+      "person": "Nós",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbExercise {
+      "equal": [Function],
+      "exerciseType": "VerbExercise",
+      "getBodyPrefix": [Function],
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbExercise_ficar_Eles/Elas/Vocēs",
+      "person": "Eles/Elas/Vocēs",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+      "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_VERB_TENSE_ORDER",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_estar_toPortuguese",
+      "number": 0,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "to be - moment",
+        "imperfect": {
+          "Ela/Ele/Você": "estava",
+          "Eles/Elas/Vocēs": "estavam",
+          "Eu": "estava",
+          "Nós": "estávamos",
+          "Tu": "estavas",
+        },
+        "infinitive": "estar",
+        "otherForms": [
+          {
+            "english": "is",
+            "portuguese": "esteja",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "esteve",
+          "Eles/Elas/Vocēs": "estiveram",
+          "Eu": "estive",
+          "Nós": "estivemos",
+          "Tu": "estiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "está",
+          "Eles/Elas/Vocēs": "estão",
+          "Eu": "estou",
+          "Nós": "estamos",
+          "Tu": "estás",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ir_toPortuguese",
+      "number": 0,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "to go",
+        "imperfect": {
+          "Ela/Ele/Você": "ia",
+          "Eles/Elas/Vocēs": "iam",
+          "Eu": "ia",
+          "Nós": "íamos",
+          "Tu": "ias",
+        },
+        "infinitive": "ir",
+        "otherForms": [
+          {
+            "english": "will go",
+            "portuguese": "irá",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "foi",
+          "Eles/Elas/Vocēs": "foram",
+          "Eu": "fui",
+          "Nós": "fomos",
+          "Tu": "foste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "vai",
+          "Eles/Elas/Vocēs": "vão",
+          "Eu": "vou",
+          "Nós": "vamos",
+          "Tu": "vais",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toPortuguese",
+      "number": 0,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toPortuguese",
+      "number": 1,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ter_toPortuguese",
+      "number": 2,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "to have",
+        "imperfect": {
+          "Ela/Ele/Você": "tinha",
+          "Eles/Elas/Vocēs": "tinham",
+          "Eu": "tinha",
+          "Nós": "tínhamos",
+          "Tu": "tinhas",
+        },
+        "infinitive": "ter",
+        "otherForms": [
+          {
+            "english": "teria",
+            "portuguese": "would have",
+          },
+          {
+            "english": "tivesse",
+            "portuguese": "if I had",
+          },
+          {
+            "english": "terá",
+            "portuguese": "will have",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "teve",
+          "Eles/Elas/Vocēs": "tiveram",
+          "Eu": "tive",
+          "Nós": "tivemos",
+          "Tu": "tiveste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "tem",
+          "Eles/Elas/Vocēs": "têm",
+          "Eu": "tenho",
+          "Nós": "temos",
+          "Tu": "tens",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_poder_toPortuguese",
+      "number": 0,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_poder_toPortuguese",
+      "number": 1,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "can",
+        "imperfect": {
+          "Ela/Ele/Você": "podia",
+          "Eles/Elas/Vocēs": "podiam",
+          "Eu": "podia",
+          "Nós": "podíamos",
+          "Tu": "podias",
+        },
+        "infinitive": "poder",
+        "otherForms": [
+          {
+            "english": "could",
+            "portuguese": "poderia",
+          },
+          {
+            "english": "if I can",
+            "portuguese": "possa",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "pôde",
+          "Eles/Elas/Vocēs": "puderam",
+          "Eu": "pude",
+          "Nós": "pudemos",
+          "Tu": "pudeste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "pode",
+          "Eles/Elas/Vocēs": "podem",
+          "Eu": "posso",
+          "Nós": "podemos",
+          "Tu": "podes",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": VerbOtherFormTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "VerbOtherFormTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "VerbOtherFormTranslation_ficar_toPortuguese",
+      "number": 0,
+      "translationType": "toPortuguese",
+      "verb": {
+        "english": "to stay",
+        "imperfect": {
+          "Ela/Ele/Você": "ficava",
+          "Eles/Elas/Vocēs": "ficavam",
+          "Eu": "ficava",
+          "Nós": "ficávamos",
+          "Tu": "ficavas",
+        },
+        "infinitive": "ficar",
+        "otherForms": [
+          {
+            "english": "stay",
+            "portuguese": "fique",
+          },
+        ],
+        "pastPerfect": {
+          "Ela/Ele/Você": "ficou",
+          "Eles/Elas/Vocēs": "ficaram",
+          "Eu": "fiquei",
+          "Nós": "ficámos",
+          "Tu": "ficaste",
+        },
+        "presentSimple": {
+          "Ela/Ele/Você": "fica",
+          "Eles/Elas/Vocēs": "ficam",
+          "Eu": "fico",
+          "Nós": "ficamos",
+          "Tu": "ficas",
+        },
+      },
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
     "exercise": OtherGenderTranslationExercise {
       "base": false,
       "equal": [Function],
@@ -9842,6 +11652,166 @@ exports[`Priority PT 1`] = `
           "singular": {
             "feminine": "primeira",
             "masculine": "primeiro",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_nenhum_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "not any",
+        "portuguese": {
+          "plural": {
+            "feminine": "nenhumas",
+            "masculine": "nenhuns",
+          },
+          "singular": {
+            "feminine": "nenhuma",
+            "masculine": "nenhum",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_nenhum_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "not any",
+        "portuguese": {
+          "plural": {
+            "feminine": "nenhumas",
+            "masculine": "nenhuns",
+          },
+          "singular": {
+            "feminine": "nenhuma",
+            "masculine": "nenhum",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_nenhum_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "not any",
+        "portuguese": {
+          "plural": {
+            "feminine": "nenhumas",
+            "masculine": "nenhuns",
+          },
+          "singular": {
+            "feminine": "nenhuma",
+            "masculine": "nenhum",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_nenhum_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "not any",
+        "portuguese": {
+          "plural": {
+            "feminine": "nenhumas",
+            "masculine": "nenhuns",
+          },
+          "singular": {
+            "feminine": "nenhuma",
+            "masculine": "nenhum",
           },
         },
       },

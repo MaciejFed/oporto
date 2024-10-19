@@ -35,6 +35,7 @@ import { PolishVerbExercise } from './polish-verb-exercise';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 import { OtherGenderTranslationExercise } from './translation/other-gender-translation-exercise';
 import { exerciseRandomness } from '../priority/types/exercise-randomness/exercise-randomness';
+import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-translation-exercise';
 
 type ExerciseGenerator = () => Exercise[];
 
@@ -157,6 +158,17 @@ const VerbTranslationGenerator: ExerciseGenerator = () => {
   );
 };
 
+const VerbTranslationOtherFormsGenerator: ExerciseGenerator = () => {
+  const verbsWithOtherForms = readAll().verbs.filter((verb) => verb.otherForms);
+  return verbsWithOtherForms.flatMap((verb) =>
+    verb.otherForms!.flatMap((_, index) => [
+      VerbOtherFormTranslationExercise.new(verb, 'toPortugueseFromHearing', index),
+      VerbOtherFormTranslationExercise.new(verb, 'toEnglish', index),
+      VerbOtherFormTranslationExercise.new(verb, 'toPortuguese', index)
+    ])
+  );
+};
+
 const SentenceTranslationGenerator: ExerciseGenerator = () => {
   return readAll().sentences.flatMap((sentence) => [
     SentenceTranslationExercise.new(sentence, 'toPortugueseFromHearing'),
@@ -244,6 +256,7 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
         VerbExerciseGenerator,
         NounTranslationGenerator,
         VerbTranslationGenerator,
+        VerbTranslationOtherFormsGenerator,
         PhraseTranslationGenerator,
         OtherWithGenderTranslationGenerator,
         OtherTranslationGenerator,
