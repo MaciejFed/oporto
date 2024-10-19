@@ -1215,8 +1215,9 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "raio",
           "sequer",
           "sob",
+          "felizmente",
         ],
-        "count": 174,
+        "count": 175,
       },
     },
     "OtherWithGenderTranslation": {
@@ -2490,8 +2491,9 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "raio",
           "sequer",
           "sob",
+          "felizmente",
         ],
-        "count": 198,
+        "count": 199,
       },
     },
     "VERB": {

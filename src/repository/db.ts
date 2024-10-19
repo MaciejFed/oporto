@@ -8106,6 +8106,10 @@ export const db: Schema = {
     {
       portuguese: 'sob',
       english: 'under'
+    },
+    {
+      portuguese: 'felizmente',
+      english: 'fortunately'
     }
   ],
   othersWithGender: [

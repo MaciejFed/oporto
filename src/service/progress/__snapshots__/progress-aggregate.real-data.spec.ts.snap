@@ -1083,8 +1083,9 @@ exports[`Progress Aggregate PT 1`] = `
           "raio",
           "sequer",
           "sob",
+          "felizmente",
         ],
-        "count": 58,
+        "count": 59,
       },
     },
     "OtherWithGenderTranslation": {
@@ -3765,8 +3766,9 @@ exports[`Progress Aggregate PT 1`] = `
           "raio",
           "sequer",
           "sob",
+          "felizmente",
         ],
-        "count": 82,
+        "count": 83,
       },
     },
     "VERB": {
