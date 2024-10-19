@@ -3254,9 +3254,9 @@ export const db: Schema = {
         Nós: 'perdemos',
         'Eles/Elas/Vocēs': 'perderam'
       }
-    },
+    },//pesquisar lambão
     {
-      english: 'to lose',
+      english: 'to look for',
       infinitive: 'procurar',
       presentSimple: {
         Eu: 'procuro',
