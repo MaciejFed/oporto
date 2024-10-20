@@ -1034,7 +1034,6 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "médico",
           "bombeiro",
           "farmácia",
-          "sky",
           "neve",
           "vento",
           "pássaro",
@@ -1044,7 +1043,7 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "orelha",
           "aldeia",
         ],
-        "count": 549,
+        "count": 548,
       },
     },
     "OtherTranslation": {
@@ -2303,7 +2302,6 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "médico",
           "bombeiro",
           "farmácia",
-          "sky",
           "neve",
           "vento",
           "pássaro",
@@ -2313,7 +2311,7 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "orelha",
           "aldeia",
         ],
-        "count": 549,
+        "count": 548,
       },
     },
     "OTHER": {

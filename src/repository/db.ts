@@ -7473,14 +7473,6 @@ export const db: Schema = {
       }
     },
     {
-      english: 'sky',
-      portuguese: {
-        word: 'sky',
-        plural: 'mares',
-        gender: 'masculine'
-      }
-    },
-    {
       english: 'snow',
       portuguese: {
         word: 'neve',

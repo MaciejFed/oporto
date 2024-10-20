@@ -882,7 +882,6 @@ exports[`Progress Aggregate PT 1`] = `
           "médico",
           "bombeiro",
           "farmácia",
-          "sky",
           "neve",
           "vento",
           "pássaro",
@@ -892,7 +891,7 @@ exports[`Progress Aggregate PT 1`] = `
           "orelha",
           "aldeia",
         ],
-        "count": 96,
+        "count": 95,
       },
     },
     "OtherTranslation": {
@@ -3577,7 +3576,6 @@ exports[`Progress Aggregate PT 1`] = `
           "médico",
           "bombeiro",
           "farmácia",
-          "sky",
           "neve",
           "vento",
           "pássaro",
@@ -3587,7 +3585,7 @@ exports[`Progress Aggregate PT 1`] = `
           "orelha",
           "aldeia",
         ],
-        "count": 40,
+        "count": 39,
       },
     },
     "OTHER": {
