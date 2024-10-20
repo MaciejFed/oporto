@@ -36,6 +36,12 @@ const audiosCollectionNameMap: Record<Language, string> = {
   [Language.Polish]: 'audios_pl'
 };
 
+const knownSentencesCollectionNameMap: Record<Language, string> = {
+  [Language.Portuguese]: 'knownSentences_pt',
+  [Language.German]: 'knownSentences_de',
+  [Language.Polish]: 'knownSentences_pl'
+};
+
 const getExamplesCollectionName = (language: Language, type: 'top' | 'total') =>
   `${examplesCollectionNameMap[language]}_${type}`;
 
@@ -87,6 +93,17 @@ export async function isExampleSavedAlready(word: string, language: Language): P
     });
 
     return exampleNumber > 0;
+  } finally {
+    await client.close();
+  }
+}
+
+export async function saveKnownSentences(language: Language, sentences: string[]): Promise<void> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const knownSentences = db.collection(knownSentencesCollectionNameMap[language]);
+    await knownSentences.insertOne({ known: sentences });
   } finally {
     await client.close();
   }

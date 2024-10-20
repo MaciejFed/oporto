@@ -7402,6 +7402,145 @@ export const db: Schema = {
         plural: 'tios',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'moon',
+      portuguese: {
+        word: 'lua',
+        plural: 'luas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'elevator',
+      portuguese: {
+        word: 'elevador',
+        plural: 'elevadores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'elevator',
+      portuguese: {
+        word: 'arroz',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'glasses',
+      portuguese: {
+        word: 'óculos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'wallet',
+      portuguese: {
+        word: 'carteira',
+        plural: 'carteiras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'umbrella',
+      portuguese: {
+        word: 'guarda-chuva',
+        plural: 'guarda-chuvas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'doctor',
+      portuguese: {
+        word: 'médico',
+        plural: 'médicos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fireman',
+      portuguese: {
+        word: 'bombeiro',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'pharmacy',
+      portuguese: {
+        word: 'farmácia',
+        plural: 'farmácias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'sky',
+      portuguese: {
+        word: 'sky',
+        plural: 'mares',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'snow',
+      portuguese: {
+        word: 'neve',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'wind',
+      portuguese: {
+        word: 'vento',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'bird',
+      portuguese: {
+        word: 'pássaro',
+        plural: 'pássaros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'insect',
+      portuguese: {
+        word: 'inseto',
+        plural: 'insetos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'mouth',
+      portuguese: {
+        word: 'boca',
+        plural: 'bocas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'town',
+      portuguese: {
+        word: 'vila',
+        plural: 'vilas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'ear',
+      portuguese: {
+        word: 'orelha',
+        plural: 'orelhas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'village',
+      portuguese: {
+        word: 'aldeia',
+        plural: 'aldeias',
+        gender: 'feminine'
+      }
     }
   ],
   others: [

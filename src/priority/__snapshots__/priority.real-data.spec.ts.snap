@@ -6086,38 +6086,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 40,
   },
   {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_massa_toPortugueseFromHearing",
-      "noun": {
-        "english": "mass",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "massas",
-          "word": "massa",
-        },
-      },
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 90,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -50,
-      },
-    ],
-    "priorityValueTotal": 40,
-  },
-  {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
         "english": "green",
@@ -7994,6 +7962,90 @@ exports[`Priority PT 1`] = `
         },
       },
       "verbTime": "imperfect",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_carteira_toPortugueseFromHearing",
+      "noun": {
+        "english": "wallet",
+        "portuguese": {
+          "gender": "feminine",
+          "plural": "carteiras",
+          "word": "carteira",
+        },
+      },
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_carteira_toEnglish",
+      "noun": {
+        "english": "wallet",
+        "portuguese": {
+          "gender": "feminine",
+          "plural": "carteiras",
+          "word": "carteira",
+        },
+      },
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_carteira_toPortuguese",
+      "noun": {
+        "english": "wallet",
+        "portuguese": {
+          "gender": "feminine",
+          "plural": "carteiras",
+          "word": "carteira",
+        },
+      },
+      "translationType": "toPortuguese",
     },
     "priorities": [
       {
