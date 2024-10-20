@@ -3269,7 +3269,7 @@ export const db: Schema = {
         Eu: 'procurei',
         Tu: 'procuraste',
         'Ela/Ele/Você': 'procurou',
-        Nós: 'procurastes',
+        Nós: 'procurámos',
         'Eles/Elas/Vocēs': 'procuraram'
       },
       imperfect: {
