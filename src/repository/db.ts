@@ -7420,7 +7420,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'elevator',
+      english: 'rice',
       portuguese: {
         word: 'arroz',
         gender: 'masculine'
