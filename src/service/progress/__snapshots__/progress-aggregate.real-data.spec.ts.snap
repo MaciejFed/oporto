@@ -1605,9 +1605,8 @@ exports[`Progress Aggregate PT 1`] = `
           "bater",
           "avistar",
           "atirar",
-          "acertar",
         ],
-        "count": 56,
+        "count": 55,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -2118,12 +2117,6 @@ exports[`Progress Aggregate PT 1`] = `
       "incorrectAnswers": 11,
       "pointsMissing": -4,
       "total": 271,
-    },
-    {
-      "baseWord": "acertar",
-      "incorrectAnswers": 11,
-      "pointsMissing": -5,
-      "total": 270,
     },
     {
       "baseWord": "mudar",
@@ -3989,9 +3982,8 @@ exports[`Progress Aggregate PT 1`] = `
           "bater",
           "avistar",
           "atirar",
-          "acertar",
         ],
-        "count": 94,
+        "count": 93,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -4000,12 +3992,13 @@ exports[`Progress Aggregate PT 1`] = `
           "parecer",
           "buscar",
           "perder",
+          "acertar",
           "dever",
           "matar",
           "tirar",
           "procurar",
         ],
-        "count": 9,
+        "count": 10,
       },
     },
   },

@@ -3080,7 +3080,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to hit',
+      english: 'to get right',
       infinitive: 'acertar',
       presentSimple: {
         Eu: 'acerto',
