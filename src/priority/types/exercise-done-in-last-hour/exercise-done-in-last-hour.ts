@@ -14,7 +14,7 @@ export function exerciseDoneInLastHour(
     const result = [
       resultsToday.reduce<Priority>(
         (previous, current) => {
-          previous.priorityValue += (Math.round((current.date.getTime() - now.getTime()) / 60000) + 60) * -10;
+          previous.priorityValue += (Math.round((current.date.getTime() - now.getTime()) / 60000) + 60) * -30;
           return previous;
         },
         {
