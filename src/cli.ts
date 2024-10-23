@@ -16,7 +16,7 @@ program
   });
 
 program
-  .command('test')
+  .command('repeat')
   .description('Start test session')
   .action((str, options) => {
     startRepeatSession(Language.Portuguese);
