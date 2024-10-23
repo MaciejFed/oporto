@@ -209,7 +209,7 @@ app.get('/:language/generate/local/repeat', async (req: Request, res: Response) 
       }
       return false;
     };
-    const exercises = await generateExercisesForSessionAsync(10, true, filter, language, results, frequency);
+    const exercises = await generateExercisesForSessionAsync(10, false, filter, language, results, frequency);
     res.send(exercises);
   } catch (e) {
     logger.error('Error generating exercises', 3);
