@@ -15,6 +15,7 @@ import { PolishVerbTranslationExercise } from '../../exercise/translation/pl/pol
 import { PolishOtherTranslationExercise } from '../../exercise/translation/pl/polish-other-translation-exercise';
 import { PolishNounTranslationExercise } from '../../exercise/translation/pl/polish-noun-translation-exercise';
 import { OtherGenderTranslationExercise } from '../../exercise/translation/other-gender-translation-exercise';
+import { VerbOtherFormTranslationExercise } from '../../exercise/translation/verb-other-form-translation-exercise';
 
 export function extractWordToFindFromExercise(exercise: Exercise): string | undefined {
   switch (exercise.exerciseType) {
@@ -30,6 +31,12 @@ export function extractWordToFindFromExercise(exercise: Exercise): string | unde
     case 'VerbTranslation':
       if ((exercise as VerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as VerbTranslationExercise).verb.infinitive;
+    case 'VerbOtherFormTranslation':
+      if ((exercise as VerbOtherFormTranslationExercise).isTranslationToPortuguese())
+        return exercise.getCorrectAnswer();
+      return (exercise as VerbOtherFormTranslationExercise).verb.otherForms![
+        (exercise as VerbOtherFormTranslationExercise).number
+      ].portuguese;
     case 'GermanVerbTranslation':
       if ((exercise as GermanVerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as GermanVerbTranslationExercise).verb.infinitive;
