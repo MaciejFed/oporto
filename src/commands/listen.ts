@@ -1,18 +1,52 @@
 /* eslint-disable no-loop-func */
 import { Language } from '../common/language';
 import readline from 'readline';
+import { terminal } from 'terminal-kit';
 import fs from 'fs';
 import { examplesPaths } from './examples';
 import { MIN_WORD_LENGTH } from '../service/example-finder/example-finder.types';
-import { getAllUniqueWords, getAllUniqueWordsConjugated } from '../service/progress/progress';
+import {
+  getAllUniqueWords,
+  getAllUniqueWordsConjugated,
+  getSingleExerciseProgress,
+  ProgressType
+} from '../service/progress/progress';
 import { isNumber } from 'node:util';
-import { saveFrequencyMap } from '../server/db';
+import { generateAllPossibleExercises } from '../exercise/generator';
+import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
+import { Result } from '../service/result';
+import { getAllResults, getAllResultsAsync } from '../repository/result-repository';
+import { saveKnownSentences } from '../server/db';
+import { getRandomElement } from '../common/common';
+import { getAudio, translateToEnglish } from '../client/client';
+import { getSavedAudioPath } from '../server/configuration';
+import { execSync } from 'child_process';
+import clear from 'clear';
+
+const getAllDoneWords = (language: Language, results: Result[]) => [
+  ...new Set(
+    generateAllPossibleExercises(language)
+      .filter((exercise) => getSingleExerciseProgress(results, exercise).progressType === ProgressType.DONE)
+      .map(extractWordToFindFromExercise)
+  )
+];
+
+function centerText(text: string) {
+  const consoleWidth = process.stdout.columns;
+
+  const padding = Math.floor((consoleWidth - text.length) / 2);
+
+  const paddingString = ' '.repeat(padding);
+
+  console.log();
+
+  console.log(paddingString + text);
+
+  console.log();
+}
 
 const removeUnwantedCharacters = (word: string) =>
-  word.replace('.', '')
-    .replace(',', '')
-    .replace('?', '')
-    .replace('!', '');
+  word.replace('.', '').replace(',', '').replace('?', '').replace('!', '').replace('- ', '');
 
 function countAndSortWords(words: string[], knownWords: string[]): [string, number, boolean][] {
   const wordFrequency = new Map<string, number>();
@@ -31,13 +65,23 @@ function countAndSortWords(words: string[], knownWords: string[]): [string, numb
 
   return sortedWordFrequency
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 100_000)
+    .slice(0, 1000)
     .map((freq) => [freq[0], freq[1], knownWords.includes(freq[0])]);
+}
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function next() {
+  return new Promise((resolve) => rl.question('', resolve));
 }
 
 export async function getKnownPercentage(language: Language): Promise<number> {
   const allWords = ['s'];
-  const allWordsReal = ['asd']
+  const allWordsReal = getAllUniqueWordsConjugated(language);
+  const allDoneWords = getAllDoneWords(language, getAllResults(language, true));
+  const knownSentences = [];
   let known = 0;
   let unKnown = 0;
   let counter = 0;
@@ -54,24 +98,45 @@ export async function getKnownPercentage(language: Language): Promise<number> {
 
     if (linePtResult.done || counter > 20000000) break;
 
-    const linePt = linePtResult.value;
+    const linePt = linePtResult.value.replace('- ', '');
 
     const sentenceWords = linePt
       .toLowerCase()
       .split(' ')
-      // .map(word => removeUnwantedCharacters(word))
-      .filter(
-        (word) =>
-          !word.includes('.') &&
-          !word.includes(',') &&
-          !word.includes('-') &&
-          !word.includes('ä') &&
-          !word.includes('$') &&
-          !word.includes('?') &&
-          !word.includes('!') &&
-          isNaN(Number(word))
-      )
+      .map((word) => word.replace('.', '').replace(',', '').replace('?', '').replace('!', ''))
+      .filter((word) => isNaN(Number(word))) // Listen
       .filter((word) => word.length >= MIN_WORD_LENGTH);
+
+    if (linePt.length > 10 && linePt.length < 35) {
+      if (sentenceWords.every((word) => allWordsReal.includes(word))) {
+        knownSentences.push(linePt);
+      }
+      if (knownSentences.length > 100_000000) {
+        terminal.hideCursor();
+        // while (true) {
+
+        const randomElement = getRandomElement(knownSentences);
+        const english = await translateToEnglish(randomElement);
+
+        getAudio(language, randomElement, 'google', 'normal');
+        execSync(`afplay ${getSavedAudioPath()}`);
+        await next();
+        const consoleHeight = process.stdout.rows;
+
+        const middleRow = Math.floor(consoleHeight / 2) - 4;
+
+        for (let i = 0; i < middleRow; i++) {
+          console.log();
+        }
+
+        centerText(randomElement);
+        await next();
+        centerText(english);
+        await next();
+        clear();
+      }
+      // }
+    }
 
     sentenceWords.forEach((word) => {
       if (allWordsReal.includes(word)) {
@@ -115,15 +180,6 @@ export async function getKnownPercentage(language: Language): Promise<number> {
     wordFreq[2],
     cutNumber(sumUntil(index, unknowns as any))
   ]);
-  const freqMap = newResultUnknown.reduce((curr, prev, index) => {
-    curr[prev[0] as string] = {
-      place: index + 1,
-      frequency: prev[2]
-    }
-    return curr;
-  }, {} as { [key: string]: object});
-
-  await saveFrequencyMap(language, freqMap);
 
   unknownWords.length = 0;
 

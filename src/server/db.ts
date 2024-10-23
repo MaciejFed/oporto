@@ -42,6 +42,12 @@ const knownSentencesCollectionNameMap: Record<Language, string> = {
   [Language.Polish]: 'knownSentences_pl'
 };
 
+const frequencyMap: Record<Language, string> = {
+  [Language.Portuguese]: 'frequency_pt',
+  [Language.German]: 'frequency_de',
+  [Language.Polish]: 'frequency_pl'
+};
+
 const getExamplesCollectionName = (language: Language, type: 'top' | 'total') =>
   `${examplesCollectionNameMap[language]}_${type}`;
 
@@ -93,6 +99,34 @@ export async function isExampleSavedAlready(word: string, language: Language): P
     });
 
     return exampleNumber > 0;
+  } finally {
+    await client.close();
+  }
+}
+
+export async function saveFrequencyMap(language: Language, frequency: object): Promise<void> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(frequencyMap[language]);
+    await collection.insertOne(frequency);
+  } finally {
+    await client.close();
+  }
+}
+
+export async function getFrequencyMap(language: Language): Promise<{
+  [word: string]: {
+    place: number,
+    frequency: number,
+  }
+}> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(frequencyMap[language]);
+    const freq = await collection.findOne()
+    return freq || {};
   } finally {
     await client.close();
   }

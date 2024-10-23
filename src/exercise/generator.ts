@@ -1,4 +1,4 @@
-import { Exercise } from './exercise';
+import { Exercise, Frequency } from './exercise';
 import { Person, readAll } from '../repository/exercises-repository';
 import { VerbExercise } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
@@ -276,10 +276,23 @@ export async function generateExercisesForSessionAsync(
   sort: boolean,
   filter: (ex: Exercise) => boolean,
   language: Language,
-  results?: Result[]
+  results: Result[],
+  frequencyMap: { [word: string]: Frequency},
 ): Promise<Exercise[]> {
-  const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
-  const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
+  const exercises = generateAllPossibleExercises(language)
+    .filter((exercise) => filter(exercise))
+    .map((exercise) => {
+    const wordToFind = extractWordToFindFromExercise(exercise);
+    if (wordToFind) {
+      const freqWord = wordToFind.split(' ');
+      const frequency = frequencyMap[freqWord.length === 2 ? freqWord[1] : wordToFind];
+      if (frequency) {
+        exercise.addFrequency(frequency)
+      }
+    }
+    return exercise;
+  });
+  const allResults = parseResults(results);
   const exercisesFinal = sort
     ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises
     : exercises;

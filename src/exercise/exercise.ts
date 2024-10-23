@@ -39,6 +39,11 @@ export const translationTypes: ExerciseType[] = [
   'SentenceTranslation'
 ];
 
+export type Frequency = {
+  place: number,
+  frequency: number,
+}
+
 export type BaseWord =
   | Noun
   | Adjective
@@ -70,6 +75,8 @@ export interface ExerciseContent {
   getBaseWordType(): BaseWordType | undefined;
   getBaseWordAsString(): string | undefined;
   addMovieExample(movieExample: MovieExample): void;
+  addFrequency(frequency: Frequency): void;
+  getFrequency(): Frequency;
   getMovieExample(): MovieExample | undefined;
   getMovieExamplePrefix(): string;
   getMovieExampleSuffix(): string;
@@ -87,6 +94,7 @@ export interface Exercise extends ExerciseContent, ExerciseBehavior, Comparable 
 
 export abstract class BaseExercise implements Exercise {
   public movieExample: MovieExample | undefined;
+  public frequency: Frequency = { place: 0, frequency: 0 };
   public name = '';
   abstract exerciseType: ExerciseType;
 
@@ -104,6 +112,14 @@ export abstract class BaseExercise implements Exercise {
 
   addMovieExample(movieExample: MovieExample) {
     this.movieExample = movieExample;
+  }
+
+  addFrequency(frequency: Frequency) {
+    this.frequency = frequency;
+  }
+
+  getFrequency(): Frequency {
+    return this.frequency;
   }
 
   getMovieExamplePrefix(): string {

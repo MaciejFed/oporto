@@ -120,7 +120,7 @@ export class Terminal {
 
   private registerOnDescriptionPrintedEventListener() {
     this.eventProcessor.on(EXERCISE_DESCRIPTION_PRINTED, (description: string) => {
-      printExerciseDescription(description);
+      printExerciseDescription(description, this.currentExercise.getFrequency().place);
     });
   }
 

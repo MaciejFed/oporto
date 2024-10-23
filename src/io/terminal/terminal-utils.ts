@@ -63,8 +63,8 @@ export function printExerciseTranslation(exerciseTranslation: string | undefined
   getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 1, `Translation: ${exerciseTranslation}`);
 }
 
-export function printExerciseDescription(exerciseDescription: string) {
-  getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 2, exerciseDescription);
+export function printExerciseDescription(exerciseDescription: string, frequencyPlace: number) {
+  getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 2, `${exerciseDescription}  [${frequencyPlace}]`);
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
