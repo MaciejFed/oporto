@@ -32,11 +32,11 @@ export function extractWordToFindFromExercise(exercise: Exercise): string | unde
       if ((exercise as VerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as VerbTranslationExercise).verb.infinitive;
     case 'VerbOtherFormTranslation':
-      if ((exercise as VerbOtherFormTranslationExercise).isTranslationToPortuguese())
-        return exercise.getCorrectAnswer();
-      return (exercise as VerbOtherFormTranslationExercise).verb.otherForms![
-        (exercise as VerbOtherFormTranslationExercise).number
-      ].portuguese;
+      // eslint-disable-next-line no-case-declarations
+      const number = (exercise as VerbOtherFormTranslationExercise).number;
+      // eslint-disable-next-line no-case-declarations
+      const otherForms = (exercise as VerbOtherFormTranslationExercise).verb.otherForms;
+      return otherForms && otherForms[number] ? otherForms[number].portuguese : undefined;
     case 'GermanVerbTranslation':
       if ((exercise as GermanVerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as GermanVerbTranslationExercise).verb.infinitive;
