@@ -23,6 +23,7 @@ import os from 'os';
 import { writeFileSync } from 'node:fs';
 import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
+import { TranslationExercise } from '../exercise/translation/translation-exercise';
 
 const config = loadValidConfig();
 
@@ -205,6 +206,9 @@ app.get('/:language/generate/local/repeat', async (req: Request, res: Response) 
     const filter = (exercise: Exercise) => {
       const word = extractWordToFindFromExercise(exercise);
       if (word && frequency[word]) {
+        if (exercise instanceof TranslationExercise && (exercise as TranslationExercise).isTranslationToPortugueseFromHearing()) {
+          return false;
+        }
         return frequency[word].place < 250;
       }
       return false;
