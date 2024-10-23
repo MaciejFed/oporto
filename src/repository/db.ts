@@ -115,16 +115,16 @@ export const db: Schema = {
       },
       otherForms: [
         {
-          english: 'teria',
-          portuguese: 'would have'
+          portuguese: 'teria',
+          english: 'would have'
         },
         {
-          english: 'tivesse',
-          portuguese: 'if I had'
+          portuguese: 'tivesse',
+          english: 'if I had'
         },
         {
-          english: 'terá',
-          portuguese: 'will have'
+          portuguese: 'terá',
+          english: 'will have'
         }
       ]
     },

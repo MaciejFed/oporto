@@ -63,8 +63,8 @@ export function printExerciseTranslation(exerciseTranslation: string | undefined
   getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 1, `Translation: ${exerciseTranslation}`);
 }
 
-export function printExerciseDescription(exerciseDescription: string, frequencyPlace: number) {
-  getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 2, `${exerciseDescription}  [${frequencyPlace}]`);
+export function printExerciseDescription(exerciseDescription: string) {
+  getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 2, exerciseDescription);
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
@@ -84,8 +84,8 @@ export function printExerciseBody(exerciseBodyPrefix: string, answer: string, ex
   getOutput().moveCursor(1 + exerciseBodyPrefix.length + answerFinal.length, EXERCISE_BODY_MARGIN);
 }
 
-export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
-  getOutput().moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+export function printExerciseFeedback(wasCorrect: boolean, frequency: number) {
+  getOutput().moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${frequency}]`);
 }
 
 const repeatBodyPrefix = 'Repeat: ';

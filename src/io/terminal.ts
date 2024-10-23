@@ -120,7 +120,7 @@ export class Terminal {
 
   private registerOnDescriptionPrintedEventListener() {
     this.eventProcessor.on(EXERCISE_DESCRIPTION_PRINTED, (description: string) => {
-      printExerciseDescription(description, this.currentExercise.getFrequency().place);
+      printExerciseDescription(description);
     });
   }
 
@@ -173,7 +173,7 @@ export class Terminal {
     this.eventProcessor.on(ANSWER_CHECKED, ({ wasCorrect, correctAnswer, answerInputType, exercise }) => {
       this.currentExercise = exercise;
       this.correctAnswer = correctAnswer;
-      printExerciseFeedback(wasCorrect, answerInputType);
+      printExerciseFeedback(wasCorrect, this.currentExercise.getFrequency().place);
       printExerciseBodyWithCorrection(
         `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
         this.answer,
