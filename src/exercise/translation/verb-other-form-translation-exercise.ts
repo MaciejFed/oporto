@@ -41,9 +41,9 @@ export class VerbOtherFormTranslationExercise extends TranslationExercise implem
   getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
-      return `English: ${this.verb.english}`;
+      return `English: ${this.verb.otherForms![this.number].english}`;
     }
-    return `Portuguese: ${this.verb.infinitive}`;
+    return `Portuguese: ${this.verb.otherForms![this.number].portuguese}`;
   };
 
   getTranslation = () => this.verb.english;
