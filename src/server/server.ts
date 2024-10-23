@@ -58,7 +58,6 @@ const preFetchAggregate = async () => {
   cachedAggregate = getProgressAggregate(results, exercises);
 };
 
-
 setInterval(() => {
   [Language.German, Language.Portuguese].forEach((language) => {
     readAllResults(language).then((results) => {

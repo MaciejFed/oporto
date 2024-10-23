@@ -40,9 +40,9 @@ export const translationTypes: ExerciseType[] = [
 ];
 
 export type Frequency = {
-  place: number,
-  frequency: number,
-}
+  place: number;
+  frequency: number;
+};
 
 export type BaseWord =
   | Noun

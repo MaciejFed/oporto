@@ -9,10 +9,7 @@ import { isNumber } from 'node:util';
 import { saveFrequencyMap } from '../server/db';
 
 const removeUnwantedCharacters = (word: string) =>
-  word.replace('.', '')
-    .replace(',', '')
-    .replace('?', '')
-    .replace('!', '');
+  word.replace('.', '').replace(',', '').replace('?', '').replace('!', '');
 
 function countAndSortWords(words: string[], knownWords: string[]): [string, number, boolean][] {
   const wordFrequency = new Map<string, number>();
@@ -37,7 +34,7 @@ function countAndSortWords(words: string[], knownWords: string[]): [string, numb
 
 export async function getKnownPercentage(language: Language): Promise<number> {
   const allWords = ['s'];
-  const allWordsReal = ['asd']
+  const allWordsReal = ['asd'];
   let known = 0;
   let unKnown = 0;
   let counter = 0;
@@ -119,9 +116,9 @@ export async function getKnownPercentage(language: Language): Promise<number> {
     curr[prev[0] as string] = {
       place: index + 1,
       frequency: prev[2]
-    }
+    };
     return curr;
-  }, {} as { [key: string]: object});
+  }, {} as { [key: string]: object });
 
   await saveFrequencyMap(language, freqMap);
 

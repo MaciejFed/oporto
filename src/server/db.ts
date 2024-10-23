@@ -117,15 +117,15 @@ export async function saveFrequencyMap(language: Language, frequency: object): P
 
 export async function getFrequencyMap(language: Language): Promise<{
   [word: string]: {
-    place: number,
-    frequency: number,
-  }
+    place: number;
+    frequency: number;
+  };
 }> {
   const client = await getClient();
   try {
     const db = client.db(dbName);
     const collection = db.collection(frequencyMap[language]);
-    const freq = await collection.findOne()
+    const freq = await collection.findOne();
     return freq || {};
   } finally {
     await client.close();

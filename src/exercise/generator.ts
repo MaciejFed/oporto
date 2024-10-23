@@ -277,21 +277,21 @@ export async function generateExercisesForSessionAsync(
   filter: (ex: Exercise) => boolean,
   language: Language,
   results: Result[],
-  frequencyMap: { [word: string]: Frequency},
+  frequencyMap: { [word: string]: Frequency }
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises(language)
     .filter((exercise) => filter(exercise))
     .map((exercise) => {
-    const wordToFind = extractWordToFindFromExercise(exercise);
-    if (wordToFind) {
-      const freqWord = wordToFind.split(' ');
-      const frequency = frequencyMap[freqWord.length === 2 ? freqWord[1] : wordToFind];
-      if (frequency) {
-        exercise.addFrequency(frequency)
+      const wordToFind = extractWordToFindFromExercise(exercise);
+      if (wordToFind) {
+        const freqWord = wordToFind.split(' ');
+        const frequency = frequencyMap[freqWord.length === 2 ? freqWord[1] : wordToFind];
+        if (frequency) {
+          exercise.addFrequency(frequency);
+        }
       }
-    }
-    return exercise;
-  });
+      return exercise;
+    });
   const allResults = parseResults(results);
   const exercisesFinal = sort
     ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises
