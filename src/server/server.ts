@@ -22,6 +22,7 @@ import path from 'path';
 import os from 'os';
 import { writeFileSync } from 'node:fs';
 import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
+import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 
 const config = loadValidConfig();
 
@@ -190,6 +191,25 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
     const results = await readAllResults(language);
     const frequency = await getFrequencyMap(language);
     const exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results, frequency);
+    res.send(exercises);
+  } catch (e) {
+    logger.error('Error generating exercises', 3);
+  }
+});
+
+app.get('/:language/generate/local/repeat', async (req: Request, res: Response) => {
+  try {
+    const language = getLanguage(req);
+    const results = await readAllResults(language);
+    const frequency = await getFrequencyMap(language);
+    const filter = (exercise: Exercise) => {
+      const word = extractWordToFindFromExercise(exercise);
+      if (word && frequency[word]) {
+        return frequency[word].place < 250;
+      }
+      return false;
+    };
+    const exercises = await generateExercisesForSessionAsync(10, true, filter, language, results, frequency);
     res.send(exercises);
   } catch (e) {
     logger.error('Error generating exercises', 3);

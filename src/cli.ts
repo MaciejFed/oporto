@@ -3,6 +3,7 @@ import { saveProgress } from './commands/progress';
 import { displayStatistics } from './commands/stat';
 import { startTestSession } from './commands/test';
 import { Language } from './common/language';
+import { startRepeatSession } from './commands/repeat';
 const program = new Command();
 
 program.name('oporto').description('CLI to learn Portuguese').version('0.1.0');
@@ -12,6 +13,13 @@ program
   .description('Start test session')
   .action((str, options) => {
     startTestSession(Language.Portuguese);
+  });
+
+program
+  .command('test')
+  .description('Start test session')
+  .action((str, options) => {
+    startRepeatSession(Language.Portuguese);
   });
 
 program

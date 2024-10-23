@@ -66,6 +66,13 @@ export const fetchExercisesForSession = (language: Language): Exercise[] => {
   return JSON.parse(exercise);
 };
 
+export const fetchRepeatExercisesForSession = (language: Language): Exercise[] => {
+  const exercise = execSync(
+    `curl -s --location --request GET ${apiURL}/${language}/generate/local/repeat --header "Authorization: Bearer ${apiKey}"`
+  ).toString();
+  return JSON.parse(exercise);
+};
+
 export const saveNewResult = async (language: Language, newResult: Result) => {
   resultsCached.push(newResult);
   const command = `curl -s --location --request POST ${apiURL}/${language}/results/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(

@@ -74,9 +74,9 @@ export class Terminal {
   canGoNext: boolean;
   phase: Phase;
 
-  constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language) {
+  constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language, repeat = false) {
     this.registerListeners();
-    this.exercises = getExercisesForSession(language);
+    this.exercises = getExercisesForSession(language, repeat);
     this.exercises.forEach(async (exercise) => {
       const wordToFind = extractWordToFindFromExercise(exercise);
       const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;

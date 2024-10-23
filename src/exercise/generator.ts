@@ -11,7 +11,7 @@ import { OtherTranslationExercise } from './translation/other-translation-exerci
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
 import { exerciseFactory, getAllResults, getAllResultsAsync, parseResults } from '../repository/result-repository';
-import { fetchExercisesForSession, fetchMovieExample } from '../client/client';
+import { fetchExercisesForSession, fetchMovieExample, fetchRepeatExercisesForSession } from '../client/client';
 import { Result } from '../service/result';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { Language } from '../common/language';
@@ -271,6 +271,13 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
   return exercises;
 }
 
+function shuffleArray<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 export async function generateExercisesForSessionAsync(
   exerciseCount: number,
   sort: boolean,
@@ -295,13 +302,15 @@ export async function generateExercisesForSessionAsync(
   const allResults = parseResults(results);
   const exercisesFinal = sort
     ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises
-    : exercises;
+    : shuffleArray(exercises);
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
 
-export function getExercisesForSession(language: Language): Exercise[] {
-  const exerciseJSON: Exercise[] = fetchExercisesForSession(language);
+export function getExercisesForSession(language: Language, repeat = false): Exercise[] {
+  const exerciseJSON: Exercise[] = repeat
+    ? fetchRepeatExercisesForSession(language)
+    : fetchExercisesForSession(language);
   const exercies = exerciseJSON.map((ex) => {
     const exerciseType = ex.exerciseType;
     const createExercise = exerciseFactory[exerciseType];
