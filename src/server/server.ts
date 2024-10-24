@@ -22,6 +22,7 @@ import { writeFileSync } from 'node:fs';
 import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
+import { Result } from '../service/result';
 
 const config = loadValidConfig();
 
@@ -131,8 +132,7 @@ const addMovieExamples = async (exercises: Exercise[], language: Language) => {
   return exercises;
 };
 
-const generateRepeatExercises = async (count: number, language: Language) => {
-  const results = await readAllResults(language);
+const generateRepeatExercises = async (count: number, language: Language, results: Result[]) => {
   const frequency = await getFrequencyMap(language);
   const filter = (exercise: Exercise) => {
     const word = extractWordToFindFromExercise(exercise);
@@ -144,11 +144,15 @@ const generateRepeatExercises = async (count: number, language: Language) => {
         return false;
       }
       const split = word.split(' ');
-      return frequency[split.length === 2 ? split[1] : word].place < 500;
+      const freqWord = frequency[split.length === 2 ? split[1] : word];
+      if (freqWord) {
+        return freqWord.place < 500;
+      }
+      return false;
     }
     return false;
   };
-  const exercises = await generateExercisesForSessionAsync(10, false, filter, language, results, frequency);
+  const exercises = await generateExercisesForSessionAsync(count, false, filter, language, results, frequency);
   return await addMovieExamples(exercises, language);
 };
 
@@ -236,7 +240,7 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
     const frequency = await getFrequencyMap(language);
     const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results, frequency);
     const withMovie = await addMovieExamples(exercises, language);
-    const exercisesRepeat = await generateRepeatExercises(2, language);
+    const exercisesRepeat = await generateRepeatExercises(2, language, results);
     res.send(shuffleArray(withMovie.concat(exercisesRepeat)));
   } catch (e: any) {
     logger.error('Error generating exercises', 3);
@@ -247,7 +251,8 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
 app.get('/:language/generate/local/repeat', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    const exercises = generateRepeatExercises(10, language);
+    const results = await readAllResults(language);
+    const exercises = generateRepeatExercises(10, language, results);
     res.send(exercises);
   } catch (e: any) {
     logger.error('Error generating exercises', 3);
