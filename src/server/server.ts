@@ -237,8 +237,8 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
     const language = getLanguage(req);
     const results = await readAllResults(language);
     const frequency = await getFrequencyMap(language);
-    const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results, frequency);
-    const exercisesRepeat = await generateRepeatExercises(2, language, results);
+    const exercises = await generateExercisesForSessionAsync(7, true, () => true, language, results, frequency);
+    const exercisesRepeat = await generateRepeatExercises(3, language, results);
     res.send(shuffleArray(exercises.concat(exercisesRepeat)));
   } catch (e: any) {
     logger.error('Error generating exercises', 3);
