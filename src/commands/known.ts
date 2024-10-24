@@ -63,6 +63,8 @@ export async function getKnownPercentage(language: Language): Promise<number> {
           !word.includes(',') &&
           !word.includes('-') &&
           !word.includes('ä') &&
+          !word.includes('"') &&
+          !word.includes('\'') &&
           !word.includes('$') &&
           !word.includes('?') &&
           !word.includes('!') &&

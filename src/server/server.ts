@@ -1,7 +1,7 @@
 // src/index.js
 import express, { Request, Response } from 'express';
 import { loadValidConfig } from './configuration';
-import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '../exercise/generator';
+import { generateAllPossibleExercises, generateExercisesForSessionAsync, shuffleArray } from '../exercise/generator';
 import bodyParser from 'body-parser';
 import { MovieExample } from '../io/file';
 import { logger } from '../common/logger';
@@ -15,8 +15,6 @@ import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
 import { getAudioForText } from './audio/audio';
 import { createTable } from '../commands/stat';
-import { getAllResults } from '../repository/result-repository';
-import { DateTimeExtended } from '../common/common';
 import { DateTime } from 'luxon';
 import path from 'path';
 import os from 'os';
@@ -133,6 +131,29 @@ const addMovieExamples = async (exercises: Exercise[], language: Language) => {
   return exercises;
 };
 
+const generateRepeatExercises = async (count: number, language: Language) => {
+  const results = await readAllResults(language);
+  const frequency = await getFrequencyMap(language);
+  const filter = (exercise: Exercise) => {
+    const word = extractWordToFindFromExercise(exercise);
+    if (word) {
+      if (
+        exercise instanceof TranslationExercise &&
+        (exercise as TranslationExercise).isTranslationToPortugueseFromHearing()
+      ) {
+        return false;
+      }
+      const split = word.split(' ');
+      return frequency[split.length === 2 ? split[1] : word].place < 500;
+    }
+    return false;
+  };
+  const exercises = await generateExercisesForSessionAsync(10, false, filter, language, results, frequency);
+  return await addMovieExamples(exercises, language);
+}
+
+
+
 app.get('/:language/results', async (req: Request, res: Response) => {
   const language = getLanguage(req);
   const results = await readAllResults(language);
@@ -215,9 +236,10 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
     const language = getLanguage(req);
     const results = await readAllResults(language);
     const frequency = await getFrequencyMap(language);
-    const exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results, frequency);
+    const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results, frequency);
     const withMovie = await addMovieExamples(exercises, language);
-    res.send(withMovie);
+    const exercisesRepeat = await generateRepeatExercises(2, language);
+    res.send(shuffleArray(withMovie.concat(exercisesRepeat)));
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
@@ -226,24 +248,8 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
 app.get('/:language/generate/local/repeat', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    const results = await readAllResults(language);
-    const frequency = await getFrequencyMap(language);
-    const filter = (exercise: Exercise) => {
-      const word = extractWordToFindFromExercise(exercise);
-      if (word && frequency[word]) {
-        if (
-          exercise instanceof TranslationExercise &&
-          (exercise as TranslationExercise).isTranslationToPortugueseFromHearing()
-        ) {
-          return false;
-        }
-        return frequency[word].place < 250;
-      }
-      return false;
-    };
-    const exercises = await generateExercisesForSessionAsync(10, false, filter, language, results, frequency);
-    const withMovie = await addMovieExamples(exercises, language);
-    res.send(withMovie);
+    const exercises = generateRepeatExercises(10, language);
+    res.send(exercises);
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
