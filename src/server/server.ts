@@ -109,6 +109,30 @@ const getLanguage = (req: Request) => {
   }
 };
 
+const addMovieExample = async (exercise: Exercise, language: Language) => {
+  try {
+    const word = extractWordToFindFromExercise(exercise);
+    if (word) {
+      const examples = await getExamples(word, language);
+      const exampleSelected = await selectMovieExample(examples, word);
+      if (exampleSelected) {
+        exercise.addMovieExample(exampleSelected);
+      }
+      return exercise;
+    }
+    return exercise;
+  } catch (e: any) {
+    return exercise;
+  }
+};
+
+const addMovieExamples = async (exercises: Exercise[], language: Language) => {
+  for (let i = 0; i < exercises.length; i++) {
+    exercises[i] = await addMovieExample(exercises[i], language);
+  }
+  return exercises;
+};
+
 app.get('/:language/results', async (req: Request, res: Response) => {
   const language = getLanguage(req);
   const results = await readAllResults(language);
@@ -192,7 +216,8 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
     const results = await readAllResults(language);
     const frequency = await getFrequencyMap(language);
     const exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results, frequency);
-    res.send(exercises);
+    const withMovie = await addMovieExamples(exercises, language);
+    res.send(withMovie);
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
@@ -206,7 +231,10 @@ app.get('/:language/generate/local/repeat', async (req: Request, res: Response) 
     const filter = (exercise: Exercise) => {
       const word = extractWordToFindFromExercise(exercise);
       if (word && frequency[word]) {
-        if (exercise instanceof TranslationExercise && (exercise as TranslationExercise).isTranslationToPortugueseFromHearing()) {
+        if (
+          exercise instanceof TranslationExercise &&
+          (exercise as TranslationExercise).isTranslationToPortugueseFromHearing()
+        ) {
           return false;
         }
         return frequency[word].place < 250;
@@ -214,7 +242,8 @@ app.get('/:language/generate/local/repeat', async (req: Request, res: Response) 
       return false;
     };
     const exercises = await generateExercisesForSessionAsync(10, false, filter, language, results, frequency);
-    res.send(exercises);
+    const withMovie = await addMovieExamples(exercises, language);
+    res.send(withMovie);
   } catch (e) {
     logger.error('Error generating exercises', 3);
   }
