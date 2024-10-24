@@ -152,8 +152,7 @@ const generateRepeatExercises = async (count: number, language: Language, result
     }
     return false;
   };
-  const exercises = await generateExercisesForSessionAsync(count, false, filter, language, results, frequency);
-  return await addMovieExamples(exercises, language);
+  return await generateExercisesForSessionAsync(count, false, filter, language, results, frequency);
 };
 
 app.get('/:language/results', async (req: Request, res: Response) => {
@@ -239,9 +238,8 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
     const results = await readAllResults(language);
     const frequency = await getFrequencyMap(language);
     const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results, frequency);
-    const withMovie = await addMovieExamples(exercises, language);
     const exercisesRepeat = await generateRepeatExercises(2, language, results);
-    res.send(shuffleArray(withMovie.concat(exercisesRepeat)));
+    res.send(shuffleArray(exercises.concat(exercisesRepeat)));
   } catch (e: any) {
     logger.error('Error generating exercises', 3);
     logger.error(e);
