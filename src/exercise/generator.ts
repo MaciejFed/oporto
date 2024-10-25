@@ -1,6 +1,6 @@
 import { Exercise, Frequency } from './exercise';
 import { Person, readAll } from '../repository/exercises-repository';
-import { VerbExercise } from './verb-exercise';
+import { VerbExercise, VerbTime } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
 import { TranslationType } from './translation/translation-exercise';
 import { VerbTranslationExercise } from './translation/verb-translation-exercise';
@@ -40,16 +40,30 @@ import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-
 type ExerciseGenerator = () => Exercise[];
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
+  const standardConjugationKeys: (keyof typeof Person)[] = [Person.Eu];
   const verbsNonStandard = readAll().verbs.filter((verb) => !checkStandardConjugation(verb.infinitive, []).isStandard);
+  const verbsStandardConjugation = readAll().verbs.filter(
+    (verb) => checkStandardConjugation(verb.infinitive, []).isStandard
+  );
   const presentSimpleVerbs = verbsNonStandard.flatMap((verb) =>
     Object.keys(Person).flatMap((person) =>
       VerbExercise.new(verb, Person[person as keyof typeof Person], 'presentSimple')
     )
   );
+  const presentSimpleStandardVerbs = verbsStandardConjugation.flatMap((verb) =>
+    standardConjugationKeys.flatMap((person) => VerbExercise.new(verb, Person[person], 'presentSimple'))
+  );
   const pastPerfectVerbs = verbsNonStandard
     .filter((verb) => verb.pastPerfect)
     .flatMap((verb) =>
       Object.keys(Person).flatMap((person) =>
+        VerbExercise.new(verb, Person[person as keyof typeof Person], 'pastPerfect')
+      )
+    );
+  const pastPerfectStandardVerbs = verbsStandardConjugation
+    .filter((verb) => verb.pastPerfect)
+    .flatMap((verb) =>
+      standardConjugationKeys.flatMap((person) =>
         VerbExercise.new(verb, Person[person as keyof typeof Person], 'pastPerfect')
       )
     );
@@ -61,7 +75,11 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
         VerbExercise.new(verb, Person[person as keyof typeof Person], 'imperfect')
       )
     );
-  return pastPerfectVerbs.concat(presentSimpleVerbs).concat(imperfectVerbs);
+  return pastPerfectVerbs
+    .concat(presentSimpleVerbs)
+    .concat(imperfectVerbs)
+    .concat(presentSimpleStandardVerbs)
+    .concat(pastPerfectStandardVerbs);
 };
 
 export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
