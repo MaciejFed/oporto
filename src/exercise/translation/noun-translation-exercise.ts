@@ -51,7 +51,7 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.noun.english}`;
     }
-    return `Portuguese: ${this.getWordWithGender()}`;
+    return `Portuguese: ${this.getMovieExamplePrefix()} ${this.getWordWithGender()} ${this.getMovieExampleSuffix()}`;
   };
 
   getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);

@@ -295,7 +295,11 @@ const verbs = [
   'matar',
   'tirar',
   'perder',
-  'procurar'
+  'procurar',
+  'faltar',
+  'valer',
+  'arranjar',
+  'contar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

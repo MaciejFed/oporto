@@ -146,7 +146,7 @@ const generateRepeatExercises = async (count: number, language: Language, result
       const split = word.split(' ');
       const freqWord = frequency[split.length === 2 ? split[1] : word];
       if (freqWord) {
-        return freqWord.place < 500;
+        return freqWord.place < 1000;
       }
       return false;
     }

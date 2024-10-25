@@ -49,7 +49,9 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.adjective.english}`;
     }
-    return `Portuguese: ${this.adjective.masculine.singular}`;
+    return `Portuguese: ${this.getMovieExamplePrefix()} ${
+      this.adjective.masculine.singular
+    } ${this.getMovieExampleSuffix()}`;
   };
 
   getTranslation = () => this.adjective.english;

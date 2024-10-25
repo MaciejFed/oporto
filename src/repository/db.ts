@@ -1618,7 +1618,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'esperou',
         Nós: 'esperámos',
         'Eles/Elas/Vocēs': 'esperaram'
-      }
+      },
+      otherForms: [
+        {
+          portuguese: 'espere',
+          english: 'wait'
+        }
+      ]
     },
     {
       english: 'to study',
@@ -3131,7 +3137,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'havia',
         Nós: 'havíamos',
         'Eles/Elas/Vocēs': 'haviam'
-      }
+      },
+      otherForms: [
+        {
+          portuguese: 'houver',
+          english: 'will be'
+        }
+      ]
     },
     {
       english: 'should',
@@ -3278,6 +3290,78 @@ export const db: Schema = {
         'Ela/Ele/Você': 'procurava',
         Nós: 'procurávamos',
         'Eles/Elas/Vocēs': 'procuravam'
+      }
+    },
+    {
+      english: 'to tell',
+      infinitive: 'contar',
+      presentSimple: {
+        Eu: 'conto',
+        Tu: 'contas',
+        'Ela/Ele/Você': 'conta',
+        Nós: 'contamos',
+        'Eles/Elas/Vocēs': 'contam'
+      },
+      pastPerfect: {
+        Eu: 'contei',
+        Tu: 'contaste',
+        'Ela/Ele/Você': 'contou',
+        Nós: 'contámos',
+        'Eles/Elas/Vocēs': 'contaram'
+      }
+    },
+    {
+      english: 'to get',
+      infinitive: 'arranjar',
+      presentSimple: {
+        Eu: 'arranjo',
+        Tu: 'arranjas',
+        'Ela/Ele/Você': 'arranja',
+        Nós: 'arranjamos',
+        'Eles/Elas/Vocēs': 'arranjam'
+      },
+      pastPerfect: {
+        Eu: 'arranjei',
+        Tu: 'arranjaste',
+        'Ela/Ele/Você': 'arranjou',
+        Nós: 'arranjámos',
+        'Eles/Elas/Vocēs': 'arranjaram'
+      }
+    },
+    {
+      english: 'to be worth',
+      infinitive: 'valer',
+      presentSimple: {
+        Eu: 'valho',
+        Tu: 'vales',
+        'Ela/Ele/Você': 'vale',
+        Nós: 'valemos',
+        'Eles/Elas/Vocēs': 'valem'
+      },
+      pastPerfect: {
+        Eu: 'vali',
+        Tu: 'valeste',
+        'Ela/Ele/Você': 'valeu',
+        Nós: 'valemos',
+        'Eles/Elas/Vocēs': 'valeram'
+      }
+    },
+    {
+      english: 'to miss',
+      infinitive: 'faltar',
+      presentSimple: {
+        Eu: 'falto',
+        Tu: 'faltas',
+        'Ela/Ele/Você': 'falta',
+        Nós: 'faltamos',
+        'Eles/Elas/Vocēs': 'faltam'
+      },
+      pastPerfect: {
+        Eu: 'faltei',
+        Tu: 'faltaste',
+        'Ela/Ele/Você': 'faltou',
+        Nós: 'faltámos',
+        'Eles/Elas/Vocēs': 'faltaram'
       }
     }
   ],
@@ -4224,6 +4308,7 @@ export const db: Schema = {
       english: 'problem',
       portuguese: {
         word: 'problema',
+        plural: 'problemas',
         gender: 'masculine'
       }
     },
@@ -7533,6 +7618,46 @@ export const db: Schema = {
         plural: 'aldeias',
         gender: 'feminine'
       }
+    },
+    {
+      english: 'lady',
+      portuguese: {
+        word: 'senhora',
+        plural: 'senhoras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'boy',
+      portuguese: {
+        word: 'rapaz',
+        plural: 'rapazes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'daughter',
+      portuguese: {
+        word: 'filha',
+        plural: 'filhas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'height',
+      portuguese: {
+        word: 'altura',
+        plural: 'alturas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'rest',
+      portuguese: {
+        word: 'resto',
+        plural: 'restos',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -8241,6 +8366,10 @@ export const db: Schema = {
     {
       portuguese: 'felizmente',
       english: 'fortunately'
+    },
+    {
+      portuguese: 'elas',
+      english: 'they - feminine'
     }
   ],
   othersWithGender: [
@@ -9739,6 +9868,50 @@ export const db: Schema = {
       feminine: {
         singular: 'difícil',
         plural: 'difíceis'
+      }
+    },
+    {
+      english: 'own',
+      masculine: {
+        singular: 'próprio',
+        plural: 'próprios'
+      },
+      feminine: {
+        singular: 'própria',
+        plural: 'próprias'
+      }
+    },
+    {
+      english: 'young',
+      masculine: {
+        singular: 'jovem',
+        plural: 'jovens'
+      },
+      feminine: {
+        singular: 'jovem',
+        plural: 'jovens'
+      }
+    },
+    {
+      english: 'poor',
+      masculine: {
+        singular: 'pobre',
+        plural: 'pobres'
+      },
+      feminine: {
+        singular: 'pobre',
+        plural: 'pobres'
+      }
+    },
+    {
+      english: 'beautiful',
+      masculine: {
+        singular: 'belo',
+        plural: 'belos'
+      },
+      feminine: {
+        singular: 'bela',
+        plural: 'belas'
       }
     }
   ],

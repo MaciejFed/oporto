@@ -38,7 +38,7 @@ export class OtherTranslationExercise extends TranslationExercise implements Com
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.other.english}`;
     }
-    return `Portuguese: ${this.other.portuguese}`;
+    return `Portuguese: ${this.getMovieExamplePrefix()} ${this.other.portuguese} ${this.getMovieExampleSuffix()}`;
   };
 
   getTranslation = () => this.other.english;

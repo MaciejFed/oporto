@@ -28,13 +28,13 @@ function countAndSortWords(words: string[], knownWords: string[]): [string, numb
 
   return sortedWordFrequency
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 100_000)
+    .slice(0, 10_000)
     .map((freq) => [freq[0], freq[1], knownWords.includes(freq[0])]);
 }
 
 export async function getKnownPercentage(language: Language): Promise<number> {
   const allWords = ['s'];
-  const allWordsReal = ['asd'];
+  const allWordsReal = getAllUniqueWordsConjugated(language);
   let known = 0;
   let unKnown = 0;
   let counter = 0;
@@ -114,15 +114,15 @@ export async function getKnownPercentage(language: Language): Promise<number> {
     wordFreq[2],
     cutNumber(sumUntil(index, unknowns as any))
   ]);
-  const freqMap = newResultUnknown.reduce((curr, prev, index) => {
-    curr[prev[0] as string] = {
-      place: index + 1,
-      frequency: prev[2]
-    };
-    return curr;
-  }, {} as { [key: string]: object });
-
-  await saveFrequencyMap(language, freqMap);
+  // const freqMap = newResultUnknown.reduce((curr, prev, index) => {
+  //   curr[prev[0] as string] = {
+  //     place: index + 1,
+  //     frequency: prev[2]
+  //   };
+  //   return curr;
+  // }, {} as { [key: string]: object });
+  //
+  // await saveFrequencyMap(language, freqMap);
 
   unknownWords.length = 0;
 
