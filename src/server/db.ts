@@ -132,6 +132,24 @@ export async function getFrequencyMap(language: Language): Promise<{
   }
 }
 
+export async function getFrequencyMaps(language: Language): Promise<
+  {
+    [word: string]: {
+      place: number;
+      frequency: number;
+    };
+  }[]
+> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(frequencyMap[language]);
+    return await collection.find().toArray();
+  } finally {
+    await client.close();
+  }
+}
+
 export async function saveKnownSentences(language: Language, sentences: string[]): Promise<void> {
   const client = await getClient();
   try {

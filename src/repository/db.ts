@@ -540,6 +540,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'encontra',
         Nós: 'encontramos',
         'Eles/Elas/Vocēs': 'encontram'
+      },
+      pastPerfect: {
+        Eu: 'encontrei',
+        Tu: 'encontraste',
+        'Ela/Ele/Você': 'encontrou',
+        Nós: 'encontrámos',
+        'Eles/Elas/Vocēs': 'encontraram'
       }
     },
     {
@@ -844,6 +851,13 @@ export const db: Schema = {
         'Ela/Ele/Você': 'começa',
         Nós: 'começamos',
         'Eles/Elas/Vocēs': 'começam'
+      },
+      pastPerfect: {
+        Eu: 'comecei',
+        Tu: 'começaste',
+        'Ela/Ele/Você': 'começou',
+        Nós: 'começámos',
+        'Eles/Elas/Vocēs': 'começaram'
       }
     },
     {
@@ -866,8 +880,144 @@ export const db: Schema = {
         'Ela/Ele/Você': 'acaba',
         Nós: 'acabamos',
         'Eles/Elas/Vocēs': 'acabam'
+      },
+      pastPerfect: {
+        Eu: 'acabei',
+        Tu: 'acabaste',
+        'Ela/Ele/Você': 'acabou',
+        Nós: 'acabámos',
+        'Eles/Elas/Vocēs': 'acabaram'
       }
     },
+    {
+      english: 'to call',
+      infinitive: 'ligar',
+      presentSimple: {
+        Eu: 'ligo',
+        Tu: 'ligas',
+        'Ela/Ele/Você': 'liga',
+        Nós: 'ligamos',
+        'Eles/Elas/Vocēs': 'ligam'
+      },
+      pastPerfect: {
+        Eu: 'liguei',
+        Tu: 'ligaste',
+        'Ela/Ele/Você': 'ligou',
+        Nós: 'ligámos',
+        'Eles/Elas/Vocēs': 'ligaram'
+      }
+    },
+    {
+      english: 'to die',
+      infinitive: 'morrer',
+      presentSimple: {
+        Eu: 'morro',
+        Tu: 'morres',
+        'Ela/Ele/Você': 'morre',
+        Nós: 'morremos',
+        'Eles/Elas/Vocēs': 'morrem'
+      },
+      pastPerfect: {
+        Eu: 'morri',
+        Tu: 'morreste',
+        'Ela/Ele/Você': 'morreu',
+        Nós: 'morremos',
+        'Eles/Elas/Vocēs': 'morreram'
+      }
+    },
+    {
+      english: 'to exist',
+      infinitive: 'existir',
+      presentSimple: {
+        Eu: 'existo',
+        Tu: 'existes',
+        'Ela/Ele/Você': 'existe',
+        Nós: 'existimos',
+        'Eles/Elas/Vocēs': 'existem'
+      },
+      pastPerfect: {
+        Eu: 'existi',
+        Tu: 'exististe',
+        'Ela/Ele/Você': 'existiu',
+        Nós: 'existimos',
+        'Eles/Elas/Vocēs': 'existiram'
+      }
+    },
+
+    {
+      english: 'to gain',
+      infinitive: 'ganhar',
+      presentSimple: {
+        Eu: 'ganho',
+        Tu: 'ganhas',
+        'Ela/Ele/Você': 'ganha',
+        Nós: 'ganhamos',
+        'Eles/Elas/Vocēs': 'ganham'
+      },
+      pastPerfect: {
+        Eu: 'ganhei',
+        Tu: 'ganhaste',
+        'Ela/Ele/Você': 'ganhou',
+        Nós: 'ganhámos',
+        'Eles/Elas/Vocēs': 'ganharam'
+      }
+    },
+
+    {
+      english: 'to keep',
+      infinitive: 'manter',
+      presentSimple: {
+        Eu: 'mantenho',
+        Tu: 'manténs',
+        'Ela/Ele/Você': 'mantém',
+        Nós: 'mantemos',
+        'Eles/Elas/Vocēs': 'mantêm'
+      },
+      pastPerfect: {
+        Eu: 'mantive',
+        Tu: 'mantiveste',
+        'Ela/Ele/Você': 'manteve',
+        Nós: 'mantivemos',
+        'Eles/Elas/Vocēs': 'mantiveram'
+      }
+    },
+    {
+      english: 'to treat',
+      infinitive: 'tratar',
+      presentSimple: {
+        Eu: 'trato',
+        Tu: 'tratas',
+        'Ela/Ele/Você': 'trata',
+        Nós: 'tratamos',
+        'Eles/Elas/Vocēs': 'tratam'
+      },
+      pastPerfect: {
+        Eu: 'tratei',
+        Tu: 'trataste',
+        'Ela/Ele/Você': 'tratou',
+        Nós: 'tratámos',
+        'Eles/Elas/Vocēs': 'trataram'
+      }
+    },
+    {
+      english: 'to discover',
+      infinitive: 'descobrir',
+      presentSimple: {
+        Eu: 'descubro',
+        Tu: 'descobres',
+        'Ela/Ele/Você': 'descobre',
+        Nós: 'descobrimos',
+        'Eles/Elas/Vocēs': 'descobrem'
+      },
+      pastPerfect: {
+        Eu: 'descobri',
+        Tu: 'descobriste',
+        'Ela/Ele/Você': 'descobriu',
+        Nós: 'descobrimos',
+        'Eles/Elas/Vocēs': 'descobriram'
+      }
+    },
+
     {
       english: 'to catch',
       infinitive: 'apanhar',
@@ -3716,6 +3866,7 @@ export const db: Schema = {
       english: 'minute',
       portuguese: {
         word: 'minuto',
+        plural: 'minutos',
         gender: 'masculine'
       }
     },
@@ -4301,6 +4452,7 @@ export const db: Schema = {
       english: 'son',
       portuguese: {
         word: 'filho',
+        plural: 'filhos',
         gender: 'masculine'
       }
     },
@@ -7658,6 +7810,123 @@ export const db: Schema = {
         plural: 'restos',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'agent',
+      portuguese: {
+        word: 'agente',
+        plural: 'agentes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'team',
+      portuguese: {
+        word: 'equipa',
+        plural: 'equipas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'regret',
+      portuguese: {
+        word: 'lamento',
+        plural: 'lamentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'blood',
+      portuguese: {
+        word: 'sangue',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fault',
+      portuguese: {
+        word: 'culpa',
+        plural: 'culpas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'weapon',
+      portuguese: {
+        word: 'arma',
+        plural: 'arma',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'excuse',
+      portuguese: {
+        word: 'desculpa',
+        plural: 'desculpas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'parents',
+      portuguese: {
+        word: 'pais',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'crap',
+      portuguese: {
+        word: 'merda',
+        plural: 'merdas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'president',
+      portuguese: {
+        word: 'presidente',
+        plural: 'presidentes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'site',
+      portuguese: {
+        word: 'sítio',
+        plural: 'sítios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'reason',
+      portuguese: {
+        word: 'porquê',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'million',
+      portuguese: {
+        word: 'milhão',
+        plural: 'milhões',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'force',
+      portuguese: {
+        word: 'força',
+        plural: 'forças',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'dolar',
+      portuguese: {
+        word: 'dólar',
+        plural: 'dólares',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -7768,10 +8037,6 @@ export const db: Schema = {
     {
       english: 'everybody',
       portuguese: 'toda a gente'
-    },
-    {
-      english: 'next',
-      portuguese: 'próximo'
     },
     {
       english: 'previous',
@@ -8370,6 +8635,18 @@ export const db: Schema = {
     {
       portuguese: 'elas',
       english: 'they - feminine'
+    },
+    {
+      portuguese: 'exactamente',
+      english: 'exactly'
+    },
+    {
+      portuguese: 'após',
+      english: 'after - formal'
+    },
+    {
+      portuguese: 'através',
+      english: 'through'
     }
   ],
   othersWithGender: [
@@ -8755,6 +9032,19 @@ export const db: Schema = {
         plural: {
           masculine: 'demasiados',
           feminine: 'demasiadas'
+        }
+      }
+    },
+    {
+      english: 'em + aquela',
+      portuguese: {
+        singular: {
+          masculine: 'naquele',
+          feminine: 'naquela'
+        },
+        plural: {
+          masculine: 'naqueles',
+          feminine: 'naquelas'
         }
       }
     }
@@ -9912,6 +10202,83 @@ export const db: Schema = {
       feminine: {
         singular: 'bela',
         plural: 'belas'
+      }
+    },
+    {
+      english: 'next',
+      masculine: {
+        singular: 'próximo',
+        plural: 'próximos'
+      },
+      feminine: {
+        singular: 'próxima',
+        plural: 'próximas'
+      }
+    },
+    {
+      english: 'sufficient',
+      masculine: {
+        singular: 'suficiente',
+        plural: 'suficientes'
+      },
+      feminine: {
+        singular: 'suficiente',
+        plural: 'suficientes'
+      }
+    },
+    {
+      english: 'local',
+      masculine: {
+        singular: 'local',
+        plural: 'locais'
+      },
+      feminine: {
+        singular: 'local',
+        plural: 'locais'
+      }
+    },
+    {
+      english: 'capable',
+      masculine: {
+        singular: 'capaz',
+        plural: 'capazes'
+      },
+      feminine: {
+        singular: 'capaz',
+        plural: 'capazes'
+      }
+    },
+    {
+      english: 'bad',
+      masculine: {
+        singular: 'mau',
+        plural: 'maus'
+      },
+      feminine: {
+        singular: 'má',
+        plural: 'más'
+      }
+    },
+    {
+      english: 'worse',
+      masculine: {
+        singular: 'pior',
+        plural: 'piores'
+      },
+      feminine: {
+        singular: 'pior',
+        plural: 'piores'
+      }
+    },
+    {
+      english: 'certain',
+      masculine: {
+        singular: 'certo',
+        plural: 'certos'
+      },
+      feminine: {
+        singular: 'certa',
+        plural: 'certas'
       }
     }
   ],

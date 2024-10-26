@@ -10,6 +10,7 @@ export enum Person {
   Nós = 'Nós',
   ElesElasVosēs = 'Eles/Elas/Vocēs'
 }
+// get all the forms in db but only get exercise if in frequency table < 10_000
 
 export type Verb = {
   english: string;
@@ -299,7 +300,14 @@ const verbs = [
   'faltar',
   'valer',
   'arranjar',
-  'contar'
+  'contar',
+  'ganhar',
+  'manter',
+  'tratar',
+  'descobrir',
+  'existir',
+  'morrer',
+  'ligar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];
