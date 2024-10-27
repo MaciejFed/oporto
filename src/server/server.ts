@@ -152,7 +152,7 @@ const generateRepeatExercises = async (count: number, language: Language, result
     }
     return false;
   };
-  return await generateExercisesForSessionAsync(count, false, filter, language, results, frequency);
+  return await generateExercisesForSessionAsync(count, false, filter, language, results);
 };
 
 app.get('/:language/results', async (req: Request, res: Response) => {
@@ -202,7 +202,7 @@ app.get('/:language/priority', async (req: Request, res: Response) => {
   const language = getLanguage(req);
   const results = await readAllResults(language);
   const frequency = await getFrequencyMap(language);
-  const exercises = await generateExercisesForSessionAsync(300, true, () => true, language, results, frequency);
+  const exercises = await generateExercisesForSessionAsync(300, true, () => true, language, results);
   const { exercisesWithPriorities } = sortExercises(exercises, results, language);
   const response = exercisesWithPriorities.map((ep) => ({
     exercise: `[${ep.exercise.exerciseType}] [${ep.exercise.getBaseWordAsString()}]`,
@@ -237,7 +237,7 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
     const language = getLanguage(req);
     const results = await readAllResults(language);
     const frequency = await getFrequencyMap(language);
-    const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results, frequency);
+    const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results);
     const exercisesRepeat = await generateRepeatExercises(2, language, results);
     res.send(shuffleArray(exercises.concat(exercisesRepeat)));
   } catch (e: any) {

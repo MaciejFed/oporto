@@ -35,7 +35,7 @@ function countAndSortWords(words: string[], knownWords: string[]): [string, numb
 export async function getKnownPercentage(language: Language): Promise<number> {
   const wordFrequency = new Map<string, number>();
   const allWords = ['s'];
-  const allWordsReal = getAllUniqueWordsConjugated(language);
+  const allWordsReal = [''];
   let known = 0;
   let unKnown = 0;
   let counter = 0;
@@ -101,7 +101,7 @@ export async function getKnownPercentage(language: Language): Promise<number> {
 
   const sortedWordFrequency: [string, number, boolean][] = Array.from(wordFrequency)
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 50_000)
+    .slice(0, 5_000)
     .map((freq) => [freq[0], freq[1], allWordsReal.includes(freq[0])]);
 
   const cutNumber = (someNumber: number) => Number(Number(someNumber.toString().slice(0, 7)).toFixed(4));
@@ -130,14 +130,14 @@ export async function getKnownPercentage(language: Language): Promise<number> {
     wordFreq[2],
     cutNumber(sumUntil(index, unknowns as any))
   ]);
-  // const freqMap = newResultUnknown.reduce((curr, prev, index) => {
-  //   curr[prev[0] as string] = {
-  //     place: index + 1,
-  //     frequency: prev[2]
-  //   };
-  //   return curr;
-  // }, {} as { [key: string]: object });
-  //
+  const freqMap = newResultUnknown.reduce((curr, prev, index) => {
+    curr[prev[0] as string] = {
+      place: index + 1,
+      frequency: prev[2]
+    };
+    return curr;
+  }, {} as { [key: string]: object });
+
   // await saveFrequencyMap(language, freqMap);
 
   return (known / (known + unKnown)) * 100;

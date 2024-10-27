@@ -36,10 +36,18 @@ import { extractWordToFindFromExercise } from '../service/example-finder/example
 import { OtherGenderTranslationExercise } from './translation/other-gender-translation-exercise';
 import { exerciseRandomness } from '../priority/types/exercise-randomness/exercise-randomness';
 import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-translation-exercise';
+import { frequencyMap } from '../frequency';
 
 type ExerciseGenerator = () => Exercise[];
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
+  const filiterInFreqLimit = (exercise: VerbExercise) => {
+    const limitFrequency = 5_000;
+    if (!limitFrequency) return true;
+    const wordToFind = exercise.getCorrectAnswer();
+    const wordfreq = frequencyMap[wordToFind];
+    return wordfreq && wordfreq.place < limitFrequency;
+  };
   const standardConjugationKeys: (keyof typeof Person)[] = [Person.Eu];
   const verbsNonStandard = readAll().verbs.filter((verb) => !checkStandardConjugation(verb.infinitive, []).isStandard);
   const verbsStandardConjugation = readAll().verbs.filter(
@@ -79,7 +87,8 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
     .concat(presentSimpleVerbs)
     .concat(imperfectVerbs)
     .concat(presentSimpleStandardVerbs)
-    .concat(pastPerfectStandardVerbs);
+    .concat(pastPerfectStandardVerbs)
+    .filter(filiterInFreqLimit);
 };
 
 export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
@@ -301,8 +310,7 @@ export async function generateExercisesForSessionAsync(
   sort: boolean,
   filter: (ex: Exercise) => boolean,
   language: Language,
-  results: Result[],
-  frequencyMap: { [word: string]: Frequency }
+  results: Result[]
 ): Promise<Exercise[]> {
   const exercises = generateAllPossibleExercises(language)
     .filter((exercise) => filter(exercise))
