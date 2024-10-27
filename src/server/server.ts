@@ -261,7 +261,7 @@ app.get('/:language/generate/local/repeat', async (req: Request, res: Response) 
 app.post('/:language/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
   try {
-    logger.info(`Translation request for: [${word}]`)
+    logger.info(`Translation request for: [${word}]`);
     const language = getLanguage(req);
     const examples = await getExamples(word, language);
     const exampleSelected = await selectMovieExample(examples, word);

@@ -726,7 +726,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to take',
+      english: 'to take food',
       infinitive: 'tomar',
       presentSimple: {
         Eu: 'tomo',
@@ -2636,7 +2636,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to take',
+      english: 'to take with you',
       infinitive: 'levar',
       presentSimple: {
         Eu: 'levo',

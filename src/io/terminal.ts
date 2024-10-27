@@ -77,13 +77,14 @@ export class Terminal {
   constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language, repeat = false) {
     this.registerListeners();
     this.exercises = getExercisesForSession(language, repeat);
-    this.exercises.forEach(async (exercise) => {
+    this.exercises.reduce(async (promise, exercise) => {
+      await promise;
       const wordToFind = extractWordToFindFromExercise(exercise);
       const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
       if (example) {
         exercise.addMovieExample(example);
       }
-    });
+    }, Promise.resolve());
 
     this.currentExercise = this.exercises[0];
     this.exerciseBodyPrefix = '';
