@@ -3461,7 +3461,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'to get',
+      english: 'to arrange',
       infinitive: 'arranjar',
       presentSimple: {
         Eu: 'arranjo',
