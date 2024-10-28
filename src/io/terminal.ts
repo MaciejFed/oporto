@@ -79,6 +79,9 @@ export class Terminal {
     this.exercises = getExercisesForSession(language, repeat);
     this.exercises.reduce(async (promise, exercise) => {
       await promise;
+      if (exercise instanceof TranslationExercise && !exercise.isTranslationToPortuguese()) {
+        return;
+      }
       const wordToFind = extractWordToFindFromExercise(exercise);
       const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
       if (example) {

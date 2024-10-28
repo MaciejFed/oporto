@@ -107,7 +107,7 @@ export async function getKnownPercentage(language: Language): Promise<void> {
           .sort((a, b) => a.avgPlace - b.avgPlace);
         terminal.hideCursor();
         while (sentenceWords.length) {
-          const randomElement = getRandomElement(knownSentecesesMap, 10_000).sentence;
+          const randomElement = getRandomElement(knownSentecesesMap, 50_000).sentence;
           const english = await translateToEnglish(randomElement);
 
           getAudio(language, randomElement, 'google', 'normal');

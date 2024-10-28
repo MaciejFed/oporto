@@ -36,7 +36,6 @@ exports[`Progress Aggregate PT 1`] = `
           "impressionante",
           "juntos",
           "lindo",
-          "melhor",
           "mentiroso",
           "simpático",
           "usado",
@@ -94,7 +93,7 @@ exports[`Progress Aggregate PT 1`] = `
           "ético",
           "preso",
         ],
-        "count": 87,
+        "count": 86,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -118,6 +117,7 @@ exports[`Progress Aggregate PT 1`] = `
       },
       "NEVER_DONE": {
         "baseWords": [
+          "melhor",
           "corajoso",
           "agradável",
           "vários",
@@ -156,7 +156,7 @@ exports[`Progress Aggregate PT 1`] = `
           "pior",
           "certo",
         ],
-        "count": 37,
+        "count": 38,
       },
     },
     "GermanCaseExercise": {
@@ -3008,7 +3008,6 @@ exports[`Progress Aggregate PT 1`] = `
           "impressionante",
           "juntos",
           "lindo",
-          "melhor",
           "mentiroso",
           "simpático",
           "usado",
@@ -3047,7 +3046,7 @@ exports[`Progress Aggregate PT 1`] = `
           "desconfiado",
           "castanho",
         ],
-        "count": 68,
+        "count": 67,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3081,6 +3080,7 @@ exports[`Progress Aggregate PT 1`] = `
       },
       "NEVER_DONE": {
         "baseWords": [
+          "melhor",
           "ligado",
           "mesmo",
           "feito",
@@ -3099,7 +3099,7 @@ exports[`Progress Aggregate PT 1`] = `
           "pior",
           "certo",
         ],
-        "count": 17,
+        "count": 18,
       },
     },
     "NOUN": {

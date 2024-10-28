@@ -7,6 +7,7 @@ import { MIN_WORD_LENGTH } from '../service/example-finder/example-finder.types'
 import { getAllUniqueWords, getAllUniqueWordsConjugated } from '../service/progress/progress';
 import { isNumber } from 'node:util';
 import { saveFrequencyMap } from '../server/db';
+import { generateAllPossibleExercises } from '../exercise/generator';
 
 const removeUnwantedCharacters = (word: string) =>
   word.replace('.', '').replace(',', '').replace('?', '').replace('!', '');
@@ -35,7 +36,7 @@ function countAndSortWords(words: string[], knownWords: string[]): [string, numb
 export async function getKnownPercentage(language: Language): Promise<number> {
   const wordFrequency = new Map<string, number>();
   const allWords = ['s'];
-  const allWordsReal = [''];
+  const allWordsReal = getAllUniqueWordsConjugated(language);
   let known = 0;
   let unKnown = 0;
   let counter = 0;
@@ -130,13 +131,13 @@ export async function getKnownPercentage(language: Language): Promise<number> {
     wordFreq[2],
     cutNumber(sumUntil(index, unknowns as any))
   ]);
-  const freqMap = newResultUnknown.reduce((curr, prev, index) => {
-    curr[prev[0] as string] = {
-      place: index + 1,
-      frequency: prev[2]
-    };
-    return curr;
-  }, {} as { [key: string]: object });
+  // const freqMap = newResultUnknown.reduce((curr, prev, index) => {
+  //   curr[prev[0] as string] = {
+  //     place: index + 1,
+  //     frequency: prev[2]
+  //   };
+  //   return curr;
+  // }, {} as { [key: string]: object });
 
   // await saveFrequencyMap(language, freqMap);
 

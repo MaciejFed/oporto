@@ -9399,16 +9399,15 @@ export const db: Schema = {
         plural: 'lindas'
       }
     },
-
     {
       english: 'better',
       masculine: {
         singular: 'melhor',
-        plural: 'melhor'
+        plural: 'melhores'
       },
       feminine: {
         singular: 'melhor',
-        plural: 'melhor'
+        plural: 'melhores'
       }
     },
     {
