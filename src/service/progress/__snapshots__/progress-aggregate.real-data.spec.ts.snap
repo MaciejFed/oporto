@@ -1315,6 +1315,7 @@ exports[`Progress Aggregate PT 1`] = `
           "querer",
           "ver",
           "fazer",
+          "saber",
           "ler",
           "dizer",
           "poder",
@@ -1413,7 +1414,7 @@ exports[`Progress Aggregate PT 1`] = `
           "valer",
           "faltar",
         ],
-        "count": 104,
+        "count": 105,
       },
     },
     "VerbTranslation": {
@@ -3769,7 +3770,6 @@ exports[`Progress Aggregate PT 1`] = `
     "VERB": {
       "DONE": {
         "baseWords": [
-          "saber",
           "pôr",
           "morar",
           "chamar-se",
@@ -3823,7 +3823,7 @@ exports[`Progress Aggregate PT 1`] = `
           "mexer",
           "puxar",
         ],
-        "count": 53,
+        "count": 52,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3834,6 +3834,7 @@ exports[`Progress Aggregate PT 1`] = `
           "querer",
           "ver",
           "fazer",
+          "saber",
           "ler",
           "dizer",
           "poder",
@@ -3951,7 +3952,7 @@ exports[`Progress Aggregate PT 1`] = `
           "avistar",
           "atirar",
         ],
-        "count": 123,
+        "count": 124,
       },
       "NEVER_DONE": {
         "baseWords": [

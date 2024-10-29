@@ -14,6 +14,7 @@ export enum Person {
 export enum VerbTime {
   presentSimple = 'presentSimple',
   pastPerfect = 'pastPerfect',
+  imperfect = 'imperfect',
   pretéritoMaisQuePerfeito = 'pretéritoMaisQuePerfeito',
   futuroDoPresenteSimples = 'futuroDoPresenteSimples',
   subjuntivoPresente = 'subjuntivoPresente',

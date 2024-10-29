@@ -96,6 +96,9 @@ export class PTVerbConjugation extends VerbConjugation<Verb> {
     const cellValue = this.getCell(x, y)!;
     const wordBase = this.data.infinitive.slice(0, -2);
 
+    if (y > 2) {
+      return new ColoredText(cellValue, createColorArray({ white: cellValue.length }));
+    }
     const person = this.getPersonForX(x);
     const tense = this.getTenseForY(y);
 
@@ -130,7 +133,7 @@ export class PTVerbConjugation extends VerbConjugation<Verb> {
 
   getTableSize(): { x: number; y: number } {
     return {
-      y: 3,
+      y: 9,
       x: Object.values(this.data.presentSimple).length
     };
   }

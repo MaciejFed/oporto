@@ -3,6 +3,7 @@ import { Color, ColoredText } from '../output';
 import { getSingleExerciseProgress, ProgressType } from '../../service/progress/progress';
 import { ConjugationTable } from './conjugation-printer.types';
 import { BaseWord, Exercise } from '../../exercise/exercise';
+import { VerbTime } from '../../repository/exercises-repository';
 
 export abstract class VerbConjugation<W extends BaseWord> implements ConjugationTable {
   protected constructor(protected readonly data: W, protected readonly result: Result[]) {}
@@ -38,16 +39,7 @@ export abstract class VerbConjugation<W extends BaseWord> implements Conjugation
   }
 
   getTenseForY(y: number): Tense {
-    switch (y) {
-      case 0:
-        return 'presentSimple';
-      case 1:
-        return 'pastPerfect';
-      case 2:
-        return 'imperfect';
-      default:
-        throw new Error(`Unexpected column [${y}]`);
-    }
+    return Object.keys(VerbTime)[y] as Tense;
   }
 
   getCell(x: number, y: number): string | undefined {
