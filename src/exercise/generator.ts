@@ -55,7 +55,8 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
       )
     )
   );
-  return allVerbExercises.filter(filiterInFreqLimit);
+  const allInfs = verbs.map((verb) => verb.infinitive as string);
+  return allVerbExercises.filter(filiterInFreqLimit).filter((verbEx) => !allInfs.includes(verbEx.getCorrectAnswer()));
 };
 
 export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
