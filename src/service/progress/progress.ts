@@ -1,6 +1,6 @@
 import { Exercise, ExerciseType } from '../../exercise/exercise';
 import { TranslationExercise } from '../../exercise/translation/translation-exercise';
-import { readAll } from '../../repository/exercises-repository';
+import { Person, readAll, VerbTime } from '../../repository/exercises-repository';
 import {
   DateResults,
   getAllResultsBeforeDateOneWeek,
@@ -156,24 +156,11 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
     const otherFormVerbs = readAll()
       .verbs.filter((verb) => verb.otherForms)
       .flatMap((verb) => verb.otherForms?.map((v) => v.portuguese));
-    const verbs = readAll().verbs.flatMap((verb) => [
-      verb.infinitive,
-      verb.presentSimple.Eu,
-      verb.presentSimple.Tu,
-      verb.presentSimple['Ela/Ele/Você'],
-      verb.presentSimple.Nós,
-      verb.presentSimple['Eles/Elas/Vocēs'],
-      verb.pastPerfect?.Eu,
-      verb.pastPerfect?.Tu,
-      verb.pastPerfect?.['Ela/Ele/Você'],
-      verb.pastPerfect?.Nós,
-      verb.pastPerfect?.['Eles/Elas/Vocēs'],
-      verb.imperfect?.Eu,
-      verb.imperfect?.Tu,
-      verb.imperfect?.['Ela/Ele/Você'],
-      verb.imperfect?.Nós,
-      verb.imperfect?.['Eles/Elas/Vocēs']
-    ]);
+    const verbs = readAll().verbs.flatMap((verb) =>
+      Object.keys(VerbTime).flatMap((time) =>
+        Object.values(Person).flatMap((person) => [verb[time as VerbTime][person as Person]])
+      )
+    );
     const others = readAll().others.map((other) => other.portuguese);
     const othersWithGender = readAll().othersWithGender.flatMap((other) => [
       other.portuguese.singular.feminine,
