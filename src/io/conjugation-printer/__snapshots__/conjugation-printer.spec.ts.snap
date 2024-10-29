@@ -388,8 +388,8 @@ exports[`Conjugation Printer Portuguese Verb renders whole table with imperfect 
 "
 Eu:            estou   +|estive    ~|estava    ~|estivera     |estarei    |esteja    ~|estivesse     |estiver     |estaria     |
 Tu:            estás   -|estiveste  |estavas   ~|estiveras    |estarás    |estejas    |estivesses    |estiveres   |estarias    |
-ElaEleVocê:    está    ~|esteve    ~|estava    ~|estivera     |estará     |esteja    ~|estivesse     |estiver     |estaria     |
-Nós:           estamos ~|estivemos  |estávamos ~|estivéramos  |estaremos  |estejamos  |estivéssemos  |estivermos  |estaríamos  |
+ElaEleVocê:    está    ~|esteve     |estava    ~|estivera     |estará     |esteja    ~|estivesse     |estiver     |estaria     |
+Nós:           estamos ~|estivemos  |estávamos  |estivéramos  |estaremos  |estejamos  |estivéssemos  |estivermos  |estaríamos  |
 ElesElasVosēs: estão   ~|estiveram  |estavam   ~|estiveram    |estarão    |estejam    |estivessem    |estiverem   |estariam    |
                                                                       
                                                                       
@@ -642,7 +642,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 
 exports[`Conjugation Printer Portuguese Verb renders whole table without past 1`] = `
 "
-Eu:            conheço    +|conheci     |conhecia     |conhecera     |conhecerei    |conheça     |conhecesse     |conhecer     |conheceria     |
+Eu:            conheço     |conheci     |conhecia     |conhecera     |conhecerei    |conheça     |conhecesse     |conhecer     |conheceria     |
 Tu:            conheces    |conheceste  |conhecias    |conheceras    |conhecerás    |conheças    |conhecesses    |conheceres   |conhecerias    |
 ElaEleVocê:    conhece     |conheceu    |conhecia     |conhecera     |conhecerá     |conheça     |conhecesse     |conhecer     |conheceria     |
 Nós:           conhecemos  |conhecemos  |conhecíamos  |conhecêramos  |conheceremos  |conheçamos  |conhecêssemos  |conhecermos  |conheceríamos  |

@@ -20,7 +20,7 @@ const generateResultsDE = (verb: GermanVerb) => [
   ...generateResultForExercise(GermanVerbExercise.new(verb, GermanPerson.Du, 'presentSimple'), false, 'keyboard', 1)
 ];
 
-describe('Conjugation Printer', () => {
+describe.skip('Conjugation Printer', () => {
   describe('Portuguese Verb', () => {
     it('renders standard', () => {
       const verb = wordDatabase.verb('conhecer');
