@@ -4,6 +4,9 @@ import { getSingleExerciseProgress, ProgressType } from '../../service/progress/
 import { ConjugationTable } from './conjugation-printer.types';
 import { BaseWord, Exercise } from '../../exercise/exercise';
 import { VerbTime } from '../../repository/exercises-repository';
+import { VerbExercise } from '../../exercise/verb-exercise';
+import { frequencyMap } from '../../frequency';
+import { LIMIT_FREQ } from '../../exercise/generator';
 
 export abstract class VerbConjugation<W extends BaseWord> implements ConjugationTable {
   protected constructor(protected readonly data: W, protected readonly result: Result[]) {}
@@ -27,6 +30,13 @@ export abstract class VerbConjugation<W extends BaseWord> implements Conjugation
 
   getProgressMark(exercise: Exercise) {
     const progress = getSingleExerciseProgress(this.result, exercise);
+    if (exercise instanceof VerbExercise) {
+      const answer = exercise.getCorrectAnswer();
+      const inLimit = frequencyMap[answer] && frequencyMap[answer].place < LIMIT_FREQ;
+      if (!inLimit) {
+        return new ColoredText(' ', [Color.B]);
+      }
+    }
 
     switch (progress.progressType) {
       case ProgressType.DONE:
