@@ -39,14 +39,13 @@ import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-
 import { frequencyMap } from '../frequency';
 
 type ExerciseGenerator = () => Exercise[];
+const LIMIT_FREQ = 1000;
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
   const filiterInFreqLimit = (exercise: VerbExercise) => {
-    const limitFrequency = 1_000;
-    if (!limitFrequency) return true;
     const wordToFind = exercise.getCorrectAnswer();
     const wordfreq = frequencyMap[wordToFind];
-    return wordfreq && wordfreq.place < limitFrequency;
+    return wordfreq && wordfreq.place < LIMIT_FREQ;
   };
   const verbs = readAll().verbs;
   const allVerbExercises = verbs.flatMap((verb) =>
@@ -154,14 +153,18 @@ const VerbTranslationGenerator: ExerciseGenerator = () => {
 };
 
 const VerbTranslationOtherFormsGenerator: ExerciseGenerator = () => {
-  const verbsWithOtherForms = readAll().verbs.filter((verb) => verb.otherForms);
-  return verbsWithOtherForms.flatMap((verb) =>
-    verb.otherForms!.flatMap((_, index) => [
-      VerbOtherFormTranslationExercise.new(verb, 'toPortugueseFromHearing', index),
-      VerbOtherFormTranslationExercise.new(verb, 'toEnglish', index),
-      VerbOtherFormTranslationExercise.new(verb, 'toPortuguese', index)
-    ])
-  );
+  return readAll()
+    .verbs.flatMap((verb) =>
+      verb.otherForms!.flatMap((_, index) => [
+        VerbOtherFormTranslationExercise.new(verb, 'toPortugueseFromHearing', index),
+        VerbOtherFormTranslationExercise.new(verb, 'toEnglish', index),
+        VerbOtherFormTranslationExercise.new(verb, 'toPortuguese', index)
+      ])
+    )
+    .filter((exercise) => {
+      const otherForm = exercise.verb.otherForms[exercise.number].portuguese;
+      return frequencyMap[otherForm] && frequencyMap[otherForm].place < LIMIT_FREQ;
+    });
 };
 
 const SentenceTranslationGenerator: ExerciseGenerator = () => {

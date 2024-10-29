@@ -35,7 +35,7 @@ export type Verb = {
   pretéritoImperfeito: { [key in Person]: string };
   subjuntivoFuturo: { [key in Person]: string };
   futurodoPretéritoSimples: { [key in Person]: string };
-  otherForms?: {
+  otherForms: {
     form: string;
     portuguese: string;
   }[];
