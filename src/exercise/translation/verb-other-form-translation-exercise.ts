@@ -41,24 +41,24 @@ export class VerbOtherFormTranslationExercise extends TranslationExercise implem
   getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
-      return `English: ${this.verb.otherForms![this.number].english}`;
+      return `English: ${this.verb.otherForms![this.number].portuguese}`;
     }
-    return `Portuguese: ${this.verb.otherForms![this.number].portuguese}`;
+    return `Portuguese: ${this.verb.otherForms![this.number].form}`;
   };
 
   getTranslation = () => this.verb.english;
 
   getCorrectAnswer = () =>
     this.isTranslationToPortuguese()
-      ? this.verb.otherForms![this.number].portuguese
-      : this.verb.otherForms![this.number].english;
+      ? this.verb.otherForms![this.number].form
+      : this.verb.otherForms![this.number].portuguese;
 
   isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
   getRetryPrompt = () =>
-    this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.verb.otherForms![this.number].portuguese;
+    this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.verb.otherForms![this.number].form;
 
   getBaseWord() {
     return this.verb;

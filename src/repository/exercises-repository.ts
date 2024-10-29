@@ -10,17 +10,34 @@ export enum Person {
   Nós = 'Nós',
   ElesElasVosēs = 'Eles/Elas/Vocēs'
 }
+
+export enum VerbTime {
+  presentSimple = 'presentSimple',
+  pastPerfect = 'pastPerfect',
+  pretéritoMaisQuePerfeito = 'pretéritoMaisQuePerfeito',
+  futuroDoPresenteSimples = 'futuroDoPresenteSimples',
+  subjuntivoPresente = 'subjuntivoPresente',
+  pretéritoImperfeito = 'pretéritoImperfeito',
+  subjuntivoFuturo = 'subjuntivoFuturo',
+  futurodoPretéritoSimples = 'futurodoPretéritoSimples'
+}
 // get all the forms in db but only get exercise if in frequency table < 10_000
 
 export type Verb = {
   english: string;
   infinitive: VerbInfinitive;
   presentSimple: { [key in Person]: string };
-  pastPerfect?: { [key in Person]: string };
-  imperfect?: { [key in Person]: string };
+  pastPerfect: { [key in Person]: string };
+  imperfect: { [key in Person]: string };
+  pretéritoMaisQuePerfeito: { [key in Person]: string };
+  futuroDoPresenteSimples: { [key in Person]: string };
+  subjuntivoPresente: { [key in Person]: string };
+  pretéritoImperfeito: { [key in Person]: string };
+  subjuntivoFuturo: { [key in Person]: string };
+  futurodoPretéritoSimples: { [key in Person]: string };
   otherForms?: {
+    form: string;
     portuguese: string;
-    english: string;
   }[];
 };
 

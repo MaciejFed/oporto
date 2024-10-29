@@ -10,6 +10,7 @@ import { GermanPerson } from '../../repository/german-exercises-repository';
 type VerbEnding = 'ar' | 'er' | 'ir';
 const standardVerbEndings: VerbEnding[] = ['ar', 'er', 'ir'];
 
+// @ts-ignore
 export const standardConjugations: Record<VerbTime, Record<VerbEnding, Record<Person, string>>> = {
   presentSimple: {
     ar: {

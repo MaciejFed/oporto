@@ -3,11 +3,26 @@ import { Person, Verb } from '../repository/exercises-repository';
 import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb } from '../service/verb/verb';
 import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 
-export type VerbTime = 'presentSimple' | 'pastPerfect' | 'imperfect';
+export type VerbTime =
+  | 'presentSimple'
+  | 'pastPerfect'
+  | 'imperfect'
+  | 'pretéritoMaisQuePerfeito'
+  | 'futuroDoPresenteSimples'
+  | 'subjuntivoPresente'
+  | 'pretéritoImperfeito'
+  | 'subjuntivoFuturo'
+  | 'futurodoPretéritoSimples';
 
 const vertTimePrintVersion = (verbTime: VerbTime) => {
   if (verbTime === 'presentSimple') return 'Present Simple';
   if (verbTime === 'imperfect') return 'Imperfect';
+  if (verbTime === 'pretéritoMaisQuePerfeito') return 'Pretérito Mais-que-Perfeito';
+  if (verbTime === 'futuroDoPresenteSimples') return 'Futuro do Presente Simples';
+  if (verbTime === 'subjuntivoPresente') return 'Subjuntivo Presentes';
+  if (verbTime === 'pretéritoImperfeito') return 'Pretérito Imperfeito';
+  if (verbTime === 'subjuntivoFuturo') return 'Subjuntivo Futuro';
+  if (verbTime === 'futurodoPretéritoSimples') return 'Suturo do Pretérito Simples';
   return 'Past Perfect';
 };
 
