@@ -1293,8 +1293,11 @@ exports[`Progress Aggregate PT 1`] = `
           "ir",
           "ter",
           "querer",
+          "fazer",
           "saber",
+          "dizer",
           "poder",
+          "entrar",
           "encontrar",
           "ficar",
           "gostar",
@@ -1316,7 +1319,7 @@ exports[`Progress Aggregate PT 1`] = `
           "procurar",
           "contar",
         ],
-        "count": 27,
+        "count": 30,
       },
     },
     "VerbTranslation": {
@@ -3637,8 +3640,6 @@ exports[`Progress Aggregate PT 1`] = `
       "DONE": {
         "baseWords": [
           "ver",
-          "fazer",
-          "dizer",
           "falar",
           "comer",
           "achar",
@@ -3653,7 +3654,6 @@ exports[`Progress Aggregate PT 1`] = `
           "ler",
           "abrir",
           "beber",
-          "entrar",
           "morar",
           "chamar-se",
           "cumprimentar",
@@ -3737,7 +3737,7 @@ exports[`Progress Aggregate PT 1`] = `
           "mexer",
           "puxar",
         ],
-        "count": 100,
+        "count": 97,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3746,8 +3746,11 @@ exports[`Progress Aggregate PT 1`] = `
           "ir",
           "ter",
           "querer",
+          "fazer",
           "saber",
+          "dizer",
           "poder",
+          "entrar",
           "encontrar",
           "ficar",
           "gostar",
@@ -3818,7 +3821,7 @@ exports[`Progress Aggregate PT 1`] = `
           "avistar",
           "atirar",
         ],
-        "count": 76,
+        "count": 79,
       },
       "NEVER_DONE": {
         "baseWords": [

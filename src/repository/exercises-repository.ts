@@ -17,6 +17,7 @@ export enum VerbTime {
   imperfect = 'imperfect',
   pretéritoMaisQuePerfeito = 'pretéritoMaisQuePerfeito',
   futuroDoPresenteSimples = 'futuroDoPresenteSimples',
+  subjuntivoPresente = 'subjuntivoPresente',
   pretéritoImperfeito = 'pretéritoImperfeito',
   subjuntivoFuturo = 'subjuntivoFuturo',
   futurodoPretéritoSimples = 'futurodoPretéritoSimples'
