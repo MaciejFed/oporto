@@ -19988,11 +19988,11 @@ export const db: Schema = {
       }
     },
     {
-      english: 'call',
+      english: 'dead',
       portuguese: {
         word: 'morto',
-        plural: 'chamadas',
-        gender: 'feminine'
+        plural: 'mortos',
+        gender: 'masculine'
       }
     },
     {
@@ -20000,7 +20000,7 @@ export const db: Schema = {
       portuguese: {
         word: 'oportunidade',
         plural: 'oportunidades',
-        gender: 'masculine'
+        gender: 'feminine'
       }
     },
     {
