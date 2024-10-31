@@ -1544,74 +1544,74 @@ export const db: Schema = {
     },
     {
       english: 'to be called',
-      infinitive: 'chamar-se',
+      infinitive: 'chamar',
       presentSimple: {
-        Eu: 'chamo-me',
-        Tu: 'chamas-te',
-        'Ela/Ele/Você': 'chama-se',
-        Nós: 'chamamo-nos',
-        'Eles/Elas/Vocēs': 'chamam-se'
+        Eu: 'chamo',
+        Tu: 'chamas',
+        'Ela/Ele/Você': 'chama',
+        Nós: 'chamamos',
+        'Eles/Elas/Vocēs': 'chamam'
       },
       pastPerfect: {
-        Eu: 'chamei-me',
-        Tu: 'chamaste-te',
-        'Ela/Ele/Você': 'chamou-se',
-        Nós: 'chamámo-nos',
-        'Eles/Elas/Vocēs': 'chamaram-se'
+        Eu: 'chamei',
+        Tu: 'chamaste',
+        'Ela/Ele/Você': 'chamou',
+        Nós: 'chamámos',
+        'Eles/Elas/Vocēs': 'chamaram'
       },
       imperfect: {
-        Eu: 'chamava-me',
-        Tu: 'chamavas-te',
-        'Ela/Ele/Você': 'chamava-se',
-        Nós: 'chamávamo-nos',
-        'Eles/Elas/Vocēs': 'chamavam-se'
+        Eu: 'chamava',
+        Tu: 'chamavas',
+        'Ela/Ele/Você': 'chamava',
+        Nós: 'chamávamos',
+        'Eles/Elas/Vocēs': 'chamavam'
       },
       pretéritoMaisQuePerfeito: {
-        Eu: 'chamara-me',
-        Tu: 'chamaras-te',
-        'Ela/Ele/Você': 'chamara-se',
-        Nós: 'chamáramo-nos',
-        'Eles/Elas/Vocēs': 'chamaram-se'
+        Eu: 'chamara',
+        Tu: 'chamaras',
+        'Ela/Ele/Você': 'chamara',
+        Nós: 'chamáramos',
+        'Eles/Elas/Vocēs': 'chamaram'
       },
       futuroDoPresenteSimples: {
-        Eu: 'chamar-me-ei',
-        Tu: 'chamar-te-ás',
-        'Ela/Ele/Você': 'chamar-se-á',
-        Nós: 'chamar-nos-emos',
-        'Eles/Elas/Vocēs': 'chamar-se-ão'
+        Eu: 'chamarei',
+        Tu: 'chamarás',
+        'Ela/Ele/Você': 'chamará',
+        Nós: 'chamaremos',
+        'Eles/Elas/Vocēs': 'chamarão'
       },
       subjuntivoPresente: {
-        Eu: 'mechame',
-        Tu: 'techames',
-        'Ela/Ele/Você': 'sechame',
-        Nós: 'noschamemos',
-        'Eles/Elas/Vocēs': 'sechamem'
+        Eu: 'chame',
+        Tu: 'chames',
+        'Ela/Ele/Você': 'chame',
+        Nós: 'chamemos',
+        'Eles/Elas/Vocēs': 'chamem'
       },
       pretéritoImperfeito: {
-        Eu: 'mechamasse',
-        Tu: 'techamasses',
-        'Ela/Ele/Você': 'sechamasse',
-        Nós: 'noschamássemos',
-        'Eles/Elas/Vocēs': 'sechamassem'
+        Eu: 'chamasse',
+        Tu: 'chamasses',
+        'Ela/Ele/Você': 'chamasse',
+        Nós: 'chamássemos',
+        'Eles/Elas/Vocēs': 'chamassem'
       },
       subjuntivoFuturo: {
-        Eu: 'mechamar',
-        Tu: 'techamares',
-        'Ela/Ele/Você': 'sechamar',
-        Nós: 'noschamarmos',
-        'Eles/Elas/Vocēs': 'sechamarem'
+        Eu: 'chamar',
+        Tu: 'chamares',
+        'Ela/Ele/Você': 'chamar',
+        Nós: 'chamarmos',
+        'Eles/Elas/Vocēs': 'chamarem'
       },
       futurodoPretéritoSimples: {
-        Eu: 'chamar-me-ia',
-        Tu: 'chamar-te-ias',
-        'Ela/Ele/Você': 'chamar-se-ia',
-        Nós: 'chamar-nos-íamos',
-        'Eles/Elas/Vocēs': 'chamar-se-iam'
+        Eu: 'chamaria',
+        Tu: 'chamarias',
+        'Ela/Ele/Você': 'chamaria',
+        Nós: 'chamaríamos',
+        'Eles/Elas/Vocēs': 'chamariam'
       },
       otherForms: [
         {
           form: 'gerúndio',
-          portuguese: 'chamando-me'
+          portuguese: 'chamando'
         },
         {
           form: 'particípio',
@@ -1619,6 +1619,7 @@ export const db: Schema = {
         }
       ]
     },
+
     {
       english: 'to work',
       infinitive: 'trabalhar',
@@ -4079,7 +4080,7 @@ export const db: Schema = {
         },
         {
           form: 'particípio',
-          portuguese: 'morrido/morto'
+          portuguese: 'morto'
         }
       ]
     },
@@ -15324,6 +15325,237 @@ export const db: Schema = {
           portuguese: 'faltado'
         }
       ]
+    },
+    {
+      english: 'to be important',
+      infinitive: 'importar',
+      presentSimple: {
+        Eu: 'importo',
+        Tu: 'importas',
+        'Ela/Ele/Você': 'importa',
+        Nós: 'importamos',
+        'Eles/Elas/Vocēs': 'importam'
+      },
+      pastPerfect: {
+        Eu: 'importei',
+        Tu: 'importaste',
+        'Ela/Ele/Você': 'importou',
+        Nós: 'importámos',
+        'Eles/Elas/Vocēs': 'importaram'
+      },
+      imperfect: {
+        Eu: 'importava',
+        Tu: 'importavas',
+        'Ela/Ele/Você': 'importava',
+        Nós: 'importávamos',
+        'Eles/Elas/Vocēs': 'importavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'importara',
+        Tu: 'importaras',
+        'Ela/Ele/Você': 'importara',
+        Nós: 'importáramos',
+        'Eles/Elas/Vocēs': 'importaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'importarei',
+        Tu: 'importarás',
+        'Ela/Ele/Você': 'importará',
+        Nós: 'importaremos',
+        'Eles/Elas/Vocēs': 'importarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'importe',
+        Tu: 'importes',
+        'Ela/Ele/Você': 'importe',
+        Nós: 'importemos',
+        'Eles/Elas/Vocēs': 'importem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'importasse',
+        Tu: 'importasses',
+        'Ela/Ele/Você': 'importasse',
+        Nós: 'importássemos',
+        'Eles/Elas/Vocēs': 'importassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'importar',
+        Tu: 'importares',
+        'Ela/Ele/Você': 'importar',
+        Nós: 'importarmos',
+        'Eles/Elas/Vocēs': 'importarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'importaria',
+        Tu: 'importarias',
+        'Ela/Ele/Você': 'importaria',
+        Nós: 'importaríamos',
+        'Eles/Elas/Vocēs': 'importariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'importando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'importado'
+        }
+      ]
+    },
+    {
+      english: 'to bet',
+      infinitive: 'apostar',
+      presentSimple: {
+        Eu: 'aposto',
+        Tu: 'apostas',
+        'Ela/Ele/Você': 'aposta',
+        Nós: 'apostamos',
+        'Eles/Elas/Vocēs': 'apostam'
+      },
+      pastPerfect: {
+        Eu: 'apostei',
+        Tu: 'apostaste',
+        'Ela/Ele/Você': 'apostou',
+        Nós: 'apostámos',
+        'Eles/Elas/Vocēs': 'apostaram'
+      },
+      imperfect: {
+        Eu: 'apostava',
+        Tu: 'apostavas',
+        'Ela/Ele/Você': 'apostava',
+        Nós: 'apostávamos',
+        'Eles/Elas/Vocēs': 'apostavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'apostara',
+        Tu: 'apostaras',
+        'Ela/Ele/Você': 'apostara',
+        Nós: 'apostáramos',
+        'Eles/Elas/Vocēs': 'apostaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'apostarei',
+        Tu: 'apostarás',
+        'Ela/Ele/Você': 'apostará',
+        Nós: 'apostaremos',
+        'Eles/Elas/Vocēs': 'apostarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'aposte',
+        Tu: 'apostes',
+        'Ela/Ele/Você': 'aposte',
+        Nós: 'apostemos',
+        'Eles/Elas/Vocēs': 'apostem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'apostasse',
+        Tu: 'apostasses',
+        'Ela/Ele/Você': 'apostasse',
+        Nós: 'apostássemos',
+        'Eles/Elas/Vocēs': 'apostassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'apostar',
+        Tu: 'apostares',
+        'Ela/Ele/Você': 'apostar',
+        Nós: 'apostarmos',
+        'Eles/Elas/Vocēs': 'apostarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'apostaria',
+        Tu: 'apostarias',
+        'Ela/Ele/Você': 'apostaria',
+        Nós: 'apostaríamos',
+        'Eles/Elas/Vocēs': 'apostariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'apostando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'apostado'
+        }
+      ]
+    },
+    {
+      english: 'to believe',
+      infinitive: 'crer',
+      presentSimple: {
+        Eu: 'creio',
+        Tu: 'crês',
+        'Ela/Ele/Você': 'crê',
+        Nós: 'cremos',
+        'Eles/Elas/Vocēs': 'crêem'
+      },
+      pastPerfect: {
+        Eu: 'cri',
+        Tu: 'creste',
+        'Ela/Ele/Você': 'creu',
+        Nós: 'cremos',
+        'Eles/Elas/Vocēs': 'creram'
+      },
+      imperfect: {
+        Eu: 'cria',
+        Tu: 'crias',
+        'Ela/Ele/Você': 'cria',
+        Nós: 'críamos',
+        'Eles/Elas/Vocēs': 'criam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'crera',
+        Tu: 'creras',
+        'Ela/Ele/Você': 'crera',
+        Nós: 'crêramos',
+        'Eles/Elas/Vocēs': 'creram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'crerei',
+        Tu: 'crerás',
+        'Ela/Ele/Você': 'crerá',
+        Nós: 'creremos',
+        'Eles/Elas/Vocēs': 'crerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'creia',
+        Tu: 'creias',
+        'Ela/Ele/Você': 'creia',
+        Nós: 'creiamos',
+        'Eles/Elas/Vocēs': 'creiam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'cresse',
+        Tu: 'cresses',
+        'Ela/Ele/Você': 'cresse',
+        Nós: 'crêssemos',
+        'Eles/Elas/Vocēs': 'cressem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'crer',
+        Tu: 'creres',
+        'Ela/Ele/Você': 'crer',
+        Nós: 'crermos',
+        'Eles/Elas/Vocēs': 'crerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'creria',
+        Tu: 'crerias',
+        'Ela/Ele/Você': 'creria',
+        Nós: 'creríamos',
+        'Eles/Elas/Vocēs': 'creriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'crendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'crido'
+        }
+      ]
     }
   ],
   nouns: [
@@ -19665,7 +19897,7 @@ export const db: Schema = {
       english: 'weapon',
       portuguese: {
         word: 'arma',
-        plural: 'arma',
+        plural: 'armas',
         gender: 'feminine'
       }
     },
@@ -19736,6 +19968,46 @@ export const db: Schema = {
       portuguese: {
         word: 'dólar',
         plural: 'dólares',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'king',
+      portuguese: {
+        word: 'rei',
+        plural: 'reis',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'call',
+      portuguese: {
+        word: 'chamada',
+        plural: 'chamadas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'call',
+      portuguese: {
+        word: 'morto',
+        plural: 'chamadas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'opportunity',
+      portuguese: {
+        word: 'oportunidade',
+        plural: 'oportunidades',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fact',
+      portuguese: {
+        word: 'facto',
+        plural: 'factos',
         gender: 'masculine'
       }
     }
@@ -20103,10 +20375,6 @@ export const db: Schema = {
       english: 'as if'
     },
     {
-      portuguese: 'quanto',
-      english: 'how much'
-    },
-    {
       portuguese: 'quase',
       english: 'almost'
     },
@@ -20458,6 +20726,34 @@ export const db: Schema = {
     {
       portuguese: 'através',
       english: 'through'
+    },
+    {
+      portuguese: 'disto',
+      english: 'de + isto'
+    },
+    {
+      portuguese: 'disso',
+      english: 'de + isso'
+    },
+    {
+      portuguese: 'daquilo',
+      english: 'de + aquilo'
+    },
+    {
+      portuguese: 'completamente',
+      english: 'completely'
+    },
+    {
+      portuguese: 'pra',
+      english: 'to - informal'
+    },
+    {
+      portuguese: 'acerca',
+      english: 'about - formal'
+    },
+    {
+      portuguese: 'simplesmente',
+      english: 'simply'
     }
   ],
   othersWithGender: [
@@ -22089,6 +22385,28 @@ export const db: Schema = {
       feminine: {
         singular: 'certa',
         plural: 'certas'
+      }
+    },
+    {
+      english: 'de + essa',
+      masculine: {
+        singular: 'desse',
+        plural: 'desses'
+      },
+      feminine: {
+        singular: 'dessa',
+        plural: 'dessas'
+      }
+    },
+    {
+      english: 'how much',
+      masculine: {
+        singular: 'quanto',
+        plural: 'quantos'
+      },
+      feminine: {
+        singular: 'quanta',
+        plural: 'quantas'
       }
     }
   ],

@@ -157,9 +157,9 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
       .verbs.filter((verb) => verb.otherForms)
       .flatMap((verb) => verb.otherForms?.map((v) => v.portuguese));
     const verbs = readAll().verbs.flatMap((verb) =>
-      Object.keys(VerbTime).flatMap((time) =>
-        Object.values(Person).flatMap((person) => [verb[time as VerbTime][person as Person]])
-      )
+      Object.keys(VerbTime)
+        .flatMap((time) => Object.values(Person).flatMap((person) => [verb[time as VerbTime][person as Person]]))
+        .concat(verb.infinitive)
     );
     const others = readAll().others.map((other) => other.portuguese);
     const othersWithGender = readAll().othersWithGender.flatMap((other) => [

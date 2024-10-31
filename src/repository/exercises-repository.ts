@@ -144,7 +144,7 @@ const verbs = [
   'entrar',
   'morar',
   'olhar',
-  'chamar-se',
+  'chamar',
   'trabalhar',
   'cumprimentar',
   'apresentar-se',
@@ -325,7 +325,10 @@ const verbs = [
   'descobrir',
   'existir',
   'morrer',
-  'ligar'
+  'ligar',
+  'importar',
+  'apostar',
+  'crer'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];
