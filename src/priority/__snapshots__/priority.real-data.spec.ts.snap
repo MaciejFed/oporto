@@ -6419,38 +6419,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 70,
   },
   {
-    "exercise": OtherTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "OtherTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherTranslation_lá_toPortuguese",
-      "other": {
-        "english": "there",
-        "portuguese": "lá",
-      },
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 360,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -300,
-      },
-    ],
-    "priorityValueTotal": 60,
-  },
-  {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
         "english": "blind",
@@ -8577,6 +8545,46 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 25,
   },
   {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_segundo_toPortugueseFromHearing",
+      "number": "singular",
+      "other": {
+        "english": "second",
+        "portuguese": {
+          "plural": {
+            "feminine": "segundas",
+            "masculine": "segundos",
+          },
+          "singular": {
+            "feminine": "segunda",
+            "masculine": "segundo",
+          },
+        },
+      },
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
     "exercise": OtherTranslationExercise {
       "equal": [Function],
       "exerciseType": "OtherTranslation",
@@ -9269,6 +9277,50 @@ exports[`Priority PT 1`] = `
           "singular": {
             "feminine": "nenhuma",
             "masculine": "nenhum",
+          },
+        },
+      },
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_segundo_toEnglish",
+      "number": "singular",
+      "other": {
+        "english": "second",
+        "portuguese": {
+          "plural": {
+            "feminine": "segundas",
+            "masculine": "segundos",
+          },
+          "singular": {
+            "feminine": "segunda",
+            "masculine": "segundo",
           },
         },
       },
@@ -14804,6 +14856,182 @@ exports[`Priority PT 1`] = `
           "singular": {
             "feminine": "nenhuma",
             "masculine": "nenhum",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_segundo_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "second",
+        "portuguese": {
+          "plural": {
+            "feminine": "segundas",
+            "masculine": "segundos",
+          },
+          "singular": {
+            "feminine": "segunda",
+            "masculine": "segundo",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_segundo_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "second",
+        "portuguese": {
+          "plural": {
+            "feminine": "segundas",
+            "masculine": "segundos",
+          },
+          "singular": {
+            "feminine": "segunda",
+            "masculine": "segundo",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_segundo_toPortuguese",
+      "number": "singular",
+      "other": {
+        "english": "second",
+        "portuguese": {
+          "plural": {
+            "feminine": "segundas",
+            "masculine": "segundos",
+          },
+          "singular": {
+            "feminine": "segunda",
+            "masculine": "segundo",
+          },
+        },
+      },
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": OtherGenderTranslationExercise {
+      "base": false,
+      "equal": [Function],
+      "exerciseType": "OtherWithGenderTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherWithGenderTranslation_segundo_toPortuguese",
+      "number": "plural",
+      "other": {
+        "english": "second",
+        "portuguese": {
+          "plural": {
+            "feminine": "segundas",
+            "masculine": "segundos",
+          },
+          "singular": {
+            "feminine": "segunda",
+            "masculine": "segundo",
           },
         },
       },

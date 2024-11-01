@@ -20010,6 +20010,78 @@ export const db: Schema = {
         plural: 'factos',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'killer',
+      portuguese: {
+        word: 'assassino',
+        plural: 'assassinos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'sex',
+      portuguese: {
+        word: 'sexo',
+        plural: 'sexos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'half',
+      portuguese: {
+        word: 'metade',
+        plural: 'metades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'attack',
+      portuguese: {
+        word: 'ataque',
+        plural: 'ataques',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'wedding',
+      portuguese: {
+        word: 'casamento',
+        plural: 'casamentos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'majority',
+      portuguese: {
+        word: 'maioria',
+        plural: 'maiorias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'deal',
+      portuguese: {
+        word: 'negócio',
+        plural: 'negócios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'center',
+      portuguese: {
+        word: 'centro',
+        plural: 'centros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'base',
+      portuguese: {
+        word: 'base',
+        plural: 'bases',
+        gender: 'feminine'
+      }
     }
   ],
   others: [
@@ -20596,10 +20668,6 @@ export const db: Schema = {
       english: 'to the'
     },
     {
-      portuguese: 'qual',
-      english: 'which'
-    },
-    {
       portuguese: 'será',
       english: 'will be'
     },
@@ -20754,6 +20822,10 @@ export const db: Schema = {
     {
       portuguese: 'simplesmente',
       english: 'simply'
+    },
+    {
+      portuguese: 'aonde',
+      english: 'where to'
     }
   ],
   othersWithGender: [
@@ -21152,6 +21224,45 @@ export const db: Schema = {
         plural: {
           masculine: 'naqueles',
           feminine: 'naquelas'
+        }
+      }
+    },
+    {
+      english: 'em + esse',
+      portuguese: {
+        singular: {
+          masculine: 'nesse',
+          feminine: 'nessa'
+        },
+        plural: {
+          masculine: 'nesses',
+          feminine: 'nessas'
+        }
+      }
+    },
+    {
+      english: 'second',
+      portuguese: {
+        singular: {
+          masculine: 'segundo',
+          feminine: 'segunda'
+        },
+        plural: {
+          masculine: 'segundos',
+          feminine: 'segundas'
+        }
+      }
+    },
+    {
+      english: 'which',
+      portuguese: {
+        singular: {
+          masculine: 'qual',
+          feminine: 'qual'
+        },
+        plural: {
+          masculine: 'quais',
+          feminine: 'quais'
         }
       }
     }
@@ -22407,6 +22518,61 @@ export const db: Schema = {
       feminine: {
         singular: 'quanta',
         plural: 'quantas'
+      }
+    },
+    {
+      english: 'possible',
+      masculine: {
+        singular: 'possível',
+        plural: 'possíveis'
+      },
+      feminine: {
+        singular: 'possível',
+        plural: 'possíveis'
+      }
+    },
+    {
+      english: 'genuine',
+      masculine: {
+        singular: 'verdadeiro',
+        plural: 'verdadeiros'
+      },
+      feminine: {
+        singular: 'verdadeira',
+        plural: 'verdadeiras'
+      }
+    },
+    {
+      english: 'personal',
+      masculine: {
+        singular: 'pessoal',
+        plural: 'pessoais'
+      },
+      feminine: {
+        singular: 'pessoal',
+        plural: 'pessoais'
+      }
+    },
+    {
+      english: 'supposed',
+      masculine: {
+        singular: 'suposto',
+        plural: 'supostos'
+      },
+      feminine: {
+        singular: 'suposta',
+        plural: 'supostas'
+      }
+    },
+    {
+      english: 'ready',
+      masculine: {
+        singular: 'pronto',
+        plural: 'prontos'
+      },
+      feminine: {
+        singular: 'suposta',
+        plural: 'supostas'
       }
     }
   ],
