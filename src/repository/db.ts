@@ -20102,7 +20102,7 @@ export const db: Schema = {
       portuguese: 'sim'
     },
     {
-      english: 'yes',
+      english: 'yourself',
       portuguese: 'si'
     },
     {

@@ -22,7 +22,7 @@ const vertTimePrintVersion = (verbTime: VerbTime) => {
   if (verbTime === 'subjuntivoPresente') return 'Subjuntivo Presentes';
   if (verbTime === 'pretéritoImperfeito') return 'Pretérito Imperfeito';
   if (verbTime === 'subjuntivoFuturo') return 'Subjuntivo Futuro';
-  if (verbTime === 'futurodoPretéritoSimples') return 'Suturo do Pretérito Simples';
+  if (verbTime === 'futurodoPretéritoSimples') return 'Futuro do Pretérito Simples';
   return 'Past Perfect';
 };
 
