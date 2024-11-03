@@ -328,7 +328,13 @@ const verbs = [
   'ligar',
   'importar',
   'apostar',
-  'crer'
+  'crer',
+  'lutar',
+  'receber',
+  'confiar',
+  'colocar',
+  'proteger',
+  'lidar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

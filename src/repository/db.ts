@@ -8778,6 +8778,10 @@ export const db: Schema = {
         {
           form: 'particípio',
           portuguese: 'parado'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'pára'
         }
       ]
     },
@@ -15556,6 +15560,468 @@ export const db: Schema = {
           portuguese: 'crido'
         }
       ]
+    },
+    {
+      english: 'to fight',
+      infinitive: 'lutar',
+      presentSimple: {
+        Eu: 'luto',
+        Tu: 'lutas',
+        'Ela/Ele/Você': 'luta',
+        Nós: 'lutamos',
+        'Eles/Elas/Vocēs': 'lutam'
+      },
+      pastPerfect: {
+        Eu: 'lutei',
+        Tu: 'lutaste',
+        'Ela/Ele/Você': 'lutou',
+        Nós: 'lutámos',
+        'Eles/Elas/Vocēs': 'lutaram'
+      },
+      imperfect: {
+        Eu: 'lutava',
+        Tu: 'lutavas',
+        'Ela/Ele/Você': 'lutava',
+        Nós: 'lutávamos',
+        'Eles/Elas/Vocēs': 'lutavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'lutara',
+        Tu: 'lutaras',
+        'Ela/Ele/Você': 'lutara',
+        Nós: 'lutáramos',
+        'Eles/Elas/Vocēs': 'lutaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'lutarei',
+        Tu: 'lutarás',
+        'Ela/Ele/Você': 'lutará',
+        Nós: 'lutaremos',
+        'Eles/Elas/Vocēs': 'lutarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'lute',
+        Tu: 'lutes',
+        'Ela/Ele/Você': 'lute',
+        Nós: 'lutemos',
+        'Eles/Elas/Vocēs': 'lutem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'lutasse',
+        Tu: 'lutasses',
+        'Ela/Ele/Você': 'lutasse',
+        Nós: 'lutássemos',
+        'Eles/Elas/Vocēs': 'lutassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'lutar',
+        Tu: 'lutares',
+        'Ela/Ele/Você': 'lutar',
+        Nós: 'lutarmos',
+        'Eles/Elas/Vocēs': 'lutarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'lutaria',
+        Tu: 'lutarias',
+        'Ela/Ele/Você': 'lutaria',
+        Nós: 'lutaríamos',
+        'Eles/Elas/Vocēs': 'lutariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'lutando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'lutado'
+        }
+      ]
+    },
+    {
+      english: 'to recive',
+      infinitive: 'receber',
+      presentSimple: {
+        Eu: 'recebo',
+        Tu: 'recebes',
+        'Ela/Ele/Você': 'recebe',
+        Nós: 'recebemos',
+        'Eles/Elas/Vocēs': 'recebem'
+      },
+      pastPerfect: {
+        Eu: 'recebi',
+        Tu: 'recebeste',
+        'Ela/Ele/Você': 'recebeu',
+        Nós: 'recebemos',
+        'Eles/Elas/Vocēs': 'receberam'
+      },
+      imperfect: {
+        Eu: 'recebia',
+        Tu: 'recebias',
+        'Ela/Ele/Você': 'recebia',
+        Nós: 'recebíamos',
+        'Eles/Elas/Vocēs': 'recebiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'recebera',
+        Tu: 'receberas',
+        'Ela/Ele/Você': 'recebera',
+        Nós: 'recebêramos',
+        'Eles/Elas/Vocēs': 'receberam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'receberei',
+        Tu: 'receberás',
+        'Ela/Ele/Você': 'receberá',
+        Nós: 'receberemos',
+        'Eles/Elas/Vocēs': 'receberão'
+      },
+      subjuntivoPresente: {
+        Eu: 'receba',
+        Tu: 'recebas',
+        'Ela/Ele/Você': 'receba',
+        Nós: 'recebamos',
+        'Eles/Elas/Vocēs': 'recebam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'recebesse',
+        Tu: 'recebesses',
+        'Ela/Ele/Você': 'recebesse',
+        Nós: 'recebêssemos',
+        'Eles/Elas/Vocēs': 'recebessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'receber',
+        Tu: 'receberes',
+        'Ela/Ele/Você': 'receber',
+        Nós: 'recebermos',
+        'Eles/Elas/Vocēs': 'receberem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'receberia',
+        Tu: 'receberias',
+        'Ela/Ele/Você': 'receberia',
+        Nós: 'receberíamos',
+        'Eles/Elas/Vocēs': 'receberiam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'recebendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'recebido'
+        }
+      ]
+    },
+    {
+      english: 'to deal with',
+      infinitive: 'lidar',
+      presentSimple: {
+        Eu: 'lido',
+        Tu: 'lidas',
+        'Ela/Ele/Você': 'lida',
+        Nós: 'lidamos',
+        'Eles/Elas/Vocēs': 'lidam'
+      },
+      pastPerfect: {
+        Eu: 'lidei',
+        Tu: 'lidaste',
+        'Ela/Ele/Você': 'lidou',
+        Nós: 'lidámos',
+        'Eles/Elas/Vocēs': 'lidaram'
+      },
+      imperfect: {
+        Eu: 'lidava',
+        Tu: 'lidavas',
+        'Ela/Ele/Você': 'lidava',
+        Nós: 'lidávamos',
+        'Eles/Elas/Vocēs': 'lidavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'lidara',
+        Tu: 'lidaras',
+        'Ela/Ele/Você': 'lidara',
+        Nós: 'lidáramos',
+        'Eles/Elas/Vocēs': 'lidaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'lidarei',
+        Tu: 'lidarás',
+        'Ela/Ele/Você': 'lidará',
+        Nós: 'lidaremos',
+        'Eles/Elas/Vocēs': 'lidarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'lide',
+        Tu: 'lides',
+        'Ela/Ele/Você': 'lide',
+        Nós: 'lidemos',
+        'Eles/Elas/Vocēs': 'lidem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'lidasse',
+        Tu: 'lidasses',
+        'Ela/Ele/Você': 'lidasse',
+        Nós: 'lidássemos',
+        'Eles/Elas/Vocēs': 'lidassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'lidar',
+        Tu: 'lidares',
+        'Ela/Ele/Você': 'lidar',
+        Nós: 'lidarmos',
+        'Eles/Elas/Vocēs': 'lidarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'lidaria',
+        Tu: 'lidarias',
+        'Ela/Ele/Você': 'lidaria',
+        Nós: 'lidaríamos',
+        'Eles/Elas/Vocēs': 'lidariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'lidando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'lidado'
+        }
+      ]
+    },
+    {
+      english: 'to trust',
+      infinitive: 'confiar',
+      presentSimple: {
+        Eu: 'confio',
+        Tu: 'confias',
+        'Ela/Ele/Você': 'confia',
+        Nós: 'confiamos',
+        'Eles/Elas/Vocēs': 'confiam'
+      },
+      pastPerfect: {
+        Eu: 'confiei',
+        Tu: 'confiaste',
+        'Ela/Ele/Você': 'confiou',
+        Nós: 'confiámos',
+        'Eles/Elas/Vocēs': 'confiaram'
+      },
+      imperfect: {
+        Eu: 'confiava',
+        Tu: 'confiavas',
+        'Ela/Ele/Você': 'confiava',
+        Nós: 'confiávamos',
+        'Eles/Elas/Vocēs': 'confiavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'confiara',
+        Tu: 'confiaras',
+        'Ela/Ele/Você': 'confiara',
+        Nós: 'confiáramos',
+        'Eles/Elas/Vocēs': 'confiaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'confiarei',
+        Tu: 'confiarás',
+        'Ela/Ele/Você': 'confiará',
+        Nós: 'confiaremos',
+        'Eles/Elas/Vocēs': 'confiarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'confie',
+        Tu: 'confies',
+        'Ela/Ele/Você': 'confie',
+        Nós: 'confiemos',
+        'Eles/Elas/Vocēs': 'confiem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'confiasse',
+        Tu: 'confiasses',
+        'Ela/Ele/Você': 'confiasse',
+        Nós: 'confiássemos',
+        'Eles/Elas/Vocēs': 'confiassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'confiar',
+        Tu: 'confiares',
+        'Ela/Ele/Você': 'confiar',
+        Nós: 'confiarmos',
+        'Eles/Elas/Vocēs': 'confiarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'confiaria',
+        Tu: 'confiarias',
+        'Ela/Ele/Você': 'confiaria',
+        Nós: 'confiaríamos',
+        'Eles/Elas/Vocēs': 'confiariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'confiando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'confiado'
+        }
+      ]
+    },
+    {
+      english: 'to place',
+      infinitive: 'colocar',
+      presentSimple: {
+        Eu: 'coloco',
+        Tu: 'colocas',
+        'Ela/Ele/Você': 'coloca',
+        Nós: 'colocamos',
+        'Eles/Elas/Vocēs': 'colocam'
+      },
+      pastPerfect: {
+        Eu: 'coloquei',
+        Tu: 'colocaste',
+        'Ela/Ele/Você': 'colocou',
+        Nós: 'colocámos',
+        'Eles/Elas/Vocēs': 'colocaram'
+      },
+      imperfect: {
+        Eu: 'colocava',
+        Tu: 'colocavas',
+        'Ela/Ele/Você': 'colocava',
+        Nós: 'colocávamos',
+        'Eles/Elas/Vocēs': 'colocavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'colocara',
+        Tu: 'colocaras',
+        'Ela/Ele/Você': 'colocara',
+        Nós: 'colocáramos',
+        'Eles/Elas/Vocēs': 'colocaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'colocarei',
+        Tu: 'colocarás',
+        'Ela/Ele/Você': 'colocará',
+        Nós: 'colocaremos',
+        'Eles/Elas/Vocēs': 'colocarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'coloque',
+        Tu: 'coloques',
+        'Ela/Ele/Você': 'coloque',
+        Nós: 'coloquemos',
+        'Eles/Elas/Vocēs': 'coloquem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'colocasse',
+        Tu: 'colocasses',
+        'Ela/Ele/Você': 'colocasse',
+        Nós: 'colocássemos',
+        'Eles/Elas/Vocēs': 'colocassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'colocar',
+        Tu: 'colocares',
+        'Ela/Ele/Você': 'colocar',
+        Nós: 'colocarmos',
+        'Eles/Elas/Vocēs': 'colocarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'colocaria',
+        Tu: 'colocarias',
+        'Ela/Ele/Você': 'colocaria',
+        Nós: 'colocaríamos',
+        'Eles/Elas/Vocēs': 'colocariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'colocando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'colocado'
+        }
+      ]
+    },
+    {
+      english: 'to protect',
+      infinitive: 'proteger',
+      presentSimple: {
+        Eu: 'protejo',
+        Tu: 'proteges',
+        'Ela/Ele/Você': 'protege',
+        Nós: 'protegemos',
+        'Eles/Elas/Vocēs': 'protegem'
+      },
+      pastPerfect: {
+        Eu: 'protegi',
+        Tu: 'protegeste',
+        'Ela/Ele/Você': 'protegeu',
+        Nós: 'protegemos',
+        'Eles/Elas/Vocēs': 'protegeram'
+      },
+      imperfect: {
+        Eu: 'protegia',
+        Tu: 'protegias',
+        'Ela/Ele/Você': 'protegia',
+        Nós: 'protegíamos',
+        'Eles/Elas/Vocēs': 'protegiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'protegera',
+        Tu: 'protegeras',
+        'Ela/Ele/Você': 'protegera',
+        Nós: 'protegêramos',
+        'Eles/Elas/Vocēs': 'protegeram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'protegerei',
+        Tu: 'protegerás',
+        'Ela/Ele/Você': 'protegerá',
+        Nós: 'protegeremos',
+        'Eles/Elas/Vocēs': 'protegerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'proteja',
+        Tu: 'protejas',
+        'Ela/Ele/Você': 'proteja',
+        Nós: 'protejamos',
+        'Eles/Elas/Vocēs': 'protejam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'protegesse',
+        Tu: 'protegesses',
+        'Ela/Ele/Você': 'protegesse',
+        Nós: 'protegêssemos',
+        'Eles/Elas/Vocēs': 'protegessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'proteger',
+        Tu: 'protegeres',
+        'Ela/Ele/Você': 'proteger',
+        Nós: 'protegermos',
+        'Eles/Elas/Vocēs': 'protegerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'protegeria',
+        Tu: 'protegerias',
+        'Ela/Ele/Você': 'protegeria',
+        Nós: 'protegeríamos',
+        'Eles/Elas/Vocēs': 'protegeriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'protegendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'protegido'
+        }
+      ]
     }
   ],
   nouns: [
@@ -16185,14 +16651,6 @@ export const db: Schema = {
       portuguese: {
         word: 'rapariga',
         gender: 'feminine'
-      }
-    },
-    {
-      english: 'friend',
-      portuguese: {
-        word: 'amigo',
-        plural: 'amigos',
-        gender: 'masculine'
       }
     },
     {
@@ -20082,6 +20540,46 @@ export const db: Schema = {
         plural: 'bases',
         gender: 'feminine'
       }
+    },
+    {
+      english: 'baby',
+      portuguese: {
+        word: 'bebé',
+        plural: 'bebés',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'scene',
+      portuguese: {
+        word: 'cena',
+        plural: 'cenas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'bit',
+      portuguese: {
+        word: 'bocado',
+        plural: 'bocados',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'specie',
+      portuguese: {
+        word: 'espécie',
+        plural: 'espécies',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'hypothesis',
+      portuguese: {
+        word: 'hipótese',
+        plural: 'hipóteses',
+        gender: 'feminine'
+      }
     }
   ],
   others: [
@@ -20826,6 +21324,10 @@ export const db: Schema = {
     {
       portuguese: 'aonde',
       english: 'where to'
+    },
+    {
+      portuguese: 'apesar',
+      english: 'despite'
     }
   ],
   othersWithGender: [
@@ -21263,6 +21765,58 @@ export const db: Schema = {
         plural: {
           masculine: 'quais',
           feminine: 'quais'
+        }
+      }
+    },
+    {
+      english: 'friend',
+      portuguese: {
+        singular: {
+          masculine: 'amigo',
+          feminine: 'amiga'
+        },
+        plural: {
+          masculine: 'amigo',
+          feminine: 'amigas'
+        }
+      }
+    },
+    {
+      english: 'kid',
+      portuguese: {
+        singular: {
+          masculine: 'miúdo',
+          feminine: 'miúda'
+        },
+        plural: {
+          masculine: 'miúdo',
+          feminine: 'miúdas'
+        }
+      }
+    },
+    {
+      english: 'married',
+      portuguese: {
+        singular: {
+          masculine: 'esposo',
+          feminine: 'esposa'
+        },
+        plural: {
+          masculine: 'esposos',
+          feminine: 'esposas'
+        }
+      }
+    },
+    {
+      english: 'dog',
+      portuguese: {
+        singular: {
+          masculine: 'cão',
+          feminine: 'cadela'
+        },
+        plural: {
+          masculine: 'cães',
+          feminine: 'cadelas'
         }
       }
     }

@@ -9,8 +9,8 @@ describe('Verb Service', () => {
     const verbs = readAll().verbs.map((verb) => verb.infinitive);
     const standardConjugations = verbs.filter((verb) => checkStandardConjugation(verb, []).isStandard);
     const nonStandardConjugations = verbs.filter((verb) => !checkStandardConjugation(verb, []).isStandard);
-    expect(standardConjugations.length).toEqual(126);
-    expect(nonStandardConjugations.length).toEqual(76);
+    expect(standardConjugations.length).toEqual(130);
+    expect(nonStandardConjugations.length).toEqual(78);
   });
 
   it('checks the status', () => {
