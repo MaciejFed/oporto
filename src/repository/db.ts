@@ -22571,8 +22571,8 @@ export const db: Schema = {
         plural: 'prontos'
       },
       feminine: {
-        singular: 'suposta',
-        plural: 'supostas'
+        singular: 'pronta',
+        plural: 'prontas'
       }
     }
   ],
