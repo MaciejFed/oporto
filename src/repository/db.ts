@@ -21626,10 +21626,6 @@ export const db: Schema = {
       english: 'de + isso'
     },
     {
-      portuguese: 'daquilo',
-      english: 'de + aquilo'
-    },
-    {
       portuguese: 'completamente',
       english: 'completely'
     },
@@ -22153,6 +22149,19 @@ export const db: Schema = {
         plural: {
           masculine: 'cães',
           feminine: 'cadelas'
+        }
+      }
+    },
+    {
+      english: 'de + aquelo',
+      portuguese: {
+        singular: {
+          masculine: 'daquele',
+          feminine: 'daquela'
+        },
+        plural: {
+          masculine: 'daqueles',
+          feminine: 'daquelas'
         }
       }
     }
