@@ -334,7 +334,10 @@ const verbs = [
   'confiar',
   'colocar',
   'proteger',
-  'lidar'
+  'lidar',
+  'perceber',
+  'costumar',
+  'roubar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

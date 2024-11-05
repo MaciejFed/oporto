@@ -16022,6 +16022,237 @@ export const db: Schema = {
           portuguese: 'protegido'
         }
       ]
+    },
+    {
+      english: 'to perceive',
+      infinitive: 'perceber',
+      presentSimple: {
+        Eu: 'percebo',
+        Tu: 'percebes',
+        'Ela/Ele/Você': 'percebe',
+        Nós: 'percebemos',
+        'Eles/Elas/Vocēs': 'percebem'
+      },
+      pastPerfect: {
+        Eu: 'percebi',
+        Tu: 'percebeste',
+        'Ela/Ele/Você': 'percebeu',
+        Nós: 'percebemos',
+        'Eles/Elas/Vocēs': 'perceberam'
+      },
+      imperfect: {
+        Eu: 'percebia',
+        Tu: 'percebias',
+        'Ela/Ele/Você': 'percebia',
+        Nós: 'percebíamos',
+        'Eles/Elas/Vocēs': 'percebiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'percebera',
+        Tu: 'perceberas',
+        'Ela/Ele/Você': 'percebera',
+        Nós: 'percebêramos',
+        'Eles/Elas/Vocēs': 'perceberam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'perceberei',
+        Tu: 'perceberás',
+        'Ela/Ele/Você': 'perceberá',
+        Nós: 'perceberemos',
+        'Eles/Elas/Vocēs': 'perceberão'
+      },
+      subjuntivoPresente: {
+        Eu: 'perceba',
+        Tu: 'percebas',
+        'Ela/Ele/Você': 'perceba',
+        Nós: 'percebamos',
+        'Eles/Elas/Vocēs': 'percebam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'percebesse',
+        Tu: 'percebesses',
+        'Ela/Ele/Você': 'percebesse',
+        Nós: 'percebêssemos',
+        'Eles/Elas/Vocēs': 'percebessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'perceber',
+        Tu: 'perceberes',
+        'Ela/Ele/Você': 'perceber',
+        Nós: 'percebermos',
+        'Eles/Elas/Vocēs': 'perceberem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'perceberia',
+        Tu: 'perceberias',
+        'Ela/Ele/Você': 'perceberia',
+        Nós: 'perceberíamos',
+        'Eles/Elas/Vocēs': 'perceberiam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'percebendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'percebido'
+        }
+      ]
+    },
+    {
+      english: 'to steal',
+      infinitive: 'roubar',
+      presentSimple: {
+        Eu: 'roubo',
+        Tu: 'roubas',
+        'Ela/Ele/Você': 'rouba',
+        Nós: 'roubamos',
+        'Eles/Elas/Vocēs': 'roubam'
+      },
+      pastPerfect: {
+        Eu: 'roubei',
+        Tu: 'roubaste',
+        'Ela/Ele/Você': 'roubou',
+        Nós: 'roubámos',
+        'Eles/Elas/Vocēs': 'roubaram'
+      },
+      imperfect: {
+        Eu: 'roubava',
+        Tu: 'roubavas',
+        'Ela/Ele/Você': 'roubava',
+        Nós: 'roubávamos',
+        'Eles/Elas/Vocēs': 'roubavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'roubara',
+        Tu: 'roubaras',
+        'Ela/Ele/Você': 'roubara',
+        Nós: 'roubáramos',
+        'Eles/Elas/Vocēs': 'roubaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'roubarei',
+        Tu: 'roubarás',
+        'Ela/Ele/Você': 'roubará',
+        Nós: 'roubaremos',
+        'Eles/Elas/Vocēs': 'roubarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'roube',
+        Tu: 'roubes',
+        'Ela/Ele/Você': 'roube',
+        Nós: 'roubemos',
+        'Eles/Elas/Vocēs': 'roubem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'roubasse',
+        Tu: 'roubasses',
+        'Ela/Ele/Você': 'roubasse',
+        Nós: 'roubássemos',
+        'Eles/Elas/Vocēs': 'roubassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'roubar',
+        Tu: 'roubares',
+        'Ela/Ele/Você': 'roubar',
+        Nós: 'roubarmos',
+        'Eles/Elas/Vocēs': 'roubarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'roubaria',
+        Tu: 'roubarias',
+        'Ela/Ele/Você': 'roubaria',
+        Nós: 'roubaríamos',
+        'Eles/Elas/Vocēs': 'roubariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'roubando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'roubado'
+        }
+      ]
+    },
+    {
+      english: 'to be used to',
+      infinitive: 'costumar',
+      presentSimple: {
+        Eu: 'costumo',
+        Tu: 'costumas',
+        'Ela/Ele/Você': 'costuma',
+        Nós: 'costumamos',
+        'Eles/Elas/Vocēs': 'costumam'
+      },
+      pastPerfect: {
+        Eu: 'costumei',
+        Tu: 'costumaste',
+        'Ela/Ele/Você': 'costumou',
+        Nós: 'costumámos',
+        'Eles/Elas/Vocēs': 'costumaram'
+      },
+      imperfect: {
+        Eu: 'costumava',
+        Tu: 'costumavas',
+        'Ela/Ele/Você': 'costumava',
+        Nós: 'costumávamos',
+        'Eles/Elas/Vocēs': 'costumavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'costumara',
+        Tu: 'costumaras',
+        'Ela/Ele/Você': 'costumara',
+        Nós: 'costumáramos',
+        'Eles/Elas/Vocēs': 'costumaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'costumarei',
+        Tu: 'costumarás',
+        'Ela/Ele/Você': 'costumará',
+        Nós: 'costumaremos',
+        'Eles/Elas/Vocēs': 'costumarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'costume',
+        Tu: 'costumes',
+        'Ela/Ele/Você': 'costume',
+        Nós: 'costumemos',
+        'Eles/Elas/Vocēs': 'costumem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'costumasse',
+        Tu: 'costumasses',
+        'Ela/Ele/Você': 'costumasse',
+        Nós: 'costumássemos',
+        'Eles/Elas/Vocēs': 'costumassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'costumar',
+        Tu: 'costumares',
+        'Ela/Ele/Você': 'costumar',
+        Nós: 'costumarmos',
+        'Eles/Elas/Vocēs': 'costumarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'costumaria',
+        Tu: 'costumarias',
+        'Ela/Ele/Você': 'costumaria',
+        Nós: 'costumaríamos',
+        'Eles/Elas/Vocēs': 'costumariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'costumando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'costumado'
+        }
+      ]
     }
   ],
   nouns: [
@@ -16155,6 +16386,7 @@ export const db: Schema = {
       english: 'week',
       portuguese: {
         word: 'semana',
+        plural: 'semanas',
         gender: 'feminine'
       }
     },
@@ -20580,6 +20812,102 @@ export const db: Schema = {
         plural: 'hipóteses',
         gender: 'feminine'
       }
+    },
+    {
+      english: 'prison',
+      portuguese: {
+        word: 'prisão',
+        plural: 'prisões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'mount',
+      portuguese: {
+        word: 'monte',
+        plural: 'montes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'energy',
+      portuguese: {
+        word: 'energia',
+        plural: 'energias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'mission',
+      portuguese: {
+        word: 'missão',
+        plural: 'missões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'news',
+      portuguese: {
+        word: 'notícia',
+        plural: 'notícias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'chamber',
+      portuguese: {
+        word: 'câmara',
+        plural: 'câmaras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'lightning',
+      portuguese: {
+        word: 'raio',
+        plural: 'raios',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'guard',
+      portuguese: {
+        word: 'guarda',
+        plural: 'guardas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'contact',
+      portuguese: {
+        word: 'contacto',
+        plural: 'contactos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'decision',
+      portuguese: {
+        word: 'decisão',
+        plural: 'decisões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'army',
+      portuguese: {
+        word: 'exército',
+        plural: 'exércitos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'clothes',
+      portuguese: {
+        word: 'roupa',
+        plural: 'roupas',
+        gender: 'feminine'
+      }
     }
   ],
   others: [
@@ -21324,6 +21652,18 @@ export const db: Schema = {
     {
       portuguese: 'apesar',
       english: 'despite'
+    },
+    {
+      portuguese: 'ai',
+      english: 'oh'
+    },
+    {
+      portuguese: 'prestes',
+      english: 'about to'
+    },
+    {
+      portuguese: 'fully',
+      english: 'totalmente'
     }
   ],
   othersWithGender: [
@@ -23123,6 +23463,17 @@ export const db: Schema = {
       feminine: {
         singular: 'pronta',
         plural: 'prontas'
+      }
+    },
+    {
+      english: 'special',
+      masculine: {
+        singular: 'especial',
+        plural: 'especiais'
+      },
+      feminine: {
+        singular: 'especial',
+        plural: 'especiais'
       }
     }
   ],
