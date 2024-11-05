@@ -21658,8 +21658,8 @@ export const db: Schema = {
       english: 'about to'
     },
     {
-      portuguese: 'fully',
-      english: 'totalmente'
+      portuguese: 'totalmente',
+      english: 'fully'
     }
   ],
   othersWithGender: [
