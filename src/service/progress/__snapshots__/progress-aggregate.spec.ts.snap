@@ -1127,7 +1127,6 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "atrás",
           "ao lado de",
           "em cima de",
-          "no",
           "entre",
           "antes",
           "depois",
@@ -1299,7 +1298,7 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "aonde",
           "apesar",
         ],
-        "count": 185,
+        "count": 184,
       },
     },
     "OtherWithGenderTranslation": {

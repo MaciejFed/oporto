@@ -20640,10 +20640,6 @@ export const db: Schema = {
       portuguese: 'em cima de'
     },
     {
-      english: 'in',
-      portuguese: 'no'
-    },
-    {
       english: 'between',
       portuguese: 'entre'
     },
@@ -21776,7 +21772,7 @@ export const db: Schema = {
           feminine: 'amiga'
         },
         plural: {
-          masculine: 'amigo',
+          masculine: 'amigos',
           feminine: 'amigas'
         }
       }
@@ -21789,7 +21785,7 @@ export const db: Schema = {
           feminine: 'miúda'
         },
         plural: {
-          masculine: 'miúdo',
+          masculine: 'miúdos',
           feminine: 'miúdas'
         }
       }

@@ -959,7 +959,6 @@ exports[`Progress Aggregate PT 1`] = `
           "atrás",
           "ao lado de",
           "em cima de",
-          "no",
           "entre",
           "antes",
           "depois",
@@ -1068,7 +1067,7 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 114,
+        "count": 113,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3588,7 +3587,6 @@ exports[`Progress Aggregate PT 1`] = `
         "baseWords": [
           "segundo",
           "um",
-          "no",
           "primeiro",
           "nenhum",
           "ninguém",
@@ -3612,13 +3610,14 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 25,
+        "count": 24,
       },
       "NEVER_DONE": {
         "baseWords": [
           "do",
           "pelo",
           "o",
+          "no",
           "num",
           "este",
           "meu",
@@ -3719,7 +3718,7 @@ exports[`Progress Aggregate PT 1`] = `
           "aonde",
           "apesar",
         ],
-        "count": 102,
+        "count": 103,
       },
     },
     "VERB": {
