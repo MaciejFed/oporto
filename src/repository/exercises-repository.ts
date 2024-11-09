@@ -337,7 +337,21 @@ const verbs = [
   'lidar',
   'perceber',
   'costumar',
-  'roubar'
+  'roubar',
+  'odiar',
+  'supor',
+  'tornar',
+  'provar',
+  'interessar',
+  'verificar',
+  'aceitar',
+  'destruir',
+  'calhar',
+  'jurar',
+  'controlar',
+  'evitar',
+  'esconder',
+  'escolher'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];
