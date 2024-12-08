@@ -25,7 +25,7 @@ const getVoiceForLanguage = async (language: Language, text: string, api: 'googl
   if (api === 'openai') return 'alloy';
   switch (language) {
     case Language.Portuguese:
-      return getRandomElement(['A', 'B', 'C', 'D'].map((index) => `pt-PT-Wavenet-${index}`));
+      return getRandomElement(['A', 'B', 'C', 'D', 'E', 'F'].map((index) => `pt-PT-Wavenet-${index}`));
     case Language.German:
       return getRandomElement(['A', 'B', 'C', 'F'].map((index) => `de-DE-Neural2-${index}`));
     case Language.Polish:
