@@ -10,7 +10,9 @@
     "start": "http-server progress",
     "start-server": "ts-node src/server/server",
     "examples": "ts-node src/commands/examples",
+    "compare": "ts-node src/commands/compare.ts",
     "known": "ts-node src/commands/known.ts",
+    "listen": "ts-node src/commands/listen.ts",
     "voice": "ts-node src/commands/voices.ts",
     "delete": "ts-node src/commands/delete.ts",
     "remove": "ts-node src/commands/remove.ts",
@@ -45,7 +47,7 @@
   },
   "homepage": "https://github.com/MaciejFed/oporto#readme",
   "dependencies": {
-    "@google-cloud/text-to-speech": "^5.3.0",
+    "@google-cloud/text-to-speech": "^5.8.0",
     "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
     "clear": "^0.1.0",

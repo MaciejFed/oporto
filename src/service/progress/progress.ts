@@ -382,7 +382,7 @@ export function progressByDate(results: Result[], language: Language) {
     return {
       day: dateResult.date.toJSDate(),
       words,
-      exercisesDone: Math.floor(exercisesDone.length / 10)
+      exercisesDone: Math.floor(exercisesDone.length / 100)
     };
   }
 
@@ -413,7 +413,7 @@ export function progressByDate(results: Result[], language: Language) {
   const uniqueByDay = resultsByDate.map((dateResult) => {
     console.log(dateResult.date.toJSDate());
     const words = getUniqueWordsForDay(dateResult, exercises);
-    const exercisesDone = getAllResultsBeforeDateOneWeek(language, dateResult.date);
+    const exercisesDone = dateResult.results;
 
     return buildDayProgress(dateResult, exercisesDone, words);
   });
