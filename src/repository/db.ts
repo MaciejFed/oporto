@@ -22102,7 +22102,7 @@ export const db: Schema = {
       }
     },
     {
-      english: 'code',
+      english: 'general',
       portuguese: {
         word: 'general',
         plural: 'generais',
