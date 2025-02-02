@@ -17763,6 +17763,7 @@ export const db: Schema = {
       english: 'foot',
       portuguese: {
         word: 'pé',
+        plural: 'pés',
         gender: 'masculine'
       }
     },
@@ -18222,6 +18223,7 @@ export const db: Schema = {
       english: 'state',
       portuguese: {
         word: 'estado',
+        plural: 'estados',
         gender: 'masculine'
       }
     },
@@ -18257,6 +18259,7 @@ export const db: Schema = {
       english: 'name',
       portuguese: {
         word: 'nome',
+        plural: 'nomes',
         gender: 'masculine'
       }
     },
@@ -22163,6 +22166,131 @@ export const db: Schema = {
         word: 'dados',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'report',
+      portuguese: { word: 'relatório', gender: 'masculine', plural: 'relatórios' }
+    },
+    {
+      english: 'soul',
+      portuguese: { word: 'alma', gender: 'feminine', plural: 'almas' }
+    },
+    {
+      english: 'lieutenant',
+      portuguese: { word: 'tenente', gender: 'masculine', plural: 'tenentes' }
+    },
+    {
+      english: 'pump',
+      portuguese: { word: 'bomba', gender: 'feminine', plural: 'bombas' }
+    },
+    {
+      english: 'fear',
+      portuguese: { word: 'receio', gender: 'masculine', plural: 'receios' }
+    },
+    {
+      english: 'brain',
+      portuguese: { word: 'cérebro', gender: 'masculine', plural: 'cérebros' }
+    },
+    {
+      english: 'hope',
+      portuguese: { word: 'esperança', gender: 'feminine', plural: 'esperanças' }
+    },
+    {
+      english: 'queen',
+      portuguese: { word: 'rainha', gender: 'feminine', plural: 'rainhas' }
+    },
+    {
+      english: 'freedom',
+      portuguese: { word: 'liberdade', gender: 'feminine', plural: 'liberdades' }
+    },
+    {
+      english: 'operation',
+      portuguese: { word: 'operação', gender: 'feminine', plural: 'operações' }
+    },
+    {
+      english: 'smell',
+      portuguese: { word: 'cheiro', gender: 'masculine', plural: 'cheiros' }
+    },
+    {
+      english: 'honour',
+      portuguese: { word: 'honra', gender: 'feminine', plural: 'honras' }
+    },
+    {
+      english: 'spirit',
+      portuguese: { word: 'espírito', gender: 'masculine', plural: 'espíritos' }
+    },
+    {
+      english: 'target',
+      portuguese: { word: 'alvo', gender: 'masculine', plural: 'alvos' }
+    },
+    {
+      english: 'court',
+      portuguese: { word: 'tribunal', gender: 'masculine', plural: 'tribunais' }
+    },
+    {
+      english: 'master',
+      portuguese: { word: 'mestre', gender: 'masculine', plural: 'mestres' }
+    },
+    {
+      english: 'way',
+      portuguese: { word: 'jeito', gender: 'masculine', plural: 'ways' }
+    },
+    {
+      english: 'difference',
+      portuguese: { word: 'diferença', gender: 'feminine', plural: 'diferenças' }
+    },
+    {
+      english: 'master',
+      portuguese: { word: 'amo', gender: 'masculine', plural: 'amos' }
+    },
+    {
+      english: 'series',
+      portuguese: { word: 'série', gender: 'feminine', plural: 'séries' }
+    },
+    {
+      english: 'colonel',
+      portuguese: { word: 'coronel', gender: 'masculine', plural: 'coronels' }
+    },
+    {
+      english: 'unit',
+      portuguese: { word: 'unidade', gender: 'feminine', plural: 'unidades' }
+    },
+    {
+      english: 'homicide',
+      portuguese: { word: 'homicídio', gender: 'masculine', plural: 'homicídios' }
+    },
+    {
+      english: 'skin',
+      portuguese: { word: 'pele', gender: 'feminine', plural: 'peles' }
+    },
+    {
+      english: 'secret',
+      portuguese: { word: 'segredo', gender: 'masculine', plural: 'segredos' }
+    },
+    {
+      english: 'direction',
+      portuguese: { word: 'direcção', gender: 'feminine', plural: 'direcções' }
+    },
+    {
+      english: 'hole',
+      portuguese: { word: 'buraco', gender: 'masculine', plural: 'buracos' }
+    },
+    {
+      english: 'size',
+      portuguese: { word: 'tamanho', gender: 'masculine', plural: 'tamanhos' }
+    },
+    {
+      english: 'bullet',
+      portuguese: { word: 'bala', gender: 'feminine', plural: 'balas' }
+    },
+    {
+      english: 'terms',
+      portuguese: { word: 'termo', gender: 'masculine', plural: 'termos' }
+    },
+
+    {
+      english: 'soldiers',
+      portuguese: { word: 'soldados', gender: 'masculine', plural: 'soldados' }
     }
   ],
   others: [
