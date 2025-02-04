@@ -25006,6 +25006,325 @@ export const db: Schema = {
         singular: 'simples',
         plural: 'simples'
       }
+    },
+    {
+      english: 'various',
+      masculine: {
+        singular: 'vário',
+        plural: 'vários'
+      },
+      feminine: {
+        singular: 'vária',
+        plural: 'várias'
+      }
+    },
+    {
+      english: 'suspected',
+      masculine: {
+        singular: 'suspeito',
+        plural: 'suspeitos'
+      },
+      feminine: {
+        singular: 'suspeita',
+        plural: 'suspeitas'
+      }
+    },
+    {
+      english: 'official',
+      masculine: {
+        singular: 'oficial',
+        plural: 'oficiais'
+      },
+      feminine: {
+        singular: 'oficial',
+        plural: 'oficiais'
+      }
+    },
+    {
+      english: 'excellent',
+      masculine: {
+        singular: 'excelente',
+        plural: 'excelentes'
+      },
+      feminine: {
+        singular: 'excelente',
+        plural: 'excelentes'
+      }
+    },
+    {
+      english: 'concerned',
+      masculine: {
+        singular: 'preocupado',
+        plural: 'preocupados'
+      },
+      feminine: {
+        singular: 'preocupada',
+        plural: 'preocupadas'
+      }
+    },
+    {
+      english: 'optimal',
+      masculine: {
+        singular: 'óptimo',
+        plural: 'óptimos'
+      },
+      feminine: {
+        singular: 'óptima',
+        plural: 'óptimas'
+      }
+    },
+    {
+      english: 'enormous',
+      masculine: {
+        singular: 'enorme',
+        plural: 'enormes'
+      },
+      feminine: {
+        singular: 'enorme',
+        plural: 'enormes'
+      }
+    },
+    {
+      english: 'equal',
+      masculine: {
+        singular: 'igual',
+        plural: 'iguais'
+      },
+      feminine: {
+        singular: 'igual',
+        plural: 'iguais'
+      }
+    },
+    {
+      english: 'old',
+      masculine: {
+        singular: 'antigo',
+        plural: 'antigos'
+      },
+      feminine: {
+        singular: 'antiga',
+        plural: 'antigas'
+      }
+    },
+    {
+      english: 'alone',
+      masculine: {
+        singular: 'sozinho',
+        plural: 'sozinhos'
+      },
+      feminine: {
+        singular: 'sozinha',
+        plural: 'sozinhas'
+      }
+    },
+    {
+      english: 'super',
+      masculine: {
+        singular: 'super',
+        plural: 'super'
+      },
+      feminine: {
+        singular: 'super',
+        plural: 'super'
+      }
+    },
+    {
+      english: 'principal',
+      masculine: {
+        singular: 'principal',
+        plural: 'principais'
+      },
+      feminine: {
+        singular: 'principal',
+        plural: 'principais'
+      }
+    },
+    {
+      english: 'impossible',
+      masculine: {
+        singular: 'impossível',
+        plural: 'impossíveis'
+      },
+      feminine: {
+        singular: 'impossível',
+        plural: 'impossíveis'
+      }
+    },
+    {
+      english: 'brief',
+      masculine: {
+        singular: 'breve',
+        plural: 'breves'
+      },
+      feminine: {
+        singular: 'breve',
+        plural: 'breves'
+      }
+    },
+    {
+      english: 'dear',
+      masculine: {
+        singular: 'querida',
+        plural: 'queridas'
+      },
+      feminine: {
+        singular: 'querido',
+        plural: 'queridos'
+      }
+    },
+    {
+      english: 'holy',
+      masculine: {
+        singular: 'santo',
+        plural: 'santos'
+      },
+      feminine: {
+        singular: 'santa',
+        plural: 'santas'
+      }
+    },
+    {
+      english: 'sick',
+      masculine: {
+        singular: 'doente',
+        plural: 'doentes'
+      },
+      feminine: {
+        singular: 'doente',
+        plural: 'doentes'
+      }
+    },
+    {
+      english: 'willing',
+      masculine: {
+        singular: 'disposto',
+        plural: 'dispostos'
+      },
+      feminine: {
+        singular: 'disposta',
+        plural: 'dispostas'
+      }
+    },
+    {
+      english: 'real',
+      masculine: {
+        singular: 'real',
+        plural: 'reais'
+      },
+      feminine: {
+        singular: 'real',
+        plural: 'reais'
+      }
+    },
+    {
+      english: 'fed up',
+      masculine: {
+        singular: 'farto',
+        plural: 'fartos'
+      },
+      feminine: {
+        singular: 'farta',
+        plural: 'fartas'
+      }
+    },
+    {
+      english: 'patient',
+      masculine: {
+        singular: 'paciente',
+        plural: 'pacientes'
+      },
+      feminine: {
+        singular: 'paciente',
+        plural: 'pacientes'
+      }
+    },
+    {
+      english: 'dead',
+      masculine: {
+        singular: 'morto',
+        plural: 'mortos'
+      },
+      feminine: {
+        singular: 'morta',
+        plural: 'mortas'
+      }
+    },
+    {
+      english: 'normal',
+      masculine: {
+        singular: 'normal',
+        plural: 'normais'
+      },
+      feminine: {
+        singular: 'normal',
+        plural: 'normais'
+      }
+    },
+    {
+      english: 'stupid',
+      masculine: {
+        singular: 'estúpido',
+        plural: 'estúpidos'
+      },
+      feminine: {
+        singular: 'estúpida',
+        plural: 'estúpidas'
+      }
+    },
+    {
+      english: 'immense',
+      masculine: {
+        singular: 'imenso',
+        plural: 'imensos'
+      },
+      feminine: {
+        singular: 'imensa',
+        plural: 'imensas'
+      }
+    },
+    {
+      english: 'central',
+      masculine: {
+        singular: 'central',
+        plural: 'centrais'
+      },
+      feminine: {
+        singular: 'central',
+        plural: 'centrais'
+      }
+    },
+    {
+      english: 'obvious',
+      masculine: {
+        singular: 'óbvio',
+        plural: 'óbvios'
+      },
+      feminine: {
+        singular: 'óbvia',
+        plural: 'óbvias'
+      }
+    },
+    {
+      english: 'black',
+      masculine: {
+        singular: 'negro',
+        plural: 'negros'
+      },
+      feminine: {
+        singular: 'negra',
+        plural: 'negras'
+      }
+    },
+    {
+      english: 'terrible',
+      masculine: {
+        singular: 'terrível',
+        plural: 'terríveis'
+      },
+      feminine: {
+        singular: 'terrível',
+        plural: 'terríveis'
+      }
     }
   ],
   sentences: [
