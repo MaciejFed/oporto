@@ -23055,6 +23055,94 @@ export const db: Schema = {
     {
       portuguese: 'porra',
       english: 'damn'
+    },
+    {
+      portuguese: 'senão',
+      english: 'if not'
+    },
+    {
+      portuguese: 'portanto',
+      english: 'therefore'
+    },
+    {
+      portuguese: 'terceiro',
+      english: 'third'
+    },
+    {
+      portuguese: 'incluindo',
+      english: 'including'
+    },
+    {
+      portuguese: 'diante',
+      english: 'ahead'
+    },
+    {
+      portuguese: 'ora',
+      english: 'well'
+    },
+    {
+      portuguese: 'nisso',
+      english: 'em + isso'
+    },
+    {
+      portuguese: 'certamente',
+      english: 'certainly'
+    },
+    {
+      portuguese: 'jamais',
+      english: 'never ever'
+    },
+    {
+      portuguese: 'exatamente',
+      english: 'exactly'
+    },
+    {
+      portuguese: 'suficientemente',
+      english: 'sufficiently'
+    },
+    {
+      portuguese: 'afinal',
+      english: 'after all'
+    },
+    {
+      portuguese: 'anteriormente',
+      english: 'formerly'
+    },
+    {
+      portuguese: 'absolutamente',
+      english: 'absolutely'
+    },
+    {
+      portuguese: 'directamente',
+      english: 'directly'
+    },
+    {
+      portuguese: 'algures',
+      english: 'somewhere'
+    },
+    {
+      portuguese: 'praticamente',
+      english: 'practically'
+    },
+    {
+      portuguese: 'somente',
+      english: 'only this'
+    },
+    {
+      portuguese: 'perfeitamente',
+      english: 'perfectly'
+    },
+    {
+      portuguese: 'daí',
+      english: 'de + aí'
+    },
+    {
+      portuguese: 'definitivamente',
+      english: 'definitely'
+    },
+    {
+      portuguese: 'extremamente',
+      english: 'extremely'
     }
   ],
   othersWithGender: [
