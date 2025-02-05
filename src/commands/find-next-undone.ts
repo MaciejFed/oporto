@@ -19,6 +19,27 @@
 //   rl.question(query, resolve);
 // });
 //
+//
+// interface ParsedLingue {
+//   place: number;
+//   frequency: number;
+//   word: string;
+//   pos: string
+//   text: string,
+//   forms: string[],
+//   english: string
+// }
+//
+//
+// interface PraserdLingueMap {
+//   verbs: ParsedLingue[];
+//   adjectives: ParsedLingue[];
+//   nouns: ParsedLingue[];
+//   others: ParsedLingue[];
+//   parsed: string[];
+//   rejected: string[];
+// }
+//
 // interface Lingue {
 //   pos: string
 //   text: string,
@@ -29,36 +50,35 @@
 //   }[]
 // }
 //
-// type WordToLingue  = { [key: string]: Lingue[] }
 //
 //
 // export function saveFreqToFile(data: object) {
 //   fs.writeFileSync(freqPath, JSON.stringify(data, null, 4));
 // }
 //
-// export function readFreqFromFile(): WordToLingue {
+// export function readFreqFromFile(): PraserdLingueMap {
 //   return JSON.parse(fs.readFileSync(freqPath, 'utf-8'));
 // }
 //
-// export function parseNoun(wordToLingue: WordToLingue): Noun[] {
-//   const singulars = Object.entries(wordToLingue).filter((entry) => /^noun, (feminine|masculine)$/.test(entry[1][0].pos))
-//   const plurals = Object.entries(wordToLingue).filter((entry) => /^noun, plural, (feminine|masculine)$/.test(entry[1][0].pos))
+// export function parseNoun(wordToLingue: PraserdLingueMap): Noun[] {
+//   const singulars = wordToLingue.nouns.filter((entry) => /^noun, (feminine|masculine)$/.test(entry.pos))
+//   const plurals = wordToLingue.nouns.filter((entry) => /^noun, plural, (feminine|masculine)$/.test(entry.pos))
 //
 //   const singularNounParsed = singulars.map<Noun>((entry) => ({
-//     english: entry[1][0].translations[0].text,
+//     english: entry.english,
 //     portuguese: {
-//       word: entry[0],
-//       gender: entry[1][0].pos.includes('masculine') ? 'masculine' : 'feminine',
-//       plural: entry[1][0].forms.length ? entry[1][0].forms[0].match(/plural:\s*([^\s\)]+)/)![1] : ''
+//       word: entry.word,
+//       gender: entry.pos.includes('masculine') ? 'masculine' : 'feminine',
+//       plural: entry.forms.length ? entry.forms[0].match(/plural:\s*([^\s\)]+)/)![1] : ''
 //     }
 //   }))
 //
 //   const pluralsNounsParsed = plurals.map<Noun>((entry) => ({
-//     english: entry[1][0].translations[0].text,
+//     english: entry.english,
 //     portuguese: {
-//       word: entry[1][0].forms.length ? entry[1][0].forms[0].match(/singular:\s*([^\s\)]+)/)![0] : '',
-//       gender: entry[1][0].pos.includes('masculine') ? 'masculine' : 'feminine',
-//       plural: entry[0]
+//       word: entry.forms.length ? entry.forms[0].match(/singular:\s*([^\s\)]+)/)![0] : '',
+//       gender: entry.pos.includes('masculine') ? 'masculine' : 'feminine',
+//       plural: entry.word
 //     }
 //   }))
 //
@@ -70,36 +90,57 @@
 // }
 //
 //
-// const words: string[] = ['dum', 'nao','john','the','seres','jack','terem','serem','oh','tom','michael','quê','desculpe','sam','jesus','fbi','sê','james','george','namorado','david'];
+// const words: string[] = ['joe', 'dum', 'nao','john','the','seres','jack','terem','serem','oh','tom','michael','quê','desculpe','sam','jesus','fbi','sê','james','george','namorado','david'];
 //
 // async function findNextUndone() {
 //   const currentMap = readFreqFromFile()
 //   const allWords = getAllUniqueWordsConjugated(Language.Portuguese);
-//   const mapWords = Object.keys(currentMap)
 //   for (const word of Object.keys(frequencyMap)) {
-//     if (!allWords.includes(word) && !words.includes(word) && !mapWords.includes(word)) {
+//     if (!allWords.includes(word) && !words.includes(word) && !currentMap.parsed.concat(currentMap.rejected).includes(word)) {
 //       const value = frequencyMap[word];
-//       const curlCommand = `curl -X 'GET' 'http://127.0.0.1:8000/api/v2/translations?query=${encodeURIComponent(word)}&src=pt&dst=en&guess_direction=false&follow_corrections=never' -H 'accept: application/json'`;
+//       const curlCommand = `curl -s -X 'GET' 'http://127.0.0.1:8000/api/v2/translations?query=${encodeURIComponent(word)}&src=pt&dst=en&guess_direction=false&follow_corrections=never' -H 'accept: application/json'`;
 //       const lingue = execSync(
 //         curlCommand
 //       ).toString();
 //       const l: Lingue[] =  JSON.parse(lingue);
-//       currentMap[word] = l;
+//       if (JSON.stringify(l).includes('The Linguee server returned 429')) {
+//         console.error('Reached the limit');
+//         process.exit(0);
+//       }
 //       if (!l.length) {
+//         currentMap.rejected.push(word);
 //         continue
 //       }
-//       console.log({
+//       const parsedLingue: ParsedLingue = {
 //         word,
-//         type: l[0].pos,
-//         translations: l[0].translations.map((tran) => tran.text)
-//       })
+//         pos: l[0].pos,
+//         text: l[0].text,
+//         forms: l[0].forms,
+//         english: l[0].translations[0].text,
+//         place: value.place,
+//         frequency: value.frequency,
+//       }
+//       if (parsedLingue.pos.includes('verb')) {
+//         currentMap.verbs.push(parsedLingue);
+//       } else if (parsedLingue.pos.includes('noun')) {
+//         currentMap.nouns.push(parsedLingue);
+//       } else if (parsedLingue.pos.includes('adjective')) {
+//         currentMap.adjectives.push(parsedLingue);
+//       } else {
+//         currentMap.others.push(parsedLingue);
+//       }
+//       currentMap.parsed.push(word)
+//
+//       console.log(parsedLingue);
 //       saveFreqToFile(currentMap)
 //     }
 //   }
 // }
 //
-// const currentMap = readFreqFromFile();
 //
-// parseNoun(currentMap)
+// const map = readFreqFromFile();
 //
-// // findNextUndone();
+// console.log(map.verbs.map((verb) => ({
+//   infinitive: verb.text,
+//   english: `to ${verb.english}`
+// })));

@@ -351,7 +351,18 @@ const verbs = [
   'controlar',
   'evitar',
   'esconder',
-  'escolher'
+  'escolher',
+  'demorar',
+  'entregar',
+  'agir',
+  'fingir',
+  'meter',
+  'terminar',
+  'bastar',
+  'aparecer',
+  'recuperar',
+  'entender',
+  'cortar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];
