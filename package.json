@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "http-server progress",
-    "start-server": "ts-node src/server/server",
+    "start-server": "node build/server/server",
     "examples": "ts-node src/commands/examples",
     "compare": "ts-node src/commands/compare.ts",
     "known": "ts-node src/commands/known.ts",
@@ -16,7 +16,7 @@
     "voice": "ts-node src/commands/voices.ts",
     "delete": "ts-node src/commands/delete.ts",
     "remove": "ts-node src/commands/remove.ts",
-    "unknown": "ts-node src/commands/unknown",
+    "find": "ts-node src/commands/find-next-undone.ts",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "test-update": "jest --updateSnapshot --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
