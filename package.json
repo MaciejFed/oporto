@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "http-server progress",
-    "start-server": "node build/server/server",
+    "start-server": "ts-node src/server/server",
     "examples": "ts-node src/commands/examples",
     "compare": "ts-node src/commands/compare.ts",
     "known": "ts-node src/commands/known.ts",
@@ -32,7 +32,7 @@
     "verify": "npm run lint && npm run format && npm run test",
     "foo": "ts-node src/commands/known.ts",
     "unknown": "ts-node src/commands/unknown.ts",
-    "build": "rm -rf build/** && npx tsc",
+    "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto && rm -rf ./build"
   },
