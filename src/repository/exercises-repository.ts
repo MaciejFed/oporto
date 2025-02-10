@@ -362,7 +362,24 @@ const verbs = [
   'aparecer',
   'recuperar',
   'entender',
-  'cortar'
+  'cortar',
+  'imaginar',
+  'cheirar',
+  'apresentar',
+  'investigar',
+  'funcionar',
+  'agradecer',
+  'guardar',
+  'visitar',
+  'detestar',
+  'impedir',
+  'garantir',
+  'regressar',
+  'juntar',
+  'merecer',
+  'disparar',
+  'prometer',
+  'gozar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];
