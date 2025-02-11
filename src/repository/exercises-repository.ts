@@ -379,7 +379,29 @@ const verbs = [
   'merecer',
   'disparar',
   'prometer',
-  'gozar'
+  'gozar',
+  'trocar',
+  'custar',
+  'causar',
+  'cometer',
+  'deitar',
+  'desistir',
+  'desaparecer',
+  'partilhar',
+  'soar',
+  'cumprir',
+  'mentir',
+  'restar',
+  'calar',
+  'presumir',
+  'planear',
+  'arriscar',
+  'temer',
+  'preocupar',
+  'assumir',
+  'admitir',
+  'chorar',
+  'duvidar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

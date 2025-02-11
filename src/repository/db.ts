@@ -19564,6 +19564,1701 @@ export const db: Schema = {
           portuguese: 'gozado'
         }
       ]
+    },
+
+    {
+      english: 'to exchange',
+      infinitive: 'trocar',
+      presentSimple: {
+        Eu: 'troco',
+        Tu: 'trocas',
+        'Ela/Ele/Você': 'troca',
+        Nós: 'trocamos',
+        'Eles/Elas/Vocēs': 'trocam'
+      },
+      pastPerfect: {
+        Eu: 'troquei',
+        Tu: 'trocaste',
+        'Ela/Ele/Você': 'trocou',
+        Nós: 'trocámos',
+        'Eles/Elas/Vocēs': 'trocaram'
+      },
+      imperfect: {
+        Eu: 'trocava',
+        Tu: 'trocavas',
+        'Ela/Ele/Você': 'trocava',
+        Nós: 'trocávamos',
+        'Eles/Elas/Vocēs': 'trocavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'trocara',
+        Tu: 'trocaras',
+        'Ela/Ele/Você': 'trocara',
+        Nós: 'trocáramos',
+        'Eles/Elas/Vocēs': 'trocaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'trocarei',
+        Tu: 'trocarás',
+        'Ela/Ele/Você': 'trocará',
+        Nós: 'trocaremos',
+        'Eles/Elas/Vocēs': 'trocarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'troque',
+        Tu: 'troques',
+        'Ela/Ele/Você': 'troque',
+        Nós: 'troquemos',
+        'Eles/Elas/Vocēs': 'troquem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'trocasse',
+        Tu: 'trocasses',
+        'Ela/Ele/Você': 'trocasse',
+        Nós: 'trocássemos',
+        'Eles/Elas/Vocēs': 'trocassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'trocar',
+        Tu: 'trocares',
+        'Ela/Ele/Você': 'trocar',
+        Nós: 'trocarmos',
+        'Eles/Elas/Vocēs': 'trocarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'trocaria',
+        Tu: 'trocarias',
+        'Ela/Ele/Você': 'trocaria',
+        Nós: 'trocaríamos',
+        'Eles/Elas/Vocēs': 'trocariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'trocando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'trocado'
+        }
+      ]
+    },
+    {
+      english: 'to cost',
+      infinitive: 'custar',
+      presentSimple: {
+        Eu: 'custo',
+        Tu: 'custas',
+        'Ela/Ele/Você': 'custa',
+        Nós: 'custamos',
+        'Eles/Elas/Vocēs': 'custam'
+      },
+      pastPerfect: {
+        Eu: 'custei',
+        Tu: 'custaste',
+        'Ela/Ele/Você': 'custou',
+        Nós: 'custámos',
+        'Eles/Elas/Vocēs': 'custaram'
+      },
+      imperfect: {
+        Eu: 'custava',
+        Tu: 'custavas',
+        'Ela/Ele/Você': 'custava',
+        Nós: 'custávamos',
+        'Eles/Elas/Vocēs': 'custavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'custara',
+        Tu: 'custaras',
+        'Ela/Ele/Você': 'custara',
+        Nós: 'custáramos',
+        'Eles/Elas/Vocēs': 'custaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'custarei',
+        Tu: 'custarás',
+        'Ela/Ele/Você': 'custará',
+        Nós: 'custaremos',
+        'Eles/Elas/Vocēs': 'custarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'custe',
+        Tu: 'custes',
+        'Ela/Ele/Você': 'custe',
+        Nós: 'custemos',
+        'Eles/Elas/Vocēs': 'custem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'custasse',
+        Tu: 'custasses',
+        'Ela/Ele/Você': 'custasse',
+        Nós: 'custássemos',
+        'Eles/Elas/Vocēs': 'custassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'custar',
+        Tu: 'custares',
+        'Ela/Ele/Você': 'custar',
+        Nós: 'custarmos',
+        'Eles/Elas/Vocēs': 'custarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'custaria',
+        Tu: 'custarias',
+        'Ela/Ele/Você': 'custaria',
+        Nós: 'custaríamos',
+        'Eles/Elas/Vocēs': 'custariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'custando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'custado'
+        }
+      ]
+    },
+    {
+      english: 'to inflict',
+      infinitive: 'causar',
+      presentSimple: {
+        Eu: 'causo',
+        Tu: 'causas',
+        'Ela/Ele/Você': 'causa',
+        Nós: 'causamos',
+        'Eles/Elas/Vocēs': 'causam'
+      },
+      pastPerfect: {
+        Eu: 'causei',
+        Tu: 'causaste',
+        'Ela/Ele/Você': 'causou',
+        Nós: 'causámos',
+        'Eles/Elas/Vocēs': 'causaram'
+      },
+      imperfect: {
+        Eu: 'causava',
+        Tu: 'causavas',
+        'Ela/Ele/Você': 'causava',
+        Nós: 'causávamos',
+        'Eles/Elas/Vocēs': 'causavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'causara',
+        Tu: 'causaras',
+        'Ela/Ele/Você': 'causara',
+        Nós: 'causáramos',
+        'Eles/Elas/Vocēs': 'causaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'causarei',
+        Tu: 'causarás',
+        'Ela/Ele/Você': 'causará',
+        Nós: 'causaremos',
+        'Eles/Elas/Vocēs': 'causarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'cause',
+        Tu: 'causes',
+        'Ela/Ele/Você': 'cause',
+        Nós: 'causemos',
+        'Eles/Elas/Vocēs': 'causem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'causasse',
+        Tu: 'causasses',
+        'Ela/Ele/Você': 'causasse',
+        Nós: 'causássemos',
+        'Eles/Elas/Vocēs': 'causassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'causar',
+        Tu: 'causares',
+        'Ela/Ele/Você': 'causar',
+        Nós: 'causarmos',
+        'Eles/Elas/Vocēs': 'causarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'causaria',
+        Tu: 'causarias',
+        'Ela/Ele/Você': 'causaria',
+        Nós: 'causaríamos',
+        'Eles/Elas/Vocēs': 'causariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'causando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'causado'
+        }
+      ]
+    },
+    {
+      english: 'to commit',
+      infinitive: 'cometer',
+      presentSimple: {
+        Eu: 'cometo',
+        Tu: 'cometes',
+        'Ela/Ele/Você': 'comete',
+        Nós: 'cometemos',
+        'Eles/Elas/Vocēs': 'cometem'
+      },
+      pastPerfect: {
+        Eu: 'cometi',
+        Tu: 'cometeste',
+        'Ela/Ele/Você': 'cometeu',
+        Nós: 'cometemos',
+        'Eles/Elas/Vocēs': 'cometeram'
+      },
+      imperfect: {
+        Eu: 'cometia',
+        Tu: 'cometias',
+        'Ela/Ele/Você': 'cometia',
+        Nós: 'cometíamos',
+        'Eles/Elas/Vocēs': 'cometiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'cometera',
+        Tu: 'cometeras',
+        'Ela/Ele/Você': 'cometera',
+        Nós: 'cometêramos',
+        'Eles/Elas/Vocēs': 'cometeram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'cometerei',
+        Tu: 'cometerás',
+        'Ela/Ele/Você': 'cometerá',
+        Nós: 'cometeremos',
+        'Eles/Elas/Vocēs': 'cometerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'cometa',
+        Tu: 'cometas',
+        'Ela/Ele/Você': 'cometa',
+        Nós: 'cometamos',
+        'Eles/Elas/Vocēs': 'cometam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'cometesse',
+        Tu: 'cometesses',
+        'Ela/Ele/Você': 'cometesse',
+        Nós: 'cometêssemos',
+        'Eles/Elas/Vocēs': 'cometessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'cometer',
+        Tu: 'cometeres',
+        'Ela/Ele/Você': 'cometer',
+        Nós: 'cometermos',
+        'Eles/Elas/Vocēs': 'cometerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'cometeria',
+        Tu: 'cometerias',
+        'Ela/Ele/Você': 'cometeria',
+        Nós: 'cometeríamos',
+        'Eles/Elas/Vocēs': 'cometeriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'cometendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'cometido'
+        }
+      ]
+    },
+    {
+      english: 'to lie down',
+      infinitive: 'deitar',
+      presentSimple: {
+        Eu: 'deito',
+        Tu: 'deitas',
+        'Ela/Ele/Você': 'deita',
+        Nós: 'deitamos',
+        'Eles/Elas/Vocēs': 'deitam'
+      },
+      pastPerfect: {
+        Eu: 'deitei',
+        Tu: 'deitaste',
+        'Ela/Ele/Você': 'deitou',
+        Nós: 'deitámos',
+        'Eles/Elas/Vocēs': 'deitaram'
+      },
+      imperfect: {
+        Eu: 'deitava',
+        Tu: 'deitavas',
+        'Ela/Ele/Você': 'deitava',
+        Nós: 'deitávamos',
+        'Eles/Elas/Vocēs': 'deitavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'deitara',
+        Tu: 'deitaras',
+        'Ela/Ele/Você': 'deitara',
+        Nós: 'deitáramos',
+        'Eles/Elas/Vocēs': 'deitaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'deitarei',
+        Tu: 'deitarás',
+        'Ela/Ele/Você': 'deitará',
+        Nós: 'deitaremos',
+        'Eles/Elas/Vocēs': 'deitarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'deite',
+        Tu: 'deites',
+        'Ela/Ele/Você': 'deite',
+        Nós: 'deitemos',
+        'Eles/Elas/Vocēs': 'deitem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'deitasse',
+        Tu: 'deitasses',
+        'Ela/Ele/Você': 'deitasse',
+        Nós: 'deitássemos',
+        'Eles/Elas/Vocēs': 'deitassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'deitar',
+        Tu: 'deitares',
+        'Ela/Ele/Você': 'deitar',
+        Nós: 'deitarmos',
+        'Eles/Elas/Vocēs': 'deitarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'deitaria',
+        Tu: 'deitarias',
+        'Ela/Ele/Você': 'deitaria',
+        Nós: 'deitaríamos',
+        'Eles/Elas/Vocēs': 'deitariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'deitando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'deitado'
+        }
+      ]
+    },
+    {
+      english: 'to give up',
+      infinitive: 'desistir',
+      presentSimple: {
+        Eu: 'desisto',
+        Tu: 'desistes',
+        'Ela/Ele/Você': 'desiste',
+        Nós: 'desistimos',
+        'Eles/Elas/Vocēs': 'desistem'
+      },
+      pastPerfect: {
+        Eu: 'desisti',
+        Tu: 'desististe',
+        'Ela/Ele/Você': 'desistiu',
+        Nós: 'desistimos',
+        'Eles/Elas/Vocēs': 'desistiram'
+      },
+      imperfect: {
+        Eu: 'desistia',
+        Tu: 'desistias',
+        'Ela/Ele/Você': 'desistia',
+        Nós: 'desistíamos',
+        'Eles/Elas/Vocēs': 'desistiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'desistira',
+        Tu: 'desistiras',
+        'Ela/Ele/Você': 'desistira',
+        Nós: 'desistíramos',
+        'Eles/Elas/Vocēs': 'desistiram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'desistirei',
+        Tu: 'desistirás',
+        'Ela/Ele/Você': 'desistirá',
+        Nós: 'desistiremos',
+        'Eles/Elas/Vocēs': 'desistirão'
+      },
+      subjuntivoPresente: {
+        Eu: 'desista',
+        Tu: 'desistas',
+        'Ela/Ele/Você': 'desista',
+        Nós: 'desistamos',
+        'Eles/Elas/Vocēs': 'desistam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'desistisse',
+        Tu: 'desistisses',
+        'Ela/Ele/Você': 'desistisse',
+        Nós: 'desistíssemos',
+        'Eles/Elas/Vocēs': 'desistissem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'desistir',
+        Tu: 'desistires',
+        'Ela/Ele/Você': 'desistir',
+        Nós: 'desistirmos',
+        'Eles/Elas/Vocēs': 'desistirem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'desistiria',
+        Tu: 'desistirias',
+        'Ela/Ele/Você': 'desistiria',
+        Nós: 'desistiríamos',
+        'Eles/Elas/Vocēs': 'desistiriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'desistindo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'desistido'
+        }
+      ]
+    },
+    {
+      english: 'to disappear',
+      infinitive: 'desaparecer',
+      presentSimple: {
+        Eu: 'desapareço',
+        Tu: 'desapareces',
+        'Ela/Ele/Você': 'desaparece',
+        Nós: 'desaparecemos',
+        'Eles/Elas/Vocēs': 'desaparecem'
+      },
+      pastPerfect: {
+        Eu: 'desapareci',
+        Tu: 'desapareceste',
+        'Ela/Ele/Você': 'desapareceu',
+        Nós: 'desaparecemos',
+        'Eles/Elas/Vocēs': 'desapareceram'
+      },
+      imperfect: {
+        Eu: 'desaparecia',
+        Tu: 'desaparecias',
+        'Ela/Ele/Você': 'desaparecia',
+        Nós: 'desaparecíamos',
+        'Eles/Elas/Vocēs': 'desapareciam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'desaparecera',
+        Tu: 'desapareceras',
+        'Ela/Ele/Você': 'desaparecera',
+        Nós: 'desaparecêramos',
+        'Eles/Elas/Vocēs': 'desapareceram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'desaparecerei',
+        Tu: 'desaparecerás',
+        'Ela/Ele/Você': 'desaparecerá',
+        Nós: 'desapareceremos',
+        'Eles/Elas/Vocēs': 'desaparecerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'desapareça',
+        Tu: 'desapareças',
+        'Ela/Ele/Você': 'desapareça',
+        Nós: 'desapareçamos',
+        'Eles/Elas/Vocēs': 'desapareçam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'desaparecesse',
+        Tu: 'desaparecesses',
+        'Ela/Ele/Você': 'desaparecesse',
+        Nós: 'desaparecêssemos',
+        'Eles/Elas/Vocēs': 'desaparecessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'desaparecer',
+        Tu: 'desapareceres',
+        'Ela/Ele/Você': 'desaparecer',
+        Nós: 'desaparecermos',
+        'Eles/Elas/Vocēs': 'desaparecerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'desapareceria',
+        Tu: 'desaparecerias',
+        'Ela/Ele/Você': 'desapareceria',
+        Nós: 'desapareceríamos',
+        'Eles/Elas/Vocēs': 'desapareceriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'desaparecendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'desaparecido'
+        }
+      ]
+    },
+    {
+      english: 'to share',
+      infinitive: 'partilhar',
+      presentSimple: {
+        Eu: 'partilho',
+        Tu: 'partilhas',
+        'Ela/Ele/Você': 'partilha',
+        Nós: 'partilhamos',
+        'Eles/Elas/Vocēs': 'partilham'
+      },
+      pastPerfect: {
+        Eu: 'partilhei',
+        Tu: 'partilhaste',
+        'Ela/Ele/Você': 'partilhou',
+        Nós: 'partilhámos',
+        'Eles/Elas/Vocēs': 'partilharam'
+      },
+      imperfect: {
+        Eu: 'partilhava',
+        Tu: 'partilhavas',
+        'Ela/Ele/Você': 'partilhava',
+        Nós: 'partilhávamos',
+        'Eles/Elas/Vocēs': 'partilhavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'partilhara',
+        Tu: 'partilharas',
+        'Ela/Ele/Você': 'partilhara',
+        Nós: 'partilháramos',
+        'Eles/Elas/Vocēs': 'partilharam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'partilharei',
+        Tu: 'partilharás',
+        'Ela/Ele/Você': 'partilhará',
+        Nós: 'partilharemos',
+        'Eles/Elas/Vocēs': 'partilharão'
+      },
+      subjuntivoPresente: {
+        Eu: 'partilhe',
+        Tu: 'partilhes',
+        'Ela/Ele/Você': 'partilhe',
+        Nós: 'partilhemos',
+        'Eles/Elas/Vocēs': 'partilhem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'partilhasse',
+        Tu: 'partilhasses',
+        'Ela/Ele/Você': 'partilhasse',
+        Nós: 'partilhássemos',
+        'Eles/Elas/Vocēs': 'partilhassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'partilhar',
+        Tu: 'partilhares',
+        'Ela/Ele/Você': 'partilhar',
+        Nós: 'partilharmos',
+        'Eles/Elas/Vocēs': 'partilharem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'partilharia',
+        Tu: 'partilharias',
+        'Ela/Ele/Você': 'partilharia',
+        Nós: 'partilharíamos',
+        'Eles/Elas/Vocēs': 'partilhariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'partilhando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'partilhado'
+        }
+      ]
+    },
+    {
+      english: 'to sound',
+      infinitive: 'soar',
+      presentSimple: {
+        Eu: 'soo',
+        Tu: 'soas',
+        'Ela/Ele/Você': 'soa',
+        Nós: 'soamos',
+        'Eles/Elas/Vocēs': 'soam'
+      },
+      pastPerfect: {
+        Eu: 'soei',
+        Tu: 'soaste',
+        'Ela/Ele/Você': 'soou',
+        Nós: 'soámos',
+        'Eles/Elas/Vocēs': 'soaram'
+      },
+      imperfect: {
+        Eu: 'soava',
+        Tu: 'soavas',
+        'Ela/Ele/Você': 'soava',
+        Nós: 'soávamos',
+        'Eles/Elas/Vocēs': 'soavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'soara',
+        Tu: 'soaras',
+        'Ela/Ele/Você': 'soara',
+        Nós: 'soáramos',
+        'Eles/Elas/Vocēs': 'soaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'soarei',
+        Tu: 'soarás',
+        'Ela/Ele/Você': 'soará',
+        Nós: 'soaremos',
+        'Eles/Elas/Vocēs': 'soarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'soe',
+        Tu: 'soes',
+        'Ela/Ele/Você': 'soe',
+        Nós: 'soemos',
+        'Eles/Elas/Vocēs': 'soem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'soasse',
+        Tu: 'soasses',
+        'Ela/Ele/Você': 'soasse',
+        Nós: 'soássemos',
+        'Eles/Elas/Vocēs': 'soassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'soar',
+        Tu: 'soares',
+        'Ela/Ele/Você': 'soar',
+        Nós: 'soarmos',
+        'Eles/Elas/Vocēs': 'soarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'soaria',
+        Tu: 'soarias',
+        'Ela/Ele/Você': 'soaria',
+        Nós: 'soaríamos',
+        'Eles/Elas/Vocēs': 'soariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'soando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'soado'
+        }
+      ]
+    },
+    {
+      english: 'to comply',
+      infinitive: 'cumprir',
+      presentSimple: {
+        Eu: 'cumpro',
+        Tu: 'cumpres',
+        'Ela/Ele/Você': 'cumpre',
+        Nós: 'cumprimos',
+        'Eles/Elas/Vocēs': 'cumprem'
+      },
+      pastPerfect: {
+        Eu: 'cumpri',
+        Tu: 'cumpriste',
+        'Ela/Ele/Você': 'cumpriu',
+        Nós: 'cumprimos',
+        'Eles/Elas/Vocēs': 'cumpriram'
+      },
+      imperfect: {
+        Eu: 'cumpria',
+        Tu: 'cumprias',
+        'Ela/Ele/Você': 'cumpria',
+        Nós: 'cumpríamos',
+        'Eles/Elas/Vocēs': 'cumpriam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'cumprira',
+        Tu: 'cumpriras',
+        'Ela/Ele/Você': 'cumprira',
+        Nós: 'cumpríramos',
+        'Eles/Elas/Vocēs': 'cumpriram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'cumprirei',
+        Tu: 'cumprirás',
+        'Ela/Ele/Você': 'cumprirá',
+        Nós: 'cumpriremos',
+        'Eles/Elas/Vocēs': 'cumprirão'
+      },
+      subjuntivoPresente: {
+        Eu: 'cumpra',
+        Tu: 'cumpras',
+        'Ela/Ele/Você': 'cumpra',
+        Nós: 'cumpramos',
+        'Eles/Elas/Vocēs': 'cumpram'
+      },
+      pretéritoImperfeito: {
+        Eu: 'cumprisse',
+        Tu: 'cumprisses',
+        'Ela/Ele/Você': 'cumprisse',
+        Nós: 'cumpríssemos',
+        'Eles/Elas/Vocēs': 'cumprissem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'cumprir',
+        Tu: 'cumprires',
+        'Ela/Ele/Você': 'cumprir',
+        Nós: 'cumprirmos',
+        'Eles/Elas/Vocēs': 'cumprirem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'cumpriria',
+        Tu: 'cumpririas',
+        'Ela/Ele/Você': 'cumpriria',
+        Nós: 'cumpriríamos',
+        'Eles/Elas/Vocēs': 'cumpririam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'cumprindo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'cumprido'
+        }
+      ]
+    },
+    {
+      english: 'to lie',
+      infinitive: 'mentir',
+      presentSimple: {
+        Eu: 'minto',
+        Tu: 'mentes',
+        'Ela/Ele/Você': 'mente',
+        Nós: 'mentimos',
+        'Eles/Elas/Vocēs': 'mentem'
+      },
+      pastPerfect: {
+        Eu: 'menti',
+        Tu: 'mentiste',
+        'Ela/Ele/Você': 'mentiu',
+        Nós: 'mentimos',
+        'Eles/Elas/Vocēs': 'mentiram'
+      },
+      imperfect: {
+        Eu: 'mentia',
+        Tu: 'mentias',
+        'Ela/Ele/Você': 'mentia',
+        Nós: 'mentíamos',
+        'Eles/Elas/Vocēs': 'mentiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'mentira',
+        Tu: 'mentiras',
+        'Ela/Ele/Você': 'mentira',
+        Nós: 'mentíramos',
+        'Eles/Elas/Vocēs': 'mentiram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'mentirei',
+        Tu: 'mentirás',
+        'Ela/Ele/Você': 'mentirá',
+        Nós: 'mentiremos',
+        'Eles/Elas/Vocēs': 'mentirão'
+      },
+      subjuntivoPresente: {
+        Eu: 'minta',
+        Tu: 'mintas',
+        'Ela/Ele/Você': 'minta',
+        Nós: 'mintamos',
+        'Eles/Elas/Vocēs': 'mintam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'mentisse',
+        Tu: 'mentisses',
+        'Ela/Ele/Você': 'mentisse',
+        Nós: 'mentíssemos',
+        'Eles/Elas/Vocēs': 'mentissem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'mentir',
+        Tu: 'mentires',
+        'Ela/Ele/Você': 'mentir',
+        Nós: 'mentirmos',
+        'Eles/Elas/Vocēs': 'mentirem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'mentiria',
+        Tu: 'mentirias',
+        'Ela/Ele/Você': 'mentiria',
+        Nós: 'mentiríamos',
+        'Eles/Elas/Vocēs': 'mentiriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'mentindo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'mentido'
+        }
+      ]
+    },
+    {
+      english: 'to be left',
+      infinitive: 'restar',
+      presentSimple: {
+        Eu: 'resto',
+        Tu: 'restas',
+        'Ela/Ele/Você': 'resta',
+        Nós: 'restamos',
+        'Eles/Elas/Vocēs': 'restam'
+      },
+      pastPerfect: {
+        Eu: 'restei',
+        Tu: 'restaste',
+        'Ela/Ele/Você': 'restou',
+        Nós: 'restámos',
+        'Eles/Elas/Vocēs': 'restaram'
+      },
+      imperfect: {
+        Eu: 'restava',
+        Tu: 'restavas',
+        'Ela/Ele/Você': 'restava',
+        Nós: 'restávamos',
+        'Eles/Elas/Vocēs': 'restavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'restara',
+        Tu: 'restaras',
+        'Ela/Ele/Você': 'restara',
+        Nós: 'restáramos',
+        'Eles/Elas/Vocēs': 'restaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'restarei',
+        Tu: 'restarás',
+        'Ela/Ele/Você': 'restará',
+        Nós: 'restaremos',
+        'Eles/Elas/Vocēs': 'restarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'reste',
+        Tu: 'restes',
+        'Ela/Ele/Você': 'reste',
+        Nós: 'restemos',
+        'Eles/Elas/Vocēs': 'restem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'restasse',
+        Tu: 'restasses',
+        'Ela/Ele/Você': 'restasse',
+        Nós: 'restássemos',
+        'Eles/Elas/Vocēs': 'restassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'restar',
+        Tu: 'restares',
+        'Ela/Ele/Você': 'restar',
+        Nós: 'restarmos',
+        'Eles/Elas/Vocēs': 'restarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'restaria',
+        Tu: 'restarias',
+        'Ela/Ele/Você': 'restaria',
+        Nós: 'restaríamos',
+        'Eles/Elas/Vocēs': 'restariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'restando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'restado'
+        }
+      ]
+    },
+    {
+      english: 'to silence',
+      infinitive: 'calar',
+      presentSimple: {
+        Eu: 'calo',
+        Tu: 'calas',
+        'Ela/Ele/Você': 'cala',
+        Nós: 'calamos',
+        'Eles/Elas/Vocēs': 'calam'
+      },
+      pastPerfect: {
+        Eu: 'calei',
+        Tu: 'calaste',
+        'Ela/Ele/Você': 'calou',
+        Nós: 'calámos',
+        'Eles/Elas/Vocēs': 'calaram'
+      },
+      imperfect: {
+        Eu: 'calava',
+        Tu: 'calavas',
+        'Ela/Ele/Você': 'calava',
+        Nós: 'calávamos',
+        'Eles/Elas/Vocēs': 'calavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'calara',
+        Tu: 'calaras',
+        'Ela/Ele/Você': 'calara',
+        Nós: 'caláramos',
+        'Eles/Elas/Vocēs': 'calaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'calarei',
+        Tu: 'calarás',
+        'Ela/Ele/Você': 'calará',
+        Nós: 'calaremos',
+        'Eles/Elas/Vocēs': 'calarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'cale',
+        Tu: 'cales',
+        'Ela/Ele/Você': 'cale',
+        Nós: 'calemos',
+        'Eles/Elas/Vocēs': 'calem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'calasse',
+        Tu: 'calasses',
+        'Ela/Ele/Você': 'calasse',
+        Nós: 'calássemos',
+        'Eles/Elas/Vocēs': 'calassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'calar',
+        Tu: 'calares',
+        'Ela/Ele/Você': 'calar',
+        Nós: 'calarmos',
+        'Eles/Elas/Vocēs': 'calarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'calaria',
+        Tu: 'calarias',
+        'Ela/Ele/Você': 'calaria',
+        Nós: 'calaríamos',
+        'Eles/Elas/Vocēs': 'calariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'calando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'calado'
+        }
+      ]
+    },
+    {
+      english: 'to assume',
+      infinitive: 'presumir',
+      presentSimple: {
+        Eu: 'presumo',
+        Tu: 'presumes',
+        'Ela/Ele/Você': 'presume',
+        Nós: 'presumimos',
+        'Eles/Elas/Vocēs': 'presumem'
+      },
+      pastPerfect: {
+        Eu: 'presumi',
+        Tu: 'presumiste',
+        'Ela/Ele/Você': 'presumiu',
+        Nós: 'presumimos',
+        'Eles/Elas/Vocēs': 'presumiram'
+      },
+      imperfect: {
+        Eu: 'presumia',
+        Tu: 'presumias',
+        'Ela/Ele/Você': 'presumia',
+        Nós: 'presumíamos',
+        'Eles/Elas/Vocēs': 'presumiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'presumira',
+        Tu: 'presumiras',
+        'Ela/Ele/Você': 'presumira',
+        Nós: 'presumíramos',
+        'Eles/Elas/Vocēs': 'presumiram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'presumirei',
+        Tu: 'presumirás',
+        'Ela/Ele/Você': 'presumirá',
+        Nós: 'presumiremos',
+        'Eles/Elas/Vocēs': 'presumirão'
+      },
+      subjuntivoPresente: {
+        Eu: 'presuma',
+        Tu: 'presumas',
+        'Ela/Ele/Você': 'presuma',
+        Nós: 'presumamos',
+        'Eles/Elas/Vocēs': 'presumam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'presumisse',
+        Tu: 'presumisses',
+        'Ela/Ele/Você': 'presumisse',
+        Nós: 'presumíssemos',
+        'Eles/Elas/Vocēs': 'presumissem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'presumir',
+        Tu: 'presumires',
+        'Ela/Ele/Você': 'presumir',
+        Nós: 'presumirmos',
+        'Eles/Elas/Vocēs': 'presumirem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'presumiria',
+        Tu: 'presumirias',
+        'Ela/Ele/Você': 'presumiria',
+        Nós: 'presumiríamos',
+        'Eles/Elas/Vocēs': 'presumiriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'presumindo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'presumido'
+        }
+      ]
+    },
+    {
+      english: 'to plan',
+      infinitive: 'planear',
+      presentSimple: {
+        Eu: 'planeio',
+        Tu: 'planeias',
+        'Ela/Ele/Você': 'planeia',
+        Nós: 'planeamos',
+        'Eles/Elas/Vocēs': 'planeiam'
+      },
+      pastPerfect: {
+        Eu: 'planeei',
+        Tu: 'planeaste',
+        'Ela/Ele/Você': 'planeou',
+        Nós: 'planeámos',
+        'Eles/Elas/Vocēs': 'planearam'
+      },
+      imperfect: {
+        Eu: 'planeava',
+        Tu: 'planeavas',
+        'Ela/Ele/Você': 'planeava',
+        Nós: 'planeávamos',
+        'Eles/Elas/Vocēs': 'planeavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'planeara',
+        Tu: 'planearas',
+        'Ela/Ele/Você': 'planeara',
+        Nós: 'planeáramos',
+        'Eles/Elas/Vocēs': 'planearam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'planearei',
+        Tu: 'planearás',
+        'Ela/Ele/Você': 'planeará',
+        Nós: 'planearemos',
+        'Eles/Elas/Vocēs': 'planearão'
+      },
+      subjuntivoPresente: {
+        Eu: 'planeie',
+        Tu: 'planeies',
+        'Ela/Ele/Você': 'planeie',
+        Nós: 'planeemos',
+        'Eles/Elas/Vocēs': 'planeiem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'planeasse',
+        Tu: 'planeasses',
+        'Ela/Ele/Você': 'planeasse',
+        Nós: 'planeássemos',
+        'Eles/Elas/Vocēs': 'planeassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'planear',
+        Tu: 'planeares',
+        'Ela/Ele/Você': 'planear',
+        Nós: 'planearmos',
+        'Eles/Elas/Vocēs': 'planearem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'planearia',
+        Tu: 'planearias',
+        'Ela/Ele/Você': 'planearia',
+        Nós: 'planearíamos',
+        'Eles/Elas/Vocēs': 'planeariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'planeando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'planeado'
+        }
+      ]
+    },
+    {
+      english: 'to risk',
+      infinitive: 'arriscar',
+      presentSimple: {
+        Eu: 'arrisco',
+        Tu: 'arriscas',
+        'Ela/Ele/Você': 'arrisca',
+        Nós: 'arriscamos',
+        'Eles/Elas/Vocēs': 'arriscam'
+      },
+      pastPerfect: {
+        Eu: 'arrisquei',
+        Tu: 'arriscaste',
+        'Ela/Ele/Você': 'arriscou',
+        Nós: 'arriscámos',
+        'Eles/Elas/Vocēs': 'arriscaram'
+      },
+      imperfect: {
+        Eu: 'arriscava',
+        Tu: 'arriscavas',
+        'Ela/Ele/Você': 'arriscava',
+        Nós: 'arriscávamos',
+        'Eles/Elas/Vocēs': 'arriscavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'arriscara',
+        Tu: 'arriscaras',
+        'Ela/Ele/Você': 'arriscara',
+        Nós: 'arriscáramos',
+        'Eles/Elas/Vocēs': 'arriscaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'arriscarei',
+        Tu: 'arriscarás',
+        'Ela/Ele/Você': 'arriscará',
+        Nós: 'arriscaremos',
+        'Eles/Elas/Vocēs': 'arriscarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'arrisque',
+        Tu: 'arrisques',
+        'Ela/Ele/Você': 'arrisque',
+        Nós: 'arrisquemos',
+        'Eles/Elas/Vocēs': 'arrisquem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'arriscasse',
+        Tu: 'arriscasses',
+        'Ela/Ele/Você': 'arriscasse',
+        Nós: 'arriscássemos',
+        'Eles/Elas/Vocēs': 'arriscassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'arriscar',
+        Tu: 'arriscares',
+        'Ela/Ele/Você': 'arriscar',
+        Nós: 'arriscarmos',
+        'Eles/Elas/Vocēs': 'arriscarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'arriscaria',
+        Tu: 'arriscarias',
+        'Ela/Ele/Você': 'arriscaria',
+        Nós: 'arriscaríamos',
+        'Eles/Elas/Vocēs': 'arriscariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'arriscando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'arriscado'
+        }
+      ]
+    },
+    {
+      english: 'to fear',
+      infinitive: 'temer',
+      presentSimple: {
+        Eu: 'temo',
+        Tu: 'temes',
+        'Ela/Ele/Você': 'teme',
+        Nós: 'tememos',
+        'Eles/Elas/Vocēs': 'temem'
+      },
+      pastPerfect: {
+        Eu: 'temi',
+        Tu: 'temeste',
+        'Ela/Ele/Você': 'temeu',
+        Nós: 'tememos',
+        'Eles/Elas/Vocēs': 'temeram'
+      },
+      imperfect: {
+        Eu: 'temia',
+        Tu: 'temias',
+        'Ela/Ele/Você': 'temia',
+        Nós: 'temíamos',
+        'Eles/Elas/Vocēs': 'temiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'temera',
+        Tu: 'temeras',
+        'Ela/Ele/Você': 'temera',
+        Nós: 'temêramos',
+        'Eles/Elas/Vocēs': 'temeram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'temerei',
+        Tu: 'temerás',
+        'Ela/Ele/Você': 'temerá',
+        Nós: 'temeremos',
+        'Eles/Elas/Vocēs': 'temerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'tema',
+        Tu: 'temas',
+        'Ela/Ele/Você': 'tema',
+        Nós: 'temamos',
+        'Eles/Elas/Vocēs': 'temam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'temesse',
+        Tu: 'temesses',
+        'Ela/Ele/Você': 'temesse',
+        Nós: 'temêssemos',
+        'Eles/Elas/Vocēs': 'temessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'temer',
+        Tu: 'temeres',
+        'Ela/Ele/Você': 'temer',
+        Nós: 'temermos',
+        'Eles/Elas/Vocēs': 'temerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'temeria',
+        Tu: 'temerias',
+        'Ela/Ele/Você': 'temeria',
+        Nós: 'temeríamos',
+        'Eles/Elas/Vocēs': 'temeriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'temendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'temido'
+        }
+      ]
+    },
+    {
+      english: 'to worry',
+      infinitive: 'preocupar',
+      presentSimple: {
+        Eu: 'preocupo',
+        Tu: 'preocupas',
+        'Ela/Ele/Você': 'preocupa',
+        Nós: 'preocupamos',
+        'Eles/Elas/Vocēs': 'preocupam'
+      },
+      pastPerfect: {
+        Eu: 'preocupei',
+        Tu: 'preocupaste',
+        'Ela/Ele/Você': 'preocupou',
+        Nós: 'preocupámos',
+        'Eles/Elas/Vocēs': 'preocuparam'
+      },
+      imperfect: {
+        Eu: 'preocupava',
+        Tu: 'preocupavas',
+        'Ela/Ele/Você': 'preocupava',
+        Nós: 'preocupávamos',
+        'Eles/Elas/Vocēs': 'preocupavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'preocupara',
+        Tu: 'preocuparas',
+        'Ela/Ele/Você': 'preocupara',
+        Nós: 'preocupáramos',
+        'Eles/Elas/Vocēs': 'preocuparam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'preocuparei',
+        Tu: 'preocuparás',
+        'Ela/Ele/Você': 'preocupará',
+        Nós: 'preocuparemos',
+        'Eles/Elas/Vocēs': 'preocuparão'
+      },
+      subjuntivoPresente: {
+        Eu: 'preocupe',
+        Tu: 'preocupes',
+        'Ela/Ele/Você': 'preocupe',
+        Nós: 'preocupemos',
+        'Eles/Elas/Vocēs': 'preocupem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'preocupasse',
+        Tu: 'preocupasses',
+        'Ela/Ele/Você': 'preocupasse',
+        Nós: 'preocupássemos',
+        'Eles/Elas/Vocēs': 'preocupassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'preocupar',
+        Tu: 'preocupares',
+        'Ela/Ele/Você': 'preocupar',
+        Nós: 'preocuparmos',
+        'Eles/Elas/Vocēs': 'preocuparem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'preocuparia',
+        Tu: 'preocuparias',
+        'Ela/Ele/Você': 'preocuparia',
+        Nós: 'preocuparíamos',
+        'Eles/Elas/Vocēs': 'preocupariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'preocupando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'preocupado'
+        }
+      ]
+    },
+    {
+      english: 'to take',
+      infinitive: 'assumir',
+      presentSimple: {
+        Eu: 'assumo',
+        Tu: 'assumes',
+        'Ela/Ele/Você': 'assume',
+        Nós: 'assumimos',
+        'Eles/Elas/Vocēs': 'assumem'
+      },
+      pastPerfect: {
+        Eu: 'assumi',
+        Tu: 'assumiste',
+        'Ela/Ele/Você': 'assumiu',
+        Nós: 'assumimos',
+        'Eles/Elas/Vocēs': 'assumiram'
+      },
+      imperfect: {
+        Eu: 'assumia',
+        Tu: 'assumias',
+        'Ela/Ele/Você': 'assumia',
+        Nós: 'assumíamos',
+        'Eles/Elas/Vocēs': 'assumiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'assumira',
+        Tu: 'assumiras',
+        'Ela/Ele/Você': 'assumira',
+        Nós: 'assumíramos',
+        'Eles/Elas/Vocēs': 'assumiram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'assumirei',
+        Tu: 'assumirás',
+        'Ela/Ele/Você': 'assumirá',
+        Nós: 'assumiremos',
+        'Eles/Elas/Vocēs': 'assumirão'
+      },
+      subjuntivoPresente: {
+        Eu: 'assuma',
+        Tu: 'assumas',
+        'Ela/Ele/Você': 'assuma',
+        Nós: 'assumamos',
+        'Eles/Elas/Vocēs': 'assumam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'assumisse',
+        Tu: 'assumisses',
+        'Ela/Ele/Você': 'assumisse',
+        Nós: 'assumíssemos',
+        'Eles/Elas/Vocēs': 'assumissem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'assumir',
+        Tu: 'assumires',
+        'Ela/Ele/Você': 'assumir',
+        Nós: 'assumirmos',
+        'Eles/Elas/Vocēs': 'assumirem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'assumiria',
+        Tu: 'assumirias',
+        'Ela/Ele/Você': 'assumiria',
+        Nós: 'assumiríamos',
+        'Eles/Elas/Vocēs': 'assumiriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'assumindo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'assumido'
+        }
+      ]
+    },
+    {
+      english: 'to admit',
+      infinitive: 'admitir',
+      presentSimple: {
+        Eu: 'admito',
+        Tu: 'admites',
+        'Ela/Ele/Você': 'admite',
+        Nós: 'admitimos',
+        'Eles/Elas/Vocēs': 'admitem'
+      },
+      pastPerfect: {
+        Eu: 'admiti',
+        Tu: 'admitiste',
+        'Ela/Ele/Você': 'admitiu',
+        Nós: 'admitimos',
+        'Eles/Elas/Vocēs': 'admitiram'
+      },
+      imperfect: {
+        Eu: 'admitia',
+        Tu: 'admitias',
+        'Ela/Ele/Você': 'admitia',
+        Nós: 'admitíamos',
+        'Eles/Elas/Vocēs': 'admitiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'admitira',
+        Tu: 'admitiras',
+        'Ela/Ele/Você': 'admitira',
+        Nós: 'admitíramos',
+        'Eles/Elas/Vocēs': 'admitiram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'admitirei',
+        Tu: 'admitirás',
+        'Ela/Ele/Você': 'admitirá',
+        Nós: 'admitiremos',
+        'Eles/Elas/Vocēs': 'admitirão'
+      },
+      subjuntivoPresente: {
+        Eu: 'admita',
+        Tu: 'admitas',
+        'Ela/Ele/Você': 'admita',
+        Nós: 'admitamos',
+        'Eles/Elas/Vocēs': 'admitam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'admitisse',
+        Tu: 'admitisses',
+        'Ela/Ele/Você': 'admitisse',
+        Nós: 'admitíssemos',
+        'Eles/Elas/Vocēs': 'admitissem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'admitir',
+        Tu: 'admitires',
+        'Ela/Ele/Você': 'admitir',
+        Nós: 'admitirmos',
+        'Eles/Elas/Vocēs': 'admitirem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'admitiria',
+        Tu: 'admitirias',
+        'Ela/Ele/Você': 'admitiria',
+        Nós: 'admitiríamos',
+        'Eles/Elas/Vocēs': 'admitiriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'admitindo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'admitido'
+        }
+      ]
+    },
+    {
+      english: 'to cry',
+      infinitive: 'chorar',
+      presentSimple: {
+        Eu: 'choro',
+        Tu: 'choras',
+        'Ela/Ele/Você': 'chora',
+        Nós: 'choramos',
+        'Eles/Elas/Vocēs': 'choram'
+      },
+      pastPerfect: {
+        Eu: 'chorei',
+        Tu: 'choraste',
+        'Ela/Ele/Você': 'chorou',
+        Nós: 'chorámos',
+        'Eles/Elas/Vocēs': 'choraram'
+      },
+      imperfect: {
+        Eu: 'chorava',
+        Tu: 'choravas',
+        'Ela/Ele/Você': 'chorava',
+        Nós: 'chorávamos',
+        'Eles/Elas/Vocēs': 'choravam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'chorara',
+        Tu: 'choraras',
+        'Ela/Ele/Você': 'chorara',
+        Nós: 'choráramos',
+        'Eles/Elas/Vocēs': 'choraram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'chorarei',
+        Tu: 'chorarás',
+        'Ela/Ele/Você': 'chorará',
+        Nós: 'choraremos',
+        'Eles/Elas/Vocēs': 'chorarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'chore',
+        Tu: 'chores',
+        'Ela/Ele/Você': 'chore',
+        Nós: 'choremos',
+        'Eles/Elas/Vocēs': 'chorem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'chorasse',
+        Tu: 'chorasses',
+        'Ela/Ele/Você': 'chorasse',
+        Nós: 'chorássemos',
+        'Eles/Elas/Vocēs': 'chorassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'chorar',
+        Tu: 'chorares',
+        'Ela/Ele/Você': 'chorar',
+        Nós: 'chorarmos',
+        'Eles/Elas/Vocēs': 'chorarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'choraria',
+        Tu: 'chorarias',
+        'Ela/Ele/Você': 'choraria',
+        Nós: 'choraríamos',
+        'Eles/Elas/Vocēs': 'chorariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'chorando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'chorado'
+        }
+      ]
+    },
+    {
+      english: 'to doubt',
+      infinitive: 'duvidar',
+      presentSimple: {
+        Eu: 'duvido',
+        Tu: 'duvidas',
+        'Ela/Ele/Você': 'duvida',
+        Nós: 'duvidamos',
+        'Eles/Elas/Vocēs': 'duvidam'
+      },
+      pastPerfect: {
+        Eu: 'duvidei',
+        Tu: 'duvidaste',
+        'Ela/Ele/Você': 'duvidou',
+        Nós: 'duvidámos',
+        'Eles/Elas/Vocēs': 'duvidaram'
+      },
+      imperfect: {
+        Eu: 'duvidava',
+        Tu: 'duvidavas',
+        'Ela/Ele/Você': 'duvidava',
+        Nós: 'duvidávamos',
+        'Eles/Elas/Vocēs': 'duvidavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'duvidara',
+        Tu: 'duvidaras',
+        'Ela/Ele/Você': 'duvidara',
+        Nós: 'duvidáramos',
+        'Eles/Elas/Vocēs': 'duvidaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'duvidarei',
+        Tu: 'duvidarás',
+        'Ela/Ele/Você': 'duvidará',
+        Nós: 'duvidaremos',
+        'Eles/Elas/Vocēs': 'duvidarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'duvide',
+        Tu: 'duvides',
+        'Ela/Ele/Você': 'duvide',
+        Nós: 'duvidemos',
+        'Eles/Elas/Vocēs': 'duvidem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'duvidasse',
+        Tu: 'duvidasses',
+        'Ela/Ele/Você': 'duvidasse',
+        Nós: 'duvidássemos',
+        'Eles/Elas/Vocēs': 'duvidassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'duvidar',
+        Tu: 'duvidares',
+        'Ela/Ele/Você': 'duvidar',
+        Nós: 'duvidarmos',
+        'Eles/Elas/Vocēs': 'duvidarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'duvidaria',
+        Tu: 'duvidarias',
+        'Ela/Ele/Você': 'duvidaria',
+        Nós: 'duvidaríamos',
+        'Eles/Elas/Vocēs': 'duvidariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'duvidando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'duvidado'
+        }
+      ]
     }
   ],
   nouns: [
