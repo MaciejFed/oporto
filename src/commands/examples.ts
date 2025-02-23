@@ -37,7 +37,7 @@ export const examplesPaths: Record<Language, { targetLanguagePath: string; trans
 };
 
 export async function findAllExamples(language: Language) {
-  const result = getAllResults(language, true);
+  // const result = getAllResults(language, true);
   const allKnownWords = getAllUniqueWordsConjugated(language);
   const savedWords = await getExamplesSaved(language);
   const words = [

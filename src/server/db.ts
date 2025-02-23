@@ -202,9 +202,30 @@ export async function getExamplesSaved(language: Language): Promise<string[]> {
     const db = client.db(dbName);
     const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
 
-    const examples = await collectionTop.find({}).limit(20_000).toArray();
+    const examples = await collectionTop
+      .aggregate([
+        {
+          $project: {
+            key: {
+              $first: {
+                $filter: {
+                  input: { $objectToArray: '$$ROOT' },
+                  cond: { $ne: ['$$this.k', '_id'] }
+                }
+              }
+            }
+          }
+        },
+        {
+          $project: {
+            _id: 0,
+            key: '$key.k'
+          }
+        }
+      ])
+      .toArray();
 
-    return examples ? examples.map((doc) => Object.keys(doc)[1]) : [];
+    return examples ? examples.map((doc) => Object.values(doc)[0]) : [];
   } finally {
     await client.close();
   }

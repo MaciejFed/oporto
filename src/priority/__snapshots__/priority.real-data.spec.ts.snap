@@ -6528,6 +6528,38 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 40,
   },
   {
+    "exercise": OtherTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "OtherTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "OtherTranslation_ainda_toEnglish",
+      "other": {
+        "english": "still",
+        "portuguese": "ainda",
+      },
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 330,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -290,
+      },
+    ],
+    "priorityValueTotal": 40,
+  },
+  {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
         "english": "green",
@@ -8051,90 +8083,6 @@ exports[`Priority PT 1`] = `
         },
       },
       "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": OtherTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "OtherTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherTranslation_nos_toPortugueseFromHearing",
-      "other": {
-        "english": "we - object pronoun",
-        "portuguese": "nos",
-      },
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": OtherTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "OtherTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherTranslation_nos_toEnglish",
-      "other": {
-        "english": "we - object pronoun",
-        "portuguese": "nos",
-      },
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": OtherTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "OtherTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "OtherTranslation_nos_toPortuguese",
-      "other": {
-        "english": "we - object pronoun",
-        "portuguese": "nos",
-      },
-      "translationType": "toPortuguese",
     },
     "priorities": [
       {

@@ -1036,7 +1036,6 @@ exports[`Progress Aggregate PT 1`] = `
           "mestre",
           "jeito",
           "diferença",
-          "amo",
           "série",
           "coronel",
           "unidade",
@@ -1050,7 +1049,7 @@ exports[`Progress Aggregate PT 1`] = `
           "termo",
           "soldados",
         ],
-        "count": 208,
+        "count": 207,
       },
     },
     "OtherTranslation": {
@@ -1100,7 +1099,6 @@ exports[`Progress Aggregate PT 1`] = `
           "ela",
           "ele",
           "eles",
-          "nos",
           "Janeiro",
           "Fevereiro",
           "Março",
@@ -1170,7 +1168,7 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 113,
+        "count": 112,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3731,7 +3729,6 @@ exports[`Progress Aggregate PT 1`] = `
           "mestre",
           "jeito",
           "diferença",
-          "amo",
           "série",
           "coronel",
           "unidade",
@@ -3745,7 +3742,7 @@ exports[`Progress Aggregate PT 1`] = `
           "termo",
           "soldados",
         ],
-        "count": 152,
+        "count": 151,
       },
     },
     "OTHER": {
@@ -3852,7 +3849,6 @@ exports[`Progress Aggregate PT 1`] = `
           "nenhum",
           "ninguém",
           "meio",
-          "nos",
           "Maio",
           "Outubro",
           "lá",
@@ -3871,7 +3867,7 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 24,
+        "count": 23,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -3936,6 +3932,7 @@ exports[`Progress Aggregate PT 1`] = `
           "mim",
           "vocês",
           "seja",
+          "nos",
           "nós",
           "algo",
           "vá",
@@ -4009,7 +4006,7 @@ exports[`Progress Aggregate PT 1`] = `
           "definitivamente",
           "extremamente",
         ],
-        "count": 133,
+        "count": 134,
       },
     },
     "VERB": {

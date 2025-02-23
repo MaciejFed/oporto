@@ -82,8 +82,8 @@ export const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: num
   return ratio < 100 ? ProgressType.IN_PROGRESS : ProgressType.DONE;
 };
 
-export function getAnswersMissingForBaseWord(baseWord: string, results: Result[], language: Language): number {
-  return generateAllPossibleExercises(language)
+export function getAnswersMissingForBaseWord(baseWord: string, results: Result[], exercises: Exercise[]): number {
+  return exercises
     .filter((exercise) => exercise.getBaseWordAsString() === baseWord)
     .map((exercise) => getSingleExerciseProgress(results, exercise))
     .reduce((prev, curr) => prev + curr.answersMissing, 0);

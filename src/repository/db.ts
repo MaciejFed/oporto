@@ -26168,10 +26168,6 @@ export const db: Schema = {
       portuguese: { word: 'diferença', gender: 'feminine', plural: 'diferenças' }
     },
     {
-      english: 'master',
-      portuguese: { word: 'amo', gender: 'masculine', plural: 'amos' }
-    },
-    {
       english: 'series',
       portuguese: { word: 'série', gender: 'feminine', plural: 'séries' }
     },
@@ -26429,10 +26425,6 @@ export const db: Schema = {
     {
       english: 'they',
       portuguese: 'eles'
-    },
-    {
-      english: 'we',
-      portuguese: 'nos'
     },
     {
       english: 'January',

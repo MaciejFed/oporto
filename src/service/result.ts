@@ -6,6 +6,7 @@ import { getAllResults, getAllResultsForBaseWord, getAllResultsForExercise } fro
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { getAnswersMissingForBaseWord, getProgress } from './progress/progress';
 import { Language } from '../common/language';
+import { generateAllPossibleExercises } from '../exercise/generator';
 
 type KeyMarker = {
   color: string;
@@ -93,7 +94,9 @@ export function getStatisticForBaseWord(
     failedAttempts: allResultsForExercise.length - correctAttempts,
     lastTimeAttempted: allResultsForExercise.length > 1 ? allResultsForExercise[1].date : allResultsForExercise[0].date,
     firstTimeAttempted: allResultsForExercise[allResultsForExercise.length - 1].date,
-    baseWordAnswersMissing: baseWord ? getAnswersMissingForBaseWord(baseWord, allResults, language) : 0
+    baseWordAnswersMissing: baseWord
+      ? getAnswersMissingForBaseWord(baseWord, allResults, generateAllPossibleExercises(language))
+      : 0
   };
 }
 

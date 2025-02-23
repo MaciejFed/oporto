@@ -1,10 +1,11 @@
 import { NounTranslationExercise } from '../../exercise/translation/noun-translation-exercise';
 import { generateResultsForExerciseDaysAgo } from '../../priority/priority.util';
 import { Person, readAll } from '../../repository/exercises-repository';
-import { getSingleExerciseProgress, progressByDate, ProgressType } from './progress';
+import { getAnswersMissingForBaseWord, getSingleExerciseProgress, progressByDate, ProgressType } from './progress';
 import { getAllResultsByDate } from '../../repository/result-repository';
 import { VerbExercise } from '../../exercise/verb-exercise';
 import { Language } from '../../common/language';
+import { generateAllPossibleExercises } from '../../exercise/generator';
 
 const nounExercise0 = NounTranslationExercise.new(readAll().nouns[0], 'toPortuguese');
 const nounExercise1 = NounTranslationExercise.new(readAll().nouns[1], 'toPortuguese');
@@ -57,6 +58,17 @@ describe('Progress', () => {
   });
 
   describe('getSingleExerciseProgress', () => {
+    it('should have 2 answers missing', () => {
+      const singleResult = generateResultsForExerciseDaysAgo(nounExercise0, true, 1, 2);
+      const answersMissing = getAnswersMissingForBaseWord(
+        nounExercise0.getBaseWordAsString()!,
+        singleResult,
+        generateAllPossibleExercises(Language.Portuguese)
+      );
+
+      expect(answersMissing).toEqual(2);
+    });
+
     it('should calculate 80 - 100 progress for single exercise', () => {
       const verbExercises = VerbExercise.new(readAll().verbs[0], Person.Eu, 'presentSimple');
       const singleCorrectResult = generateResultsForExerciseDaysAgo(verbExercises, true, 1, 1);

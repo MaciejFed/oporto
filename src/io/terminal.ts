@@ -45,7 +45,7 @@ import { convertToResult, getExerciseProgress, getStatisticForBaseWord } from '.
 import { getAllResults, getAllResultsForExercise, parseResults } from '../repository/result-repository';
 import { extractWordToFindFromExercise, findExampleSentenceAndWord } from '../service/example-finder/example-finder';
 import { Language } from '../common/language';
-import { fetchMovieExample, getAudio, saveFavoriteExample, saveNewResult } from '../client/client';
+import { fetchMovieExample, getAudio, saveFavoriteExample, saveNewResult, translateToEnglish } from '../client/client';
 import { getSavedAudioPath } from '../server/configuration';
 import { Rate } from '../server/audio/audio.types';
 import { getExercisesForSession } from '../exercise/generator';
@@ -252,7 +252,15 @@ export class Terminal {
     switch (key) {
       case 't':
         printExerciseTranslation(this.currentExercise?.getTranslation());
-        printExampleTranslation('Api:  ', this.currentExercise.getMovieExample()?.englishApi);
+        // eslint-disable-next-line no-case-declarations
+        const movieExample = this.currentExercise.getMovieExample();
+        if (movieExample) {
+          printExampleTranslation('Api:  ', 'Loading...');
+          const translation = await translateToEnglish(movieExample.targetLanguage);
+          printExampleTranslation('Api:  ', translation);
+        } else {
+          printExampleTranslation('Api:  ', 'No translation yet.');
+        }
         break;
       case 'r':
         this.playAudio('answer', 'normal', 'google', false);
@@ -275,7 +283,15 @@ export class Terminal {
         break;
       case 't':
         printExerciseTranslation(this.currentExercise?.getTranslation());
-        printExampleTranslation('Api:  ', this.currentExercise.getMovieExample()?.englishApi);
+        // eslint-disable-next-line no-case-declarations
+        const example = this.currentExercise.getMovieExample();
+        if (example) {
+          printExampleTranslation('Api:  ', 'Loading...');
+          const translation = await translateToEnglish(example.targetLanguage);
+          printExampleTranslation('Api:  ', translation);
+        } else {
+          printExampleTranslation('Api:  ', 'No translation yet.');
+        }
         break;
       case 'l':
         logSaved('Saving example...');
