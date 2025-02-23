@@ -29172,12 +29172,12 @@ export const db: Schema = {
     {
       english: 'dear',
       masculine: {
-        singular: 'querida',
-        plural: 'queridas'
-      },
-      feminine: {
         singular: 'querido',
         plural: 'queridos'
+      },
+      feminine: {
+        singular: 'querida',
+        plural: 'queridas'
       }
     },
     {

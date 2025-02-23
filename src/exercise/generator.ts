@@ -39,7 +39,7 @@ import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-
 import { frequencyMap } from '../frequency';
 
 type ExerciseGenerator = () => Exercise[];
-export const LIMIT_FREQ = 250;
+export const LIMIT_FREQ = 300;
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
   const filiterInFreqLimit = (exercise: VerbExercise) => {
