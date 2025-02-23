@@ -13,7 +13,7 @@ export async function selectMovieExample(
   if (!exampleLines.length) return undefined;
   const linesBelowRange = exampleLines.filter((line) => line.lineTargetLanguage.length < MAX_LINE_LENGTH);
   const example = getRandomElement(linesBelowRange, MAX_LENGTH);
-  const apiTranslation = await translateToEnglish(example.lineTargetLanguage);
+  const apiTranslation = '';
 
   return {
     word,
