@@ -23,6 +23,7 @@ import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { Result } from '../service/result';
+import { getRandomElement } from '../common/common';
 
 const config = loadValidConfig();
 
@@ -250,9 +251,8 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
     const results = await readAllResults(language);
-    const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results);
-    const shuffledExercises = shuffleArray(exercises);
-    const exercise = exercises[0];
+    const exercises = await generateExercisesForSessionAsync(20, true, () => true, language, results);
+    const exercise = getRandomElement(exercises);
     const wordToFind = extractWordToFindFromExercise(exercise)!;
     const examples = await getExamples(wordToFind, language);
     const exampleSelected = await selectMovieExample(examples, wordToFind);
