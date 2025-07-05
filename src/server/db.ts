@@ -185,7 +185,7 @@ export async function getExamples(word: string, language: Language): Promise<Wor
   const client = await getClient();
   try {
     const db = client.db(dbName);
-    const collectionTop = db.collection(getExamplesCollectionName(language, 'total'));
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
 
     const examples = await collectionTop.findOne({
       [word]: { $exists: true }
