@@ -259,7 +259,7 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
 
     res.send({
       header: exercise.getDescription(),
-      body: exercise.getCorrectAnswer(),
+      body: `${exercise.getBodyPrefix()}${exercise.getCorrectAnswer()}`,
       example: exampleSelected?.targetLanguage
     });
   } catch (e: any) {
