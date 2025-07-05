@@ -252,9 +252,15 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
     const results = await readAllResults(language);
     const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results);
     const shuffledExercises = shuffleArray(exercises);
+    const exercise = exercises[0];
+    const wordToFind = extractWordToFindFromExercise(exercise)!;
+    const examples = await getExamples(wordToFind, language);
+    const exampleSelected = await selectMovieExample(examples, wordToFind);
+
     res.send({
-      header: shuffledExercises[0].getDescription(),
-      body: shuffledExercises[0].getCorrectAnswer(),
+      header: exercise.getDescription(),
+      body: exercise.getCorrectAnswer(),
+      example: exampleSelected?.targetLanguage
     });
   } catch (e: any) {
     logger.error('Error generating exercises', 3);
