@@ -246,6 +246,22 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
   }
 });
 
+app.get('/:language/in-progress', async (req: Request, res: Response) => {
+  try {
+    const language = getLanguage(req);
+    const results = await readAllResults(language);
+    const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results);
+    const shuffledExercises = shuffleArray(exercises);
+    res.send({
+      header: shuffledExercises[0].getDescription(),
+      body: shuffledExercises[0].getCorrectAnswer(),
+    });
+  } catch (e: any) {
+    logger.error('Error generating exercises', 3);
+    logger.error(e);
+  }
+});
+
 app.get('/:language/generate/local/repeat', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
