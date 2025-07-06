@@ -258,7 +258,7 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
     const exampleSelected = await selectMovieExample(examples, wordToFind);
 
     res.send({
-      header: exercise.getDescription(),
+      header: exercise.getDescription().replace('Portuguese: ', '').replace('English: ', ''),
       bodyPrefix: exercise.getBodyPrefix().replace('Portuguese: ', '').replace('English: ', ''),
       body: exercise.getCorrectAnswer(),
       example: exampleSelected?.targetLanguage
