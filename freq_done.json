@@ -1,0 +1,2189 @@
+{
+    "rejected": [
+        "depende",
+        "peter",
+        "duma",
+        "frank",
+        "mike",
+        "voce",
+        "los",
+        "charlie",
+        "connosco",
+        "henry",
+        "mary",
+        "new",
+        "noutro",
+        "nisto",
+        "jimmy",
+        "and",
+        "ben",
+        "robert",
+        "bill",
+        "richard",
+        "of",
+        "tony",
+        "noutra",
+        "danny",
+        "san",
+        "big",
+        "steve",
+        "sarah",
+        "sir",
+        "alex",
+        "nick",
+        "jim",
+        "charles",
+        "daniel"
+    ],
+    "parsed": [
+        "teres",
+        "comandante",
+        "milhares",
+        "tempos",
+        "cliente",
+        "amo",
+        "la",
+        "risco",
+        "pressão",
+        "valor",
+        "puta",
+        "dono",
+        "avó",
+        "director",
+        "irmãos",
+        "registos",
+        "laboratório",
+        "eis",
+        "vídeo",
+        "gabinete",
+        "norte",
+        "pedaço",
+        "padre",
+        "impressões",
+        "pista",
+        "poderes",
+        "estares",
+        "metros",
+        "apoio",
+        "normalmente",
+        "defesa",
+        "rabo",
+        "público",
+        "sensação",
+        "acaso",
+        "costas",
+        "centenas",
+        "sul",
+        "paul",
+        "acção",
+        "comando",
+        "polícias",
+        "humanos",
+        "porcaria",
+        "perda",
+        "data",
+        "mudança",
+        "magia",
+        "drogas",
+        "sargento",
+        "ameaça",
+        "avô",
+        "pontos",
+        "levantar",
+        "coragem",
+        "tecnologia",
+        "carrinha",
+        "clientes",
+        "doutor",
+        "natureza",
+        "pernas",
+        "terceira",
+        "américa",
+        "droga",
+        "calças",
+        "banda",
+        "orgulho",
+        "batalha",
+        "enfrentar",
+        "portas",
+        "surpresa",
+        "testemunha",
+        "atacar",
+        "perante",
+        "ama",
+        "rede",
+        "velocidade",
+        "canção",
+        "carreira",
+        "branco",
+        "louco",
+        "humano",
+        "braços",
+        "príncipe",
+        "assistente",
+        "km",
+        "larga",
+        "pertence",
+        "papá",
+        "estragar",
+        "xerife",
+        "resultado",
+        "rádio",
+        "cerveja",
+        "perigo",
+        "mamã",
+        "registo",
+        "fé",
+        "impressão",
+        "presença",
+        "bilhete",
+        "ires",
+        "cabra",
+        "oferta",
+        "to",
+        "irmos",
+        "confiança",
+        "época",
+        "licença",
+        "projecto",
+        "pedra",
+        "resultados",
+        "adn",
+        "propriedade",
+        "realidade",
+        "van",
+        "soldado",
+        "justiça",
+        "americanos",
+        "luzes",
+        "corrida",
+        "inferno",
+        "notas",
+        "direitos",
+        "ambas",
+        "mala",
+        "bob",
+        "inteligente",
+        "capacidade",
+        "trabalhos",
+        "comportamento",
+        "fazeres",
+        "costa",
+        "peso",
+        "interior",
+        "julgamento",
+        "vergonha",
+        "branca",
+        "felizes",
+        "total",
+        "gelo",
+        "bando",
+        "sucesso",
+        "flores",
+        "quinta",
+        "espectáculo",
+        "férias",
+        "monstro",
+        "classe",
+        "tratamento",
+        "distância",
+        "equipamento",
+        "pesquisa",
+        "contrário",
+        "artigo",
+        "major",
+        "objectivo",
+        "baile",
+        "apaixonado",
+        "princesa",
+        "piada",
+        "sociedade",
+        "quantidade",
+        "treino",
+        "tentativa",
+        "golpe",
+        "calor",
+        "nota",
+        "caça",
+        "necessário",
+        "incrível",
+        "sermos",
+        "primo",
+        "casal",
+        "azul",
+        "crescer",
+        "magoar",
+        "imprensa",
+        "leite",
+        "alerta",
+        "formas",
+        "prender",
+        "possibilidade",
+        "agência",
+        "aguentar",
+        "combate",
+        "sobreviver"
+    ],
+    "verbs": [
+        {
+            "word": "teres",
+            "pos": "verb",
+            "text": "ter",
+            "forms": [
+                "had",
+                "had) (kept",
+                "kept) (held",
+                "held"
+            ],
+            "english": "have",
+            "place": 595,
+            "frequency": 0.0157
+        },
+        {
+            "word": "estares",
+            "pos": "verb",
+            "text": "estar",
+            "forms": [],
+            "english": "be",
+            "place": 1342,
+            "frequency": 0.0055
+        },
+        {
+            "word": "normalmente",
+            "pos": "adverb",
+            "text": "normalmente",
+            "forms": [],
+            "english": "normally",
+            "place": 1347,
+            "frequency": 0.0055
+        },
+        {
+            "word": "levantar",
+            "pos": "verb",
+            "text": "levantar",
+            "forms": [],
+            "english": "raise",
+            "place": 1468,
+            "frequency": 0.005
+        },
+        {
+            "word": "enfrentar",
+            "pos": "verb",
+            "text": "enfrentar",
+            "forms": [
+                "faced",
+                "faced) (endured",
+                "endured) (braved",
+                "braved"
+            ],
+            "english": "face",
+            "place": 1546,
+            "frequency": 0.0047
+        },
+        {
+            "word": "atacar",
+            "pos": "verb",
+            "text": "atacar",
+            "forms": [],
+            "english": "attack",
+            "place": 1555,
+            "frequency": 0.0047
+        },
+        {
+            "word": "pertence",
+            "pos": "verb",
+            "text": "pertencer",
+            "forms": [
+                "belonged",
+                "belonged) (appertained",
+                "appertained"
+            ],
+            "english": "belong",
+            "place": 1598,
+            "frequency": 0.0045
+        },
+        {
+            "word": "estragar",
+            "pos": "verb",
+            "text": "estragar",
+            "forms": [],
+            "english": "spoil",
+            "place": 1601,
+            "frequency": 0.0045
+        },
+        {
+            "word": "ires",
+            "pos": "verb",
+            "text": "ir",
+            "forms": [
+                "went",
+                "gone"
+            ],
+            "english": "go",
+            "place": 1647,
+            "frequency": 0.0044
+        },
+        {
+            "word": "irmos",
+            "pos": "verb",
+            "text": "ir",
+            "forms": [
+                "went",
+                "gone"
+            ],
+            "english": "go",
+            "place": 1657,
+            "frequency": 0.0043
+        },
+        {
+            "word": "fazeres",
+            "pos": "verb",
+            "text": "fazer",
+            "forms": [
+                "made",
+                "made) (did",
+                "done"
+            ],
+            "english": "make",
+            "place": 1756,
+            "frequency": 0.004
+        },
+        {
+            "word": "sermos",
+            "pos": "verb",
+            "text": "ser",
+            "forms": [],
+            "english": "be",
+            "place": 1912,
+            "frequency": 0.0037
+        },
+        {
+            "word": "crescer",
+            "pos": "verb",
+            "text": "crescer",
+            "forms": [
+                "grew",
+                "grown) (increased",
+                "increased) (expanded",
+                "expanded"
+            ],
+            "english": "grow",
+            "place": 1920,
+            "frequency": 0.0037
+        },
+        {
+            "word": "magoar",
+            "pos": "verb",
+            "text": "magoar",
+            "forms": [
+                "hurt",
+                "hurt"
+            ],
+            "english": "hurt",
+            "place": 1930,
+            "frequency": 0.0036
+        },
+        {
+            "word": "prender",
+            "pos": "verb",
+            "text": "prender a",
+            "forms": [],
+            "english": "tie to",
+            "place": 1946,
+            "frequency": 0.0036
+        },
+        {
+            "word": "aguentar",
+            "pos": "verb",
+            "text": "aguentar",
+            "forms": [
+                "withstood",
+                "withstood"
+            ],
+            "english": "withstand",
+            "place": 1956,
+            "frequency": 0.0036
+        },
+        {
+            "word": "sobreviver",
+            "pos": "verb",
+            "text": "sobreviver",
+            "forms": [
+                "survived",
+                "survived"
+            ],
+            "english": "survive",
+            "place": 1964,
+            "frequency": 0.0036
+        }
+    ],
+    "nouns": [
+        {
+            "word": "comandante",
+            "pos": "noun, masculine/feminine",
+            "text": "comandante",
+            "forms": [
+                "plural: comandantes m) (plural: commanders"
+            ],
+            "english": "commander",
+            "place": 1097,
+            "frequency": 0.0072
+        },
+        {
+            "word": "milhares",
+            "pos": "noun, plural",
+            "text": "milhares",
+            "forms": [],
+            "english": "thousands",
+            "place": 1108,
+            "frequency": 0.007
+        },
+        {
+            "word": "tempos",
+            "pos": "noun, plural, masculine",
+            "text": "tempos",
+            "forms": [],
+            "english": "times",
+            "place": 1121,
+            "frequency": 0.0069
+        },
+        {
+            "word": "cliente",
+            "pos": "noun, masculine/feminine",
+            "text": "cliente",
+            "forms": [
+                "plural: clientes m",
+                "clientes f) (plural: customers) (plural: clients"
+            ],
+            "english": "customer",
+            "place": 1122,
+            "frequency": 0.0069
+        },
+        {
+            "word": "amo",
+            "pos": "noun, masculine",
+            "text": "amo",
+            "forms": [
+                "plural: amos m) (plural: masters"
+            ],
+            "english": "master",
+            "place": 1186,
+            "frequency": 0.0065
+        },
+        {
+            "word": "la",
+            "pos": "pronoun",
+            "text": "la",
+            "forms": [],
+            "english": "her",
+            "place": 1227,
+            "frequency": 0.0062
+        },
+        {
+            "word": "risco",
+            "pos": "noun, masculine",
+            "text": "risco",
+            "forms": [
+                "plural: riscos m) (plural: risks) (plural: chances"
+            ],
+            "english": "risk",
+            "place": 1242,
+            "frequency": 0.0061
+        },
+        {
+            "word": "pressão",
+            "pos": "noun, feminine",
+            "text": "pressão",
+            "forms": [
+                "plural: pressures"
+            ],
+            "english": "pressure",
+            "place": 1245,
+            "frequency": 0.0061
+        },
+        {
+            "word": "valor",
+            "pos": "noun, masculine",
+            "text": "valor",
+            "forms": [
+                "plural: valores m"
+            ],
+            "english": "value",
+            "place": 1255,
+            "frequency": 0.006
+        },
+        {
+            "word": "puta",
+            "pos": "noun, feminine",
+            "text": "puta",
+            "forms": [
+                "plural: putas f"
+            ],
+            "english": "slut",
+            "place": 1263,
+            "frequency": 0.006
+        },
+        {
+            "word": "dono",
+            "pos": "noun, masculine",
+            "text": "dono",
+            "forms": [
+                "plural: donos m) (plural: owners) (plural: masters"
+            ],
+            "english": "owner",
+            "place": 1265,
+            "frequency": 0.0059
+        },
+        {
+            "word": "avó",
+            "pos": "noun, feminine",
+            "text": "avó",
+            "forms": [
+                "plural: avós f) (plural: grandmothers"
+            ],
+            "english": "grandmother",
+            "place": 1267,
+            "frequency": 0.0059
+        },
+        {
+            "word": "director",
+            "pos": "noun, masculine",
+            "text": "director",
+            "forms": [
+                "plural: directores m) (plural: directors"
+            ],
+            "english": "director",
+            "place": 1281,
+            "frequency": 0.0058
+        },
+        {
+            "word": "irmãos",
+            "pos": "noun, plural, masculine",
+            "text": "irmãos",
+            "forms": [
+                "singular: irmão m"
+            ],
+            "english": "brothers",
+            "place": 1292,
+            "frequency": 0.0057
+        },
+        {
+            "word": "registos",
+            "pos": "noun, plural, masculine",
+            "text": "registos",
+            "forms": [],
+            "english": "records",
+            "place": 1298,
+            "frequency": 0.0057
+        },
+        {
+            "word": "laboratório",
+            "pos": "noun, masculine",
+            "text": "laboratório",
+            "forms": [
+                "plural: laboratórios m) (plural: laboratories) (plural: labs"
+            ],
+            "english": "laboratory",
+            "place": 1300,
+            "frequency": 0.0057
+        },
+        {
+            "word": "eis",
+            "pos": "noun, masculine",
+            "text": "ar",
+            "forms": [],
+            "english": "air",
+            "place": 1301,
+            "frequency": 0.0057
+        },
+        {
+            "word": "vídeo",
+            "pos": "noun, masculine",
+            "text": "vídeo",
+            "forms": [
+                "plural: vídeos m) (plural: videos) (plural: screens"
+            ],
+            "english": "video",
+            "place": 1305,
+            "frequency": 0.0057
+        },
+        {
+            "word": "gabinete",
+            "pos": "noun, masculine",
+            "text": "gabinete",
+            "forms": [
+                "plural: gabinetes m) (plural: cabinets"
+            ],
+            "english": "office",
+            "place": 1308,
+            "frequency": 0.0057
+        },
+        {
+            "word": "norte",
+            "pos": "noun, masculine",
+            "text": "norte",
+            "forms": [],
+            "english": "north",
+            "place": 1313,
+            "frequency": 0.0056
+        },
+        {
+            "word": "pedaço",
+            "pos": "noun, masculine",
+            "text": "pedaço",
+            "forms": [
+                "plural: pedaços m) (plural: bits) (plural: scraps) (plural: chunks) (plural: portions"
+            ],
+            "english": "piece",
+            "place": 1314,
+            "frequency": 0.0056
+        },
+        {
+            "word": "padre",
+            "pos": "noun, masculine",
+            "text": "padre",
+            "forms": [
+                "plural: padres m) (plural: Fathers) (plural: priests"
+            ],
+            "english": "Father",
+            "place": 1321,
+            "frequency": 0.0056
+        },
+        {
+            "word": "impressões",
+            "pos": "noun, plural, feminine",
+            "text": "impressões",
+            "forms": [
+                "singular: impressão f"
+            ],
+            "english": "impressions",
+            "place": 1323,
+            "frequency": 0.0056
+        },
+        {
+            "word": "pista",
+            "pos": "noun, feminine",
+            "text": "pista",
+            "forms": [
+                "plural: pistas f) (plural: runways) (plural: lanes) (plural: clues) (plural: slopes"
+            ],
+            "english": "track",
+            "place": 1325,
+            "frequency": 0.0056
+        },
+        {
+            "word": "poderes",
+            "pos": "noun, plural, masculine",
+            "text": "poderes",
+            "forms": [],
+            "english": "forces",
+            "place": 1333,
+            "frequency": 0.0056
+        },
+        {
+            "word": "metros",
+            "pos": "noun, plural, masculine",
+            "text": "metros",
+            "forms": [],
+            "english": "meters",
+            "place": 1344,
+            "frequency": 0.0055
+        },
+        {
+            "word": "apoio",
+            "pos": "noun, masculine",
+            "text": "apoio",
+            "forms": [
+                "plural: apoios m"
+            ],
+            "english": "support",
+            "place": 1346,
+            "frequency": 0.0055
+        },
+        {
+            "word": "defesa",
+            "pos": "noun, feminine",
+            "text": "defesa",
+            "forms": [
+                "plural: defesas f) (plural: defences"
+            ],
+            "english": "defence",
+            "place": 1362,
+            "frequency": 0.0054
+        },
+        {
+            "word": "rabo",
+            "pos": "noun, masculine",
+            "text": "rabo",
+            "forms": [
+                "plural: rabos m) (plural: tails"
+            ],
+            "english": "tail",
+            "place": 1382,
+            "frequency": 0.0053
+        },
+        {
+            "word": "público",
+            "pos": "noun, masculine",
+            "text": "público",
+            "forms": [],
+            "english": "public",
+            "place": 1384,
+            "frequency": 0.0053
+        },
+        {
+            "word": "sensação",
+            "pos": "noun, feminine",
+            "text": "sensação",
+            "forms": [],
+            "english": "sense",
+            "place": 1385,
+            "frequency": 0.0053
+        },
+        {
+            "word": "acaso",
+            "pos": "noun, masculine",
+            "text": "acaso",
+            "forms": [
+                "plural: acasos m",
+                "acasos f) (plural: chances"
+            ],
+            "english": "chance",
+            "place": 1394,
+            "frequency": 0.0053
+        },
+        {
+            "word": "costas",
+            "pos": "noun, plural, feminine",
+            "text": "costas",
+            "forms": [
+                "singular: costa f"
+            ],
+            "english": "back",
+            "place": 1400,
+            "frequency": 0.0052
+        },
+        {
+            "word": "centenas",
+            "pos": "noun, plural, feminine",
+            "text": "centenas",
+            "forms": [
+                "singular: centena f) (singular: hundred"
+            ],
+            "english": "hundreds",
+            "place": 1408,
+            "frequency": 0.0052
+        },
+        {
+            "word": "sul",
+            "pos": "noun, masculine",
+            "text": "sul",
+            "forms": [],
+            "english": "south",
+            "place": 1410,
+            "frequency": 0.0052
+        },
+        {
+            "word": "paul",
+            "pos": "noun, masculine",
+            "text": "paul",
+            "forms": [],
+            "english": "bog",
+            "place": 1418,
+            "frequency": 0.0052
+        },
+        {
+            "word": "acção",
+            "pos": "noun, feminine",
+            "text": "acção",
+            "forms": [
+                "plural: acções f) (plural: actions"
+            ],
+            "english": "action",
+            "place": 1421,
+            "frequency": 0.0052
+        },
+        {
+            "word": "comando",
+            "pos": "noun, masculine",
+            "text": "comando",
+            "forms": [
+                "plural: comandos m"
+            ],
+            "english": "command",
+            "place": 1423,
+            "frequency": 0.0052
+        },
+        {
+            "word": "polícias",
+            "pos": "noun, plural, masculine/feminine",
+            "text": "polícias",
+            "forms": [
+                "singular: polícia f"
+            ],
+            "english": "police",
+            "place": 1424,
+            "frequency": 0.0052
+        },
+        {
+            "word": "humanos",
+            "pos": "noun, plural, masculine",
+            "text": "humanos",
+            "forms": [
+                "singular: humano m"
+            ],
+            "english": "humans",
+            "place": 1425,
+            "frequency": 0.0052
+        },
+        {
+            "word": "porcaria",
+            "pos": "noun, feminine",
+            "text": "porcaria",
+            "forms": [],
+            "english": "crap",
+            "place": 1429,
+            "frequency": 0.0051
+        },
+        {
+            "word": "perda",
+            "pos": "noun, feminine",
+            "text": "perda",
+            "forms": [
+                "plural: perdas f) (plural: losses) (plural: forfeits"
+            ],
+            "english": "loss",
+            "place": 1430,
+            "frequency": 0.0051
+        },
+        {
+            "word": "data",
+            "pos": "noun, feminine",
+            "text": "data",
+            "forms": [],
+            "english": "date",
+            "place": 1431,
+            "frequency": 0.0051
+        },
+        {
+            "word": "mudança",
+            "pos": "noun, feminine",
+            "text": "mudança",
+            "forms": [
+                "plural: mudanças f) (plural: switches"
+            ],
+            "english": "change",
+            "place": 1434,
+            "frequency": 0.0051
+        },
+        {
+            "word": "magia",
+            "pos": "noun, feminine",
+            "text": "magia",
+            "forms": [],
+            "english": "magic",
+            "place": 1435,
+            "frequency": 0.0051
+        },
+        {
+            "word": "drogas",
+            "pos": "noun, plural, feminine",
+            "text": "drogas",
+            "forms": [
+                "singular: droga f"
+            ],
+            "english": "drugs",
+            "place": 1450,
+            "frequency": 0.0051
+        },
+        {
+            "word": "sargento",
+            "pos": "noun, masculine",
+            "text": "sargento",
+            "forms": [],
+            "english": "sergeant",
+            "place": 1453,
+            "frequency": 0.005
+        },
+        {
+            "word": "ameaça",
+            "pos": "noun, feminine",
+            "text": "ameaça",
+            "forms": [
+                "plural: ameaças f) (plural: threats) (plural: menaces"
+            ],
+            "english": "threat",
+            "place": 1457,
+            "frequency": 0.005
+        },
+        {
+            "word": "avô",
+            "pos": "noun, masculine",
+            "text": "avô",
+            "forms": [],
+            "english": "grandfather",
+            "place": 1461,
+            "frequency": 0.005
+        },
+        {
+            "word": "pontos",
+            "pos": "noun, plural, masculine",
+            "text": "pontos",
+            "forms": [
+                "singular: ponto m"
+            ],
+            "english": "points",
+            "place": 1465,
+            "frequency": 0.005
+        },
+        {
+            "word": "coragem",
+            "pos": "noun, feminine",
+            "text": "coragem",
+            "forms": [],
+            "english": "courage",
+            "place": 1472,
+            "frequency": 0.005
+        },
+        {
+            "word": "tecnologia",
+            "pos": "noun, feminine",
+            "text": "tecnologia",
+            "forms": [],
+            "english": "technology",
+            "place": 1473,
+            "frequency": 0.005
+        },
+        {
+            "word": "carrinha",
+            "pos": "noun, feminine",
+            "text": "carrinha",
+            "forms": [],
+            "english": "van",
+            "place": 1479,
+            "frequency": 0.005
+        },
+        {
+            "word": "clientes",
+            "pos": "noun, plural, masculine/feminine",
+            "text": "clientes",
+            "forms": [
+                "singular: cliente m/f"
+            ],
+            "english": "customers",
+            "place": 1481,
+            "frequency": 0.005
+        },
+        {
+            "word": "doutor",
+            "pos": "noun, masculine",
+            "text": "doutor",
+            "forms": [
+                "plural: doutores m) (plural: doctors) (plural: PhDs"
+            ],
+            "english": "doctor",
+            "place": 1484,
+            "frequency": 0.0049
+        },
+        {
+            "word": "natureza",
+            "pos": "noun, feminine",
+            "text": "natureza",
+            "forms": [],
+            "english": "nature",
+            "place": 1489,
+            "frequency": 0.0049
+        },
+        {
+            "word": "pernas",
+            "pos": "noun, plural, feminine",
+            "text": "pernas",
+            "forms": [
+                "singular: perna f"
+            ],
+            "english": "legs",
+            "place": 1492,
+            "frequency": 0.0049
+        },
+        {
+            "word": "américa",
+            "pos": "proper noun, singular, feminine",
+            "text": "América",
+            "forms": [],
+            "english": "America",
+            "place": 1509,
+            "frequency": 0.0048
+        },
+        {
+            "word": "droga",
+            "pos": "noun, feminine",
+            "text": "droga",
+            "forms": [
+                "plural: drogas f) (plural: drugs"
+            ],
+            "english": "drug",
+            "place": 1516,
+            "frequency": 0.0048
+        },
+        {
+            "word": "calças",
+            "pos": "noun, plural, feminine",
+            "text": "calças",
+            "forms": [],
+            "english": "trousers",
+            "place": 1520,
+            "frequency": 0.0048
+        },
+        {
+            "word": "banda",
+            "pos": "noun, feminine",
+            "text": "banda",
+            "forms": [],
+            "english": "band",
+            "place": 1531,
+            "frequency": 0.0048
+        },
+        {
+            "word": "orgulho",
+            "pos": "noun, masculine",
+            "text": "orgulho",
+            "forms": [],
+            "english": "pride",
+            "place": 1544,
+            "frequency": 0.0047
+        },
+        {
+            "word": "batalha",
+            "pos": "noun, feminine",
+            "text": "batalha",
+            "forms": [
+                "plural: batalhas f) (plural: battles"
+            ],
+            "english": "battle",
+            "place": 1545,
+            "frequency": 0.0047
+        },
+        {
+            "word": "portas",
+            "pos": "noun, plural, feminine",
+            "text": "portas",
+            "forms": [
+                "singular: porta f"
+            ],
+            "english": "doors",
+            "place": 1550,
+            "frequency": 0.0047
+        },
+        {
+            "word": "surpresa",
+            "pos": "noun, feminine",
+            "text": "surpresa",
+            "forms": [],
+            "english": "surprise",
+            "place": 1552,
+            "frequency": 0.0047
+        },
+        {
+            "word": "testemunha",
+            "pos": "noun, feminine",
+            "text": "testemunha",
+            "forms": [
+                "plural: testemunhas f) (plural: witnesses"
+            ],
+            "english": "witness",
+            "place": 1553,
+            "frequency": 0.0047
+        },
+        {
+            "word": "ama",
+            "pos": "noun, feminine",
+            "text": "ama",
+            "forms": [
+                "plural: amas f"
+            ],
+            "english": "nanny",
+            "place": 1560,
+            "frequency": 0.0047
+        },
+        {
+            "word": "rede",
+            "pos": "noun, feminine",
+            "text": "rede",
+            "forms": [
+                "plural: redes f"
+            ],
+            "english": "network",
+            "place": 1562,
+            "frequency": 0.0047
+        },
+        {
+            "word": "velocidade",
+            "pos": "noun, feminine",
+            "text": "velocidade",
+            "forms": [],
+            "english": "speed",
+            "place": 1564,
+            "frequency": 0.0046
+        },
+        {
+            "word": "canção",
+            "pos": "noun, feminine",
+            "text": "canção",
+            "forms": [
+                "plural: canções f"
+            ],
+            "english": "song",
+            "place": 1565,
+            "frequency": 0.0046
+        },
+        {
+            "word": "carreira",
+            "pos": "noun, feminine",
+            "text": "carreira",
+            "forms": [
+                "plural: carreiras f) (plural: careers"
+            ],
+            "english": "career",
+            "place": 1567,
+            "frequency": 0.0046
+        },
+        {
+            "word": "humano",
+            "pos": "noun, masculine",
+            "text": "humano",
+            "forms": [
+                "plural: humanos m) (plural: humans"
+            ],
+            "english": "human",
+            "place": 1578,
+            "frequency": 0.0046
+        },
+        {
+            "word": "braços",
+            "pos": "noun, plural, masculine",
+            "text": "braços",
+            "forms": [
+                "singular: braço m"
+            ],
+            "english": "arms",
+            "place": 1580,
+            "frequency": 0.0046
+        },
+        {
+            "word": "príncipe",
+            "pos": "noun, masculine",
+            "text": "príncipe",
+            "forms": [
+                "plural: príncipes m) (plural: princes"
+            ],
+            "english": "prince",
+            "place": 1582,
+            "frequency": 0.0046
+        },
+        {
+            "word": "assistente",
+            "pos": "noun, masculine/feminine",
+            "text": "assistente",
+            "forms": [
+                "plural: assistentes m) (plural: assistants) (plural: aides"
+            ],
+            "english": "assistant",
+            "place": 1585,
+            "frequency": 0.0046
+        },
+        {
+            "word": "km",
+            "pos": "noun, masculine",
+            "text": "km",
+            "forms": [],
+            "english": "km",
+            "place": 1594,
+            "frequency": 0.0045
+        },
+        {
+            "word": "papá",
+            "pos": "noun, masculine",
+            "text": "papá",
+            "forms": [],
+            "english": "daddy",
+            "place": 1599,
+            "frequency": 0.0045
+        },
+        {
+            "word": "xerife",
+            "pos": "noun, masculine",
+            "text": "xerife",
+            "forms": [],
+            "english": "sheriff",
+            "place": 1604,
+            "frequency": 0.0045
+        },
+        {
+            "word": "resultado",
+            "pos": "noun, masculine",
+            "text": "resultado",
+            "forms": [
+                "plural: resultados m) (plural: outcomes"
+            ],
+            "english": "result",
+            "place": 1606,
+            "frequency": 0.0045
+        },
+        {
+            "word": "rádio",
+            "pos": "noun, masculine/feminine",
+            "text": "rádio",
+            "forms": [
+                "plural: rádios m"
+            ],
+            "english": "radio",
+            "place": 1609,
+            "frequency": 0.0045
+        },
+        {
+            "word": "cerveja",
+            "pos": "noun, feminine",
+            "text": "cerveja",
+            "forms": [
+                "plural: cervejas f) (plural: beers) (plural: ales"
+            ],
+            "english": "beer",
+            "place": 1610,
+            "frequency": 0.0045
+        },
+        {
+            "word": "perigo",
+            "pos": "noun, masculine",
+            "text": "perigo",
+            "forms": [
+                "plural: perigos m) (plural: dangers) (plural: risks"
+            ],
+            "english": "danger",
+            "place": 1612,
+            "frequency": 0.0045
+        },
+        {
+            "word": "mamã",
+            "pos": "noun, feminine",
+            "text": "mamã",
+            "forms": [],
+            "english": "mom",
+            "place": 1619,
+            "frequency": 0.0044
+        },
+        {
+            "word": "registo",
+            "pos": "noun, masculine",
+            "text": "registo",
+            "forms": [
+                "plural: registos m) (plural: registers"
+            ],
+            "english": "registration",
+            "place": 1620,
+            "frequency": 0.0044
+        },
+        {
+            "word": "fé",
+            "pos": "noun, feminine",
+            "text": "fé",
+            "forms": [],
+            "english": "faith",
+            "place": 1630,
+            "frequency": 0.0044
+        },
+        {
+            "word": "impressão",
+            "pos": "noun, feminine",
+            "text": "impressão",
+            "forms": [
+                "plural: impressões f) (plural: printings) (plural: impressions) (plural: printouts) (plural: feelings"
+            ],
+            "english": "print",
+            "place": 1638,
+            "frequency": 0.0044
+        },
+        {
+            "word": "presença",
+            "pos": "noun, feminine",
+            "text": "presença",
+            "forms": [],
+            "english": "presence",
+            "place": 1639,
+            "frequency": 0.0044
+        },
+        {
+            "word": "bilhete",
+            "pos": "noun, masculine",
+            "text": "bilhete",
+            "forms": [
+                "plural: bilhetes m) (plural: tickets"
+            ],
+            "english": "ticket",
+            "place": 1644,
+            "frequency": 0.0044
+        },
+        {
+            "word": "cabra",
+            "pos": "noun, feminine",
+            "text": "cabra",
+            "forms": [
+                "plural: cabras f) (plural: goats"
+            ],
+            "english": "goat",
+            "place": 1652,
+            "frequency": 0.0043
+        },
+        {
+            "word": "oferta",
+            "pos": "noun, feminine",
+            "text": "oferta",
+            "forms": [
+                "plural: ofertas f) (plural: offers) (plural: supplies) (plural: bids"
+            ],
+            "english": "offer",
+            "place": 1655,
+            "frequency": 0.0043
+        },
+        {
+            "word": "confiança",
+            "pos": "noun, feminine",
+            "text": "confiança",
+            "forms": [],
+            "english": "confidence",
+            "place": 1659,
+            "frequency": 0.0043
+        },
+        {
+            "word": "época",
+            "pos": "noun, feminine",
+            "text": "época",
+            "forms": [
+                "plural: épocas f) (plural: periods) (plural: eras"
+            ],
+            "english": "time",
+            "place": 1660,
+            "frequency": 0.0043
+        },
+        {
+            "word": "licença",
+            "pos": "noun, feminine",
+            "text": "licença",
+            "forms": [
+                "plural: licenças f"
+            ],
+            "english": "license",
+            "place": 1669,
+            "frequency": 0.0043
+        },
+        {
+            "word": "projecto",
+            "pos": "noun, masculine",
+            "text": "projecto",
+            "forms": [
+                "plural: projectos m"
+            ],
+            "english": "project",
+            "place": 1670,
+            "frequency": 0.0043
+        },
+        {
+            "word": "pedra",
+            "pos": "noun, feminine",
+            "text": "pedra",
+            "forms": [
+                "plural: pedras f) (plural: rocks"
+            ],
+            "english": "stone",
+            "place": 1674,
+            "frequency": 0.0043
+        },
+        {
+            "word": "resultados",
+            "pos": "noun, plural, masculine",
+            "text": "resultados",
+            "forms": [
+                "singular: resultado m"
+            ],
+            "english": "results",
+            "place": 1680,
+            "frequency": 0.0043
+        },
+        {
+            "word": "adn",
+            "pos": "noun, masculine",
+            "text": "ADN",
+            "forms": [],
+            "english": "DNA",
+            "place": 1682,
+            "frequency": 0.0043
+        },
+        {
+            "word": "propriedade",
+            "pos": "noun, feminine",
+            "text": "propriedade",
+            "forms": [
+                "plural: propriedades f) (plural: estates) (plural: possessions"
+            ],
+            "english": "property",
+            "place": 1686,
+            "frequency": 0.0042
+        },
+        {
+            "word": "realidade",
+            "pos": "noun, feminine",
+            "text": "realidade",
+            "forms": [],
+            "english": "reality",
+            "place": 1693,
+            "frequency": 0.0042
+        },
+        {
+            "word": "van",
+            "pos": "noun, feminine",
+            "text": "van",
+            "forms": [],
+            "english": "van",
+            "place": 1695,
+            "frequency": 0.0042
+        },
+        {
+            "word": "soldado",
+            "pos": "noun, masculine",
+            "text": "soldado",
+            "forms": [],
+            "english": "soldier",
+            "place": 1697,
+            "frequency": 0.0042
+        },
+        {
+            "word": "justiça",
+            "pos": "noun, feminine",
+            "text": "justiça",
+            "forms": [],
+            "english": "justice",
+            "place": 1701,
+            "frequency": 0.0042
+        },
+        {
+            "word": "americanos",
+            "pos": "noun, plural, masculine",
+            "text": "americanos",
+            "forms": [
+                "singular: americano m) (singular: American"
+            ],
+            "english": "Americans",
+            "place": 1704,
+            "frequency": 0.0042
+        },
+        {
+            "word": "luzes",
+            "pos": "noun, plural, feminine",
+            "text": "luzes",
+            "forms": [],
+            "english": "lights",
+            "place": 1711,
+            "frequency": 0.0042
+        },
+        {
+            "word": "corrida",
+            "pos": "noun, feminine",
+            "text": "corrida",
+            "forms": [
+                "plural: corridas f) (plural: races"
+            ],
+            "english": "race",
+            "place": 1713,
+            "frequency": 0.0042
+        },
+        {
+            "word": "inferno",
+            "pos": "noun, masculine",
+            "text": "inferno",
+            "forms": [
+                "plural: infernos m"
+            ],
+            "english": "hell",
+            "place": 1720,
+            "frequency": 0.0042
+        },
+        {
+            "word": "notas",
+            "pos": "noun, plural, feminine",
+            "text": "notas",
+            "forms": [
+                "singular: nota f"
+            ],
+            "english": "notes",
+            "place": 1721,
+            "frequency": 0.0042
+        },
+        {
+            "word": "direitos",
+            "pos": "noun, plural, masculine",
+            "text": "direitos",
+            "forms": [
+                "singular: direito m"
+            ],
+            "english": "rights",
+            "place": 1722,
+            "frequency": 0.0042
+        },
+        {
+            "word": "ambas",
+            "pos": "pronoun",
+            "text": "ambas",
+            "forms": [],
+            "english": "both",
+            "place": 1723,
+            "frequency": 0.0042
+        },
+        {
+            "word": "mala",
+            "pos": "noun, feminine",
+            "text": "mala",
+            "forms": [
+                "plural: malas f) (plural: suitcases"
+            ],
+            "english": "bag",
+            "place": 1731,
+            "frequency": 0.0041
+        },
+        {
+            "word": "bob",
+            "pos": "noun",
+            "text": "bob",
+            "forms": [
+                "plural: bobs"
+            ],
+            "english": "pêndulo",
+            "place": 1733,
+            "frequency": 0.0041
+        },
+        {
+            "word": "capacidade",
+            "pos": "noun, feminine",
+            "text": "capacidade",
+            "forms": [
+                "plural: capacidades f) (plural: capabilities"
+            ],
+            "english": "capacity",
+            "place": 1744,
+            "frequency": 0.0041
+        },
+        {
+            "word": "trabalhos",
+            "pos": "noun, plural, masculine",
+            "text": "trabalhos",
+            "forms": [
+                "singular: trabalho m"
+            ],
+            "english": "works",
+            "place": 1750,
+            "frequency": 0.0041
+        },
+        {
+            "word": "comportamento",
+            "pos": "noun, masculine",
+            "text": "comportamento",
+            "forms": [],
+            "english": "behavior",
+            "place": 1755,
+            "frequency": 0.004
+        },
+        {
+            "word": "costa",
+            "pos": "noun, feminine",
+            "text": "costa",
+            "forms": [
+                "plural: costas f) (plural: coasts) (plural: shores"
+            ],
+            "english": "coast",
+            "place": 1757,
+            "frequency": 0.004
+        },
+        {
+            "word": "peso",
+            "pos": "noun, masculine",
+            "text": "peso",
+            "forms": [
+                "plural: pesos m"
+            ],
+            "english": "weight",
+            "place": 1758,
+            "frequency": 0.004
+        },
+        {
+            "word": "interior",
+            "pos": "noun, masculine",
+            "text": "interior",
+            "forms": [],
+            "english": "interior",
+            "place": 1767,
+            "frequency": 0.004
+        },
+        {
+            "word": "julgamento",
+            "pos": "noun, masculine",
+            "text": "julgamento",
+            "forms": [
+                "plural: trials"
+            ],
+            "english": "judgment",
+            "place": 1778,
+            "frequency": 0.004
+        },
+        {
+            "word": "vergonha",
+            "pos": "noun, feminine",
+            "text": "vergonha",
+            "forms": [],
+            "english": "shame",
+            "place": 1779,
+            "frequency": 0.004
+        },
+        {
+            "word": "total",
+            "pos": "noun, masculine",
+            "text": "total",
+            "forms": [
+                "plural: totais m) (plural: totals) (plural: sums"
+            ],
+            "english": "total",
+            "place": 1788,
+            "frequency": 0.004
+        },
+        {
+            "word": "gelo",
+            "pos": "noun, masculine",
+            "text": "gelo",
+            "forms": [],
+            "english": "ice",
+            "place": 1789,
+            "frequency": 0.004
+        },
+        {
+            "word": "bando",
+            "pos": "noun, masculine",
+            "text": "bando",
+            "forms": [
+                "plural: bandos m) (plural: flocks) (plural: gangs"
+            ],
+            "english": "flock",
+            "place": 1791,
+            "frequency": 0.0039
+        },
+        {
+            "word": "sucesso",
+            "pos": "noun, masculine",
+            "text": "sucesso",
+            "forms": [
+                "plural: sucessos m) (plural: hits"
+            ],
+            "english": "success",
+            "place": 1793,
+            "frequency": 0.0039
+        },
+        {
+            "word": "flores",
+            "pos": "noun, plural, feminine",
+            "text": "flores",
+            "forms": [
+                "singular: flor f"
+            ],
+            "english": "flowers",
+            "place": 1796,
+            "frequency": 0.0039
+        },
+        {
+            "word": "quinta",
+            "pos": "noun, feminine",
+            "text": "quinta",
+            "forms": [
+                "plural: quintas f) (plural: farms"
+            ],
+            "english": "farm",
+            "place": 1797,
+            "frequency": 0.0039
+        },
+        {
+            "word": "espectáculo",
+            "pos": "noun, masculine",
+            "text": "espectáculo",
+            "forms": [],
+            "english": "show",
+            "place": 1805,
+            "frequency": 0.0039
+        },
+        {
+            "word": "férias",
+            "pos": "noun, plural, feminine",
+            "text": "férias",
+            "forms": [],
+            "english": "holiday",
+            "place": 1811,
+            "frequency": 0.0039
+        },
+        {
+            "word": "monstro",
+            "pos": "noun, masculine",
+            "text": "monstro",
+            "forms": [],
+            "english": "monster",
+            "place": 1813,
+            "frequency": 0.0039
+        },
+        {
+            "word": "classe",
+            "pos": "noun, feminine",
+            "text": "classe",
+            "forms": [
+                "plural: classes f) (plural: classes) (plural: categories"
+            ],
+            "english": "class",
+            "place": 1822,
+            "frequency": 0.0039
+        },
+        {
+            "word": "tratamento",
+            "pos": "noun, masculine",
+            "text": "tratamento",
+            "forms": [],
+            "english": "treatment",
+            "place": 1825,
+            "frequency": 0.0039
+        },
+        {
+            "word": "distância",
+            "pos": "noun, feminine",
+            "text": "distância",
+            "forms": [
+                "plural: distâncias f) (plural: distances"
+            ],
+            "english": "distance",
+            "place": 1828,
+            "frequency": 0.0039
+        },
+        {
+            "word": "equipamento",
+            "pos": "noun, masculine",
+            "text": "equipamento",
+            "forms": [
+                "plural: equipamentos m) (plural: gears"
+            ],
+            "english": "equipment",
+            "place": 1832,
+            "frequency": 0.0038
+        },
+        {
+            "word": "pesquisa",
+            "pos": "noun, feminine",
+            "text": "pesquisa",
+            "forms": [
+                "plural: pesquisas f) (plural: polls"
+            ],
+            "english": "research",
+            "place": 1833,
+            "frequency": 0.0038
+        },
+        {
+            "word": "artigo",
+            "pos": "noun, masculine",
+            "text": "artigo",
+            "forms": [
+                "plural: artigos m) (plural: articles"
+            ],
+            "english": "article",
+            "place": 1842,
+            "frequency": 0.0038
+        },
+        {
+            "word": "major",
+            "pos": "noun, masculine",
+            "text": "major",
+            "forms": [
+                "plural: majores m) (plural: majors"
+            ],
+            "english": "major",
+            "place": 1846,
+            "frequency": 0.0038
+        },
+        {
+            "word": "objectivo",
+            "pos": "noun, masculine",
+            "text": "objectivo",
+            "forms": [
+                "plural: objectivos m) (plural: aims"
+            ],
+            "english": "objective",
+            "place": 1852,
+            "frequency": 0.0038
+        },
+        {
+            "word": "baile",
+            "pos": "noun, masculine",
+            "text": "baile",
+            "forms": [
+                "plural: bailes m) (plural: balls"
+            ],
+            "english": "dance",
+            "place": 1860,
+            "frequency": 0.0038
+        },
+        {
+            "word": "princesa",
+            "pos": "noun, feminine",
+            "text": "princesa",
+            "forms": [
+                "plural: princesas f) (plural: princesses"
+            ],
+            "english": "princess",
+            "place": 1876,
+            "frequency": 0.0037
+        },
+        {
+            "word": "piada",
+            "pos": "noun, feminine",
+            "text": "piada",
+            "forms": [
+                "plural: piadas f) (plural: jokes"
+            ],
+            "english": "joke",
+            "place": 1877,
+            "frequency": 0.0037
+        },
+        {
+            "word": "sociedade",
+            "pos": "noun, feminine",
+            "text": "sociedade",
+            "forms": [
+                "plural: sociedades f) (plural: societies) (plural: partnerships) (plural: corporations"
+            ],
+            "english": "society",
+            "place": 1880,
+            "frequency": 0.0037
+        },
+        {
+            "word": "quantidade",
+            "pos": "noun, feminine",
+            "text": "quantidade",
+            "forms": [
+                "plural: quantidades f) (plural: amounts) (plural: quantities"
+            ],
+            "english": "amount",
+            "place": 1881,
+            "frequency": 0.0037
+        },
+        {
+            "word": "treino",
+            "pos": "noun, masculine",
+            "text": "treino",
+            "forms": [
+                "plural: treinos m"
+            ],
+            "english": "training",
+            "place": 1893,
+            "frequency": 0.0037
+        },
+        {
+            "word": "tentativa",
+            "pos": "noun, feminine",
+            "text": "tentativa",
+            "forms": [
+                "plural: tentativas f) (plural: attempts) (plural: tries) (plural: efforts"
+            ],
+            "english": "attempt",
+            "place": 1896,
+            "frequency": 0.0037
+        },
+        {
+            "word": "golpe",
+            "pos": "noun, masculine",
+            "text": "golpe",
+            "forms": [
+                "plural: golpes m) (plural: coups) (plural: hits) (plural: strikes) (plural: strokes"
+            ],
+            "english": "coup",
+            "place": 1897,
+            "frequency": 0.0037
+        },
+        {
+            "word": "calor",
+            "pos": "noun, masculine",
+            "text": "calor",
+            "forms": [],
+            "english": "heat",
+            "place": 1898,
+            "frequency": 0.0037
+        },
+        {
+            "word": "nota",
+            "pos": "noun, feminine",
+            "text": "nota",
+            "forms": [
+                "plural: notas f) (plural: notes) (plural: grades) (plural: memos"
+            ],
+            "english": "note",
+            "place": 1900,
+            "frequency": 0.0037
+        },
+        {
+            "word": "caça",
+            "pos": "noun, feminine",
+            "text": "caça",
+            "forms": [],
+            "english": "hunt",
+            "place": 1901,
+            "frequency": 0.0037
+        },
+        {
+            "word": "primo",
+            "pos": "noun, masculine",
+            "text": "primo",
+            "forms": [
+                "plural: primos m) (plural: cousins"
+            ],
+            "english": "cousin",
+            "place": 1915,
+            "frequency": 0.0037
+        },
+        {
+            "word": "casal",
+            "pos": "noun, masculine",
+            "text": "casal",
+            "forms": [
+                "plural: casais m) (plural: couples"
+            ],
+            "english": "couple",
+            "place": 1917,
+            "frequency": 0.0037
+        },
+        {
+            "word": "azul",
+            "pos": "noun, masculine",
+            "text": "azul",
+            "forms": [
+                "plural: azuis m) (plural: blues"
+            ],
+            "english": "blue",
+            "place": 1918,
+            "frequency": 0.0037
+        },
+        {
+            "word": "imprensa",
+            "pos": "noun, feminine",
+            "text": "imprensa",
+            "forms": [],
+            "english": "press",
+            "place": 1935,
+            "frequency": 0.0036
+        },
+        {
+            "word": "leite",
+            "pos": "noun, masculine",
+            "text": "leite",
+            "forms": [
+                "plural: milks"
+            ],
+            "english": "milk",
+            "place": 1938,
+            "frequency": 0.0036
+        },
+        {
+            "word": "alerta",
+            "pos": "noun, masculine",
+            "text": "alerta",
+            "forms": [
+                "plural: alertas m) (plural: alerts) (plural: warnings"
+            ],
+            "english": "alert",
+            "place": 1943,
+            "frequency": 0.0036
+        },
+        {
+            "word": "formas",
+            "pos": "noun, plural, feminine",
+            "text": "formas",
+            "forms": [
+                "singular: forma f"
+            ],
+            "english": "forms",
+            "place": 1944,
+            "frequency": 0.0036
+        },
+        {
+            "word": "possibilidade",
+            "pos": "noun, feminine",
+            "text": "possibilidade",
+            "forms": [
+                "plural: possibilidades f) (plural: possibilities"
+            ],
+            "english": "possibility",
+            "place": 1948,
+            "frequency": 0.0036
+        },
+        {
+            "word": "agência",
+            "pos": "noun, feminine",
+            "text": "agência",
+            "forms": [
+                "plural: agências f) (plural: bureaus f",
+                "bureaux f"
+            ],
+            "english": "agency",
+            "place": 1951,
+            "frequency": 0.0036
+        },
+        {
+            "word": "combate",
+            "pos": "noun, masculine",
+            "text": "combate",
+            "forms": [
+                "plural: combates m) (plural: fights) (plural: actions"
+            ],
+            "english": "combat",
+            "place": 1958,
+            "frequency": 0.0036
+        }
+    ],
+    "adjectives": [
+        {
+            "word": "branco",
+            "pos": "adjective, masculine",
+            "text": "branco",
+            "forms": [
+                "branca f sl",
+                "brancos m pl",
+                "brancas f pl"
+            ],
+            "english": "white",
+            "place": 1568,
+            "frequency": 0.0046
+        },
+        {
+            "word": "louco",
+            "pos": "adjective, masculine",
+            "text": "louco",
+            "forms": [
+                "louca f sl",
+                "loucos m pl",
+                "loucas f pl"
+            ],
+            "english": "crazy",
+            "place": 1572,
+            "frequency": 0.0046
+        },
+        {
+            "word": "larga",
+            "pos": "adjective, feminine",
+            "text": "larga",
+            "forms": [],
+            "english": "wide",
+            "place": 1596,
+            "frequency": 0.0045
+        },
+        {
+            "word": "inteligente",
+            "pos": "adjective, singular, both",
+            "text": "inteligente",
+            "forms": [],
+            "english": "smart",
+            "place": 1743,
+            "frequency": 0.0041
+        },
+        {
+            "word": "branca",
+            "pos": "adjective, feminine",
+            "text": "branca",
+            "forms": [],
+            "english": "blank",
+            "place": 1781,
+            "frequency": 0.004
+        },
+        {
+            "word": "felizes",
+            "pos": "adjective, plural, both",
+            "text": "felizes",
+            "forms": [],
+            "english": "happy",
+            "place": 1785,
+            "frequency": 0.004
+        },
+        {
+            "word": "contrário",
+            "pos": "adjective, masculine",
+            "text": "contrário",
+            "forms": [
+                "contrária f sl",
+                "contrários m pl",
+                "contrárias f pl"
+            ],
+            "english": "contrary",
+            "place": 1841,
+            "frequency": 0.0038
+        },
+        {
+            "word": "apaixonado",
+            "pos": "adjective / past participle, masculine",
+            "text": "apaixonado",
+            "forms": [
+                "apaixonada f sl",
+                "apaixonados m pl",
+                "apaixonadas f pl"
+            ],
+            "english": "passionate",
+            "place": 1872,
+            "frequency": 0.0038
+        },
+        {
+            "word": "necessário",
+            "pos": "adjective, masculine",
+            "text": "necessário",
+            "forms": [
+                "necessária f sl",
+                "necessários m pl",
+                "necessárias f pl"
+            ],
+            "english": "necessary",
+            "place": 1902,
+            "frequency": 0.0037
+        },
+        {
+            "word": "incrível",
+            "pos": "adjective, singular, both",
+            "text": "incrível",
+            "forms": [],
+            "english": "incredible",
+            "place": 1903,
+            "frequency": 0.0037
+        }
+    ],
+    "others": [
+        {
+            "word": "terceira",
+            "pos": "numeral",
+            "text": "terceira",
+            "forms": [],
+            "english": "third",
+            "place": 1497,
+            "frequency": 0.0049
+        },
+        {
+            "word": "perante",
+            "pos": "preposition",
+            "text": "perante",
+            "forms": [],
+            "english": "in front of",
+            "place": 1557,
+            "frequency": 0.0047
+        },
+        {
+            "word": "to",
+            "pos": "preposition",
+            "text": "to",
+            "forms": [],
+            "english": "para",
+            "place": 1656,
+            "frequency": 0.0043
+        }
+    ]
+}

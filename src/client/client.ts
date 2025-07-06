@@ -7,6 +7,8 @@ import { Result } from '../service/result';
 import { logger } from '../common/logger';
 import { Language } from '../common/language';
 import { Rate } from '../server/audio/audio.types';
+import axios from 'axios';
+import fs from 'fs';
 
 const execAsync = util.promisify(exec);
 const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
@@ -14,15 +16,22 @@ const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
 let resultsCached: Result[] = [];
 const MAX_BUFFER = 100 * 1024 * 1024;
 
-const fetchResults = (language: Language) =>
-  `curl -s --location --request GET ${apiURL}/${language}/results --header "Authorization: Bearer ${apiKey}"`;
+export const fetchResults = async (language: Language): Promise<Result[]> => {
+  const response = await axios.get(`${apiURL}/${language}/results`, {
+    headers: {
+      Authorization: `Bearer ${apiKey}`
+    }
+  });
+
+  return response.data;
+};
 
 export const preFetchAllResults = (language: Language): void => {
   if (!resultsCached.length) {
     logger.info('Fetching all results...');
-    execAsync(fetchResults(language), { maxBuffer: MAX_BUFFER }).then(({ stdout: results }) => {
+    fetchResults(language).then((results) => {
       logger.info('Results saved to cache');
-      resultsCached = JSON.parse(results);
+      resultsCached = results;
     });
   }
 };
@@ -30,33 +39,44 @@ export const preFetchAllResults = (language: Language): void => {
 export const fetchAllResults = (): Result[] => resultsCached;
 
 export const fetchAllResultsSync = (language: Language): Result[] => {
-  const results = execSync(fetchResults(language), { maxBuffer: MAX_BUFFER }).toString();
+  const results = execSync(
+    `curl -s --location --request GET ${apiURL}/${language}/results --header "Authorization: Bearer ${apiKey}"`,
+    { maxBuffer: MAX_BUFFER }
+  ).toString();
   return JSON.parse(results);
 };
 
-export const getAudio = (language: Language, text: string, api: 'google' | 'openai', rate: Rate) => {
+export const getAudio = async (language: Language, text: string, api: 'google' | 'openai', rate: Rate) => {
   const outputPath = getSavedAudioPath();
-  const command = `curl -s --location '${apiURL}/${language}/audio' \
-    --header 'Authorization: Bearer ${apiKey}' \
-    --header 'Content-Type: application/json' \
-    -o ${outputPath} \
-    --data '{
-        "text": "${text}",
-        "rate": "${rate}",
-        "api": "${api}"
-    }'`;
-  execSync(command);
+
+  const response = await axios.post(
+    `${apiURL}/${language}/audio`,
+    { text, rate, api },
+    {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      responseType: 'arraybuffer'
+    }
+  );
+
+  fs.writeFileSync(outputPath, response.data);
 };
 
 export const fetchMovieExample = async (language: Language, word: string): Promise<MovieExample> => {
-  const command = `curl -s --location '${apiURL}/${language}/example/find' \
-    --header 'Authorization: Bearer ${apiKey}' \
-    --header 'Content-Type: application/json' \
-    --data '{
-        "word": "${word}"
-    }'`;
-  const { stdout } = await execAsync(command);
-  return JSON.parse(stdout);
+  const response = await axios.post(
+    `${apiURL}/${language}/example/find`,
+    { word },
+    {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+
+  return response.data;
 };
 
 export const fetchExercisesForSession = (language: Language): Exercise[] => {
@@ -75,12 +95,20 @@ export const fetchRepeatExercisesForSession = (language: Language): Exercise[] =
 
 export const saveNewResult = async (language: Language, newResult: Result) => {
   resultsCached.push(newResult);
-  const command = `curl -s --location --request POST ${apiURL}/${language}/results/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
-    newResult
-  )}'`;
-  execAsync(command).then(({ stdout: resultId }) => {
+
+  try {
+    const response = await axios.post(`${apiURL}/${language}/results/save`, newResult, {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const resultId = response.data;
     logger.info(`Saved new result: [${resultId}]`);
-  });
+  } catch (error) {
+    logger.error('Failed to save result:', error);
+  }
 };
 
 export const saveFavoriteExample = async (language: Language, example: MovieExample) => {
