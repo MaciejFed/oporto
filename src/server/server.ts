@@ -22,6 +22,7 @@ import { TranslationExercise } from '../exercise/translation/translation-exercis
 import { Result } from '../service/result';
 import { getRandomElement } from '../common/common';
 import { translateToEnglish } from '../client/client';
+import { frequencyMap } from '../frequency';
 
 const config = loadValidConfig();
 
@@ -218,10 +219,13 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
     const wordToFind = extractWordToFindFromExercise(exercise)!;
     const examples = await getExamples(wordToFind, language);
     const exampleSelected = await selectMovieExample(examples, wordToFind);
-    const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!)
+    const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!);
+    const frequency = frequencyMap[wordToFind] ?? { place: 0 };
+
+    const header = exercise.getDescription().replace('Portuguese: ', '').replace('English: ', '');
 
     res.send({
-      header: exercise.getDescription().replace('Portuguese: ', '').replace('English: ', ''),
+      header: `${header} [${frequency.place}]`,
       bodyPrefix: exercise.getBodyPrefix().replace('Portuguese: ', '').replace('English: ', ''),
       body: exercise.getCorrectAnswer(),
       example: exampleSelected?.targetLanguage,
