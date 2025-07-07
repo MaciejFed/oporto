@@ -8,8 +8,6 @@ import { logger } from '../common/logger';
 import { getExamples, getFrequencyMap, readAllResults, saveFavoriteExample, saveNewResult } from './db';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import { sortExercises } from '../priority/priority';
-import { Person, wordDatabase } from '../repository/exercises-repository';
-import { checkStandardConjugation } from '../service/verb/verb';
 import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
@@ -19,11 +17,11 @@ import { DateTime } from 'luxon';
 import path from 'path';
 import os from 'os';
 import { writeFileSync } from 'node:fs';
-import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
 import { Result } from '../service/result';
 import { getRandomElement } from '../common/common';
+import { translateToEnglish } from '../client/client';
 
 const config = loadValidConfig();
 
@@ -162,42 +160,6 @@ app.get('/:language/results', async (req: Request, res: Response) => {
   res.send(results);
 });
 
-app.get('/learn/verb', async (_req: Request, res: Response) => {
-  if (!cachedAggregate) {
-    await preFetchAggregate();
-  }
-  const { VERB } = IN_PROGRESS_LIMIT_MAP.Portuguese;
-  const findMissingPoints = (word: string) => {
-    return cachedAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
-  };
-  const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
-  const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB).sort(sortPointsMissing);
-  const toLearn = verbs.map((verb) => {
-    // @ts-ignore
-    const verbBase = wordDatabase.verb(verb);
-    const conjugation = checkStandardConjugation(verbBase.infinitive, []);
-    const conjugations = Object.values(Person).map((person: Person) => {
-      const firstCon = conjugation.verb.presentSimple![person];
-      const first = firstCon.isStandard ? firstCon.conjugation : `@${firstCon.conjugation}`;
-      let second = '';
-      const pastPerfect = conjugation.verb.pastPerfect;
-      if (pastPerfect) {
-        second = pastPerfect[person].isStandard
-          ? pastPerfect[person].conjugation
-          : `@${pastPerfect[person].conjugation}`;
-      }
-      return {
-        first,
-        second
-      };
-    });
-    return {
-      infinitive: conjugation.verb.infinitive,
-      conjugations
-    };
-  });
-  res.send(toLearn);
-});
 
 app.get('/:language/priority', async (req: Request, res: Response) => {
   const language = getLanguage(req);
@@ -256,12 +218,14 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
     const wordToFind = extractWordToFindFromExercise(exercise)!;
     const examples = await getExamples(wordToFind, language);
     const exampleSelected = await selectMovieExample(examples, wordToFind);
+    const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!)
 
     res.send({
       header: exercise.getDescription().replace('Portuguese: ', '').replace('English: ', ''),
       bodyPrefix: exercise.getBodyPrefix().replace('Portuguese: ', '').replace('English: ', ''),
       body: exercise.getCorrectAnswer(),
-      example: exampleSelected?.targetLanguage
+      example: exampleSelected?.targetLanguage,
+      exampleTranslation
     });
   } catch (e: any) {
     logger.error('Error generating exercises', 3);
