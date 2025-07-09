@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "http-server progress",
-    "openai": "ts-node src/commands/openai.ts",
+    "start-server": "ts-node src/server/server",
     "examples": "ts-node src/commands/examples",
     "compare": "ts-node src/commands/compare.ts",
     "known": "ts-node src/commands/known.ts",
