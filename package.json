@@ -4,11 +4,11 @@
   "description": "",
   "main": "./build/cli.js",
   "bin": {
-    "oporto": "./build/cli.js"
+    "my-oporto": "./build/cli.js"
   },
   "scripts": {
     "start": "http-server progress",
-    "start-server": "ts-node src/server/server",
+    "openai": "ts-node src/commands/openai.ts",
     "examples": "ts-node src/commands/examples",
     "compare": "ts-node src/commands/compare.ts",
     "known": "ts-node src/commands/known.ts",
@@ -61,7 +61,7 @@
     "line-reader": "^0.4.0",
     "luxon": "^3.0.1",
     "mongodb": "^6.3.0",
-    "openai": "^4.52.7",
+    "openai": "^4.104.0",
     "path": "^0.12.7",
     "terminal-kit": "^2.4.0",
     "winston": "^3.8.0"

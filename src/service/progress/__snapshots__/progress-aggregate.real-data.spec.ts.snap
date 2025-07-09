@@ -29,7 +29,6 @@ exports[`Progress Aggregate PT 1`] = `
           "estragado",
           "estranho",
           "famoso",
-          "feliz",
           "frio",
           "gelado",
           "importante",
@@ -92,7 +91,7 @@ exports[`Progress Aggregate PT 1`] = `
           "ético",
           "preso",
         ],
-        "count": 85,
+        "count": 84,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -116,6 +115,7 @@ exports[`Progress Aggregate PT 1`] = `
       },
       "NEVER_DONE": {
         "baseWords": [
+          "feliz",
           "junto",
           "melhor",
           "corajoso",
@@ -200,8 +200,16 @@ exports[`Progress Aggregate PT 1`] = `
           "óbvio",
           "negro",
           "terrível",
+          "branco",
+          "louco",
+          "largo",
+          "inteligente",
+          "contrário",
+          "apaixonado",
+          "necessário",
+          "incrível",
         ],
-        "count": 84,
+        "count": 93,
       },
     },
     "GermanCaseExercise": {
@@ -1170,7 +1178,6 @@ exports[`Progress Aggregate PT 1`] = `
           "sexta-feira",
           "sábado",
           "domingo",
-          "todos",
           "nenhum",
           "nunca",
           "sempre",
@@ -1255,7 +1262,7 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 112,
+        "count": 111,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3074,7 +3081,6 @@ exports[`Progress Aggregate PT 1`] = `
           "estragado",
           "estranho",
           "famoso",
-          "feliz",
           "frio",
           "gelado",
           "importante",
@@ -3118,7 +3124,7 @@ exports[`Progress Aggregate PT 1`] = `
           "desconfiado",
           "castanho",
         ],
-        "count": 66,
+        "count": 65,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -3152,6 +3158,7 @@ exports[`Progress Aggregate PT 1`] = `
       },
       "NEVER_DONE": {
         "baseWords": [
+          "feliz",
           "junto",
           "melhor",
           "ligado",
@@ -3215,8 +3222,16 @@ exports[`Progress Aggregate PT 1`] = `
           "óbvio",
           "negro",
           "terrível",
+          "branco",
+          "louco",
+          "largo",
+          "inteligente",
+          "contrário",
+          "apaixonado",
+          "necessário",
+          "incrível",
         ],
-        "count": 63,
+        "count": 72,
       },
     },
     "NOUN": {
@@ -3999,7 +4014,6 @@ exports[`Progress Aggregate PT 1`] = `
           "sexta-feira",
           "sábado",
           "domingo",
-          "todos",
           "nunca",
           "sempre",
           "algumas vezes",
@@ -4065,7 +4079,7 @@ exports[`Progress Aggregate PT 1`] = `
           "direita",
           "assim",
         ],
-        "count": 90,
+        "count": 89,
       },
       "IN_PROGRESS": {
         "baseWords": [

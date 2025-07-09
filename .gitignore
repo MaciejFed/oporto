@@ -10,3 +10,4 @@ coverage
 out.log
 progress/data.json
 package-lock.json
+src/commands/openai.ts

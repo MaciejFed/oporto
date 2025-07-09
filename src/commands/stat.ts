@@ -26,8 +26,7 @@ import { DateTime } from 'luxon';
 type Tables = {
   tableVerbs: string;
   tableNouns: string;
-  tableAdjectives: string;
-  tableOthers: string;
+  thirdTable: string;
 };
 
 const withDateLastAttempted = (baseWord: string, results: Result[], doneLongestPadding: number) => {
@@ -35,15 +34,13 @@ const withDateLastAttempted = (baseWord: string, results: Result[], doneLongestP
   return `${baseWord.padEnd(doneLongestPadding)} [${DateTime.fromJSDate(date).monthShort}/${date.getDate()}]`;
 };
 
-const printAllTables = ({ tableVerbs, tableNouns, tableAdjectives, tableOthers }: Tables) => {
+const printAllTables = ({ tableVerbs, tableNouns, thirdTable }: Tables) => {
   const spitAndPad = (table: string) => table.split('\n').map((line) => line.concat(' '));
-  return (
-    spitAndPad(tableVerbs)
-      .map((line, index) => line.concat(spitAndPad(tableNouns)[index]))
-      .map((line, index) => line.concat(spitAndPad(tableAdjectives)[index]))
-      // .map((line, index) => line.concat(spitAndPad(tableOthers)[index]))
-      .join('\n')
-  );
+
+  return spitAndPad(tableVerbs)
+    .map((line, index) => line.concat(spitAndPad(tableNouns)[index]))
+    .map((line, index) => line.concat(spitAndPad(thirdTable)[index]))
+    .join('\n');
 };
 
 export const createTable = (
@@ -140,11 +137,14 @@ export function displayStatistics(_displayProgress: boolean, language: Language)
   const progress = getProgressAggregate(results, generateAllPossibleExercises(language));
   displayGenericWeeklyStatistics(getWeekdayStatistics(language), 0);
   terminal.nextLine(5);
+  const thirdTable =
+    Math.random() < 0.5
+      ? createTable('Adjectives', progress.words.ADJECTIVE, results, language).render()
+      : createTable('Others', progress.words.OTHER, results, language).render();
   const tables = {
     tableVerbs: createTable('Verbs', progress.words.VERB, results, language).render(),
     tableNouns: createTable('Nouns', progress.words.NOUN, results, language).render(),
-    tableAdjectives: createTable('Adjectives', progress.words.ADJECTIVE, results, language).render(),
-    tableOthers: createTable('Others', progress.words.OTHER, results, language).render()
+    thirdTable
   };
   console.log(printAllTables(tables));
 }

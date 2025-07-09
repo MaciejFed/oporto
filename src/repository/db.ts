@@ -26718,10 +26718,6 @@ export const db: Schema = {
       portuguese: 'domingo'
     },
     {
-      english: 'every',
-      portuguese: 'todos'
-    },
-    {
       english: 'none of',
       portuguese: 'nenhum'
     },
@@ -28240,11 +28236,11 @@ export const db: Schema = {
       english: 'happy',
       masculine: {
         singular: 'feliz',
-        plural: 'feliz'
+        plural: 'felizes'
       },
       feminine: {
         singular: 'feliz',
-        plural: 'feliz'
+        plural: 'felizes'
       }
     },
     {
@@ -29688,6 +29684,46 @@ export const db: Schema = {
         singular: 'terrível',
         plural: 'terríveis'
       }
+    },
+    {
+      masculine: { singular: 'branco', plural: 'brancos' },
+      feminine: { singular: 'branca', plural: 'brancas' },
+      english: 'white'
+    },
+    {
+      masculine: { singular: 'louco', plural: 'loucos' },
+      feminine: { singular: 'louca', plural: 'loucas' },
+      english: 'crazy'
+    },
+    {
+      masculine: { singular: 'largo', plural: 'largos' },
+      feminine: { singular: 'larga', plural: 'largas' },
+      english: 'wide'
+    },
+    {
+      masculine: { singular: 'inteligente', plural: 'inteligentes' },
+      feminine: { singular: 'inteligente', plural: 'inteligentes' },
+      english: 'intelligent'
+    },
+    {
+      masculine: { singular: 'contrário', plural: 'contrários' },
+      feminine: { singular: 'contrária', plural: 'contrárias' },
+      english: 'contrary'
+    },
+    {
+      masculine: { singular: 'apaixonado', plural: 'apaixonados' },
+      feminine: { singular: 'apaixonada', plural: 'apaixonadas' },
+      english: 'passionate'
+    },
+    {
+      masculine: { singular: 'necessário', plural: 'necessários' },
+      feminine: { singular: 'necessária', plural: 'necessárias' },
+      english: 'necessary'
+    },
+    {
+      masculine: { singular: 'incrível', plural: 'incríveis' },
+      feminine: { singular: 'incrível', plural: 'incríveis' },
+      english: 'incredible'
     }
   ],
   sentences: [

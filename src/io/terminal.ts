@@ -322,11 +322,11 @@ export class Terminal {
         type === 'answer'
           ? this.currentExercise?.getRetryPrompt()
           : this.currentExercise.getMovieExample()?.targetLanguage;
-      getAudio(this.language, text!, api, rate);
-
-      const syncFn = sync ? execSync : exec;
-      const volumeParam = api === 'openai' ? '-v 2' : '';
-      syncFn(`afplay ${volumeParam} ${getSavedAudioPath()}`);
+      getAudio(this.language, text!, api, rate).then(() => {
+        const syncFn = sync ? execSync : exec;
+        const volumeParam = api === 'openai' ? '-v 2' : '';
+        syncFn(`afplay ${volumeParam} ${getSavedAudioPath()}`);
+      });
     } catch (e: any) {
       logger.error(e);
     }
@@ -342,8 +342,9 @@ export class Terminal {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
 
-      getAudio(this.language, correctAnswer, 'google', 'normal');
-      execSync(`afplay ${getSavedAudioPath()}`);
+      getAudio(this.language, correctAnswer, 'google', 'normal').then(() => {
+        execSync(`afplay ${getSavedAudioPath()}`);
+      });
     }
   }
 

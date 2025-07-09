@@ -49,19 +49,23 @@ export const fetchAllResultsSync = (language: Language): Result[] => {
 export const getAudio = async (language: Language, text: string, api: 'google' | 'openai', rate: Rate) => {
   const outputPath = getSavedAudioPath();
 
-  const response = await axios.post(
-    `${apiURL}/${language}/audio`,
-    { text, rate, api },
-    {
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      responseType: 'arraybuffer'
-    }
-  );
+  try {
+    const response = await axios.post(
+      `${apiURL}/${language}/audio`,
+      { text, rate, api },
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        responseType: 'arraybuffer'
+      }
+    );
 
-  fs.writeFileSync(outputPath, response.data);
+    fs.writeFileSync(outputPath, response.data);
+  } catch (error: any) {
+    console.error(`Could not load audio: [${error}]`);
+  }
 };
 
 export const fetchMovieExample = async (language: Language, word: string): Promise<MovieExample> => {
