@@ -219,6 +219,7 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
     const exercise = getRandomElement(exercises);
     const wordToFind = extractWordToFindFromExercise(exercise)!;
     repeatedToday.push(wordToFind);
+    logger.info(JSON.stringify(repeatedToday))
     const examples = await getExamples(wordToFind, language);
     const exampleSelected = await selectMovieExample(examples, wordToFind);
     const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!);
