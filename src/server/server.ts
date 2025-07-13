@@ -213,7 +213,7 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
     const results = await readAllResults(language);
-    const exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results);
+    const exercises = await generateExercisesForSessionAsync(20, true, () => true, language, results);
     const exercise = getRandomElement(exercises);
     const wordToFind = extractWordToFindFromExercise(exercise)!;
     const examples = await getExamples(wordToFind, language);
