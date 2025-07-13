@@ -31,6 +31,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const port = 3000;
 
+const repeatedToday: string[] = []
+
 console.log('starting');
 
 // eslint-disable-next-line consistent-return
@@ -213,9 +215,10 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
     const results = await readAllResults(language);
-    const exercises = await generateExercisesForSessionAsync(20, true, () => true, language, results);
+    const exercises = await generateExercisesForSessionAsync(30, true, (ex) => !repeatedToday.includes(extractWordToFindFromExercise(ex)!), language, results);
     const exercise = getRandomElement(exercises);
     const wordToFind = extractWordToFindFromExercise(exercise)!;
+    repeatedToday.push(wordToFind);
     const examples = await getExamples(wordToFind, language);
     const exampleSelected = await selectMovieExample(examples, wordToFind);
     const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!);
