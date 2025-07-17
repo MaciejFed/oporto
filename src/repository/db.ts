@@ -26608,11 +26608,7 @@ export const db: Schema = {
       portuguese: { word: 'aproveito', plural: 'aproveitos', gender: 'masculine' }
     },
     {
-      english: 'ideas',
-      portuguese: { word: 'ideia', plural: 'ideias', gender: 'feminine' }
-    },
-    {
-      english: 'meetings',
+      english: 'encounter',
       portuguese: { word: 'encontro', plural: 'encontros', gender: 'masculine' }
     }
   ],
@@ -29812,11 +29808,6 @@ export const db: Schema = {
       masculine: { singular: 'integral', plural: 'integrais' },
       feminine: { singular: 'integral', plural: 'integrais' },
       english: 'integral'
-    },
-    {
-      masculine: { singular: 'colaborativo', plural: 'colaborativos' },
-      feminine: { singular: 'colaborativa', plural: 'colaborativas' },
-      english: 'collaborative'
     },
     {
       masculine: { singular: 'tranquilo', plural: 'tranquilos' },
