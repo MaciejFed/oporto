@@ -52,6 +52,7 @@ import { getExercisesForSession } from '../exercise/generator';
 import { newWordsBetweenResults } from '../service/progress/progress';
 import { DateTime } from 'luxon';
 import { TranslationExercise } from '../exercise/translation/translation-exercise';
+import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 
 enum Phase {
   FIRST_RESPONSE = 'FIRST_RESPONSE',
@@ -73,6 +74,7 @@ export class Terminal {
   exampleSentenceFull?: string | undefined;
   canGoNext: boolean;
   phase: Phase;
+  change: number;
 
   constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language, repeat = false) {
     this.registerListeners();
@@ -98,6 +100,7 @@ export class Terminal {
     this.language = language;
     this.canGoNext = false;
     this.phase = Phase.FIRST_RESPONSE;
+    this.change = 0;
     clear();
   }
 
@@ -177,7 +180,7 @@ export class Terminal {
     this.eventProcessor.on(ANSWER_CHECKED, ({ wasCorrect, correctAnswer, answerInputType, exercise }) => {
       this.currentExercise = exercise;
       this.correctAnswer = correctAnswer;
-      printExerciseFeedback(wasCorrect, this.currentExercise.getFrequency().place);
+      printExerciseFeedback(wasCorrect, this.currentExercise.getFrequency().place, this.change);
       printExerciseBodyWithCorrection(
         `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
         this.answer,
@@ -322,11 +325,10 @@ export class Terminal {
         type === 'answer'
           ? this.currentExercise?.getRetryPrompt()
           : this.currentExercise.getMovieExample()?.targetLanguage;
-      getAudio(this.language, text!, api, rate).then(() => {
-        const syncFn = sync ? execSync : exec;
-        const volumeParam = api === 'openai' ? '-v 2' : '';
-        syncFn(`afplay ${volumeParam} ${getSavedAudioPath()}`);
-      });
+      getAudio(this.language, text!, api, rate);
+      const syncFn = sync ? execSync : exec;
+      const volumeParam = api === 'openai' ? '-v 2' : '';
+      syncFn(`afplay ${volumeParam} ${getSavedAudioPath()}`);
     } catch (e: any) {
       logger.error(e);
     }
@@ -342,9 +344,8 @@ export class Terminal {
       const translationExercise = exercise as Exercise;
       const correctAnswer = translationExercise.getCorrectAnswer();
 
-      getAudio(this.language, correctAnswer, 'google', 'normal').then(() => {
-        execSync(`afplay ${getSavedAudioPath()}`);
-      });
+      getAudio(this.language, correctAnswer, 'google', 'normal');
+      execSync(`afplay ${getSavedAudioPath()}`);
     }
   }
 
@@ -388,6 +389,7 @@ export class Terminal {
       if (this.answer.trim().length === 0) return;
       const correctAnswer = this.currentExercise?.getCorrectAnswer();
       const wasCorrect = this.currentExercise?.isAnswerCorrect(this.answer);
+      this.change = wasCorrect ? this.change + 1 : this.change - VALUE_WRONG_TO_CORRECT_RATIO;
       const result = parseResults([convertToResult(this.currentExercise, this.answer, wasCorrect, answerInputType)])[0];
       const newWords = newWordsBetweenResults(
         getAllResults(this.language),

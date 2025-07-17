@@ -27180,10 +27180,6 @@ export const db: Schema = {
       english: 'against'
     },
     {
-      portuguese: 'fosse',
-      english: 'were'
-    },
-    {
       portuguese: 'sido',
       english: 'has been'
     },
@@ -27414,6 +27410,10 @@ export const db: Schema = {
     {
       portuguese: 'extremamente',
       english: 'extremely'
+    },
+    {
+      portuguese: 'perante',
+      english: 'in front of'
     }
   ],
   othersWithGender: [
@@ -29724,6 +29724,31 @@ export const db: Schema = {
       masculine: { singular: 'incrível', plural: 'incríveis' },
       feminine: { singular: 'incrível', plural: 'incríveis' },
       english: 'incredible'
+    },
+    {
+      masculine: { singular: 'terceiro', plural: 'terceiros' },
+      feminine: { singular: 'terceira', plural: 'terceiras' },
+      english: 'third'
+    },
+    {
+      masculine: { singular: 'preto', plural: 'pretos' },
+      feminine: { singular: 'preta', plural: 'pretas' },
+      english: 'black'
+    },
+    {
+      masculine: { singular: 'horrível', plural: 'horríveis' },
+      feminine: { singular: 'horrível', plural: 'horríveis' },
+      english: 'horrible'
+    },
+    {
+      masculine: { singular: 'menor', plural: 'menores' },
+      feminine: { singular: 'menor', plural: 'menores' },
+      english: 'smaller'
+    },
+    {
+      masculine: { singular: 'inteiro', plural: 'inteiros' },
+      feminine: { singular: 'inteira', plural: 'inteiras' },
+      english: 'whole'
     }
   ],
   sentences: [

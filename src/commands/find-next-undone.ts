@@ -160,5 +160,6 @@ async function findNextUndone() {
   }
 }
 
-const map = readFreqFromFile();
-console.log(parseNoun(map));
+findNextUndone().then(() => {
+  console.log('done');
+});

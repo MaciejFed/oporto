@@ -154,10 +154,15 @@ export function getWeekdayStatistics(language: Language): WeekdayStatistics[] {
         value: resultOnDay.length - correctAttempts.value,
         keyMarker: { color: 'red', marker: '🔴' }
       };
+      const netChange: StatisticPoint = {
+        keyName: 'Change',
+        value: correctAttempts.value - failedAttempts.value * VALUE_WRONG_TO_CORRECT_RATIO,
+        keyMarker: { color: 'white', marker: '🟣' }
+      };
 
       return {
         weekday,
-        points: [allAttempts, distinctExercises, correctAttempts, failedAttempts]
+        points: [allAttempts, distinctExercises, correctAttempts, failedAttempts, netChange]
       };
     });
 }

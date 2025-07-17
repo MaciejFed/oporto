@@ -208,8 +208,13 @@ exports[`Progress Aggregate PT 1`] = `
           "apaixonado",
           "necessário",
           "incrível",
+          "terceiro",
+          "preto",
+          "horrível",
+          "menor",
+          "inteiro",
         ],
-        "count": 93,
+        "count": 98,
       },
     },
     "GermanCaseExercise": {
@@ -1329,7 +1334,6 @@ exports[`Progress Aggregate PT 1`] = `
           "tenha",
           "seria",
           "contra",
-          "fosse",
           "sido",
           "cada",
           "enquanto",
@@ -1388,6 +1392,7 @@ exports[`Progress Aggregate PT 1`] = `
           "daí",
           "definitivamente",
           "extremamente",
+          "perante",
         ],
         "count": 98,
       },
@@ -3129,6 +3134,7 @@ exports[`Progress Aggregate PT 1`] = `
       "IN_PROGRESS": {
         "baseWords": [
           "último",
+          "inteiro",
           "raso",
           "cego",
           "corajoso",
@@ -3154,7 +3160,7 @@ exports[`Progress Aggregate PT 1`] = `
           "desapontado",
           "preso",
         ],
-        "count": 25,
+        "count": 26,
       },
       "NEVER_DONE": {
         "baseWords": [
@@ -3230,8 +3236,11 @@ exports[`Progress Aggregate PT 1`] = `
           "apaixonado",
           "necessário",
           "incrível",
+          "preto",
+          "horrível",
+          "menor",
         ],
-        "count": 72,
+        "count": 75,
       },
     },
     "NOUN": {
@@ -4019,7 +4028,6 @@ exports[`Progress Aggregate PT 1`] = `
           "algumas vezes",
           "muitas vezes",
           "frequentemente",
-          "inteiro",
           "parte de",
           "eu",
           "tu",
@@ -4079,7 +4087,7 @@ exports[`Progress Aggregate PT 1`] = `
           "direita",
           "assim",
         ],
-        "count": 89,
+        "count": 88,
       },
       "IN_PROGRESS": {
         "baseWords": [
@@ -4187,7 +4195,6 @@ exports[`Progress Aggregate PT 1`] = `
           "tenha",
           "seria",
           "contra",
-          "fosse",
           "sido",
           "cada",
           "enquanto",
@@ -4245,6 +4252,7 @@ exports[`Progress Aggregate PT 1`] = `
           "daí",
           "definitivamente",
           "extremamente",
+          "perante",
         ],
         "count": 134,
       },

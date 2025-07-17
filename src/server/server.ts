@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const port = 3000;
 
-const repeatedToday: string[] = []
+const repeatedToday: string[] = [];
 
 console.log('starting');
 
@@ -215,11 +215,17 @@ app.get('/:language/in-progress', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
     const results = await readAllResults(language);
-    const exercises = await generateExercisesForSessionAsync(30, true, (ex) => !repeatedToday.includes(extractWordToFindFromExercise(ex)!), language, results);
+    const exercises = await generateExercisesForSessionAsync(
+      30,
+      true,
+      (ex) => !repeatedToday.includes(extractWordToFindFromExercise(ex)!),
+      language,
+      results
+    );
     const exercise = getRandomElement(exercises);
     const wordToFind = extractWordToFindFromExercise(exercise)!;
     repeatedToday.push(wordToFind);
-    logger.info(JSON.stringify(repeatedToday))
+    logger.info(JSON.stringify(repeatedToday));
     const examples = await getExamples(wordToFind, language);
     const exampleSelected = await selectMovieExample(examples, wordToFind);
     const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!);

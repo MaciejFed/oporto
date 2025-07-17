@@ -84,8 +84,9 @@ export function printExerciseBody(exerciseBodyPrefix: string, answer: string, ex
   getOutput().moveCursor(1 + exerciseBodyPrefix.length + answerFinal.length, EXERCISE_BODY_MARGIN);
 }
 
-export function printExerciseFeedback(wasCorrect: boolean, frequency: number) {
-  getOutput().moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${frequency}]`);
+export function printExerciseFeedback(wasCorrect: boolean, frequency: number, change: number) {
+  const changeStr = change > 0 ? `+${change}` : change;
+  getOutput().moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${frequency}] ${changeStr}`);
 }
 
 const repeatBodyPrefix = 'Repeat: ';

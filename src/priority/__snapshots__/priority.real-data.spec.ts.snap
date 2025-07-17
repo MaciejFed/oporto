@@ -6560,47 +6560,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 40,
   },
   {
-    "exercise": AdjectiveTranslationExercise {
-      "adjective": {
-        "english": "green",
-        "feminine": {
-          "plural": "verdes",
-          "singular": "verde",
-        },
-        "masculine": {
-          "plural": "verdes",
-          "singular": "verde",
-        },
-      },
-      "equal": [Function],
-      "exerciseType": "AdjectiveTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "gender": "feminine",
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "AdjectiveTranslation_verde_toPortuguese",
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 60,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -20,
-      },
-    ],
-    "priorityValueTotal": 40,
-  },
-  {
     "exercise": VerbExercise {
       "equal": [Function],
       "exerciseType": "VerbExercise",
@@ -8867,6 +8826,43 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 25,
   },
   {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "whole",
+        "feminine": {
+          "plural": "inteiras",
+          "singular": "inteira",
+        },
+        "masculine": {
+          "plural": "inteiros",
+          "singular": "inteiro",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_inteiro_toPortugueseFromHearing",
+      "number": "singular",
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
     "exercise": NounTranslationExercise {
       "equal": [Function],
       "exerciseType": "NounTranslation",
@@ -9258,6 +9254,47 @@ exports[`Priority PT 1`] = `
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
       "name": "AdjectiveTranslation_último_toEnglish",
+      "number": "singular",
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_FROM_HEARING",
+        "priorityValue": -500,
+      },
+    ],
+    "priorityValueTotal": -475,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "whole",
+        "feminine": {
+          "plural": "inteiras",
+          "singular": "inteira",
+        },
+        "masculine": {
+          "plural": "inteiros",
+          "singular": "inteiro",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_inteiro_toEnglish",
       "number": "singular",
       "translationType": "toEnglish",
     },
@@ -15076,6 +15113,170 @@ exports[`Priority PT 1`] = `
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
       "name": "AdjectiveTranslation_último_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "whole",
+        "feminine": {
+          "plural": "inteiras",
+          "singular": "inteira",
+        },
+        "masculine": {
+          "plural": "inteiros",
+          "singular": "inteiro",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_inteiro_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "whole",
+        "feminine": {
+          "plural": "inteiras",
+          "singular": "inteira",
+        },
+        "masculine": {
+          "plural": "inteiros",
+          "singular": "inteiro",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "masculine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_inteiro_toPortuguese",
+      "number": "plural",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "whole",
+        "feminine": {
+          "plural": "inteiras",
+          "singular": "inteira",
+        },
+        "masculine": {
+          "plural": "inteiros",
+          "singular": "inteiro",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_inteiro_toPortuguese",
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+      {
+        "priorityName": "EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH",
+        "priorityValue": -1000,
+      },
+    ],
+    "priorityValueTotal": -975,
+  },
+  {
+    "exercise": AdjectiveTranslationExercise {
+      "adjective": {
+        "english": "whole",
+        "feminine": {
+          "plural": "inteiras",
+          "singular": "inteira",
+        },
+        "masculine": {
+          "plural": "inteiros",
+          "singular": "inteiro",
+        },
+      },
+      "equal": [Function],
+      "exerciseType": "AdjectiveTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "gender": "feminine",
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "AdjectiveTranslation_inteiro_toPortuguese",
       "number": "plural",
       "translationType": "toPortuguese",
     },

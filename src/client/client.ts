@@ -46,26 +46,18 @@ export const fetchAllResultsSync = (language: Language): Result[] => {
   return JSON.parse(results);
 };
 
-export const getAudio = async (language: Language, text: string, api: 'google' | 'openai', rate: Rate) => {
+export const getAudio = (language: Language, text: string, api: 'google' | 'openai', rate: Rate) => {
   const outputPath = getSavedAudioPath();
-
-  try {
-    const response = await axios.post(
-      `${apiURL}/${language}/audio`,
-      { text, rate, api },
-      {
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        responseType: 'arraybuffer'
-      }
-    );
-
-    fs.writeFileSync(outputPath, response.data);
-  } catch (error: any) {
-    console.error(`Could not load audio: [${error}]`);
-  }
+  const command = `curl -s --location '${apiURL}/${language}/audio' \
+    --header 'Authorization: Bearer ${apiKey}' \
+    --header 'Content-Type: application/json' \
+    -o ${outputPath} \
+    --data '{
+        "text": "${text}",
+        "rate": "${rate}",
+        "api": "${api}"
+    }'`;
+  execSync(command);
 };
 
 export const fetchMovieExample = async (language: Language, word: string): Promise<MovieExample> => {
@@ -99,20 +91,12 @@ export const fetchRepeatExercisesForSession = (language: Language): Exercise[] =
 
 export const saveNewResult = async (language: Language, newResult: Result) => {
   resultsCached.push(newResult);
-
-  try {
-    const response = await axios.post(`${apiURL}/${language}/results/save`, newResult, {
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      }
-    });
-
-    const resultId = response.data;
+  const command = `curl -s --location --request POST ${apiURL}/${language}/results/save --header "Authorization: Bearer ${apiKey}" --header 'Content-Type: application/json' --data '${JSON.stringify(
+    newResult
+  )}'`;
+  execAsync(command).then(({ stdout: resultId }) => {
     logger.info(`Saved new result: [${resultId}]`);
-  } catch (error) {
-    logger.error('Failed to save result:', error);
-  }
+  });
 };
 
 export const saveFavoriteExample = async (language: Language, example: MovieExample) => {
