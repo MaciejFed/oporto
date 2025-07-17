@@ -10791,7 +10791,7 @@ export const db: Schema = {
       english: 'to hear',
       infinitive: 'ouvir',
       presentSimple: {
-        Eu: 'ouço/oiço',
+        Eu: 'ouço',
         Tu: 'ouves',
         'Ela/Ele/Você': 'ouve',
         Nós: 'ouvimos',
@@ -26570,6 +26570,50 @@ export const db: Schema = {
     {
       english: 'article',
       portuguese: { word: 'artigo', gender: 'masculine', plural: 'artigos' }
+    },
+    {
+      english: 'routine',
+      portuguese: { word: 'rotina', plural: 'rotinas', gender: 'feminine' }
+    },
+    {
+      english: 'daily rate',
+      portuguese: { word: 'diária', plural: 'diárias', gender: 'feminine' }
+    },
+    {
+      english: 'shower',
+      portuguese: { word: 'duche', plural: 'duches', gender: 'masculine' }
+    },
+    {
+      english: 'cereals',
+      portuguese: { word: 'cereais', plural: 'cereais', gender: 'masculine' }
+    },
+    {
+      english: 'accounting',
+      portuguese: {
+        word: 'contabilidade',
+        plural: 'contabilidades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'tasks',
+      portuguese: { word: 'tarefas', plural: 'tarefas', gender: 'feminine' }
+    },
+    {
+      english: 'environment',
+      portuguese: { word: 'ambiente', plural: 'ambientes', gender: 'masculine' }
+    },
+    {
+      english: 'enjoyment',
+      portuguese: { word: 'aproveito', plural: 'aproveitos', gender: 'masculine' }
+    },
+    {
+      english: 'ideas',
+      portuguese: { word: 'ideia', plural: 'ideias', gender: 'feminine' }
+    },
+    {
+      english: 'meetings',
+      portuguese: { word: 'encontro', plural: 'encontros', gender: 'masculine' }
     }
   ],
   others: [
@@ -27414,6 +27458,10 @@ export const db: Schema = {
     {
       portuguese: 'perante',
       english: 'in front of'
+    },
+    {
+      portuguese: 'normalmente',
+      english: 'normally'
     }
   ],
   othersWithGender: [
@@ -29749,6 +29797,41 @@ export const db: Schema = {
       masculine: { singular: 'inteiro', plural: 'inteiros' },
       feminine: { singular: 'inteira', plural: 'inteiras' },
       english: 'whole'
+    },
+    {
+      masculine: { singular: 'acompanhado', plural: 'acompanhados' },
+      feminine: { singular: 'acompanhada', plural: 'acompanhadas' },
+      english: 'accompanied'
+    },
+    {
+      masculine: { singular: 'equilibrado', plural: 'equilibrados' },
+      feminine: { singular: 'equilibrada', plural: 'equilibradas' },
+      english: 'balanced'
+    },
+    {
+      masculine: { singular: 'integral', plural: 'integrais' },
+      feminine: { singular: 'integral', plural: 'integrais' },
+      english: 'integral'
+    },
+    {
+      masculine: { singular: 'colaborativo', plural: 'colaborativos' },
+      feminine: { singular: 'colaborativa', plural: 'colaborativas' },
+      english: 'collaborative'
+    },
+    {
+      masculine: { singular: 'tranquilo', plural: 'tranquilos' },
+      feminine: { singular: 'tranquila', plural: 'tranquilas' },
+      english: 'peaceful'
+    },
+    {
+      masculine: { singular: 'essencial', plural: 'essenciais' },
+      feminine: { singular: 'essencial', plural: 'essenciais' },
+      english: 'essential'
+    },
+    {
+      masculine: { singular: 'físico', plural: 'físicos' },
+      feminine: { singular: 'física', plural: 'físicas' },
+      english: 'physical'
     }
   ],
   sentences: [
