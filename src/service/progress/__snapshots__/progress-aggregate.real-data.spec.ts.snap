@@ -1205,7 +1205,6 @@ exports[`Progress Aggregate PT 1`] = `
           "muitas vezes",
           "frequentemente",
           "meio",
-          "quarto",
           "inteiro",
           "parte de",
           "eu",
@@ -1282,7 +1281,7 @@ exports[`Progress Aggregate PT 1`] = `
           "se calhar",
           "repente",
         ],
-        "count": 111,
+        "count": 110,
       },
       "IN_PROGRESS": {
         "baseWords": [

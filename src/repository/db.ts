@@ -20953,7 +20953,7 @@ export const db: Schema = {
       ]
     },
     {
-      english: 'to take',
+      english: 'to assume',
       infinitive: 'assumir',
       presentSimple: {
         Eu: 'assumo',
@@ -26784,10 +26784,6 @@ export const db: Schema = {
     {
       english: 'half',
       portuguese: 'meio'
-    },
-    {
-      english: 'quarter',
-      portuguese: 'quarto'
     },
     {
       english: 'whole',

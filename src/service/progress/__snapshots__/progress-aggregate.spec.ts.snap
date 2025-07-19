@@ -1373,7 +1373,6 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "muitas vezes",
           "frequentemente",
           "meio",
-          "quarto",
           "inteiro",
           "parte de",
           "eu",
@@ -1542,7 +1541,7 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "perante",
           "normalmente",
         ],
-        "count": 211,
+        "count": 210,
       },
     },
     "OtherWithGenderTranslation": {
