@@ -135,18 +135,16 @@ export function displayStatistics(_displayProgress: boolean, language: Language)
   preFetchAllResults(language);
   const results = getAllResults(language);
   displayGenericWeeklyStatistics(getWeekdayStatistics(language), 0);
-  if (process.env.SKIP_STAT !== 'true') {
-    const progress = getProgressAggregate(results, generateAllPossibleExercises(language));
-    terminal.nextLine(5);
-    const thirdTable =
-      Math.random() < 0.5
-        ? createTable('Adjectives', progress.words.ADJECTIVE, results, language).render()
-        : createTable('Others', progress.words.OTHER, results, language).render();
-    const tables = {
-      tableVerbs: createTable('Verbs', progress.words.VERB, results, language).render(),
-      tableNouns: createTable('Nouns', progress.words.NOUN, results, language).render(),
-      thirdTable
-    };
-    console.log(printAllTables(tables));
-  }
+  const progress = getProgressAggregate(results, generateAllPossibleExercises(language));
+  terminal.nextLine(5);
+  const thirdTable =
+    Math.random() < 0.5
+      ? createTable('Adjectives', progress.words.ADJECTIVE, results, language).render()
+      : createTable('Others', progress.words.OTHER, results, language).render();
+  const tables = {
+    tableVerbs: createTable('Verbs', progress.words.VERB, results, language).render(),
+    tableNouns: createTable('Nouns', progress.words.NOUN, results, language).render(),
+    thirdTable
+  };
+  console.log(printAllTables(tables));
 }
