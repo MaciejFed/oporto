@@ -5163,7 +5163,7 @@ export const db: Schema = {
       ]
     },
     {
-      english: 'to leave',
+      english: 'to depart',
       infinitive: 'partir',
       presentSimple: {
         Eu: 'parto',
@@ -5471,7 +5471,7 @@ export const db: Schema = {
       ]
     },
     {
-      english: 'to allow',
+      english: 'to permit',
       infinitive: 'permitir',
       presentSimple: {
         Eu: 'permito',
@@ -13868,7 +13868,7 @@ export const db: Schema = {
       ]
     },
     {
-      english: 'to leave',
+      english: 'to allow',
       infinitive: 'deixar',
       presentSimple: {
         Eu: 'deixo',
