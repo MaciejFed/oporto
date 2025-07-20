@@ -15485,7 +15485,7 @@ export const db: Schema = {
       ]
     },
     {
-      english: 'to believe',
+      english: 'to believe formal',
       infinitive: 'crer',
       presentSimple: {
         Eu: 'creio',
