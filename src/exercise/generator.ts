@@ -1,6 +1,6 @@
 import { Exercise, Frequency } from './exercise';
 import { Person, readAll, VerbTime } from '../repository/exercises-repository';
-import { VerbExercise } from './verb-exercise';
+import { VerbExercise, VerbTime as VerbTimeType } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
 import { TranslationType } from './translation/translation-exercise';
 import { VerbTranslationExercise } from './translation/verb-translation-exercise';
@@ -39,9 +39,10 @@ import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-
 import { frequencyMap } from '../frequency';
 
 type ExerciseGenerator = () => Exercise[];
-export const LIMIT_FREQ = 700;
+export const LIMIT_FREQ = 1000;
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
+  const allowedVerbTimes: VerbTimeType[] = ['presentSimple', 'pastPerfect', 'imperfect'];
   const filiterInFreqLimit = (exercise: VerbExercise) => {
     const wordToFind = exercise.getCorrectAnswer();
     const wordfreq = frequencyMap[wordToFind];
@@ -56,7 +57,10 @@ export const VerbExerciseGenerator: ExerciseGenerator = () => {
     )
   );
   const allInfs = verbs.map((verb) => verb.infinitive as string);
-  return allVerbExercises.filter(filiterInFreqLimit).filter((verbEx) => !allInfs.includes(verbEx.getCorrectAnswer()));
+  return allVerbExercises
+    .filter(filiterInFreqLimit)
+    .filter((exercise) => allowedVerbTimes.includes(exercise.verbTime))
+    .filter((verbEx) => !allInfs.includes(verbEx.getCorrectAnswer()));
 };
 
 export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
