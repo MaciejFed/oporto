@@ -27165,7 +27165,7 @@ export const db: Schema = {
     },
     {
       portuguese: 'vocês',
-      english: 'tou plural formal'
+      english: 'you plural formal'
     },
     {
       portuguese: 'seja',
