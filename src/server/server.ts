@@ -5,7 +5,14 @@ import { generateAllPossibleExercises, generateExercisesForSessionAsync, shuffle
 import bodyParser from 'body-parser';
 import { MovieExample } from '../io/file';
 import { logger } from '../common/logger';
-import { getExamples, getFrequencyMap, readAllResults, saveFavoriteExample, saveNewResult } from './db';
+import {
+  getExamples,
+  getExamplesForWords,
+  getFrequencyMap,
+  readAllResults,
+  saveFavoriteExample,
+  saveNewResult
+} from './db';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import { sortExercises } from '../priority/priority';
 import { Language } from '../common/language';
@@ -201,10 +208,38 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
     const results = await readAllResults(language);
-    const frequency = await getFrequencyMap(language);
     const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results);
     const exercisesRepeat = await generateRepeatExercises(2, language, results);
-    res.send(shuffleArray(exercises.concat(exercisesRepeat)));
+
+    const exercisesTotal = shuffleArray(exercises.concat(exercisesRepeat));
+
+    const words = exercisesTotal
+      .map(extractWordToFindFromExercise)
+      .filter((item): item is string => item !== undefined);
+    const examples = await getExamplesForWords(words, Language.Portuguese);
+
+    await Promise.allSettled(
+      exercisesTotal.map(async (exercise) => {
+        const wordToFind = extractWordToFindFromExercise(exercise);
+        if (!wordToFind) {
+          console.error('No word to find!');
+          return;
+        }
+        const lines = examples[wordToFind];
+        if (!lines) {
+          console.error('No lines');
+          return;
+        }
+        const movieExample = await selectMovieExample(lines, wordToFind);
+        if (!movieExample) {
+          console.error('No movie example');
+          return;
+        }
+        exercise.addMovieExample(movieExample);
+      })
+    );
+
+    res.send(exercisesTotal);
   } catch (e: any) {
     logger.error('Error generating exercises', 3);
     logger.error(e);

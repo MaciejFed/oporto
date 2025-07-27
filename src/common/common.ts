@@ -168,3 +168,9 @@ export function assertNonNull<T>(value?: T): T {
 
   return value;
 }
+
+export function getLastElement(str: string): string {
+  const split = str.split(' ');
+
+  return split[split.length - 1];
+}

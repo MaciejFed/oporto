@@ -79,17 +79,6 @@ export class Terminal {
   constructor(private readonly eventProcessor: EventProcessor, private readonly language: Language, repeat = false) {
     this.registerListeners();
     this.exercises = getExercisesForSession(language, repeat);
-    this.exercises.reduce(async (promise, exercise) => {
-      await promise;
-      if (exercise instanceof TranslationExercise && !exercise.isTranslationToPortuguese()) {
-        return;
-      }
-      const wordToFind = extractWordToFindFromExercise(exercise);
-      const example = wordToFind ? await fetchMovieExample(language, wordToFind) : undefined;
-      if (example) {
-        exercise.addMovieExample(example);
-      }
-    }, Promise.resolve());
 
     this.currentExercise = this.exercises[0];
     this.exerciseBodyPrefix = '';

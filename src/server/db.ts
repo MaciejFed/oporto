@@ -196,6 +196,37 @@ export async function getExamples(word: string, language: Language): Promise<Wor
   }
 }
 
+export async function getExamplesForWords(
+  words: string[],
+  language: Language
+): Promise<Record<string, WordExampleLine[] | undefined>> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'total'));
+
+    const orConditions = words.map((word) => ({ [word]: { $exists: true } }));
+
+    const cursor = collectionTop.find({ $or: orConditions });
+
+    const allDocs = await cursor.toArray();
+
+    const values: Record<string, WordExampleLine[] | undefined> = allDocs.reduce((prev, curr) => {
+      const word = Object.keys(curr)[1];
+      const lines = Object.values(curr)[1];
+
+      return {
+        ...prev,
+        [word]: lines
+      };
+    }, {});
+
+    return values;
+  } finally {
+    await client.close();
+  }
+}
+
 export async function getExamplesSaved(language: Language): Promise<string[]> {
   const client = await getClient();
   try {
