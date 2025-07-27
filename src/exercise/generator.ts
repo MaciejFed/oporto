@@ -89,7 +89,7 @@ const NounTranslationGenerator: ExerciseGenerator = () => {
   return readAll().nouns.flatMap((noun) =>
     translationTypes.flatMap((translationType) => [
       NounTranslationExercise.new(noun, translationType, 'singular'),
-      ...(noun.portuguese.plural ? [NounTranslationExercise.new(noun, translationType, 'plural')] : [])
+      // ...(noun.portuguese.plural ? [NounTranslationExercise.new(noun, translationType, 'plural')] : [])
     ])
   );
 };

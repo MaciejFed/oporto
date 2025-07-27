@@ -6030,6 +6030,80 @@ exports[`Priority DE 1`] = `
 exports[`Priority PT 1`] = `
 [
   {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_conselho_toPortuguese",
+      "noun": {
+        "english": "advice",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "conselhos",
+          "word": "conselho",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 390,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -90,
+      },
+    ],
+    "priorityValueTotal": 300,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_outono_toPortuguese",
+      "noun": {
+        "english": "autumn",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "outonos",
+          "word": "outono",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 660,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -370,
+      },
+    ],
+    "priorityValueTotal": 290,
+  },
+  {
     "exercise": OtherTranslationExercise {
       "equal": [Function],
       "exerciseType": "OtherTranslation",
@@ -6167,6 +6241,43 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 130,
   },
   {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_cesto_toPortuguese",
+      "noun": {
+        "english": "basket",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "cestos",
+          "word": "cesto",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 300,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -190,
+      },
+    ],
+    "priorityValueTotal": 110,
+  },
+  {
     "exercise": OtherTranslationExercise {
       "equal": [Function],
       "exerciseType": "OtherTranslation",
@@ -6240,6 +6351,79 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 100,
   },
   {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_comércio_toPortugueseFromHearing",
+      "noun": {
+        "english": "trade",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "comércios",
+          "word": "comércio",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 510,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -430,
+      },
+    ],
+    "priorityValueTotal": 80,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_noiva_toPortuguese",
+      "noun": {
+        "english": "bride",
+        "portuguese": {
+          "gender": "feminine",
+          "word": "noiva",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 270,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -200,
+      },
+    ],
+    "priorityValueTotal": 70,
+  },
+  {
     "exercise": OtherTranslationExercise {
       "equal": [Function],
       "exerciseType": "OtherTranslation",
@@ -6311,6 +6495,43 @@ exports[`Priority PT 1`] = `
       },
     ],
     "priorityValueTotal": 50,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_sinal_toEnglish",
+      "noun": {
+        "english": "sign",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "sinais",
+          "word": "sinal",
+        },
+      },
+      "number": "singular",
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 210,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -170,
+      },
+    ],
+    "priorityValueTotal": 40,
   },
   {
     "exercise": OtherTranslationExercise {
@@ -10042,16 +10263,16 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "NounTranslation_cidade_toPortugueseFromHearing",
+      "name": "NounTranslation_carteira_toPortugueseFromHearing",
       "noun": {
-        "english": "city",
+        "english": "wallet",
         "portuguese": {
           "gender": "feminine",
-          "plural": "cidades",
-          "word": "cidade",
+          "plural": "carteiras",
+          "word": "carteira",
         },
       },
-      "number": "plural",
+      "number": "singular",
       "translationType": "toPortugueseFromHearing",
     },
     "priorities": [
@@ -10075,16 +10296,16 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "NounTranslation_cidade_toEnglish",
+      "name": "NounTranslation_carteira_toEnglish",
       "noun": {
-        "english": "city",
+        "english": "wallet",
         "portuguese": {
           "gender": "feminine",
-          "plural": "cidades",
-          "word": "cidade",
+          "plural": "carteiras",
+          "word": "carteira",
         },
       },
-      "number": "plural",
+      "number": "singular",
       "translationType": "toEnglish",
     },
     "priorities": [
@@ -10108,907 +10329,16 @@ exports[`Priority PT 1`] = `
       "getDescription": [Function],
       "getRetryPrompt": [Function],
       "getTranslation": [Function],
-      "name": "NounTranslation_cidade_toPortuguese",
+      "name": "NounTranslation_carteira_toPortuguese",
       "noun": {
-        "english": "city",
+        "english": "wallet",
         "portuguese": {
           "gender": "feminine",
-          "plural": "cidades",
-          "word": "cidade",
+          "plural": "carteiras",
+          "word": "carteira",
         },
       },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_livro_toPortugueseFromHearing",
-      "noun": {
-        "english": "book",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "livros",
-          "word": "livro",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_livro_toEnglish",
-      "noun": {
-        "english": "book",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "livros",
-          "word": "livro",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_livro_toPortuguese",
-      "noun": {
-        "english": "book",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "livros",
-          "word": "livro",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_namorada_toPortugueseFromHearing",
-      "noun": {
-        "english": "girlfriend",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "namoradas",
-          "word": "namorada",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_namorada_toEnglish",
-      "noun": {
-        "english": "girlfriend",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "namoradas",
-          "word": "namorada",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_namorada_toPortuguese",
-      "noun": {
-        "english": "girlfriend",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "namoradas",
-          "word": "namorada",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_casa-de-banho_toPortugueseFromHearing",
-      "noun": {
-        "english": "bathroom",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "casa-de-banhos",
-          "word": "casa-de-banho",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_casa-de-banho_toEnglish",
-      "noun": {
-        "english": "bathroom",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "casa-de-banhos",
-          "word": "casa-de-banho",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_casa-de-banho_toPortuguese",
-      "noun": {
-        "english": "bathroom",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "casa-de-banhos",
-          "word": "casa-de-banho",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_aula_toPortugueseFromHearing",
-      "noun": {
-        "english": "lesson",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "aulas",
-          "word": "aula",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_aula_toEnglish",
-      "noun": {
-        "english": "lesson",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "aulas",
-          "word": "aula",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_aula_toPortuguese",
-      "noun": {
-        "english": "lesson",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "aulas",
-          "word": "aula",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_ano_toPortugueseFromHearing",
-      "noun": {
-        "english": "year",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "anos",
-          "word": "ano",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_ano_toEnglish",
-      "noun": {
-        "english": "year",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "anos",
-          "word": "ano",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_ano_toPortuguese",
-      "noun": {
-        "english": "year",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "anos",
-          "word": "ano",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_mês_toPortugueseFromHearing",
-      "noun": {
-        "english": "month",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "meses",
-          "word": "mês",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_mês_toEnglish",
-      "noun": {
-        "english": "month",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "meses",
-          "word": "mês",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_mês_toPortuguese",
-      "noun": {
-        "english": "month",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "meses",
-          "word": "mês",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_sobremesa_toPortugueseFromHearing",
-      "noun": {
-        "english": "desert",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "sobremesas",
-          "word": "sobremesa",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_sobremesa_toEnglish",
-      "noun": {
-        "english": "desert",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "sobremesas",
-          "word": "sobremesa",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_sobremesa_toPortuguese",
-      "noun": {
-        "english": "desert",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "sobremesas",
-          "word": "sobremesa",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_calculadora_toPortugueseFromHearing",
-      "noun": {
-        "english": "calculator",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "calculadoras",
-          "word": "calculadora",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_calculadora_toEnglish",
-      "noun": {
-        "english": "calculator",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "calculadoras",
-          "word": "calculadora",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_calculadora_toPortuguese",
-      "noun": {
-        "english": "calculator",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "calculadoras",
-          "word": "calculadora",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_bicicleta_toPortugueseFromHearing",
-      "noun": {
-        "english": "bicycle",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "bicicletas",
-          "word": "bicicleta",
-        },
-      },
-      "number": "plural",
-      "translationType": "toPortugueseFromHearing",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_bicicleta_toEnglish",
-      "noun": {
-        "english": "bicycle",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "bicicletas",
-          "word": "bicicleta",
-        },
-      },
-      "number": "plural",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_NEVER_DONE",
-        "priorityValue": 25,
-      },
-    ],
-    "priorityValueTotal": 25,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_bicicleta_toPortuguese",
-      "noun": {
-        "english": "bicycle",
-        "portuguese": {
-          "gender": "feminine",
-          "plural": "bicicletas",
-          "word": "bicicleta",
-        },
-      },
-      "number": "plural",
+      "number": "singular",
       "translationType": "toPortuguese",
     },
     "priorities": [
@@ -13279,6 +12609,43 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 20,
   },
   {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_reflexo_toPortuguese",
+      "noun": {
+        "english": "reflection",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "reflexos",
+          "word": "reflexo",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 300,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -280,
+      },
+    ],
+    "priorityValueTotal": 20,
+  },
+  {
     "exercise": AdjectiveTranslationExercise {
       "adjective": {
         "english": "stunned",
@@ -13359,6 +12726,80 @@ exports[`Priority PT 1`] = `
       },
     ],
     "priorityValueTotal": 20,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_ingrediente_toEnglish",
+      "noun": {
+        "english": "ingredient",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "ingredientes",
+          "word": "ingrediente",
+        },
+      },
+      "number": "singular",
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 240,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -230,
+      },
+    ],
+    "priorityValueTotal": 10,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_escritório_toPortuguese",
+      "noun": {
+        "english": "office",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "escritórios",
+          "word": "escritório",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_WRONG",
+        "priorityValue": 270,
+      },
+      {
+        "priorityName": "EXERCISE_CORRECT",
+        "priorityValue": -260,
+      },
+    ],
+    "priorityValueTotal": 10,
   },
   {
     "exercise": VerbOtherFormTranslationExercise {
