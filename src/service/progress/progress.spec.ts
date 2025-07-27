@@ -7,11 +7,11 @@ import { VerbExercise } from '../../exercise/verb-exercise';
 import { Language } from '../../common/language';
 import { generateAllPossibleExercises } from '../../exercise/generator';
 
-const nounExercise0 = NounTranslationExercise.new(readAll().nouns[0], 'toPortuguese');
-const nounExercise1 = NounTranslationExercise.new(readAll().nouns[1], 'toPortuguese');
-const nounExercise2 = NounTranslationExercise.new(readAll().nouns[2], 'toPortuguese');
-const nounExercise3 = NounTranslationExercise.new(readAll().nouns[3], 'toPortuguese');
-const nounExercise4 = NounTranslationExercise.new(readAll().nouns[4], 'toPortuguese');
+const nounExercise0 = NounTranslationExercise.new(readAll().nouns[0], 'toPortuguese', 'singular');
+const nounExercise1 = NounTranslationExercise.new(readAll().nouns[1], 'toPortuguese', 'singular');
+const nounExercise2 = NounTranslationExercise.new(readAll().nouns[2], 'toPortuguese', 'singular');
+const nounExercise3 = NounTranslationExercise.new(readAll().nouns[3], 'toPortuguese', 'singular');
+const nounExercise4 = NounTranslationExercise.new(readAll().nouns[4], 'toPortuguese', 'singular');
 
 const results = [
   ...generateResultsForExerciseDaysAgo(nounExercise0, true, 23, 1),
@@ -59,10 +59,21 @@ describe('Progress', () => {
 
   describe('getSingleExerciseProgress', () => {
     it('should have 2 answers missing', () => {
+      const nounExercise0Plural = [
+        NounTranslationExercise.new(readAll().nouns[0], 'toPortugueseFromHearing', 'plural'),
+        NounTranslationExercise.new(readAll().nouns[0], 'toEnglish', 'plural'),
+        NounTranslationExercise.new(readAll().nouns[0], 'toPortuguese', 'plural')
+      ];
+      const plurarlCorrectResult = [
+        ...generateResultsForExerciseDaysAgo(nounExercise0Plural[0], true, 1, 2),
+        ...generateResultsForExerciseDaysAgo(nounExercise0Plural[1], true, 1, 2),
+        ...generateResultsForExerciseDaysAgo(nounExercise0Plural[2], true, 1, 2)
+      ];
+
       const singleResult = generateResultsForExerciseDaysAgo(nounExercise0, true, 1, 2);
       const answersMissing = getAnswersMissingForBaseWord(
         nounExercise0.getBaseWordAsString()!,
-        singleResult,
+        [...singleResult, ...plurarlCorrectResult],
         generateAllPossibleExercises(Language.Portuguese)
       );
 

@@ -76,6 +76,14 @@ export const db: Schema = {
         {
           form: 'particípio',
           portuguese: 'sido'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'seres'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'serem'
         }
       ]
     },
@@ -307,6 +315,14 @@ export const db: Schema = {
         {
           form: 'particípio',
           portuguese: 'tido'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'teres'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'terem'
         }
       ]
     },
@@ -27454,6 +27470,10 @@ export const db: Schema = {
     {
       portuguese: 'normalmente',
       english: 'normally'
+    },
+    {
+      portuguese: 'desculpe',
+      english: 'sorry'
     }
   ],
   othersWithGender: [

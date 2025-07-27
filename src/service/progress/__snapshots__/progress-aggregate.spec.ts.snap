@@ -1540,8 +1540,9 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "extremamente",
           "perante",
           "normalmente",
+          "desculpe",
         ],
-        "count": 210,
+        "count": 211,
       },
     },
     "OtherWithGenderTranslation": {
@@ -3325,8 +3326,9 @@ exports[`Progress Aggregate getProgressAggregate full exercises 1`] = `
           "extremamente",
           "perante",
           "normalmente",
+          "desculpe",
         ],
-        "count": 246,
+        "count": 247,
       },
     },
     "VERB": {

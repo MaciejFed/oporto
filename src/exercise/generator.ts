@@ -87,7 +87,10 @@ const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toEngli
 
 const NounTranslationGenerator: ExerciseGenerator = () => {
   return readAll().nouns.flatMap((noun) =>
-    translationTypes.map((translationType) => NounTranslationExercise.new(noun, translationType))
+    translationTypes.flatMap((translationType) => [
+      NounTranslationExercise.new(noun, translationType, 'singular'),
+      ...(noun.portuguese.plural ? [NounTranslationExercise.new(noun, translationType, 'plural')] : [])
+    ])
   );
 };
 
@@ -159,7 +162,8 @@ const VerbTranslationGenerator: ExerciseGenerator = () => {
 
 const VerbTranslationOtherFormsGenerator: ExerciseGenerator = () => {
   return readAll()
-    .verbs.flatMap((verb) =>
+    .verbs.filter((verb) => verb.otherForms)
+    .flatMap((verb) =>
       verb.otherForms!.flatMap((_, index) => [
         VerbOtherFormTranslationExercise.new(verb, 'toPortugueseFromHearing', index),
         VerbOtherFormTranslationExercise.new(verb, 'toEnglish', index),
@@ -200,7 +204,10 @@ const OtherWithGenderTranslationGenerator: ExerciseGenerator = () => {
           OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular'),
           OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'plural'),
           OtherGenderTranslationExercise.new(other, translationType, 'feminine', 'singular'),
-          OtherGenderTranslationExercise.new(other, translationType, 'feminine', 'plural')
+          OtherGenderTranslationExercise.new(other, translationType, 'feminine', 'plural'),
+          ...(other.portuguese.base
+            ? [OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular', true)]
+            : [])
         ];
       }
       return [OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular')];
@@ -259,7 +266,7 @@ export function generateAllPossibleExercises(language: Language): Exercise[] {
         VerbExerciseGenerator,
         NounTranslationGenerator,
         VerbTranslationGenerator,
-        // VerbTranslationOtherFormsGenerator,
+        VerbTranslationOtherFormsGenerator,
         PhraseTranslationGenerator,
         OtherWithGenderTranslationGenerator,
         OtherTranslationGenerator,

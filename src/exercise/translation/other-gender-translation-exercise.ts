@@ -60,8 +60,12 @@ export class OtherGenderTranslationExercise extends TranslationExercise implemen
 
   getTranslation = () => this.other.english;
 
-  getCorrectAnswer = () =>
-    this.isTranslationToPortuguese() ? this.other.portuguese[this.number][this.gender] : this.other.english;
+  getCorrectAnswer = () => {
+    if (this.isTranslationToPortuguese()) {
+      return this.base ? this.other.portuguese.base! : this.other.portuguese[this.number][this.gender];
+    }
+    return this.other.english;
+  };
 
   isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
@@ -86,6 +90,7 @@ export class OtherGenderTranslationExercise extends TranslationExercise implemen
     other.exerciseType === 'OtherWithGenderTranslation' &&
     this.gender === other.gender &&
     this.number === other.number &&
+    this.base === other.base &&
     this.other.portuguese.singular.masculine === other.other.portuguese.singular.masculine &&
     this.other.portuguese.singular.feminine === other.other.portuguese.singular.feminine &&
     this.other.portuguese.plural.masculine === other.other.portuguese.plural.masculine &&

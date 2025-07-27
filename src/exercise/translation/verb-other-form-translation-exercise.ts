@@ -49,9 +49,7 @@ export class VerbOtherFormTranslationExercise extends TranslationExercise implem
   getTranslation = () => this.verb.english;
 
   getCorrectAnswer = () =>
-    this.isTranslationToPortuguese()
-      ? this.verb.otherForms![this.number].form
-      : this.verb.otherForms![this.number].portuguese;
+    this.isTranslationToPortuguese() ? this.verb.otherForms![this.number].portuguese : this.verb.english;
 
   isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();

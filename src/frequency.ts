@@ -2187,7 +2187,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   pára: {
     place: 547,
-    frequency: 0.0174
+    frequency: 0.0174,
+    ignore: true
   },
   plano: {
     place: 548,
@@ -2379,7 +2380,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   teres: {
     place: 595,
-    frequency: 0.0157
+    frequency: 0.0157,
+    ignore: true
   },
   senhora: {
     place: 596,
@@ -2591,7 +2593,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   nao: {
     place: 648,
-    frequency: 0.0137
+    frequency: 0.0137,
+    ignore: true
   },
   tio: {
     place: 649,
@@ -2707,7 +2710,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   john: {
     place: 677,
-    frequency: 0.0129
+    frequency: 0.0129,
+    ignore: true
   },
   possível: {
     place: 678,
@@ -2963,7 +2967,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   the: {
     place: 741,
-    frequency: 0.0118
+    frequency: 0.0118,
+    ignore: true
   },
   cabo: {
     place: 742,
@@ -3487,7 +3492,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   jack: {
     place: 872,
-    frequency: 0.0097
+    frequency: 0.0097,
+    ignore: true
   },
   dado: {
     place: 873,
@@ -3871,7 +3877,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   oh: {
     place: 968,
-    frequency: 0.0085
+    frequency: 0.0085,
+    ignore: true
   },
   acesso: {
     place: 969,
@@ -3995,7 +4002,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   tom: {
     place: 999,
-    frequency: 0.0082
+    frequency: 0.0082,
+    ignore: true
   },
   pedido: {
     place: 1000,
@@ -4007,7 +4015,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   michael: {
     place: 1002,
-    frequency: 0.0082
+    frequency: 0.0082,
+    ignore: true
   },
   fazendo: {
     place: 1003,
@@ -4115,7 +4124,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   quê: {
     place: 1029,
-    frequency: 0.0078
+    frequency: 0.0078,
+    ignore: true
   },
   tia: {
     place: 1030,
