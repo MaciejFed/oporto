@@ -28467,7 +28467,7 @@ export const db: Schema = {
       english: 'them'
     },
     {
-      portuguese: 'costast',
+      portuguese: 'costas',
       english: 'back'
     },
     {
