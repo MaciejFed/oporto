@@ -7169,6 +7169,10 @@ exports[`Priority PT 1`] = `
             "form": "particípio",
             "portuguese": "estado",
           },
+          {
+            "form": "unknown",
+            "portuguese": "estares",
+          },
         ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
@@ -7271,6 +7275,10 @@ exports[`Priority PT 1`] = `
           {
             "form": "particípio",
             "portuguese": "estado",
+          },
+          {
+            "form": "unknown",
+            "portuguese": "estares",
           },
         ],
         "pastPerfect": {
@@ -7375,6 +7383,10 @@ exports[`Priority PT 1`] = `
             "form": "particípio",
             "portuguese": "estado",
           },
+          {
+            "form": "unknown",
+            "portuguese": "estares",
+          },
         ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
@@ -7478,6 +7490,10 @@ exports[`Priority PT 1`] = `
             "form": "particípio",
             "portuguese": "estado",
           },
+          {
+            "form": "unknown",
+            "portuguese": "estares",
+          },
         ],
         "pastPerfect": {
           "Ela/Ele/Você": "esteve",
@@ -7580,6 +7596,10 @@ exports[`Priority PT 1`] = `
           {
             "form": "particípio",
             "portuguese": "estado",
+          },
+          {
+            "form": "unknown",
+            "portuguese": "estares",
           },
         ],
         "pastPerfect": {
@@ -10854,6 +10874,10 @@ exports[`Priority PT 1`] = `
             "form": "particípio",
             "portuguese": "podido",
           },
+          {
+            "form": "not-checked",
+            "portuguese": "poderes",
+          },
         ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -11490,6 +11514,10 @@ exports[`Priority PT 1`] = `
             "form": "particípio",
             "portuguese": "podido",
           },
+          {
+            "form": "not-checked",
+            "portuguese": "poderes",
+          },
         ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -11596,6 +11624,10 @@ exports[`Priority PT 1`] = `
           {
             "form": "particípio",
             "portuguese": "podido",
+          },
+          {
+            "form": "not-checked",
+            "portuguese": "poderes",
           },
         ],
         "pastPerfect": {
@@ -11704,6 +11736,10 @@ exports[`Priority PT 1`] = `
             "form": "particípio",
             "portuguese": "podido",
           },
+          {
+            "form": "not-checked",
+            "portuguese": "poderes",
+          },
         ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -11811,6 +11847,10 @@ exports[`Priority PT 1`] = `
             "form": "particípio",
             "portuguese": "podido",
           },
+          {
+            "form": "not-checked",
+            "portuguese": "poderes",
+          },
         ],
         "pastPerfect": {
           "Ela/Ele/Você": "pôde",
@@ -11917,6 +11957,10 @@ exports[`Priority PT 1`] = `
           {
             "form": "particípio",
             "portuguese": "podido",
+          },
+          {
+            "form": "not-checked",
+            "portuguese": "poderes",
           },
         ],
         "pastPerfect": {

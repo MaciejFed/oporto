@@ -126,11 +126,15 @@ export class Terminal {
       this.exerciseBodyPrefix = body.exerciseBodyPrefix;
       this.exerciseBodySuffix = body.exerciseBodySuffix;
       this.exerciseTranslation = body.exerciseTranslation;
-      printExerciseBody(
-        `${this.exerciseBodyPrefix} ${this.currentExercise.getMovieExamplePrefix()}`,
-        this.answer,
-        this.currentExercise.getMovieExampleSuffix()
-      );
+      if (this.currentExercise instanceof TranslationExercise && this.currentExercise.translationType === 'toEnglish') {
+        printExerciseBody(`${this.exerciseBodyPrefix}`, this.answer, '');
+      } else {
+        printExerciseBody(
+          `${this.exerciseBodyPrefix} ${this.currentExercise.getMovieExamplePrefix()}`,
+          this.answer,
+          this.currentExercise.getMovieExampleSuffix()
+        );
+      }
     });
   }
 
@@ -170,11 +174,16 @@ export class Terminal {
       this.currentExercise = exercise;
       this.correctAnswer = correctAnswer;
       printExerciseFeedback(wasCorrect, this.currentExercise.getFrequency().place, this.change);
-      printExerciseBodyWithCorrection(
-        `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
-        this.answer,
-        correctAnswer
-      );
+      if (this.currentExercise instanceof TranslationExercise && this.currentExercise.translationType === 'toEnglish') {
+        printExerciseBodyWithCorrection(this.exerciseBodyPrefix, this.answer, correctAnswer);
+      } else {
+        printExerciseBodyWithCorrection(
+          `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
+          this.answer,
+          correctAnswer
+        );
+      }
+
       this.repetitionAnswer = '';
       if (!wasCorrect) {
         this.phase = Phase.REPETITION;
@@ -203,11 +212,15 @@ export class Terminal {
       }
       this.answer = this.answer + key;
     }
-    printExerciseBody(
-      `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
-      this.answer,
-      this.currentExercise.getMovieExampleSuffix()
-    );
+    if (this.currentExercise instanceof TranslationExercise && this.currentExercise.translationType === 'toEnglish') {
+      printExerciseBody(this.exerciseBodyPrefix, this.answer, '');
+    } else {
+      printExerciseBody(
+        `${this.exerciseBodyPrefix}${this.currentExercise.getMovieExamplePrefix()}`,
+        this.answer,
+        this.currentExercise.getMovieExampleSuffix()
+      );
+    }
   }
 
   private endOfExerciseMenu() {

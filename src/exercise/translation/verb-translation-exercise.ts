@@ -40,7 +40,7 @@ export class VerbTranslationExercise extends TranslationExercise implements Comp
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.verb.english}`;
     }
-    return `Portuguese: ${this.getMovieExamplePrefix()} ${this.verb.infinitive} ${this.getMovieExampleSuffix()}`;
+    return `Portuguese: ${this.getMovieExamplePrefix()} \'${this.verb.infinitive}\' ${this.getMovieExampleSuffix()}`;
   };
 
   getTranslation = () => this.verb.english;

@@ -35,13 +35,13 @@ export function checkMap() {
       (ex) => (ex instanceof TranslationExercise && ex.translationType === 'toPortuguese') || ex instanceof VerbExercise
     );
 
-  // const allWords = getAllUniqueWordsConjugated(Language.Portuguese);
+  const allWords = getAllUniqueWordsConjugated(Language.Portuguese);
 
-  const allWords = allExercises.map((ex) => {
-    const res = ex.getCorrectAnswer();
-    const splitted = res.split(' ');
-    return splitted[splitted.length - 1].toLowerCase();
-  });
+  // const allWords = allExercises.map((ex) => {
+  //   const res = ex.getCorrectAnswer();
+  //   const splitted = res.split(' ');
+  //   return splitted[splitted.length - 1].toLowerCase();
+  // });
 
   let total = 0;
 

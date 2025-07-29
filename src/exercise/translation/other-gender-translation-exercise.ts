@@ -53,9 +53,9 @@ export class OtherGenderTranslationExercise extends TranslationExercise implemen
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.other.english}`;
     }
-    return `Portuguese: ${this.getMovieExamplePrefix()} ${
+    return `Portuguese: ${this.getMovieExamplePrefix()} \'${
       this.other.portuguese.singular.masculine
-    } ${this.getMovieExampleSuffix()}`;
+    }\' ${this.getMovieExampleSuffix()}`;
   };
 
   getTranslation = () => this.other.english;

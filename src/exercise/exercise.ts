@@ -124,12 +124,12 @@ export abstract class BaseExercise implements Exercise {
   }
 
   getMovieExamplePrefix(): string {
-    if (!this.movieExample || !this.supportsMovieExampleAnswer()) return '';
+    if (!this.movieExample) return '';
     return ` "${this.movieExample.targetLanguage.substring(0, this.movieExample.wordStartIndex)}`;
   }
 
   getMovieExampleSuffix(): string {
-    if (!this.movieExample || !this.supportsMovieExampleAnswer()) return '';
+    if (!this.movieExample) return '';
     return `${this.movieExample.targetLanguage.substring(
       this.movieExample.wordStartIndex + this.movieExample.word.length + 1
     )}`;

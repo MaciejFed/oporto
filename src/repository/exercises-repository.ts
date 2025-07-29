@@ -401,7 +401,12 @@ const verbs = [
   'assumir',
   'admitir',
   'chorar',
-  'duvidar'
+  'duvidar',
+  'enfrentar',
+  'estragar',
+  'amar',
+  'sobreviver',
+  'marcar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];
