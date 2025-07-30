@@ -4397,7 +4397,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   comandante: {
     place: 1097,
-    frequency: 0.0072
+    frequency: 0.0072,
+    ignore: true
   },
   sam: {
     place: 1098,
@@ -6663,7 +6664,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   to: {
     place: 1656,
-    frequency: 0.0043
+    frequency: 0.0043,
+    ignore: true
   },
   irmos: {
     place: 1657,
@@ -6769,7 +6771,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   adn: {
     place: 1682,
-    frequency: 0.0043
+    frequency: 0.0043,
+    ignore: true
   },
   morreram: {
     place: 1683,
@@ -6821,7 +6824,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   van: {
     place: 1695,
-    frequency: 0.0042
+    frequency: 0.0042,
+    ignore: true
   },
   der: {
     place: 1696,
@@ -6857,7 +6861,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   americanos: {
     place: 1704,
-    frequency: 0.0042
+    frequency: 0.0042,
+    ignore: true
   },
   casaco: {
     place: 1705,
@@ -6889,7 +6894,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   bill: {
     place: 1712,
-    frequency: 0.0042
+    frequency: 0.0042,
+    ignore: true
   },
   corrida: {
     place: 1713,
@@ -6973,7 +6979,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   bob: {
     place: 1733,
-    frequency: 0.0041
+    frequency: 0.0041,
+    ignore: true
   },
   calma: {
     place: 1734,
@@ -7057,7 +7064,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   richard: {
     place: 1754,
-    frequency: 0.004
+    frequency: 0.004,
+    ignore: true
   },
   comportamento: {
     place: 1755,
@@ -7065,7 +7073,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   fazeres: {
     place: 1756,
-    frequency: 0.004
+    frequency: 0.004,
+    ignore: true
   },
   costa: {
     place: 1757,
@@ -7137,7 +7146,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   of: {
     place: 1774,
-    frequency: 0.004
+    frequency: 0.004,
+    ignore: true
   },
   dúvida: {
     place: 1775,
@@ -7225,7 +7235,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   flores: {
     place: 1796,
-    frequency: 0.0039
+    frequency: 0.0039,
+    ignore: true
   },
   quinta: {
     place: 1797,
@@ -7281,11 +7292,13 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   tony: {
     place: 1810,
-    frequency: 0.0039
+    frequency: 0.0039,
+    ignore: true
   },
   férias: {
     place: 1811,
-    frequency: 0.0039
+    frequency: 0.0039,
+    ignore: true
   },
   bebe: {
     place: 1812,
@@ -7525,7 +7538,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   danny: {
     place: 1871,
-    frequency: 0.0038
+    frequency: 0.0038,
+    ignore: true
   },
   apaixonado: {
     place: 1872,
@@ -7533,7 +7547,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   san: {
     place: 1873,
-    frequency: 0.0038
+    frequency: 0.0038,
+    ignore: true
   },
   enviou: {
     place: 1874,
@@ -7609,7 +7624,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   big: {
     place: 1892,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   treino: {
     place: 1893,
@@ -7617,7 +7633,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   steve: {
     place: 1894,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   reino: {
     place: 1895,
@@ -7669,7 +7686,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   sarah: {
     place: 1907,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   poucas: {
     place: 1908,
@@ -7689,7 +7707,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   sermos: {
     place: 1912,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   televisão: {
     place: 1913,
@@ -7697,7 +7716,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   sir: {
     place: 1914,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   primo: {
     place: 1915,
@@ -7733,11 +7753,13 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   alex: {
     place: 1923,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   nick: {
     place: 1924,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   cozinha: {
     place: 1925,
@@ -7757,7 +7779,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   jim: {
     place: 1929,
-    frequency: 0.0037
+    frequency: 0.0037,
+    ignore: true
   },
   magoar: {
     place: 1930,
@@ -7797,7 +7820,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   charles: {
     place: 1939,
-    frequency: 0.0036
+    frequency: 0.0036,
+    ignore: true
   },
   convencer: {
     place: 1940,
@@ -7837,7 +7861,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   daniel: {
     place: 1949,
-    frequency: 0.0036
+    frequency: 0.0036,
+    ignore: true
   },
   jornal: {
     place: 1950,
@@ -50165,7 +50190,8 @@ export const frequencyMap: Record<string, Frequency> = {
   },
   comandantes: {
     place: 12530,
-    frequency: 0.0003
+    frequency: 0.0003,
+    ignore: true
   },
   cônsul: {
     place: 12531,

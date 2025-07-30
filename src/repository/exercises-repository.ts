@@ -406,7 +406,13 @@ const verbs = [
   'estragar',
   'amar',
   'sobreviver',
-  'marcar'
+  'pertencer',
+  'marcar',
+  'prender',
+  'atacar',
+  'crescer',
+  'magoar',
+  'aguentar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

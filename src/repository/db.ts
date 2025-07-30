@@ -22188,6 +22188,1092 @@ export const db: Schema = {
           portuguese: 'sobrevivendo'
         }
       ]
+    },
+    {
+      english: 'to attack',
+      infinitive: 'atacar',
+      presentSimple: {
+        Eu: 'ataco',
+        Tu: 'atacas',
+        'Ela/Ele/Você': 'ataca',
+        Nós: 'atacamos',
+        'Eles/Elas/Vocēs': 'atacam'
+      },
+      pastPerfect: {
+        Eu: 'ataquei',
+        Tu: 'atacaste',
+        'Ela/Ele/Você': 'atacou',
+        Nós: 'atacámos',
+        'Eles/Elas/Vocēs': 'atacaram'
+      },
+      imperfect: {
+        Eu: 'atacava',
+        Tu: 'atacavas',
+        'Ela/Ele/Você': 'atacava',
+        Nós: 'atacávamos',
+        'Eles/Elas/Vocēs': 'atacavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'atacara',
+        Tu: 'atacaras',
+        'Ela/Ele/Você': 'atacara',
+        Nós: 'atacáramos',
+        'Eles/Elas/Vocēs': 'atacaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'atacarei',
+        Tu: 'atacarás',
+        'Ela/Ele/Você': 'atacará',
+        Nós: 'atacaremos',
+        'Eles/Elas/Vocēs': 'atacarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'ataque',
+        Tu: 'ataques',
+        'Ela/Ele/Você': 'ataque',
+        Nós: 'ataquemos',
+        'Eles/Elas/Vocēs': 'ataquem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'atacasse',
+        Tu: 'atacasses',
+        'Ela/Ele/Você': 'atacasse',
+        Nós: 'atacássemos',
+        'Eles/Elas/Vocēs': 'atacassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'atacar',
+        Tu: 'atacares',
+        'Ela/Ele/Você': 'atacar',
+        Nós: 'atacarmos',
+        'Eles/Elas/Vocēs': 'atacarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'atacaria',
+        Tu: 'atacarias',
+        'Ela/Ele/Você': 'atacaria',
+        Nós: 'atacaríamos',
+        'Eles/Elas/Vocēs': 'atacariam'
+      },
+      otherForms: [
+        {
+          form: 'indicativo.presente.vós',
+          portuguese: 'atacais'
+        },
+        {
+          form: 'indicativo.pretérito_perfeito.vós',
+          portuguese: 'atacastes'
+        },
+        {
+          form: 'indicativo.pretérito_imperfeito.vós',
+          portuguese: 'atacáveis'
+        },
+        {
+          form: 'indicativo.pretérito_mais_que_perfeito.vós',
+          portuguese: 'atacáreis'
+        },
+        {
+          form: 'indicativo.futuro_do_presente.vós',
+          portuguese: 'atacareis'
+        },
+        {
+          form: 'conjuntivo.presente.vós',
+          portuguese: 'ataqueis'
+        },
+        {
+          form: 'conjuntivo.pretérito_imperfeito.vós',
+          portuguese: 'atacásseis'
+        },
+        {
+          form: 'conjuntivo.futuro.vós',
+          portuguese: 'atacardes'
+        },
+        {
+          form: 'condicional.futuro_do_pretérito.vós',
+          portuguese: 'atacaríeis'
+        },
+        {
+          form: 'imperativo.afirmativo.tu',
+          portuguese: 'ataca'
+        },
+        {
+          form: 'imperativo.afirmativo.ele/ela/você',
+          portuguese: 'ataque'
+        },
+        {
+          form: 'imperativo.afirmativo.nós',
+          portuguese: 'ataquemos'
+        },
+        {
+          form: 'imperativo.afirmativo.vós',
+          portuguese: 'atacai'
+        },
+        {
+          form: 'imperativo.afirmativo.eles/elas/vocês',
+          portuguese: 'ataquem'
+        },
+        {
+          form: 'imperativo.negativo.tu',
+          portuguese: 'não ataques'
+        },
+        {
+          form: 'imperativo.negativo.ele/ela/você',
+          portuguese: 'não ataque'
+        },
+        {
+          form: 'imperativo.negativo.nós',
+          portuguese: 'não ataquemos'
+        },
+        {
+          form: 'imperativo.negativo.vós',
+          portuguese: 'não ataqueis'
+        },
+        {
+          form: 'imperativo.negativo.eles/elas/vocês',
+          portuguese: 'não ataquem'
+        },
+        {
+          form: 'infinitivo.impessoal',
+          portuguese: 'atacar'
+        },
+        {
+          form: 'infinitivo.pessoal.eu',
+          portuguese: 'atacar'
+        },
+        {
+          form: 'infinitivo.pessoal.tu',
+          portuguese: 'atacares'
+        },
+        {
+          form: 'infinitivo.pessoal.ele/ela/você',
+          portuguese: 'atacar'
+        },
+        {
+          form: 'infinitivo.pessoal.nós',
+          portuguese: 'atacarmos'
+        },
+        {
+          form: 'infinitivo.pessoal.vós',
+          portuguese: 'atacardes'
+        },
+        {
+          form: 'infinitivo.pessoal.eles/elas/vocês',
+          portuguese: 'atacarem'
+        },
+        {
+          form: 'particípio_passado',
+          portuguese: 'atacado'
+        },
+        {
+          form: 'gerúndio',
+          portuguese: 'atacando'
+        }
+      ]
+    },
+    {
+      english: 'to belong',
+      infinitive: 'pertencer',
+      presentSimple: {
+        Eu: 'pertenço',
+        Tu: 'pertences',
+        'Ela/Ele/Você': 'pertence',
+        Nós: 'pertencemos',
+        'Eles/Elas/Vocēs': 'pertencem'
+      },
+      pastPerfect: {
+        Eu: 'perteneci',
+        Tu: 'perteneceste',
+        'Ela/Ele/Você': 'perteneceu',
+        Nós: 'pertenecemos',
+        'Eles/Elas/Vocēs': 'perteneceram'
+      },
+      imperfect: {
+        Eu: 'pertencia',
+        Tu: 'pertencias',
+        'Ela/Ele/Você': 'pertencia',
+        Nós: 'pertencíamos',
+        'Eles/Elas/Vocēs': 'pertenciam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'pertencera',
+        Tu: 'pertenceras',
+        'Ela/Ele/Você': 'pertencera',
+        Nós: 'pertencêramos',
+        'Eles/Elas/Vocēs': 'pertenceram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'pertencerei',
+        Tu: 'pertencerás',
+        'Ela/Ele/Você': 'pertencerá',
+        Nós: 'pertenceremos',
+        'Eles/Elas/Vocēs': 'pertencerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'pertença',
+        Tu: 'pertenças',
+        'Ela/Ele/Você': 'pertença',
+        Nós: 'pertençamos',
+        'Eles/Elas/Vocēs': 'pertençam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'pertencesse',
+        Tu: 'pertencesses',
+        'Ela/Ele/Você': 'pertencesse',
+        Nós: 'pertencêssemos',
+        'Eles/Elas/Vocēs': 'pertencessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'pertencer',
+        Tu: 'pertenceres',
+        'Ela/Ele/Você': 'pertencer',
+        Nós: 'pertencermos',
+        'Eles/Elas/Vocēs': 'pertencerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'pertenceria',
+        Tu: 'pertencerias',
+        'Ela/Ele/Você': 'pertenceria',
+        Nós: 'pertenceríamos',
+        'Eles/Elas/Vocēs': 'pertenceriam'
+      },
+      otherForms: [
+        {
+          form: 'indicativo.presente.vós',
+          portuguese: 'pertenceis'
+        },
+        {
+          form: 'indicativo.pretérito_perfeito.vós',
+          portuguese: 'pertenecestes'
+        },
+        {
+          form: 'indicativo.pretérito_imperfeito.vós',
+          portuguese: 'pertencíeis'
+        },
+        {
+          form: 'indicativo.pretérito_mais_que_perfeito.vós',
+          portuguese: 'pertencêreis'
+        },
+        {
+          form: 'indicativo.futuro_do_presente.vós',
+          portuguese: 'pertencereis'
+        },
+        {
+          form: 'conjuntivo.presente.vós',
+          portuguese: 'pertençais'
+        },
+        {
+          form: 'conjuntivo.pretérito_imperfeito.vós',
+          portuguese: 'pertencêsseis'
+        },
+        {
+          form: 'conjuntivo.futuro.vós',
+          portuguese: 'pertencerdes'
+        },
+        {
+          form: 'condicional.futuro_do_pretérito.vós',
+          portuguese: 'pertenceríeis'
+        },
+        {
+          form: 'imperativo.afirmativo.tu',
+          portuguese: 'pertence'
+        },
+        {
+          form: 'imperativo.afirmativo.ele/ela/você',
+          portuguese: 'pertença'
+        },
+        {
+          form: 'imperativo.afirmativo.nós',
+          portuguese: 'pertençamos'
+        },
+        {
+          form: 'imperativo.afirmativo.vós',
+          portuguese: 'pertencei'
+        },
+        {
+          form: 'imperativo.afirmativo.eles/elas/vocês',
+          portuguese: 'pertençam'
+        },
+        {
+          form: 'imperativo.negativo.tu',
+          portuguese: 'não pertenças'
+        },
+        {
+          form: 'imperativo.negativo.ele/ela/você',
+          portuguese: 'não pertença'
+        },
+        {
+          form: 'imperativo.negativo.nós',
+          portuguese: 'não pertençamos'
+        },
+        {
+          form: 'imperativo.negativo.vós',
+          portuguese: 'não pertençais'
+        },
+        {
+          form: 'imperativo.negativo.eles/elas/vocês',
+          portuguese: 'não pertençam'
+        },
+        {
+          form: 'infinitivo.impessoal',
+          portuguese: 'pertencer'
+        },
+        {
+          form: 'infinitivo.pessoal.eu',
+          portuguese: 'pertencer'
+        },
+        {
+          form: 'infinitivo.pessoal.tu',
+          portuguese: 'pertenceres'
+        },
+        {
+          form: 'infinitivo.pessoal.ele/ela/você',
+          portuguese: 'pertencer'
+        },
+        {
+          form: 'infinitivo.pessoal.nós',
+          portuguese: 'pertencermos'
+        },
+        {
+          form: 'infinitivo.pessoal.vós',
+          portuguese: 'pertencerdes'
+        },
+        {
+          form: 'infinitivo.pessoal.eles/elas/vocês',
+          portuguese: 'pertencerem'
+        },
+        {
+          form: 'particípio_passado',
+          portuguese: 'pertencido'
+        },
+        {
+          form: 'gerúndio',
+          portuguese: 'pertencendo'
+        }
+      ]
+    },
+    {
+      english: 'to grow',
+      infinitive: 'crescer',
+      presentSimple: {
+        Eu: 'cresço',
+        Tu: 'cresces',
+        'Ela/Ele/Você': 'cresce',
+        Nós: 'crescemos',
+        'Eles/Elas/Vocēs': 'crescem'
+      },
+      pastPerfect: {
+        Eu: 'cresci',
+        Tu: 'cresceste',
+        'Ela/Ele/Você': 'cresceu',
+        Nós: 'crescemos',
+        'Eles/Elas/Vocēs': 'cresceram'
+      },
+      imperfect: {
+        Eu: 'crescia',
+        Tu: 'crescias',
+        'Ela/Ele/Você': 'crescia',
+        Nós: 'crescíamos',
+        'Eles/Elas/Vocēs': 'cresciam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'crescera',
+        Tu: 'cresceras',
+        'Ela/Ele/Você': 'crescera',
+        Nós: 'crescêramos',
+        'Eles/Elas/Vocēs': 'cresceram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'crescerei',
+        Tu: 'crescerás',
+        'Ela/Ele/Você': 'crescerá',
+        Nós: 'cresceremos',
+        'Eles/Elas/Vocēs': 'crescerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'cresça',
+        Tu: 'cresças',
+        'Ela/Ele/Você': 'cresça',
+        Nós: 'cresçamos',
+        'Eles/Elas/Vocēs': 'cresçam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'crescesse',
+        Tu: 'crescesses',
+        'Ela/Ele/Você': 'crescesse',
+        Nós: 'crescêssemos',
+        'Eles/Elas/Vocēs': 'crescessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'crescer',
+        Tu: 'cresceres',
+        'Ela/Ele/Você': 'crescer',
+        Nós: 'crescermos',
+        'Eles/Elas/Vocēs': 'crescerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'cresceria',
+        Tu: 'crescerias',
+        'Ela/Ele/Você': 'cresceria',
+        Nós: 'cresceríamos',
+        'Eles/Elas/Vocēs': 'cresceriam'
+      },
+      otherForms: [
+        {
+          form: 'indicativo.presente.vós',
+          portuguese: 'cresceis'
+        },
+        {
+          form: 'indicativo.pretérito_perfeito.vós',
+          portuguese: 'crescestes'
+        },
+        {
+          form: 'indicativo.pretérito_imperfeito.vós',
+          portuguese: 'crescíeis'
+        },
+        {
+          form: 'indicativo.pretérito_mais_que_perfeito.vós',
+          portuguese: 'crescêreis'
+        },
+        {
+          form: 'indicativo.futuro_do_presente.vós',
+          portuguese: 'crescereis'
+        },
+        {
+          form: 'conjuntivo.presente.vós',
+          portuguese: 'cresçais'
+        },
+        {
+          form: 'conjuntivo.pretérito_imperfeito.vós',
+          portuguese: 'crescêsseis'
+        },
+        {
+          form: 'conjuntivo.futuro.vós',
+          portuguese: 'crescerdes'
+        },
+        {
+          form: 'condicional.futuro_do_pretérito.vós',
+          portuguese: 'cresceríeis'
+        },
+        {
+          form: 'imperativo.afirmativo.tu',
+          portuguese: 'cresce'
+        },
+        {
+          form: 'imperativo.afirmativo.ele/ela/você',
+          portuguese: 'cresça'
+        },
+        {
+          form: 'imperativo.afirmativo.nós',
+          portuguese: 'cresçamos'
+        },
+        {
+          form: 'imperativo.afirmativo.vós',
+          portuguese: 'crescei'
+        },
+        {
+          form: 'imperativo.afirmativo.eles/elas/vocês',
+          portuguese: 'cresçam'
+        },
+        {
+          form: 'imperativo.negativo.tu',
+          portuguese: 'não cresças'
+        },
+        {
+          form: 'imperativo.negativo.ele/ela/você',
+          portuguese: 'não cresça'
+        },
+        {
+          form: 'imperativo.negativo.nós',
+          portuguese: 'não cresçamos'
+        },
+        {
+          form: 'imperativo.negativo.vós',
+          portuguese: 'não cresçais'
+        },
+        {
+          form: 'imperativo.negativo.eles/elas/vocês',
+          portuguese: 'não cresçam'
+        },
+        {
+          form: 'infinitivo.impessoal',
+          portuguese: 'crescer'
+        },
+        {
+          form: 'infinitivo.pessoal.eu',
+          portuguese: 'crescer'
+        },
+        {
+          form: 'infinitivo.pessoal.tu',
+          portuguese: 'cresceres'
+        },
+        {
+          form: 'infinitivo.pessoal.ele/ela/você',
+          portuguese: 'crescer'
+        },
+        {
+          form: 'infinitivo.pessoal.nós',
+          portuguese: 'crescermos'
+        },
+        {
+          form: 'infinitivo.pessoal.vós',
+          portuguese: 'crescerdes'
+        },
+        {
+          form: 'infinitivo.pessoal.eles/elas/vocês',
+          portuguese: 'crescerem'
+        },
+        {
+          form: 'particípio_passado',
+          portuguese: 'crescido'
+        },
+        {
+          form: 'gerúndio',
+          portuguese: 'crescendo'
+        }
+      ]
+    },
+    {
+      english: 'to hurt',
+      infinitive: 'magoar',
+      presentSimple: {
+        Eu: 'magoo',
+        Tu: 'magoas',
+        'Ela/Ele/Você': 'magoa',
+        Nós: 'magoamos',
+        'Eles/Elas/Vocēs': 'magoam'
+      },
+      pastPerfect: {
+        Eu: 'magoei',
+        Tu: 'magoaste',
+        'Ela/Ele/Você': 'magoou',
+        Nós: 'magoámos',
+        'Eles/Elas/Vocēs': 'magoaram'
+      },
+      imperfect: {
+        Eu: 'magoava',
+        Tu: 'magoavas',
+        'Ela/Ele/Você': 'magoava',
+        Nós: 'magoávamos',
+        'Eles/Elas/Vocēs': 'magoavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'magoara',
+        Tu: 'magoaras',
+        'Ela/Ele/Você': 'magoara',
+        Nós: 'magoáramos',
+        'Eles/Elas/Vocēs': 'magoaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'magoarei',
+        Tu: 'magoarás',
+        'Ela/Ele/Você': 'magoará',
+        Nós: 'magoaremos',
+        'Eles/Elas/Vocēs': 'magoarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'magoe',
+        Tu: 'magoes',
+        'Ela/Ele/Você': 'magoe',
+        Nós: 'magoemos',
+        'Eles/Elas/Vocēs': 'magoem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'magoasse',
+        Tu: 'magoasses',
+        'Ela/Ele/Você': 'magoasse',
+        Nós: 'magoássemos',
+        'Eles/Elas/Vocēs': 'magoassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'magoar',
+        Tu: 'magoares',
+        'Ela/Ele/Você': 'magoar',
+        Nós: 'magoarmos',
+        'Eles/Elas/Vocēs': 'magoarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'magoaria',
+        Tu: 'magoarias',
+        'Ela/Ele/Você': 'magoaria',
+        Nós: 'magoaríamos',
+        'Eles/Elas/Vocēs': 'magoariam'
+      },
+      otherForms: [
+        {
+          form: 'indicativo.presente.vós',
+          portuguese: 'magoais'
+        },
+        {
+          form: 'indicativo.pretérito_perfeito.vós',
+          portuguese: 'magoastes'
+        },
+        {
+          form: 'indicativo.pretérito_imperfeito.vós',
+          portuguese: 'magoáveis'
+        },
+        {
+          form: 'indicativo.pretérito_mais_que_perfeito.vós',
+          portuguese: 'magoáreis'
+        },
+        {
+          form: 'indicativo.futuro_do_presente.vós',
+          portuguese: 'magoareis'
+        },
+        {
+          form: 'conjuntivo.presente.vós',
+          portuguese: 'magoeis'
+        },
+        {
+          form: 'conjuntivo.pretérito_imperfeito.vós',
+          portuguese: 'magoásseis'
+        },
+        {
+          form: 'conjuntivo.futuro.vós',
+          portuguese: 'magoardes'
+        },
+        {
+          form: 'condicional.futuro_do_pretérito.vós',
+          portuguese: 'magoaríeis'
+        },
+        {
+          form: 'imperativo.afirmativo.tu',
+          portuguese: 'magoa'
+        },
+        {
+          form: 'imperativo.afirmativo.ele/ela/você',
+          portuguese: 'magoe'
+        },
+        {
+          form: 'imperativo.afirmativo.nós',
+          portuguese: 'magoemos'
+        },
+        {
+          form: 'imperativo.afirmativo.vós',
+          portuguese: 'magoai'
+        },
+        {
+          form: 'imperativo.afirmativo.eles/elas/vocês',
+          portuguese: 'magoem'
+        },
+        {
+          form: 'imperativo.negativo.tu',
+          portuguese: 'não magoes'
+        },
+        {
+          form: 'imperativo.negativo.ele/ela/você',
+          portuguese: 'não magoe'
+        },
+        {
+          form: 'imperativo.negativo.nós',
+          portuguese: 'não magoemos'
+        },
+        {
+          form: 'imperativo.negativo.vós',
+          portuguese: 'não magoeis'
+        },
+        {
+          form: 'imperativo.negativo.eles/elas/vocês',
+          portuguese: 'não magoem'
+        },
+        {
+          form: 'infinitivo.impessoal',
+          portuguese: 'magoar'
+        },
+        {
+          form: 'infinitivo.pessoal.eu',
+          portuguese: 'magoar'
+        },
+        {
+          form: 'infinitivo.pessoal.tu',
+          portuguese: 'magoares'
+        },
+        {
+          form: 'infinitivo.pessoal.ele/ela/você',
+          portuguese: 'magoar'
+        },
+        {
+          form: 'infinitivo.pessoal.nós',
+          portuguese: 'magoarmos'
+        },
+        {
+          form: 'infinitivo.pessoal.vós',
+          portuguese: 'magoardes'
+        },
+        {
+          form: 'infinitivo.pessoal.eles/elas/vocês',
+          portuguese: 'magoarem'
+        },
+        {
+          form: 'particípio_passado',
+          portuguese: 'magoado'
+        },
+        {
+          form: 'gerúndio',
+          portuguese: 'magoando'
+        }
+      ]
+    },
+    {
+      english: 'to arrest',
+      infinitive: 'prender',
+      presentSimple: {
+        Eu: 'prendo',
+        Tu: 'prendes',
+        'Ela/Ele/Você': 'prende',
+        Nós: 'prendemos',
+        'Eles/Elas/Vocēs': 'prendem'
+      },
+      pastPerfect: {
+        Eu: 'prendi',
+        Tu: 'prendeste',
+        'Ela/Ele/Você': 'prendeu',
+        Nós: 'prendemos',
+        'Eles/Elas/Vocēs': 'prenderam'
+      },
+      imperfect: {
+        Eu: 'prendia',
+        Tu: 'prendias',
+        'Ela/Ele/Você': 'prendia',
+        Nós: 'prendíamos',
+        'Eles/Elas/Vocēs': 'prendiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'prendera',
+        Tu: 'prenderas',
+        'Ela/Ele/Você': 'prendera',
+        Nós: 'prendêramos',
+        'Eles/Elas/Vocēs': 'prenderam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'prenderei',
+        Tu: 'prenderás',
+        'Ela/Ele/Você': 'prenderá',
+        Nós: 'prenderemos',
+        'Eles/Elas/Vocēs': 'prenderão'
+      },
+      subjuntivoPresente: {
+        Eu: 'prenda',
+        Tu: 'prendas',
+        'Ela/Ele/Você': 'prenda',
+        Nós: 'prendamos',
+        'Eles/Elas/Vocēs': 'prendam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'prendesse',
+        Tu: 'prendesses',
+        'Ela/Ele/Você': 'prendesse',
+        Nós: 'prendêssemos',
+        'Eles/Elas/Vocēs': 'prendessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'prender',
+        Tu: 'prenderes',
+        'Ela/Ele/Você': 'prender',
+        Nós: 'prendermos',
+        'Eles/Elas/Vocēs': 'prenderem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'prenderia',
+        Tu: 'prenderias',
+        'Ela/Ele/Você': 'prenderia',
+        Nós: 'prenderíamos',
+        'Eles/Elas/Vocēs': 'prenderiam'
+      },
+      otherForms: [
+        {
+          form: 'indicativo.presente.vós',
+          portuguese: 'prendeis'
+        },
+        {
+          form: 'indicativo.pretérito_perfeito.vós',
+          portuguese: 'prendestes'
+        },
+        {
+          form: 'indicativo.pretérito_imperfeito.vós',
+          portuguese: 'prendíeis'
+        },
+        {
+          form: 'indicativo.pretérito_mais_que_perfeito.vós',
+          portuguese: 'prendêreis'
+        },
+        {
+          form: 'indicativo.futuro_do_presente.vós',
+          portuguese: 'prendereis'
+        },
+        {
+          form: 'conjuntivo.presente.vós',
+          portuguese: 'prendais'
+        },
+        {
+          form: 'conjuntivo.pretérito_imperfeito.vós',
+          portuguese: 'prendêsseis'
+        },
+        {
+          form: 'conjuntivo.futuro.vós',
+          portuguese: 'prenderdes'
+        },
+        {
+          form: 'condicional.futuro_do_pretérito.vós',
+          portuguese: 'prenderíeis'
+        },
+        {
+          form: 'imperativo.afirmativo.tu',
+          portuguese: 'prende'
+        },
+        {
+          form: 'imperativo.afirmativo.ele/ela/você',
+          portuguese: 'prenda'
+        },
+        {
+          form: 'imperativo.afirmativo.nós',
+          portuguese: 'prendamos'
+        },
+        {
+          form: 'imperativo.afirmativo.vós',
+          portuguese: 'prendei'
+        },
+        {
+          form: 'imperativo.afirmativo.eles/elas/vocês',
+          portuguese: 'prendam'
+        },
+        {
+          form: 'imperativo.negativo.tu',
+          portuguese: 'não prendas'
+        },
+        {
+          form: 'imperativo.negativo.ele/ela/você',
+          portuguese: 'não prenda'
+        },
+        {
+          form: 'imperativo.negativo.nós',
+          portuguese: 'não prendamos'
+        },
+        {
+          form: 'imperativo.negativo.vós',
+          portuguese: 'não prendais'
+        },
+        {
+          form: 'imperativo.negativo.eles/elas/vocês',
+          portuguese: 'não prendam'
+        },
+        {
+          form: 'infinitivo.impessoal',
+          portuguese: 'prender'
+        },
+        {
+          form: 'infinitivo.pessoal.eu',
+          portuguese: 'prender'
+        },
+        {
+          form: 'infinitivo.pessoal.tu',
+          portuguese: 'prenderes'
+        },
+        {
+          form: 'infinitivo.pessoal.ele/ela/você',
+          portuguese: 'prender'
+        },
+        {
+          form: 'infinitivo.pessoal.nós',
+          portuguese: 'prendermos'
+        },
+        {
+          form: 'infinitivo.pessoal.vós',
+          portuguese: 'prenderdes'
+        },
+        {
+          form: 'infinitivo.pessoal.eles/elas/vocês',
+          portuguese: 'prenderem'
+        },
+        {
+          form: 'particípio_passado',
+          portuguese: 'preso'
+        },
+        {
+          form: 'gerúndio',
+          portuguese: 'prendendo'
+        }
+      ]
+    },
+    {
+      english: 'to bear',
+      infinitive: 'aguentar',
+      presentSimple: {
+        Eu: 'aguento',
+        Tu: 'aguentas',
+        'Ela/Ele/Você': 'aguenta',
+        Nós: 'aguentamos',
+        'Eles/Elas/Vocēs': 'aguentam'
+      },
+      pastPerfect: {
+        Eu: 'aguentei',
+        Tu: 'aguentaste',
+        'Ela/Ele/Você': 'aguentou',
+        Nós: 'aguentámos',
+        'Eles/Elas/Vocēs': 'aguentaram'
+      },
+      imperfect: {
+        Eu: 'aguentava',
+        Tu: 'aguentavas',
+        'Ela/Ele/Você': 'aguentava',
+        Nós: 'aguentávamos',
+        'Eles/Elas/Vocēs': 'aguentavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'aguentara',
+        Tu: 'aguentaras',
+        'Ela/Ele/Você': 'aguentara',
+        Nós: 'aguentáramos',
+        'Eles/Elas/Vocēs': 'aguentaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'aguentarei',
+        Tu: 'aguentarás',
+        'Ela/Ele/Você': 'aguentará',
+        Nós: 'aguentaremos',
+        'Eles/Elas/Vocēs': 'aguentarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'aguente',
+        Tu: 'aguentes',
+        'Ela/Ele/Você': 'aguente',
+        Nós: 'aguentemos',
+        'Eles/Elas/Vocēs': 'aguentem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'aguentasse',
+        Tu: 'aguentasses',
+        'Ela/Ele/Você': 'aguentasse',
+        Nós: 'aguentássemos',
+        'Eles/Elas/Vocēs': 'aguentassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'aguentar',
+        Tu: 'aguentares',
+        'Ela/Ele/Você': 'aguentar',
+        Nós: 'aguentarmos',
+        'Eles/Elas/Vocēs': 'aguentarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'aguentaria',
+        Tu: 'aguentarias',
+        'Ela/Ele/Você': 'aguentaria',
+        Nós: 'aguentaríamos',
+        'Eles/Elas/Vocēs': 'aguentariam'
+      },
+      otherForms: [
+        {
+          form: 'indicativo.presente.vós',
+          portuguese: 'aguentais'
+        },
+        {
+          form: 'indicativo.pretérito_perfeito.vós',
+          portuguese: 'aguentastes'
+        },
+        {
+          form: 'indicativo.pretérito_imperfeito.vós',
+          portuguese: 'aguentáveis'
+        },
+        {
+          form: 'indicativo.pretérito_mais_que_perfeito.vós',
+          portuguese: 'aguentáreis'
+        },
+        {
+          form: 'indicativo.futuro_do_presente.vós',
+          portuguese: 'aguentareis'
+        },
+        {
+          form: 'conjuntivo.presente.vós',
+          portuguese: 'aguenteis'
+        },
+        {
+          form: 'conjuntivo.pretérito_imperfeito.vós',
+          portuguese: 'aguentásseis'
+        },
+        {
+          form: 'conjuntivo.futuro.vós',
+          portuguese: 'aguentardes'
+        },
+        {
+          form: 'condicional.futuro_do_pretérito.vós',
+          portuguese: 'aguentaríeis'
+        },
+        {
+          form: 'imperativo.afirmativo.tu',
+          portuguese: 'aguenta'
+        },
+        {
+          form: 'imperativo.afirmativo.ele/ela/você',
+          portuguese: 'aguente'
+        },
+        {
+          form: 'imperativo.afirmativo.nós',
+          portuguese: 'aguentemos'
+        },
+        {
+          form: 'imperativo.afirmativo.vós',
+          portuguese: 'aguentai'
+        },
+        {
+          form: 'imperativo.afirmativo.eles/elas/vocês',
+          portuguese: 'aguentem'
+        },
+        {
+          form: 'imperativo.negativo.tu',
+          portuguese: 'não aguentes'
+        },
+        {
+          form: 'imperativo.negativo.ele/ela/você',
+          portuguese: 'não aguente'
+        },
+        {
+          form: 'imperativo.negativo.nós',
+          portuguese: 'não aguentemos'
+        },
+        {
+          form: 'imperativo.negativo.vós',
+          portuguese: 'não aguenteis'
+        },
+        {
+          form: 'imperativo.negativo.eles/elas/vocês',
+          portuguese: 'não aguentem'
+        },
+        {
+          form: 'infinitivo.impessoal',
+          portuguese: 'aguentar'
+        },
+        {
+          form: 'infinitivo.pessoal.eu',
+          portuguese: 'aguentar'
+        },
+        {
+          form: 'infinitivo.pessoal.tu',
+          portuguese: 'aguentares'
+        },
+        {
+          form: 'infinitivo.pessoal.ele/ela/você',
+          portuguese: 'aguentar'
+        },
+        {
+          form: 'infinitivo.pessoal.nós',
+          portuguese: 'aguentarmos'
+        },
+        {
+          form: 'infinitivo.pessoal.vós',
+          portuguese: 'aguentardes'
+        },
+        {
+          form: 'infinitivo.pessoal.eles/elas/vocês',
+          portuguese: 'aguentarem'
+        },
+        {
+          form: 'particípio_passado',
+          portuguese: 'aguentado'
+        },
+        {
+          form: 'gerúndio',
+          portuguese: 'aguentando'
+        }
+      ]
     }
   ],
   nouns: [
@@ -22495,6 +23581,7 @@ export const db: Schema = {
       english: 'light',
       portuguese: {
         word: 'luz',
+        plural: 'luzes',
         gender: 'feminine'
       }
     },
@@ -23108,6 +24195,7 @@ export const db: Schema = {
       english: 'work',
       portuguese: {
         word: 'trabalho',
+        plural: 'trabalhos',
         gender: 'masculine'
       }
     },
@@ -23160,6 +24248,7 @@ export const db: Schema = {
       english: 'right',
       portuguese: {
         word: 'direito',
+        plural: 'direitos',
         gender: 'masculine'
       }
     },
@@ -27613,6 +28702,94 @@ export const db: Schema = {
     {
       english: 'beauty',
       portuguese: { word: 'beleza', plural: 'belezas', gender: 'feminine' }
+    },
+    {
+      english: 'note',
+      portuguese: { word: 'nota', plural: 'notas', gender: 'feminine' }
+    },
+    {
+      english: 'objective',
+      portuguese: { word: 'objectivo', plural: 'objectivos', gender: 'masculine' }
+    },
+    {
+      english: 'dance',
+      portuguese: { word: 'baile', plural: 'bailes', gender: 'masculine' }
+    },
+    {
+      english: 'princess',
+      portuguese: { word: 'princesa', plural: 'princesas', gender: 'feminine' }
+    },
+    {
+      english: 'joke',
+      portuguese: { word: 'piada', plural: 'piadas', gender: 'feminine' }
+    },
+    {
+      english: 'society',
+      portuguese: { word: 'sociedade', plural: 'sociedades', gender: 'feminine' }
+    },
+    {
+      english: 'quantity',
+      portuguese: { word: 'quantidade', plural: 'quantidades', gender: 'feminine' }
+    },
+    {
+      english: 'training',
+      portuguese: { word: 'treino', plural: 'treinos', gender: 'masculine' }
+    },
+    {
+      english: 'attempt',
+      portuguese: { word: 'tentativa', plural: 'tentativas', gender: 'feminine' }
+    },
+    {
+      english: 'blow',
+      portuguese: { word: 'golpe', plural: 'golpes', gender: 'masculine' }
+    },
+    {
+      english: 'heat',
+      portuguese: { word: 'calor', plural: 'calores', gender: 'masculine' }
+    },
+    {
+      english: 'hunt',
+      portuguese: { word: 'caça', plural: 'caças', gender: 'feminine' }
+    },
+    {
+      english: 'cousin',
+      portuguese: { word: 'primo', plural: 'primos', gender: 'masculine' }
+    },
+    {
+      english: 'couple',
+      portuguese: { word: 'casal', plural: 'casais', gender: 'masculine' }
+    },
+    {
+      english: 'press',
+      portuguese: { word: 'imprensa', plural: 'imprensas', gender: 'feminine' }
+    },
+    {
+      english: 'milk',
+      portuguese: { word: 'leite', plural: 'leites', gender: 'masculine' }
+    },
+    {
+      english: 'form',
+      portuguese: { word: 'forma', plural: 'formas', gender: 'feminine' }
+    },
+    {
+      english: 'possibility',
+      portuguese: {
+        word: 'possibilidade',
+        plural: 'possibilidades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'agency',
+      portuguese: { word: 'agência', plural: 'agências', gender: 'feminine' }
+    },
+    {
+      english: 'fight',
+      portuguese: { word: 'combate', plural: 'combates', gender: 'masculine' }
+    },
+    {
+      portuguese: { word: 'alerta', plural: 'alertas', gender: 'feminine' },
+      english: 'alert'
     }
   ],
   others: [
@@ -28489,6 +29666,10 @@ export const db: Schema = {
     {
       portuguese: 'calças',
       english: 'pants'
+    },
+    {
+      portuguese: 'daquilo',
+      english: 'of that'
     }
   ],
   othersWithGender: [
@@ -30859,6 +32040,16 @@ export const db: Schema = {
       masculine: { singular: 'máximo', plural: 'máximos' },
       feminine: { singular: 'máxima', plural: 'máximas' },
       english: 'maximum'
+    },
+    {
+      masculine: { singular: 'ambos', plural: 'ambos' },
+      feminine: { singular: 'ambas', plural: 'ambas' },
+      english: 'both'
+    },
+    {
+      masculine: { singular: 'azul', plural: 'azuis' },
+      feminine: { singular: 'azul', plural: 'azuis' },
+      english: 'blue'
     }
   ],
   sentences: [
