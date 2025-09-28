@@ -39,7 +39,7 @@ import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-
 import { frequencyMap } from '../frequency';
 
 type ExerciseGenerator = () => Exercise[];
-export const LIMIT_FREQ = 2000;
+export const LIMIT_FREQ = 2500;
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
   const allowedVerbTimes: VerbTimeType[] = ['presentSimple', 'pastPerfect', 'imperfect'];
