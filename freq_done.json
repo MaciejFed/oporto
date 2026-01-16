@@ -33,7 +33,13 @@
         "nick",
         "jim",
         "charles",
-        "daniel"
+        "daniel",
+        "billy",
+        "you",
+        "max",
+        "mark",
+        "nele",
+        "tommy"
     ],
     "parsed": [
         "teres",
@@ -222,7 +228,26 @@
         "agência",
         "aguentar",
         "combate",
-        "sobreviver"
+        "sobreviver",
+        "libertar",
+        "intenção",
+        "prémio",
+        "fuga",
+        "ray",
+        "autorização",
+        "escapar",
+        "danos",
+        "directo",
+        "morada",
+        "enfermeira",
+        "orgulhoso",
+        "envolvido",
+        "avisar",
+        "parceiro",
+        "gás",
+        "deseja",
+        "retirar",
+        "cirurgia"
     ],
     "verbs": [
         {
@@ -415,6 +440,68 @@
             "english": "survive",
             "place": 1964,
             "frequency": 0.0036
+        },
+        {
+            "word": "libertar",
+            "pos": "verb",
+            "text": "libertar",
+            "forms": [
+                "released",
+                "released"
+            ],
+            "english": "release",
+            "place": 2002,
+            "frequency": 0.0035
+        },
+        {
+            "word": "escapar",
+            "pos": "verb",
+            "text": "escapar",
+            "forms": [
+                "escaped",
+                "escaped) (leaked",
+                "leaked) (slipped",
+                "slipped) (dodged",
+                "dodged"
+            ],
+            "english": "escape",
+            "place": 2016,
+            "frequency": 0.0035
+        },
+        {
+            "word": "avisar",
+            "pos": "verb",
+            "text": "avisar de",
+            "forms": [],
+            "english": "let know",
+            "place": 2029,
+            "frequency": 0.0034
+        },
+        {
+            "word": "deseja",
+            "pos": "verb",
+            "text": "desejar",
+            "forms": [
+                "wished",
+                "wished) (willed or would",
+                "willed"
+            ],
+            "english": "wish",
+            "place": 2034,
+            "frequency": 0.0034
+        },
+        {
+            "word": "retirar",
+            "pos": "verb",
+            "text": "retirar",
+            "forms": [
+                "removed",
+                "removed) (withdrew",
+                "withdrawn"
+            ],
+            "english": "remove",
+            "place": 2035,
+            "frequency": 0.0034
         }
     ],
     "nouns": [
@@ -2043,6 +2130,125 @@
             "english": "combat",
             "place": 1958,
             "frequency": 0.0036
+        },
+        {
+            "word": "intenção",
+            "pos": "noun, feminine",
+            "text": "intenção",
+            "forms": [
+                "plural: intenções f) (plural: intentions"
+            ],
+            "english": "intention",
+            "place": 2004,
+            "frequency": 0.0035
+        },
+        {
+            "word": "prémio",
+            "pos": "noun, masculine",
+            "text": "prémio",
+            "forms": [
+                "plural: prémios m"
+            ],
+            "english": "premium",
+            "place": 2009,
+            "frequency": 0.0035
+        },
+        {
+            "word": "fuga",
+            "pos": "noun, feminine",
+            "text": "fuga",
+            "forms": [
+                "plural: fugas f) (plural: escapes) (plural: flights"
+            ],
+            "english": "escape",
+            "place": 2010,
+            "frequency": 0.0035
+        },
+        {
+            "word": "ray",
+            "pos": "noun",
+            "text": "ray",
+            "forms": [
+                "plural: rays) (plural: raios m) (plural: feixes m"
+            ],
+            "english": "raio",
+            "place": 2013,
+            "frequency": 0.0035
+        },
+        {
+            "word": "autorização",
+            "pos": "noun, feminine",
+            "text": "autorização",
+            "forms": [
+                "plural: autorizações f) (plural: authorisations) (plural: permits) (plural: warrants"
+            ],
+            "english": "authorisation",
+            "place": 2015,
+            "frequency": 0.0035
+        },
+        {
+            "word": "danos",
+            "pos": "noun, plural, masculine",
+            "text": "danos",
+            "forms": [
+                "singular: dano m"
+            ],
+            "english": "damage",
+            "place": 2018,
+            "frequency": 0.0035
+        },
+        {
+            "word": "morada",
+            "pos": "noun, feminine",
+            "text": "morada",
+            "forms": [
+                "plural: moradas f"
+            ],
+            "english": "habitation",
+            "place": 2020,
+            "frequency": 0.0035
+        },
+        {
+            "word": "enfermeira",
+            "pos": "noun, feminine",
+            "text": "enfermeira",
+            "forms": [
+                "plural: enfermeiras f) (plural: nurses"
+            ],
+            "english": "nurse",
+            "place": 2022,
+            "frequency": 0.0034
+        },
+        {
+            "word": "parceiro",
+            "pos": "noun, masculine",
+            "text": "parceiro",
+            "forms": [
+                "plural: parceiros m) (plural: partners"
+            ],
+            "english": "partner",
+            "place": 2030,
+            "frequency": 0.0034
+        },
+        {
+            "word": "gás",
+            "pos": "noun, masculine",
+            "text": "gás",
+            "forms": [],
+            "english": "gas",
+            "place": 2031,
+            "frequency": 0.0034
+        },
+        {
+            "word": "cirurgia",
+            "pos": "noun, feminine",
+            "text": "cirurgia",
+            "forms": [
+                "plural: cirurgias f"
+            ],
+            "english": "surgery",
+            "place": 2040,
+            "frequency": 0.0034
         }
     ],
     "adjectives": [
@@ -2155,6 +2361,41 @@
             "english": "incredible",
             "place": 1903,
             "frequency": 0.0037
+        },
+        {
+            "word": "directo",
+            "pos": "adjective, masculine",
+            "text": "directo",
+            "forms": [],
+            "english": "direct",
+            "place": 2019,
+            "frequency": 0.0035
+        },
+        {
+            "word": "orgulhoso",
+            "pos": "adjective, masculine",
+            "text": "orgulhoso",
+            "forms": [
+                "orgulhosa f sl",
+                "orgulhosos m pl",
+                "orgulhosas f pl"
+            ],
+            "english": "proud",
+            "place": 2023,
+            "frequency": 0.0034
+        },
+        {
+            "word": "envolvido",
+            "pos": "adjective / past participle, masculine",
+            "text": "envolvido",
+            "forms": [
+                "envolvida f sl",
+                "envolvidos m pl",
+                "envolvidas f pl"
+            ],
+            "english": "involved",
+            "place": 2026,
+            "frequency": 0.0034
         }
     ],
     "others": [

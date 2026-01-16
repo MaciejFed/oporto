@@ -48,6 +48,7 @@ export async function findAllExamples(language: Language) {
     )
   ]
     .filter((word) => !savedWords.includes(word || ''))
+    .reverse();
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     console.log(`[${i}/${words.length}]`);

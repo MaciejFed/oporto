@@ -412,7 +412,12 @@ const verbs = [
   'atacar',
   'crescer',
   'magoar',
-  'aguentar'
+  'aguentar',
+  'escapar',
+  'avisar',
+  'desejar',
+  'retirar',
+  'libertar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];
