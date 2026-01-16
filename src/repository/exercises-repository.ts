@@ -417,7 +417,13 @@ const verbs = [
   'avisar',
   'desejar',
   'retirar',
-  'libertar'
+  'libertar',
+  'livrar',
+  'desligar',
+  'devolver',
+  'lançar',
+  'confirmar',
+  'abandonar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

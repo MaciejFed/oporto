@@ -6315,43 +6315,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 130,
   },
   {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_cesto_toPortuguese",
-      "noun": {
-        "english": "basket",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "cestos",
-          "word": "cesto",
-        },
-      },
-      "number": "singular",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 300,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -190,
-      },
-    ],
-    "priorityValueTotal": 110,
-  },
-  {
     "exercise": OtherTranslationExercise {
       "equal": [Function],
       "exerciseType": "OtherTranslation",
@@ -6462,42 +6425,6 @@ exports[`Priority PT 1`] = `
     "priorityValueTotal": 80,
   },
   {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_noiva_toPortuguese",
-      "noun": {
-        "english": "bride",
-        "portuguese": {
-          "gender": "feminine",
-          "word": "noiva",
-        },
-      },
-      "number": "singular",
-      "translationType": "toPortuguese",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 270,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -200,
-      },
-    ],
-    "priorityValueTotal": 70,
-  },
-  {
     "exercise": OtherTranslationExercise {
       "equal": [Function],
       "exerciseType": "OtherTranslation",
@@ -6569,43 +6496,6 @@ exports[`Priority PT 1`] = `
       },
     ],
     "priorityValueTotal": 50,
-  },
-  {
-    "exercise": NounTranslationExercise {
-      "equal": [Function],
-      "exerciseType": "NounTranslation",
-      "frequency": {
-        "frequency": 0,
-        "place": 0,
-      },
-      "getBodySuffix": [Function],
-      "getCorrectAnswer": [Function],
-      "getDescription": [Function],
-      "getRetryPrompt": [Function],
-      "getTranslation": [Function],
-      "name": "NounTranslation_sinal_toEnglish",
-      "noun": {
-        "english": "sign",
-        "portuguese": {
-          "gender": "masculine",
-          "plural": "sinais",
-          "word": "sinal",
-        },
-      },
-      "number": "singular",
-      "translationType": "toEnglish",
-    },
-    "priorities": [
-      {
-        "priorityName": "EXERCISE_WRONG",
-        "priorityValue": 210,
-      },
-      {
-        "priorityName": "EXERCISE_CORRECT",
-        "priorityValue": -170,
-      },
-    ],
-    "priorityValueTotal": 40,
   },
   {
     "exercise": OtherTranslationExercise {
@@ -10735,6 +10625,303 @@ exports[`Priority PT 1`] = `
           "gender": "feminine",
           "plural": "formas",
           "word": "forma",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_sistema_toPortugueseFromHearing",
+      "noun": {
+        "english": "system",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "sistemas",
+          "word": "sistema",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_sistema_toEnglish",
+      "noun": {
+        "english": "system",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "sistemas",
+          "word": "sistema",
+        },
+      },
+      "number": "singular",
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_sistema_toPortuguese",
+      "noun": {
+        "english": "system",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "sistemas",
+          "word": "sistema",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_rua_toPortugueseFromHearing",
+      "noun": {
+        "english": "street",
+        "portuguese": {
+          "gender": "feminine",
+          "plural": "ruas",
+          "word": "rua",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_rua_toEnglish",
+      "noun": {
+        "english": "street",
+        "portuguese": {
+          "gender": "feminine",
+          "plural": "ruas",
+          "word": "rua",
+        },
+      },
+      "number": "singular",
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_rua_toPortuguese",
+      "noun": {
+        "english": "street",
+        "portuguese": {
+          "gender": "feminine",
+          "plural": "ruas",
+          "word": "rua",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortuguese",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_cavalo_toPortugueseFromHearing",
+      "noun": {
+        "english": "horse",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "cavalos",
+          "word": "cavalo",
+        },
+      },
+      "number": "singular",
+      "translationType": "toPortugueseFromHearing",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_cavalo_toEnglish",
+      "noun": {
+        "english": "horse",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "cavalos",
+          "word": "cavalo",
+        },
+      },
+      "number": "singular",
+      "translationType": "toEnglish",
+    },
+    "priorities": [
+      {
+        "priorityName": "EXERCISE_NEVER_DONE",
+        "priorityValue": 25,
+      },
+    ],
+    "priorityValueTotal": 25,
+  },
+  {
+    "exercise": NounTranslationExercise {
+      "equal": [Function],
+      "exerciseType": "NounTranslation",
+      "frequency": {
+        "frequency": 0,
+        "place": 0,
+      },
+      "getBodySuffix": [Function],
+      "getCorrectAnswer": [Function],
+      "getDescription": [Function],
+      "getRetryPrompt": [Function],
+      "getTranslation": [Function],
+      "name": "NounTranslation_cavalo_toPortuguese",
+      "noun": {
+        "english": "horse",
+        "portuguese": {
+          "gender": "masculine",
+          "plural": "cavalos",
+          "word": "cavalo",
         },
       },
       "number": "singular",

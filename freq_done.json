@@ -39,7 +39,15 @@
         "max",
         "mark",
         "nele",
-        "tommy"
+        "tommy",
+        "johnny",
+        "lady",
+        "ryan",
+        "harry",
+        "bobby",
+        "tá",
+        "iorque",
+        "will"
     ],
     "parsed": [
         "teres",
@@ -247,7 +255,49 @@
         "gás",
         "deseja",
         "retirar",
-        "cirurgia"
+        "cirurgia",
+        "sistemas",
+        "vírus",
+        "universo",
+        "assassinato",
+        "estarmos",
+        "canal",
+        "ruas",
+        "beijo",
+        "las",
+        "camisa",
+        "ocupado",
+        "discurso",
+        "livrar",
+        "barulho",
+        "século",
+        "explosão",
+        "ossos",
+        "passada",
+        "policia",
+        "tv",
+        "claramente",
+        "página",
+        "lee",
+        "desligar",
+        "devolver",
+        "americano",
+        "vermelho",
+        "nacional",
+        "interessante",
+        "localização",
+        "comum",
+        "chapéu",
+        "frota",
+        "lançar",
+        "confirmar",
+        "cavalos",
+        "criatura",
+        "secção",
+        "provável",
+        "abandonar",
+        "raiva",
+        "documentos"
     ],
     "verbs": [
         {
@@ -502,6 +552,119 @@
             "english": "remove",
             "place": 2035,
             "frequency": 0.0034
+        },
+        {
+            "word": "estarmos",
+            "pos": "verb",
+            "text": "estar",
+            "forms": [],
+            "english": "be",
+            "place": 2054,
+            "frequency": 0.0034
+        },
+        {
+            "word": "livrar",
+            "pos": "verb",
+            "text": "livrar",
+            "forms": [
+                "rid or ridded",
+                "rid or ridden) (delivered",
+                "delivered"
+            ],
+            "english": "rid",
+            "place": 2073,
+            "frequency": 0.0033
+        },
+        {
+            "word": "policia",
+            "pos": "verb",
+            "text": "policiar",
+            "forms": [
+                "policed",
+                "policed"
+            ],
+            "english": "police",
+            "place": 2085,
+            "frequency": 0.0033
+        },
+        {
+            "word": "claramente",
+            "pos": "adverb",
+            "text": "claramente",
+            "forms": [],
+            "english": "clearly",
+            "place": 2090,
+            "frequency": 0.0033
+        },
+        {
+            "word": "desligar",
+            "pos": "verb",
+            "text": "desligar",
+            "forms": [
+                "shut",
+                "shut"
+            ],
+            "english": "turn off",
+            "place": 2097,
+            "frequency": 0.0033
+        },
+        {
+            "word": "devolver",
+            "pos": "verb",
+            "text": "devolver",
+            "forms": [
+                "returned",
+                "returned) (gave",
+                "given"
+            ],
+            "english": "return",
+            "place": 2104,
+            "frequency": 0.0033
+        },
+        {
+            "word": "lançar",
+            "pos": "verb",
+            "text": "lançar",
+            "forms": [
+                "launched",
+                "launched) (threw",
+                "thrown) (projected",
+                "projected) (cast",
+                "cast) (introduced",
+                "introduced) (tossed",
+                "tossed) (flung",
+                "flung"
+            ],
+            "english": "launch",
+            "place": 2132,
+            "frequency": 0.0032
+        },
+        {
+            "word": "confirmar",
+            "pos": "verb",
+            "text": "confirmar",
+            "forms": [
+                "validated",
+                "validated"
+            ],
+            "english": "confirm",
+            "place": 2138,
+            "frequency": 0.0032
+        },
+        {
+            "word": "abandonar",
+            "pos": "verb",
+            "text": "abandonar",
+            "forms": [
+                "stopped",
+                "stopped) (dropped",
+                "dropped) (quit",
+                "quit; BE: quitted",
+                "quitted"
+            ],
+            "english": "abandon",
+            "place": 2147,
+            "frequency": 0.0032
         }
     ],
     "nouns": [
@@ -2249,6 +2412,294 @@
             "english": "surgery",
             "place": 2040,
             "frequency": 0.0034
+        },
+        {
+            "word": "sistema",
+            "pos": "noun, plural, masculine",
+            "text": "sistemas",
+            "forms": [],
+            "english": "systems",
+            "place": 2047,
+            "frequency": 0.0034
+        },
+        {
+            "word": "vírus",
+            "pos": "noun, masculine",
+            "text": "vírus",
+            "forms": [],
+            "english": "virus",
+            "place": 2048,
+            "frequency": 0.0034
+        },
+        {
+            "word": "universo",
+            "pos": "noun, masculine",
+            "text": "universo",
+            "forms": [],
+            "english": "universe",
+            "place": 2051,
+            "frequency": 0.0034
+        },
+        {
+            "word": "assassinato",
+            "pos": "noun, masculine",
+            "text": "assassinato",
+            "forms": [],
+            "english": "murder",
+            "place": 2052,
+            "frequency": 0.0034
+        },
+        {
+            "word": "canal",
+            "pos": "noun, masculine",
+            "text": "canal",
+            "forms": [
+                "plural: canais m) (plural: canals) (plural: conduits) (plural: ducts"
+            ],
+            "english": "channel",
+            "place": 2056,
+            "frequency": 0.0034
+        },
+        {
+            "word": "ruas",
+            "pos": "noun, plural, feminine",
+            "text": "ruas",
+            "forms": [
+                "singular: rua f"
+            ],
+            "english": "streets",
+            "place": 2059,
+            "frequency": 0.0034
+        },
+        {
+            "word": "beijo",
+            "pos": "noun, masculine",
+            "text": "beijo",
+            "forms": [
+                "plural: beijos m) (plural: kisses) (plural: smooches"
+            ],
+            "english": "kiss",
+            "place": 2064,
+            "frequency": 0.0034
+        },
+        {
+            "word": "las",
+            "pos": "noun, masculine",
+            "text": "lar",
+            "forms": [
+                "plural: lares m) (plural: homes"
+            ],
+            "english": "home",
+            "place": 2065,
+            "frequency": 0.0034
+        },
+        {
+            "word": "camisa",
+            "pos": "noun, feminine",
+            "text": "camisa",
+            "forms": [
+                "plural: camisas f) (plural: shirts"
+            ],
+            "english": "shirt",
+            "place": 2069,
+            "frequency": 0.0033
+        },
+        {
+            "word": "discurso",
+            "pos": "noun, masculine",
+            "text": "discurso",
+            "forms": [
+                "plural: discursos m"
+            ],
+            "english": "speech",
+            "place": 2071,
+            "frequency": 0.0033
+        },
+        {
+            "word": "barulho",
+            "pos": "noun, masculine",
+            "text": "barulho",
+            "forms": [],
+            "english": "noise",
+            "place": 2074,
+            "frequency": 0.0033
+        },
+        {
+            "word": "século",
+            "pos": "noun, masculine",
+            "text": "século",
+            "forms": [
+                "plural: séculos m) (plural: centuries"
+            ],
+            "english": "century",
+            "place": 2075,
+            "frequency": 0.0033
+        },
+        {
+            "word": "explosão",
+            "pos": "noun, feminine",
+            "text": "explosão",
+            "forms": [
+                "plural: explosões f) (plural: explosions) (plural: bursts) (plural: blasts) (plural: outbursts"
+            ],
+            "english": "explosion",
+            "place": 2080,
+            "frequency": 0.0033
+        },
+        {
+            "word": "ossos",
+            "pos": "noun, plural, masculine",
+            "text": "ossos",
+            "forms": [
+                "singular: osso m"
+            ],
+            "english": "bones",
+            "place": 2082,
+            "frequency": 0.0033
+        },
+        {
+            "word": "passada",
+            "pos": "noun, feminine",
+            "text": "passada",
+            "forms": [
+                "plural: passadas f) (plural: paces) (plural: steps"
+            ],
+            "english": "pace",
+            "place": 2084,
+            "frequency": 0.0033
+        },
+        {
+            "word": "tv",
+            "pos": "noun, feminine",
+            "text": "TV",
+            "forms": [
+                "plural: TVs f) (plural: televisions"
+            ],
+            "english": "television",
+            "place": 2087,
+            "frequency": 0.0033
+        },
+        {
+            "word": "página",
+            "pos": "noun, feminine",
+            "text": "página",
+            "forms": [
+                "plural: páginas f) (plural: pages"
+            ],
+            "english": "page",
+            "place": 2094,
+            "frequency": 0.0033
+        },
+        {
+            "word": "lee",
+            "pos": "noun",
+            "text": "lee",
+            "forms": [],
+            "english": "sotavento",
+            "place": 2096,
+            "frequency": 0.0033
+        },
+        {
+            "word": "americano",
+            "pos": "noun, masculine",
+            "text": "americano",
+            "forms": [
+                "plural: americanos m) (plural: Americans"
+            ],
+            "english": "American",
+            "place": 2105,
+            "frequency": 0.0033
+        },
+        {
+            "word": "vermelho",
+            "pos": "noun, masculine",
+            "text": "vermelho",
+            "forms": [],
+            "english": "red",
+            "place": 2110,
+            "frequency": 0.0033
+        },
+        {
+            "word": "localização",
+            "pos": "noun, feminine",
+            "text": "localização",
+            "forms": [
+                "plural: localizações f) (plural: locations"
+            ],
+            "english": "location",
+            "place": 2120,
+            "frequency": 0.0032
+        },
+        {
+            "word": "chapéu",
+            "pos": "noun, masculine",
+            "text": "chapéu",
+            "forms": [
+                "plural: chapéus m) (plural: hats"
+            ],
+            "english": "hat",
+            "place": 2124,
+            "frequency": 0.0032
+        },
+        {
+            "word": "frota",
+            "pos": "noun, feminine",
+            "text": "frota",
+            "forms": [
+                "plural: frotas f) (plural: fleets"
+            ],
+            "english": "fleet",
+            "place": 2126,
+            "frequency": 0.0032
+        },
+        {
+            "word": "cavalos",
+            "pos": "noun, plural, masculine",
+            "text": "cavalos",
+            "forms": [],
+            "english": "horses",
+            "place": 2139,
+            "frequency": 0.0032
+        },
+        {
+            "word": "criatura",
+            "pos": "noun, feminine",
+            "text": "criatura",
+            "forms": [
+                "plural: criaturas f) (plural: creatures"
+            ],
+            "english": "creature",
+            "place": 2140,
+            "frequency": 0.0032
+        },
+        {
+            "word": "secção",
+            "pos": "noun, feminine",
+            "text": "secção",
+            "forms": [],
+            "english": "section",
+            "place": 2141,
+            "frequency": 0.0032
+        },
+        {
+            "word": "raiva",
+            "pos": "noun, feminine",
+            "text": "raiva",
+            "forms": [],
+            "english": "anger",
+            "place": 2151,
+            "frequency": 0.0032
+        },
+        {
+            "word": "documentos",
+            "pos": "noun, plural, masculine",
+            "text": "documentos",
+            "forms": [
+                "singular: documento m"
+            ],
+            "english": "documents",
+            "place": 2153,
+            "frequency": 0.0032
         }
     ],
     "adjectives": [
@@ -2396,6 +2847,55 @@
             "english": "involved",
             "place": 2026,
             "frequency": 0.0034
+        },
+        {
+            "word": "ocupado",
+            "pos": "adjective / past participle, masculine",
+            "text": "ocupado",
+            "forms": [
+                "ocupada f sl",
+                "ocupados m pl",
+                "ocupadas f pl"
+            ],
+            "english": "busy",
+            "place": 2070,
+            "frequency": 0.0033
+        },
+        {
+            "word": "nacional",
+            "pos": "adjective, singular, both",
+            "text": "nacional",
+            "forms": [],
+            "english": "national",
+            "place": 2111,
+            "frequency": 0.0033
+        },
+        {
+            "word": "interessante",
+            "pos": "adjective, singular, both",
+            "text": "interessante",
+            "forms": [],
+            "english": "interesting",
+            "place": 2112,
+            "frequency": 0.0033
+        },
+        {
+            "word": "comum",
+            "pos": "adjective, singular, both",
+            "text": "comum",
+            "forms": [],
+            "english": "joint",
+            "place": 2121,
+            "frequency": 0.0032
+        },
+        {
+            "word": "provável",
+            "pos": "adjective, singular, both",
+            "text": "provável",
+            "forms": [],
+            "english": "likely",
+            "place": 2143,
+            "frequency": 0.0032
         }
     ],
     "others": [
