@@ -120,6 +120,9 @@ async function findNextUndone() {
       !words.includes(word) &&
       !currentMap.parsed.concat(currentMap.rejected).includes(word)
     ) {
+      await new Promise<void>((resolve) => {
+        setTimeout(() => resolve(), 10_000);
+      });
       const value = frequencyMap[word];
       const curlCommand = `curl -s -X 'GET' 'http://127.0.0.1:8000/api/v2/translations?query=${encodeURIComponent(
         word

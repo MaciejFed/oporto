@@ -423,7 +423,19 @@ const verbs = [
   'devolver',
   'lançar',
   'confirmar',
-  'abandonar'
+  'abandonar',
+  'vencer',
+  'nascer',
+  'desculpar',
+  'montar',
+  'sitiar',
+  'explodir',
+  'identificar',
+  'localizar',
+  'foder',
+  'transformar',
+  'melhorar',
+  'iniciar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

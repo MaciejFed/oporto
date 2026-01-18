@@ -23276,7 +23276,7 @@ export const db: Schema = {
       ]
     },
     {
-      english: 'to free, to liberate',
+      english: 'to liberate',
       infinitive: 'libertar',
       presentSimple: {
         Eu: 'liberto',
@@ -24207,6 +24207,1026 @@ export const db: Schema = {
         {
           form: 'infinitivo (eles)',
           portuguese: 'abandonarem'
+        }
+      ]
+    },
+    {
+      english: 'to overcome',
+      infinitive: 'vencer',
+      presentSimple: {
+        Eu: 'venço',
+        Tu: 'vences',
+        'Ela/Ele/Você': 'vence',
+        Nós: 'vencemos',
+        'Eles/Elas/Vocēs': 'vencem'
+      },
+      pastPerfect: {
+        Eu: 'venci',
+        Tu: 'venceste',
+        'Ela/Ele/Você': 'venceu',
+        Nós: 'vencemos',
+        'Eles/Elas/Vocēs': 'venceram'
+      },
+      imperfect: {
+        Eu: 'vencia',
+        Tu: 'vencias',
+        'Ela/Ele/Você': 'vencia',
+        Nós: 'vencíamos',
+        'Eles/Elas/Vocēs': 'venciam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'vencera',
+        Tu: 'venceras',
+        'Ela/Ele/Você': 'vencera',
+        Nós: 'vencêramos',
+        'Eles/Elas/Vocēs': 'venceram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'vencerei',
+        Tu: 'vencerás',
+        'Ela/Ele/Você': 'vencerá',
+        Nós: 'venceremos',
+        'Eles/Elas/Vocēs': 'vencerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'vença',
+        Tu: 'venças',
+        'Ela/Ele/Você': 'vença',
+        Nós: 'vençamos',
+        'Eles/Elas/Vocēs': 'vençam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'vencesse',
+        Tu: 'vencesses',
+        'Ela/Ele/Você': 'vencesse',
+        Nós: 'vencêssemos',
+        'Eles/Elas/Vocēs': 'vencessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'vencer',
+        Tu: 'venceres',
+        'Ela/Ele/Você': 'vencer',
+        Nós: 'vencermos',
+        'Eles/Elas/Vocēs': 'vencerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'venceria',
+        Tu: 'vencerias',
+        'Ela/Ele/Você': 'venceria',
+        Nós: 'venceríamos',
+        'Eles/Elas/Vocēs': 'venceriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'vencendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'vencido'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'venceres'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'vencerem'
+        }
+      ]
+    },
+    {
+      english: 'to be born',
+      infinitive: 'nascer',
+      presentSimple: {
+        Eu: 'nasço',
+        Tu: 'nasces',
+        'Ela/Ele/Você': 'nasce',
+        Nós: 'nascemos',
+        'Eles/Elas/Vocēs': 'nascem'
+      },
+      pastPerfect: {
+        Eu: 'nasci',
+        Tu: 'nasceste',
+        'Ela/Ele/Você': 'nasceu',
+        Nós: 'nascemos',
+        'Eles/Elas/Vocēs': 'nasceram'
+      },
+      imperfect: {
+        Eu: 'nascia',
+        Tu: 'nascias',
+        'Ela/Ele/Você': 'nascia',
+        Nós: 'nascíamos',
+        'Eles/Elas/Vocēs': 'nasciam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'nascera',
+        Tu: 'nasceras',
+        'Ela/Ele/Você': 'nascera',
+        Nós: 'nascêramos',
+        'Eles/Elas/Vocēs': 'nasceram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'nascerei',
+        Tu: 'nascerás',
+        'Ela/Ele/Você': 'nascerá',
+        Nós: 'nasceremos',
+        'Eles/Elas/Vocēs': 'nascerão'
+      },
+      subjuntivoPresente: {
+        Eu: 'nasça',
+        Tu: 'nasças',
+        'Ela/Ele/Você': 'nasça',
+        Nós: 'nasçamos',
+        'Eles/Elas/Vocēs': 'nasçam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'nascesse',
+        Tu: 'nascesses',
+        'Ela/Ele/Você': 'nascesse',
+        Nós: 'nascêssemos',
+        'Eles/Elas/Vocēs': 'nascessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'nascer',
+        Tu: 'nasceres',
+        'Ela/Ele/Você': 'nascer',
+        Nós: 'nascermos',
+        'Eles/Elas/Vocēs': 'nascerem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'nasceria',
+        Tu: 'nascerias',
+        'Ela/Ele/Você': 'nasceria',
+        Nós: 'nasceríamos',
+        'Eles/Elas/Vocēs': 'nasceriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'nascendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'nascido'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'nasceres'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'nascerem'
+        }
+      ]
+    },
+    {
+      english: 'to apologize',
+      infinitive: 'desculpar',
+      presentSimple: {
+        Eu: 'desculpo',
+        Tu: 'desculpas',
+        'Ela/Ele/Você': 'desculpa',
+        Nós: 'desculpamos',
+        'Eles/Elas/Vocēs': 'desculpam'
+      },
+      pastPerfect: {
+        Eu: 'desculpei',
+        Tu: 'desculpaste',
+        'Ela/Ele/Você': 'desculpou',
+        Nós: 'desculpámos',
+        'Eles/Elas/Vocēs': 'desculparam'
+      },
+      imperfect: {
+        Eu: 'desculpava',
+        Tu: 'desculpavas',
+        'Ela/Ele/Você': 'desculpava',
+        Nós: 'desculpávamos',
+        'Eles/Elas/Vocēs': 'desculpavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'desculpara',
+        Tu: 'desculparas',
+        'Ela/Ele/Você': 'desculpara',
+        Nós: 'desculpáramos',
+        'Eles/Elas/Vocēs': 'desculparam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'desculparei',
+        Tu: 'desculparás',
+        'Ela/Ele/Você': 'desculpará',
+        Nós: 'desculparemos',
+        'Eles/Elas/Vocēs': 'desculparão'
+      },
+      subjuntivoPresente: {
+        Eu: 'desculpe',
+        Tu: 'desculpes',
+        'Ela/Ele/Você': 'desculpe',
+        Nós: 'desculpemos',
+        'Eles/Elas/Vocēs': 'desculpem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'desculpasse',
+        Tu: 'desculpasses',
+        'Ela/Ele/Você': 'desculpasse',
+        Nós: 'desculpássemos',
+        'Eles/Elas/Vocēs': 'desculpassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'desculpar',
+        Tu: 'desculpares',
+        'Ela/Ele/Você': 'desculpar',
+        Nós: 'desculparmos',
+        'Eles/Elas/Vocēs': 'desculparem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'desculparia',
+        Tu: 'desculparias',
+        'Ela/Ele/Você': 'desculparia',
+        Nós: 'desculparíamos',
+        'Eles/Elas/Vocēs': 'desculpariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'desculpando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'desculpado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'desculpares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'desculparem'
+        }
+      ]
+    },
+    {
+      english: 'to mount',
+      infinitive: 'montar',
+      presentSimple: {
+        Eu: 'monto',
+        Tu: 'montas',
+        'Ela/Ele/Você': 'monta',
+        Nós: 'montamos',
+        'Eles/Elas/Vocēs': 'montam'
+      },
+      pastPerfect: {
+        Eu: 'montei',
+        Tu: 'montaste',
+        'Ela/Ele/Você': 'montou',
+        Nós: 'montámos',
+        'Eles/Elas/Vocēs': 'montaram'
+      },
+      imperfect: {
+        Eu: 'montava',
+        Tu: 'montavas',
+        'Ela/Ele/Você': 'montava',
+        Nós: 'montávamos',
+        'Eles/Elas/Vocēs': 'montavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'montara',
+        Tu: 'montaras',
+        'Ela/Ele/Você': 'montara',
+        Nós: 'montáramos',
+        'Eles/Elas/Vocēs': 'montaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'montarei',
+        Tu: 'montarás',
+        'Ela/Ele/Você': 'montará',
+        Nós: 'montaremos',
+        'Eles/Elas/Vocēs': 'montarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'monte',
+        Tu: 'montes',
+        'Ela/Ele/Você': 'monte',
+        Nós: 'montemos',
+        'Eles/Elas/Vocēs': 'montem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'montasse',
+        Tu: 'montasses',
+        'Ela/Ele/Você': 'montasse',
+        Nós: 'montássemos',
+        'Eles/Elas/Vocēs': 'montassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'montar',
+        Tu: 'montares',
+        'Ela/Ele/Você': 'montar',
+        Nós: 'montarmos',
+        'Eles/Elas/Vocēs': 'montarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'montaria',
+        Tu: 'montarias',
+        'Ela/Ele/Você': 'montaria',
+        Nós: 'montaríamos',
+        'Eles/Elas/Vocēs': 'montariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'montando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'montado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'montares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'montarem'
+        }
+      ]
+    },
+    {
+      english: 'to besiege',
+      infinitive: 'sitiar',
+      presentSimple: {
+        Eu: 'sitio',
+        Tu: 'sitias',
+        'Ela/Ele/Você': 'sitia',
+        Nós: 'sitiamos',
+        'Eles/Elas/Vocēs': 'sitiam'
+      },
+      pastPerfect: {
+        Eu: 'sitiei',
+        Tu: 'sitiaste',
+        'Ela/Ele/Você': 'sitiou',
+        Nós: 'sitiámos',
+        'Eles/Elas/Vocēs': 'sitiaram'
+      },
+      imperfect: {
+        Eu: 'sitiava',
+        Tu: 'sitiavas',
+        'Ela/Ele/Você': 'sitiava',
+        Nós: 'sitiávamos',
+        'Eles/Elas/Vocēs': 'sitiavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'sitiara',
+        Tu: 'sitiaras',
+        'Ela/Ele/Você': 'sitiara',
+        Nós: 'sitiáramos',
+        'Eles/Elas/Vocēs': 'sitiaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'sitiarei',
+        Tu: 'sitiarás',
+        'Ela/Ele/Você': 'sitiará',
+        Nós: 'sitiaremos',
+        'Eles/Elas/Vocēs': 'sitiarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'sitie',
+        Tu: 'sities',
+        'Ela/Ele/Você': 'sitie',
+        Nós: 'sitiemos',
+        'Eles/Elas/Vocēs': 'sitiem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'sitiasse',
+        Tu: 'sitiasses',
+        'Ela/Ele/Você': 'sitiasse',
+        Nós: 'sitiássemos',
+        'Eles/Elas/Vocēs': 'sitiassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'sitiar',
+        Tu: 'sitiares',
+        'Ela/Ele/Você': 'sitiar',
+        Nós: 'sitiarmos',
+        'Eles/Elas/Vocēs': 'sitiarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'sitiaria',
+        Tu: 'sitiarias',
+        'Ela/Ele/Você': 'sitiaria',
+        Nós: 'sitiaríamos',
+        'Eles/Elas/Vocēs': 'sitiariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'sitiando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'sitiado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'sitiares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'sitiarem'
+        }
+      ]
+    },
+    {
+      english: 'to explode',
+      infinitive: 'explodir',
+      presentSimple: {
+        Eu: 'expludo',
+        Tu: 'explodes',
+        'Ela/Ele/Você': 'explode',
+        Nós: 'explodimos',
+        'Eles/Elas/Vocēs': 'explodem'
+      },
+      pastPerfect: {
+        Eu: 'explodi',
+        Tu: 'explodiste',
+        'Ela/Ele/Você': 'explodiu',
+        Nós: 'explodimos',
+        'Eles/Elas/Vocēs': 'explodiram'
+      },
+      imperfect: {
+        Eu: 'explodia',
+        Tu: 'explodias',
+        'Ela/Ele/Você': 'explodia',
+        Nós: 'explodíamos',
+        'Eles/Elas/Vocēs': 'explodiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'explodira',
+        Tu: 'explodiras',
+        'Ela/Ele/Você': 'explodira',
+        Nós: 'explodíramos',
+        'Eles/Elas/Vocēs': 'explodiram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'explodirei',
+        Tu: 'explodirás',
+        'Ela/Ele/Você': 'explodirá',
+        Nós: 'explodiremos',
+        'Eles/Elas/Vocēs': 'explodirão'
+      },
+      subjuntivoPresente: {
+        Eu: 'expluda',
+        Tu: 'expludas',
+        'Ela/Ele/Você': 'expluda',
+        Nós: 'expludamos',
+        'Eles/Elas/Vocēs': 'expludam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'explodisse',
+        Tu: 'explodisses',
+        'Ela/Ele/Você': 'explodisse',
+        Nós: 'explodíssemos',
+        'Eles/Elas/Vocēs': 'explodissem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'explodir',
+        Tu: 'explodires',
+        'Ela/Ele/Você': 'explodir',
+        Nós: 'explodirmos',
+        'Eles/Elas/Vocēs': 'explodirem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'explodiria',
+        Tu: 'explodirias',
+        'Ela/Ele/Você': 'explodiria',
+        Nós: 'explodiríamos',
+        'Eles/Elas/Vocēs': 'explodiriam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'explodindo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'explodido'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'explodires'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'explodirem'
+        }
+      ]
+    },
+    {
+      english: 'to identify',
+      infinitive: 'identificar',
+      presentSimple: {
+        Eu: 'identifico',
+        Tu: 'identificas',
+        'Ela/Ele/Você': 'identifica',
+        Nós: 'identificamos',
+        'Eles/Elas/Vocēs': 'identificam'
+      },
+      pastPerfect: {
+        Eu: 'identifiquei',
+        Tu: 'identificaste',
+        'Ela/Ele/Você': 'identificou',
+        Nós: 'identificámos',
+        'Eles/Elas/Vocēs': 'identificaram'
+      },
+      imperfect: {
+        Eu: 'identificava',
+        Tu: 'identificavas',
+        'Ela/Ele/Você': 'identificava',
+        Nós: 'identificávamos',
+        'Eles/Elas/Vocēs': 'identificavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'identificara',
+        Tu: 'identificaras',
+        'Ela/Ele/Você': 'identificara',
+        Nós: 'identificáramos',
+        'Eles/Elas/Vocēs': 'identificaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'identificarei',
+        Tu: 'identificarás',
+        'Ela/Ele/Você': 'identificará',
+        Nós: 'identificaremos',
+        'Eles/Elas/Vocēs': 'identificarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'identifique',
+        Tu: 'identifiques',
+        'Ela/Ele/Você': 'identifique',
+        Nós: 'identifiquemos',
+        'Eles/Elas/Vocēs': 'identifiquem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'identificasse',
+        Tu: 'identificasses',
+        'Ela/Ele/Você': 'identificasse',
+        Nós: 'identificássemos',
+        'Eles/Elas/Vocēs': 'identificassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'identificar',
+        Tu: 'identificares',
+        'Ela/Ele/Você': 'identificar',
+        Nós: 'identificarmos',
+        'Eles/Elas/Vocēs': 'identificarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'identificaria',
+        Tu: 'identificarias',
+        'Ela/Ele/Você': 'identificaria',
+        Nós: 'identificaríamos',
+        'Eles/Elas/Vocēs': 'identificariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'identificando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'identificado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'identificares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'identificarem'
+        }
+      ]
+    },
+    {
+      english: 'to locate',
+      infinitive: 'localizar',
+      presentSimple: {
+        Eu: 'localizo',
+        Tu: 'localizas',
+        'Ela/Ele/Você': 'localiza',
+        Nós: 'localizamos',
+        'Eles/Elas/Vocēs': 'localizam'
+      },
+      pastPerfect: {
+        Eu: 'localizei',
+        Tu: 'localizaste',
+        'Ela/Ele/Você': 'localizou',
+        Nós: 'localizámos',
+        'Eles/Elas/Vocēs': 'localizaram'
+      },
+      imperfect: {
+        Eu: 'localizava',
+        Tu: 'localizavas',
+        'Ela/Ele/Você': 'localizava',
+        Nós: 'localizávamos',
+        'Eles/Elas/Vocēs': 'localizavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'localizara',
+        Tu: 'localizaras',
+        'Ela/Ele/Você': 'localizara',
+        Nós: 'localizáramos',
+        'Eles/Elas/Vocēs': 'localizaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'localizarei',
+        Tu: 'localizarás',
+        'Ela/Ele/Você': 'localizará',
+        Nós: 'localizaremos',
+        'Eles/Elas/Vocēs': 'localizarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'localize',
+        Tu: 'localizes',
+        'Ela/Ele/Você': 'localize',
+        Nós: 'localizemos',
+        'Eles/Elas/Vocēs': 'localizem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'localizasse',
+        Tu: 'localizasses',
+        'Ela/Ele/Você': 'localizasse',
+        Nós: 'localizássemos',
+        'Eles/Elas/Vocēs': 'localizassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'localizar',
+        Tu: 'localizares',
+        'Ela/Ele/Você': 'localizar',
+        Nós: 'localizarmos',
+        'Eles/Elas/Vocēs': 'localizarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'localizaria',
+        Tu: 'localizarias',
+        'Ela/Ele/Você': 'localizaria',
+        Nós: 'localizaríamos',
+        'Eles/Elas/Vocēs': 'localizariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'localizando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'localizado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'localizares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'localizarem'
+        }
+      ]
+    },
+    {
+      english: 'to fuck up',
+      infinitive: 'foder',
+      presentSimple: {
+        Eu: 'fodo',
+        Tu: 'fodes',
+        'Ela/Ele/Você': 'fode',
+        Nós: 'fodemos',
+        'Eles/Elas/Vocēs': 'fodem'
+      },
+      pastPerfect: {
+        Eu: 'fodi',
+        Tu: 'fodeste',
+        'Ela/Ele/Você': 'fodeu',
+        Nós: 'fodemos',
+        'Eles/Elas/Vocēs': 'foderam'
+      },
+      imperfect: {
+        Eu: 'fodia',
+        Tu: 'fodias',
+        'Ela/Ele/Você': 'fodia',
+        Nós: 'fodíamos',
+        'Eles/Elas/Vocēs': 'fodiam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'fodera',
+        Tu: 'foderas',
+        'Ela/Ele/Você': 'fodera',
+        Nós: 'fodêramos',
+        'Eles/Elas/Vocēs': 'foderam'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'foderei',
+        Tu: 'foderás',
+        'Ela/Ele/Você': 'foderá',
+        Nós: 'foderemos',
+        'Eles/Elas/Vocēs': 'foderão'
+      },
+      subjuntivoPresente: {
+        Eu: 'foda',
+        Tu: 'fodas',
+        'Ela/Ele/Você': 'foda',
+        Nós: 'fodamos',
+        'Eles/Elas/Vocēs': 'fodam'
+      },
+      pretéritoImperfeito: {
+        Eu: 'fodesse',
+        Tu: 'fodesses',
+        'Ela/Ele/Você': 'fodesse',
+        Nós: 'fodêssemos',
+        'Eles/Elas/Vocēs': 'fodessem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'foder',
+        Tu: 'foderes',
+        'Ela/Ele/Você': 'foder',
+        Nós: 'fodermos',
+        'Eles/Elas/Vocēs': 'foderem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'foderia',
+        Tu: 'foderias',
+        'Ela/Ele/Você': 'foderia',
+        Nós: 'foderíamos',
+        'Eles/Elas/Vocēs': 'foderiam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'fodendo'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'fodido'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'foderes'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'foderem'
+        }
+      ]
+    },
+    {
+      english: 'to transform',
+      infinitive: 'transformar',
+      presentSimple: {
+        Eu: 'transformo',
+        Tu: 'transformas',
+        'Ela/Ele/Você': 'transforma',
+        Nós: 'transformamos',
+        'Eles/Elas/Vocēs': 'transformam'
+      },
+      pastPerfect: {
+        Eu: 'transformei',
+        Tu: 'transformaste',
+        'Ela/Ele/Você': 'transformou',
+        Nós: 'transformámos',
+        'Eles/Elas/Vocēs': 'transformaram'
+      },
+      imperfect: {
+        Eu: 'transformava',
+        Tu: 'transformavas',
+        'Ela/Ele/Você': 'transformava',
+        Nós: 'transformávamos',
+        'Eles/Elas/Vocēs': 'transformavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'transformara',
+        Tu: 'transformaras',
+        'Ela/Ele/Você': 'transformara',
+        Nós: 'transformáramos',
+        'Eles/Elas/Vocēs': 'transformaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'transformarei',
+        Tu: 'transformarás',
+        'Ela/Ele/Você': 'transformará',
+        Nós: 'transformaremos',
+        'Eles/Elas/Vocēs': 'transformarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'transforme',
+        Tu: 'transformes',
+        'Ela/Ele/Você': 'transforme',
+        Nós: 'transformemos',
+        'Eles/Elas/Vocēs': 'transformem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'transformasse',
+        Tu: 'transformasses',
+        'Ela/Ele/Você': 'transformasse',
+        Nós: 'transformássemos',
+        'Eles/Elas/Vocēs': 'transformassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'transformar',
+        Tu: 'transformares',
+        'Ela/Ele/Você': 'transformar',
+        Nós: 'transformarmos',
+        'Eles/Elas/Vocēs': 'transformarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'transformaria',
+        Tu: 'transformarias',
+        'Ela/Ele/Você': 'transformaria',
+        Nós: 'transformaríamos',
+        'Eles/Elas/Vocēs': 'transformariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'transformando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'transformado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'transformares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'transformarem'
+        }
+      ]
+    },
+    {
+      english: 'to improve',
+      infinitive: 'melhorar',
+      presentSimple: {
+        Eu: 'melhoro',
+        Tu: 'melhoras',
+        'Ela/Ele/Você': 'melhora',
+        Nós: 'melhoramos',
+        'Eles/Elas/Vocēs': 'melhoram'
+      },
+      pastPerfect: {
+        Eu: 'melhorei',
+        Tu: 'melhoraste',
+        'Ela/Ele/Você': 'melhorou',
+        Nós: 'melhorámos',
+        'Eles/Elas/Vocēs': 'melhoraram'
+      },
+      imperfect: {
+        Eu: 'melhorava',
+        Tu: 'melhoravas',
+        'Ela/Ele/Você': 'melhorava',
+        Nós: 'melhorávamos',
+        'Eles/Elas/Vocēs': 'melhoravam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'melhorara',
+        Tu: 'melhoraras',
+        'Ela/Ele/Você': 'melhorara',
+        Nós: 'melhoráramos',
+        'Eles/Elas/Vocēs': 'melhoraram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'melhorarei',
+        Tu: 'melhorarás',
+        'Ela/Ele/Você': 'melhorará',
+        Nós: 'melhoraremos',
+        'Eles/Elas/Vocēs': 'melhorarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'melhore',
+        Tu: 'melhores',
+        'Ela/Ele/Você': 'melhore',
+        Nós: 'melhoremos',
+        'Eles/Elas/Vocēs': 'melhorem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'melhorasse',
+        Tu: 'melhorasses',
+        'Ela/Ele/Você': 'melhorasse',
+        Nós: 'melhorássemos',
+        'Eles/Elas/Vocēs': 'melhorassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'melhorar',
+        Tu: 'melhorares',
+        'Ela/Ele/Você': 'melhorar',
+        Nós: 'melhorarmos',
+        'Eles/Elas/Vocēs': 'melhorarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'melhoraria',
+        Tu: 'melhorarias',
+        'Ela/Ele/Você': 'melhoraria',
+        Nós: 'melhoraríamos',
+        'Eles/Elas/Vocēs': 'melhorariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'melhorando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'melhorado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'melhorares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'melhorarem'
+        }
+      ]
+    },
+    {
+      english: 'to initiate',
+      infinitive: 'iniciar',
+      presentSimple: {
+        Eu: 'inicio',
+        Tu: 'inicias',
+        'Ela/Ele/Você': 'inicia',
+        Nós: 'iniciamos',
+        'Eles/Elas/Vocēs': 'iniciam'
+      },
+      pastPerfect: {
+        Eu: 'iniciei',
+        Tu: 'iniciaste',
+        'Ela/Ele/Você': 'iniciou',
+        Nós: 'iniciámos',
+        'Eles/Elas/Vocēs': 'iniciaram'
+      },
+      imperfect: {
+        Eu: 'iniciava',
+        Tu: 'iniciavas',
+        'Ela/Ele/Você': 'iniciava',
+        Nós: 'iniciávamos',
+        'Eles/Elas/Vocēs': 'iniciavam'
+      },
+      pretéritoMaisQuePerfeito: {
+        Eu: 'iniciara',
+        Tu: 'iniciaras',
+        'Ela/Ele/Você': 'iniciara',
+        Nós: 'iniciáramos',
+        'Eles/Elas/Vocēs': 'iniciaram'
+      },
+      futuroDoPresenteSimples: {
+        Eu: 'iniciarei',
+        Tu: 'iniciarás',
+        'Ela/Ele/Você': 'iniciará',
+        Nós: 'iniciaremos',
+        'Eles/Elas/Vocēs': 'iniciarão'
+      },
+      subjuntivoPresente: {
+        Eu: 'inicie',
+        Tu: 'inicies',
+        'Ela/Ele/Você': 'inicie',
+        Nós: 'iniciemos',
+        'Eles/Elas/Vocēs': 'iniciem'
+      },
+      pretéritoImperfeito: {
+        Eu: 'iniciasse',
+        Tu: 'iniciasses',
+        'Ela/Ele/Você': 'iniciasse',
+        Nós: 'iniciássemos',
+        'Eles/Elas/Vocēs': 'iniciassem'
+      },
+      subjuntivoFuturo: {
+        Eu: 'iniciar',
+        Tu: 'iniciares',
+        'Ela/Ele/Você': 'iniciar',
+        Nós: 'iniciarmos',
+        'Eles/Elas/Vocēs': 'iniciarem'
+      },
+      futurodoPretéritoSimples: {
+        Eu: 'iniciaria',
+        Tu: 'iniciarias',
+        'Ela/Ele/Você': 'iniciaria',
+        Nós: 'iniciaríamos',
+        'Eles/Elas/Vocēs': 'iniciariam'
+      },
+      otherForms: [
+        {
+          form: 'gerúndio',
+          portuguese: 'iniciando'
+        },
+        {
+          form: 'particípio',
+          portuguese: 'iniciado'
+        },
+        {
+          form: 'infinitivo (tu)',
+          portuguese: 'iniciares'
+        },
+        {
+          form: 'infinitivo (eles)',
+          portuguese: 'iniciarem'
         }
       ]
     }
@@ -29978,6 +30998,291 @@ export const db: Schema = {
         plural: 'documentos',
         gender: 'masculine'
       }
+    },
+    {
+      english: 'device',
+      portuguese: {
+        word: 'dispositivo',
+        plural: 'dispositivos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'division',
+      portuguese: {
+        word: 'divisão',
+        plural: 'divisões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'trick',
+      portuguese: {
+        word: 'truque',
+        plural: 'truques',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'period',
+      portuguese: {
+        word: 'período',
+        plural: 'períodos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'protection',
+      portuguese: {
+        word: 'protecção',
+        plural: 'protecções',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'sample',
+      portuguese: {
+        word: 'amostra',
+        plural: 'amostras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'analysis',
+      portuguese: {
+        word: 'análise',
+        plural: 'análises',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'victory',
+      portuguese: {
+        word: 'vitória',
+        plural: 'vitórias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'kilometer',
+      portuguese: {
+        word: 'quilómetro',
+        plural: 'quilómetros',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'pilot',
+      portuguese: {
+        word: 'piloto',
+        plural: 'pilotos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'copy',
+      portuguese: {
+        word: 'cópia',
+        plural: 'cópias',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'assault',
+      portuguese: {
+        word: 'assalto',
+        plural: 'assaltos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'coach',
+      portuguese: {
+        word: 'treinador',
+        plural: 'treinadores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'job',
+      portuguese: {
+        word: 'obra',
+        plural: 'obras',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'power',
+      portuguese: {
+        word: 'poder',
+        plural: 'poderes',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'fall',
+      portuguese: {
+        word: 'queda',
+        plural: 'quedas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'campaign',
+      portuguese: {
+        word: 'campanha',
+        plural: 'campanhas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'credit',
+      portuguese: {
+        word: 'crédito',
+        plural: 'créditos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'interview',
+      portuguese: {
+        word: 'entrevista',
+        plural: 'entrevistas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'permission',
+      portuguese: {
+        word: 'permissão',
+        plural: 'permissões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'tip',
+      portuguese: {
+        word: 'ponta',
+        plural: 'pontas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'beverage',
+      portuguese: {
+        word: 'bebida',
+        plural: 'bebidas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'act',
+      portuguese: {
+        word: 'acto',
+        plural: 'actos',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'confusion',
+      portuguese: {
+        word: 'confusão',
+        plural: 'confusões',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'emergency',
+      portuguese: {
+        word: 'emergência',
+        plural: 'emergências',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'community',
+      portuguese: {
+        word: 'comunidade',
+        plural: 'comunidades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'ghost',
+      portuguese: {
+        word: 'fantasma',
+        plural: 'fantasmas',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'surveillance',
+      portuguese: {
+        word: 'vigilância',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'passage',
+      portuguese: {
+        word: 'passagem',
+        plural: 'passagens',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'identity',
+      portuguese: {
+        word: 'identidade',
+        plural: 'identidades',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'ass',
+      portuguese: {
+        word: 'cu',
+        plural: 'cus',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'violence',
+      portuguese: {
+        word: 'violência',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'conscience',
+      portuguese: {
+        word: 'consciência',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'proposal',
+      portuguese: {
+        word: 'proposta',
+        plural: 'propostas',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'corridor',
+      portuguese: {
+        word: 'corredor',
+        plural: 'corredores',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'lord',
+      portuguese: {
+        word: 'lorde',
+        plural: 'lordes',
+        gender: 'masculine'
+      }
     }
   ],
   others: [
@@ -30854,6 +32159,14 @@ export const db: Schema = {
     {
       portuguese: 'claramente',
       english: 'clearly'
+    },
+    {
+      portuguese: 'sobretudo',
+      english: 'above all'
+    },
+    {
+      portuguese: 'imediatamente',
+      english: 'immediately'
     }
   ],
   othersWithGender: [
@@ -33322,6 +34635,105 @@ export const db: Schema = {
         plural: 'prováveis'
       },
       english: 'probable'
+    },
+    {
+      masculine: {
+        singular: 'divertido',
+        plural: 'divertidos'
+      },
+      feminine: {
+        singular: 'divertida',
+        plural: 'divertidas'
+      },
+      english: 'fun'
+    },
+    {
+      masculine: {
+        singular: 'sacana',
+        plural: 'sacanas'
+      },
+      feminine: {
+        singular: 'sacana',
+        plural: 'sacanas'
+      },
+      english: 'naughty'
+    },
+    {
+      masculine: {
+        singular: 'digital',
+        plural: 'digitais'
+      },
+      feminine: {
+        singular: 'digital',
+        plural: 'digitais'
+      },
+      english: 'digital'
+    },
+    {
+      masculine: {
+        singular: 'rico',
+        plural: 'ricos'
+      },
+      feminine: {
+        singular: 'rica',
+        plural: 'ricas'
+      },
+      english: 'rich'
+    },
+    {
+      masculine: {
+        singular: 'mínimo',
+        plural: 'mínimos'
+      },
+      feminine: {
+        singular: 'mínima',
+        plural: 'mínimas'
+      },
+      english: 'minimum'
+    },
+    {
+      masculine: {
+        singular: 'culpado',
+        plural: 'culpados'
+      },
+      feminine: {
+        singular: 'culpada',
+        plural: 'culpadas'
+      },
+      english: 'guilty'
+    },
+    {
+      masculine: {
+        singular: 'zangado',
+        plural: 'zangados'
+      },
+      feminine: {
+        singular: 'zangada',
+        plural: 'zangadas'
+      },
+      english: 'angry'
+    },
+    {
+      masculine: {
+        singular: 'engraçado',
+        plural: 'engraçados'
+      },
+      feminine: {
+        singular: 'engraçada',
+        plural: 'engraçadas'
+      },
+      english: 'funny'
+    },
+    {
+      masculine: {
+        singular: 'empregado',
+        plural: 'empregados'
+      },
+      feminine: {
+        singular: 'empregada',
+        plural: 'empregadas'
+      },
+      english: 'employed'
     }
   ],
   sentences: [

@@ -47,7 +47,16 @@
         "bobby",
         "tá",
         "iorque",
-        "will"
+        "will",
+        "jake",
+        "kevin",
+        "william",
+        "red",
+        "jason",
+        "thomas",
+        "eric",
+        "scott",
+        "martin"
     ],
     "parsed": [
         "teres",
@@ -297,7 +306,70 @@
         "provável",
         "abandonar",
         "raiva",
-        "documentos"
+        "documentos",
+        "don",
+        "vencer",
+        "dispositivo",
+        "divisão",
+        "nasceu",
+        "divertido",
+        "truque",
+        "período",
+        "protecção",
+        "amostra",
+        "análise",
+        "desculpem",
+        "estarem",
+        "vitória",
+        "montar",
+        "quilómetros",
+        "piloto",
+        "cópia",
+        "sobretudo",
+        "assalto",
+        "treinador",
+        "imediatamente",
+        "militar",
+        "obra",
+        "podermos",
+        "queda",
+        "campanha",
+        "crédito",
+        "entrevista",
+        "permissão",
+        "sitio",
+        "ponta",
+        "bebidas",
+        "explodir",
+        "sacana",
+        "digitais",
+        "identificar",
+        "localizar",
+        "acto",
+        "confusão",
+        "emergência",
+        "comunidade",
+        "rico",
+        "foder",
+        "fantasma",
+        "transformar",
+        "mínimo",
+        "melhorar",
+        "vigilância",
+        "culpado",
+        "maria",
+        "zangado",
+        "passagem",
+        "iniciar",
+        "identidade",
+        "cu",
+        "violência",
+        "consciência",
+        "proposta",
+        "engraçado",
+        "corredor",
+        "empregada",
+        "lorde"
     ],
     "verbs": [
         {
@@ -665,6 +737,192 @@
             "english": "abandon",
             "place": 2147,
             "frequency": 0.0032
+        },
+        {
+            "word": "vencer",
+            "pos": "verb",
+            "text": "vencer",
+            "forms": [
+                "won",
+                "won) (beat",
+                "beaten; AE: beat",
+                "beat [colloq.]) (expired",
+                "expired"
+            ],
+            "english": "overcome",
+            "place": 2167,
+            "frequency": 0.0032
+        },
+        {
+            "word": "nasceu",
+            "pos": "verb",
+            "text": "nascer",
+            "forms": [
+                "rose",
+                "risen"
+            ],
+            "english": "be born",
+            "place": 2175,
+            "frequency": 0.0031
+        },
+        {
+            "word": "desculpem",
+            "pos": "verb",
+            "text": "desculpar",
+            "forms": [
+                "forgave",
+                "forgiven"
+            ],
+            "english": "excuse",
+            "place": 2187,
+            "frequency": 0.0031
+        },
+        {
+            "word": "estarem",
+            "pos": "verb",
+            "text": "estar",
+            "forms": [],
+            "english": "be",
+            "place": 2188,
+            "frequency": 0.0031
+        },
+        {
+            "word": "montar",
+            "pos": "verb",
+            "text": "montar",
+            "forms": [
+                "assembled",
+                "assembled) (mounted",
+                "mounted) (built",
+                "built) (rode",
+                "ridden"
+            ],
+            "english": "assemble",
+            "place": 2194,
+            "frequency": 0.0031
+        },
+        {
+            "word": "sobretudo",
+            "pos": "adverb",
+            "text": "sobretudo",
+            "forms": [],
+            "english": "especially",
+            "place": 2202,
+            "frequency": 0.0031
+        },
+        {
+            "word": "imediatamente",
+            "pos": "adverb",
+            "text": "imediatamente",
+            "forms": [],
+            "english": "immediately",
+            "place": 2207,
+            "frequency": 0.0031
+        },
+        {
+            "word": "sitio",
+            "pos": "verb",
+            "text": "sitiar",
+            "forms": [
+                "besieged",
+                "besieged"
+            ],
+            "english": "besiege",
+            "place": 2235,
+            "frequency": 0.003
+        },
+        {
+            "word": "explodir",
+            "pos": "verb",
+            "text": "explodir",
+            "forms": [
+                "exploded",
+                "exploded) (burst",
+                "burst"
+            ],
+            "english": "explode",
+            "place": 2242,
+            "frequency": 0.003
+        },
+        {
+            "word": "identificar",
+            "pos": "verb",
+            "text": "identificar",
+            "forms": [
+                "identified",
+                "identified) (detected",
+                "detected"
+            ],
+            "english": "identify",
+            "place": 2250,
+            "frequency": 0.003
+        },
+        {
+            "word": "localizar",
+            "pos": "verb",
+            "text": "localizar",
+            "forms": [
+                "pinpointed",
+                "pinpointed) (localized",
+                "localized) (spotted",
+                "spotted) (identified",
+                "identified"
+            ],
+            "english": "locate",
+            "place": 2255,
+            "frequency": 0.003
+        },
+        {
+            "word": "foder",
+            "pos": "verb",
+            "text": "foder",
+            "forms": [],
+            "english": "fuck up",
+            "place": 2269,
+            "frequency": 0.003
+        },
+        {
+            "word": "transformar",
+            "pos": "verb",
+            "text": "transformar",
+            "forms": [
+                "transformed",
+                "transformed"
+            ],
+            "english": "transform",
+            "place": 2272,
+            "frequency": 0.003
+        },
+        {
+            "word": "melhorar",
+            "pos": "verb",
+            "text": "melhorar",
+            "forms": [
+                "improved",
+                "improved) (enhanced",
+                "enhanced) (upgraded",
+                "upgraded) (raised",
+                "raised"
+            ],
+            "english": "improve",
+            "place": 2277,
+            "frequency": 0.0029
+        },
+        {
+            "word": "iniciar",
+            "pos": "verb",
+            "text": "iniciar",
+            "forms": [
+                "started",
+                "started) (initiated",
+                "initiated) (began",
+                "begun) (commenced",
+                "commenced) (introduced",
+                "introduced"
+            ],
+            "english": "start",
+            "place": 2301,
+            "frequency": 0.0029
         }
     ],
     "nouns": [
@@ -2700,6 +2958,403 @@
             "english": "documents",
             "place": 2153,
             "frequency": 0.0032
+        },
+        {
+            "word": "don",
+            "pos": "noun",
+            "text": "don",
+            "forms": [],
+            "english": "dom",
+            "place": 2156,
+            "frequency": 0.0032
+        },
+        {
+            "word": "dispositivo",
+            "pos": "noun, masculine",
+            "text": "dispositivo",
+            "forms": [
+                "plural: dispositivos m) (plural: devices) (plural: gadgets"
+            ],
+            "english": "device",
+            "place": 2168,
+            "frequency": 0.0032
+        },
+        {
+            "word": "divisão",
+            "pos": "noun, feminine",
+            "text": "divisão",
+            "forms": [
+                "plural: divisões f"
+            ],
+            "english": "divide",
+            "place": 2170,
+            "frequency": 0.0032
+        },
+        {
+            "word": "truque",
+            "pos": "noun, masculine",
+            "text": "truque",
+            "forms": [
+                "plural: truques m) (plural: tricks"
+            ],
+            "english": "trick",
+            "place": 2178,
+            "frequency": 0.0031
+        },
+        {
+            "word": "período",
+            "pos": "noun, masculine",
+            "text": "período",
+            "forms": [
+                "plural: períodos m) (plural: periods) (plural: terms"
+            ],
+            "english": "period",
+            "place": 2179,
+            "frequency": 0.0031
+        },
+        {
+            "word": "protecção",
+            "pos": "noun, feminine",
+            "text": "protecção",
+            "forms": [],
+            "english": "protection",
+            "place": 2180,
+            "frequency": 0.0031
+        },
+        {
+            "word": "amostra",
+            "pos": "noun, feminine",
+            "text": "amostra",
+            "forms": [
+                "plural: amostras f) (plural: specimens f",
+                "specimina f) (plural: patterns"
+            ],
+            "english": "sample",
+            "place": 2181,
+            "frequency": 0.0031
+        },
+        {
+            "word": "análise",
+            "pos": "noun, feminine",
+            "text": "análise",
+            "forms": [
+                "plural: análises f) (plural: analyses"
+            ],
+            "english": "analysis",
+            "place": 2186,
+            "frequency": 0.0031
+        },
+        {
+            "word": "vitória",
+            "pos": "noun, feminine",
+            "text": "vitória",
+            "forms": [
+                "plural: vitórias f) (plural: victories"
+            ],
+            "english": "victory",
+            "place": 2189,
+            "frequency": 0.0031
+        },
+        {
+            "word": "quilómetros",
+            "pos": "noun, plural, masculine",
+            "text": "quilómetros",
+            "forms": [],
+            "english": "kilometres",
+            "place": 2197,
+            "frequency": 0.0031
+        },
+        {
+            "word": "piloto",
+            "pos": "noun, masculine",
+            "text": "piloto",
+            "forms": [
+                "plural: pilotos m) (plural: pilots"
+            ],
+            "english": "pilot",
+            "place": 2198,
+            "frequency": 0.0031
+        },
+        {
+            "word": "cópia",
+            "pos": "noun, feminine",
+            "text": "cópia",
+            "forms": [
+                "plural: cópias f"
+            ],
+            "english": "copy",
+            "place": 2200,
+            "frequency": 0.0031
+        },
+        {
+            "word": "assalto",
+            "pos": "noun, masculine",
+            "text": "assalto",
+            "forms": [
+                "plural: assaltos m) (plural: assaults"
+            ],
+            "english": "assault",
+            "place": 2203,
+            "frequency": 0.0031
+        },
+        {
+            "word": "treinador",
+            "pos": "noun, masculine",
+            "text": "treinador",
+            "forms": [
+                "plural: treinadores m) (plural: coaches"
+            ],
+            "english": "coach",
+            "place": 2206,
+            "frequency": 0.0031
+        },
+        {
+            "word": "obra",
+            "pos": "noun, feminine",
+            "text": "obra",
+            "forms": [
+                "plural: obras f"
+            ],
+            "english": "work",
+            "place": 2210,
+            "frequency": 0.0031
+        },
+        {
+            "word": "podermos",
+            "pos": "noun, masculine",
+            "text": "poder",
+            "forms": [],
+            "english": "power",
+            "place": 2211,
+            "frequency": 0.0031
+        },
+        {
+            "word": "queda",
+            "pos": "noun, feminine",
+            "text": "queda",
+            "forms": [
+                "plural: quedas f"
+            ],
+            "english": "fall",
+            "place": 2212,
+            "frequency": 0.0031
+        },
+        {
+            "word": "campanha",
+            "pos": "noun, feminine",
+            "text": "campanha",
+            "forms": [
+                "plural: campanhas f) (plural: campaigns"
+            ],
+            "english": "campaign",
+            "place": 2217,
+            "frequency": 0.0031
+        },
+        {
+            "word": "crédito",
+            "pos": "noun, masculine",
+            "text": "crédito",
+            "forms": [
+                "plural: créditos m"
+            ],
+            "english": "credit",
+            "place": 2227,
+            "frequency": 0.0031
+        },
+        {
+            "word": "entrevista",
+            "pos": "noun, feminine",
+            "text": "entrevista",
+            "forms": [
+                "plural: entrevistas f) (plural: interviews"
+            ],
+            "english": "interview",
+            "place": 2232,
+            "frequency": 0.003
+        },
+        {
+            "word": "permissão",
+            "pos": "noun, feminine",
+            "text": "permissão",
+            "forms": [
+                "plural: permissões f) (plural: permits"
+            ],
+            "english": "permit",
+            "place": 2233,
+            "frequency": 0.003
+        },
+        {
+            "word": "ponta",
+            "pos": "noun, masculine/feminine",
+            "text": "ponta",
+            "forms": [
+                "plural: pontas f"
+            ],
+            "english": "tip",
+            "place": 2237,
+            "frequency": 0.003
+        },
+        {
+            "word": "bebidas",
+            "pos": "noun, plural, feminine",
+            "text": "bebidas",
+            "forms": [
+                "singular: bebida f"
+            ],
+            "english": "beverages",
+            "place": 2241,
+            "frequency": 0.003
+        },
+        {
+            "word": "acto",
+            "pos": "noun, masculine",
+            "text": "acto",
+            "forms": [],
+            "english": "act",
+            "place": 2258,
+            "frequency": 0.003
+        },
+        {
+            "word": "confusão",
+            "pos": "noun, feminine",
+            "text": "confusão",
+            "forms": [
+                "plural: confusões f"
+            ],
+            "english": "confusion",
+            "place": 2262,
+            "frequency": 0.003
+        },
+        {
+            "word": "emergência",
+            "pos": "noun, feminine",
+            "text": "emergência",
+            "forms": [],
+            "english": "emergency",
+            "place": 2264,
+            "frequency": 0.003
+        },
+        {
+            "word": "comunidade",
+            "pos": "noun, feminine",
+            "text": "comunidade",
+            "forms": [
+                "plural: comunidades f) (plural: communities"
+            ],
+            "english": "community",
+            "place": 2265,
+            "frequency": 0.003
+        },
+        {
+            "word": "fantasma",
+            "pos": "noun, masculine",
+            "text": "fantasma",
+            "forms": [],
+            "english": "ghost",
+            "place": 2271,
+            "frequency": 0.003
+        },
+        {
+            "word": "vigilância",
+            "pos": "noun, feminine",
+            "text": "vigilância",
+            "forms": [],
+            "english": "surveillance",
+            "place": 2279,
+            "frequency": 0.0029
+        },
+        {
+            "word": "maria",
+            "pos": "noun, masculine",
+            "text": "mar",
+            "forms": [
+                "plural: mares m) (plural: seas"
+            ],
+            "english": "sea",
+            "place": 2284,
+            "frequency": 0.0029
+        },
+        {
+            "word": "passagem",
+            "pos": "noun, feminine",
+            "text": "passagem",
+            "forms": [
+                "plural: passagens f) (plural: passages) (plural: tickets) (plural: passes) (plural: fares"
+            ],
+            "english": "passage",
+            "place": 2296,
+            "frequency": 0.0029
+        },
+        {
+            "word": "identidade",
+            "pos": "noun, feminine",
+            "text": "identidade",
+            "forms": [
+                "plural: identidades f) (plural: identities"
+            ],
+            "english": "identity",
+            "place": 2306,
+            "frequency": 0.0029
+        },
+        {
+            "word": "cu",
+            "pos": "noun, masculine",
+            "text": "cu",
+            "forms": [
+                "plural: cus m) (plural: asses"
+            ],
+            "english": "ass",
+            "place": 2307,
+            "frequency": 0.0029
+        },
+        {
+            "word": "violência",
+            "pos": "noun, feminine",
+            "text": "violência",
+            "forms": [],
+            "english": "violence",
+            "place": 2311,
+            "frequency": 0.0029
+        },
+        {
+            "word": "consciência",
+            "pos": "noun, feminine",
+            "text": "consciência",
+            "forms": [],
+            "english": "consciousness",
+            "place": 2313,
+            "frequency": 0.0029
+        },
+        {
+            "word": "proposta",
+            "pos": "noun, feminine",
+            "text": "proposta",
+            "forms": [
+                "plural: propostas f) (plural: tenders"
+            ],
+            "english": "proposal",
+            "place": 2314,
+            "frequency": 0.0029
+        },
+        {
+            "word": "corredor",
+            "pos": "noun, masculine",
+            "text": "corredor",
+            "forms": [
+                "plural: corredores m) (plural: corridors) (plural: aisles) (plural: hallways"
+            ],
+            "english": "corridor",
+            "place": 2318,
+            "frequency": 0.0029
+        },
+        {
+            "word": "lorde",
+            "pos": "noun, masculine",
+            "text": "lorde",
+            "forms": [],
+            "english": "lord",
+            "place": 2321,
+            "frequency": 0.0029
         }
     ],
     "adjectives": [
@@ -2896,6 +3551,124 @@
             "english": "likely",
             "place": 2143,
             "frequency": 0.0032
+        },
+        {
+            "word": "divertido",
+            "pos": "adjective / past participle, masculine",
+            "text": "divertido",
+            "forms": [
+                "divertida f sl",
+                "divertidos m pl",
+                "divertidas f pl"
+            ],
+            "english": "fun",
+            "place": 2177,
+            "frequency": 0.0031
+        },
+        {
+            "word": "militar",
+            "pos": "adjective, singular, both",
+            "text": "militar",
+            "forms": [],
+            "english": "military",
+            "place": 2209,
+            "frequency": 0.0031
+        },
+        {
+            "word": "sacana",
+            "pos": "adjective, singular, both",
+            "text": "sacana",
+            "forms": [],
+            "english": "dirty",
+            "place": 2243,
+            "frequency": 0.003
+        },
+        {
+            "word": "digitais",
+            "pos": "adjective, plural, both",
+            "text": "digitais",
+            "forms": [],
+            "english": "digital",
+            "place": 2247,
+            "frequency": 0.003
+        },
+        {
+            "word": "rico",
+            "pos": "adjective, masculine",
+            "text": "rico",
+            "forms": [
+                "rica f sl",
+                "ricos m pl",
+                "ricas f pl"
+            ],
+            "english": "rich",
+            "place": 2266,
+            "frequency": 0.003
+        },
+        {
+            "word": "mínimo",
+            "pos": "adjective, masculine",
+            "text": "mínimo",
+            "forms": [
+                "mínima f sl",
+                "mínimos m pl",
+                "mínimas f pl"
+            ],
+            "english": "minimum",
+            "place": 2274,
+            "frequency": 0.0029
+        },
+        {
+            "word": "culpado",
+            "pos": "adjective / past participle, masculine",
+            "text": "culpado",
+            "forms": [
+                "culpada f sl",
+                "culpados m pl",
+                "culpadas f pl"
+            ],
+            "english": "guilty",
+            "place": 2282,
+            "frequency": 0.0029
+        },
+        {
+            "word": "zangado",
+            "pos": "adjective, masculine",
+            "text": "zangado",
+            "forms": [
+                "zangada f sl",
+                "zangados m pl",
+                "zangadas f pl"
+            ],
+            "english": "angry",
+            "place": 2292,
+            "frequency": 0.0029
+        },
+        {
+            "word": "engraçado",
+            "pos": "adjective, masculine",
+            "text": "engraçado",
+            "forms": [
+                "engraçada f sl",
+                "engraçados m pl",
+                "engraçadas f pl"
+            ],
+            "english": "funny",
+            "place": 2316,
+            "frequency": 0.0029
+        },
+        {
+            "word": "empregada",
+            "pos": "adjective, feminine",
+            "text": "empregada",
+            "forms": [
+                "empregado m sl",
+                "empregados m pl",
+                "empregadas f pl"
+            ],
+            "english": "employed",
+            "place": 2320,
+            "frequency": 0.0029
         }
     ],
     "others": [
