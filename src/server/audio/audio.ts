@@ -8,10 +8,8 @@ import path from 'path';
 import os from 'os';
 import fs from 'fs';
 import util from 'util';
-import * as protos from '@google-cloud/text-to-speech/build/protos/protos';
 import { randomUUID } from 'node:crypto';
 import { Audio, Rate } from './audio.types';
-import OpenAI from 'openai';
 
 const AUDIO_DIR = path.join(os.homedir(), 'audio');
 
