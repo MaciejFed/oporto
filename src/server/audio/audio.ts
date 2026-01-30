@@ -2,7 +2,7 @@ import { Language } from '../../common/language';
 import { getRandomElement } from '../../common/common';
 import { getAudio, getPreviousAudioVoice, saveAudio } from '../db';
 import { logger } from '../../common/logger';
-import textToSpeech from '@google-cloud/text-to-speech';
+const { TextToSpeechClient } = require('@google-cloud/text-to-speech').v1beta1;
 import dotenv from 'dotenv';
 import path from 'path';
 import os from 'os';
@@ -35,46 +35,24 @@ const getVoiceForLanguage = async (language: Language, text: string, api: 'googl
   }
 };
 
-const getLocaleForLanguage = (language: Language) => (language === Language.Portuguese ? 'pt-PT' : 'de-DE');
-const getRateInNumber = (rate: Rate) => (rate === 'slow' ? 0.7 : 1);
-
-const synthesizeOpenAI = async (language: Language, text: string, rate: Rate) => {
-  const audioFilePath = getAudioPath();
-  const voice = (await getVoiceForLanguage(language, text, 'openai')) as
-    | 'alloy'
-    | 'echo'
-    | 'fable'
-    | 'onyx'
-    | 'nova'
-    | 'shimmer';
-
-  const openai = new OpenAI();
-  const mp3 = await openai.audio.speech.create({
-    model: 'tts-1-hd',
-    voice,
-    speed: getRateInNumber(rate),
-    input: text
-  });
-  const buffer = Buffer.from(await mp3.arrayBuffer());
-  await fs.promises.writeFile(audioFilePath, buffer);
-
-  return {
-    path: audioFilePath,
-    text,
-    voice,
-    rate,
-    api: 'openai'
-  } as Audio;
-};
-
 const synthesize = async (language: Language, text: string, rate: Rate, api: 'google' | 'openai') => {
-  const client = new textToSpeech.TextToSpeechClient();
+  const client = new TextToSpeechClient();
   const voice = await getVoiceForLanguage(language, text, api);
-  if (api === 'openai') return synthesizeOpenAI(language, text, rate);
-  const request: protos.google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
-    input: { text: text },
-    voice: { languageCode: getLocaleForLanguage(language), name: voice },
-    audioConfig: { audioEncoding: 'MP3', speakingRate: getRateInNumber(rate) }
+  const request = {
+    input: {
+      text,
+      prompt: "Read in a tone that fits to the input."
+    },
+    voice: {
+      languageCode: "pt-pt", 
+      name: "Achernar",
+      modelName: "gemini-2.5-flash-tts" 
+    },
+    audioConfig: {
+      audioEncoding: "LINEAR16",
+      speakingRate: 1.0,
+      pitch: 0
+    }
   };
 
   const audioFilePath = getAudioPath();

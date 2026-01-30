@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/MaciejFed/oporto#readme",
   "dependencies": {
-    "@google-cloud/text-to-speech": "^5.8.0",
+    "@google-cloud/text-to-speech": "^6.4.0",
     "axios": "^1.10.0",
     "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
