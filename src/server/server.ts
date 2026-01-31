@@ -329,7 +329,7 @@ app.post('/:language/audio', async (req, res) => {
   try {
     const language = getLanguage(req);
     const audio = await getAudioForText(language, req.body.text, req.body.rate, req.body.api);
-    res.download(audio.path, 'audio.mp3', (err) => {
+    res.download(audio.path, 'audio.wav', (err) => {
       if (err) {
         console.error('Error sending file:', err);
         res.status(500).send('Error sending audio');

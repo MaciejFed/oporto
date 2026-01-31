@@ -15,7 +15,7 @@ const AUDIO_DIR = path.join(os.homedir(), 'audio');
 
 dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
 
-const getAudioPath = () => `${AUDIO_DIR}/${randomUUID()}.mp3`;
+const getAudioPath = () => `${AUDIO_DIR}/${randomUUID()}.wav`;
 
 const getVoiceForLanguage = async (language: Language, text: string, api: 'google' | 'openai') => {
   const audioPrev = await getPreviousAudioVoice(language, text, api);
