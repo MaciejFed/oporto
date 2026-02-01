@@ -2,6 +2,7 @@ import { Language } from '../../common/language';
 import { getRandomElement } from '../../common/common';
 import { getAudio, getPreviousAudioVoice, saveAudio } from '../db';
 import { logger } from '../../common/logger';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { TextToSpeechClient } = require('@google-cloud/text-to-speech').v1beta1;
 import dotenv from 'dotenv';
 import path from 'path';
@@ -39,15 +40,15 @@ const synthesize = async (language: Language, text: string, rate: Rate, api: 'go
   const request = {
     input: {
       text,
-      prompt: "Read in a tone that fits to the input."
+      prompt: 'Read in a tone that fits to the input. Make sure to use European Portuguese accent.'
     },
     voice: {
-      languageCode: "pt-pt", 
-      name: "Achernar",
-      modelName: "gemini-2.5-flash-tts" 
+      languageCode: 'pt-pt',
+      name: 'Achernar',
+      modelName: 'gemini-2.5-flash-tts'
     },
     audioConfig: {
-      audioEncoding: "LINEAR16",
+      audioEncoding: 'LINEAR16',
       speakingRate: 1.0,
       pitch: 0
     }

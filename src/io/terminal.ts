@@ -280,12 +280,6 @@ export class Terminal {
       case 'a':
         this.playAudio('example', 'normal', 'google', false);
         break;
-      case 's':
-        this.playAudio('example', 'slow', 'google', false);
-        break;
-      case 'd':
-        this.playAudio('example', 'normal', 'openai', false);
-        break;
       case 't':
         printExerciseTranslation(this.currentExercise?.getTranslation());
         // eslint-disable-next-line no-case-declarations
