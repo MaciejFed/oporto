@@ -246,17 +246,53 @@ app.get('/:language/generate/local', async (req: Request, res: Response) => {
   }
 });
 
+// app.get('/:language/in-progress', async (req: Request, res: Response) => {
+//   try {
+//     const language = getLanguage(req);
+//     const results = await readAllResults(language);
+//     const exercises = await generateExercisesForSessionAsync(
+//       30,
+//       true,
+//       (ex) => !repeatedToday.includes(extractWordToFindFromExercise(ex)!),
+//       language,
+//       results
+//     );
+//     const exercise = getRandomElement(exercises);
+//     const wordToFind = extractWordToFindFromExercise(exercise)!;
+//     repeatedToday.push(wordToFind);
+//     logger.info(JSON.stringify(repeatedToday));
+//     const examples = await getExamples(wordToFind, language);
+//     const exampleSelected = await selectMovieExample(examples, wordToFind);
+//     const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!);
+//     const frequency = frequencyMap[wordToFind] ?? { place: 0 };
+
+//     const header = exercise.getDescription().replace('Portuguese: ', '').replace('English: ', '');
+
+//     res.send({
+//       header: `${header} [${frequency.place}]`,
+//       bodyPrefix: exercise.getBodyPrefix().replace('Portuguese: ', '').replace('English: ', ''),
+//       body: exercise.getCorrectAnswer(),
+//       example: exampleSelected?.targetLanguage,
+//       exampleTranslation
+//     });
+//   } catch (e: any) {
+//     logger.error('Error generating exercises', 3);
+//     logger.error(e);
+//   }
+// });
+
+
 app.get('/:language/in-progress', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    const results = await readAllResults(language);
-    const exercises = await generateExercisesForSessionAsync(
-      30,
-      true,
-      (ex) => !repeatedToday.includes(extractWordToFindFromExercise(ex)!),
-      language,
-      results
-    );
+    const exercises = generateAllPossibleExercises(language);
+    exercises.filter((exercise) => {
+      const word = exercise.getBaseWordAsString();
+      if (word) {
+        const frequency = frequencyMap[word];
+        return frequency && frequency.place < 5_000;
+      }
+    })
     const exercise = getRandomElement(exercises);
     const wordToFind = extractWordToFindFromExercise(exercise)!;
     repeatedToday.push(wordToFind);
