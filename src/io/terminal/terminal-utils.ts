@@ -15,6 +15,9 @@ import { PTVerbConjugation } from '../conjugation-printer/pt-conjugation-printer
 import { Exercise } from '../../exercise/exercise';
 import { DECaseConjugation } from '../conjugation-printer/de-case-conjugation-printer';
 import { PLVerbConjugation } from '../conjugation-printer/pl-conjugation-printer';
+import { DENounConjugation } from '../conjugation-printer/de-noun-conjugation-printer';
+import { PtAdjectiveConjugationPrinter } from '../conjugation-printer/pt-adjective-conjugation-printer';
+import { PtOtherConjugationPrinter } from '../conjugation-printer/pt-other-conjugation-printer';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ervy = require('ervy');
 const { bullet, bg, fg, scatter } = ervy;
@@ -37,8 +40,8 @@ export function createColorArray({ white, green, yellow, blue }: CreateColorArra
 const AppLogo = chalk.red(figlet.textSync('oPorto', { horizontalLayout: 'full' }));
 
 const EXERCISE_TOP_MARGIN = 6;
-const EXERCISE_BODY_MARGIN = EXERCISE_TOP_MARGIN + 3;
-const EXERCISE_REPEAT_BODY_MARGIN = EXERCISE_BODY_MARGIN + 3;
+export const EXERCISE_BODY_MARGIN = EXERCISE_TOP_MARGIN + 3;
+export const EXERCISE_REPEAT_BODY_MARGIN = EXERCISE_BODY_MARGIN + 3;
 const EXERCISE_MENU_MARGIN = EXERCISE_REPEAT_BODY_MARGIN + 1;
 
 export type AnswerInputType = 'keyboard' | 'voice';
@@ -57,7 +60,7 @@ export function preExerciseClear() {
 }
 
 export function printExerciseTranslation(exerciseTranslation: string | undefined) {
-  getOutput().moveTo(1, EXERCISE_TOP_MARGIN, exerciseTranslation);
+  getOutput().moveTo(1, EXERCISE_TOP_MARGIN + 1, `Translation: ${exerciseTranslation}`);
 }
 
 export function printExerciseDescription(exerciseDescription: string) {
@@ -65,12 +68,25 @@ export function printExerciseDescription(exerciseDescription: string) {
 }
 
 export function printExerciseBody(exerciseBodyPrefix: string, answer: string, exerciseBodySuffix: string) {
-  getOutput().moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix + answer + exerciseBodySuffix);
-  getOutput().moveCursor(1 + exerciseBodyPrefix.length + answer.length, EXERCISE_BODY_MARGIN);
+  const answerFinal =
+    (exerciseBodySuffix.length > 0 || exerciseBodyPrefix.length > 20) && answer.length < 2
+      ? answer.padStart(2, '_').padEnd(3, '_')
+      : answer;
+  getOutput().moveTo(1, EXERCISE_BODY_MARGIN, exerciseBodyPrefix);
+  getOutput().bold(true);
+  getOutput().moveTo(1 + exerciseBodyPrefix.length, EXERCISE_BODY_MARGIN, answerFinal);
+  getOutput().bold(false);
+  getOutput().moveTo(
+    1 + exerciseBodyPrefix.length + answerFinal.length,
+    EXERCISE_BODY_MARGIN,
+    ` ${exerciseBodySuffix}`
+  );
+  getOutput().moveCursor(1 + exerciseBodyPrefix.length + answerFinal.length, EXERCISE_BODY_MARGIN);
 }
 
-export function printExerciseFeedback(wasCorrect: boolean, answerInputType: AnswerInputType) {
-  getOutput().moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${answerInputType}]`);
+export function printExerciseFeedback(wasCorrect: boolean, frequency: number, change: number) {
+  const changeStr = change > 0 ? `+${change}` : change;
+  getOutput().moveTo(1, EXERCISE_BODY_MARGIN + 1, `${wasCorrect ? 'Correct!' : 'Wrong!'} [${frequency}] ${changeStr}`);
 }
 
 const repeatBodyPrefix = 'Repeat: ';
@@ -109,7 +125,7 @@ export function printExerciseRepeatAnswer(answer: string, correctAnswer: string)
     getOutput().moveTo(repeatBodyPrefix.length + i + 1, EXERCISE_REPEAT_BODY_MARGIN, answer[i]);
   }
   getOutput().white();
-  getOutput().hideCursor(false);
+  getOutput().hideCursor();
 }
 
 export function printInBetweenMenu(printTranslation: boolean) {
@@ -167,6 +183,7 @@ export function printWithFeedback(
   const exerciseBodyPrefix = prefix ? prefix : '';
   const feedbackWord = answerType === 'CorrectAnswer' ? correctAnswer : answer;
   getOutput().moveTo(x, y, exerciseBodyPrefix);
+  getOutput().bold(true);
   for (let i = 0; i < feedbackWord.length; i++) {
     if (answer[i] && correctAnswer[i] && answer[i].toLowerCase() === correctAnswer[i].toLowerCase()) {
       getOutput().green();
@@ -175,6 +192,7 @@ export function printWithFeedback(
     }
     getOutput().moveTo(x + exerciseBodyPrefix.length + i, y, feedbackWord[i]);
   }
+  getOutput().bold(false);
   getOutput().white();
 }
 
@@ -183,7 +201,7 @@ export function printExerciseBodyWithCorrection(exerciseBodyPrefix: string, answ
 }
 
 export function printAllAnswers(results: Result[]) {
-  const HISTORY_X_MARGIN = 40;
+  const HISTORY_X_MARGIN = 80;
   const HISTORY_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   const HISTORY_ANSWERS_LIMIT = 5;
   getOutput().bold();
@@ -203,7 +221,7 @@ export function printAllAnswers(results: Result[]) {
 }
 
 export function printAllVerbConjugations(exercise: Exercise, results: Result[]) {
-  const CONJUGATION_X_MARGIN = 60;
+  const CONJUGATION_X_MARGIN = 100;
   const CONJUGATION_Y_MARGIN = EXERCISE_BODY_MARGIN - 1;
   let table: ColoredText[] = [];
   switch (exercise.exerciseType) {
@@ -215,12 +233,21 @@ export function printAllVerbConjugations(exercise: Exercise, results: Result[]) 
     case 'VerbTranslation':
       table = new PTVerbConjugation(exercise.getBaseWord() as any, results).getTable();
       break;
+    case 'AdjectiveTranslation':
+      table = new PtAdjectiveConjugationPrinter(exercise.getBaseWord() as any, results).getTable();
+      break;
+    case 'OtherWithGenderTranslation':
+      table = new PtOtherConjugationPrinter(exercise.getBaseWord() as any, results).getTable();
+      break;
     case 'PolishVerbExercise':
     case 'PolishVerbTranslation':
       table = new PLVerbConjugation(exercise.getBaseWord() as any, results).getTable();
       break;
     case 'GermanCaseExercise':
       table = new DECaseConjugation(exercise.getBaseWord() as any, results).getTable();
+      break;
+    case 'GermanNounTranslation':
+      table = new DENounConjugation(exercise.getBaseWord() as any, results).getTable();
       break;
     default:
       return;

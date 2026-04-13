@@ -5,15 +5,19 @@ import fs from 'fs';
 import { examplesPaths } from './examples';
 import { MIN_WORD_LENGTH } from '../service/example-finder/example-finder.types';
 import { getAllUniqueWords, getAllUniqueWordsConjugated } from '../service/progress/progress';
+import { isNumber } from 'node:util';
+import { saveFrequencyMap } from '../server/db';
+import { generateAllPossibleExercises } from '../exercise/generator';
 
 const removeUnwantedCharacters = (word: string) =>
-  word.replace('.', '').replace(',', '').replace('?', '').replace('!', '').replace('- ', '');
+  word.replace('.', '').replace(',', '').replace('?', '').replace('!', '');
 
-function countAndSortWords(words: string[], knownWords: string[]): [string, number][] {
+function countAndSortWords(words: string[], knownWords: string[]): [string, number, boolean][] {
   const wordFrequency = new Map<string, number>();
+  const totalCount = 0;
 
   words.forEach((word) => {
-    const wordFinal = word.toLowerCase(); // Optional: Normalize to lowercase if case-insensitive
+    const wordFinal = word.toLowerCase();
     if (wordFrequency.has(wordFinal)) {
       wordFrequency.set(word, wordFrequency.get(wordFinal)! + 1);
     } else {
@@ -25,12 +29,14 @@ function countAndSortWords(words: string[], knownWords: string[]): [string, numb
 
   return sortedWordFrequency
     .sort((a, b) => b[1] - a[1])
-    .splice(0, 1000)
-    .filter((word) => !knownWords.includes(word[0]));
+    .slice(0, 10_000)
+    .map((freq) => [freq[0], freq[1], knownWords.includes(freq[0])]);
 }
 
 export async function getKnownPercentage(language: Language): Promise<number> {
-  const allWords = getAllUniqueWordsConjugated(language);
+  const wordFrequency = new Map<string, number>();
+  const allWords = ['s'];
+  const allWordsReal = getAllUniqueWordsConjugated(language);
   let known = 0;
   let unKnown = 0;
   let counter = 0;
@@ -38,32 +44,55 @@ export async function getKnownPercentage(language: Language): Promise<number> {
   const readInterfaceTarget = readline.createInterface({
     input: fs.createReadStream(examplesPaths[language].targetLanguagePath)
   });
+  let shouldBreak = false;
 
   const readInterfacePtIterator = readInterfaceTarget[Symbol.asyncIterator]();
-  const unknownWords: string[] = [];
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const linePtResult = await readInterfacePtIterator.next();
 
-    if (linePtResult.done) break;
+    if (linePtResult.done || shouldBreak) break;
 
     const linePt = linePtResult.value;
 
     const sentenceWords = linePt
       .toLowerCase()
       .split(' ')
-      .map(removeUnwantedCharacters)
+      // .map(word => removeUnwantedCharacters(word))
+      .filter(
+        (word) =>
+          !word.includes('.') &&
+          !word.includes(',') &&
+          !word.includes('-') &&
+          !word.includes('ä') &&
+          !word.includes('"') &&
+          !word.includes(':') &&
+          !word.includes("'") &&
+          !word.includes('$') &&
+          !word.includes('?') &&
+          !word.includes('!') &&
+          isNaN(Number(word))
+      )
       .filter((word) => word.length >= MIN_WORD_LENGTH);
 
     sentenceWords.forEach((word) => {
-      if (allWords.includes(word)) {
+      if (allWordsReal.includes(word)) {
         known++;
       } else {
         unKnown++;
-        unknownWords.push(word);
+        try {
+          const wordFinal = word.toLowerCase();
+          if (wordFrequency.has(wordFinal)) {
+            wordFrequency.set(word, wordFrequency.get(wordFinal)! + 1);
+          } else {
+            wordFrequency.set(wordFinal, 1);
+          }
+        } catch (e: any) {
+          shouldBreak = true;
+        }
       }
 
-      if (counter++ % 10000 === 0) {
+      if (counter++ % 1000000 === 0) {
         console.log(`Result: [${(known / (known + unKnown)) * 100}%]`);
       }
     });
@@ -71,9 +100,48 @@ export async function getKnownPercentage(language: Language): Promise<number> {
 
   readInterfaceTarget.close();
 
-  const result = countAndSortWords(unknownWords, allWords);
+  const sortedWordFrequency: [string, number, boolean][] = Array.from(wordFrequency)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5_000)
+    .map((freq) => [freq[0], freq[1], allWordsReal.includes(freq[0])]);
+
+  const cutNumber = (someNumber: number) => Number(Number(someNumber.toString().slice(0, 7)).toFixed(4));
+
+  const result: [string, number, number, boolean][] = sortedWordFrequency.map((wordFreq) => [
+    wordFreq[0],
+    wordFreq[1],
+    (wordFreq[1] / (known + unKnown)) * 100,
+    wordFreq[2]
+  ]);
+
+  const sumUntil = (until: number, array: [string, number, number, boolean][]) =>
+    array.slice(0, until + 1).reduce((prev, curr) => prev + curr[2], 0);
+
+  const newResult = result.map((wordFreq, index) => [
+    wordFreq[0],
+    wordFreq[1],
+    cutNumber(wordFreq[2]),
+    cutNumber(sumUntil(index, result)),
+    wordFreq[3]
+  ]);
+  const unknowns = newResult.filter((freq) => !freq[4]);
+  const newResultUnknown = unknowns.map((wordFreq, index) => [
+    wordFreq[0],
+    wordFreq[1],
+    wordFreq[2],
+    cutNumber(sumUntil(index, unknowns as any))
+  ]);
+  // const freqMap = newResultUnknown.reduce((curr, prev, index) => {
+  //   curr[prev[0] as string] = {
+  //     place: index + 1,
+  //     frequency: prev[2]
+  //   };
+  //   return curr;
+  // }, {} as { [key: string]: object });
+
+  // await saveFrequencyMap(language, freqMap);
 
   return (known / (known + unKnown)) * 100;
 }
 
-getKnownPercentage(Language.German).then((res) => console.log(res));
+getKnownPercentage(Language.Portuguese).then((res) => console.log(res));

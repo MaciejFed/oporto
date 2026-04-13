@@ -1,22 +1,39 @@
 import { Comparable } from '../common/common';
 import { Person, Verb } from '../repository/exercises-repository';
 import { getCorrectVerbConjugation, getRandomPerson, getRandomVerb } from '../service/verb/verb';
-import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 
-export type VerbTime = 'presentSimple' | 'pastPerfect';
+export type VerbTime =
+  | 'presentSimple'
+  | 'pastPerfect'
+  | 'imperfect'
+  | 'pretéritoMaisQuePerfeito'
+  | 'futuroDoPresenteSimples'
+  | 'subjuntivoPresente'
+  | 'pretéritoImperfeito'
+  | 'subjuntivoFuturo'
+  | 'futurodoPretéritoSimples';
 
 const vertTimePrintVersion = (verbTime: VerbTime) => {
   if (verbTime === 'presentSimple') return 'Present Simple';
+  if (verbTime === 'imperfect') return 'Imperfect';
+  if (verbTime === 'pretéritoMaisQuePerfeito') return 'Pretérito Mais-que-Perfeito';
+  if (verbTime === 'futuroDoPresenteSimples') return 'Futuro do Presente Simples';
+  if (verbTime === 'subjuntivoPresente') return 'Subjuntivo Presentes';
+  if (verbTime === 'pretéritoImperfeito') return 'Pretérito Imperfeito';
+  if (verbTime === 'subjuntivoFuturo') return 'Subjuntivo Futuro';
+  if (verbTime === 'futurodoPretéritoSimples') return 'Futuro do Pretérito Simples';
   return 'Past Perfect';
 };
 
-export class VerbExercise implements Exercise, Comparable {
+export class VerbExercise extends BaseExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
   verbTime: VerbTime;
   verb: Verb;
   person: Person;
 
   constructor() {
+    super();
     this.exerciseType = 'VerbExercise';
     this.verb = getRandomVerb();
     this.person = getRandomPerson();
@@ -32,7 +49,11 @@ export class VerbExercise implements Exercise, Comparable {
     return verbExercise;
   }
 
-  getTranslation = () => undefined;
+  toString(): string {
+    return `${this.exerciseType}_${this.getBaseWordAsString()}_${this.person}`;
+  }
+
+  getTranslation = () => this.verb.english;
 
   getBodyPrefix = () => `[${vertTimePrintVersion(this.verbTime)}] ${this.person}: `;
 
@@ -45,10 +66,6 @@ export class VerbExercise implements Exercise, Comparable {
   isAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
-  }
-
-  getMinAnswerCount(): number {
-    return 2;
   }
 
   getBaseWord() {

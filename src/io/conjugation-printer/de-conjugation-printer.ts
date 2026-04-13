@@ -48,6 +48,7 @@ export class DEVerbConjugation extends VerbConjugation<GermanVerb> {
   }
 
   getExercise(x: number, y: number): Exercise {
+    // @ts-ignore
     return GermanVerbExercise.new(this.data, this.getPersonForX(x), this.getTenseForY(y));
   }
 

@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { logger } from '../common/logger';
 import { Result } from '../service/result';
 import { loadValidConfig } from './configuration';
@@ -19,7 +19,7 @@ const collectionNameMap: Record<Language, string> = {
 };
 
 const examplesCollectionNameMap: Record<Language, string> = {
-  [Language.Portuguese]: 'examples_pt',
+  [Language.Portuguese]: 'examples_pt_v2',
   [Language.German]: 'examples_de',
   [Language.Polish]: 'examplesPL'
 };
@@ -34,6 +34,18 @@ const audiosCollectionNameMap: Record<Language, string> = {
   [Language.Portuguese]: 'audios_pt',
   [Language.German]: 'audios_de',
   [Language.Polish]: 'audios_pl'
+};
+
+const knownSentencesCollectionNameMap: Record<Language, string> = {
+  [Language.Portuguese]: 'knownSentences_pt',
+  [Language.German]: 'knownSentences_de',
+  [Language.Polish]: 'knownSentences_pl'
+};
+
+const frequencyMap: Record<Language, string> = {
+  [Language.Portuguese]: 'frequency_pt',
+  [Language.German]: 'frequency_de',
+  [Language.Polish]: 'frequency_pl'
 };
 
 const getExamplesCollectionName = (language: Language, type: 'top' | 'total') =>
@@ -92,6 +104,63 @@ export async function isExampleSavedAlready(word: string, language: Language): P
   }
 }
 
+export async function saveFrequencyMap(language: Language, frequency: object): Promise<void> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(frequencyMap[language]);
+    await collection.insertOne(frequency);
+  } finally {
+    await client.close();
+  }
+}
+
+export async function getFrequencyMap(language: Language): Promise<{
+  [word: string]: {
+    place: number;
+    frequency: number;
+  };
+}> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(frequencyMap[language]);
+    const freq = await collection.findOne();
+    return freq || {};
+  } finally {
+    await client.close();
+  }
+}
+
+export async function getFrequencyMaps(language: Language): Promise<
+  {
+    [word: string]: {
+      place: number;
+      frequency: number;
+    };
+  }[]
+> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(frequencyMap[language]);
+    return await collection.find().toArray();
+  } finally {
+    await client.close();
+  }
+}
+
+export async function saveKnownSentences(language: Language, sentences: string[]): Promise<void> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const knownSentences = db.collection(knownSentencesCollectionNameMap[language]);
+    await knownSentences.insertOne({ known: sentences });
+  } finally {
+    await client.close();
+  }
+}
+
 export async function saveFavoriteExample(language: Language, example: MovieExample): Promise<void> {
   const client = await getClient();
   try {
@@ -116,12 +185,78 @@ export async function getExamples(word: string, language: Language): Promise<Wor
   const client = await getClient();
   try {
     const db = client.db(dbName);
-    const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'total'));
 
     const examples = await collectionTop.findOne({
       [word]: { $exists: true }
     });
     return examples ? Object.values(examples)[1] : [];
+  } finally {
+    await client.close();
+  }
+}
+
+export async function getExamplesForWords(
+  words: string[],
+  language: Language
+): Promise<Record<string, WordExampleLine[] | undefined>> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'total'));
+
+    const orConditions = words.map((word) => ({ [word]: { $exists: true } }));
+
+    const cursor = collectionTop.find({ $or: orConditions });
+
+    const allDocs = await cursor.toArray();
+
+    const values: Record<string, WordExampleLine[] | undefined> = allDocs.reduce((prev, curr) => {
+      const word = Object.keys(curr)[1];
+      const lines = Object.values(curr)[1];
+
+      return {
+        ...prev,
+        [word]: lines
+      };
+    }, {});
+
+    return values;
+  } finally {
+    await client.close();
+  }
+}
+
+export async function getExamplesSaved(language: Language): Promise<string[]> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collectionTop = db.collection(getExamplesCollectionName(language, 'top'));
+
+    const examples = await collectionTop
+      .aggregate([
+        {
+          $project: {
+            key: {
+              $first: {
+                $filter: {
+                  input: { $objectToArray: '$$ROOT' },
+                  cond: { $ne: ['$$this.k', '_id'] }
+                }
+              }
+            }
+          }
+        },
+        {
+          $project: {
+            _id: 0,
+            key: '$key.k'
+          }
+        }
+      ])
+      .toArray();
+
+    return examples ? examples.map((doc) => Object.values(doc)[0]) : [];
   } finally {
     await client.close();
   }
@@ -167,6 +302,30 @@ export async function saveNewResult(newResult: Result, language: Language): Prom
   }
 }
 
+export async function deleteResult(): Promise<void> {
+  const client = await getClient();
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection(collectionNameMap[Language.Portuguese]);
+    const results = parseResults(await collection.find<Result>({}).toArray());
+    const toDelete = results.filter((result) => {
+      if (!result.exercise.getBaseWord()) return false;
+      const english = (result.exercise.getBaseWord() as any).english;
+      return english && english.toLowerCase().includes('pronoun') && !result.wasCorrect;
+    });
+
+    for (const result of toDelete) {
+      const deleteRes = await collection.deleteOne({
+        _id: (result as any)._id
+      });
+      const deleted = deleteRes.deletedCount;
+      console.log(deleted);
+    }
+  } finally {
+    await client.close();
+  }
+}
+
 export async function readAllResults(language: Language): Promise<Result[]> {
   const client = await getClient();
   try {
@@ -181,13 +340,14 @@ export async function readAllResults(language: Language): Promise<Result[]> {
   }
 }
 
-export async function getPreviousAudioVoice(language: Language, text: string): Promise<string | null> {
+export async function getPreviousAudioVoice(language: Language, text: string, api: string): Promise<string | null> {
   const client = await getClient();
   try {
     const db = client.db(dbName);
     const collection = db.collection(audiosCollectionNameMap[language]);
     const audio = await collection.findOne<Audio>({
-      text
+      text,
+      api
     });
     if (audio) {
       return audio.voice;
@@ -198,14 +358,20 @@ export async function getPreviousAudioVoice(language: Language, text: string): P
   }
 }
 
-export async function getAudio(language: Language, text: string, rate: Rate): Promise<Audio | null> {
+export async function getAudio(
+  language: Language,
+  text: string,
+  rate: Rate,
+  api: 'google' | 'openai'
+): Promise<Audio | null> {
   const client = await getClient();
   try {
     const db = client.db(dbName);
     const collection = db.collection(audiosCollectionNameMap[language]);
     return await collection.findOne<Audio>({
       text,
-      rate
+      rate,
+      api
     });
   } finally {
     await client.close();

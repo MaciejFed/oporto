@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import { Language } from '../common/language';
+import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
 
 const testExercises =
   '[{"translationType":"toEnglish","exerciseType":"AdjectiveTranslation","adjective":{"english":"bitter","masculine":{"singular":"amargo","plural":"amargos"},"feminine":{"singular":"amarga","plural":"amargas"}},"gender":"masculine","number":"singular"},' +
@@ -73,8 +74,8 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
   });
 
   jest.mock('../commands/stat', () => ({
-    displayStatistics: () => {},
-  }))
+    displayStatistics: () => {}
+  }));
 
   jest.mock('child_process', () => {
     const fileModuleActual = jest.requireActual('child_process');
@@ -90,23 +91,25 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
   });
 
   jest.mock('../service/example-finder/example-finder', () => ({
-    findExampleSentenceAndWord: (_language: any,
-                                 _exercise: any,
-                                   callback: ({ wordStartIndex, word, targetLanguage, english, englishApi }: any) => void) => {
+    findExampleSentenceAndWord: (
+      _language: any,
+      _exercise: any,
+      callback: ({ wordStartIndex, word, targetLanguage, english, englishApi }: any) => void
+    ) => {
       callback({
         wordStartIndex: 0,
         word: 'foo',
         targetLanguage: 'Some Text',
         english: 'Some Text',
-        englishApi:'Some Text',
-      })
-    }
-  }))
+        englishApi: 'Some Text'
+      });
+    },
+    extractWordToFindFromExercise: () => 'dummy'
+  }));
 
   const { EventProcessor } = require('../event/event-processor');
   const Terminal = require('../io/terminal').default;
   const Input = require('../io/input').default;
-  const SessionManager = require('../session/session-manager').default;
   const getAllResults = require('../repository/result-repository').getAllResults;
 
   const eventProcessor = new EventProcessor(Language.Portuguese);
@@ -118,7 +121,7 @@ export const withBaseMocks = (mockGenerator?: boolean) => {
     sayCommands,
     eventProcessor,
     getAllResults,
-    mockGenerateExercisesForSession,
-    SessionManager
+    Terminal,
+    mockGenerateExercisesForSession
   };
 };

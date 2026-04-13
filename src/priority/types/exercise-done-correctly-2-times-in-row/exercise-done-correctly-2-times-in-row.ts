@@ -11,6 +11,9 @@ export function exerciseDoneCorrectly2TimesInRow(
   exercise: Exercise,
   { exerciseSubjectResults }: ExerciseResultContext
 ): Priority[] {
+  if (exercise.exerciseType === 'VerbExercise') {
+    return noPriority(exercise);
+  }
   const resultsToday = exerciseSubjectResults
     .filter((result) => areSameCalendarDay(result.date, today))
     .sort((a, b) => a.date.getTime() - b.date.getTime());

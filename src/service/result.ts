@@ -6,6 +6,7 @@ import { getAllResults, getAllResultsForBaseWord, getAllResultsForExercise } fro
 import { VALUE_WRONG_TO_CORRECT_RATIO } from '../priority/priority';
 import { getAnswersMissingForBaseWord, getProgress } from './progress/progress';
 import { Language } from '../common/language';
+import { generateAllPossibleExercises } from '../exercise/generator';
 
 type KeyMarker = {
   color: string;
@@ -60,7 +61,11 @@ export function convertToResult(
   answerInputType: AnswerInputType
 ): Result {
   return {
-    exercise: exercise,
+    exercise: {
+      ...exercise,
+      // @ts-ignore
+      movieExample: undefined
+    },
     answer: answer,
     answerInputType,
     wasCorrect: wasCorrect,
@@ -89,7 +94,9 @@ export function getStatisticForBaseWord(
     failedAttempts: allResultsForExercise.length - correctAttempts,
     lastTimeAttempted: allResultsForExercise.length > 1 ? allResultsForExercise[1].date : allResultsForExercise[0].date,
     firstTimeAttempted: allResultsForExercise[allResultsForExercise.length - 1].date,
-    baseWordAnswersMissing: baseWord ? getAnswersMissingForBaseWord(baseWord, allResults, language) : 0
+    baseWordAnswersMissing: baseWord
+      ? getAnswersMissingForBaseWord(baseWord, allResults, generateAllPossibleExercises(language))
+      : 0
   };
 }
 
@@ -147,10 +154,15 @@ export function getWeekdayStatistics(language: Language): WeekdayStatistics[] {
         value: resultOnDay.length - correctAttempts.value,
         keyMarker: { color: 'red', marker: '🔴' }
       };
+      const netChange: StatisticPoint = {
+        keyName: 'Change',
+        value: correctAttempts.value - failedAttempts.value * VALUE_WRONG_TO_CORRECT_RATIO,
+        keyMarker: { color: 'white', marker: '🟣' }
+      };
 
       return {
         weekday,
-        points: [allAttempts, distinctExercises, correctAttempts, failedAttempts]
+        points: [allAttempts, distinctExercises, correctAttempts, failedAttempts, netChange]
       };
     });
 }

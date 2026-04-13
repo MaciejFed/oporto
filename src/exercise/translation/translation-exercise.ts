@@ -1,12 +1,13 @@
-import { BaseWord, BaseWordType, Exercise, ExerciseType } from '../exercise';
+import { BaseExercise, BaseWord, BaseWordType, Exercise, ExerciseType } from '../exercise';
 import { Comparable } from '../../common/common';
 
 export type TranslationType = 'toEnglish' | 'toPortuguese' | 'toPortugueseFromHearing' | 'introduction';
 
-export abstract class TranslationExercise implements Exercise {
+export abstract class TranslationExercise extends BaseExercise implements Exercise {
   translationType: TranslationType;
 
   protected constructor() {
+    super();
     const probability = Math.random();
     if (probability < 0.33) {
       this.translationType = 'toEnglish';
@@ -15,6 +16,10 @@ export abstract class TranslationExercise implements Exercise {
     } else {
       this.translationType = 'toPortugueseFromHearing';
     }
+  }
+
+  toString(): string {
+    return `${this.exerciseType}_${this.getBaseWordAsString()}_${this.translationType}`;
   }
 
   public abstract isTranslationSubjectEqual(translationSubject: Exercise): boolean;
@@ -27,10 +32,8 @@ export abstract class TranslationExercise implements Exercise {
     return this.translationType === 'toPortugueseFromHearing';
   }
 
-  getMinAnswerCount(): number {
-    if (this.translationType === 'toEnglish') return 2;
-    else if (this.translationType === 'toPortugueseFromHearing') return 3;
-    return 5;
+  supportsMovieExampleAnswer(): boolean {
+    return true;
   }
 
   abstract exerciseType: ExerciseType;

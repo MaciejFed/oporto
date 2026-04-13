@@ -7,17 +7,24 @@ import { TranslationExercise, TranslationType } from '../translation-exercise';
 export class GermanNounTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
   noun: GermanNoun;
+  number?: 'singular' | 'plural';
 
   constructor() {
     super();
     this.exerciseType = 'GermanNounTranslation';
     this.noun = getRandomGermanNoun();
+    this.number = 'singular';
   }
 
-  static new(noun: GermanNoun, translationType: TranslationType): GermanNounTranslationExercise {
+  static new(
+    noun: GermanNoun,
+    translationType: TranslationType,
+    number?: 'singular' | 'plural'
+  ): GermanNounTranslationExercise {
     const nounExercise = new GermanNounTranslationExercise();
     nounExercise.noun = noun;
     nounExercise.translationType = translationType;
+    nounExercise.number = number;
 
     return nounExercise;
   }
@@ -28,7 +35,7 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
   }
 
   getBodyPrefix(): string {
-    return this.isTranslationToPortuguese() ? 'German: ' : 'English: ';
+    return this.isTranslationToPortuguese() ? `German [${this.getNumber()}]: ` : 'English: ';
   }
 
   getBodySuffix = () => '';
@@ -40,27 +47,33 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
   getDescription = () => {
     if (this.isTranslationToPortugueseFromHearing()) return 'Listen...';
     if (this.isTranslationToPortuguese()) {
-      return `English: ${this.noun.english}`;
+      return `English: ${this.english()}`;
     }
     return `Portuguese: ${this.getWordWithGender()}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
+  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.english() : undefined);
 
-  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.noun.english);
+  getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.getWordWithGender() : this.english());
 
   isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
   }
 
+  english = () => `${this.noun.english}${this.number === 'plural' ? 's' : ''}`;
+
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.getWordWithGender());
 
   getBaseWordAsString(): string | undefined {
-    return this.getWordWithGender();
+    return this.getWordWithGender(false);
   }
 
   getBaseWordType(): BaseWordType | undefined {
     return BaseWordType.NOUN;
+  }
+
+  getNumber(): 'singular' | 'plural' {
+    return this.number || 'singular';
   }
 
   equal = (other: GermanNounTranslationExercise) =>
@@ -69,9 +82,11 @@ export class GermanNounTranslationExercise extends TranslationExercise implement
     this.noun.german.plural === other.noun.german.plural &&
     this.noun.german.gender === other.noun.german.gender &&
     this.noun.english === other.noun.english &&
+    this.getNumber() === other.getNumber() &&
     this.translationType === other.translationType;
 
-  getWordWithGender() {
+  getWordWithGender(withPlural = true) {
+    if (withPlural && this.getNumber() === 'plural') return `Die ${this.noun.german.plural}`;
     switch (this.noun.german.gender) {
       case 'masculine':
         return `Der ${this.noun.german.singular}`;

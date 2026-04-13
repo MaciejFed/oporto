@@ -54,6 +54,7 @@ export class Output implements AppEventListener {
   public constructor() {
     this.resetTable();
     this.textColor = Color.W;
+    terminal.hideCursor();
   }
 
   public moveCursor(x: number, y: number) {

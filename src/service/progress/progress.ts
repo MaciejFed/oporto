@@ -1,6 +1,6 @@
 import { Exercise, ExerciseType } from '../../exercise/exercise';
 import { TranslationExercise } from '../../exercise/translation/translation-exercise';
-import { readAll } from '../../repository/exercises-repository';
+import { Person, readAll, VerbTime } from '../../repository/exercises-repository';
 import {
   DateResults,
   getAllResultsBeforeDateOneWeek,
@@ -70,23 +70,42 @@ export function getGroupExerciseProgress(
   return exercisesOfType.map((exerciseOfType) => getSingleExerciseProgress(results, exerciseOfType as Exercise));
 }
 
-const getRatio = (correctAnswers: number, incorrectAnswers: number) => {
+export const getRatio = (correctAnswers: number, incorrectAnswers: number) => {
   if (!correctAnswers && !incorrectAnswers) return 0;
   if (!incorrectAnswers) return 100;
   return Math.floor(correctAnswers / (incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO)) * 100;
 };
 
-const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: number) => {
+export const mapRatioToProgress = (correctAnswers: number, incorrectAnswers: number) => {
   if (!correctAnswers && !incorrectAnswers) return ProgressType.NEVER_DONE;
   const ratio = getRatio(correctAnswers, incorrectAnswers);
   return ratio < 100 ? ProgressType.IN_PROGRESS : ProgressType.DONE;
 };
 
-export function getAnswersMissingForBaseWord(baseWord: string, results: Result[], language: Language): number {
-  return generateAllPossibleExercises(language)
+export function getAnswersMissingForBaseWord(baseWord: string, results: Result[], exercises: Exercise[]): number {
+  return exercises
     .filter((exercise) => exercise.getBaseWordAsString() === baseWord)
     .map((exercise) => getSingleExerciseProgress(results, exercise))
     .reduce((prev, curr) => prev + curr.answersMissing, 0);
+}
+
+export function getBaseWordProgress(results: Result[], exercise: Exercise): ExerciseProgress {
+  const exerciseResults = results;
+  const correctAnswers = exerciseResults.filter((e) => e.wasCorrect).length;
+  const incorrectAnswers = exerciseResults.length - correctAnswers;
+  const ratio = getRatio(correctAnswers, incorrectAnswers);
+  return {
+    exercise,
+    correctAnswers,
+    incorrectAnswers,
+    ratio,
+    answersMissing: Math.max(
+      0,
+      !correctAnswers && !incorrectAnswers ? 1 : incorrectAnswers * VALUE_WRONG_TO_CORRECT_RATIO - correctAnswers
+    ),
+    exerciseResults,
+    progressType: mapRatioToProgress(correctAnswers, incorrectAnswers)
+  };
 }
 
 export function getSingleExerciseProgress(results: Result[], exercise: Exercise): ExerciseProgress {
@@ -134,20 +153,22 @@ export function getProgress(results: Result[], language: Language): Progress[] {
 export function getAllUniqueWordsConjugated(language: Language): string[] {
   if (language === Language.Portuguese) {
     const nouns = readAll().nouns.flatMap((noun) => [noun.portuguese.word, noun.portuguese.plural]);
-    const verbs = readAll().verbs.flatMap((verb) => [
-      verb.infinitive,
-      verb.presentSimple.Eu,
-      verb.presentSimple.Tu,
-      verb.presentSimple['Ela/Ele/Você'],
-      verb.presentSimple.Nós,
-      verb.presentSimple['Eles/Elas/Vocēs'],
-      verb.pastPerfect?.Eu,
-      verb.pastPerfect?.Tu,
-      verb.pastPerfect?.['Ela/Ele/Você'],
-      verb.pastPerfect?.Nós,
-      verb.pastPerfect?.['Eles/Elas/Vocēs']
-    ]);
+    const otherFormVerbs = readAll()
+      .verbs.filter((verb) => verb.otherForms)
+      .flatMap((verb) => verb.otherForms?.map((v) => v.portuguese));
+    const verbs = readAll().verbs.flatMap((verb) =>
+      Object.keys(VerbTime)
+        .flatMap((time) => Object.values(Person).flatMap((person) => [verb[time as VerbTime][person as Person]]))
+        .concat(verb.infinitive)
+    );
     const others = readAll().others.map((other) => other.portuguese);
+    const othersWithGender = readAll().othersWithGender.flatMap((other) => [
+      other.portuguese.singular.feminine,
+      other.portuguese.singular.masculine,
+      other.portuguese.plural.masculine,
+      other.portuguese.plural.feminine,
+      other.portuguese.base
+    ]);
     const adjectives = readAll().adjectives.flatMap((adjective) => [
       adjective.masculine.singular,
       adjective.masculine.plural,
@@ -155,7 +176,7 @@ export function getAllUniqueWordsConjugated(language: Language): string[] {
       adjective.feminine.plural
     ]);
 
-    const allWords = [nouns, verbs, others, adjectives]
+    const allWords = [nouns, verbs, otherFormVerbs, others, othersWithGender, adjectives]
       .flatMap((w) => w)
       .filter((w) => w !== undefined)
       .map((w) => w!.toLowerCase())
@@ -277,6 +298,7 @@ export function getExerciseProgressMap(
   const mapGeneratingStartTime = Date.now();
   const exerciseTypesPt: ExerciseType[] = [
     'VerbExercise',
+    'VerbOtherFormTranslation',
     'SentenceTranslation',
     'NounTranslation',
     'OtherTranslation',
@@ -310,8 +332,10 @@ export function getExerciseProgressMap(
     PolishVerbTranslation: [],
     NounTranslation: [],
     OtherTranslation: [],
+    OtherWithGenderTranslation: [],
     AdjectiveTranslation: [],
     VerbTranslation: [],
+    VerbOtherFormTranslation: [],
     SentenceTranslation: [],
     PhraseTranslation: [],
     GermanOtherTranslation: [],
@@ -335,7 +359,7 @@ export function getExerciseProgressMap(
     progressMap[exerciseType] = exerciseProgress;
 
     filteredResults = filteredResults.filter((result) => {
-      return !exerciseProgress.some((progress) => progress.exercise === result.exercise);
+      return !exerciseProgress.some((progress) => progress.exercise.equal(result.exercise));
     });
   }
 
@@ -358,7 +382,7 @@ export function progressByDate(results: Result[], language: Language) {
     return {
       day: dateResult.date.toJSDate(),
       words,
-      exercisesDone: Math.floor(exercisesDone.length / 10)
+      exercisesDone: Math.floor(exercisesDone.length / 100)
     };
   }
 
@@ -389,7 +413,7 @@ export function progressByDate(results: Result[], language: Language) {
   const uniqueByDay = resultsByDate.map((dateResult) => {
     console.log(dateResult.date.toJSDate());
     const words = getUniqueWordsForDay(dateResult, exercises);
-    const exercisesDone = getAllResultsBeforeDateOneWeek(language, dateResult.date);
+    const exercisesDone = dateResult.results;
 
     return buildDayProgress(dateResult, exercisesDone, words);
   });

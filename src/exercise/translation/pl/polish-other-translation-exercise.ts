@@ -38,21 +38,15 @@ export class PolishOtherTranslationExercise extends TranslationExercise implemen
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.other.english}`;
     }
-    return `German: ${this.other.polish}`;
+    return `Polish: ${this.other.polish}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.other.english : undefined);
+  getTranslation = () => this.other.english;
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.other.polish : this.other.english);
 
   isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
-  }
-
-  getMinAnswerCount(): number {
-    if (this.translationType === 'toEnglish') return 2;
-    else if (this.translationType === 'toPortugueseFromHearing') return 3;
-    return 10;
   }
 
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.other.polish);

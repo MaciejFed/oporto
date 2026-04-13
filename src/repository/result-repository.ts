@@ -24,6 +24,8 @@ import { PolishVerbExercise } from '../exercise/polish-verb-exercise';
 import { PolishNounTranslationExercise } from '../exercise/translation/pl/polish-noun-translation-exercise';
 import { PolishVerbTranslationExercise } from '../exercise/translation/pl/polish-verb-translation-exercise';
 import { PolishOtherTranslationExercise } from '../exercise/translation/pl/polish-other-translation-exercise';
+import { OtherGenderTranslationExercise } from '../exercise/translation/other-gender-translation-exercise';
+import { VerbOtherFormTranslationExercise } from '../exercise/translation/verb-other-form-translation-exercise';
 
 function createVerbExercise(exerciseData: any) {
   const verbExercise = new VerbExercise();
@@ -128,6 +130,14 @@ function createVerbTranslationExercise(exerciseData: any) {
   return verbTranslationExercise;
 }
 
+function createVerbOtherFormTranslationExercise(exerciseData: any) {
+  const verbOtherFormTranslationExercise = new VerbOtherFormTranslationExercise();
+  Object.assign(verbOtherFormTranslationExercise, exerciseData);
+  assert(verbOtherFormTranslationExercise.verb);
+  assert(verbOtherFormTranslationExercise.translationType);
+  return verbOtherFormTranslationExercise;
+}
+
 function createSentenceTranslationExercise(exerciseData: any) {
   const sentenceTranslationExercise = new SentenceTranslationExercise();
   Object.assign(sentenceTranslationExercise, exerciseData);
@@ -149,6 +159,13 @@ function createOtherTranslationExercise(exerciseData: any) {
   return otherTranslationExercise;
 }
 
+function createOtherWithGenderTranslationExercise(exerciseData: any) {
+  const otherTranslationExercise = new OtherGenderTranslationExercise();
+  Object.assign(otherTranslationExercise, exerciseData);
+  assert(otherTranslationExercise.other);
+  return otherTranslationExercise;
+}
+
 function createFitInGapExercise(exerciseData: any) {
   const fitInGapExercise = new FitInGapExercise();
   Object.assign(fitInGapExercise, exerciseData);
@@ -163,9 +180,11 @@ export const exerciseFactory = {
   NounTranslation: createNounTranslationExercise,
   AdjectiveTranslation: createAdjectiveTranslationExercise,
   VerbTranslation: createVerbTranslationExercise,
+  VerbOtherFormTranslation: createVerbOtherFormTranslationExercise,
   SentenceTranslation: createSentenceTranslationExercise,
   PhraseTranslation: createPhraseTranslationExercise,
   OtherTranslation: createOtherTranslationExercise,
+  OtherWithGenderTranslation: createOtherWithGenderTranslationExercise,
   FitInGap: createFitInGapExercise,
   GermanNounTranslation: createGermanNounTranslationExercise,
   GermanVerbTranslation: createGermanVerbTranslationExercise,
@@ -185,6 +204,9 @@ export function parseResults(results: Result[]): Result[] {
     if (createExercise) {
       result.date = new Date(result.date);
       result.exercise = createExercise(exerciseData);
+      result.exercise.name = result.exercise.toString();
+    } else {
+      console.log('error');
     }
     return result;
   });
@@ -227,7 +249,7 @@ export type DateResults = {
 export function getAllResultsBeforeDateOneWeek(language: Language, date: DateTimeExtended) {
   return getAllResults(language, true).filter((result) => {
     const upDateLimit = date.ordinal;
-    const downDateLimit = date.plus({ week: -1 }).ordinal;
+    const downDateLimit = date.plus({ week: -2 }).ordinal;
 
     return (
       DateTimeExtended.fromJSDate(result.date).ordinal >= downDateLimit &&
@@ -249,7 +271,7 @@ export function getAllResultsByDate(allResults: Result[]): DateResults[] {
       date: DateTimeExtended.fromJSDate(resultDate.toJSDate()),
       results
     });
-    resultDate = resultDate.plus({ week: 1 });
+    resultDate = resultDate.plus({ week: 2 });
   }
   return resultsByDate;
 }

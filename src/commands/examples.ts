@@ -1,7 +1,7 @@
 import { generateAllPossibleExercises } from '../exercise/generator';
 import { Language } from '../common/language';
 import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
-import { getAllUniqueWordsConjugated } from '../service/progress/progress';
+import { getAllUniqueWordsConjugated, getSingleExerciseProgress, ProgressType } from '../service/progress/progress';
 import { findWordExampleLines } from '../service/example-finder/find-word-example-lines';
 import { findMatchingLines } from '../service/example-finder/find-matching-lines';
 import fs from 'fs';
@@ -13,11 +13,13 @@ import {
   PT_EXAMPLES_PATH,
   PT_TRANSLATION_EXAMPLES_PATH
 } from '../service/example-finder/example-finder.types';
-import { isExampleSavedAlready, saveExamples } from '../server/db';
+import { getExamplesSaved, saveExamples } from '../server/db';
 import { enforceArrayLimit } from '../common/common';
+import { getProgressAggregate } from '../service/progress/progress-aggregate';
+import { getAllResults } from '../repository/result-repository';
 
-const MAX_FIND_EXAMPLES = 100_000;
-const MAX_SAVE_EXAMPLES = 40_000;
+const MAX_FIND_EXAMPLES = 50_000;
+const MAX_SAVE_EXAMPLES = 20_000;
 
 export const examplesPaths: Record<Language, { targetLanguagePath: string; translationPath: string }> = {
   [Language.Portuguese]: {
@@ -35,15 +37,25 @@ export const examplesPaths: Record<Language, { targetLanguagePath: string; trans
 };
 
 export async function findAllExamples(language: Language) {
+  // const result = getAllResults(language, true);
   const allKnownWords = getAllUniqueWordsConjugated(language);
-  const words = [...new Set(generateAllPossibleExercises(language).map(extractWordToFindFromExercise))];
+  const savedWords = await getExamplesSaved(language);
+  const words = [
+    ...new Set(
+      generateAllPossibleExercises(language)
+        // .filter((exercise) => getSingleExerciseProgress(result, exercise).progressType !== ProgressType.DONE)
+        .map(extractWordToFindFromExercise)
+    )
+  ]
+    .filter((word) => !savedWords.includes(word || ''))
+    .reverse();
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     console.log(`[${i}/${words.length}]`);
     const ptReadStream = fs.createReadStream(examplesPaths[language].targetLanguagePath);
     const ptTranslationsReadStream = fs.createReadStream(examplesPaths[language].translationPath);
     if (word) {
-      if (await isExampleSavedAlready(word, language)) {
+      if (savedWords.includes(word)) {
         console.log(`[${word}] already saved. Skipping...`);
         continue;
       }
@@ -52,7 +64,7 @@ export async function findAllExamples(language: Language) {
         ptReadStream,
         ptTranslationsReadStream,
         word,
-        100_000_000
+        50_000_000
       );
       const examples = enforceArrayLimit(
         findWordExampleLines(
@@ -72,6 +84,6 @@ export async function findAllExamples(language: Language) {
   }
 }
 
-findAllExamples(Language.Polish).then(() => {
+findAllExamples(Language.Portuguese).then(() => {
   console.log('done');
 });

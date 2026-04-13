@@ -1,5 +1,5 @@
 import { getRandomElement } from '../common/common';
-import { Adjective, Other, Phrase, readAll, Verb } from '../repository/exercises-repository';
+import { Adjective, Other, OtherWithGender, Phrase, readAll, Verb } from '../repository/exercises-repository';
 import { Noun, Sentence } from '../repository/exercises-repository';
 import {
   GermanCaseWord,
@@ -54,6 +54,10 @@ export const getRandomGermanCaseWord: () => GermanCaseWord = () => {
 
 export const getRandomAdjective: () => Adjective = () => {
   return getRandomElement(readAll().adjectives);
+};
+
+export const getRandomOtherWithGender: () => OtherWithGender = () => {
+  return getRandomElement(readAll().othersWithGender);
 };
 
 export const getRandomVerb: () => Verb = () => {

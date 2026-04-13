@@ -7,17 +7,20 @@ import { TranslationExercise, TranslationType } from './translation-exercise';
 export class NounTranslationExercise extends TranslationExercise implements Comparable {
   exerciseType: ExerciseType;
   noun: Noun;
+  number: 'singular' | 'plural';
 
   constructor() {
     super();
     this.exerciseType = 'NounTranslation';
     this.noun = getRandomNoun();
+    this.number = 'singular';
   }
 
-  static new(noun: Noun, translationType: TranslationType): NounTranslationExercise {
+  static new(noun: Noun, translationType: TranslationType, number: 'singular' | 'plural'): NounTranslationExercise {
     const nounExercise = new NounTranslationExercise();
     nounExercise.noun = noun;
     nounExercise.translationType = translationType;
+    nounExercise.number = number;
 
     return nounExercise;
   }
@@ -26,6 +29,7 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     if (!(translationExercise instanceof NounTranslationExercise)) return false;
     return this.noun.portuguese.word === translationExercise.noun.portuguese.word;
   }
+  // Ranodm verb order exercises
 
   getBodyPrefix(): string {
     return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
@@ -50,7 +54,7 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.noun.english}`;
     }
-    return `Portuguese: ${this.getWordWithGender()}`;
+    return `Portuguese: ${this.getMovieExamplePrefix()} \'${this.getWordWithGender()}\' ${this.getMovieExampleSuffix()}`;
   };
 
   getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.noun.english : undefined);
@@ -69,10 +73,13 @@ export class NounTranslationExercise extends TranslationExercise implements Comp
     this.noun.portuguese.plural === other.noun.portuguese.plural &&
     this.noun.portuguese.gender === other.noun.portuguese.gender &&
     this.noun.english === other.noun.english &&
-    this.translationType === other.translationType;
+    this.translationType === other.translationType &&
+    this.number === other.number;
 
   getWordWithGender() {
     if (this.noun.portuguese.gender === 'none') return this.noun.portuguese.word;
-    return `${this.noun.portuguese.gender === 'masculine' ? 'o' : 'a'} ${this.noun.portuguese.word}`;
+    return `${this.noun.portuguese.gender === 'masculine' ? 'o' : 'a'}${this.number === 'plural' ? 's' : ''} ${
+      this.number === 'singular' ? this.noun.portuguese.word : this.noun.portuguese.plural
+    }`;
   }
 }

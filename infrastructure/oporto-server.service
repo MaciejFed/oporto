@@ -8,6 +8,7 @@ User=root
 WorkingDirectory=/app/oporto
 ExecStartPre=/app/oporto/infrastructure/update-latest.sh
 ExecStartPre=npm install
+ExecStart=npm run build
 ExecStart=npm run start-server
 StandardOutput=file:/app/oporto/info.log
 StandardError=file:/app/oporto/error.log

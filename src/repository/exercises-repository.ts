@@ -11,18 +11,45 @@ export enum Person {
   ElesElasVosēs = 'Eles/Elas/Vocēs'
 }
 
+export enum VerbTime {
+  presentSimple = 'presentSimple',
+  pastPerfect = 'pastPerfect',
+  imperfect = 'imperfect',
+  pretéritoMaisQuePerfeito = 'pretéritoMaisQuePerfeito',
+  futuroDoPresenteSimples = 'futuroDoPresenteSimples',
+  subjuntivoPresente = 'subjuntivoPresente',
+  pretéritoImperfeito = 'pretéritoImperfeito',
+  subjuntivoFuturo = 'subjuntivoFuturo',
+  futurodoPretéritoSimples = 'futurodoPretéritoSimples'
+}
+// get all the forms in db but only get exercise if in frequency table < 10_000
+
 export type Verb = {
   english: string;
   infinitive: VerbInfinitive;
   presentSimple: { [key in Person]: string };
-  pastPerfect?: { [key in Person]: string };
+  pastPerfect: { [key in Person]: string };
+  imperfect: { [key in Person]: string };
+  pretéritoMaisQuePerfeito: { [key in Person]: string };
+  futuroDoPresenteSimples: { [key in Person]: string };
+  subjuntivoPresente: { [key in Person]: string };
+  pretéritoImperfeito: { [key in Person]: string };
+  subjuntivoFuturo: { [key in Person]: string };
+  futurodoPretéritoSimples: { [key in Person]: string };
+  otherForms: {
+    form: string;
+    portuguese: string;
+  }[];
 };
 
 export type WordTypes = Noun | Verb | Other | Adjective;
 
 type NounGender = 'masculine' | 'feminine' | 'none';
+export type AdjectiveGender = 'masculine' | 'feminine';
 
 type SentenceType = 'question' | 'statement';
+
+export type AdjectiveNumber = 'singular' | 'plural';
 
 type PortugueseNoun = {
   word: string;
@@ -59,15 +86,30 @@ export type Phrase = {
   portuguese: string;
 };
 
+export type GenderWord = {
+  feminine: string;
+  masculine: string;
+};
+
 export type Other = {
   english: string;
   portuguese: string;
+};
+
+export type OtherWithGender = {
+  english: string;
+  portuguese: {
+    base?: string;
+    singular: GenderWord;
+    plural: GenderWord;
+  };
 };
 
 export type Schema = {
   verbs: Verb[];
   nouns: Noun[];
   others: Other[];
+  othersWithGender: OtherWithGender[];
   adjectives: Adjective[];
   sentences: Sentence[];
   phrases: Phrase[];
@@ -102,7 +144,7 @@ const verbs = [
   'entrar',
   'morar',
   'olhar',
-  'chamar-se',
+  'chamar',
   'trabalhar',
   'cumprimentar',
   'apresentar-se',
@@ -263,7 +305,137 @@ const verbs = [
   'mexer',
   'atirar',
   'acertar',
-  'puxar'
+  'puxar',
+  'haver',
+  'vir',
+  'parecer',
+  'dever',
+  'buscar',
+  'matar',
+  'tirar',
+  'perder',
+  'procurar',
+  'faltar',
+  'valer',
+  'arranjar',
+  'contar',
+  'ganhar',
+  'manter',
+  'tratar',
+  'descobrir',
+  'existir',
+  'morrer',
+  'ligar',
+  'importar',
+  'apostar',
+  'crer',
+  'lutar',
+  'receber',
+  'confiar',
+  'colocar',
+  'proteger',
+  'lidar',
+  'perceber',
+  'costumar',
+  'roubar',
+  'odiar',
+  'supor',
+  'tornar',
+  'provar',
+  'interessar',
+  'verificar',
+  'aceitar',
+  'destruir',
+  'calhar',
+  'jurar',
+  'controlar',
+  'evitar',
+  'esconder',
+  'escolher',
+  'demorar',
+  'entregar',
+  'agir',
+  'fingir',
+  'meter',
+  'terminar',
+  'bastar',
+  'aparecer',
+  'recuperar',
+  'entender',
+  'cortar',
+  'imaginar',
+  'cheirar',
+  'apresentar',
+  'investigar',
+  'funcionar',
+  'agradecer',
+  'guardar',
+  'visitar',
+  'detestar',
+  'impedir',
+  'garantir',
+  'regressar',
+  'juntar',
+  'merecer',
+  'disparar',
+  'prometer',
+  'gozar',
+  'trocar',
+  'custar',
+  'causar',
+  'cometer',
+  'deitar',
+  'desistir',
+  'desaparecer',
+  'partilhar',
+  'soar',
+  'cumprir',
+  'mentir',
+  'restar',
+  'calar',
+  'presumir',
+  'planear',
+  'arriscar',
+  'temer',
+  'preocupar',
+  'assumir',
+  'admitir',
+  'chorar',
+  'duvidar',
+  'enfrentar',
+  'estragar',
+  'amar',
+  'sobreviver',
+  'pertencer',
+  'marcar',
+  'prender',
+  'atacar',
+  'crescer',
+  'magoar',
+  'aguentar',
+  'escapar',
+  'avisar',
+  'desejar',
+  'retirar',
+  'libertar',
+  'livrar',
+  'desligar',
+  'devolver',
+  'lançar',
+  'confirmar',
+  'abandonar',
+  'vencer',
+  'nascer',
+  'desculpar',
+  'montar',
+  'sitiar',
+  'explodir',
+  'identificar',
+  'localizar',
+  'foder',
+  'transformar',
+  'melhorar',
+  'iniciar'
 ] as const;
 
 export type VerbInfinitive = (typeof verbs)[number];

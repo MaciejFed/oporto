@@ -14,11 +14,8 @@ export function exerciseTranslationNeverDoneToEnglish(
   ) {
     return noPriority(exercise);
   }
-  const toEnglishTranslationsCorrect = exerciseResultContext.allResults.filter((result) => {
-    if (
-      result.exercise.exerciseType === exercise.exerciseType &&
-      (result.exercise as TranslationExercise).isTranslationSubjectEqual(exercise)
-    ) {
+  const toEnglishTranslationsCorrect = exerciseResultContext.exerciseSubjectResults.filter((result) => {
+    if (result.exercise.exerciseType === exercise.exerciseType) {
       const translationExercise = result.exercise as unknown as TranslationExercise;
       return !translationExercise.isTranslationToPortuguese() && result.wasCorrect;
     }

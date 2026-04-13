@@ -1,27 +1,35 @@
 // src/index.js
 import express, { Request, Response } from 'express';
 import { loadValidConfig } from './configuration';
-import { generateAllPossibleExercises, generateExercisesForSessionAsync } from '../exercise/generator';
+import { generateAllPossibleExercises, generateExercisesForSessionAsync, shuffleArray } from '../exercise/generator';
 import bodyParser from 'body-parser';
 import { MovieExample } from '../io/file';
 import { logger } from '../common/logger';
-import { getExamples, readAllResults, saveFavoriteExample, saveNewResult } from './db';
+import {
+  getExamples,
+  getExamplesForWords,
+  getFrequencyMap,
+  readAllResults,
+  saveFavoriteExample,
+  saveNewResult
+} from './db';
 import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
 import { sortExercises } from '../priority/priority';
-import { Person, wordDatabase } from '../repository/exercises-repository';
-import { checkStandardConjugation } from '../service/verb/verb';
 import { Language } from '../common/language';
 import { Exercise } from '../exercise/exercise';
 import { selectMovieExample } from '../service/example-finder/select-movie-example';
 import { getAudioForText } from './audio/audio';
 import { createTable } from '../commands/stat';
-import { getAllResults } from '../repository/result-repository';
-import { DateTimeExtended } from '../common/common';
 import { DateTime } from 'luxon';
 import path from 'path';
 import os from 'os';
 import { writeFileSync } from 'node:fs';
-import { IN_PROGRESS_LIMIT_MAP } from '../service/limit/base-word-limit';
+import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
+import { TranslationExercise } from '../exercise/translation/translation-exercise';
+import { Result } from '../service/result';
+import { getRandomElement } from '../common/common';
+import { translateToEnglish } from '../client/client';
+import { frequencyMap } from '../frequency';
 
 const config = loadValidConfig();
 
@@ -29,6 +37,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const port = 3000;
+
+const repeatedToday: string[] = [];
 
 console.log('starting');
 
@@ -58,18 +68,6 @@ const preFetchAggregate = async () => {
   cachedAggregate = getProgressAggregate(results, exercises);
 };
 
-const preFetch = async (language: Language) => {
-  try {
-    if (cachedExercises[language].length <= 10) {
-      const results = await readAllResults(language);
-      cachedExercises[language] = await generateExercisesForSessionAsync(50, true, () => true, language, results);
-      logger.info(`Saved exercises to cache ${new Date()}`);
-    }
-  } catch (e) {
-    logger.error('error refreshng cache', e);
-  }
-};
-
 setInterval(() => {
   [Language.German, Language.Portuguese].forEach((language) => {
     readAllResults(language).then((results) => {
@@ -95,16 +93,16 @@ setInterval(() => {
     });
   });
 }, 6 * 60 * 60 * 1000);
-
-setInterval(() => {
-  preFetchAggregate();
-}, 10000000);
-
-setInterval(() => {
-  preFetch(Language.Portuguese).then(() => {
-    preFetch(Language.German);
-  });
-}, 90000);
+//
+// setInterval(() => {
+//   preFetchAggregate();
+// }, 10000000);
+//
+// setInterval(() => {
+//   preFetch(Language.Portuguese).then(() => {
+//     preFetch(Language.German);
+//   });
+// }, 90000);
 
 const getLanguage = (req: Request) => {
   switch (req.params.language.toLowerCase()) {
@@ -119,52 +117,63 @@ const getLanguage = (req: Request) => {
   }
 };
 
+const addMovieExample = async (exercise: Exercise, language: Language) => {
+  try {
+    const word = extractWordToFindFromExercise(exercise);
+    if (word) {
+      const examples = await getExamples(word, language);
+      const exampleSelected = await selectMovieExample(examples, word);
+      if (exampleSelected) {
+        exercise.addMovieExample(exampleSelected);
+      }
+      return exercise;
+    }
+    return exercise;
+  } catch (e: any) {
+    return exercise;
+  }
+};
+
+const addMovieExamples = async (exercises: Exercise[], language: Language) => {
+  for (let i = 0; i < exercises.length; i++) {
+    exercises[i] = await addMovieExample(exercises[i], language);
+  }
+  return exercises;
+};
+
+const generateRepeatExercises = async (count: number, language: Language, results: Result[]) => {
+  const frequency = await getFrequencyMap(language);
+  const filter = (exercise: Exercise) => {
+    const word = extractWordToFindFromExercise(exercise);
+    if (word) {
+      if (
+        exercise instanceof TranslationExercise &&
+        (exercise as TranslationExercise).isTranslationToPortugueseFromHearing()
+      ) {
+        return false;
+      }
+      const split = word.split(' ');
+      const freqWord = frequency[split.length === 2 ? split[1] : word];
+      if (freqWord) {
+        return freqWord.place < 1000;
+      }
+      return false;
+    }
+    return false;
+  };
+  return await generateExercisesForSessionAsync(count, false, filter, language, results);
+};
+
 app.get('/:language/results', async (req: Request, res: Response) => {
   const language = getLanguage(req);
   const results = await readAllResults(language);
   res.send(results);
 });
 
-app.get('/learn/verb', async (_req: Request, res: Response) => {
-  if (!cachedAggregate) {
-    await preFetchAggregate();
-  }
-  const { VERB } = IN_PROGRESS_LIMIT_MAP;
-  const findMissingPoints = (word: string) => {
-    return cachedAggregate.pointsMissing.find((pm) => pm.baseWord === word)?.pointsMissing || 0;
-  };
-  const sortPointsMissing = (a: string, b: string) => findMissingPoints(b) - findMissingPoints(a);
-  const verbs = cachedAggregate.words.VERB.IN_PROGRESS.baseWords.slice(0, VERB).sort(sortPointsMissing);
-  const toLearn = verbs.map((verb) => {
-    // @ts-ignore
-    const verbBase = wordDatabase.verb(verb);
-    const conjugation = checkStandardConjugation(verbBase.infinitive, []);
-    const conjugations = Object.values(Person).map((person: Person) => {
-      const firstCon = conjugation.verb.presentSimple![person];
-      const first = firstCon.isStandard ? firstCon.conjugation : `@${firstCon.conjugation}`;
-      let second = '';
-      const pastPerfect = conjugation.verb.pastPerfect;
-      if (pastPerfect) {
-        second = pastPerfect[person].isStandard
-          ? pastPerfect[person].conjugation
-          : `@${pastPerfect[person].conjugation}`;
-      }
-      return {
-        first,
-        second
-      };
-    });
-    return {
-      infinitive: conjugation.verb.infinitive,
-      conjugations
-    };
-  });
-  res.send(toLearn);
-});
-
 app.get('/:language/priority', async (req: Request, res: Response) => {
   const language = getLanguage(req);
   const results = await readAllResults(language);
+  const frequency = await getFrequencyMap(language);
   const exercises = await generateExercisesForSessionAsync(300, true, () => true, language, results);
   const { exercisesWithPriorities } = sortExercises(exercises, results, language);
   const response = exercisesWithPriorities.map((ep) => ({
@@ -198,22 +207,132 @@ app.post('/:language/results/save', async (req: Request, res: Response) => {
 app.get('/:language/generate/local', async (req: Request, res: Response) => {
   try {
     const language = getLanguage(req);
-    let exercises = [];
-    if ([Language.Polish, Language.German].includes(language)) {
-      const results = await readAllResults(language);
-      exercises = await generateExercisesForSessionAsync(10, true, () => true, language, results);
-    } else {
-      exercises = cachedExercises[language].splice(0, 10);
-    }
-    res.send(exercises);
-  } catch (e) {
+    const results = await readAllResults(language);
+    const exercises = await generateExercisesForSessionAsync(8, true, () => true, language, results);
+    const exercisesRepeat = await generateRepeatExercises(2, language, results);
+
+    const exercisesTotal = shuffleArray(exercises.concat(exercisesRepeat));
+
+    const words = exercisesTotal
+      .map(extractWordToFindFromExercise)
+      .filter((item): item is string => item !== undefined);
+    const examples = await getExamplesForWords(words, Language.Portuguese);
+
+    await Promise.allSettled(
+      exercisesTotal.map(async (exercise) => {
+        const wordToFind = extractWordToFindFromExercise(exercise);
+        if (!wordToFind) {
+          console.error('No word to find!');
+          return;
+        }
+        const lines = examples[wordToFind];
+        if (!lines) {
+          console.error('No lines');
+          return;
+        }
+        const movieExample = await selectMovieExample(lines, wordToFind);
+        if (!movieExample) {
+          console.error('No movie example');
+          return;
+        }
+        exercise.addMovieExample(movieExample);
+      })
+    );
+
+    res.send(exercisesTotal);
+  } catch (e: any) {
     logger.error('Error generating exercises', 3);
+    logger.error(e);
+  }
+});
+
+// app.get('/:language/in-progress', async (req: Request, res: Response) => {
+//   try {
+//     const language = getLanguage(req);
+//     const results = await readAllResults(language);
+//     const exercises = await generateExercisesForSessionAsync(
+//       30,
+//       true,
+//       (ex) => !repeatedToday.includes(extractWordToFindFromExercise(ex)!),
+//       language,
+//       results
+//     );
+//     const exercise = getRandomElement(exercises);
+//     const wordToFind = extractWordToFindFromExercise(exercise)!;
+//     repeatedToday.push(wordToFind);
+//     logger.info(JSON.stringify(repeatedToday));
+//     const examples = await getExamples(wordToFind, language);
+//     const exampleSelected = await selectMovieExample(examples, wordToFind);
+//     const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!);
+//     const frequency = frequencyMap[wordToFind] ?? { place: 0 };
+
+//     const header = exercise.getDescription().replace('Portuguese: ', '').replace('English: ', '');
+
+//     res.send({
+//       header: `${header} [${frequency.place}]`,
+//       bodyPrefix: exercise.getBodyPrefix().replace('Portuguese: ', '').replace('English: ', ''),
+//       body: exercise.getCorrectAnswer(),
+//       example: exampleSelected?.targetLanguage,
+//       exampleTranslation
+//     });
+//   } catch (e: any) {
+//     logger.error('Error generating exercises', 3);
+//     logger.error(e);
+//   }
+// });
+
+
+app.get('/:language/in-progress', async (req: Request, res: Response) => {
+  try {
+    const language = getLanguage(req);
+    const exercises = generateAllPossibleExercises(language);
+    exercises.filter((exercise) => {
+      const word = exercise.getBaseWordAsString();
+      if (word) {
+        const frequency = frequencyMap[word];
+        return frequency && frequency.place < 5_000;
+      }
+    })
+    const exercise = getRandomElement(exercises);
+    const wordToFind = extractWordToFindFromExercise(exercise)!;
+    repeatedToday.push(wordToFind);
+    logger.info(JSON.stringify(repeatedToday));
+    const examples = await getExamples(wordToFind, language);
+    const exampleSelected = await selectMovieExample(examples, wordToFind);
+    const exampleTranslation = await translateToEnglish(exampleSelected!.targetLanguage!);
+    const frequency = frequencyMap[wordToFind] ?? { place: 0 };
+
+    const header = exercise.getDescription().replace('Portuguese: ', '').replace('English: ', '');
+
+    res.send({
+      header: `${header} [${frequency.place}]`,
+      bodyPrefix: exercise.getBodyPrefix().replace('Portuguese: ', '').replace('English: ', ''),
+      body: exercise.getCorrectAnswer(),
+      example: exampleSelected?.targetLanguage,
+      exampleTranslation
+    });
+  } catch (e: any) {
+    logger.error('Error generating exercises', 3);
+    logger.error(e);
+  }
+});
+
+app.get('/:language/generate/local/repeat', async (req: Request, res: Response) => {
+  try {
+    const language = getLanguage(req);
+    const results = await readAllResults(language);
+    const exercises = generateRepeatExercises(10, language, results);
+    res.send(exercises);
+  } catch (e: any) {
+    logger.error('Error generating exercises', 3);
+    logger.error(3);
   }
 });
 
 app.post('/:language/example/find', async (req: Request, res: Response) => {
   const { word } = req.body;
   try {
+    logger.info(`Translation request for: [${word}]`);
     const language = getLanguage(req);
     const examples = await getExamples(word, language);
     const exampleSelected = await selectMovieExample(examples, word);
@@ -245,7 +364,7 @@ app.post('/:language/example/save', async (req: Request, res: Response) => {
 app.post('/:language/audio', async (req, res) => {
   try {
     const language = getLanguage(req);
-    const audio = await getAudioForText(language, req.body.text, req.body.rate);
+    const audio = await getAudioForText(language, req.body.text, req.body.rate, req.body.api);
     res.download(audio.path, 'audio.mp3', (err) => {
       if (err) {
         console.error('Error sending file:', err);

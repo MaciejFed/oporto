@@ -1,6 +1,6 @@
-import { Exercise } from './exercise';
-import { Person, readAll } from '../repository/exercises-repository';
-import { VerbExercise } from './verb-exercise';
+import { Exercise, Frequency } from './exercise';
+import { Person, readAll, VerbTime } from '../repository/exercises-repository';
+import { VerbExercise, VerbTime as VerbTimeType } from './verb-exercise';
 import { NounTranslationExercise } from './translation/noun-translation-exercise';
 import { TranslationType } from './translation/translation-exercise';
 import { VerbTranslationExercise } from './translation/verb-translation-exercise';
@@ -11,7 +11,7 @@ import { OtherTranslationExercise } from './translation/other-translation-exerci
 import { sortExercises } from '../priority/priority';
 import { PhraseTranslationExercise } from './translation/phrase-translation-exercise';
 import { exerciseFactory, getAllResults, getAllResultsAsync, parseResults } from '../repository/result-repository';
-import { fetchExercisesForSession } from '../client/client';
+import { fetchExercisesForSession, fetchMovieExample, fetchRepeatExercisesForSession } from '../client/client';
 import { Result } from '../service/result';
 import { checkStandardConjugation } from '../service/verb/verb';
 import { Language } from '../common/language';
@@ -32,24 +32,35 @@ import { PolishVerbTranslationExercise } from './translation/pl/polish-verb-tran
 import { PolishOtherTranslationExercise } from './translation/pl/polish-other-translation-exercise';
 import { PolishNounTranslationExercise } from './translation/pl/polish-noun-translation-exercise';
 import { PolishVerbExercise } from './polish-verb-exercise';
+import { extractWordToFindFromExercise } from '../service/example-finder/example-finder';
+import { OtherGenderTranslationExercise } from './translation/other-gender-translation-exercise';
+import { exerciseRandomness } from '../priority/types/exercise-randomness/exercise-randomness';
+import { VerbOtherFormTranslationExercise } from './translation/verb-other-form-translation-exercise';
+import { frequencyMap } from '../frequency';
 
 type ExerciseGenerator = () => Exercise[];
+export const LIMIT_FREQ = 3000;
 
 export const VerbExerciseGenerator: ExerciseGenerator = () => {
-  const verbsNonStandard = readAll().verbs.filter((verb) => !checkStandardConjugation(verb.infinitive, []).isStandard);
-  const presentSimpleVerbs = verbsNonStandard.flatMap((verb) =>
+  const allowedVerbTimes: VerbTimeType[] = ['presentSimple', 'pastPerfect', 'imperfect'];
+  const filiterInFreqLimit = (exercise: VerbExercise) => {
+    const wordToFind = exercise.getCorrectAnswer();
+    const wordfreq = frequencyMap[wordToFind];
+    return wordfreq && wordfreq.place < LIMIT_FREQ;
+  };
+  const verbs = readAll().verbs;
+  const allVerbExercises = verbs.flatMap((verb) =>
     Object.keys(Person).flatMap((person) =>
-      VerbExercise.new(verb, Person[person as keyof typeof Person], 'presentSimple')
+      Object.keys(VerbTime).flatMap((time) =>
+        VerbExercise.new(verb, Person[person as keyof typeof Person], time as VerbTime)
+      )
     )
   );
-  const pastPerfectVerbs = verbsNonStandard
-    .filter((verb) => verb.pastPerfect)
-    .flatMap((verb) =>
-      Object.keys(Person).flatMap((person) =>
-        VerbExercise.new(verb, Person[person as keyof typeof Person], 'pastPerfect')
-      )
-    );
-  return pastPerfectVerbs.concat(presentSimpleVerbs);
+  const allInfs = verbs.map((verb) => verb.infinitive as string);
+  return allVerbExercises
+    .filter(filiterInFreqLimit)
+    .filter((exercise) => allowedVerbTimes.includes(exercise.verbTime))
+    .filter((verbEx) => !allInfs.includes(verbEx.getCorrectAnswer()));
 };
 
 export const GermanVerbExerciseGenerator: ExerciseGenerator = () => {
@@ -76,13 +87,19 @@ const translationTypes: TranslationType[] = ['toPortugueseFromHearing', 'toEngli
 
 const NounTranslationGenerator: ExerciseGenerator = () => {
   return readAll().nouns.flatMap((noun) =>
-    translationTypes.map((translationType) => NounTranslationExercise.new(noun, translationType))
+    translationTypes.flatMap((translationType) => [
+      NounTranslationExercise.new(noun, translationType, 'singular')
+      // ...(noun.portuguese.plural ? [NounTranslationExercise.new(noun, translationType, 'plural')] : [])
+    ])
   );
 };
 
 const GermanNounTranslationGenerator: ExerciseGenerator = () => {
   return readAllDE().nouns.flatMap((noun) =>
-    translationTypes.map((translationType) => GermanNounTranslationExercise.new(noun, translationType))
+    translationTypes.flatMap((translationType) => [
+      ...[GermanNounTranslationExercise.new(noun, translationType, 'singular')],
+      ...(noun.german.plural ? [GermanNounTranslationExercise.new(noun, translationType, 'plural')] : [])
+    ])
   );
 };
 
@@ -143,6 +160,22 @@ const VerbTranslationGenerator: ExerciseGenerator = () => {
   );
 };
 
+const VerbTranslationOtherFormsGenerator: ExerciseGenerator = () => {
+  return readAll()
+    .verbs.filter((verb) => verb.otherForms)
+    .flatMap((verb) =>
+      verb.otherForms!.flatMap((_, index) => [
+        VerbOtherFormTranslationExercise.new(verb, 'toPortugueseFromHearing', index),
+        VerbOtherFormTranslationExercise.new(verb, 'toEnglish', index),
+        VerbOtherFormTranslationExercise.new(verb, 'toPortuguese', index)
+      ])
+    )
+    .filter((exercise) => {
+      const otherForm = exercise.verb.otherForms[exercise.number].portuguese;
+      return frequencyMap[otherForm] && frequencyMap[otherForm].place < LIMIT_FREQ;
+    });
+};
+
 const SentenceTranslationGenerator: ExerciseGenerator = () => {
   return readAll().sentences.flatMap((sentence) => [
     SentenceTranslationExercise.new(sentence, 'toPortugueseFromHearing'),
@@ -160,6 +193,25 @@ const PhraseTranslationGenerator: ExerciseGenerator = () => {
 const OtherTranslationGenerator: ExerciseGenerator = () => {
   return readAll().others.flatMap((other) =>
     translationTypes.map((translationType) => OtherTranslationExercise.new(other, translationType))
+  );
+};
+
+const OtherWithGenderTranslationGenerator: ExerciseGenerator = () => {
+  return readAll().othersWithGender.flatMap((other) =>
+    translationTypes.flatMap((translationType) => {
+      if (translationType === 'toPortuguese') {
+        return [
+          OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular'),
+          OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'plural'),
+          OtherGenderTranslationExercise.new(other, translationType, 'feminine', 'singular'),
+          OtherGenderTranslationExercise.new(other, translationType, 'feminine', 'plural'),
+          ...(other.portuguese.base
+            ? [OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular', true)]
+            : [])
+        ];
+      }
+      return [OtherGenderTranslationExercise.new(other, translationType, 'masculine', 'singular')];
+    })
   );
 };
 
@@ -189,53 +241,85 @@ const FitInGapGenerator: ExerciseGenerator = () => {
 };
 
 export function generateAllPossibleExercises(language: Language): Exercise[] {
+  let exercises: Exercise[];
   switch (language) {
     case Language.German:
-      return [
+      exercises = [
         GermanVerbExerciseGenerator,
         GermanNounTranslationGenerator,
         GermanVerbTranslationGenerator,
         GermanOtherTranslationGenerator,
         GermanCaseWordGenerator
       ].flatMap((generator) => generator());
-
+      break;
     case Language.Polish:
-      return [
-        PolishVerbExerciseGenerator,
+      exercises = [
+        // PolishVerbExerciseGenerator,
         PolishNounTranslationGenerator,
         PolishVerbTranslationGenerator,
         PolishOtherTranslationGenerator
       ].flatMap((generator) => generator());
+      break;
     case Language.Portuguese:
     default:
-      return [
+      exercises = [
         VerbExerciseGenerator,
         NounTranslationGenerator,
         VerbTranslationGenerator,
+        // VerbTranslationOtherFormsGenerator,
         PhraseTranslationGenerator,
+        OtherWithGenderTranslationGenerator,
         OtherTranslationGenerator,
         AdjectiveTranslationGenerator,
         FitInGapGenerator
       ].flatMap((generator) => generator());
+      break;
   }
+  exercises.forEach((ex) => {
+    ex.name = ex.toString();
+  });
+  return exercises;
 }
 
+export function shuffleArray<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 export async function generateExercisesForSessionAsync(
   exerciseCount: number,
   sort: boolean,
   filter: (ex: Exercise) => boolean,
   language: Language,
-  results?: Result[]
+  results: Result[]
 ): Promise<Exercise[]> {
-  const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
-  const allResults = results ? parseResults(results) : await getAllResultsAsync(language);
-  const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
+  const exercises = generateAllPossibleExercises(language)
+    .filter((exercise) => filter(exercise))
+    .map((exercise) => {
+      const wordToFind = extractWordToFindFromExercise(exercise);
+      if (wordToFind) {
+        const freqWord = wordToFind.split(' ');
+        const frequency = frequencyMap[freqWord.length === 2 ? freqWord[1] : wordToFind];
+        if (frequency) {
+          exercise.addFrequency(frequency);
+        }
+      }
+      return exercise;
+    });
+  const allResults = parseResults(results);
+  const exercisesFinal = sort
+    ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises
+    : shuffleArray(exercises);
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }
 
-export function getExercisesForSession(language: Language): Exercise[] {
-  const exerciseJSON: Exercise[] = fetchExercisesForSession(language);
+export function getExercisesForSession(language: Language, repeat = false): Exercise[] {
+  const exerciseJSON: Exercise[] = repeat
+    ? fetchRepeatExercisesForSession(language)
+    : fetchExercisesForSession(language);
   const exercies = exerciseJSON.map((ex) => {
     const exerciseType = ex.exerciseType;
     const createExercise = exerciseFactory[exerciseType];
@@ -252,7 +336,9 @@ export function generateExercisesForSession(
 ): Exercise[] {
   const exercises = generateAllPossibleExercises(language).filter((exercise) => filter(exercise));
   const allResults = getAllResults(language);
-  const exercisesFinal = sort ? sortExercises(exercises, allResults, language).exercises : exercises;
+  const exercisesFinal = sort
+    ? sortExercises(exercises, allResults, language, [exerciseRandomness]).exercises
+    : exercises;
 
   return exercisesFinal.splice(0, Math.min(exerciseCount, exercisesFinal.length - 1)).reverse();
 }

@@ -38,21 +38,15 @@ export class OtherTranslationExercise extends TranslationExercise implements Com
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.other.english}`;
     }
-    return `Portuguese: ${this.other.portuguese}`;
+    return `Portuguese: ${this.getMovieExamplePrefix()} ${this.other.portuguese} ${this.getMovieExampleSuffix()}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.other.english : undefined);
+  getTranslation = () => this.other.english;
 
   getCorrectAnswer = () => (this.isTranslationToPortuguese() ? this.other.portuguese : this.other.english);
 
   isAnswerCorrect(answer: string): boolean {
     return this.getCorrectAnswer().toLowerCase() === answer.toLowerCase();
-  }
-
-  getMinAnswerCount(): number {
-    if (this.translationType === 'toEnglish') return 2;
-    else if (this.translationType === 'toPortugueseFromHearing') return 3;
-    return 10;
   }
 
   getRetryPrompt = () => (this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.other.portuguese);

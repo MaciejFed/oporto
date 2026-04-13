@@ -892,6 +892,143 @@ export const db: Schema = {
         singular: 'Gepäck',
         gender: 'none'
       }
+    },
+    {
+      english: 'God',
+      german: {
+        singular: 'Gott',
+        gender: 'masculine',
+        plural: 'Götter'
+      }
+    },
+    {
+      english: 'people',
+      german: {
+        singular: 'Leute',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'order',
+      german: {
+        singular: 'Ordnung',
+        gender: 'feminine',
+        plural: 'Ordnungen'
+      }
+    },
+    {
+      english: 'city',
+      german: {
+        singular: 'Stadt',
+        gender: 'feminine',
+        plural: 'Städte'
+      }
+    },
+    {
+      english: 'tea',
+      german: {
+        singular: 'Tee',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'friend',
+      german: {
+        singular: 'Freundin',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'road',
+      german: {
+        singular: 'Straße',
+        gender: 'feminine',
+        plural: 'Straßen'
+      }
+    },
+    {
+      english: 'sport',
+      german: {
+        singular: 'Sport',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'dinner',
+      german: {
+        singular: 'Abendessen',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'kitchen',
+      german: {
+        singular: 'Küche',
+        gender: 'feminine',
+        plural: 'Küchen'
+      }
+    },
+    {
+      english: 'computer',
+      german: {
+        singular: 'Computer',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'bathroom',
+      german: {
+        singular: 'Badezimmer',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'lesson',
+      german: {
+        singular: 'Lektion',
+        plural: ':ektionen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'month',
+      german: {
+        singular: 'Monat',
+        plural: 'Monate',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'cake',
+      german: {
+        singular: 'Kuchen',
+        plural: 'Kuchen',
+        gender: 'masculine'
+      }
+    },
+    {
+      english: 'bottle',
+      german: {
+        singular: 'Flasche',
+        plural: 'Flaschen',
+        gender: 'feminine'
+      }
+    },
+    {
+      english: 'chicken',
+      german: {
+        singular: 'Huhn',
+        plural: 'Hühner',
+        gender: 'none'
+      }
+    },
+    {
+      english: 'flower',
+      german: {
+        singular: 'Blume',
+        plural: 'Blumen',
+        gender: 'feminine'
+      }
     }
   ],
   verbs: [
@@ -1860,6 +1997,70 @@ export const db: Schema = {
     {
       german: 'zurück',
       english: 'back'
+    },
+    {
+      german: 'zurück',
+      english: 'back'
+    },
+    {
+      german: 'in',
+      english: 'in'
+    },
+    {
+      german: 'ja',
+      english: 'yes'
+    },
+    {
+      german: 'so',
+      english: 'so'
+    },
+    {
+      german: 'an',
+      english: 'at'
+    },
+    {
+      german: 'da',
+      english: 'there - informal'
+    },
+    {
+      german: 'um',
+      english: 'around'
+    },
+    {
+      german: 'zu',
+      english: 'to'
+    },
+    {
+      german: 'im',
+      english: 'in dem'
+    },
+    {
+      german: 'oh',
+      english: 'oh'
+    },
+    {
+      german: 'denn',
+      english: 'because'
+    },
+    {
+      german: 'okay',
+      english: 'okay'
+    },
+    {
+      german: 'ok',
+      english: 'ok'
+    },
+    {
+      german: 'ab',
+      english: 'away'
+    },
+    {
+      german: 'sollte',
+      english: 'should'
+    },
+    {
+      german: 'jemand',
+      english: 'someone'
     }
   ],
   case: [
@@ -1966,6 +2167,75 @@ export const db: Schema = {
           femininum: 'welcher',
           neutrum: 'welchem',
           plural: 'welchen'
+        }
+      }
+    },
+    {
+      english: 'this',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'dieser',
+          femininum: 'diese',
+          neutrum: 'dieses',
+          plural: 'diese'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'diesen',
+          femininum: 'diese',
+          neutrum: 'dieses',
+          plural: 'diese'
+        },
+        [GermanCase.dative]: {
+          maskulinum: 'diesem',
+          femininum: 'dieser',
+          neutrum: 'diesem',
+          plural: 'diesen'
+        }
+      }
+    },
+    {
+      english: 'mine',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'mein',
+          femininum: 'meine',
+          neutrum: 'mein',
+          plural: 'meine'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'meinen',
+          femininum: 'meine',
+          neutrum: 'mein',
+          plural: 'meine'
+        },
+        [GermanCase.dative]: {
+          maskulinum: 'meinem',
+          femininum: 'meiner',
+          neutrum: 'meinem',
+          plural: 'meinen'
+        }
+      }
+    },
+    {
+      english: 'yours',
+      german: {
+        [GermanCase.nominative]: {
+          maskulinum: 'dein',
+          femininum: 'deine',
+          neutrum: 'dein',
+          plural: 'deine'
+        },
+        [GermanCase.accusative]: {
+          maskulinum: 'deinen',
+          femininum: 'deine',
+          neutrum: 'dein',
+          plural: 'deine'
+        },
+        [GermanCase.dative]: {
+          maskulinum: 'deinem',
+          femininum: 'deiner',
+          neutrum: 'deinem',
+          plural: 'deinen'
         }
       }
     },

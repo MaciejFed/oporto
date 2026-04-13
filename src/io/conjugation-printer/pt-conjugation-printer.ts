@@ -1,7 +1,7 @@
 import { Person, Verb } from '../../repository/exercises-repository';
 import { Result } from '../../service/result';
 import { ColoredText } from '../output';
-import { VerbExercise } from '../../exercise/verb-exercise';
+import { VerbExercise, VerbTime } from '../../exercise/verb-exercise';
 import { BaseWord, Exercise } from '../../exercise/exercise';
 import { VerbConjugation } from './conjugation-printer';
 import { createColorArray } from '../terminal/terminal-utils';
@@ -10,9 +10,8 @@ import { GermanPerson } from '../../repository/german-exercises-repository';
 type VerbEnding = 'ar' | 'er' | 'ir';
 const standardVerbEndings: VerbEnding[] = ['ar', 'er', 'ir'];
 
-type Tense = 'presentSimple' | 'pastPerfect';
-
-export const standardConjugations: Record<Tense, Record<VerbEnding, Record<Person, string>>> = {
+// @ts-ignore
+export const standardConjugations: Record<VerbTime, Record<VerbEnding, Record<Person, string>>> = {
   presentSimple: {
     ar: {
       [Person.Eu]: 'o',
@@ -58,6 +57,29 @@ export const standardConjugations: Record<Tense, Record<VerbEnding, Record<Perso
       [Person.Nós]: 'imos',
       [Person.ElesElasVosēs]: 'iram'
     }
+  },
+  imperfect: {
+    ar: {
+      [Person.Eu]: 'va',
+      [Person.Tu]: 'vas',
+      [Person.ElaEleVocê]: 'va',
+      [Person.Nós]: 'vamos',
+      [Person.ElesElasVosēs]: 'vam'
+    },
+    er: {
+      [Person.Eu]: 'va',
+      [Person.Tu]: 'vas',
+      [Person.ElaEleVocê]: 'va',
+      [Person.Nós]: 'vamos',
+      [Person.ElesElasVosēs]: 'vam'
+    },
+    ir: {
+      [Person.Eu]: 'va',
+      [Person.Tu]: 'vas',
+      [Person.ElaEleVocê]: 'va',
+      [Person.Nós]: 'vamos',
+      [Person.ElesElasVosēs]: 'vam'
+    }
   }
 };
 
@@ -74,6 +96,9 @@ export class PTVerbConjugation extends VerbConjugation<Verb> {
     const cellValue = this.getCell(x, y)!;
     const wordBase = this.data.infinitive.slice(0, -2);
 
+    if (y > 2) {
+      return new ColoredText(cellValue, createColorArray({ white: cellValue.length }));
+    }
     const person = this.getPersonForX(x);
     const tense = this.getTenseForY(y);
 
@@ -108,7 +133,7 @@ export class PTVerbConjugation extends VerbConjugation<Verb> {
 
   getTableSize(): { x: number; y: number } {
     return {
-      y: 2,
+      y: 9,
       x: Object.values(this.data.presentSimple).length
     };
   }

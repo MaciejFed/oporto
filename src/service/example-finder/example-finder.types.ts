@@ -14,6 +14,7 @@ export interface WordExampleLine {
 export const MIN_WORD_LENGTH = 2;
 
 export const PT_EXAMPLES_PATH = path.join(os.homedir(), 'pt/pt.txt');
+export const PT_EXAMPLES_SMALL_PATH = path.join(os.homedir(), 'mdev/oporto/pt.txt');
 export const PT_TRANSLATION_EXAMPLES_PATH = path.join(os.homedir(), 'pt/en.txt');
 export const DE_EXAMPLES_PATH = path.join(os.homedir(), 'de/de.txt');
 export const DE_TRANSLATION_EXAMPLES_PATH = path.join(os.homedir(), 'de/en.txt');

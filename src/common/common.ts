@@ -85,8 +85,12 @@ export function onlyDistinctSubjects(arr: Exercise[]): Exercise[] {
 }
 
 export function findWordStartIndex(sentence: string, word: string) {
+  if (word.split(' ').length > 1) {
+    return sentence.indexOf(word);
+  }
   const words = sentence.split(' ');
-  const index = words.map((w) => w.replace(/[,.]/g, '')).indexOf(word);
+  const wordsNormal = words.map((w) => w.toLowerCase().replace(/[,.]/g, ''));
+  const index = wordsNormal.indexOf(word);
 
   return words.slice(0, index).reduce((prev, curr) => curr.length + prev + 1, 0);
 }
@@ -163,4 +167,10 @@ export function assertNonNull<T>(value?: T): T {
   if (!value) throw new Error('Unexpected Undefined!');
 
   return value;
+}
+
+export function getLastElement(str: string): string {
+  const split = str.split(' ');
+
+  return split[split.length - 1];
 }

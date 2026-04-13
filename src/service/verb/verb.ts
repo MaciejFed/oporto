@@ -30,6 +30,7 @@ export const getRandomPolishPerson: () => PolishPerson = () => {
 
 export const getCorrectVerbConjugation = (verb: Verb, person: Person, verbTime: VerbTime): string => {
   const verbExercise = readAll().verbs.filter((v) => v.infinitive === verb.infinitive)[0];
+  // @ts-ignore
   return verbExercise[verbTime]![person];
 };
 

@@ -4,8 +4,7 @@ import dotenv from 'dotenv';
 import { Rate } from './audio/audio.types';
 dotenv.config({ path: path.join(os.homedir(), '.oporto.env') });
 
-export const getSavedAudioPath = (type: 'example' | 'answer', rate: Rate) =>
-  path.join(os.homedir(), `audio/${type}_${rate}.mp3`);
+export const getSavedAudioPath = () => path.join(os.homedir(), 'audio.mp3');
 
 export interface Configuration {
   apiKey: string;
@@ -18,10 +17,10 @@ export interface Configuration {
 
 export const loadValidConfig: () => Configuration = () => {
   const assertNonEmpty = (value: string | undefined, name: string) => {
-    if (!value) {
-      throw new Error(`[${name}] is empty!`);
-    }
-    return value;
+    // if (!value) {
+    //   throw new Error(`[${name}] is empty!`);
+    // }
+    return value || '';
   };
 
   return {

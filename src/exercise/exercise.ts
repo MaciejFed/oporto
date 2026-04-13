@@ -1,7 +1,8 @@
 import { Comparable } from '../common/common';
-import { Adjective, Noun, Other, Verb } from '../repository/exercises-repository';
+import { Adjective, Noun, Other, OtherWithGender, Verb } from '../repository/exercises-repository';
 import { GermanCaseWord, GermanNoun, GermanOther, GermanVerb } from '../repository/german-exercises-repository';
 import { PolishOther, PolishVerb } from '../repository/polish-exercises-repository';
+import { MovieExample } from '../io/file';
 export type ExerciseType =
   | 'VerbExercise'
   | 'GermanVerbExercise'
@@ -17,8 +18,10 @@ export type ExerciseType =
   | 'GermanCaseExercise'
   | 'AdjectiveTranslation'
   | 'VerbTranslation'
+  | 'VerbOtherFormTranslation'
   | 'SentenceTranslation'
   | 'PhraseTranslation'
+  | 'OtherWithGenderTranslation'
   | 'FitInGap';
 
 export const translationTypes: ExerciseType[] = [
@@ -29,17 +32,25 @@ export const translationTypes: ExerciseType[] = [
   'PolishNounTranslation',
   'PolishOtherTranslation',
   'VerbTranslation',
+  'VerbOtherFormTranslation',
   'OtherTranslation',
   'AdjectiveTranslation',
   'PhraseTranslation',
   'SentenceTranslation'
 ];
 
+export type Frequency = {
+  place: number;
+  frequency: number;
+  ignore?: boolean;
+};
+
 export type BaseWord =
   | Noun
   | Adjective
   | Verb
   | Other
+  | OtherWithGender
   | GermanNoun
   | GermanVerb
   | GermanOther
@@ -56,6 +67,7 @@ export enum BaseWordType {
 
 export interface ExerciseContent {
   exerciseType: ExerciseType;
+  name: string;
   getBodyPrefix(): string;
   getBodySuffix(): string;
   getDescription(): string;
@@ -63,6 +75,14 @@ export interface ExerciseContent {
   getBaseWord(): BaseWord | undefined;
   getBaseWordType(): BaseWordType | undefined;
   getBaseWordAsString(): string | undefined;
+  addMovieExample(movieExample: MovieExample): void;
+  addFrequency(frequency: Frequency): void;
+  getFrequency(): Frequency;
+  getMovieExample(): MovieExample | undefined;
+  getMovieExamplePrefix(): string;
+  getMovieExampleSuffix(): string;
+  supportsMovieExampleAnswer(): boolean;
+  toString(): string;
 }
 
 export interface ExerciseBehavior {
@@ -71,8 +91,59 @@ export interface ExerciseBehavior {
   getRetryPrompt(): string;
 }
 
-export interface ExerciseProgress {
-  getMinAnswerCount(): number;
-}
+export interface Exercise extends ExerciseContent, ExerciseBehavior, Comparable {}
 
-export interface Exercise extends ExerciseContent, ExerciseBehavior, ExerciseProgress, Comparable {}
+export abstract class BaseExercise implements Exercise {
+  public movieExample: MovieExample | undefined;
+  public frequency: Frequency = { place: 0, frequency: 0 };
+  public name = '';
+  abstract exerciseType: ExerciseType;
+
+  toString(): string {
+    return `${this.exerciseType}_${this.getBaseWordAsString()}`;
+  }
+
+  supportsMovieExampleAnswer(): boolean {
+    return true;
+  }
+
+  getMovieExample(): MovieExample | undefined {
+    return this.movieExample;
+  }
+
+  addMovieExample(movieExample: MovieExample) {
+    this.movieExample = movieExample;
+  }
+
+  addFrequency(frequency: Frequency) {
+    this.frequency = frequency;
+  }
+
+  getFrequency(): Frequency {
+    return this.frequency;
+  }
+
+  getMovieExamplePrefix(): string {
+    if (!this.movieExample) return '';
+    return ` "${this.movieExample.targetLanguage.substring(0, this.movieExample.wordStartIndex)}`;
+  }
+
+  getMovieExampleSuffix(): string {
+    if (!this.movieExample) return '';
+    return `${this.movieExample.targetLanguage.substring(
+      this.movieExample.wordStartIndex + this.movieExample.word.length + 1
+    )}`;
+  }
+
+  abstract getBaseWordAsString(): string | undefined;
+  abstract isAnswerCorrect(answer: string): boolean;
+  abstract equal(other: Comparable): boolean;
+  abstract getCorrectAnswer(): string;
+  abstract getBodyPrefix(): string;
+  abstract getBodySuffix(): string;
+  abstract getDescription(): string;
+  abstract getTranslation(): string | undefined;
+  abstract getRetryPrompt(): string;
+  abstract getBaseWord(): BaseWord | undefined;
+  abstract getBaseWordType(): BaseWordType | undefined;
+}

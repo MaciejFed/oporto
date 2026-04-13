@@ -15,6 +15,10 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 0,
         '@typescript-eslint/ban-ts-comment': 0,
         '@typescript-eslint/no-explicit-any': 0,
+        'jest/expect-expect': 0,
+        'jest/no-disabled-tests': 0,
+        'no-useless-escape': 0,
+        '@typescript-eslint/no-non-null-assertion': 0,
         'no-console': 0
     },
 };

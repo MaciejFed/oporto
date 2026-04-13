@@ -9,20 +9,13 @@ import { exerciseDoneInLastHour } from './types/exercise-done-in-last-hour/exerc
 import { exerciseTranslationNeverDoneToEnglish } from './types/exercise-translation-never-done-to-english/exercise-translation-never-done-to-english';
 import { exerciseTranslationNeverDoneFromHearing } from './types/exercise-translation-never-done-from-hearing/exercise-translation-never-done-from-hearing';
 import { exerciseDoneCorrectly2TimesInRow } from './types/exercise-done-correctly-2-times-in-row/exercise-done-correctly-2-times-in-row';
-import { exerciseRandomness } from './types/exercise-randomness/exercise-randomness';
-import {
-  ExerciseProgress,
-  getExerciseProgressMap,
-  getSingleExerciseProgress,
-  ProgressType
-} from '../service/progress/progress';
+import { ExerciseProgress, getSingleExerciseProgress, ProgressType } from '../service/progress/progress';
 import { logger } from '../common/logger';
 import { removeRepetitionFromBlocks } from '../common/common';
-import performance from 'performance-now';
-import { getProgressAggregate, ProgressAggregate } from '../service/progress/progress-aggregate';
+import { getProgressAggregate, ProgressAggregate, progressExerciseTypes } from '../service/progress/progress-aggregate';
 import { Language } from '../common/language';
-import { createTable } from '../commands/stat';
 import { removeBaseWordLimit } from '../service/limit/base-word-limit';
+import { exerciseVerbTenseOrder } from './types/exercise-verb-tense-order/exercise-verb-tense-order';
 
 export const VALUE_WRONG_TO_CORRECT_RATIO = 3;
 
@@ -44,6 +37,7 @@ export type PriorityName =
   | 'EXERCISE_BASE_WORD_ABOVE_IN_PROGRESS_LIMIT'
   | 'EXERCISE_TYPE_BELLOW_PROGRESS_LIMIT'
   | 'EXERCISE_VERB_NEVER_TRANSLATED'
+  | 'EXERCISE_VERB_TENSE_ORDER'
   | 'EXERCISE_RANDOMNESS'
   | 'EXERCISE_MAX_PROGRESS_DONE'
   | 'EXERCISE_LEVEL'
@@ -74,29 +68,24 @@ function getExerciseSubjectResults(allResults: Result[]): Record<string, Result[
   }, {});
 }
 
-const priorityCompilers: PriorityCompiler[] = [
+export const priorityCompilers: PriorityCompiler[] = [
   exerciseNeverDone,
-  // exerciseNeverDoneByVoice,
   exerciseTranslationNeverDoneToEnglish,
   exerciseTranslationNeverDoneFromHearing,
   exerciseVerbNeverTranslated,
+  exerciseVerbTenseOrder,
   exerciseWrong,
   exerciseCorrect,
   exerciseDoneToday,
   exerciseDoneInLastHour,
-  exerciseDoneCorrectly2TimesInRow,
-  // exerciseTypeInProgressLimit,
-  exerciseRandomness
+  exerciseDoneCorrectly2TimesInRow
 ];
 
 export interface ExerciseResultContext {
-  allResults: Result[];
   exerciseResults: Result[];
   exerciseSubjectResults: Result[];
   allExercises: Exercise[];
   progressType: ProgressType;
-  exerciseTypeProgress: ExerciseProgress[];
-  progressAggregate: ProgressAggregate;
   language: Language;
 }
 
@@ -105,16 +94,13 @@ type PriorityCompiler = (exercise: Exercise, exerciseResultContext: ExerciseResu
 export function sortExercises(
   exercises: Exercise[],
   allResults: Result[],
-  language: Language
+  language: Language,
+  additionalPriorityCompiles: PriorityCompiler[] = []
 ): {
   exercises: Exercise[];
   exercisesWithPriorities: ExerciseWithPriorites[];
 } {
-  const start = Date.now();
-  const exerciseProgressMap = getExerciseProgressMap(allResults, language);
   const exerciseSubjectResultMap = getExerciseSubjectResults(allResults);
-  logExerciseStats(exerciseProgressMap);
-
   const exercisesWithoutWantedProgress = getExercisesWithoutWantedProgress(exercises, allResults);
 
   logFilteredExercises(exercises, exercisesWithoutWantedProgress);
@@ -123,16 +109,14 @@ export function sortExercises(
     exercisesWithoutWantedProgress,
     exercises,
     allResults,
-    exerciseProgressMap,
     exerciseSubjectResultMap,
-    language
+    language,
+    additionalPriorityCompiles
   );
-
-  logSortingTime(start);
 
   const sortedExercises = exercisesWithPriorities.map((e) => e.exercise);
 
-  return {
+  const resultFinal = {
     exercises: removeRepetitionFromBlocks(
       sortedExercises,
       (a, b) => a.getBaseWordAsString() === b.getBaseWordAsString(),
@@ -140,39 +124,20 @@ export function sortExercises(
     ),
     exercisesWithPriorities
   };
-}
-
-function logExerciseStats(exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>): void {
-  Object.keys(exerciseProgressMap).forEach((key) => {
-    const notStartedCount = exerciseProgressMap[key as ExerciseType].filter(
-      (ex) => ex.progressType === ProgressType.NEVER_DONE
-    ).length;
-    const inProgressCount = exerciseProgressMap[key as ExerciseType].filter(
-      (ex) => ex.progressType !== ProgressType.NEVER_DONE && ex.progressType !== ProgressType.DONE
-    ).length;
-    const doneCount = exerciseProgressMap[key as ExerciseType].filter(
-      (ex) => ex.progressType === ProgressType.DONE
-    ).length;
-
-    logger.info(
-      `${key} Type Not Started: [${notStartedCount}], In Progress: [${inProgressCount}], Done: [${doneCount}]`
-    );
-  });
+  return resultFinal;
 }
 
 function getExercisesWithoutWantedProgress(exercises: Exercise[], allResults: Result[]): ExerciseProgress[] {
+  const resultMap = allResults.reduce((prev, curr) => {
+    const already = prev[curr.exercise.toString()];
+    prev[curr.exercise.toString()] = already ? already.concat(curr) : [curr];
+    return prev;
+  }, {} as Record<string, Result[]>);
   return exercises
-    .map((ex) => getSingleExerciseProgress(allResults, ex))
+    .map((ex) => getSingleExerciseProgress(resultMap[ex.toString()] ?? [], ex))
     .filter((ex) => {
       return ex.progressType !== ProgressType.DONE;
     });
-}
-
-function logCurrentWordsInProgress(progressAggregate: ProgressAggregate, results: Result[], language: Language): void {
-  logger.info(createTable('Verbs', progressAggregate.words.VERB, results, language).render());
-  logger.info(createTable('Nouns', progressAggregate.words.NOUN, results, language).render());
-  logger.info(createTable('Adjective', progressAggregate.words.ADJECTIVE, results, language).render());
-  logger.info(createTable('Other', progressAggregate.words.OTHER, results, language).render());
 }
 
 function logFilteredExercises(exercises: Exercise[], exercisesWithoutWantedProgress: ExerciseProgress[]): void {
@@ -189,50 +154,36 @@ function getExercisesWithPriorities(
   exercisesWithoutWantedProgress: ExerciseProgress[],
   exercises: Exercise[],
   allResults: Result[],
-  exerciseProgressMap: Record<ExerciseType, ExerciseProgress[]>,
   exerciseSubjectResultMap: Record<string, Result[]>,
-  language: Language
+  language: Language,
+  additionalPriorityCompiles: PriorityCompiler[] = []
 ): ExerciseWithPriorites[] {
-  const priorityCompilerTimes: Record<string, number> = {};
+  console.time('main');
   const progressAggregate = getProgressAggregate(allResults, exercises);
-  logCurrentWordsInProgress(progressAggregate, allResults, language);
 
-  const x = removeBaseWordLimit(exercisesWithoutWantedProgress, progressAggregate)
-    .map((ex) => {
-      const combinedPriorities = priorityCompilers
-        .flatMap((priorityCompiler) => {
-          const startTime = performance();
-          const result = priorityCompiler(ex.exercise, {
-            allExercises: exercises,
-            allResults,
-            exerciseSubjectResults: exerciseSubjectResultMap[ex.exercise.getBaseWordAsString() || '_'] || [],
-            progressType: ex.progressType,
-            exerciseTypeProgress: exerciseProgressMap[ex.exercise.exerciseType],
-            exerciseResults: ex.exerciseResults,
-            progressAggregate,
-            language
-          });
-          const endTime = performance();
+  const inLimit = removeBaseWordLimit(language, exercisesWithoutWantedProgress, progressAggregate);
+  const x = inLimit.map((ex) => {
+    const combinedPriorities = priorityCompilers
+      .concat(additionalPriorityCompiles)
+      .flatMap((priorityCompiler) => {
+        const result = priorityCompiler(ex.exercise, {
+          allExercises: exercises,
+          exerciseSubjectResults: exerciseSubjectResultMap[ex.exercise.getBaseWordAsString() || '_'] || [],
+          progressType: ex.progressType,
+          exerciseResults: ex.exerciseResults,
+          language
+        });
+        return result;
+      })
+      .reduce(combinePriorities, initializePriorities(ex));
 
-          const executionTime = endTime - startTime;
-          priorityCompilerTimes[priorityCompiler.name] =
-            (priorityCompilerTimes[priorityCompiler.name] || 0) + executionTime;
-
-          return result;
-        })
-        .reduce(combinePriorities, initializePriorities(ex));
-
-      return filterInvalidPriorities(combinedPriorities);
-    })
-    .sort((a, b) => b.priorityValueTotal - a.priorityValueTotal);
-
-  priorityCompilers.forEach((pc) => {
-    priorityCompilerTimes[pc.name] = Number((priorityCompilerTimes[pc.name] / 1000).toFixed(2));
+    return filterInvalidPriorities(combinedPriorities);
   });
 
-  logger.info('Priority compiler execution times:', priorityCompilerTimes);
+  const sorted = x.sort((a, b) => b.priorityValueTotal - a.priorityValueTotal);
+  console.timeEnd('main');
 
-  return x;
+  return sorted;
 }
 
 function combinePriorities(previous: PriorityWithValue, current: Priority) {
@@ -240,10 +191,8 @@ function combinePriorities(previous: PriorityWithValue, current: Priority) {
     priorityName: current.priorityName,
     priorityValue: current.priorityValue
   });
-  return {
-    ...previous,
-    priorityValueTotal: previous.priorityValueTotal + current.priorityValue
-  };
+  previous.priorityValueTotal = previous.priorityValueTotal + current.priorityValue;
+  return previous;
 }
 
 interface PriorityWithValue {
@@ -269,32 +218,16 @@ function initializePriorities(ex: any): PriorityWithValue {
 }
 
 function filterInvalidPriorities(combinedPriorities: PriorityWithValue) {
-  return {
-    ...combinedPriorities,
-    priorities: combinedPriorities.priorities.filter(
-      (priority) =>
-        priority.priorityName !== '' && priority.priorityName !== 'NO_PRIORITY' && priority.priorityValue !== 0
-    )
-  };
+  combinedPriorities.priorities = combinedPriorities.priorities.filter(
+    (priority) =>
+      priority.priorityName !== '' && priority.priorityName !== 'NO_PRIORITY' && priority.priorityValue !== 0
+  );
+  return combinedPriorities;
 }
 
 function logSortingTime(start: number): void {
   const end = Date.now();
   logger.info(`Sorting took [${(end - start) / 1000} seconds]`);
-}
-
-function insertRandomExercise(
-  exercisesWithPriorities: ExerciseWithPriorites[],
-  randomIndex: number,
-  randomExercise: Exercise
-) {
-  const sortedExercises = exercisesWithPriorities.map((ewp) => ewp.exercise);
-  if (randomIndex < sortedExercises.length) {
-    sortedExercises[randomIndex] = randomExercise;
-    logger.info(`Including random exercise [${randomExercise.getCorrectAnswer()}]`);
-  }
-
-  return sortedExercises;
 }
 
 export function noPriority(exercise: Exercise): Priority[] {

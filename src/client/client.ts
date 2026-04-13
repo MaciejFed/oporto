@@ -7,22 +7,31 @@ import { Result } from '../service/result';
 import { logger } from '../common/logger';
 import { Language } from '../common/language';
 import { Rate } from '../server/audio/audio.types';
+import axios from 'axios';
+import fs from 'fs';
 
 const execAsync = util.promisify(exec);
 const { apiKey, apiURL, deepLApiKey } = loadValidConfig();
 
 let resultsCached: Result[] = [];
-const MAX_BUFFER = 10 * 1024 * 1024;
+const MAX_BUFFER = 100 * 1024 * 1024;
 
-const fetchResults = (language: Language) =>
-  `curl -s --location --request GET ${apiURL}/${language}/results --header "Authorization: Bearer ${apiKey}"`;
+export const fetchResults = async (language: Language): Promise<Result[]> => {
+  const response = await axios.get(`${apiURL}/${language}/results`, {
+    headers: {
+      Authorization: `Bearer ${apiKey}`
+    }
+  });
+
+  return response.data;
+};
 
 export const preFetchAllResults = (language: Language): void => {
   if (!resultsCached.length) {
     logger.info('Fetching all results...');
-    execAsync(fetchResults(language), { maxBuffer: MAX_BUFFER }).then(({ stdout: results }) => {
+    fetchResults(language).then((results) => {
       logger.info('Results saved to cache');
-      resultsCached = JSON.parse(results);
+      resultsCached = results;
     });
   }
 };
@@ -30,37 +39,52 @@ export const preFetchAllResults = (language: Language): void => {
 export const fetchAllResults = (): Result[] => resultsCached;
 
 export const fetchAllResultsSync = (language: Language): Result[] => {
-  const results = execSync(fetchResults(language), { maxBuffer: MAX_BUFFER }).toString();
+  const results = execSync(
+    `curl -s --location --request GET ${apiURL}/${language}/results --header "Authorization: Bearer ${apiKey}"`,
+    { maxBuffer: MAX_BUFFER }
+  ).toString();
   return JSON.parse(results);
 };
 
-export const getAudio = (language: Language, text: string, type: 'example' | 'answer', rate: Rate) => {
-  const outputPath = getSavedAudioPath(type, rate);
+export const getAudio = (language: Language, text: string, api: 'google' | 'openai', rate: Rate) => {
+  const outputPath = getSavedAudioPath();
   const command = `curl -s --location '${apiURL}/${language}/audio' \
     --header 'Authorization: Bearer ${apiKey}' \
     --header 'Content-Type: application/json' \
     -o ${outputPath} \
     --data '{
         "text": "${text}",
-        "rate": "${rate}"
+        "rate": "${rate}",
+        "api": "${api}"
     }'`;
   execSync(command);
 };
 
 export const fetchMovieExample = async (language: Language, word: string): Promise<MovieExample> => {
-  const command = `curl -s --location '${apiURL}/${language}/example/find' \
-    --header 'Authorization: Bearer ${apiKey}' \
-    --header 'Content-Type: application/json' \
-    --data '{
-        "word": "${word}"
-    }'`;
-  const { stdout } = await execAsync(command);
-  return JSON.parse(stdout);
+  const response = await axios.post(
+    `${apiURL}/${language}/example/find`,
+    { word },
+    {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+
+  return response.data;
 };
 
 export const fetchExercisesForSession = (language: Language): Exercise[] => {
   const exercise = execSync(
     `curl -s --location --request GET ${apiURL}/${language}/generate/local --header "Authorization: Bearer ${apiKey}"`
+  ).toString();
+  return JSON.parse(exercise);
+};
+
+export const fetchRepeatExercisesForSession = (language: Language): Exercise[] => {
+  const exercise = execSync(
+    `curl -s --location --request GET ${apiURL}/${language}/generate/local/repeat --header "Authorization: Bearer ${apiKey}"`
   ).toString();
   return JSON.parse(exercise);
 };

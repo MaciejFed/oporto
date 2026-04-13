@@ -4,16 +4,21 @@
   "description": "",
   "main": "./build/cli.js",
   "bin": {
-    "oporto": "./build/cli.js"
+    "my-oporto": "./build/cli.js"
   },
   "scripts": {
     "start": "http-server progress",
     "start-server": "ts-node src/server/server",
     "examples": "ts-node src/commands/examples",
+    "compare": "ts-node src/commands/compare.ts",
     "known": "ts-node src/commands/known.ts",
+    "listen": "ts-node src/commands/listen.ts",
     "voice": "ts-node src/commands/voices.ts",
-    "unknown": "ts-node src/commands/unknown",
+    "delete": "ts-node src/commands/delete.ts",
+    "remove": "ts-node src/commands/remove.ts",
+    "find": "ts-node src/commands/find-next-undone.ts",
     "test": "jest --detectOpenHandles --forceExit --coverage",
+    "test-update": "jest --updateSnapshot --detectOpenHandles --forceExit --coverage",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint --fix .",
     "voices": "ts-node src/commands/voices",
@@ -24,8 +29,9 @@
     "progressde": "ts-node src/cli.ts progressde",
     "stat": "ts-node src/cli.ts stat",
     "statdee": "ts-node src/cli.ts statde",
-    "verify": "npm run lint && npm run format",
+    "verify": "npm run lint && npm run format && npm run test",
     "foo": "ts-node src/commands/known.ts",
+    "unknown": "ts-node src/commands/unknown.ts",
     "build": "npm run verify && rm -rf build/** && npx tsc",
     "package": "npm run build && pkg . --targets node14-macos-x64",
     "execute": "npm run package && cp bin/oporto ~/bin/oporto && rm -rf ./build"
@@ -41,7 +47,8 @@
   },
   "homepage": "https://github.com/MaciejFed/oporto#readme",
   "dependencies": {
-    "@google-cloud/text-to-speech": "^5.3.0",
+    "@google-cloud/text-to-speech": "^5.8.0",
+    "axios": "^1.10.0",
     "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
     "clear": "^0.1.0",
@@ -54,9 +61,8 @@
     "line-reader": "^0.4.0",
     "luxon": "^3.0.1",
     "mongodb": "^6.3.0",
-    "openai": "^4.52.7",
+    "openai": "^4.104.0",
     "path": "^0.12.7",
-    "performance-now": "^2.1.0",
     "terminal-kit": "^2.4.0",
     "winston": "^3.8.0"
   },

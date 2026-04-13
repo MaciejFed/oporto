@@ -14,22 +14,34 @@ import { PolishVerbExercise } from '../../exercise/polish-verb-exercise';
 import { PolishVerbTranslationExercise } from '../../exercise/translation/pl/polish-verb-translation-exercise';
 import { PolishOtherTranslationExercise } from '../../exercise/translation/pl/polish-other-translation-exercise';
 import { PolishNounTranslationExercise } from '../../exercise/translation/pl/polish-noun-translation-exercise';
+import { OtherGenderTranslationExercise } from '../../exercise/translation/other-gender-translation-exercise';
+import { VerbOtherFormTranslationExercise } from '../../exercise/translation/verb-other-form-translation-exercise';
 
 export function extractWordToFindFromExercise(exercise: Exercise): string | undefined {
   switch (exercise.exerciseType) {
     case 'OtherTranslation':
       if ((exercise as OtherTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as OtherTranslationExercise).other.portuguese;
+    case 'OtherWithGenderTranslation':
+      if ((exercise as OtherGenderTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
+      return (exercise as OtherGenderTranslationExercise).other.portuguese.singular.masculine;
     case 'AdjectiveTranslation':
       if ((exercise as AdjectiveTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as AdjectiveTranslationExercise).adjective.masculine.singular;
     case 'VerbTranslation':
       if ((exercise as VerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as VerbTranslationExercise).verb.infinitive;
+    case 'VerbOtherFormTranslation':
+      // eslint-disable-next-line no-case-declarations
+      const number = (exercise as VerbOtherFormTranslationExercise).number;
+      // eslint-disable-next-line no-case-declarations
+      const otherForms = (exercise as VerbOtherFormTranslationExercise).verb.otherForms;
+      return otherForms && otherForms[number] ? otherForms[number].portuguese : undefined;
     case 'GermanVerbTranslation':
       if ((exercise as GermanVerbTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as GermanVerbTranslationExercise).verb.infinitive;
     case 'NounTranslation':
+      if ((exercise as NounTranslationExercise).isTranslationToPortuguese()) return exercise.getCorrectAnswer();
       return (exercise as NounTranslationExercise).noun.portuguese.word;
     case 'GermanNounTranslation':
       return (exercise as GermanNounTranslationExercise).noun.german.singular;

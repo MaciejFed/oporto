@@ -1,6 +1,6 @@
 import { Comparable } from '../common/common';
 
-import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 import { GermanPerson, GermanVerb } from '../repository/german-exercises-repository';
 import { getRandomGermanVerb } from '../service/translation';
 import { getCorrectGermanVerbConjugation, getRandomGermanPerson } from '../service/verb/verb';
@@ -8,17 +8,26 @@ import { getCorrectGermanVerbConjugation, getRandomGermanPerson } from '../servi
 export type GermanVerbTime = 'presentSimple' | 'pastPerfect' | 'präteritum';
 
 const verbTimePrintVersion = (verbTime: GermanVerbTime) => {
-  if (verbTime === 'presentSimple') return 'Present Simple';
-  return 'Past Perfect';
+  switch (verbTime) {
+    case 'presentSimple':
+      return 'Present Simple';
+    case 'pastPerfect':
+      return 'Past Perfect';
+    case 'präteritum':
+      return 'Präteritum';
+    default:
+      return '';
+  }
 };
 
-export class GermanVerbExercise implements Exercise, Comparable {
+export class GermanVerbExercise extends BaseExercise implements Exercise, Comparable {
   exerciseType: ExerciseType;
   verbTime: GermanVerbTime;
   verb: GermanVerb;
   person: GermanPerson;
 
   constructor() {
+    super();
     this.exerciseType = 'GermanVerbExercise';
     this.verb = getRandomGermanVerb();
     this.person = getRandomGermanPerson();
@@ -34,7 +43,7 @@ export class GermanVerbExercise implements Exercise, Comparable {
     return verbExercise;
   }
 
-  getTranslation = () => undefined;
+  getTranslation = () => this.verb.english;
 
   getBodyPrefix = () => `[${verbTimePrintVersion(this.verbTime)}] ${this.person}: `;
 
@@ -47,10 +56,6 @@ export class GermanVerbExercise implements Exercise, Comparable {
   isAnswerCorrect(answer: string): boolean {
     const correctConjugation = this.getCorrectAnswer();
     return correctConjugation.toLowerCase() === answer.toLowerCase();
-  }
-
-  getMinAnswerCount(): number {
-    return 2;
   }
 
   getBaseWord() {

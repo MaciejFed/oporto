@@ -1,16 +1,17 @@
 import { Comparable } from '../common/common';
-import { BaseWordType, Exercise, ExerciseType } from './exercise';
+import { BaseExercise, BaseWordType, Exercise, ExerciseType } from './exercise';
 import { GenderWord, GermanCase, GermanCaseWord, GermanGender } from '../repository/german-exercises-repository';
 
 const safe = (word?: string) => (word ? `[${word}]` : '');
 
-export class GermanCaseExercise implements Exercise, Comparable {
+export class GermanCaseExercise extends BaseExercise implements Exercise, Comparable {
   public exerciseType: ExerciseType;
   public caseWord: GermanCaseWord;
   public germanCase: GermanCase;
   public gender?: GermanGender;
 
   public constructor(caseWord: GermanCaseWord, germanCase: GermanCase, gender?: GermanGender) {
+    super();
     this.exerciseType = 'GermanCaseExercise';
     this.caseWord = caseWord;
     this.germanCase = germanCase;
@@ -21,7 +22,7 @@ export class GermanCaseExercise implements Exercise, Comparable {
     return new GermanCaseExercise(caseWord, germanCase, gender);
   }
 
-  getTranslation = () => undefined;
+  getTranslation = () => this.caseWord.english;
 
   getBodyPrefix = () => `[${this.germanCase}]${safe(this.gender)}: `;
 
@@ -37,10 +38,6 @@ export class GermanCaseExercise implements Exercise, Comparable {
   isAnswerCorrect(answer: string): boolean {
     const correctAnswer = this.getCorrectAnswer();
     return correctAnswer.toLowerCase() === answer.toLowerCase();
-  }
-
-  getMinAnswerCount(): number {
-    return 2;
   }
 
   getBaseWord() {

@@ -57,7 +57,7 @@ export class SentenceTranslationExercise extends TranslationExercise implements 
     return undefined;
   }
 
-  getBaseWordAsString = () => undefined;
+  getBaseWordAsString = () => this.sentence.portuguese;
 
   equal = (other: SentenceTranslationExercise) =>
     other.exerciseType === 'SentenceTranslation' &&

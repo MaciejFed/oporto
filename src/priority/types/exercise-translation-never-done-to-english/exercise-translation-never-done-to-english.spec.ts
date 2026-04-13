@@ -18,13 +18,12 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH', () => {
     toPortugueseTranslationExercise.noun = readAll().nouns[1];
     const allResults = generateResultForExercise(toEnglishTranslationExercise, true, 'keyboard', 1);
     const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, {
-      allResults,
       exerciseSubjectResults: allResults
     } as ExerciseResultContext);
 
     expect(actualPriority.length).toEqual(1);
-    expect(actualPriority[0].priorityName).toEqual('EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH');
-    expect(actualPriority[0].priorityValue).toEqual(VALUE_EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH);
+    expect(actualPriority[0].priorityName).toEqual('NO_PRIORITY');
+    expect(actualPriority[0].priorityValue).toEqual(0);
   });
 
   it('Exercise Translation Never Done To English Correctly', () => {
@@ -36,7 +35,6 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH', () => {
     toPortugueseTranslationExercise.noun = readAll().nouns[0];
     const allResults = generateResultForExercise(toEnglishTranslationExercise, false, 'keyboard', 1);
     const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, {
-      allResults,
       exerciseSubjectResults: allResults
     } as ExerciseResultContext);
 
@@ -54,7 +52,6 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH', () => {
     toPortugueseTranslationExercise.noun = readAll().nouns[0];
     const allResults = generateResultForExercise(toEnglishTranslationExercise, true, 'keyboard', 1);
     const actualPriority = exerciseTranslationNeverDoneToEnglish(toPortugueseTranslationExercise, {
-      allResults,
       exerciseSubjectResults: allResults
     } as ExerciseResultContext);
 
@@ -67,7 +64,6 @@ describe('Priority - EXERCISE_TRANSLATION_NEVER_DONE_TO_ENGLISH', () => {
     const testExercise = new VerbExercise();
     const allResults = generateResultForExercise(testExercise, true, 'keyboard', 3);
     const actualPriority = exerciseTranslationNeverDoneToEnglish(testExercise, {
-      allResults,
       exerciseSubjectResults: allResults
     } as ExerciseResultContext);
 

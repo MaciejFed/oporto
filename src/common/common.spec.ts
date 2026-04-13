@@ -33,6 +33,36 @@ describe('Common', () => {
       expect(word).toEqual(wordToFind);
       expect(index).toEqual(21);
     });
+
+    it('as middle word is sentence again', () => {
+      const sentencePL = 'Jak być może wiecie, dzisiaj mamy Dzień Kanady."';
+      const wordToFind = 'dzień';
+      const index = findWordStartIndex(sentencePL, wordToFind);
+      const word = sentencePL.substring(index, index + wordToFind.length);
+
+      expect(word.toLowerCase()).toEqual(wordToFind.toLowerCase());
+      expect(index).toEqual(34);
+    });
+
+    it('as middle word is sentence again 2', () => {
+      const sentencePL = 'Dzień jest tak ciemny jak noc.';
+      const wordToFind = 'dzień';
+      const index = findWordStartIndex(sentencePL, wordToFind);
+      const word = sentencePL.substring(index, index + wordToFind.length);
+
+      expect(word.toLowerCase()).toEqual(wordToFind.toLowerCase());
+      expect(index).toEqual(0);
+    });
+
+    it('double word', () => {
+      const sentencePt = 'Ainda bem que já não sentes a necessidade de fazer';
+      const wordToFind = 'a necessidade';
+      const index = findWordStartIndex(sentencePt, wordToFind);
+      const word = sentencePt.substring(index, index + wordToFind.length);
+
+      expect(word.toLowerCase()).toEqual(wordToFind.toLowerCase());
+      expect(index).toEqual(28);
+    });
   });
 
   describe('removeRepetitionFromBlocks', () => {

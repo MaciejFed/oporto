@@ -39,7 +39,7 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
   }
 
   getBodyPrefix(): string {
-    return this.isTranslationToPortuguese() ? 'Portuguese: ' : 'English: ';
+    return this.isTranslationToPortuguese() ? `Portuguese: ${this.getBodySuffix()}` : 'English: ';
   }
 
   getBodySuffix = () => ` [${this.gender}, ${this.number}]`;
@@ -49,10 +49,12 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
     if (this.isTranslationToPortuguese()) {
       return `English: ${this.adjective.english}`;
     }
-    return `Portuguese: ${this.adjective.masculine.singular}`;
+    return `Portuguese: ${this.getMovieExamplePrefix()} \'${
+      this.adjective.masculine.singular
+    }\' ${this.getMovieExampleSuffix()}`;
   };
 
-  getTranslation = () => (this.isTranslationToPortugueseFromHearing() ? this.adjective.english : undefined);
+  getTranslation = () => this.adjective.english;
 
   getCorrectAnswer = () =>
     this.isTranslationToPortuguese() ? this.adjective[this.gender][this.number] : this.adjective.english;
@@ -63,10 +65,6 @@ export class AdjectiveTranslationExercise extends TranslationExercise implements
 
   getRetryPrompt = () =>
     this.isTranslationToPortuguese() ? this.getCorrectAnswer() : this.adjective[this.gender][this.number];
-
-  getMinAnswerCount(): number {
-    return 2;
-  }
 
   getBaseWord() {
     return this.adjective;
